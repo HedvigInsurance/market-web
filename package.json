@@ -1,0 +1,98 @@
+{
+  "name": "@hedviginsurance/web-survival-kit",
+  "version": "1.6.1",
+  "description": "Keep your tools to the trade alive",
+  "main": "index.js",
+  "repository": "https://github.com/HedvigInsurance/web-survival-kit",
+  "author": "Johan Palmfjord <johan.palmfjord@hedvig.com>",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "types": "./types.d.ts",
+  "dependencies": {
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.1.0",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/koa": "^2.0.46",
+    "@types/koa-router": "^7.0.32",
+    "babel-loader": "^8.0.2",
+    "copy-webpack-plugin": "^4.5.2",
+    "es6-promise": "^4.2.5",
+    "jest": "^23.6.0",
+    "koa": "^2.5.3",
+    "koa-compress": "^3.0.0",
+    "koa-mount": "^3.0.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "nodemon": "^1.18.4",
+    "ts-jest": "^23.10.0",
+    "typescript": "^3.0.3",
+    "webpack": "^4.19.1",
+    "webpack-node-externals": "^1.7.2",
+    "webpack-stats-plugin": "^0.2.1",
+    "@hedviginsurance/brand": "^1.4.0",
+    "@hedviginsurance/web-survival-kit": "^1.6.1",
+    "@hedviginsurance/cli": "^2.1.1",
+    "@types/react": "^16.4.14",
+    "@types/react-dom": "^16.0.7",
+    "@types/react-hot-loader": "^4.1.0",
+    "constate": "^0.8.2",
+    "emotion": "^9.2.10",
+    "emotion-server": "^9.2.10",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-emotion": "^9.2.10",
+    "react-hot-loader": "^4.3.11",
+    "react-lifecycle-components": "^1.1.1",
+    "source-map-support": "^0.5.9"
+  },
+  "devDependencies": {
+    "prettier": "^1.14.3",
+    "@babel/core": "^7.1.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/enzyme": "^3.1.14",
+    "@types/jest": "^23.3.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "babel-plugin-dynamic-import-node": "^2.1.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
+    "husky": "^0.14.3",
+    "jest": "^23.6.0",
+    "lint-staged": "^7.3.0",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
+    "tslint-plugin-prettier": "^2.0.0",
+    "webpack": "^4.19.1",
+    "webpack-dev-server": "^3.1.8"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "start": "NODE_ENV=production node build/index.js",
+    "build": "NODE_ENV=production hedvig project:build ./hedvig.config.js",
+    "watch": "NODE_ENV=development hedvig project:watch ./hedvig.config.js",
+    "test": "NODE_ENV=test jest",
+    "typecheck": "tsc --noEmit",
+    "lint": "tslint \"src/**/*.{ts,tsx}\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}

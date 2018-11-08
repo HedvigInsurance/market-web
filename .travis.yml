@@ -1,0 +1,21 @@
+language: node_js
+
+node_js:
+- '10'
+
+cache:
+  directories:
+  - node_modules
+
+install:
+- npm i -g yarn@1.9.1
+- yarn install
+
+script:
+- yarn lint
+- yarn test
+- yarn typecheck
+- yarn build
+
+notifications:
+  email: false
