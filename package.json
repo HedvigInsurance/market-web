@@ -1,15 +1,10 @@
 {
-  "name": "@hedviginsurance/web-survival-kit",
+  "name": "@hedviginsurance/web-next-template",
   "version": "1.6.1",
-  "description": "Keep your tools to the trade alive",
+  "description": "Template for the next web project",
   "main": "index.js",
-  "repository": "https://github.com/HedvigInsurance/web-survival-kit",
+  "repository": "https://github.com/HedvigInsurance/web-next-template",
   "author": "Johan Palmfjord <johan.palmfjord@hedvig.com>",
-  "license": "MIT",
-  "private": false,
-  "publishConfig": {
-    "access": "public"
-  },
   "types": "./types.d.ts",
   "dependencies": {
     "@babel/core": "^7.1.0",
