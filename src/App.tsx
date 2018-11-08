@@ -6,7 +6,7 @@ import { routes } from './routes'
 export const App: React.SFC = () => (
   <Switch>
     {routes.map(({ Component, exact, path }) => (
-      <Route component={Component} exact={exact} path={path} />
+      <Route key={path} component={Component} exact={exact} path={path} />
     ))}
   </Switch>
 )
