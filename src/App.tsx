@@ -1,12 +1,14 @@
 import * as React from 'react'
-import styled from 'react-emotion'
 import { hot } from 'react-hot-loader'
+import { Route, Switch } from 'react-router-dom'
+import { routes } from './routes'
 
-const AppComponent = styled('div')({
-  backgroundColor: 'pink',
-  color: 'red',
-})
-
-export const App: React.SFC = () => <AppComponent>Hello world!</AppComponent>
+export const App: React.SFC = () => (
+  <Switch>
+    {routes.map(({ Component, exact, path }) => (
+      <Route component={Component} exact={exact} path={path} />
+    ))}
+  </Switch>
+)
 
 export const HotApp = hot(module)(App)

@@ -1,8 +1,8 @@
 const path = require('path')
 
 module.exports = {
-  clientEntry: path.resolve(__dirname, 'src/clientEntry.tsx'),
-  serverEntry: path.resolve(__dirname, 'src/serverEntry.tsx'),
+  clientEntry: path.resolve(__dirname, 'src/client/entry.tsx'),
+  serverEntry: path.resolve(__dirname, 'src/server/entry.tsx'),
   context: __dirname, // Where webpack should work
   clientPath: path.resolve(__dirname, 'build/assets/'), // Build asset path
   serverPath: path.resolve(__dirname, 'build/'), // Build asset path
