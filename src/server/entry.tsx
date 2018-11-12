@@ -50,7 +50,7 @@ const template = (body: string, helmet: FilledContext['helmet']) => `
   </html>
 `
 
-const getPage: Koa.Middleware = async (ctx) => {
+const getPageMiddleware: Koa.Middleware = async (ctx) => {
   const routerContext: StaticRouterContext & { statusCode?: number } = {}
   const helmetContext = {}
 
@@ -84,15 +84,12 @@ const server = createKoaServer({
   assetLocation: __dirname + '/assets',
 })
 
-server.app.use(setRequestUuidMiddleware)
-server.app.use(setLoggerMiddleware)
-server.app.use(logRequestMiddleware)
 server.router.use(setRequestUuidMiddleware)
 server.router.use(setLoggerMiddleware)
 server.router.use(logRequestMiddleware)
 
 routes.forEach((route) => {
-  server.router.get(route.path, getPage)
+  server.router.get(route.path, getPageMiddleware)
 })
 
 server.app.listen(getPort(), () => {
