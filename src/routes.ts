@@ -1,4 +1,4 @@
-import { Landing } from './pages/Landnig'
+import { Landing } from './pages/Landing'
 
 export interface Route {
   path: string

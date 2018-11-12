@@ -1,3 +1,6 @@
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 import 'source-map-support/register'
 import {
   // tslint:disable-line ordered-imports
@@ -14,6 +17,12 @@ import { StaticRouter, StaticRouterContext } from 'react-router'
 import { FilledContext, HelmetProvider } from 'react-helmet-async'
 import { App } from '../App'
 import { routes } from '../routes'
+import { appLogger } from './logging'
+import {
+  logRequestMiddleware,
+  setLoggerMiddleware,
+  setRequestUuidMiddleware,
+} from './middlewares/enhancers'
 
 const scriptLocation = getScriptLocation({
   statsLocation: path.resolve(__dirname, 'assets'),
@@ -26,7 +35,6 @@ const template = (body: string, helmet: FilledContext['helmet']) => `
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  ${helmet.title}
   ${helmet.title}
   ${helmet.link}
   ${helmet.meta}
@@ -65,17 +73,24 @@ const getPage: Koa.Middleware = async (ctx) => {
 }
 const getPort = () => (process.env.PORT ? Number(process.env.PORT) : 8030)
 
-console.log(`Booting server on ${getPort()} 👢`) // tslint:disable-line no-console
+appLogger.info(`Booting server on ${getPort()} 👢`)
 
 const server = createKoaServer({
   publicPath: '/assets',
   assetLocation: __dirname + '/assets',
 })
 
+server.app.use(setRequestUuidMiddleware)
+server.app.use(setLoggerMiddleware)
+server.app.use(logRequestMiddleware)
+server.router.use(setRequestUuidMiddleware)
+server.router.use(setLoggerMiddleware)
+server.router.use(logRequestMiddleware)
+
 routes.forEach((route) => {
   server.router.get(route.path, getPage)
 })
 
 server.app.listen(getPort(), () => {
-  console.log(`Server started 🚀 listening on port ${getPort()}`) // tslint:disable-line no-console
+  appLogger.info(`Server started 🚀 listening on port ${getPort()}`)
 })
