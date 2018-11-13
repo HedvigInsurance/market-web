@@ -1,10 +1,8 @@
-import * as dotenv from 'dotenv'
-dotenv.config()
-
 import 'source-map-support/register'
 
 import { createKoaServer } from '@hedviginsurance/web-survival-kit'
 import { routes } from '../routes'
+import { config } from './config'
 import { appLogger } from './logging'
 import {
   logRequestMiddleware,
@@ -16,6 +14,11 @@ import { getPageMiddleware } from './page'
 const getPort = () => (process.env.PORT ? Number(process.env.PORT) : 8030)
 
 appLogger.info(`Booting server on ${getPort()} 👢`)
+
+if (!config.storyblokApiToken) {
+  appLogger.fatal('No api token for storyblok provided!')
+  process.nextTick(() => process.exit(1))
+}
 
 const server = createKoaServer({
   publicPath: '/assets',
