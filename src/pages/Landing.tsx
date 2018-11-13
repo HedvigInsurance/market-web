@@ -6,6 +6,7 @@ const LandingWrapper = styled('div')({
   backgroundColor: 'pink',
   color: 'red',
 })
+
 export const Landing: React.SFC = () => (
   <>
     <Helmet>
