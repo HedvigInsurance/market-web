@@ -1,5 +1,5 @@
 import { getScriptLocation } from '@hedviginsurance/web-survival-kit'
-import axios from 'axios'
+import { AxiosResponse } from 'axios'
 import { Provider } from 'constate'
 import { renderStylesToString } from 'emotion-server'
 import * as Koa from 'koa'
@@ -9,6 +9,10 @@ import { renderToString } from 'react-dom/server'
 import { FilledContext, HelmetProvider } from 'react-helmet-async'
 import { StaticRouter, StaticRouterContext } from 'react-router'
 import { App } from '../App'
+import {
+  getDraftedStoryById,
+  getPublishedStoryFromSlug,
+} from './utils/storyblok'
 
 const scriptLocation = getScriptLocation({
   statsLocation: path.resolve(__dirname, 'assets'),
@@ -38,26 +42,22 @@ const template = (
   </html>
 `
 
-const apiClient = axios.create({
-  baseURL: 'https://api.storyblok.com',
-})
-
 export const getPageMiddleware: Koa.Middleware = async (ctx) => {
   const routerContext: StaticRouterContext & { statusCode?: number } = {}
   const helmetContext = {}
 
-  const response = await apiClient.get(
-    `/v1/cdn/stories${ctx.request.path === '/' ? '/home' : ctx.request.path}`,
-    {
-      params: {
-        token: process.env.STORYBLOK_API_TOKEN,
-        version: 'publish',
-        cv: 1,
-        find_by: 'slug',
-      },
-    },
-  )
-
+  let response: AxiosResponse
+  if (
+    ctx.request.query._storyblok &&
+    ctx.request.query['_storyblok_tk[timestamp]']
+  ) {
+    response = await getDraftedStoryById(
+      ctx.request.query._storyblok,
+      ctx.request.query['_storyblok_tk[timestamp]'],
+    )
+  } else {
+    response = await getPublishedStoryFromSlug(ctx.request.path)
+  }
   const serverApp = (
     <Provider initialState={{ story: response.data }}>
       <StaticRouter location={ctx.request.originalUrl} context={routerContext}>
