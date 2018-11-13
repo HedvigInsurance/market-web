@@ -1,14 +1,9 @@
 import * as React from 'react'
-import styled from 'react-emotion'
 import Helmet from 'react-helmet-async'
+import { getBlockComponent } from '../blocks'
 import { StoryContainer } from '../storyblok/StoryContainer'
 
-const LandingWrapper = styled('div')({
-  backgroundColor: 'pink',
-  color: 'red',
-})
-
-export const Landing: React.FunctionComponent = () => (
+export const StoryPage: React.FunctionComponent = () => (
   <StoryContainer>
     {({ story }) => (
       <>
@@ -24,7 +19,15 @@ export const Landing: React.FunctionComponent = () => (
             />
           )}
         </Helmet>
-        <LandingWrapper>Your content goes here</LandingWrapper>
+
+        {story.content.body.map((block) => {
+          const BlockComponent = getBlockComponent(block.component)
+          if (!BlockComponent) {
+            return null
+          }
+
+          return <BlockComponent key={block._uid} {...block} />
+        })}
       </>
     )}
   </StoryContainer>
