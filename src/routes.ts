@@ -7,5 +7,5 @@ export interface Route {
 }
 
 export const routes: ReadonlyArray<Route> = [
-  { path: '/', exact: true, Component: Landing },
+  { path: '/*', exact: false, Component: Landing },
 ]
