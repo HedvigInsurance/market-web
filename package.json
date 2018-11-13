@@ -1,9 +1,9 @@
 {
-  "name": "@hedviginsurance/web-next-template",
+  "name": "@hedviginsurance/web-next",
   "version": "1.6.1",
   "description": "Template for the next web project",
   "main": "index.js",
-  "repository": "https://github.com/HedvigInsurance/web-next-template",
+  "repository": "https://github.com/HedvigInsurance/web-next",
   "author": "Johan Palmfjord <johan.palmfjord@hedvig.com>",
   "types": "./types.d.ts",
   "dependencies": {
