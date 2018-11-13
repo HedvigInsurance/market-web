@@ -14,6 +14,15 @@ export const Landing: React.FunctionComponent = () => (
       <>
         <Helmet>
           <title>{story.name}</title>
+          {typeof window === 'undefined' && (
+            <link
+              rel="canonical"
+              href={`${process.env.HOST}/${story.full_slug.replace(
+                /\/?home$/,
+                '',
+              )}`}
+            />
+          )}
         </Helmet>
         <LandingWrapper>Your content goes here</LandingWrapper>
       </>

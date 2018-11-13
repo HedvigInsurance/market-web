@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { BodyStory } from '../../storyblok/StoryContainer'
 import { config } from '../config'
 
 const apiClient = axios.create({
@@ -6,7 +7,7 @@ const apiClient = axios.create({
 })
 
 export const getPublishedStoryFromSlug = (path: string) =>
-  apiClient.get(`/v1/cdn/stories${path === '/' ? '/home' : path}`, {
+  apiClient.get<BodyStory>(`/v1/cdn/stories${path === '/' ? '/home' : path}`, {
     params: {
       token: config.storyblokApiToken,
       find_by: 'slug',
@@ -17,7 +18,7 @@ export const getPublishedStoryFromSlug = (path: string) =>
   })
 
 export const getDraftedStoryById = (id: string, contentVersion: string) =>
-  apiClient.get(`/v1/cdn/stories/${id}`, {
+  apiClient.get<BodyStory>(`/v1/cdn/stories/${id}`, {
     params: {
       token: config.storyblokApiToken,
       find_by: 'id',
