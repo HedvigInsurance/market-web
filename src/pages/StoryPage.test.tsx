@@ -5,13 +5,15 @@ import { HelmetProvider } from 'react-helmet-async'
 import { StoryPage } from './StoryPage'
 
 test('renders without 💥', () => {
-  const wrapper = mount(
-    <Provider initialState={{ story: { story: { name: 'blargh' } } }}>
+  mount(
+    <Provider
+      initialState={{
+        story: { story: { name: 'blargh', content: { body: [] } } },
+      }}
+    >
       <HelmetProvider>
         <StoryPage />
       </HelmetProvider>
     </Provider>,
   )
-
-  expect(wrapper.find('div')).toHaveLength(1)
 })
