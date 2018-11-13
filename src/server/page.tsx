@@ -1,5 +1,5 @@
 import { getScriptLocation } from '@hedviginsurance/web-survival-kit'
-import { AxiosResponse } from 'axios'
+import { AxiosError } from 'axios'
 import { Provider } from 'constate'
 import { renderStylesToString } from 'emotion-server'
 import * as Koa from 'koa'
@@ -12,6 +12,7 @@ import { App } from '../App'
 import {
   getDraftedStoryById,
   getPublishedStoryFromSlug,
+  getStoryblokEditorScript,
 } from './utils/storyblok'
 
 const scriptLocation = getScriptLocation({
@@ -19,11 +20,19 @@ const scriptLocation = getScriptLocation({
   webpackPublicPath: process.env.WEBPACK_PUBLIC_PATH || '',
 })
 
-const template = (
-  body: string,
-  helmet: FilledContext['helmet'],
-  initialState: any,
-) => `
+interface Template {
+  body: string
+  helmet: FilledContext['helmet']
+  initialState: any
+  dangerouslyExposeApiKeyToProvideEditing: boolean
+}
+
+const template = ({
+  body,
+  helmet,
+  initialState,
+  dangerouslyExposeApiKeyToProvideEditing,
+}: Template) => `
   <!doctype html>
   <html lang="en">
   <head>
@@ -35,6 +44,7 @@ const template = (
     ${helmet.meta}
   </head>
   <body>
+    ${dangerouslyExposeApiKeyToProvideEditing ? getStoryblokEditorScript() : ''}
     <div id="react-root">${body}</div>
     <script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}</script>
     <script src="${scriptLocation}"></script>
@@ -42,24 +52,41 @@ const template = (
   </html>
 `
 
+const getStoryblokResponseFromContext = async (ctx: Koa.Context) => {
+  try {
+    if (
+      ctx.request.query._storyblok &&
+      ctx.request.query['_storyblok_tk[timestamp]']
+    ) {
+      return await getDraftedStoryById(
+        ctx.request.query._storyblok,
+        ctx.request.query['_storyblok_tk[timestamp]'],
+      )
+    } else {
+      return await getPublishedStoryFromSlug(ctx.request.path)
+    }
+  } catch (e) {
+    if ((e as AxiosError).response && e.response.status === 404) {
+      return
+    } else {
+      throw e
+    }
+  }
+}
+
 export const getPageMiddleware: Koa.Middleware = async (ctx) => {
   const routerContext: StaticRouterContext & { statusCode?: number } = {}
   const helmetContext = {}
 
-  let response: AxiosResponse
-  if (
-    ctx.request.query._storyblok &&
-    ctx.request.query['_storyblok_tk[timestamp]']
-  ) {
-    response = await getDraftedStoryById(
-      ctx.request.query._storyblok,
-      ctx.request.query['_storyblok_tk[timestamp]'],
-    )
-  } else {
-    response = await getPublishedStoryFromSlug(ctx.request.path)
+  const story = await getStoryblokResponseFromContext(ctx)
+
+  if (!story) {
+    ctx.status = 404
+    return
   }
+
   const serverApp = (
-    <Provider initialState={{ story: response.data }}>
+    <Provider initialState={{ story: story.data }}>
       <StaticRouter location={ctx.request.originalUrl} context={routerContext}>
         <HelmetProvider context={helmetContext}>
           <App />
@@ -68,7 +95,7 @@ export const getPageMiddleware: Koa.Middleware = async (ctx) => {
     </Provider>
   )
 
-  const reactBody = renderStylesToString(renderToString(serverApp))
+  const body = renderStylesToString(renderToString(serverApp))
 
   if (routerContext.statusCode) {
     ctx.status = routerContext.statusCode
@@ -78,9 +105,10 @@ export const getPageMiddleware: Koa.Middleware = async (ctx) => {
     return
   }
 
-  ctx.body = template(
-    reactBody,
-    (helmetContext as FilledContext).helmet,
-    response.data,
-  )
+  ctx.body = template({
+    body,
+    initialState: story.data,
+    helmet: (helmetContext as FilledContext).helmet,
+    dangerouslyExposeApiKeyToProvideEditing: ctx.request.query._storyblok,
+  })
 }
