@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { BaseBlock } from './BaseBlock'
+import { BaseBlockProps } from './BaseBlockProps'
 
-export interface SingleQuoteSectionProps extends BaseBlock {
+export interface SingleQuoteSectionProps extends BaseBlockProps {
   quote: string
   author: string
   textPosition: 'left' | 'right' | 'center'
