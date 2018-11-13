@@ -1,4 +1,5 @@
-import { Landing } from './pages/Landing'
+import * as React from 'react'
+import { StoryPage } from './pages/StoryPage'
 
 export interface Route {
   path: string
@@ -7,5 +8,5 @@ export interface Route {
 }
 
 export const routes: ReadonlyArray<Route> = [
-  { path: '/*', exact: false, Component: Landing },
+  { path: '/*', exact: false, Component: StoryPage },
 ]
