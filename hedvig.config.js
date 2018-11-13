@@ -9,5 +9,5 @@ module.exports = {
   port: 8031, // The WDS port
   developmentPublicPath: 'http://0.0.0.0:8031/', // Client public path during development, i.e. "http://0.0.0.0:8081/". Port must match the port directive
   productionPublicPath: undefined, //  Client public path in production, i.e. "/assets/"
-  envVars: [], // Array of environment variables to pass through webpack. I.e. ['FOO', 'BAR']
+  envVars: ['STORYBLOK_API_TOKEN'], // Array of environment variables to pass through webpack. I.e. ['FOO', 'BAR']
 }
