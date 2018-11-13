@@ -1,11 +1,15 @@
 {
-  "name": "@hedviginsurance/web-next-template",
+  "name": "@hedviginsurance/web-next",
   "version": "1.6.1",
   "description": "Template for the next web project",
   "main": "index.js",
-  "repository": "https://github.com/HedvigInsurance/web-next-template",
+  "repository": "https://github.com/HedvigInsurance/web-next",
   "author": "Johan Palmfjord <johan.palmfjord@hedvig.com>",
   "types": "./types.d.ts",
+  "engines": {
+    "node": "10.13.0",
+    "yarn": "1.12.3"
+  },
   "dependencies": {
     "@babel/core": "^7.1.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
@@ -17,6 +21,7 @@
     "@hedviginsurance/brand": "^1.5.0",
     "@hedviginsurance/cli": "^2.1.1",
     "@hedviginsurance/web-survival-kit": "^1.6.1",
+    "@types/dotenv": "^6.1.0",
     "@types/koa": "^2.0.46",
     "@types/koa-router": "^7.0.32",
     "@types/react": "^16.4.14",
@@ -25,9 +30,11 @@
     "@types/react-hot-loader": "^4.1.0",
     "@types/react-router": "^4.4.1",
     "@types/react-router-dom": "^4.3.1",
+    "@types/uuid": "^3.4.4",
     "babel-loader": "^8.0.2",
     "constate": "^0.8.2",
     "copy-webpack-plugin": "^4.5.2",
+    "dotenv": "^6.1.0",
     "emotion": "^9.2.10",
     "emotion-server": "^9.2.10",
     "es6-promise": "^4.2.5",
@@ -49,6 +56,8 @@
     "source-map-support": "^0.5.9",
     "ts-jest": "^23.10.0",
     "typescript": "^3.0.3",
+    "typescript-logging": "^0.6.3",
+    "uuid": "^3.3.2",
     "webpack": "^4.19.1",
     "webpack-node-externals": "^1.7.2",
     "webpack-stats-plugin": "^0.2.1"
