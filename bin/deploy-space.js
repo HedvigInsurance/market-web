@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+require('dotenv').config()
+
 const chalk = require('chalk').default
 const axios = require('axios').default
 const yargs = require('yargs')
