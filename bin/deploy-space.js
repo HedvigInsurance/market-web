@@ -67,21 +67,17 @@ const deploy = async () => {
   }
 
   return {
+    id: result.data.space.id,
+    firstToken: result.data.space.first_token,
     name: result.data.space.name,
     domain: result.data.space.domain,
-    id: result.data.space.id,
   }
 }
 
 deploy()
-  .then(({ name, domain, id }) => {
-    console.log(
-      chalk.green(
-        `Successfully deployed new space #${chalk.bold(id)} "${chalk.bold(
-          name,
-        )}" -> "${chalk.bold(domain)}"`,
-      ),
-    )
+  .then((results) => {
+    console.log(chalk.green('Successfully deployed new space'))
+    console.log(JSON.stringify(results))
   })
   .catch((err) => {
     console.error(chalk.red(err))
