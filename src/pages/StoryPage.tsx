@@ -3,7 +3,7 @@ import Helmet from 'react-helmet-async'
 import { getBlockComponent } from '../blocks'
 import { StoryContainer } from '../storyblok/StoryContainer'
 
-export const StoryPage: React.FunctionComponent = () => (
+export const StoryPage: React.SFC = () => (
   <StoryContainer>
     {({ story }) => (
       <>
