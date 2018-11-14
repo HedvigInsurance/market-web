@@ -79,7 +79,10 @@ const deploy = async () => {
 deploy()
   .then((results) => {
     console.log(chalk.green('Successfully deployed new space'))
-    console.log(JSON.stringify(results))
+    console.log('Gathered facts:')
+    Object.keys(results).forEach((key) => {
+      console.log(`  ${key}=${results[key]}`)
+    })
   })
   .catch((err) => {
     console.error(chalk.red(err))

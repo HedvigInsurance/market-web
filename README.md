@@ -16,14 +16,20 @@ export STORYBLOK_MANAGEMENT_TOKEN="the personal access token"
 
 
 ### Deploy space
-To create your own space for local local development:
+To create your own space for local development:
 ```bash
-bin/deploy-space.js --name "Johans local dev" --domain "http://localhost:8030/"
+bin/deploy-space --name "Johans local dev" --domain "http://localhost:8030/"
 ```
 
 This'll give you back something like this:
-```json
-{"name":"Johans local dev","domain":"http://localhost:8030/","id":1337,"firstToken":"something to keep secret"}
+```
+...
+Successfully deployed new space
+Gathered facts:
+  name=Johans local dev
+  domain=http://localhost:8030/
+  id=1337
+  firstToken=something to keep secret
 ```
 
 `id` is your space id, use it to manage your space (i.e. when syncing the schema).
@@ -42,7 +48,7 @@ __Flags__
 ### Sync space
 To update your space's components with the latest and greatest ones (from `storyblok/components.json`):
 ```bash
-bin/sync-space.js --space 1337
+bin/sync-space --space 1337
 ```
 
 __Flags__
@@ -59,8 +65,40 @@ __Flags__
 If you update components in Storyblok, this is your way to get them into the repository. Will overwrite
 `storyblok/components.json`. Make sure you do this if you want to get a schema change into production or staging!
 ```bash
-bin/fetch-space.js --space 1337
+bin/fetch-space --space 1337
 ```
 
 __Flags__
   - `--space N` Your space id to fetch.
+
+### Deploying a Storyblok space to a Heroku PR instance
+The PR instance should by default point to staging, but in case you'd want a custom space to toy around with. Make sure
+you've set the env var `STORYBLOK_MANAGEMENT_TOKEN`. Then you can run:
+```
+bin/deploy-space --name "pr-instance-name" --domain "http://localhost:8030/" | bin/connect-app-to-space pr-instance-name
+```
+
+You'll get an output similar to:
+```
+...
+Done. Gathered facts:
+  id=1337
+  name=pr-instance-name
+```
+
+As a rule of thumb, always run `sync-space` in the Heroku container:
+```
+heroku run -a pr-instance-name bin/sync-space --space 1337 --clean --plan
+```
+
+#### Why are we not automating this on instance creation?
+
+a) Running 2 commands isn't too bad right? b) 2 real reasons:
+  1. Destroying things automatically is scary, and we would need to destroy the created spaces on predestroy of the app
+    - possibly only if we changed the space id.
+  1. Same thing goes for schema sync, we need to know if the space is specific for this app or not.
+  1. The Heroku container would need ability to modify it's own configuration which seems tricky, and it also needs
+    notion of its own metadata which is currently [experimental](https://devcenter.heroku.com/articles/dyno-metadata)
+    (<- not a biggie but still).
+
+☝️ Are none of these true anymore? Feel free to automate it!
