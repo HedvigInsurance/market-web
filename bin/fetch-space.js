@@ -1,0 +1,62 @@
+#!/usr/bin/env node
+const fs = require('fs')
+const path = require('path')
+const chalk = require('chalk').default
+const axios = require('axios').default
+const yargs = require('yargs')
+
+const client = axios.create({
+  baseURL: 'https://api.storyblok.com',
+})
+const spaceId = yargs.argv.space
+const authorization = process.env.STORYBLOK_MANAGEMENT_TOKEN
+
+const clone = async () => {
+  if (!spaceId) {
+    throw new Error('No space provided')
+  }
+  if (!authorization) {
+    throw new Error(
+      'No management token provided, set the "STORYBLOK_MANAGEMENT_TOKEN" environment variable',
+    )
+  }
+
+  console.log(
+    chalk.magenta(`Fetching components in space "${yargs.argv.space}"`),
+  )
+
+  const componentResponse = await client.get(
+    `/v1/spaces/${spaceId}/components`,
+    {
+      headers: { authorization },
+    },
+  )
+
+  console.info(
+    `Found ${chalk.green(
+      String(componentResponse.data.components.length),
+    )} components, writing "storyblok/components.json"`,
+  )
+  if (!fs.existsSync(path.resolve(__dirname, '../storyblok'))) {
+    fs.mkdirSync(path.resolve(__dirname, '../storyblok'))
+  }
+
+  const components = componentResponse.data.components.map((component) => ({
+    ...component,
+    id: undefined,
+    created_at: undefined,
+  }))
+  fs.writeFileSync(
+    path.resolve(__dirname, '../storyblok/components.json'),
+    JSON.stringify({ components }, null, 2),
+  )
+}
+
+clone()
+  .then(() => {
+    console.log(chalk.green('Successfully fetched space'))
+  })
+  .catch((err) => {
+    console.error(chalk.red(err))
+    process.exitCode = 1
+  })
