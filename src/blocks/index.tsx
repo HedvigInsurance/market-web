@@ -1,9 +1,14 @@
 import * as React from 'react'
 import { AccordionBlock } from './AccordionBlock'
 import { BaseBlockProps } from './BaseBlockProps'
+import { CallToActionSection } from './CallToActionSection'
+import { SingleQuoteSection } from './SingleQuoteBlock'
+import { TitleParagraphSection } from './TitleParagraphSection'
 
 const blockComponents = {
-  accordion_block: AccordionBlock,
+  SingleQuoteSection,
+  TitleParagraphSection,
+  CallToActionSection,
 }
 
 export const getBlockComponent = <

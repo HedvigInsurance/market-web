@@ -25,7 +25,7 @@ export interface StoryContainerProps {
   children: (props: WithStory) => React.ReactNode
 }
 
-export const StoryContainer: React.FunctionComponent<StoryContainerProps> = ({
+export const StoryContainer: React.SFC<StoryContainerProps> = ({
   children,
 }) => (
   <Container<WithStory> context="story" pure>

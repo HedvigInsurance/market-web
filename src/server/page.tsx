@@ -2,6 +2,7 @@ import { getScriptLocation } from '@hedviginsurance/web-survival-kit'
 import { AxiosError } from 'axios'
 import { Provider } from 'constate'
 import { renderStylesToString } from 'emotion-server'
+import { appLogger } from './logging'
 import * as Koa from 'koa'
 import * as path from 'path'
 import * as React from 'react'
@@ -107,6 +108,7 @@ export const getPageMiddleware: Koa.Middleware = async (ctx) => {
 
   if (!story) {
     ctx.status = 404
+    appLogger.info(`Request returned 404 due to missing storyblok story`)
     return
   }
 
