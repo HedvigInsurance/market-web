@@ -1,5 +1,6 @@
 import { Container } from 'constate'
 import * as React from 'react'
+import { BaseBlockProps } from '../blocks/BaseBlockProps'
 
 export interface BodyStory {
   name: string
@@ -12,10 +13,7 @@ export interface BodyStory {
   content: {
     _uid: string
     component: 'page'
-    body: ReadonlyArray<{
-      _uid: string
-      component: string
-    }>
+    body: ReadonlyArray<BaseBlockProps>
   }
 }
 
