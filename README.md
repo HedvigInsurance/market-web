@@ -93,7 +93,7 @@ heroku run -a pr-instance-name bin/sync-space --space 1337 --clean --plan
 
 #### Why are we not automating this on instance creation?
 
-a) Running 2 commands isn't too bad right? b) 2 real reasons:
+a) Running 2 commands isn't too bad right? b) 3 real reasons:
   1. Destroying things automatically is scary, and we would need to destroy the created spaces on predestroy of the app
     - possibly only if we changed the space id.
   1. Same thing goes for schema sync, we need to know if the space is specific for this app or not.
