@@ -30,13 +30,15 @@ export const getDraftedStoryById = (id: string, contentVersion: string) =>
     },
   })
 
-export const getStoryblokEditorScript = () =>
+export const getStoryblokEditorScript = (nonce: string) =>
   `<script
       src="//app.storyblok.com/f/storyblok-latest.js?t=${
         config.storyblokApiToken
       }"
-      type="text/javascript"></script>
-    <script>
+      type="text/javascript"
+      nonce="${nonce}"
+      ></script>
+    <script nonce="${nonce}">
       storyblok.on(['published', 'change'], function() {
         location.reload(true)
       })
@@ -46,4 +48,4 @@ export const getStoryblokEditorScript = () =>
           storyblok.enterEditmode()
         }
       })
-    </script>`
+    </scriptu>`
