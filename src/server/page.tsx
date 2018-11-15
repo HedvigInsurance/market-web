@@ -14,6 +14,7 @@ import {
   getPublishedStoryFromSlug,
   getStoryblokEditorScript,
 } from './utils/storyblok'
+import { sentryConfig } from './config/sentry'
 
 const scriptLocation = getScriptLocation({
   statsLocation: path.resolve(__dirname, 'assets'),
@@ -25,6 +26,7 @@ interface Template {
   helmet: FilledContext['helmet']
   initialState: any
   dangerouslyExposeApiKeyToProvideEditing: boolean
+  nonce: string
 }
 
 const template = ({
@@ -32,6 +34,7 @@ const template = ({
   helmet,
   initialState,
   dangerouslyExposeApiKeyToProvideEditing,
+  nonce,
 }: Template) => `
   <!doctype html>
   <html lang="en">
@@ -42,11 +45,17 @@ const template = ({
     ${helmet.title}
     ${helmet.link}
     ${helmet.meta}
+    <script src="https://browser.sentry-cdn.com/4.2.3/bundle.min.js" crossorigin="anonymous"></script>
+    <script nonce="${nonce}">
+      Sentry.init(${JSON.stringify(sentryConfig())})
+    </script>
   </head>
   <body>
     ${dangerouslyExposeApiKeyToProvideEditing ? getStoryblokEditorScript() : ''}
     <div id="react-root">${body}</div>
-    <script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}</script>
+      <script nonce="${nonce}">
+      window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
+      </script>
     <script src="${scriptLocation}"></script>
   </body>
   </html>
@@ -110,5 +119,6 @@ export const getPageMiddleware: Koa.Middleware = async (ctx) => {
     initialState: story.data,
     helmet: (helmetContext as FilledContext).helmet,
     dangerouslyExposeApiKeyToProvideEditing: ctx.request.query._storyblok,
+    nonce: (ctx.res as any).cspNonce,
   })
 }
