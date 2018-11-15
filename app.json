@@ -1,0 +1,25 @@
+{
+  "scripts": {},
+  "env": {
+    "USE_AUTH": "true",
+    "USE_HELMET": "true",
+    "AUTH_NAME": {
+      "required": true
+    },
+    "AUTH_PASS": {
+      "required": true
+    },
+    "STORYBLOK_API_TOKEN": {
+      "required": true
+    },
+    "STORYBLOK_SPACE_ID": {
+      "required": true
+    }
+  },
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
