@@ -100,7 +100,7 @@
     "test": "NODE_ENV=test jest",
     "typecheck": "tsc --noEmit",
     "lint": "tslint \"src/**/*.{ts,tsx}\"",
-    "heroku-postinstall": "yarn build"
+    "heroku-postbuild": "yarn build"
   },
   "husky": {
     "hooks": {
