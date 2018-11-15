@@ -48,4 +48,4 @@ export const getStoryblokEditorScript = (nonce: string) =>
           storyblok.enterEditmode()
         }
       })
-    </scriptu>`
+    </script>`
