@@ -99,7 +99,8 @@
     "watch": "NODE_ENV=development hedvig project:watch ./hedvig.config.js",
     "test": "NODE_ENV=test jest",
     "typecheck": "tsc --noEmit",
-    "lint": "tslint \"src/**/*.{ts,tsx}\""
+    "lint": "tslint \"src/**/*.{ts,tsx}\"",
+    "heroku-postinstall": "yarn build"
   },
   "husky": {
     "hooks": {
