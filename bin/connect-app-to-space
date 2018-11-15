@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+PURPLE=$(tput setaf 5)
+BOLD=$(tput bold)
+RESET=$(tput sgr0)
+
+if [[ -z "${1:-}" ]]; then
+    echo "${RED}No app provided${RESET}"
+    exit 1
+fi
+
+heroku_app="$1"
+
+echo "${PURPLE}Setting up Storyblok for ${BOLD}${heroku_app}${RESET}${PURPLE} on Heroku${RESET}"
+
+deploy_result=$(cat)
+space_id=$(echo "$deploy_result" | grep "id=" | cut -d "=" -f 2 | tail -1 || echo "")
+space_token=$(echo "$deploy_result" | grep "firstToken=" | cut -d "=" -f 2 | tail -1 || echo "")
+space_name=$(echo "$deploy_result" | grep "name=" | cut -d "=" -f 2 | tail -1 || echo "")
+
+if [[ -z "$space_id" ]]; then
+    echo "Error: No id found from deploy result"
+    exit 1
+fi
+
+if [[ -z "$space_token" ]]; then
+    echo "Error: No token found from deploy result"
+    exit 1
+fi
+
+if [[ -z "$space_name" ]]; then
+    echo "Error: No space name found from deploy result"
+    exit 1
+fi
+
+printf "\n\nSetting STORYBLOK_API_TOKEN (returned from creation of \"${BOLD}$space_name${RESET}\") on Heroku app \"${BOLD}${heroku_app}${RESET}\"...\n"
+sleep 3
+
+heroku config:set -a "$heroku_app" STORYBLOK_API_TOKEN="$space_token" STORYBLOK_SPACE_ID="$space_id"
+
+echo "${GREEN}Done${RESET}. Gathered facts:"
+echo "  id=$space_id"
+echo "  name=$space_name"
