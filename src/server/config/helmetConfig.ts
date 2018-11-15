@@ -50,4 +50,5 @@ export const helmetConfig = (): IHelmetConfiguration => ({
       reportUri: process.env.CSP_REPORT_ENDPOINT || '/_report-csp-violation',
     },
   },
+  frameguard: { action: 'allow-from', domain: 'https://app.storyblok.com' },
 })
