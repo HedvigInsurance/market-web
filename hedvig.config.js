@@ -16,5 +16,10 @@ module.exports = {
     'AUTH_NAME',
     'AUTH_PASS',
     'USE_HELMET',
+    'CSP_REPORT_ENDPOINT',
+    'SENTRY_DSN',
+    'SENTRY_ENVIRONMENT',
+    'HEROKU_SLUG_COMMIT',
+    'HEROKU_DYNO_ID',
   ], // Array of environment variables to pass through webpack. I.e. ['FOO', 'BAR']
 }
