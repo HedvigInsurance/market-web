@@ -10,8 +10,8 @@ import { config } from './config'
 import { helmetConfig } from './config/helmetConfig'
 import { sentryConfig } from './config/sentry'
 import { appLogger } from './logging'
-import { getPageMiddleware } from './page'
 import { inCaseOfEmergency } from './middlewares/enhancers'
+import { getPageMiddleware } from './page'
 
 Sentry.init({
   ...sentryConfig(),
@@ -72,7 +72,7 @@ server.router.get('/panic-room', async () => {
   )
 })
 
-server.router.post('/new-member/_report-csp-violation', (ctx) => {
+server.router.post('/_report-csp-violation', (ctx) => {
   ;(ctx.state.getLogger('cspViolation') as Logger).error(
     `CSP VIOLATION: ${JSON.stringify(ctx.request.body)}`,
   )

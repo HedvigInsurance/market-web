@@ -947,13 +947,6 @@
   resolved "https://registry.yarnpkg.com/@types/keygrip/-/keygrip-1.0.1.tgz#ff540462d2fb4d0a88441ceaf27d287b01c3d878"
   integrity sha1-/1QEYtL7TQqIRBzq8n0oewHD2Hg=
 
-"@types/koa-basic-auth@^2.0.3":
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/@types/koa-basic-auth/-/koa-basic-auth-2.0.3.tgz#8b39299b3ec2e52b694b21dce2d653467f78e4c6"
-  integrity sha512-dQK5eVgiwi1sAXh5u35ptP7Fpqw0iEjuWtMtLc+8Z9y9rvU8766t3YgWE7ukV1lPlOSq8a1Xqeq/TQzc+GfxAw==
-  dependencies:
-    "@types/koa" "*"
-
 "@types/koa-bodyparser@^5.0.1":
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/@types/koa-bodyparser/-/koa-bodyparser-5.0.1.tgz#c40c0a0b7903df128a4e0677c51b5bdcc8bfa025"
@@ -1797,13 +1790,6 @@ base@^0.11.1:
     isobject "^3.0.1"
     mixin-deep "^1.2.0"
     pascalcase "^0.1.1"
-
-basic-auth@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/basic-auth/-/basic-auth-2.0.1.tgz#b998279bf47ce38344b4f3cf916d4679bbf51e3a"
-  integrity sha512-NF+epuEdnUYVlGuhaxbbq+dvJttwLnGY+YixlXlME5KpQ5W3CnXA5cVTneY3SPbPDRkcjMbifrwmFYcClgOZeg==
-  dependencies:
-    safe-buffer "5.1.2"
 
 batch@0.6.1:
   version "0.6.1"
@@ -5247,13 +5233,6 @@ kleur@^2.0.1:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-2.0.2.tgz#b704f4944d95e255d038f0cb05fb8a602c55a300"
   integrity sha512-77XF9iTllATmG9lSlIv0qdQ2BQ/h9t0bJllHlbvsQ0zUWfU7Yi0S8L5JXzPZgkefIiajLmBJJ4BsMJmqcf7oxQ==
-
-koa-basic-auth@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/koa-basic-auth/-/koa-basic-auth-3.0.0.tgz#05967f2320735264d193e37806634615206a710b"
-  integrity sha512-8j4ddZCHrGB4tMC+3NYlO1ejAv/qCPouhymCexOIxzUhZ3wSaK1VdafohvUBSNbWD719lsi30n9TaW8QzyS3/A==
-  dependencies:
-    basic-auth "^2.0.0"
 
 koa-bodyparser@^4.2.1:
   version "4.2.1"
