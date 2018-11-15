@@ -1,0 +1,666 @@
+{
+  "components": [
+    {
+      "name": "AccordionComponent",
+      "display_name": "",
+      "schema": {
+        "title": {
+          "type": "text",
+          "required": true,
+          "default_value": "Default Text",
+          "pos": 0
+        },
+        "paragraph": {
+          "type": "textarea",
+          "required": true,
+          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "AccordionComponent"
+    },
+    {
+      "name": "BulletPointSection",
+      "display_name": "",
+      "schema": {
+        "title": {
+          "type": "text",
+          "regex": "",
+          "required": false,
+          "pos": 0
+        },
+        "titlePosition": {
+          "type": "option",
+          "options": [
+            {
+              "value": "true",
+              "name": "left"
+            },
+            {
+              "value": "true",
+              "name": "center"
+            }
+          ],
+          "default_value": "center",
+          "pos": 1
+        },
+        "bulletPoints": {
+          "type": "bloks",
+          "maximum": "6",
+          "restrict_components": true,
+          "component_whitelist": [
+            "IconBulletPointComponent",
+            "MediaBulletPointComponent"
+          ],
+          "required": true,
+          "pos": 2
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "BulletPointSection"
+    },
+    {
+      "name": "CallToActionSection",
+      "display_name": "",
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "required": true,
+          "default_value": "Default Text"
+        },
+        "titleColor": {
+          "type": "text",
+          "required": true,
+          "regex": "(^.*(rgb|#))",
+          "default_value": "#000",
+          "pos": 1
+        },
+        "buttonText": {
+          "type": "text",
+          "required": true,
+          "regex": "",
+          "default_value": "Default Text",
+          "pos": 2
+        },
+        "buttonType": {
+          "type": "option",
+          "options": [
+            {
+              "value": "true",
+              "name": "filled"
+            },
+            {
+              "value": "true",
+              "name": "hollow"
+            }
+          ],
+          "required": true,
+          "default_value": "filled",
+          "pos": 3
+        },
+        "backgroundColor": {
+          "type": "text",
+          "pos": 4,
+          "regex": "(^.*(rgb|#))",
+          "default_value": "#fff",
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "CallToActionSection"
+    },
+    {
+      "name": "HorizontalStatisticSection",
+      "display_name": null,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "required": true,
+          "default_value": "Default Text"
+        },
+        "subTitle": {
+          "type": "text",
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "HorizontalStatisticSection"
+    },
+    {
+      "name": "IconBulletPointComponent",
+      "display_name": "",
+      "schema": {
+        "icon": {
+          "type": "image",
+          "pos": 0,
+          "required": true
+        },
+        "title": {
+          "type": "text",
+          "pos": 1,
+          "required": true,
+          "default_value": "Default Text"
+        },
+        "paragraph": {
+          "type": "text",
+          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
+          "required": true,
+          "pos": 2
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "IconBulletPointComponent"
+    },
+    {
+      "name": "ImageBulletPointComponent",
+      "display_name": "",
+      "schema": {
+        "image": {
+          "type": "text",
+          "pos": 0,
+          "required": true
+        },
+        "title": {
+          "type": "text",
+          "required": true,
+          "default_value": "Default Text",
+          "pos": 1
+        },
+        "paragraph": {
+          "type": "textarea",
+          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
+          "required": true,
+          "pos": 2
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "ImageBulletPointComponent"
+    },
+    {
+      "name": "ImageCtaTextSection",
+      "display_name": "",
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "required": true,
+          "default_value": "Default Text"
+        },
+        "titleColor": {
+          "type": "text",
+          "regex": "(^.*(rgb|#))",
+          "default_value": "#000",
+          "required": true,
+          "pos": 1
+        },
+        "titlePosition": {
+          "type": "option",
+          "pos": 2,
+          "regex": "(^.*(right|center|left)$)",
+          "display_name": "",
+          "description": "",
+          "default_value": "left",
+          "options": [
+            {
+              "value": "true",
+              "name": "left"
+            },
+            {
+              "value": "true",
+              "name": "right"
+            }
+          ],
+          "required": true
+        },
+        "subTitle": {
+          "type": "text",
+          "pos": 3,
+          "description": "",
+          "default_value": ""
+        },
+        "buttonText": {
+          "type": "text",
+          "pos": 4,
+          "required": true,
+          "default_value": "Default Text"
+        },
+        "buttonType": {
+          "type": "option",
+          "options": [
+            {
+              "value": "true",
+              "name": "filled"
+            },
+            {
+              "value": "true",
+              "name": "hollow"
+            }
+          ],
+          "required": true,
+          "default_value": "filled",
+          "pos": 5
+        },
+        "image": {
+          "type": "image",
+          "required": true,
+          "pos": 6
+        },
+        "backgroundColor": {
+          "type": "text",
+          "regex": "(^.*(rgb|#))",
+          "description": "",
+          "pos": 7,
+          "required": true,
+          "default_value": "#fff"
+        }
+      },
+      "image": null,
+      "preview_field": "Image",
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "ImageCtaTextSection"
+    },
+    {
+      "name": "ImageMultiTextSection",
+      "display_name": "",
+      "schema": {
+        "image": {
+          "type": "image",
+          "required": true,
+          "pos": 0
+        },
+        "textComponents": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "TitleParagraphComponent"
+          ],
+          "maximum": "3",
+          "required": true,
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "ImageMultiTextSection"
+    },
+    {
+      "name": "ImageTextSection",
+      "display_name": "",
+      "schema": {
+        "title": {
+          "type": "text",
+          "required": true,
+          "default_value": "Default Text",
+          "pos": 0
+        },
+        "titleColor": {
+          "type": "text",
+          "regex": "(^.*(rgb|#))",
+          "required": true,
+          "default_value": "#000",
+          "pos": 1
+        },
+        "titlePosition": {
+          "type": "option",
+          "options": [
+            {
+              "value": "true",
+              "name": "left"
+            },
+            {
+              "value": "true",
+              "name": "right"
+            }
+          ],
+          "default_value": "right",
+          "pos": 2
+        },
+        "paragraph": {
+          "type": "textarea",
+          "required": true,
+          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
+          "pos": 3
+        },
+        "buttonText": {
+          "type": "text",
+          "required": true,
+          "default_value": "Default Text",
+          "pos": 4
+        },
+        "buttonType": {
+          "type": "option",
+          "options": [
+            {
+              "value": "true",
+              "name": "filled"
+            },
+            {
+              "value": "true",
+              "name": "hollow"
+            }
+          ],
+          "required": true,
+          "default_value": "filled",
+          "pos": 5
+        },
+        "image": {
+          "type": "image",
+          "required": true,
+          "pos": 6
+        },
+        "backgroundColor": {
+          "type": "text",
+          "regex": "(^.*(rgb|#))",
+          "default_value": "#fff",
+          "pos": 7
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "ImageTextSection"
+    },
+    {
+      "name": "LogotypeComponent",
+      "display_name": "",
+      "schema": {
+        "image": {
+          "type": "image",
+          "required": true,
+          "pos": 0
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "LogotypeComponent"
+    },
+    {
+      "name": "MultiLogotypeSection",
+      "display_name": "",
+      "schema": {
+        "Logotypes": {
+          "type": "bloks",
+          "maximum": "",
+          "description": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "LogoComponent"
+          ],
+          "required": true,
+          "pos": 0
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "MultiLogotypeSection"
+    },
+    {
+      "name": "page",
+      "display_name": null,
+      "schema": {
+        "body": {
+          "type": "bloks"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "page"
+    },
+    {
+      "name": "SingleQuoteSection",
+      "display_name": null,
+      "schema": {
+        "quote": {
+          "type": "text",
+          "pos": 0
+        },
+        "author": {
+          "type": "text",
+          "pos": 1
+        },
+        "textPosition": {
+          "type": "option",
+          "options": [
+            {
+              "value": "true",
+              "name": "right"
+            },
+            {
+              "value": "true",
+              "name": "center"
+            },
+            {
+              "value": "true",
+              "name": "left"
+            }
+          ],
+          "default_value": "center",
+          "required": true,
+          "pos": 2
+        },
+        "backgroundImage": {
+          "type": "image",
+          "required": false,
+          "pos": 3
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "SingleQuoteSection"
+    },
+    {
+      "name": "TitleAccordionSection",
+      "display_name": null,
+      "schema": {
+        "title": {
+          "type": "text",
+          "required": true,
+          "pos": 0
+        },
+        "accordions": {
+          "type": "bloks",
+          "maximum": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "AccordionComponent"
+          ],
+          "required": true,
+          "description": "",
+          "display_name": "",
+          "default_value": "",
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "TitleAccordionSection"
+    },
+    {
+      "name": "TitleParagraphComponent",
+      "display_name": null,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "required": true,
+          "default_value": "Default Text"
+        },
+        "paragraph": {
+          "type": "textarea",
+          "description": "",
+          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
+          "required": true,
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "TitleParagraphComponent"
+    },
+    {
+      "name": "TitleParagraphSection",
+      "display_name": null,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "required": true,
+          "default_value": "Default Text"
+        },
+        "titlePosition": {
+          "type": "option",
+          "options": [
+            {
+              "value": "left",
+              "name": "left"
+            },
+            {
+              "value": "center",
+              "name": "center"
+            }
+          ],
+          "required": true,
+          "default_value": "center",
+          "pos": 1
+        },
+        "paragraph": {
+          "type": "custom",
+          "required": true,
+          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
+          "pos": 2,
+          "field_type": "markdown-html",
+          "options": []
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "TitleParagraphSection"
+    },
+    {
+      "name": "TitleSection",
+      "display_name": null,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "required": true,
+          "default_value": "Default Text"
+        },
+        "titlePosition": {
+          "type": "option",
+          "regex": "(^.*(right|center|left)$)",
+          "default_value": "left",
+          "description": "",
+          "required": true,
+          "pos": 1,
+          "options": [
+            {
+              "value": "true",
+              "name": "left"
+            },
+            {
+              "value": "true",
+              "name": "center"
+            },
+            {
+              "value": "true",
+              "name": "right"
+            }
+          ]
+        },
+        "titleColor": {
+          "type": "text",
+          "regex": "(^.*(rgb|#))",
+          "pos": 2,
+          "required": true,
+          "default_value": "#000"
+        },
+        "backgroundColor": {
+          "type": "text",
+          "pos": 3,
+          "regex": "(^.*(rgb|#))",
+          "default_value": "#fff",
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "TitleSection"
+    }
+  ]
+}
