@@ -4,6 +4,7 @@ import * as uuidV4 from 'uuid/v4'
 const defaultSrc = [
   "'self'",
   'cdn.hedvig.com',
+  'app.storyblok.com',
   'www.googletagmanager.com',
   'https://*.hotjar.com',
   'wss://*.hotjar.com',

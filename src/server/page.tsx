@@ -9,12 +9,12 @@ import { renderToString } from 'react-dom/server'
 import { FilledContext, HelmetProvider } from 'react-helmet-async'
 import { StaticRouter, StaticRouterContext } from 'react-router'
 import { App } from '../App'
+import { sentryConfig } from './config/sentry'
 import {
   getDraftedStoryById,
   getPublishedStoryFromSlug,
   getStoryblokEditorScript,
 } from './utils/storyblok'
-import { sentryConfig } from './config/sentry'
 
 const scriptLocation = getScriptLocation({
   statsLocation: path.resolve(__dirname, 'assets'),
@@ -51,7 +51,11 @@ const template = ({
     </script>
   </head>
   <body>
-    ${dangerouslyExposeApiKeyToProvideEditing ? getStoryblokEditorScript() : ''}
+    ${
+      dangerouslyExposeApiKeyToProvideEditing
+        ? getStoryblokEditorScript(nonce)
+        : ''
+    }
     <div id="react-root">${body}</div>
       <script nonce="${nonce}">
       window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
