@@ -35,9 +35,7 @@ export const getStoryblokEditorScript = (nonce: string) =>
       src="//app.storyblok.com/f/storyblok-latest.js?t=${
         config.storyblokApiToken
       }"
-      type="text/javascript"
-      nonce="${nonce}"
-      ></script>
+      type="text/javascript"></script>
     <script nonce="${nonce}">
       storyblok.on(['published', 'change'], function() {
         location.reload(true)
