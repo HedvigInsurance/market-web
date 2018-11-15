@@ -6,24 +6,28 @@ const apiClient = axios.create({
   baseURL: 'https://api.storyblok.com',
 })
 
-export const getPublishedStoryFromSlug = (path: string) =>
+export const getPublishedStoryFromSlug = (
+  path: string,
+  cacheVersion?: string,
+) =>
   apiClient.get<BodyStory>(`/v1/cdn/stories${path === '/' ? '/home' : path}`, {
     params: {
       token: config.storyblokApiToken,
       find_by: 'slug',
+      cv: cacheVersion,
     },
     headers: {
       'cache-control': 'no-cache',
     },
   })
 
-export const getDraftedStoryById = (id: string, contentVersion: string) =>
+export const getDraftedStoryById = (id: string, cacheVersion: string) =>
   apiClient.get<BodyStory>(`/v1/cdn/stories/${id}`, {
     params: {
       token: config.storyblokApiToken,
       find_by: 'id',
       version: 'draft',
-      cv: contentVersion,
+      cv: cacheVersion,
     },
     headers: {
       'cache-control': 'no-cache',
