@@ -4,6 +4,7 @@ import * as uuidV4 from 'uuid/v4'
 const defaultSrc = [
   "'self'",
   'cdn.hedvig.com',
+  'app.storyblok.com',
   'www.googletagmanager.com',
   'https://*.hotjar.com',
   'wss://*.hotjar.com',
@@ -49,4 +50,5 @@ export const helmetConfig = (): IHelmetConfiguration => ({
       reportUri: process.env.CSP_REPORT_ENDPOINT || '/_report-csp-violation',
     },
   },
+  frameguard: { action: 'allow-from', domain: 'https://app.storyblok.com' },
 })

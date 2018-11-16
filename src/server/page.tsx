@@ -8,7 +8,9 @@ import * as React from 'react'
 import { renderToString } from 'react-dom/server'
 import { FilledContext, HelmetProvider } from 'react-helmet-async'
 import { StaticRouter, StaticRouterContext } from 'react-router'
+import { Logger } from 'typescript-logging'
 import { App } from '../App'
+import { sentryConfig } from './config/sentry'
 import {
   getDraftedStoryById,
   getPublishedStoryFromSlug,
@@ -25,6 +27,7 @@ interface Template {
   helmet: FilledContext['helmet']
   initialState: any
   dangerouslyExposeApiKeyToProvideEditing: boolean
+  nonce: string
 }
 
 const template = ({
@@ -32,6 +35,7 @@ const template = ({
   helmet,
   initialState,
   dangerouslyExposeApiKeyToProvideEditing,
+  nonce,
 }: Template) => `
   <!doctype html>
   <html lang="en">
@@ -42,11 +46,21 @@ const template = ({
     ${helmet.title}
     ${helmet.link}
     ${helmet.meta}
+    <script src="https://browser.sentry-cdn.com/4.2.3/bundle.min.js" crossorigin="anonymous"></script>
+    <script nonce="${nonce}">
+      Sentry.init(${JSON.stringify(sentryConfig())})
+    </script>
   </head>
   <body>
-    ${dangerouslyExposeApiKeyToProvideEditing ? getStoryblokEditorScript() : ''}
+    ${
+      dangerouslyExposeApiKeyToProvideEditing
+        ? getStoryblokEditorScript(nonce)
+        : ''
+    }
     <div id="react-root">${body}</div>
-    <script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}</script>
+      <script nonce="${nonce}">
+      window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
+      </script>
     <script src="${scriptLocation}"></script>
   </body>
   </html>
@@ -58,12 +72,23 @@ const getStoryblokResponseFromContext = async (ctx: Koa.Context) => {
       ctx.request.query._storyblok &&
       ctx.request.query['_storyblok_tk[timestamp]']
     ) {
-      return await getDraftedStoryById(
-        ctx.request.query._storyblok,
-        ctx.request.query['_storyblok_tk[timestamp]'],
+      const id = ctx.request.query._storyblok
+      const contentVersion = ctx.request.query['_storyblok_tk[timestamp]']
+      ;(ctx.state.getLogger('storyblok') as Logger).info(
+        `Getting drafted story [id=${id}, cv=${contentVersion}]`,
       )
+      return await getDraftedStoryById(id, contentVersion)
     } else {
-      return await getPublishedStoryFromSlug(ctx.request.path)
+      const bypassCache = Boolean(ctx.query._storyblok_published)
+      ;(ctx.state.getLogger('storyblok') as Logger).info(
+        `Getting published story from slug [slug="${
+          ctx.request.path
+        }", bypass_cache=${String(bypassCache)}]`,
+      )
+      return await getPublishedStoryFromSlug(
+        ctx.request.path,
+        bypassCache ? String(Date.now() / 1000) : undefined,
+      )
     }
   } catch (e) {
     if ((e as AxiosError).response && e.response.status === 404) {
@@ -110,5 +135,6 @@ export const getPageMiddleware: Koa.Middleware = async (ctx) => {
     initialState: story.data,
     helmet: (helmetContext as FilledContext).helmet,
     dangerouslyExposeApiKeyToProvideEditing: ctx.request.query._storyblok,
+    nonce: (ctx.res as any).cspNonce,
   })
 }
