@@ -48,6 +48,30 @@ h4 {
 img {
   max-width: 100%;
 }
+
+.Container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1240px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.Container::before,
+.Container::after {
+  content: " ";
+  display: table;
+}
+
+.Container::after {
+  clear: both;
+}
+
+.Container--withoutGutter {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 `
 
   return null

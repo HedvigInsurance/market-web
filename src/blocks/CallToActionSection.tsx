@@ -1,43 +1,41 @@
-import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
 import styled from 'react-emotion'
 import { BaseBlockProps } from './BaseBlockProps'
 
+import {
+  FilledButtonComponent,
+  OutlinedButtonComponent,
+} from '../components/Buttons'
+
 const SectionComponent = styled('section')(
   ({ backgroundColor }: { backgroundColor: string }) => ({
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
     width: '100%',
-    padding: '120px 20px',
     background: backgroundColor,
+    paddingTop: '120px',
+    paddingBottom: '120px',
   }),
 )
+
+const ContentContainer = styled('div')({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  width: '100%',
+})
 
 const TitleComponent = styled('h2')(
   ({ titleColor }: { titleColor: string }) => ({
     color: titleColor,
+    fontSize: '48px',
+    paddingRight: '120px',
   }),
 )
-
-const FilledButtonComponent = styled('button')({
-  color: 'white',
-  backgroundColor: colors.GREEN,
-  border: 'none',
-  padding: '20px',
-})
-
-const HollowButtonComponent = styled('button')({
-  color: colors.GREEN,
-  backgroundColor: 'transparent',
-  border: `2px solid ${colors.GREEN}`,
-  padding: '20px',
-})
 
 interface CallToActionSectionInterface extends BaseBlockProps {
   title: string
   buttonText: string
-  buttonType: 'filled' | 'hollow'
+  buttonType: 'filled' | 'outlined'
   titleColor: string
   backgroundColor: string
 }
@@ -51,15 +49,17 @@ export const CallToActionSection: React.SFC<CallToActionSectionInterface> = ({
 }) => {
   const buttonComponents = {
     filled: FilledButtonComponent,
-    hollow: HollowButtonComponent,
+    outlined: OutlinedButtonComponent,
   }
 
   const ButtonComponent: React.ComponentType = buttonComponents[buttonType]
 
   return (
     <SectionComponent backgroundColor={backgroundColor}>
-      <TitleComponent titleColor={titleColor}>{title}</TitleComponent>
-      <ButtonComponent>{buttonText}</ButtonComponent>
+      <ContentContainer className="Container">
+        <TitleComponent titleColor={titleColor}>{title}</TitleComponent>
+        <ButtonComponent>{buttonText}</ButtonComponent>
+      </ContentContainer>
     </SectionComponent>
   )
 }
