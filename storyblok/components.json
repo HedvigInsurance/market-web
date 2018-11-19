@@ -182,6 +182,27 @@
           "component_whitelist": [
             "menu_item"
           ]
+        },
+        "cta": {
+          "type": "section",
+          "keys": [
+            "show_cta",
+            "cta_link",
+            "cta_label"
+          ],
+          "pos": 1
+        },
+        "show_cta": {
+          "type": "boolean",
+          "pos": 2
+        },
+        "cta_label": {
+          "type": "text",
+          "pos": 3
+        },
+        "cta_link": {
+          "type": "multilink",
+          "pos": 4
         }
       },
       "image": null,

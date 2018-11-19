@@ -21,6 +21,13 @@ export interface WithStory {
   story: BodyStory
 }
 
+export interface LinkComponent {
+  id: string
+  url: string
+  linktype: 'story' | 'url'
+  cached_url: string // use this
+}
+
 export interface GlobalStory {
   name: string
   created_at: string
@@ -33,14 +40,12 @@ export interface GlobalStory {
     header_menu_items?: ReadonlyArray<{
       _uid: string
       label: string
-      link: {
-        id: string
-        url: string
-        linktype: 'story' | 'url'
-        cached_url: string // use this
-      }
+      link: LinkComponent
       component: 'menu_item'
     }>
+    show_cta: boolean
+    cta_label: string
+    cta_link: LinkComponent
   }
 }
 
