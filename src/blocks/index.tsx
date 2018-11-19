@@ -1,7 +1,10 @@
 import * as React from 'react'
+import { AccordionBlock } from './AccordionBlock'
 import { BaseBlockProps } from './BaseBlockProps'
 
-const blockComponents = {}
+const blockComponents = {
+  accordion_block: AccordionBlock,
+}
 
 export const getBlockComponent = <
   TBlockType extends keyof typeof blockComponents

@@ -38,8 +38,9 @@
         "title": {
           "type": "text",
           "required": true,
-          "default_value": "Default Text",
-          "pos": 0
+          "default_value": "",
+          "pos": 0,
+          "display_name": ""
         },
         "paragraph": {
           "type": "custom",
@@ -47,7 +48,8 @@
           "default_value": "",
           "pos": 1,
           "field_type": "markdown-html",
-          "options": []
+          "options": [],
+          "display_name": ""
         }
       },
       "image": null,
