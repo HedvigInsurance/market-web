@@ -1,7 +1,38 @@
 {
   "components": [
     {
-      "name": "AccordionComponent",
+      "name": "accordion_block",
+      "display_name": null,
+      "schema": {
+        "title": {
+          "type": "text",
+          "required": true,
+          "pos": 0
+        },
+        "accordions": {
+          "type": "bloks",
+          "maximum": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "AccordionComponent"
+          ],
+          "required": true,
+          "description": "",
+          "display_name": "",
+          "default_value": "",
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "accordion_block"
+    },
+    {
+      "name": "accordion_item",
       "display_name": "",
       "schema": {
         "title": {
@@ -20,13 +51,13 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
-      "is_nestable": true,
+      "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "AccordionComponent"
+      "real_name": "accordion_item"
     },
     {
-      "name": "BulletPointSection",
+      "name": "bullet_point_block",
       "display_name": "",
       "schema": {
         "title": {
@@ -68,10 +99,10 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "BulletPointSection"
+      "real_name": "bullet_point_block"
     },
     {
-      "name": "CallToActionSection",
+      "name": "call_to_action_block",
       "display_name": "",
       "schema": {
         "title": {
@@ -124,33 +155,10 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "CallToActionSection"
+      "real_name": "call_to_action_block"
     },
     {
-      "name": "HorizontalStatisticSection",
-      "display_name": null,
-      "schema": {
-        "title": {
-          "type": "text",
-          "pos": 0,
-          "required": true,
-          "default_value": "Default Text"
-        },
-        "subTitle": {
-          "type": "text",
-          "pos": 1
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "HorizontalStatisticSection"
-    },
-    {
-      "name": "IconBulletPointComponent",
+      "name": "icon_bullet_point_item",
       "display_name": "",
       "schema": {
         "icon": {
@@ -174,13 +182,13 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
-      "is_nestable": true,
+      "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "IconBulletPointComponent"
+      "real_name": "icon_bullet_point_item"
     },
     {
-      "name": "ImageBulletPointComponent",
+      "name": "image_bullet_point_item",
       "display_name": "",
       "schema": {
         "image": {
@@ -204,13 +212,13 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
-      "is_nestable": true,
+      "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "ImageBulletPointComponent"
+      "real_name": "image_bullet_point_item"
     },
     {
-      "name": "ImageCtaTextSection",
+      "name": "image_cta_text_block",
       "display_name": "",
       "schema": {
         "title": {
@@ -293,10 +301,10 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "ImageCtaTextSection"
+      "real_name": "image_cta_text_block"
     },
     {
-      "name": "ImageMultiTextSection",
+      "name": "image_multi_text_block",
       "display_name": "",
       "schema": {
         "image": {
@@ -321,10 +329,10 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "ImageMultiTextSection"
+      "real_name": "image_multi_text_block"
     },
     {
-      "name": "ImageTextSection",
+      "name": "image_text_block",
       "display_name": "",
       "schema": {
         "title": {
@@ -401,10 +409,10 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "ImageTextSection"
+      "real_name": "image_text_block"
     },
     {
-      "name": "LogotypeComponent",
+      "name": "logotype_item",
       "display_name": "",
       "schema": {
         "image": {
@@ -416,13 +424,13 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
-      "is_nestable": true,
+      "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "LogotypeComponent"
+      "real_name": "logotype_item"
     },
     {
-      "name": "MultiLogotypeSection",
+      "name": "multi_logotype_block",
       "display_name": "",
       "schema": {
         "Logotypes": {
@@ -443,7 +451,7 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "MultiLogotypeSection"
+      "real_name": "multi_logotype_block"
     },
     {
       "name": "page",
@@ -462,7 +470,7 @@
       "real_name": "page"
     },
     {
-      "name": "SingleQuoteSection",
+      "name": "single_quote_block",
       "display_name": null,
       "schema": {
         "quote": {
@@ -505,41 +513,10 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "SingleQuoteSection"
+      "real_name": "single_quote_block"
     },
     {
-      "name": "TitleAccordionSection",
-      "display_name": null,
-      "schema": {
-        "title": {
-          "type": "text",
-          "required": true,
-          "pos": 0
-        },
-        "accordions": {
-          "type": "bloks",
-          "maximum": "",
-          "restrict_components": true,
-          "component_whitelist": [
-            "AccordionComponent"
-          ],
-          "required": true,
-          "description": "",
-          "display_name": "",
-          "default_value": "",
-          "pos": 1
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "TitleAccordionSection"
-    },
-    {
-      "name": "TitleParagraphComponent",
+      "name": "switcher_block",
       "display_name": null,
       "schema": {
         "title": {
@@ -548,55 +525,9 @@
           "required": true,
           "default_value": "Default Text"
         },
-        "paragraph": {
-          "type": "textarea",
-          "description": "",
-          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
-          "required": true,
-          "pos": 1
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "TitleParagraphComponent"
-    },
-    {
-      "name": "TitleParagraphSection",
-      "display_name": null,
-      "schema": {
-        "title": {
+        "subTitle": {
           "type": "text",
-          "pos": 0,
-          "required": true,
-          "default_value": "Default Text"
-        },
-        "titlePosition": {
-          "type": "option",
-          "options": [
-            {
-              "value": "left",
-              "name": "left"
-            },
-            {
-              "value": "center",
-              "name": "center"
-            }
-          ],
-          "required": true,
-          "default_value": "center",
           "pos": 1
-        },
-        "paragraph": {
-          "type": "custom",
-          "required": true,
-          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
-          "pos": 2,
-          "field_type": "markdown-html",
-          "options": []
         }
       },
       "image": null,
@@ -605,10 +536,10 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "TitleParagraphSection"
+      "real_name": "switcher_block"
     },
     {
-      "name": "TitleSection",
+      "name": "title_block",
       "display_name": null,
       "schema": {
         "title": {
@@ -660,7 +591,76 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "TitleSection"
+      "real_name": "title_block"
+    },
+    {
+      "name": "title_paragraph_block",
+      "display_name": null,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "required": true,
+          "default_value": "Default Text"
+        },
+        "titlePosition": {
+          "type": "option",
+          "options": [
+            {
+              "value": "left",
+              "name": "left"
+            },
+            {
+              "value": "center",
+              "name": "center"
+            }
+          ],
+          "required": true,
+          "default_value": "center",
+          "pos": 1
+        },
+        "paragraph": {
+          "type": "custom",
+          "required": true,
+          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
+          "pos": 2,
+          "field_type": "markdown-html",
+          "options": []
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "title_paragraph_block"
+    },
+    {
+      "name": "title_paragraph_item",
+      "display_name": null,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "required": true,
+          "default_value": "Default Text"
+        },
+        "paragraph": {
+          "type": "textarea",
+          "description": "",
+          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
+          "required": true,
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "title_paragraph_item"
     }
   ]
 }
