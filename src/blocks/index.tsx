@@ -4,12 +4,14 @@ import { CallToActionSection } from './CallToActionSection'
 import { ImageTextSection } from './ImageTextSection'
 import { SingleQuoteSection } from './SingleQuoteBlock'
 import { TitleParagraphSection } from './TitleParagraphSection'
+import { TextSection } from './TextSection'
 
 const blockComponents = {
   SingleQuoteSection,
   TitleParagraphSection,
   CallToActionSection,
   ImageTextSection,
+  TextSection,
 }
 
 export const getBlockComponent = <

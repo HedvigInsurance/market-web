@@ -13,9 +13,7 @@
           "type": "bloks",
           "maximum": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "accordion_item"
-          ],
+          "component_whitelist": ["accordion_item"],
           "required": true,
           "description": "",
           "display_name": "",
@@ -324,9 +322,7 @@
         "text_items": {
           "type": "bloks",
           "restrict_components": true,
-          "component_whitelist": [
-            "title_paragraph_item"
-          ],
+          "component_whitelist": ["title_paragraph_item"],
           "maximum": "3",
           "required": true,
           "pos": 1
@@ -449,9 +445,7 @@
           "maximum": "",
           "description": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "logotype_item"
-          ],
+          "component_whitelist": ["logotype_item"],
           "required": true,
           "pos": 0
         }
