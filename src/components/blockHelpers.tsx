@@ -2,12 +2,9 @@ import { colors } from '@hedviginsurance/brand'
 import styled from 'react-emotion'
 import { colorComponentColors } from '../blocks/BaseBlockProps'
 
-const TMP_OFF_BLACK_DARK = '#141033' // TODO move this to brand package
-const TMP_PINK_LIGHT = '#FFF3F2' // TODO move this to brand package
-
 const colorMap = {
   standard: {
-    color: TMP_OFF_BLACK_DARK,
+    color: colors.OFF_BLACK_DARK,
     background: 'transparent',
   },
   blue: {
@@ -19,11 +16,11 @@ const colorMap = {
     background: colors.DARK_PURPLE,
   },
   'pink-light': {
-    color: TMP_OFF_BLACK_DARK,
-    background: TMP_PINK_LIGHT,
+    color: colors.OFF_BLACK_DARK,
+    background: colors.PINK_LIGHT,
   },
   'off-white': {
-    color: TMP_OFF_BLACK_DARK,
+    color: colors.OFF_BLACK_DARK,
     background: colors.OFF_WHITE,
   },
   green: {
