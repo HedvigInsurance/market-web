@@ -21,9 +21,14 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: ${fonts.SORAY}, sans-serif;
   font-kerning: none;
+<<<<<<< HEAD
   margin: 1.414rem 0 0.5rem;
   font-weight: inherit;
   line-height: 1.2;
+=======
+  margin: 0;
+  padding: 0;
+>>>>>>> Add ImageTextSection block
 }
 
 p {

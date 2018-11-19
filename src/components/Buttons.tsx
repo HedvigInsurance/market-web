@@ -28,8 +28,8 @@ const Button = styled('button')(({ size = 'md' }: ButtonProps) => ({
 
 export const FilledButtonComponent = styled(Button)({
   backgroundColor: colors.GREEN,
-  border: 'none',
   color: colors.WHITE,
+  border: `2px solid ${colors.GREEN}`,
 })
 
 export const OutlinedButtonComponent = styled(Button)({
