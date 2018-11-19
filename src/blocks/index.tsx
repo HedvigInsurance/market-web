@@ -1,9 +1,11 @@
 import * as React from 'react'
 import { AccordionBlock } from './AccordionBlock'
 import { BaseBlockProps } from './BaseBlockProps'
+import { HeaderBlock } from './HeaderBlock'
 
 const blockComponents = {
   accordion_block: AccordionBlock,
+  header_block: HeaderBlock,
 }
 
 export const getBlockComponent = <

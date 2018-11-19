@@ -15,6 +15,15 @@ const apiClient = axios.create({
   baseURL: 'https://api.storyblok.com',
 })
 
+export const getGlobalStory = (cacheVersion?: string) =>
+  apiClient.get<BodyStory>(`/v1/cdn/stories/global`, {
+    params: {
+      token: config.storyblokApiToken,
+      find_by: 'slug',
+      cv: cacheVersion,
+    },
+  })
+
 export const getPublishedStoryFromSlug = (
   path: string,
   cacheVersion?: string,
