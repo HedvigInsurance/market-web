@@ -69,12 +69,14 @@ const sync = async () => {
 
   console.log("Here's the plan:")
   console.log(
-    `ADD: \n  -> ${operations.added.map((c) => chalk.green(c.name)).join('\n  -> ') ||
-      chalk.gray('noop')}`,
+    `ADD: \n  -> ${operations.added
+      .map((c) => chalk.green(c.name))
+      .join('\n  -> ') || chalk.gray('noop')}`,
   )
   console.log(
-    `UPDATE: \n  -> ${operations.updated.map(([c]) => chalk.cyan(c.name)).join('\n  -> ') ||
-      chalk.gray('noop')}`,
+    `UPDATE: \n  -> ${operations.updated
+      .map(([c]) => chalk.cyan(c.name))
+      .join('\n  -> ') || chalk.gray('noop')}`,
   )
 
   if (yargs.argv.clean) {

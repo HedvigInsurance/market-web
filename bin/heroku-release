@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+current_dir=$(dirname "$0")
+
+if [[ "${SYNC_STORYBLOK_ON_RELEASE:-}" != "true" ]]; then
+    echo '$SYNC_STORYBLOK_ON_RELEASE not set, skipping Storyblok sync'
+    exit 0
+fi
+
+
+if [[ -z "${STORYBLOK_MANAGEMENT_TOKEN:-}" ]]; then
+    echo '$STORYBLOK_MANAGEMENT_TOKEN not set, skipping Storyblok sync'
+    exit 0
+fi
+
+space_id="${STORYBLOK_SPACE_ID:-}"
+
+if [[ -z "${space_id}" ]]; then
+    echo '$STORYBLOK_SPACE_ID not set, skipping Storyblok sync'
+    exit 0
+fi
+
+echo "syncing space #$space_id"
+
+"$current_dir"/sync-space --space="$space_id" --clean
