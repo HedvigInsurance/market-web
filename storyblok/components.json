@@ -14,7 +14,7 @@
           "maximum": "",
           "restrict_components": true,
           "component_whitelist": [
-            "AccordionComponent"
+            "accordion_item"
           ],
           "required": true,
           "description": "",
@@ -42,10 +42,12 @@
           "pos": 0
         },
         "paragraph": {
-          "type": "textarea",
+          "type": "custom",
           "required": true,
-          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
-          "pos": 1
+          "default_value": "",
+          "pos": 1,
+          "field_type": "markdown-html",
+          "options": []
         }
       },
       "image": null,
@@ -66,28 +68,28 @@
           "required": false,
           "pos": 0
         },
-        "titlePosition": {
+        "title_position": {
           "type": "option",
           "options": [
             {
-              "value": "true",
-              "name": "left"
+              "value": "left",
+              "name": "Left"
             },
             {
-              "value": "true",
-              "name": "center"
+              "value": "center",
+              "name": "Center"
             }
           ],
           "default_value": "center",
           "pos": 1
         },
-        "bulletPoints": {
+        "bullet_points": {
           "type": "bloks",
           "maximum": "6",
           "restrict_components": true,
           "component_whitelist": [
-            "IconBulletPointComponent",
-            "MediaBulletPointComponent"
+            "icon_bullet_point_item",
+            "image_bullet_point_item"
           ],
           "required": true,
           "pos": 2
@@ -111,42 +113,45 @@
           "required": true,
           "default_value": "Default Text"
         },
-        "titleColor": {
+        "title_color": {
           "type": "text",
           "required": true,
           "regex": "(^.*(rgb|#))",
           "default_value": "#000",
           "pos": 1
         },
-        "buttonText": {
+        "background_color": {
+          "type": "custom",
+          "pos": 2,
+          "regex": "(^.*(rgb|#))",
+          "default_value": "#fff",
+          "required": true,
+          "field_type": "native-color-picker",
+          "options": []
+        },
+        "button_title": {
           "type": "text",
           "required": true,
           "regex": "",
-          "default_value": "Default Text",
-          "pos": 2
+          "default_value": "",
+          "pos": 3,
+          "display_name": ""
         },
-        "buttonType": {
+        "button_type": {
           "type": "option",
           "options": [
             {
-              "value": "true",
-              "name": "filled"
+              "value": "filled",
+              "name": "Filled"
             },
             {
-              "value": "true",
-              "name": "hollow"
+              "value": "ghost",
+              "name": "Ghost"
             }
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 3
-        },
-        "backgroundColor": {
-          "type": "text",
-          "pos": 4,
-          "regex": "(^.*(rgb|#))",
-          "default_value": "#fff",
-          "required": true
+          "pos": 4
         }
       },
       "image": null,
@@ -227,72 +232,74 @@
           "required": true,
           "default_value": "Default Text"
         },
-        "titleColor": {
-          "type": "text",
-          "regex": "(^.*(rgb|#))",
-          "default_value": "#000",
+        "image": {
+          "type": "image",
           "required": true,
           "pos": 1
         },
-        "titlePosition": {
-          "type": "option",
+        "title_color": {
+          "type": "custom",
+          "regex": "(^.*(rgb|#))",
+          "default_value": "#000",
+          "required": true,
           "pos": 2,
+          "field_type": "native-color-picker",
+          "options": []
+        },
+        "subtitle": {
+          "type": "text",
+          "pos": 3,
+          "description": "",
+          "default_value": ""
+        },
+        "button_text": {
+          "type": "text",
+          "pos": 4,
+          "required": true,
+          "default_value": "Default Text"
+        },
+        "background_color": {
+          "type": "text",
+          "regex": "(^.*(rgb|#))",
+          "description": "",
+          "pos": 5,
+          "required": true,
+          "default_value": "#fff"
+        },
+        "title_position": {
+          "type": "option",
+          "pos": 6,
           "regex": "(^.*(right|center|left)$)",
           "display_name": "",
           "description": "",
           "default_value": "left",
           "options": [
             {
-              "value": "true",
-              "name": "left"
+              "value": "left",
+              "name": "Left"
             },
             {
-              "value": "true",
-              "name": "right"
+              "value": "right",
+              "name": "Right"
             }
           ],
           "required": true
         },
-        "subTitle": {
-          "type": "text",
-          "pos": 3,
-          "description": "",
-          "default_value": ""
-        },
-        "buttonText": {
-          "type": "text",
-          "pos": 4,
-          "required": true,
-          "default_value": "Default Text"
-        },
-        "buttonType": {
+        "button_type": {
           "type": "option",
           "options": [
             {
-              "value": "true",
-              "name": "filled"
+              "value": "filled",
+              "name": "Filled"
             },
             {
-              "value": "true",
-              "name": "hollow"
+              "value": "ghost",
+              "name": "Ghost"
             }
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 5
-        },
-        "image": {
-          "type": "image",
-          "required": true,
-          "pos": 6
-        },
-        "backgroundColor": {
-          "type": "text",
-          "regex": "(^.*(rgb|#))",
-          "description": "",
-          "pos": 7,
-          "required": true,
-          "default_value": "#fff"
+          "pos": 7
         }
       },
       "image": null,
@@ -312,11 +319,11 @@
           "required": true,
           "pos": 0
         },
-        "textComponents": {
+        "text_items": {
           "type": "bloks",
           "restrict_components": true,
           "component_whitelist": [
-            "TitleParagraphComponent"
+            "title_paragraph_item"
           ],
           "maximum": "3",
           "required": true,
@@ -341,14 +348,27 @@
           "default_value": "Default Text",
           "pos": 0
         },
-        "titleColor": {
+        "paragraph": {
+          "type": "custom",
+          "required": true,
+          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
+          "pos": 1,
+          "field_type": "markdown-html",
+          "options": []
+        },
+        "image": {
+          "type": "image",
+          "required": true,
+          "pos": 2
+        },
+        "title_color": {
           "type": "text",
           "regex": "(^.*(rgb|#))",
           "required": true,
           "default_value": "#000",
-          "pos": 1
+          "pos": 3
         },
-        "titlePosition": {
+        "title_position": {
           "type": "option",
           "options": [
             {
@@ -361,42 +381,31 @@
             }
           ],
           "default_value": "right",
-          "pos": 2
+          "pos": 4
         },
-        "paragraph": {
-          "type": "textarea",
-          "required": true,
-          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
-          "pos": 3
-        },
-        "buttonText": {
+        "button_text": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 4
+          "pos": 5
         },
-        "buttonType": {
+        "button_type": {
           "type": "option",
           "options": [
             {
-              "value": "true",
-              "name": "filled"
+              "value": "filled",
+              "name": "Filled"
             },
             {
-              "value": "true",
-              "name": "hollow"
+              "value": "ghost",
+              "name": "Ghost"
             }
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 5
-        },
-        "image": {
-          "type": "image",
-          "required": true,
           "pos": 6
         },
-        "backgroundColor": {
+        "background_color": {
           "type": "text",
           "regex": "(^.*(rgb|#))",
           "default_value": "#fff",
@@ -433,13 +442,13 @@
       "name": "multi_logotype_block",
       "display_name": "",
       "schema": {
-        "Logotypes": {
+        "logotypes": {
           "type": "bloks",
           "maximum": "",
           "description": "",
           "restrict_components": true,
           "component_whitelist": [
-            "LogoComponent"
+            "logotype_item"
           ],
           "required": true,
           "pos": 0
@@ -481,7 +490,7 @@
           "type": "text",
           "pos": 1
         },
-        "textPosition": {
+        "text_position": {
           "type": "option",
           "options": [
             {
@@ -501,7 +510,7 @@
           "required": true,
           "pos": 2
         },
-        "backgroundImage": {
+        "background_image": {
           "type": "image",
           "required": false,
           "pos": 3
@@ -525,7 +534,7 @@
           "required": true,
           "default_value": "Default Text"
         },
-        "subTitle": {
+        "subtitle": {
           "type": "text",
           "pos": 1
         }
@@ -548,7 +557,7 @@
           "required": true,
           "default_value": "Default Text"
         },
-        "titlePosition": {
+        "title_position": {
           "type": "option",
           "regex": "(^.*(right|center|left)$)",
           "default_value": "left",
@@ -570,19 +579,22 @@
             }
           ]
         },
-        "titleColor": {
+        "title_color": {
           "type": "text",
           "regex": "(^.*(rgb|#))",
           "pos": 2,
           "required": true,
           "default_value": "#000"
         },
-        "backgroundColor": {
-          "type": "text",
+        "background_color": {
+          "type": "custom",
           "pos": 3,
           "regex": "(^.*(rgb|#))",
           "default_value": "#fff",
-          "required": true
+          "required": true,
+          "field_type": "native-color-picker",
+          "options": [],
+          "display_name": ""
         }
       },
       "image": null,
@@ -603,16 +615,16 @@
           "required": true,
           "default_value": "Default Text"
         },
-        "titlePosition": {
+        "title_position": {
           "type": "option",
           "options": [
             {
               "value": "left",
-              "name": "left"
+              "name": "Left"
             },
             {
               "value": "center",
-              "name": "center"
+              "name": "Center"
             }
           ],
           "required": true,
@@ -647,11 +659,13 @@
           "default_value": "Default Text"
         },
         "paragraph": {
-          "type": "textarea",
+          "type": "custom",
           "description": "",
           "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
           "required": true,
-          "pos": 1
+          "pos": 1,
+          "field_type": "markdown-html",
+          "options": []
         }
       },
       "image": null,
