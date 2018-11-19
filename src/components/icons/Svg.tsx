@@ -6,7 +6,7 @@ export interface SvgProps {
 }
 
 export const Svg = styled('svg')(
-  ({ fill = '#141033', size = '1em' }: SvgProps) => ({
+  ({ fill = 'currentColor', size = '1em' }: SvgProps) => ({
     fill,
     width: size,
     height: size,
