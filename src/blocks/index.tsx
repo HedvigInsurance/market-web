@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { AccordionBlock } from './AccordionBlock'
 import { BaseBlockProps } from './BaseBlockProps'
 import { CallToActionSection } from './CallToActionSection'
+import { ImageTextSection } from './ImageTextSection'
 import { SingleQuoteSection } from './SingleQuoteBlock'
 import { TitleParagraphSection } from './TitleParagraphSection'
 
@@ -9,6 +9,7 @@ const blockComponents = {
   SingleQuoteSection,
   TitleParagraphSection,
   CallToActionSection,
+  ImageTextSection,
 }
 
 export const getBlockComponent = <
