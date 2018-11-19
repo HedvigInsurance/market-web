@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from 'react-emotion'
+import { SizeContainer } from '../components/SizeContainer'
 import { BaseBlockProps } from './BaseBlockProps'
 
 import {
@@ -55,7 +56,7 @@ const ImageComponent = styled('img')({
   width: '40%',
 })
 
-interface ImageTextSectionInterface extends BaseBlockProps {
+interface ImageTextBlockInterface extends BaseBlockProps {
   title: string
   titleColor: string
   paragraphColor: string
@@ -67,7 +68,7 @@ interface ImageTextSectionInterface extends BaseBlockProps {
   backgroundColor: string
 }
 
-export const ImageTextSection: React.SFC<ImageTextSectionInterface> = ({
+export const ImageTextBlock: React.SFC<ImageTextBlockInterface> = ({
   title = '',
   titleColor = '',
   paragraphColor = '',
@@ -87,16 +88,18 @@ export const ImageTextSection: React.SFC<ImageTextSectionInterface> = ({
 
   return (
     <SectionComponent backgroundColor={backgroundColor}>
-      <ContentContainer className="Container" textPosition={textPosition}>
-        <TextContainer textPosition={textPosition}>
-          <TitleComponent titleColor={titleColor}>{title}</TitleComponent>
-          <ParagraphComponent paragraphColor={paragraphColor}>
-            {paragraph}
-          </ParagraphComponent>
-          <ButtonComponent>{buttonText}</ButtonComponent>
-        </TextContainer>
-        {textPosition !== 'center' && <ImageComponent src={image} />}
-      </ContentContainer>
+      <SizeContainer>
+        <ContentContainer className="Container" textPosition={textPosition}>
+          <TextContainer textPosition={textPosition}>
+            <TitleComponent titleColor={titleColor}>{title}</TitleComponent>
+            <ParagraphComponent paragraphColor={paragraphColor}>
+              {paragraph}
+            </ParagraphComponent>
+            <ButtonComponent>{buttonText}</ButtonComponent>
+          </TextContainer>
+          {textPosition !== 'center' && <ImageComponent src={image} />}
+        </ContentContainer>
+      </SizeContainer>
     </SectionComponent>
   )
 }

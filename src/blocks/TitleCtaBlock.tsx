@@ -32,7 +32,7 @@ const TitleComponent = styled('h2')(
   }),
 )
 
-interface CallToActionSectionInterface extends BaseBlockProps {
+interface CtaBlockInterface extends BaseBlockProps {
   title: string
   buttonText: string
   buttonType: 'filled' | 'outlined'
@@ -40,7 +40,7 @@ interface CallToActionSectionInterface extends BaseBlockProps {
   backgroundColor: string
 }
 
-export const CallToActionSection: React.SFC<CallToActionSectionInterface> = ({
+export const TitleCtaBlock: React.SFC<CtaBlockInterface> = ({
   title = '',
   titleColor = '',
   buttonText = '',

@@ -56,7 +56,7 @@ const ParagraphComponent = styled('div')(
   }),
 )
 
-interface TextSectionInterface extends BaseBlockProps {
+interface TitleParagraphBlockInterface extends BaseBlockProps {
   title: string
   titleColor: string
   paragraphColor: string
@@ -65,7 +65,7 @@ interface TextSectionInterface extends BaseBlockProps {
   backgroundColor: string
 }
 
-export const TextSection: React.SFC<TextSectionInterface> = ({
+export const TitleParagraphBlock: React.SFC<TitleParagraphBlockInterface> = ({
   title = '',
   titleColor = '',
   paragraphColor = '',
