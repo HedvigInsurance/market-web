@@ -104,7 +104,7 @@
       "real_name": "bullet_point_block"
     },
     {
-      "name": "call_to_action_block",
+      "name": "title_cta_block",
       "display_name": "",
       "schema": {
         "title": {
@@ -151,7 +151,37 @@
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 4
+          "pos": 3
+        },
+        "backgroundColor": {
+          "type": "text",
+          "pos": 4,
+          "regex": "(^.*(rgb|#))",
+          "default_value": "#fff",
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "title_cta_block"
+    },
+    {
+      "name": "HorizontalStatisticSection",
+      "display_name": null,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "required": true,
+          "default_value": "Default Text"
+        },
+        "subTitle": {
+          "type": "text",
+          "pos": 1
         }
       },
       "image": null,

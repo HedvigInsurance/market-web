@@ -1,17 +1,13 @@
 import * as React from 'react'
 import { BaseBlockProps } from './BaseBlockProps'
-import { CallToActionSection } from './CallToActionSection'
-import { ImageTextSection } from './ImageTextSection'
-import { SingleQuoteSection } from './SingleQuoteBlock'
-import { TitleParagraphSection } from './TitleParagraphSection'
-import { TextSection } from './TextSection'
+import { ImageTextBlock } from './ImageTextBlock'
+import { TitleCtaBlock } from './TitleCtaBlock'
+import { TitleParagraphBlock } from './TitleParagraphBlock'
 
 const blockComponents = {
-  SingleQuoteSection,
-  TitleParagraphSection,
-  CallToActionSection,
-  ImageTextSection,
-  TextSection,
+  title_cta_block: TitleCtaBlock,
+  image_text_block: ImageTextBlock,
+  title_paragraph_block: TitleParagraphBlock,
 }
 
 export const getBlockComponent = <
