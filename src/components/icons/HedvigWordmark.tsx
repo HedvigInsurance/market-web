@@ -1,5 +1,4 @@
 import * as React from 'react'
-import { Svg } from './Svg'
 
 export const HedvigWordmark: React.FunctionComponent<{ height: number }> = ({
   height,
@@ -27,8 +26,8 @@ export const HedvigWordmark: React.FunctionComponent<{ height: number }> = ({
         fill="#212121"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M 12.4973 0L 15.7117 0L 15.7117 14.2682L 15.7117 21.9219L 12.4973 21.9219L 12.4973 20.699C 11.1951 21.6702 9.58919 22.2438 7.8559 22.2438C 3.5316 22.2438 0 18.6732 0 14.2682C 0 9.86346 3.5316 6.29266 7.8559 6.29266C 9.58919 6.29266 11.1951 6.86639 12.4973 7.83752L 12.4973 0ZM 12.4973 14.2682C 12.4973 11.6635 10.4072 9.55609 7.8559 9.55609C 5.3045 9.55609 3.2144 11.6635 3.2144 14.2682C 3.2144 16.8585 5.2901 18.9805 7.8559 18.9805C 10.4072 18.9805 12.4973 16.8732 12.4973 14.2682Z"
         transform="translate(36.3243 0.146362)"
         fill="#212121"

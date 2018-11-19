@@ -3,8 +3,10 @@ import { Container } from 'constate'
 import * as React from 'react'
 import styled from 'react-emotion'
 import { ContentWrapper } from '../components/blockHelpers'
+import { ButtonLink } from '../components/buttons'
 import { HedvigWordmark } from '../components/icons/HedvigWordmark'
 import { GlobalStory } from '../storyblok/StoryContainer'
+import { getStoryblokLinkUrl } from '../utils/storyblok-link'
 import { BaseBlockProps } from './BaseBlockProps'
 
 const WRAPPER_HEIGHT_ISH = '4.5rem'
@@ -38,6 +40,20 @@ const Menu = styled('div')({
   alignItems: 'center',
 })
 
+const MenuLink = styled('a')({
+  color: 'inherit',
+  textDecoration: 'none',
+  padding: '0 1rem',
+
+  '&:last-of-type': {
+    paddingRight: 0,
+  },
+})
+
+const ButtonWrapper = styled('div')({
+  paddingLeft: '2rem',
+})
+
 interface HeaderBlockProps extends BaseBlockProps {
   is_transparent: boolean
 }
@@ -52,21 +68,31 @@ export const HeaderBlock: React.FunctionComponent<HeaderBlockProps> = ({
         <Wrapper transparent={is_transparent}>
           <ContentWrapper>
             <InnerHeaderWrapper>
-              <HedvigWordmark height={30} />
+              <a href="/">
+                <HedvigWordmark height={30} />
+              </a>
 
               <Menu>
                 {(story.content.header_menu_items || []).map((menuItem) => (
-                  <a
+                  <MenuLink
                     key={menuItem._uid}
-                    href={
-                      menuItem.link.linktype === 'story'
-                        ? `/${menuItem.link.cached_url}`
-                        : menuItem.link.cached_url
-                    }
+                    href={getStoryblokLinkUrl(menuItem.link)}
                   >
                     {menuItem.label}
-                  </a>
+                  </MenuLink>
                 ))}
+
+                {story.content.show_cta && (
+                  <ButtonWrapper>
+                    <ButtonLink
+                      size="sm"
+                      bold
+                      href={getStoryblokLinkUrl(story.content.cta_link)}
+                    >
+                      {story.content.cta_label}
+                    </ButtonLink>
+                  </ButtonWrapper>
+                )}
               </Menu>
             </InnerHeaderWrapper>
           </ContentWrapper>
