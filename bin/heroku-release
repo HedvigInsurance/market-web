@@ -21,6 +21,6 @@ if [[ -z "${space_id}" ]]; then
     exit 0
 fi
 
-echo "running fetch-space on space id $space_id"
+echo "syncing space #$space_id"
 
 "$current_dir"/sync-space --space="$space_id" --clean
