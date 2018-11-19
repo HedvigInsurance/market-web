@@ -71,6 +71,12 @@ bin/fetch-space --space 1337
 __Flags__
   - `--space N` Your space id to fetch.
 
+### Deploying to staging & prod
+`bin/heroku-release` is run on each release, which syncs the schema against the Storyblok space the environment uses.
+It does however bail unless the environment variable `SYNC_STORYBLOK_ON_RELEASE` is set to `true` so there's basically
+no risk that you accidentally sync a schema for example when setting up a PR instance (unless you set that env var
+yourself obv). 
+
 ### Deploying a Storyblok space to a Heroku PR instance
 The PR instance should by default point to staging, but in case you'd want a custom space to toy around with. Make sure
 you've set the env var `STORYBLOK_MANAGEMENT_TOKEN`. Then you can run:
