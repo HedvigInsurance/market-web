@@ -13,6 +13,7 @@ import { App } from '../App'
 import { sentryConfig } from './config/sentry'
 import {
   getDraftedStoryById,
+  getGlobalStory,
   getPublishedStoryFromSlug,
   getStoryblokEditorScript,
 } from './utils/storyblok'
@@ -103,7 +104,13 @@ export const getPageMiddleware: Koa.Middleware = async (ctx) => {
   const routerContext: StaticRouterContext & { statusCode?: number } = {}
   const helmetContext = {}
 
-  const story = await getStoryblokResponseFromContext(ctx)
+  const [story, globalStory] = await Promise.all([
+    await getStoryblokResponseFromContext(ctx),
+    getGlobalStory(
+      ctx.request.query['_storyblok_tk[timestamp]'] ||
+        ctx.query._storyblok_published,
+    ),
+  ])
 
   if (!story) {
     ctx.status = 404
@@ -111,7 +118,9 @@ export const getPageMiddleware: Koa.Middleware = async (ctx) => {
   }
 
   const serverApp = (
-    <Provider initialState={{ story: story.data }}>
+    <Provider
+      initialState={{ story: story.data, globalStory: globalStory.data }}
+    >
       <StaticRouter location={ctx.request.originalUrl} context={routerContext}>
         <HelmetProvider context={helmetContext}>
           <App />
@@ -132,7 +141,7 @@ export const getPageMiddleware: Koa.Middleware = async (ctx) => {
 
   ctx.body = template({
     body,
-    initialState: story.data,
+    initialState: { story: story.data, globalStory: globalStory.data },
     helmet: (helmetContext as FilledContext).helmet,
     dangerouslyExposeApiKeyToProvideEditing: ctx.request.query._storyblok,
     nonce: (ctx.res as any).cspNonce,

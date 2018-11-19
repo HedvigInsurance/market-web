@@ -21,6 +21,29 @@ export interface WithStory {
   story: BodyStory
 }
 
+export interface GlobalStory {
+  name: string
+  created_at: string
+  published_at: string
+  id: string
+  uuid: string
+  slug: string
+  full_slug: string
+  content: {
+    header_menu_items?: ReadonlyArray<{
+      _uid: string
+      label: string
+      link: {
+        id: string
+        url: string
+        linktype: 'story' | 'url'
+        cached_url: string // use this
+      }
+      component: 'menu_item'
+    }>
+  }
+}
+
 export interface StoryContainerProps {
   children: (props: WithStory) => React.ReactNode
 }
