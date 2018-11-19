@@ -1,6 +1,15 @@
 import axios from 'axios'
 import { BodyStory } from '../../storyblok/StoryContainer'
 import { config } from '../config'
+import { appLogger } from '../logging'
+
+let remoteCacheVersion = new Date()
+const getRemoteCacheVersionTimestamp = () =>
+  String(Math.round(Number(remoteCacheVersion) / 1000))
+setTimeout(() => {
+  appLogger.info('Updating remote cache version')
+  remoteCacheVersion = new Date()
+}, 60 * 15 * 1000)
 
 const apiClient = axios.create({
   baseURL: 'https://api.storyblok.com',
@@ -14,10 +23,7 @@ export const getPublishedStoryFromSlug = (
     params: {
       token: config.storyblokApiToken,
       find_by: 'slug',
-      cv: cacheVersion,
-    },
-    headers: {
-      'cache-control': 'no-cache',
+      cv: cacheVersion || getRemoteCacheVersionTimestamp(),
     },
   })
 
@@ -27,7 +33,7 @@ export const getDraftedStoryById = (id: string, cacheVersion: string) =>
       token: config.storyblokApiToken,
       find_by: 'id',
       version: 'draft',
-      cv: cacheVersion,
+      cv: cacheVersion || getRemoteCacheVersionTimestamp(),
     },
     headers: {
       'cache-control': 'no-cache',
