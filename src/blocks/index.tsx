@@ -1,11 +1,7 @@
+import * as React from 'react'
 import { BaseBlockProps } from './BaseBlockProps'
-import { SingleQuoteSection } from './SingleQuoteBlock'
-import { TitleParagraphSection } from './TitleParagraphSection'
 
-const blockComponents = {
-  SingleQuoteSection,
-  TitleParagraphSection,
-}
+const blockComponents = {}
 
 export const getBlockComponent = <
   TBlockType extends keyof typeof blockComponents
