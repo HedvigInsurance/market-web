@@ -39,12 +39,9 @@ interface TitleParagraphBlockInterface extends BaseBlockProps {
   paragraph: MarkdownHtmlComponent
 }
 
-export const TitleParagraphBlock: React.SFC<TitleParagraphBlockInterface> = ({
-  title,
-  text_position,
-  paragraph,
-  color,
-}) => {
+export const TitleParagraphBlock: React.FunctionComponent<
+  TitleParagraphBlockInterface
+> = ({ title, text_position, paragraph, color }) => {
   return (
     <SectionWrapper color={color && color.color}>
       <AlignableContentWrapperComponent textPosition={text_position}>

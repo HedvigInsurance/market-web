@@ -58,7 +58,9 @@ interface ImageTextBlockInterface extends BaseBlockProps {
   image: string
 }
 
-export const ImageTextBlock: React.SFC<ImageTextBlockInterface> = ({
+export const ImageTextBlock: React.FunctionComponent<
+  ImageTextBlockInterface
+> = ({
   title,
   paragraph,
   text_position,

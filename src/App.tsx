@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom'
 import { GlobalStyles } from './components/GlobalStyles'
 import { routes } from './routes'
 
-export const App: React.SFC = () => (
+export const App: React.FunctionComponent = () => (
   <>
     <GlobalStyles />
     <Switch>

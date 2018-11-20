@@ -29,7 +29,7 @@ interface TitleCtaBlockInterface extends BaseBlockProps {
   button_type: 'filled' | 'outlined'
 }
 
-export const TitleCtaBlock: React.SFC<TitleCtaBlockInterface> = ({
+export const TitleCtaBlock: React.FunctionComponent<TitleCtaBlockInterface> = ({
   title,
   button_title,
   button_type,
