@@ -6,18 +6,14 @@ import {
   CONTENT_GUTTER_MOBILE,
   MOBILE_BP_DOWN,
 } from '../../components/blockHelpers'
+import { TogglableState } from '../../components/containers/Togglable'
 import { HEADER_VERTICAL_PADDING, TOGGLE_TRANSITION_TIME } from './index'
 
 export const TABLET_BP_DOWN = '@media (max-width: 800px)'
 export const TABLET_BP_UP = '@media (min-width: 801px)'
 
-export interface MobileVisibility {
-  isOpen: boolean
-  isClosing: boolean
-}
-
 export const CrossBurger = styled('div')(
-  ({ isOpen, isClosing }: MobileVisibility) => ({
+  ({ isOpen, isClosing }: TogglableState) => ({
     width: '100%',
 
     '&::before, &::after': {
@@ -55,19 +51,17 @@ export const CrossBurger = styled('div')(
   }),
 )
 
-const MiddleBurger = styled('div')(
-  ({ isOpen, isClosing }: MobileVisibility) => ({
-    position: 'absolute',
-    width: '100%',
-    top: '50%',
-    left: 0,
-    right: 0,
-    height: 3,
-    backgroundColor: isOpen && !isClosing ? 'transparent' : 'currentColor',
-    transition: 'background-color 300ms',
-    transform: 'translateY(-1.5px)',
-  }),
-)
+const MiddleBurger = styled('div')(({ isOpen, isClosing }: TogglableState) => ({
+  position: 'absolute',
+  width: '100%',
+  top: '50%',
+  left: 0,
+  right: 0,
+  height: 3,
+  backgroundColor: isOpen && !isClosing ? 'transparent' : 'currentColor',
+  transition: 'background-color 300ms',
+  transform: 'translateY(-1.5px)',
+}))
 
 export const NavToggle = styled('button')(
   ({ preventInverse }: { preventInverse: boolean }) => ({
@@ -121,7 +115,7 @@ const Overlay = styled('div')(({ closing }: { closing: boolean }) => ({
 }))
 
 export const Burger: React.FunctionComponent<
-  MobileVisibility &
+  TogglableState &
     React.HTMLAttributes<HTMLButtonElement> & { preventInverse: boolean }
 > = ({ isOpen, isClosing, ...rest }) => (
   <>
