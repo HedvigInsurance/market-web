@@ -7,8 +7,8 @@ import {
 } from '../../components/blockHelpers'
 import { HEADER_VERTICAL_PADDING, TOGGLE_TRANSITION_TIME } from './index'
 
-export const TABLET_BP_DOWN = '@media (max-width: 700px)'
-export const TABLET_BP_UP = '@media (min-width: 701px)'
+export const TABLET_BP_DOWN = '@media (max-width: 800px)'
+export const TABLET_BP_UP = '@media (min-width: 801px)'
 
 export interface MobileVisibility {
   isOpen: boolean
