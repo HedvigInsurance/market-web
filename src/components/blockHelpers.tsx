@@ -43,13 +43,17 @@ export const SectionWrapper = styled('section')(
   }),
 )
 
+export const CONTENT_GUTTER = '2rem'
+export const CONTENT_GUTTER_MOBILE = '1rem'
+export const MOBILE_BP_UP = '@media (min-width: 481px)'
+export const MOBILE_BP_DOWN = '@media (max-width: 480px)'
 export const ContentWrapper = styled('div')({
   width: '100%',
   maxWidth: 1200,
-  padding: '0 2rem',
+  padding: '0 ' + CONTENT_GUTTER,
   margin: '0 auto',
 
-  '@media (max-width: 480px)': {
-    padding: '0 1rem',
+  [MOBILE_BP_DOWN]: {
+    padding: '0 ' + CONTENT_GUTTER_MOBILE,
   },
 })

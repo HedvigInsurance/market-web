@@ -13,6 +13,7 @@ interface ButtonProps {
 
 export const Button = styled('button')(
   ({ size = 'md', bold = false }: ButtonProps) => ({
+    display: 'inline-block',
     backgroundColor: colors.GREEN,
     padding: buttonSizes[size],
     borderRadius: 30,

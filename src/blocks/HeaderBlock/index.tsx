@@ -8,24 +8,37 @@ import { HedvigWordmark } from '../../components/icons/HedvigWordmark'
 import { GlobalStory } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok-link'
 import { BaseBlockProps } from '../BaseBlockProps'
-import { Burger, MOBILE_BP_DOWN, MobileVisibility } from './mobile'
+import { Burger, MobileVisibility, TABLET_BP_DOWN } from './mobile'
 
-const WRAPPER_HEIGHT_ISH = '4.5rem'
-const Wrapper = styled('div')(({ transparent }: { transparent: boolean }) => ({
-  position: 'fixed',
+export const WRAPPER_HEIGHT = '5rem'
+export const HEADER_VERTICAL_PADDING = '1.5rem'
+export const TOGGLE_TRANSITION_TIME = 250
+
+const Wrapper = styled('div')(
+  ({ open }: { transparent: boolean; open: boolean }) => ({
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 100,
+
+    [TABLET_BP_DOWN]: {
+      bottom: open ? 0 : undefined,
+    },
+  }),
+)
+const Filler = styled('div')({
+  height: WRAPPER_HEIGHT,
+})
+const HeaderBackgroundFiller = styled('div')({
+  position: 'absolute',
   top: 0,
   left: 0,
   right: 0,
-  ...(transparent
-    ? {}
-    : {
-        backgroundColor: colors.WHITE,
-        boxShadow:
-          '0px 1px 2px rgba(0, 0, 0, 0.1), 0px 2px 5px rgba(0, 0, 0, 0.1)',
-      }),
-}))
-const Filler = styled('div')({
-  height: WRAPPER_HEIGHT_ISH,
+  zIndex: -1,
+  height: WRAPPER_HEIGHT,
+  backgroundColor: colors.WHITE,
+  boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.1), 0px 2px 5px rgba(0, 0, 0, 0.1)',
 })
 
 const InnerHeaderWrapper = styled('div')({
@@ -33,18 +46,27 @@ const InnerHeaderWrapper = styled('div')({
   justifyContent: 'space-between',
   alignItems: 'center',
   width: '100%',
-  padding: '1.4rem 0',
+  height: WRAPPER_HEIGHT,
+  padding: HEADER_VERTICAL_PADDING + ' 0',
 })
-const Menu = styled('div')({
+const Menu = styled('div')(({ open }: { open: boolean }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
 
-  [MOBILE_BP_DOWN]: {
+  [TABLET_BP_DOWN]: {
     position: 'absolute',
-    left: '100%',
+    display: 'block',
+    zIndex: 101,
+    width: '80%',
+    top: 0,
+    bottom: 0,
+    left: open ? '20%' : '100%',
+    paddingTop: `calc(${WRAPPER_HEIGHT} + ${HEADER_VERTICAL_PADDING})`,
+    background: colors.WHITE,
+    transition: `left ${TOGGLE_TRANSITION_TIME}ms`,
   },
-})
+}))
 
 const MenuLink = styled('a')({
   color: 'inherit',
@@ -54,10 +76,30 @@ const MenuLink = styled('a')({
   '&:last-of-type': {
     paddingRight: 0,
   },
+
+  [TABLET_BP_DOWN]: {
+    display: 'block',
+    width: '100%',
+    padding: `1rem 2rem`,
+
+    '&:first-of-type': {
+      paddingTop: 0,
+    },
+  },
+})
+
+const LogoLink = styled('a')({
+  display: 'inline-flex',
+  paddingTop: 3, // fix to push down logo a little or it looks unbalanced
 })
 
 const ButtonWrapper = styled('div')({
   paddingLeft: '2rem',
+
+  [TABLET_BP_DOWN]: {
+    paddingTop: '1.5rem',
+    paddingLeft: '1rem',
+  },
 })
 
 interface HeaderBlockProps extends BaseBlockProps {
@@ -67,8 +109,6 @@ interface HeaderBlockProps extends BaseBlockProps {
 interface MobileVisibilityEffects {
   toggleOpen: () => void
 }
-
-const TOGGLE_TRANSITION_TIME = 250
 
 export const HeaderBlock: React.FunctionComponent<HeaderBlockProps> = ({
   is_transparent,
@@ -86,9 +126,9 @@ export const HeaderBlock: React.FunctionComponent<HeaderBlockProps> = ({
               }
 
               if (state.isOpen) {
-                setState({ isClosing: true })
+                setState({ isClosing: true, isOpen: false })
                 setTimeout(
-                  () => setState({ isClosing: false, isOpen: false }),
+                  () => setState({ isClosing: false }),
                   TOGGLE_TRANSITION_TIME,
                 )
                 return
@@ -99,19 +139,20 @@ export const HeaderBlock: React.FunctionComponent<HeaderBlockProps> = ({
           }}
         >
           {({ isOpen, isClosing, toggleOpen }) => (
-            <Wrapper transparent={is_transparent}>
+            <Wrapper transparent={is_transparent} open={isOpen || isClosing}>
+              {!is_transparent && <HeaderBackgroundFiller />}
               <ContentWrapper>
                 <InnerHeaderWrapper>
-                  <a href="/">
+                  <LogoLink href="/">
                     <HedvigWordmark height={30} />
-                  </a>
+                  </LogoLink>
 
                   <Burger
                     isOpen={isOpen}
                     isClosing={isClosing}
                     onClick={toggleOpen}
                   />
-                  <Menu>
+                  <Menu open={isOpen}>
                     {(story.content.header_menu_items || []).map((menuItem) => (
                       <MenuLink
                         key={menuItem._uid}

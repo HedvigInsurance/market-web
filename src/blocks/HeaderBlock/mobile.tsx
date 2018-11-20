@@ -1,8 +1,14 @@
-import styled from 'react-emotion'
 import * as React from 'react'
+import styled, { keyframes } from 'react-emotion'
+import {
+  CONTENT_GUTTER,
+  CONTENT_GUTTER_MOBILE,
+  MOBILE_BP_DOWN,
+} from '../../components/blockHelpers'
+import { HEADER_VERTICAL_PADDING, TOGGLE_TRANSITION_TIME } from './index'
 
-export const MOBILE_BP_DOWN = '@media (max-width: 480px)'
-export const MOBILE_BP_UP = '@media (min-width: 481px)'
+export const TABLET_BP_DOWN = '@media (max-width: 700px)'
+export const TABLET_BP_UP = '@media (min-width: 701px)'
 
 export interface MobileVisibility {
   isOpen: boolean
@@ -64,16 +70,18 @@ const MiddleBurger = styled('div')(
 
 export const NavToggle = styled('button')({
   display: 'block',
-  position: 'relative',
-  marginLeft: 'auto',
+  position: 'absolute',
+  right: CONTENT_GUTTER,
+  top: HEADER_VERTICAL_PADDING,
   appearance: 'none',
   background: 'transparent',
   border: '0',
   color: 'inherit',
-  width: '2rem',
+  width: '1.5rem',
   height: '1.5rem',
+  zIndex: 102,
 
-  [MOBILE_BP_UP]: {
+  [TABLET_BP_UP]: {
     display: 'none',
   },
 
@@ -81,13 +89,50 @@ export const NavToggle = styled('button')({
     outline: 'none',
     boxShadow: 'none',
   },
+
+  [MOBILE_BP_DOWN]: {
+    right: CONTENT_GUTTER_MOBILE,
+  },
 })
+
+const fadeIn = keyframes({
+  from: { opacity: 0 },
+  to: { opacity: 1 },
+})
+const Overlay = styled('div')(({ closing }: { closing: boolean }) => ({
+  position: 'fixed',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+  zIndex: 99,
+  backgroundColor: closing ? 'transparent' : 'rgba(0,0,0, .5)',
+  transition: `background-color ${TOGGLE_TRANSITION_TIME}ms`,
+  animation: `${fadeIn} ${TOGGLE_TRANSITION_TIME}ms`,
+  '-webkit-tap-highlight-color': 'rgba(0,0,0,0)',
+
+  [TABLET_BP_UP]: {
+    display: 'none',
+  },
+}))
 
 export const Burger: React.FunctionComponent<
   MobileVisibility & React.HTMLAttributes<HTMLButtonElement>
 > = ({ isOpen, isClosing, ...rest }) => (
-  <NavToggle {...rest}>
-    <CrossBurger isOpen={isOpen} isClosing={isClosing} />
-    <MiddleBurger isOpen={isOpen} isClosing={isClosing} />
-  </NavToggle>
+  <>
+    <NavToggle {...rest}>
+      <CrossBurger isOpen={isOpen} isClosing={isClosing} />
+      <MiddleBurger isOpen={isOpen} isClosing={isClosing} />
+    </NavToggle>
+    {(isOpen || isClosing) && (
+      <Overlay
+        onClick={
+          (rest.onClick as any) as React.EventHandler<
+            React.MouseEvent<HTMLDivElement>
+          >
+        }
+        closing={isClosing}
+      />
+    )}
+  </>
 )
