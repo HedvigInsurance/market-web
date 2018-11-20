@@ -108,7 +108,7 @@ export const getPageMiddleware: Koa.Middleware = async (ctx) => {
 
   if (!story) {
     ctx.status = 404
-    appLogger.info(`Request returned 404 due to missing storyblok story`)
+    ctx.state.getLogger(`Request returned 404 due to missing storyblok story`)
     return
   }
 
