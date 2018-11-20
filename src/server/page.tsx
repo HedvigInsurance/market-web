@@ -86,10 +86,7 @@ const getStoryblokResponseFromContext = async (ctx: Koa.Context) => {
           ctx.request.path
         }", bypass_cache=${String(bypassCache)}]`,
       )
-      return await getPublishedStoryFromSlug(
-        ctx.request.path,
-        bypassCache ? String(Date.now() / 1000) : undefined,
-      )
+      return await getPublishedStoryFromSlug(ctx.request.path, bypassCache)
     }
   } catch (e) {
     if ((e as AxiosError).response && e.response.status === 404) {
@@ -107,8 +104,10 @@ export const getPageMiddleware: Koa.Middleware = async (ctx) => {
   const [story, globalStory] = await Promise.all([
     await getStoryblokResponseFromContext(ctx),
     getGlobalStory(
-      ctx.request.query['_storyblok_tk[timestamp]'] ||
-        ctx.query._storyblok_published,
+      Boolean(
+        ctx.request.query['_storyblok_tk[timestamp]'] ||
+          ctx.query._storyblok_published,
+      ),
     ),
   ])
 

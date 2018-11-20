@@ -4,8 +4,11 @@ import { config } from '../config'
 import { appLogger } from '../logging'
 
 let remoteCacheVersion = new Date()
+const calculateCacheVersionTimestamp = (date: Date) =>
+  String(Math.round(Number(date) / 1000))
 const getRemoteCacheVersionTimestamp = () =>
-  String(Math.round(Number(remoteCacheVersion) / 1000))
+  calculateCacheVersionTimestamp(remoteCacheVersion)
+
 setTimeout(() => {
   appLogger.info('Updating remote cache version')
   remoteCacheVersion = new Date()
@@ -16,14 +19,16 @@ const apiClient = axios.create({
 })
 
 export const getGlobalStory = async (
-  cacheVersion?: string,
+  bypassCache?: boolean,
 ): Promise<AxiosResponse<GlobalStory> | undefined> => {
   try {
     return await apiClient.get<GlobalStory>(`/v1/cdn/stories/global`, {
       params: {
         token: config.storyblokApiToken,
         find_by: 'slug',
-        cv: cacheVersion || getRemoteCacheVersionTimestamp(),
+        cv: bypassCache
+          ? calculateCacheVersionTimestamp(new Date())
+          : getRemoteCacheVersionTimestamp(),
       },
     })
   } catch (e) {
@@ -37,13 +42,15 @@ export const getGlobalStory = async (
 
 export const getPublishedStoryFromSlug = (
   path: string,
-  cacheVersion?: string,
+  bypassCache?: boolean,
 ) =>
   apiClient.get<BodyStory>(`/v1/cdn/stories${path === '/' ? '/home' : path}`, {
     params: {
       token: config.storyblokApiToken,
       find_by: 'slug',
-      cv: cacheVersion || getRemoteCacheVersionTimestamp(),
+      cv: bypassCache
+        ? calculateCacheVersionTimestamp(new Date())
+        : getRemoteCacheVersionTimestamp(),
     },
   })
 
