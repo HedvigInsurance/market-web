@@ -2,7 +2,6 @@ import { getScriptLocation } from '@hedviginsurance/web-survival-kit'
 import { AxiosError } from 'axios'
 import { Provider } from 'constate'
 import { renderStylesToString } from 'emotion-server'
-import { appLogger } from './logging'
 import * as Koa from 'koa'
 import * as path from 'path'
 import * as React from 'react'
@@ -12,6 +11,7 @@ import { StaticRouter, StaticRouterContext } from 'react-router'
 import { Logger } from 'typescript-logging'
 import { App } from '../App'
 import { sentryConfig } from './config/sentry'
+import { appLogger } from './logging'
 import {
   getDraftedStoryById,
   getPublishedStoryFromSlug,
