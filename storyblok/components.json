@@ -220,6 +220,11 @@
         "is_transparent": {
           "type": "boolean",
           "pos": 0
+        },
+        "inverse_colors": {
+          "type": "boolean",
+          "pos": 1,
+          "display_name": "Inverse Colors (transparent header only)"
         }
       },
       "image": null,

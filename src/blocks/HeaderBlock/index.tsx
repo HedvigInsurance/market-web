@@ -15,12 +15,13 @@ export const HEADER_VERTICAL_PADDING = '1.5rem'
 export const TOGGLE_TRANSITION_TIME = 250
 
 const Wrapper = styled('div')(
-  ({ open }: { transparent: boolean; open: boolean }) => ({
+  ({ inverse, open }: { inverse: boolean; open: boolean }) => ({
     position: 'fixed',
     top: 0,
     left: 0,
     right: 0,
     zIndex: 100,
+    color: inverse ? colors.WHITE : undefined,
 
     [TABLET_BP_DOWN]: {
       bottom: open ? 0 : undefined,
@@ -65,6 +66,7 @@ const Menu = styled('div')(({ open }: { open: boolean }) => ({
     paddingTop: `calc(${WRAPPER_HEIGHT} + ${HEADER_VERTICAL_PADDING})`,
     background: colors.WHITE,
     transition: `left ${TOGGLE_TRANSITION_TIME}ms`,
+    color: colors.OFF_BLACK_DARK,
   },
 }))
 
@@ -91,6 +93,7 @@ const MenuLink = styled('a')({
 const LogoLink = styled('a')({
   display: 'inline-flex',
   paddingTop: 3, // fix to push down logo a little or it looks unbalanced
+  color: 'inherit',
 })
 
 const ButtonWrapper = styled('div')({
@@ -104,6 +107,7 @@ const ButtonWrapper = styled('div')({
 
 interface HeaderBlockProps extends BaseBlockProps {
   is_transparent: boolean
+  inverse_colors: boolean
 }
 
 interface MobileVisibilityEffects {
@@ -112,7 +116,7 @@ interface MobileVisibilityEffects {
 
 const Header: React.FunctionComponent<
   { story: GlobalStory } & HeaderBlockProps
-> = ({ story, is_transparent }) => (
+> = ({ story, is_transparent, inverse_colors }) => (
   <>
     {!is_transparent && <Filler />}
 
@@ -138,7 +142,10 @@ const Header: React.FunctionComponent<
       }}
     >
       {({ isOpen, isClosing, toggleOpen }) => (
-        <Wrapper transparent={is_transparent} open={isOpen || isClosing}>
+        <Wrapper
+          inverse={is_transparent && inverse_colors}
+          open={isOpen || isClosing}
+        >
           {!is_transparent && <HeaderBackgroundFiller />}
           <ContentWrapper>
             <InnerHeaderWrapper>
@@ -150,6 +157,7 @@ const Header: React.FunctionComponent<
                 isOpen={isOpen}
                 isClosing={isClosing}
                 onClick={toggleOpen}
+                preventInverse={inverse_colors && isOpen}
               />
               <Menu open={isOpen}>
                 {(story.content.header_menu_items || []).map((menuItem) => (

@@ -6,6 +6,7 @@ import {
   MOBILE_BP_DOWN,
 } from '../../components/blockHelpers'
 import { HEADER_VERTICAL_PADDING, TOGGLE_TRANSITION_TIME } from './index'
+import { colors } from '@hedviginsurance/brand'
 
 export const TABLET_BP_DOWN = '@media (max-width: 800px)'
 export const TABLET_BP_UP = '@media (min-width: 801px)'
@@ -68,32 +69,35 @@ const MiddleBurger = styled('div')(
   }),
 )
 
-export const NavToggle = styled('button')({
-  display: 'block',
-  position: 'absolute',
-  right: CONTENT_GUTTER,
-  top: HEADER_VERTICAL_PADDING,
-  appearance: 'none',
-  background: 'transparent',
-  border: '0',
-  color: 'inherit',
-  width: '1.5rem',
-  height: '1.5rem',
-  zIndex: 102,
+export const NavToggle = styled('button')(
+  ({ preventInverse }: { preventInverse: boolean }) => ({
+    display: 'block',
+    position: 'absolute',
+    right: CONTENT_GUTTER,
+    top: HEADER_VERTICAL_PADDING,
+    appearance: 'none',
+    background: 'transparent',
+    border: '0',
+    width: '1.5rem',
+    height: '1.5rem',
+    zIndex: 102,
+    color: preventInverse ? colors.OFF_BLACK_DARK : 'inherit',
+    transition: `color ${TOGGLE_TRANSITION_TIME}ms`,
 
-  [TABLET_BP_UP]: {
-    display: 'none',
-  },
+    [TABLET_BP_UP]: {
+      display: 'none',
+    },
 
-  '&:focus': {
-    outline: 'none',
-    boxShadow: 'none',
-  },
+    '&:focus': {
+      outline: 'none',
+      boxShadow: 'none',
+    },
 
-  [MOBILE_BP_DOWN]: {
-    right: CONTENT_GUTTER_MOBILE,
-  },
-})
+    [MOBILE_BP_DOWN]: {
+      right: CONTENT_GUTTER_MOBILE,
+    },
+  }),
+)
 
 const fadeIn = keyframes({
   from: { opacity: 0 },
@@ -117,7 +121,8 @@ const Overlay = styled('div')(({ closing }: { closing: boolean }) => ({
 }))
 
 export const Burger: React.FunctionComponent<
-  MobileVisibility & React.HTMLAttributes<HTMLButtonElement>
+  MobileVisibility &
+    React.HTMLAttributes<HTMLButtonElement> & { preventInverse: boolean }
 > = ({ isOpen, isClosing, ...rest }) => (
   <>
     <NavToggle {...rest}>
