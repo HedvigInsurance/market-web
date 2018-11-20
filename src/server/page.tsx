@@ -102,7 +102,7 @@ export const getPageMiddleware: Koa.Middleware = async (ctx) => {
   const helmetContext = {}
 
   const [story, globalStory] = await Promise.all([
-    await getStoryblokResponseFromContext(ctx),
+    getStoryblokResponseFromContext(ctx),
     getGlobalStory(
       Boolean(
         ctx.request.query['_storyblok_tk[timestamp]'] ||
