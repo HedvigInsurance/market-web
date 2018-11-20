@@ -119,7 +119,10 @@ export const getPageMiddleware: Koa.Middleware = async (ctx) => {
 
   const serverApp = (
     <Provider
-      initialState={{ story: story.data, globalStory: globalStory.data }}
+      initialState={{
+        story: story.data,
+        globalStory: globalStory && globalStory.data,
+      }}
     >
       <StaticRouter location={ctx.request.originalUrl} context={routerContext}>
         <HelmetProvider context={helmetContext}>
@@ -141,7 +144,10 @@ export const getPageMiddleware: Koa.Middleware = async (ctx) => {
 
   ctx.body = template({
     body,
-    initialState: { story: story.data, globalStory: globalStory.data },
+    initialState: {
+      story: story.data,
+      globalStory: globalStory && globalStory.data,
+    },
     helmet: (helmetContext as FilledContext).helmet,
     dangerouslyExposeApiKeyToProvideEditing: ctx.request.query._storyblok,
     nonce: (ctx.res as any).cspNonce,

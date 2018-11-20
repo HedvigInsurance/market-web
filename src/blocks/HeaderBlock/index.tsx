@@ -2,7 +2,7 @@ import { colors } from '@hedviginsurance/brand'
 import { Container } from 'constate'
 import * as React from 'react'
 import styled from 'react-emotion'
-import { ContentWrapper } from '../../components/blockHelpers'
+import { ContentWrapper, ErrorBlock } from '../../components/blockHelpers'
 import { ButtonLink } from '../../components/buttons'
 import { HedvigWordmark } from '../../components/icons/HedvigWordmark'
 import { GlobalStory } from '../../storyblok/StoryContainer'
@@ -110,76 +110,89 @@ interface MobileVisibilityEffects {
   toggleOpen: () => void
 }
 
-export const HeaderBlock: React.FunctionComponent<HeaderBlockProps> = ({
-  is_transparent,
-}) => (
+const Header: React.FunctionComponent<
+  { story: GlobalStory } & HeaderBlockProps
+> = ({ story, is_transparent }) => (
   <>
     {!is_transparent && <Filler />}
-    <Container<{ story: GlobalStory }> context="globalStory">
-      {({ story }) => (
-        <Container<MobileVisibility, {}, {}, MobileVisibilityEffects>
-          initialState={{ isOpen: false, isClosing: false }}
-          effects={{
-            toggleOpen: () => ({ setState, state }) => {
-              if (state.isClosing) {
-                return
-              }
 
-              if (state.isOpen) {
-                setState({ isClosing: true, isOpen: false })
-                setTimeout(
-                  () => setState({ isClosing: false }),
-                  TOGGLE_TRANSITION_TIME,
-                )
-                return
-              }
+    <Container<MobileVisibility, {}, {}, MobileVisibilityEffects>
+      initialState={{ isOpen: false, isClosing: false }}
+      effects={{
+        toggleOpen: () => ({ setState, state }) => {
+          if (state.isClosing) {
+            return
+          }
 
-              setState({ isOpen: true })
-            },
-          }}
-        >
-          {({ isOpen, isClosing, toggleOpen }) => (
-            <Wrapper transparent={is_transparent} open={isOpen || isClosing}>
-              {!is_transparent && <HeaderBackgroundFiller />}
-              <ContentWrapper>
-                <InnerHeaderWrapper>
-                  <LogoLink href="/">
-                    <HedvigWordmark height={30} />
-                  </LogoLink>
+          if (state.isOpen) {
+            setState({ isClosing: true, isOpen: false })
+            setTimeout(
+              () => setState({ isClosing: false }),
+              TOGGLE_TRANSITION_TIME,
+            )
+            return
+          }
 
-                  <Burger
-                    isOpen={isOpen}
-                    isClosing={isClosing}
-                    onClick={toggleOpen}
-                  />
-                  <Menu open={isOpen}>
-                    {(story.content.header_menu_items || []).map((menuItem) => (
-                      <MenuLink
-                        key={menuItem._uid}
-                        href={getStoryblokLinkUrl(menuItem.link)}
-                      >
-                        {menuItem.label}
-                      </MenuLink>
-                    ))}
+          setState({ isOpen: true })
+        },
+      }}
+    >
+      {({ isOpen, isClosing, toggleOpen }) => (
+        <Wrapper transparent={is_transparent} open={isOpen || isClosing}>
+          {!is_transparent && <HeaderBackgroundFiller />}
+          <ContentWrapper>
+            <InnerHeaderWrapper>
+              <LogoLink href="/">
+                <HedvigWordmark height={30} />
+              </LogoLink>
 
-                    {story.content.show_cta && (
-                      <ButtonWrapper>
-                        <ButtonLink
-                          size="sm"
-                          bold
-                          href={getStoryblokLinkUrl(story.content.cta_link)}
-                        >
-                          {story.content.cta_label}
-                        </ButtonLink>
-                      </ButtonWrapper>
-                    )}
-                  </Menu>
-                </InnerHeaderWrapper>
-              </ContentWrapper>
-            </Wrapper>
-          )}
-        </Container>
+              <Burger
+                isOpen={isOpen}
+                isClosing={isClosing}
+                onClick={toggleOpen}
+              />
+              <Menu open={isOpen}>
+                {(story.content.header_menu_items || []).map((menuItem) => (
+                  <MenuLink
+                    key={menuItem._uid}
+                    href={getStoryblokLinkUrl(menuItem.link)}
+                  >
+                    {menuItem.label}
+                  </MenuLink>
+                ))}
+
+                {story.content.show_cta && (
+                  <ButtonWrapper>
+                    <ButtonLink
+                      size="sm"
+                      bold
+                      href={getStoryblokLinkUrl(story.content.cta_link)}
+                    >
+                      {story.content.cta_label}
+                    </ButtonLink>
+                  </ButtonWrapper>
+                )}
+              </Menu>
+            </InnerHeaderWrapper>
+          </ContentWrapper>
+        </Wrapper>
       )}
+    </Container>
+  </>
+)
+
+export const HeaderBlock: React.FunctionComponent<HeaderBlockProps> = (
+  headerBlockProps,
+) => (
+  <>
+    <Container<{ story: GlobalStory | undefined }> context="globalStory">
+      {({ story }) =>
+        story ? (
+          <Header story={story} {...headerBlockProps} />
+        ) : (
+          <ErrorBlock message="NO GLOBAL POST FOUND - remove header block or add a global post" />
+        )
+      }
     </Container>
   </>
 )

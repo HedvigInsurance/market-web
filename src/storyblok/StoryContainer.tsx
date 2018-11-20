@@ -2,7 +2,7 @@ import { Container } from 'constate'
 import * as React from 'react'
 import { BaseBlockProps } from '../blocks/BaseBlockProps'
 
-export interface BodyStory {
+export interface Story {
   name: string
   created_at: string
   published_at: string
@@ -10,6 +10,9 @@ export interface BodyStory {
   uuid: string
   slug: string
   full_slug: string
+}
+
+export interface BodyStory extends Story {
   content: {
     _uid: string
     component: 'page'
@@ -28,14 +31,7 @@ export interface LinkComponent {
   cached_url: string // use this
 }
 
-export interface GlobalStory {
-  name: string
-  created_at: string
-  published_at: string
-  id: string
-  uuid: string
-  slug: string
-  full_slug: string
+export interface GlobalStory extends Story {
   content: {
     header_menu_items?: ReadonlyArray<{
       _uid: string
