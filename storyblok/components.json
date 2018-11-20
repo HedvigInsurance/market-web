@@ -4,10 +4,16 @@
       "name": "accordion_block",
       "display_name": null,
       "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
         "title": {
           "type": "text",
           "required": true,
-          "pos": 0
+          "pos": 1
         },
         "accordions": {
           "type": "bloks",
@@ -20,7 +26,7 @@
           "description": "",
           "display_name": "",
           "default_value": "",
-          "pos": 1
+          "pos": 2
         }
       },
       "image": null,
