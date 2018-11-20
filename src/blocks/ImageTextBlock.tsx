@@ -1,11 +1,7 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
-import {
-  BaseBlockProps,
-  MarkdownHtmlComponent,
-  NativeColorPickerComponent,
-} from './BaseBlockProps'
+import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 import {
   FilledButtonComponent,
@@ -19,12 +15,6 @@ const FilledButtonWithMarginComponent = styled(FilledButtonComponent)({
 const OutlinedButtonWithMarginComponent = styled(OutlinedButtonComponent)({
   marginTop: '3rem',
 })
-
-const SectionBackgroundColorComponent = styled(SectionWrapper)(
-  ({ backgroundColor }: { backgroundColor: string }) => ({
-    backgroundColor,
-  }),
-)
 
 const AlignableContentWrapperComponent = styled(ContentWrapper)(
   ({ textPosition }: { textPosition: string }) => ({
@@ -44,49 +34,39 @@ const TextWrapperComponent = styled('div')(
   }),
 )
 
-const TitleComponent = styled('h2')(
-  ({ titleColor }: { titleColor: string }) => ({
-    color: titleColor,
-    fontSize: '3rem',
-  }),
-)
+const TitleComponent = styled('h2')({
+  fontSize: '3rem',
+  width: '100%',
+})
 
-const ParagraphComponent = styled('div')(
-  ({ paragraphColor }: { paragraphColor: string }) => ({
-    color: paragraphColor,
-    fontSize: '1.25rem',
-    marginTop: '1.5rem',
-  }),
-)
+const ParagraphComponent = styled('div')({
+  fontSize: '1.25rem',
+  marginTop: '1.5rem',
+})
 
-const Image = styled('img')({
+const ImageComponent = styled('img')({
   width: '40%',
 })
 
 interface ImageTextBlockInterface extends BaseBlockProps {
   title: string
-  title_color: NativeColorPickerComponent
   paragraph: MarkdownHtmlComponent
-  paragraph_color: NativeColorPickerComponent
   text_position: string
   button_title: string
   button_type: 'filled' | 'outlined'
   show_button: true | false
   image: string
-  background_color: NativeColorPickerComponent
 }
 
 export const ImageTextBlock: React.SFC<ImageTextBlockInterface> = ({
   title,
-  title_color,
   paragraph,
-  paragraph_color,
   text_position,
   button_title,
   button_type,
   show_button,
   image,
-  background_color,
+  color,
 }) => {
   const buttonComponents = {
     filled: FilledButtonWithMarginComponent,
@@ -96,22 +76,19 @@ export const ImageTextBlock: React.SFC<ImageTextBlockInterface> = ({
   const ButtonComponent: React.ComponentType = buttonComponents[button_type]
 
   return (
-    <SectionBackgroundColorComponent backgroundColor={background_color.color}>
+    <SectionWrapper color={color && color.color}>
       <AlignableContentWrapperComponent textPosition={text_position}>
         <TextWrapperComponent textPosition={text_position}>
-          <TitleComponent titleColor={title_color.color}>
-            {title}
-          </TitleComponent>
+          <TitleComponent>{title}</TitleComponent>
           <ParagraphComponent
-            paragraphColor={paragraph_color.color}
             dangerouslySetInnerHTML={{
               __html: paragraph.html,
             }}
           />
           {show_button && <ButtonComponent>{button_title}</ButtonComponent>}
         </TextWrapperComponent>
-        {text_position !== 'center' && <Image src={image} />}
+        {text_position !== 'center' && <ImageComponent src={image} />}
       </AlignableContentWrapperComponent>
-    </SectionBackgroundColorComponent>
+    </SectionWrapper>
   )
 }

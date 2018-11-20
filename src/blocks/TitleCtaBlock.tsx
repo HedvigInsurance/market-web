@@ -1,18 +1,12 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
-import { BaseBlockProps, NativeColorPickerComponent } from './BaseBlockProps'
+import { BaseBlockProps } from './BaseBlockProps'
 
 import {
   FilledButtonComponent,
   OutlinedButtonComponent,
 } from '../components/Buttons'
-
-const SectionBackgroundColorComponent = styled(SectionWrapper)(
-  ({ backgroundColor }: { backgroundColor: string }) => ({
-    backgroundColor,
-  }),
-)
 
 const FlexboxContentWrapperComponent = styled(ContentWrapper)({
   display: 'flex',
@@ -22,29 +16,24 @@ const FlexboxContentWrapperComponent = styled(ContentWrapper)({
   width: '100%',
 })
 
-const TitleComponent = styled('h2')(
-  ({ titleColor }: { titleColor: string }) => ({
-    color: titleColor,
-    fontSize: '48px',
-    paddingRight: '120px',
-  }),
-)
+const TitleComponent = styled('h2')({
+  fontSize: '3rem',
+  paddingRight: '7rem',
+  width: '100%',
+})
 
 interface TitleCtaBlockInterface extends BaseBlockProps {
   _uid: string
   title: string
   button_title: string
   button_type: 'filled' | 'outlined'
-  title_color: string
-  background_color: NativeColorPickerComponent
 }
 
 export const TitleCtaBlock: React.SFC<TitleCtaBlockInterface> = ({
   title,
-  title_color,
   button_title,
   button_type,
-  background_color,
+  color,
 }) => {
   const buttonComponents = {
     filled: FilledButtonComponent,
@@ -54,11 +43,11 @@ export const TitleCtaBlock: React.SFC<TitleCtaBlockInterface> = ({
   const ButtonComponent: React.ComponentType = buttonComponents[button_type]
 
   return (
-    <SectionBackgroundColorComponent backgroundColor={background_color.color}>
+    <SectionWrapper color={color && color.color}>
       <FlexboxContentWrapperComponent>
-        <TitleComponent titleColor={title_color}>{title}</TitleComponent>
+        <TitleComponent>{title}</TitleComponent>
         <ButtonComponent>{button_title}</ButtonComponent>
       </FlexboxContentWrapperComponent>
-    </SectionBackgroundColorComponent>
+    </SectionWrapper>
   )
 }

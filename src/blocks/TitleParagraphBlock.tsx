@@ -1,17 +1,7 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
-import {
-  BaseBlockProps,
-  MarkdownHtmlComponent,
-  NativeColorPickerComponent,
-} from './BaseBlockProps'
-
-const SectionBackgroundColorComponent = styled(SectionWrapper)(
-  ({ backgroundColor }: { backgroundColor: string }) => ({
-    backgroundColor,
-  }),
-)
+import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 const AlignableContentWrapperComponent = styled(ContentWrapper)(
   ({ textPosition }: { textPosition: string }) => ({
@@ -24,15 +14,8 @@ const AlignableContentWrapperComponent = styled(ContentWrapper)(
 )
 
 const TitleComponent = styled('h2')(
-  ({
-    titleColor,
-    textPosition,
-  }: {
-    titleColor: string
-    textPosition: string
-  }) => ({
-    color: titleColor,
-    fontSize: '48px',
+  ({ textPosition }: { textPosition: string }) => ({
+    fontSize: '3rem',
     marginRight: textPosition === 'left' ? 'auto' : 0,
     marginLeft: textPosition === 'right' ? 'auto' : 0,
     width: '100%',
@@ -41,56 +24,38 @@ const TitleComponent = styled('h2')(
 )
 
 const ParagraphComponent = styled('div')(
-  ({
-    paragraphColor,
-    textPosition,
-  }: {
-    paragraphColor: string
-    textPosition: string
-  }) => ({
+  ({ textPosition }: { textPosition: string }) => ({
     display: textPosition === 'right' ? 'none' : 'block',
-    marginTop: textPosition === 'center' ? '25px' : 0,
+    marginTop: textPosition === 'center' ? '1.5rem' : 0,
     maxWidth: textPosition === 'left' ? '40%' : '100%',
     width: '100%',
-    color: paragraphColor,
-    fontSize: '20px',
+    fontSize: '1.25rem',
   }),
 )
 
 interface TitleParagraphBlockInterface extends BaseBlockProps {
   title: string
-  title_color: NativeColorPickerComponent
-  paragraph_color: NativeColorPickerComponent
   text_position: string
   paragraph: MarkdownHtmlComponent
-  background_color: NativeColorPickerComponent
 }
 
 export const TitleParagraphBlock: React.SFC<TitleParagraphBlockInterface> = ({
   title,
-  title_color,
-  paragraph_color,
   text_position,
   paragraph,
-  background_color,
+  color,
 }) => {
   return (
-    <SectionBackgroundColorComponent backgroundColor={background_color.color}>
+    <SectionWrapper color={color && color.color}>
       <AlignableContentWrapperComponent textPosition={text_position}>
-        <TitleComponent
-          titleColor={title_color.color}
-          textPosition={text_position}
-        >
-          {title}
-        </TitleComponent>
+        <TitleComponent textPosition={text_position}>{title}</TitleComponent>
         <ParagraphComponent
-          paragraphColor={paragraph_color.color}
           textPosition={text_position}
           dangerouslySetInnerHTML={{
             __html: paragraph.html,
           }}
         />
       </AlignableContentWrapperComponent>
-    </SectionBackgroundColorComponent>
+    </SectionWrapper>
   )
 }

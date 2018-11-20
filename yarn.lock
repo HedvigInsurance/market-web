@@ -1076,6 +1076,11 @@
     "@types/express-serve-static-core" "*"
     "@types/mime" "*"
 
+"@types/stack-trace@0.0.29":
+  version "0.0.29"
+  resolved "https://registry.yarnpkg.com/@types/stack-trace/-/stack-trace-0.0.29.tgz#eb7a7c60098edb35630ed900742a5ecb20cfcb4d"
+  integrity sha512-TgfOX+mGY/NyNxJLIbDWrO9DjGoVSW9+aB8H2yy1fy32jsvxijhmyJI9fDFgvz3YP4lvJaq9DzdR/M1bOgVc9g==
+
 "@types/uuid@^3.4.4":
   version "3.4.4"
   resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-3.4.4.tgz#7af69360fa65ef0decb41fd150bf4ca5c0cefdf5"
