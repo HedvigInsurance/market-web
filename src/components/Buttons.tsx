@@ -6,11 +6,11 @@ const buttonSizes = {
   md: '15px 40px',
 }
 
-interface ButtonProps {
-  size: keyof typeof buttonSizes
+interface ButtonInterface {
+  size?: keyof typeof buttonSizes
 }
 
-const Button = styled('button')(({ size = 'md' }: ButtonProps) => ({
+const Button = styled('button')(({ size = 'md' }: ButtonInterface) => ({
   padding: buttonSizes[size],
   margin: 0,
   borderRadius: 30,

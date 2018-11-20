@@ -9,3 +9,9 @@ export interface MarkdownHtmlComponent {
   original: string
   plugin: 'markdown-html'
 }
+
+export interface NativeColorPickerComponent {
+  _uid: string
+  color: string
+  plugin: 'native-color-picker'
+}

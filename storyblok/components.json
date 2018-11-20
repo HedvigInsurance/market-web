@@ -104,7 +104,7 @@
       "real_name": "bullet_point_block"
     },
     {
-      "name": "title_cta_block",
+      "name": "call_to_action_block",
       "display_name": "",
       "schema": {
         "title": {

@@ -1,6 +1,11 @@
 import * as React from 'react'
 import styled from 'react-emotion'
-import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
+import { MaxWidthContainerComponent } from '../components/blockHelpers'
+import {
+  BaseBlockProps,
+  MarkdownHtmlComponent,
+  NativeColorPickerComponent,
+} from './BaseBlockProps'
 
 const SectionComponent = styled('section')(
   ({ backgroundColor }: { backgroundColor: string }) => ({
@@ -58,35 +63,40 @@ const ParagraphComponent = styled('div')(
 
 interface TitleParagraphBlockInterface extends BaseBlockProps {
   title: string
-  titleColor: string
-  paragraphColor: string
-  textPosition: string
+  title_color: NativeColorPickerComponent
+  paragraph_color: NativeColorPickerComponent
+  text_position: string
   paragraph: MarkdownHtmlComponent
-  backgroundColor: string
+  background_color: NativeColorPickerComponent
 }
 
 export const TitleParagraphBlock: React.SFC<TitleParagraphBlockInterface> = ({
-  title = '',
-  titleColor = '',
-  paragraphColor = '',
-  textPosition = '',
-  paragraph = {},
-  backgroundColor = '',
+  title,
+  title_color,
+  paragraph_color,
+  text_position,
+  paragraph,
+  background_color,
 }) => {
   return (
-    <SectionComponent backgroundColor={backgroundColor}>
-      <ContentComponent className="Container" textPosition={textPosition}>
-        <TitleComponent titleColor={titleColor} textPosition={textPosition}>
-          {title}
-        </TitleComponent>
-        <ParagraphComponent
-          paragraphColor={paragraphColor}
-          textPosition={textPosition}
-          dangerouslySetInnerHTML={{
-            __html: paragraph.html,
-          }}
-        />
-      </ContentComponent>
+    <SectionComponent backgroundColor={background_color.color}>
+      <MaxWidthContainerComponent>
+        <ContentComponent textPosition={text_position}>
+          <TitleComponent
+            titleColor={title_color.color}
+            textPosition={text_position}
+          >
+            {title}
+          </TitleComponent>
+          <ParagraphComponent
+            paragraphColor={paragraph_color.color}
+            textPosition={text_position}
+            dangerouslySetInnerHTML={{
+              __html: paragraph.html,
+            }}
+          />
+        </ContentComponent>
+      </MaxWidthContainerComponent>
     </SectionComponent>
   )
 }

@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'react-emotion'
-import { BaseBlockProps } from './BaseBlockProps'
+import { MaxWidthContainerComponent } from '../components/blockHelpers'
+import { BaseBlockProps, NativeColorPickerComponent } from './BaseBlockProps'
 
 import {
   FilledButtonComponent,
@@ -32,34 +33,37 @@ const TitleComponent = styled('h2')(
   }),
 )
 
-interface CtaBlockInterface extends BaseBlockProps {
+interface TitleCtaBlockInterface extends BaseBlockProps {
+  _uid: string
   title: string
-  buttonText: string
-  buttonType: 'filled' | 'outlined'
-  titleColor: string
-  backgroundColor: string
+  button_title: string
+  button_type: 'filled' | 'outlined'
+  title_color: string
+  background_color: NativeColorPickerComponent
 }
 
-export const TitleCtaBlock: React.SFC<CtaBlockInterface> = ({
-  title = '',
-  titleColor = '',
-  buttonText = '',
-  buttonType = 'filled',
-  backgroundColor = '',
+export const TitleCtaBlock: React.SFC<TitleCtaBlockInterface> = ({
+  title,
+  title_color,
+  button_title,
+  button_type,
+  background_color,
 }) => {
   const buttonComponents = {
     filled: FilledButtonComponent,
     outlined: OutlinedButtonComponent,
   }
 
-  const ButtonComponent: React.ComponentType = buttonComponents[buttonType]
+  const ButtonComponent: React.ComponentType = buttonComponents[button_type]
 
   return (
-    <SectionComponent backgroundColor={backgroundColor}>
-      <ContentContainer className="Container">
-        <TitleComponent titleColor={titleColor}>{title}</TitleComponent>
-        <ButtonComponent>{buttonText}</ButtonComponent>
-      </ContentContainer>
+    <SectionComponent backgroundColor={background_color.color}>
+      <MaxWidthContainerComponent>
+        <ContentContainer>
+          <TitleComponent titleColor={title_color}>{title}</TitleComponent>
+          <ButtonComponent>{button_title}</ButtonComponent>
+        </ContentContainer>
+      </MaxWidthContainerComponent>
     </SectionComponent>
   )
 }

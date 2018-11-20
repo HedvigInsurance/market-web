@@ -1,7 +1,11 @@
 import * as React from 'react'
 import styled from 'react-emotion'
-import { SizeContainer } from '../components/SizeContainer'
-import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
+import { MaxWidthContainerComponent } from '../components/blockHelpers'
+import {
+  BaseBlockProps,
+  MarkdownHtmlComponent,
+  NativeColorPickerComponent,
+} from './BaseBlockProps'
 
 import {
   FilledButtonComponent,
@@ -65,53 +69,55 @@ const ImageComponent = styled('img')({
 
 interface ImageTextBlockInterface extends BaseBlockProps {
   title: string
-  titleColor: string
+  title_color: NativeColorPickerComponent
   paragraph: MarkdownHtmlComponent
-  paragraphColor: string
-  textPosition: string
-  buttonText: string
-  buttonType: 'filled' | 'outlined'
-  showButton: true | false
+  paragraph_color: NativeColorPickerComponent
+  text_position: string
+  button_title: string
+  button_type: 'filled' | 'outlined'
+  show_button: true | false
   image: string
-  backgroundColor: string
+  background_color: NativeColorPickerComponent
 }
 
 export const ImageTextBlock: React.SFC<ImageTextBlockInterface> = ({
-  title = '',
-  titleColor = '',
-  paragraph = {},
-  paragraphColor = '',
-  textPosition = '',
-  buttonText = '',
-  buttonType = 'filled',
-  showButton = true,
-  image = '',
-  backgroundColor = '',
+  title,
+  title_color,
+  paragraph,
+  paragraph_color,
+  text_position,
+  button_title,
+  button_type,
+  show_button,
+  image,
+  background_color,
 }) => {
   const buttonComponents = {
     filled: FilledButtonWithMarginComponent,
     outlined: OutlinedButtonWithMarginComponent,
   }
 
-  const ButtonComponent: React.ComponentType = buttonComponents[buttonType]
+  const ButtonComponent: React.ComponentType = buttonComponents[button_type]
 
   return (
-    <SectionComponent backgroundColor={backgroundColor}>
-      <SizeContainer>
-        <ContentContainer className="Container" textPosition={textPosition}>
-          <TextContainer textPosition={textPosition}>
-            <TitleComponent titleColor={titleColor}>{title}</TitleComponent>
+    <SectionComponent backgroundColor={background_color.color}>
+      <MaxWidthContainerComponent>
+        <ContentContainer className="Container" textPosition={text_position}>
+          <TextContainer textPosition={text_position}>
+            <TitleComponent titleColor={title_color.color}>
+              {title}
+            </TitleComponent>
             <ParagraphComponent
-              paragraphColor={paragraphColor}
+              paragraphColor={paragraph_color.color}
               dangerouslySetInnerHTML={{
                 __html: paragraph.html,
               }}
             />
-            {showButton && <ButtonComponent>{buttonText}</ButtonComponent>}
+            {show_button && <ButtonComponent>{button_title}</ButtonComponent>}
           </TextContainer>
-          {textPosition !== 'center' && <ImageComponent src={image} />}
+          {text_position !== 'center' && <ImageComponent src={image} />}
         </ContentContainer>
-      </SizeContainer>
+      </MaxWidthContainerComponent>
     </SectionComponent>
   )
 }
