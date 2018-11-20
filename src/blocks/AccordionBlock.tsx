@@ -45,6 +45,7 @@ const ExpandToggler = styled('button')({
   fontWeight: 'inherit',
   fontFamily: 'inherit',
   padding: 0,
+  color: 'inherit',
   cursor: 'pointer',
 
   '&:focus': {
@@ -105,8 +106,9 @@ interface AccordionBlockProps extends BaseBlockProps {
 export const AccordionBlock: React.FunctionComponent<AccordionBlockProps> = ({
   title,
   accordions,
+  color,
 }) => (
-  <SectionWrapper>
+  <SectionWrapper color={color && color.color}>
     <SplitContentWrapper>
       <Col>
         <h2>{title}</h2>
