@@ -1,29 +1,25 @@
 import * as React from 'react'
 import styled from 'react-emotion'
-import { MaxWidthContainerComponent } from '../components/blockHelpers'
+import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
 import {
   BaseBlockProps,
   MarkdownHtmlComponent,
   NativeColorPickerComponent,
 } from './BaseBlockProps'
 
-const SectionComponent = styled('section')(
+const SectionBackgroundColorComponent = styled(SectionWrapper)(
   ({ backgroundColor }: { backgroundColor: string }) => ({
-    width: '100%',
-    background: backgroundColor,
-    paddingTop: '120px',
-    paddingBottom: '120px',
+    backgroundColor,
   }),
 )
 
-const ContentComponent = styled('div')(
+const AlignableContentWrapperComponent = styled(ContentWrapper)(
   ({ textPosition }: { textPosition: string }) => ({
     display: 'flex',
     flexDirection: textPosition === 'center' ? 'column' : 'row',
     justifyContent: textPosition === 'left' ? 'space-between' : 'center',
     alignItems: 'center',
     textAlign: textPosition === 'center' ? 'center' : 'left',
-    width: '100%',
   }),
 )
 
@@ -79,24 +75,22 @@ export const TitleParagraphBlock: React.SFC<TitleParagraphBlockInterface> = ({
   background_color,
 }) => {
   return (
-    <SectionComponent backgroundColor={background_color.color}>
-      <MaxWidthContainerComponent>
-        <ContentComponent textPosition={text_position}>
-          <TitleComponent
-            titleColor={title_color.color}
-            textPosition={text_position}
-          >
-            {title}
-          </TitleComponent>
-          <ParagraphComponent
-            paragraphColor={paragraph_color.color}
-            textPosition={text_position}
-            dangerouslySetInnerHTML={{
-              __html: paragraph.html,
-            }}
-          />
-        </ContentComponent>
-      </MaxWidthContainerComponent>
-    </SectionComponent>
+    <SectionBackgroundColorComponent backgroundColor={background_color.color}>
+      <AlignableContentWrapperComponent textPosition={text_position}>
+        <TitleComponent
+          titleColor={title_color.color}
+          textPosition={text_position}
+        >
+          {title}
+        </TitleComponent>
+        <ParagraphComponent
+          paragraphColor={paragraph_color.color}
+          textPosition={text_position}
+          dangerouslySetInnerHTML={{
+            __html: paragraph.html,
+          }}
+        />
+      </AlignableContentWrapperComponent>
+    </SectionBackgroundColorComponent>
   )
 }

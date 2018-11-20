@@ -53,18 +53,3 @@ export const ContentWrapper = styled('div')({
     padding: '0 1rem',
   },
 })
-
-export const MaxWidthContainerComponent = styled('div')({
-  marginLeft: 'auto',
-  marginRight: 'auto',
-  maxWidth: '1240px',
-  paddingLeft: '20px',
-  paddingRight: '20px',
-  '&:before': {
-    content: ' ',
-    display: 'table',
-  },
-  '&:after': {
-    clear: 'both',
-  },
-})

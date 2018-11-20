@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from 'react-emotion'
-import { MaxWidthContainerComponent } from '../components/blockHelpers'
+import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
 import { BaseBlockProps, NativeColorPickerComponent } from './BaseBlockProps'
 
 import {
@@ -8,16 +8,13 @@ import {
   OutlinedButtonComponent,
 } from '../components/Buttons'
 
-const SectionComponent = styled('section')(
+const SectionBackgroundColorComponent = styled(SectionWrapper)(
   ({ backgroundColor }: { backgroundColor: string }) => ({
-    width: '100%',
-    background: backgroundColor,
-    paddingTop: '120px',
-    paddingBottom: '120px',
+    backgroundColor,
   }),
 )
 
-const ContentContainer = styled('div')({
+const FlexboxContentWrapperComponent = styled(ContentWrapper)({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',
@@ -57,13 +54,11 @@ export const TitleCtaBlock: React.SFC<TitleCtaBlockInterface> = ({
   const ButtonComponent: React.ComponentType = buttonComponents[button_type]
 
   return (
-    <SectionComponent backgroundColor={background_color.color}>
-      <MaxWidthContainerComponent>
-        <ContentContainer>
-          <TitleComponent titleColor={title_color}>{title}</TitleComponent>
-          <ButtonComponent>{button_title}</ButtonComponent>
-        </ContentContainer>
-      </MaxWidthContainerComponent>
-    </SectionComponent>
+    <SectionBackgroundColorComponent backgroundColor={background_color.color}>
+      <FlexboxContentWrapperComponent>
+        <TitleComponent titleColor={title_color}>{title}</TitleComponent>
+        <ButtonComponent>{button_title}</ButtonComponent>
+      </FlexboxContentWrapperComponent>
+    </SectionBackgroundColorComponent>
   )
 }

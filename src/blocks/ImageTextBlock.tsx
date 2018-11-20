@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from 'react-emotion'
-import { MaxWidthContainerComponent } from '../components/blockHelpers'
+import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
 import {
   BaseBlockProps,
   MarkdownHtmlComponent,
@@ -13,57 +13,53 @@ import {
 } from '../components/Buttons'
 
 const FilledButtonWithMarginComponent = styled(FilledButtonComponent)({
-  marginTop: '47px',
+  marginTop: '3rem',
 })
 
 const OutlinedButtonWithMarginComponent = styled(OutlinedButtonComponent)({
-  marginTop: '47px',
+  marginTop: '3rem',
 })
 
-const SectionComponent = styled('section')(
+const SectionBackgroundColorComponent = styled(SectionWrapper)(
   ({ backgroundColor }: { backgroundColor: string }) => ({
-    width: '100%',
-    background: backgroundColor,
-    paddingTop: '120px',
-    paddingBottom: '120px',
+    backgroundColor,
   }),
 )
 
-const ContentContainer = styled('div')(
+const AlignableContentWrapperComponent = styled(ContentWrapper)(
   ({ textPosition }: { textPosition: string }) => ({
     display: 'flex',
     flexDirection: textPosition === 'right' ? 'row-reverse' : 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: '100%',
   }),
 )
 
-const TextContainer = styled('div')(
+const TextWrapperComponent = styled('div')(
   ({ textPosition }: { textPosition: string }) => ({
     textAlign: textPosition === 'center' ? 'center' : 'left',
     width: '100%',
-    paddingRight: textPosition === 'left' ? '120px' : '0',
-    paddingLeft: textPosition === 'right' ? '120px' : '0',
+    paddingRight: textPosition === 'left' ? '7rem' : '0',
+    paddingLeft: textPosition === 'right' ? '7rem' : '0',
   }),
 )
 
 const TitleComponent = styled('h2')(
   ({ titleColor }: { titleColor: string }) => ({
     color: titleColor,
-    fontSize: '48px',
+    fontSize: '3rem',
   }),
 )
 
 const ParagraphComponent = styled('div')(
   ({ paragraphColor }: { paragraphColor: string }) => ({
     color: paragraphColor,
-    fontSize: '20px',
-    marginTop: '25px',
+    fontSize: '1.25rem',
+    marginTop: '1.5rem',
   }),
 )
 
-const ImageComponent = styled('img')({
+const Image = styled('img')({
   width: '40%',
 })
 
@@ -100,24 +96,22 @@ export const ImageTextBlock: React.SFC<ImageTextBlockInterface> = ({
   const ButtonComponent: React.ComponentType = buttonComponents[button_type]
 
   return (
-    <SectionComponent backgroundColor={background_color.color}>
-      <MaxWidthContainerComponent>
-        <ContentContainer className="Container" textPosition={text_position}>
-          <TextContainer textPosition={text_position}>
-            <TitleComponent titleColor={title_color.color}>
-              {title}
-            </TitleComponent>
-            <ParagraphComponent
-              paragraphColor={paragraph_color.color}
-              dangerouslySetInnerHTML={{
-                __html: paragraph.html,
-              }}
-            />
-            {show_button && <ButtonComponent>{button_title}</ButtonComponent>}
-          </TextContainer>
-          {text_position !== 'center' && <ImageComponent src={image} />}
-        </ContentContainer>
-      </MaxWidthContainerComponent>
-    </SectionComponent>
+    <SectionBackgroundColorComponent backgroundColor={background_color.color}>
+      <AlignableContentWrapperComponent textPosition={text_position}>
+        <TextWrapperComponent textPosition={text_position}>
+          <TitleComponent titleColor={title_color.color}>
+            {title}
+          </TitleComponent>
+          <ParagraphComponent
+            paragraphColor={paragraph_color.color}
+            dangerouslySetInnerHTML={{
+              __html: paragraph.html,
+            }}
+          />
+          {show_button && <ButtonComponent>{button_title}</ButtonComponent>}
+        </TextWrapperComponent>
+        {text_position !== 'center' && <Image src={image} />}
+      </AlignableContentWrapperComponent>
+    </SectionBackgroundColorComponent>
   )
 }
