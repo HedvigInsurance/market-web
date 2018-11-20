@@ -60,7 +60,7 @@ export const ContentWrapper = styled('div')({
   },
 })
 
-const ErrorSection = styled(SectionWrapper)({
+const ErrorBlockWrapper = styled(SectionWrapper)({
   background: 'red',
   color: 'white',
 })
@@ -68,11 +68,11 @@ export const ErrorBlockComponent: React.FunctionComponent<
   { message: string } & RouteComponentProps
 > = ({ message, location }) =>
   location.search.includes('_storyblok=') ? (
-    <ErrorSection>
+    <ErrorBlockWrapper>
       <ContentWrapper>
         <h1>{message}</h1>
       </ContentWrapper>
-    </ErrorSection>
+    </ErrorBlockWrapper>
   ) : null
 
 export const ErrorBlock = withRouter(ErrorBlockComponent)
