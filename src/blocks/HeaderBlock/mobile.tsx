@@ -1,3 +1,4 @@
+import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
 import styled, { keyframes } from 'react-emotion'
 import {
@@ -6,7 +7,6 @@ import {
   MOBILE_BP_DOWN,
 } from '../../components/blockHelpers'
 import { HEADER_VERTICAL_PADDING, TOGGLE_TRANSITION_TIME } from './index'
-import { colors } from '@hedviginsurance/brand'
 
 export const TABLET_BP_DOWN = '@media (max-width: 800px)'
 export const TABLET_BP_UP = '@media (min-width: 801px)'
