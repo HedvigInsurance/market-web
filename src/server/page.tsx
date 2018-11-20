@@ -11,7 +11,6 @@ import { StaticRouter, StaticRouterContext } from 'react-router'
 import { Logger } from 'typescript-logging'
 import { App } from '../App'
 import { sentryConfig } from './config/sentry'
-import { appLogger } from './logging'
 import {
   getDraftedStoryById,
   getPublishedStoryFromSlug,
