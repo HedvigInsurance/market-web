@@ -1,5 +1,5 @@
-import axios from 'axios'
-import { BodyStory } from '../../storyblok/StoryContainer'
+import axios, { AxiosResponse } from 'axios'
+import { BodyStory, GlobalStory } from '../../storyblok/StoryContainer'
 import { config } from '../config'
 import { appLogger } from '../logging'
 
@@ -15,14 +15,25 @@ const apiClient = axios.create({
   baseURL: 'https://api.storyblok.com',
 })
 
-export const getGlobalStory = (cacheVersion?: string) =>
-  apiClient.get<BodyStory>(`/v1/cdn/stories/global`, {
-    params: {
-      token: config.storyblokApiToken,
-      find_by: 'slug',
-      cv: cacheVersion,
-    },
-  })
+export const getGlobalStory = async (
+  cacheVersion?: string,
+): Promise<AxiosResponse<GlobalStory> | undefined> => {
+  try {
+    return await apiClient.get<GlobalStory>(`/v1/cdn/stories/global`, {
+      params: {
+        token: config.storyblokApiToken,
+        find_by: 'slug',
+        cv: cacheVersion || getRemoteCacheVersionTimestamp(),
+      },
+    })
+  } catch (e) {
+    if (e.response && e.response.status === 404) {
+      return undefined
+    }
+
+    throw e
+  }
+}
 
 export const getPublishedStoryFromSlug = (
   path: string,
