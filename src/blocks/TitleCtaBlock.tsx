@@ -19,7 +19,6 @@ const FlexboxContentWrapperComponent = styled(ContentWrapper)({
 const TitleComponent = styled('h2')({
   fontSize: '3rem',
   paddingRight: '7rem',
-  width: '100%',
 })
 
 interface TitleCtaBlockInterface extends BaseBlockProps {
