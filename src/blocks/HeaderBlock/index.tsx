@@ -4,11 +4,12 @@ import * as React from 'react'
 import styled from 'react-emotion'
 import { ContentWrapper, ErrorBlock } from '../../components/blockHelpers'
 import { ButtonLink } from '../../components/buttons'
+import { Togglable } from '../../components/containers/Togglable'
 import { HedvigWordmark } from '../../components/icons/HedvigWordmark'
 import { GlobalStory } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok-link'
 import { BaseBlockProps } from '../BaseBlockProps'
-import { Burger, MobileVisibility, TABLET_BP_DOWN } from './mobile'
+import { Burger, TABLET_BP_DOWN } from './mobile'
 
 export const WRAPPER_HEIGHT = '5rem'
 export const HEADER_VERTICAL_PADDING = '1.5rem'
@@ -110,37 +111,13 @@ interface HeaderBlockProps extends BaseBlockProps {
   inverse_colors: boolean
 }
 
-interface MobileVisibilityEffects {
-  toggleOpen: () => void
-}
-
 const Header: React.FunctionComponent<
   { story: GlobalStory } & HeaderBlockProps
 > = ({ story, is_transparent, inverse_colors }) => (
   <>
     {!is_transparent && <Filler />}
 
-    <Container<MobileVisibility, {}, {}, MobileVisibilityEffects>
-      initialState={{ isOpen: false, isClosing: false }}
-      effects={{
-        toggleOpen: () => ({ setState, state }) => {
-          if (state.isClosing) {
-            return
-          }
-
-          if (state.isOpen) {
-            setState({ isClosing: true, isOpen: false })
-            setTimeout(
-              () => setState({ isClosing: false }),
-              TOGGLE_TRANSITION_TIME,
-            )
-            return
-          }
-
-          setState({ isOpen: true })
-        },
-      }}
-    >
+    <Togglable>
       {({ isOpen, isClosing, toggleOpen }) => (
         <Wrapper
           inverse={is_transparent && inverse_colors}
@@ -185,7 +162,7 @@ const Header: React.FunctionComponent<
           </ContentWrapper>
         </Wrapper>
       )}
-    </Container>
+    </Togglable>
   </>
 )
 
