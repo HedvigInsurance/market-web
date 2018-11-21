@@ -29,7 +29,7 @@ const Col = styled('div')(({ pad }: { pad: 'left' | 'right' }) => ({
 }))
 
 const Title = styled('h3')({
-  fontSize: 20,
+  fontSize: '1.25rem',
 })
 
 const TextContent = styled('div')({
