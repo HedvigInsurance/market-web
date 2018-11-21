@@ -19,6 +19,7 @@ export const tmpOldRoutes: ReadonlyArray<string> = [
   '/favicons/*',
   '/*.html',
 
+  '/',
   '/student',
   '/giving-back',
   '/faq',
