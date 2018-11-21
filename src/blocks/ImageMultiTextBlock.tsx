@@ -1,7 +1,13 @@
 import * as React from 'react'
 import styled from 'react-emotion'
-import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
+import {
+  ContentWrapper,
+  MOBILE_BP_DOWN,
+  SectionWrapper,
+} from '../components/blockHelpers'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
+
+const TABLET_BP_DOWN = '@media (max-width: 800px)'
 
 const Wrapper = styled('div')(
   ({ imagePosition }: { imagePosition: 'left' | 'right' }) => ({
@@ -9,7 +15,10 @@ const Wrapper = styled('div')(
     flexDirection: imagePosition === 'left' ? 'row' : 'row-reverse',
     alignItems: 'center',
 
-    // TODO responsive
+    [TABLET_BP_DOWN]: {
+      flexDirection: 'column',
+      justifyContent: 'center',
+    },
   }),
 )
 
@@ -17,6 +26,10 @@ const Col = styled('div')(({ pad }: { pad: 'left' | 'right' }) => ({
   width: '50%',
   paddingLeft: pad === 'left' ? '1rem' : 0,
   paddingRight: pad === 'right' ? '1rem' : 0,
+  [TABLET_BP_DOWN]: {
+    padding: 0,
+    width: 'auto',
+  },
 }))
 
 export interface ImageMultiTextBlockProps extends BaseBlockProps {
