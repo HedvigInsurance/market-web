@@ -11,6 +11,7 @@ import { StaticRouter, StaticRouterContext } from 'react-router'
 import { Logger } from 'typescript-logging'
 import { App } from '../App'
 import { sentryConfig } from './config/sentry'
+import { favicons } from './utils/favicons'
 import {
   getDraftedStoryById,
   getGlobalStory,
@@ -47,6 +48,7 @@ const template = ({
     ${helmet.title}
     ${helmet.link}
     ${helmet.meta}
+    ${favicons}
     <script src="https://browser.sentry-cdn.com/4.2.3/bundle.min.js" crossorigin="anonymous"></script>
     <script nonce="${nonce}">
       Sentry.init(${JSON.stringify(sentryConfig())})
@@ -97,7 +99,7 @@ const getStoryblokResponseFromContext = async (ctx: Koa.Context) => {
   }
 }
 
-export const getPageMiddleware: Koa.Middleware = async (ctx) => {
+export const getPageMiddleware: Koa.Middleware = async (ctx, next) => {
   const routerContext: StaticRouterContext & { statusCode?: number } = {}
   const helmetContext = {}
 
@@ -112,7 +114,7 @@ export const getPageMiddleware: Koa.Middleware = async (ctx) => {
   ])
 
   if (!story) {
-    ctx.status = 404
+    await next()
     return
   }
 

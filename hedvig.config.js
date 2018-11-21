@@ -8,7 +8,7 @@ module.exports = {
   serverPath: path.resolve(__dirname, 'build/'), // Build asset path
   port: 8031, // The WDS port
   developmentPublicPath: 'http://0.0.0.0:8031/', // Client public path during development, i.e. "http://0.0.0.0:8081/". Port must match the port directive
-  productionPublicPath: undefined, //  Client public path in production, i.e. "/assets/"
+  productionPublicPath: '/assets-next/', //  Client public path in production, i.e. "/assets/"
   envVars: [
     'STORYBLOK_API_TOKEN',
     'HOST',
