@@ -1,10 +1,6 @@
 import * as React from 'react'
 import styled from 'react-emotion'
-import {
-  ContentWrapper,
-  MOBILE_BP_DOWN,
-  SectionWrapper,
-} from '../components/blockHelpers'
+import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 const TABLET_BP_DOWN = '@media (max-width: 800px)'
