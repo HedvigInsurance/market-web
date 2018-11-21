@@ -4,6 +4,8 @@ import styled from 'react-emotion'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
 import { BaseBlockProps } from './BaseBlockProps'
 
+const TABLET_BP_DOWN = '@media (max-width: 850px)'
+
 type TextPosition = 'left' | 'right' | 'center'
 
 const textFlexPositionMap = {
@@ -24,6 +26,10 @@ const QuoteWrapper = styled('div')(
   ({ textPosition }: { textPosition: TextPosition }) => ({
     width: textPosition === 'center' ? '66%' : '50%',
     textAlign: textPosition === 'center' ? 'center' : 'left',
+
+    [TABLET_BP_DOWN]: {
+      width: '100%',
+    },
   }),
 )
 
