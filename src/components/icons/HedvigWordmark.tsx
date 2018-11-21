@@ -12,7 +12,6 @@ export const HedvigWordmark: React.FunctionComponent<{ height: number }> = ({
     width={String(height * 3.2)}
     height={String(height)}
     viewBox="0 0 96 30"
-    version="1.1"
   >
     <path
       d="M 2.2342 4.53659C 3.4681 4.53659 4.4684 3.52104 4.4684 2.26829C 4.4684 1.01555 3.4681 0 2.2342 0C 1.0003 0 -3.01514e-06 1.01555 -3.01514e-06 2.26829C -3.01514e-06 3.52104 1.0003 4.53659 2.2342 4.53659Z"
