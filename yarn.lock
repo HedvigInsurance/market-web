@@ -2286,6 +2286,13 @@ co-body@^6.0.0:
     raw-body "^2.3.3"
     type-is "^1.6.16"
 
+co-request@^0.2.0:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/co-request/-/co-request-0.2.1.tgz#6428c002ad4229b3eda6725022aeccf273bee3fb"
+  integrity sha1-ZCjAAq1CKbPtpnJQIq7M8nO+4/s=
+  dependencies:
+    request "*"
+
 co@^4.6.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/co/-/co-4.6.0.tgz#6ea6bdf3d853ae54ccb8e47bfa0bf3f9031fb184"
@@ -4277,6 +4284,11 @@ iconv-lite@0.4.24, iconv-lite@^0.4.4:
   dependencies:
     safer-buffer ">= 2.1.2 < 3"
 
+iconv-lite@^0.2.11:
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.2.11.tgz#1ce60a3a57864a292d1321ff4609ca4bb965adc8"
+  integrity sha1-HOYKOleGSiktEyH/RgnKS7llrcg=
+
 ieee754@^1.1.4:
   version "1.1.12"
   resolved "https://registry.yarnpkg.com/ieee754/-/ieee754-1.1.12.tgz#50bf24e5b9c8bb98af4964c941cdb0918da7b60b"
@@ -5417,6 +5429,19 @@ koa-mount@^4.0.0:
   dependencies:
     debug "^4.0.1"
     koa-compose "^4.1.0"
+
+koa-proxy@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/koa-proxy/-/koa-proxy-0.9.0.tgz#4fd13b0f2eea9be097445bf7b7b4398856a22ef6"
+  integrity sha512-Q6AmOLD7su4EPyUXfGt6TG7/LQ3L5YHzI3DW/yAS1PySpdhESGZ69zAVXr5GyZTbj/CY1hAGSv5l00EJb+n7zA==
+  dependencies:
+    co-request "^0.2.0"
+    iconv-lite "^0.2.11"
+
+koa-remove-trailing-slashes@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/koa-remove-trailing-slashes/-/koa-remove-trailing-slashes-2.0.0.tgz#65e391a22795b2f867fb08c801e7391d29ccb69b"
+  integrity sha512-sM1uqBTKzcSiliJZ2XcBjMtdJpeYkff+JvSZeZMudJ89/qSBEKbVRW4YyeYIOC6yi+426jrJdSH+7bXSkegk6g==
 
 koa-router@^7.4.0:
   version "7.4.0"
@@ -7363,7 +7388,7 @@ request-promise-native@^1.0.5:
     stealthy-require "^1.1.0"
     tough-cookie ">=2.3.3"
 
-request@^2.87.0:
+request@*, request@^2.87.0:
   version "2.88.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.88.0.tgz#9c2fca4f7d35b592efe57c7f0a55e81052124fef"
   integrity sha512-NAqBSrijGLZdM0WZNsInLJpkJokL72XYjUpnB0iwsRgxh7dB6COrHnTBNwN0E+lHDAJzu7kLAkDeY08z2/A0hg==
