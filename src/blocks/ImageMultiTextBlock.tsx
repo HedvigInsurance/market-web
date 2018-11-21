@@ -28,6 +28,16 @@ const Col = styled('div')(({ pad }: { pad: 'left' | 'right' }) => ({
   },
 }))
 
+const Title = styled('h3')({
+  fontSize: 20,
+})
+
+const TextContent = styled('div')({
+  'p:first-of-type': {
+    marginTop: 0,
+  },
+})
+
 export interface ImageMultiTextBlockProps extends BaseBlockProps {
   image_position: 'left' | 'right'
   image: string
@@ -47,10 +57,10 @@ export const ImageMultiTextBlock: React.FunctionComponent<
         </Col>
         <Col pad={image_position === 'left' ? 'left' : 'right'}>
           {text_items.map((item) => (
-            <div key={item._uid}>
-              <h3>{item.title}</h3>
+            <TextContent key={item._uid}>
+              <Title>{item.title}</Title>
               <div dangerouslySetInnerHTML={{ __html: item.paragraph.html }} />
-            </div>
+            </TextContent>
           ))}
         </Col>
       </Wrapper>
