@@ -582,38 +582,44 @@
       "name": "single_quote_block",
       "display_name": null,
       "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
         "quote": {
           "type": "text",
-          "pos": 0
+          "pos": 1
         },
         "author": {
           "type": "text",
-          "pos": 1
+          "pos": 2
         },
         "text_position": {
           "type": "option",
           "options": [
             {
-              "value": "true",
-              "name": "right"
+              "value": "right",
+              "name": "Right"
             },
             {
-              "value": "true",
-              "name": "center"
+              "value": "center",
+              "name": "Center"
             },
             {
-              "value": "true",
-              "name": "left"
+              "value": "left",
+              "name": "Left"
             }
           ],
           "default_value": "center",
           "required": true,
-          "pos": 2
+          "pos": 3
         },
         "background_image": {
           "type": "image",
           "required": false,
-          "pos": 3
+          "pos": 4
         }
       },
       "image": null,
