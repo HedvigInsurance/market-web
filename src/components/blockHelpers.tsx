@@ -39,8 +39,14 @@ const getColorStyles = (color?: colorComponentColors) =>
   colorMap[color || 'standard'] || colorMap.standard
 
 export const SectionWrapper = styled('section')(
-  ({ color }: { color?: colorComponentColors }) => ({
-    padding: '7rem 0',
+  ({
+    color,
+    size = 'lg',
+  }: {
+    color?: colorComponentColors
+    size?: 'sm' | 'lg'
+  }) => ({
+    padding: `${size === 'lg' ? '7rem' : '3.5rem'} 0`,
     ...getColorStyles(color),
   }),
 )
