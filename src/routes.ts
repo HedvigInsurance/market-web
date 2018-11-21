@@ -7,11 +7,11 @@ export interface Route {
   exact: boolean
 }
 
-export const routes: ReadonlyArray<Route> = [
+export const routes: Route[] = [
   { path: '/*', exact: false, Component: StoryPage },
 ]
 
-export const tmpOldRoutes: ReadonlyArray<string> = [
+export const tmpOldRoutes: string[] = [
   '/*.js',
   '/static/*',
   '/assets/*',
@@ -19,7 +19,7 @@ export const tmpOldRoutes: ReadonlyArray<string> = [
   '/favicons/*',
   '/*.html',
 
-  '/',
+  '//',
   '/student',
   '/giving-back',
   '/faq',
