@@ -19,7 +19,7 @@ export const tmpOldRoutes: string[] = [
   '/favicons/*',
   '/*.html',
 
-  '//',
+  '/',
   '/student',
   '/giving-back',
   '/faq',
