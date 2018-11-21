@@ -4,8 +4,11 @@ import { createKoaServer } from '@hedviginsurance/web-survival-kit'
 import * as Sentry from '@sentry/node'
 import { IHelmetConfiguration } from 'helmet'
 import * as bodyParser from 'koa-bodyparser'
+import * as convert from 'koa-convert'
+import * as proxy from 'koa-proxy'
+import * as removeTrailingSlashes from 'koa-remove-trailing-slashes'
 import { Logger } from 'typescript-logging'
-import { routes } from '../routes'
+import { routes, tmpOldRoutes } from '../routes'
 import { config } from './config'
 import { helmetConfig } from './config/helmetConfig'
 import { sentryConfig } from './config/sentry'
@@ -56,12 +59,13 @@ if (process.env.USE_HELMET) {
 }
 
 const server = createKoaServer({
-  publicPath: '/assets',
+  publicPath: '/assets-next',
   assetLocation: __dirname + '/assets',
   helmetConfig: helmetConfigToUse,
   authConfig,
 })
 
+server.router.use('/*', removeTrailingSlashes())
 server.router.use(
   bodyParser({
     extendTypes: { json: ['application/csp-report'] },
@@ -83,6 +87,18 @@ server.router.post('/_report-csp-violation', (ctx) => {
   )
   ctx.status = 204
 })
+
+tmpOldRoutes.forEach((route) => {
+  server.router.use(
+    route,
+    convert(
+      proxy({
+        host: 'https://hedvig.netlify.com',
+      }),
+    ),
+  )
+})
+
 routes.forEach((route) => {
   server.router.get(route.path, getPageMiddleware)
 })
