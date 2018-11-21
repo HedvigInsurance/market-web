@@ -13,6 +13,7 @@ import { App } from '../App'
 import { sentryConfig } from './config/sentry'
 import {
   getDraftedStoryById,
+  getGlobalStory,
   getPublishedStoryFromSlug,
   getStoryblokEditorScript,
 } from './utils/storyblok'
@@ -85,10 +86,7 @@ const getStoryblokResponseFromContext = async (ctx: Koa.Context) => {
           ctx.request.path
         }", bypass_cache=${String(bypassCache)}]`,
       )
-      return await getPublishedStoryFromSlug(
-        ctx.request.path,
-        bypassCache ? String(Date.now() / 1000) : undefined,
-      )
+      return await getPublishedStoryFromSlug(ctx.request.path, bypassCache)
     }
   } catch (e) {
     if ((e as AxiosError).response && e.response.status === 404) {
@@ -103,7 +101,15 @@ export const getPageMiddleware: Koa.Middleware = async (ctx) => {
   const routerContext: StaticRouterContext & { statusCode?: number } = {}
   const helmetContext = {}
 
-  const story = await getStoryblokResponseFromContext(ctx)
+  const [story, globalStory] = await Promise.all([
+    getStoryblokResponseFromContext(ctx),
+    getGlobalStory(
+      Boolean(
+        ctx.request.query['_storyblok_tk[timestamp]'] ||
+          ctx.query._storyblok_published,
+      ),
+    ),
+  ])
 
   if (!story) {
     ctx.status = 404
@@ -111,7 +117,12 @@ export const getPageMiddleware: Koa.Middleware = async (ctx) => {
   }
 
   const serverApp = (
-    <Provider initialState={{ story: story.data }}>
+    <Provider
+      initialState={{
+        story: story.data,
+        globalStory: globalStory && globalStory.data,
+      }}
+    >
       <StaticRouter location={ctx.request.originalUrl} context={routerContext}>
         <HelmetProvider context={helmetContext}>
           <App />
@@ -132,7 +143,10 @@ export const getPageMiddleware: Koa.Middleware = async (ctx) => {
 
   ctx.body = template({
     body,
-    initialState: story.data,
+    initialState: {
+      story: story.data,
+      globalStory: globalStory && globalStory.data,
+    },
     helmet: (helmetContext as FilledContext).helmet,
     dangerouslyExposeApiKeyToProvideEditing: ctx.request.query._storyblok,
     nonce: (ctx.res as any).cspNonce,

@@ -1,5 +1,7 @@
 import { colors } from '@hedviginsurance/brand'
+import * as React from 'react'
 import styled from 'react-emotion'
+import { RouteComponentProps, withRouter } from 'react-router'
 import { colorComponentColors } from '../blocks/BaseBlockProps'
 
 const colorMap = {
@@ -43,13 +45,34 @@ export const SectionWrapper = styled('section')(
   }),
 )
 
+export const CONTENT_GUTTER = '2rem'
+export const CONTENT_GUTTER_MOBILE = '1rem'
+export const MOBILE_BP_UP = '@media (min-width: 481px)'
+export const MOBILE_BP_DOWN = '@media (max-width: 480px)'
 export const ContentWrapper = styled('div')({
   width: '100%',
   maxWidth: 1200,
-  padding: '0 2rem',
+  padding: '0 ' + CONTENT_GUTTER,
   margin: '0 auto',
 
-  '@media (max-width: 480px)': {
-    padding: '0 1rem',
+  [MOBILE_BP_DOWN]: {
+    padding: '0 ' + CONTENT_GUTTER_MOBILE,
   },
 })
+
+const ErrorBlockWrapper = styled(SectionWrapper)({
+  background: 'red',
+  color: 'white',
+})
+export const ErrorBlockComponent: React.FunctionComponent<
+  { message: string } & RouteComponentProps
+> = ({ message, location }) =>
+  location.search.includes('_storyblok=') ? (
+    <ErrorBlockWrapper>
+      <ContentWrapper>
+        <h1>{message}</h1>
+      </ContentWrapper>
+    </ErrorBlockWrapper>
+  ) : null
+
+export const ErrorBlock = withRouter(ErrorBlockComponent)
