@@ -171,6 +171,71 @@
       "real_name": "call_to_action_block"
     },
     {
+      "name": "global",
+      "display_name": null,
+      "schema": {
+        "header_menu_items": {
+          "type": "bloks",
+          "pos": 0,
+          "maximum": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "menu_item"
+          ]
+        },
+        "cta": {
+          "type": "section",
+          "keys": [
+            "show_cta",
+            "cta_link",
+            "cta_label"
+          ],
+          "pos": 1
+        },
+        "show_cta": {
+          "type": "boolean",
+          "pos": 2
+        },
+        "cta_label": {
+          "type": "text",
+          "pos": 3
+        },
+        "cta_link": {
+          "type": "multilink",
+          "pos": 4
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "global"
+    },
+    {
+      "name": "header_block",
+      "display_name": null,
+      "schema": {
+        "is_transparent": {
+          "type": "boolean",
+          "pos": 0
+        },
+        "inverse_colors": {
+          "type": "boolean",
+          "pos": 1,
+          "display_name": "Inverse Colors (transparent header only)"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "header_block"
+    },
+    {
       "name": "icon_bullet_point_item",
       "display_name": "",
       "schema": {
@@ -445,6 +510,33 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "logotype_item"
+    },
+    {
+      "name": "menu_item",
+      "display_name": null,
+      "schema": {
+        "label": {
+          "type": "text",
+          "required": true,
+          "pos": 0
+        },
+        "link": {
+          "type": "multilink",
+          "restrict_content_types": true,
+          "component_whitelist": [
+            "page"
+          ],
+          "required": true,
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "menu_item"
     },
     {
       "name": "multi_logotype_block",

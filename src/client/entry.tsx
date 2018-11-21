@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { HotApp } from '../App'
 
 ReactDOM.hydrate(
-  <Provider initialState={{ story: (window as any).__INITIAL_STATE__ }}>
+  <Provider initialState={{ ...(window as any).__INITIAL_STATE__ }}>
     <BrowserRouter>
       <HelmetProvider>
         <HotApp />
