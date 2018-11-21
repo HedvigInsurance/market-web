@@ -88,20 +88,16 @@ server.router.post('/_report-csp-violation', (ctx) => {
   ctx.status = 204
 })
 
-tmpOldRoutes.forEach((route) => {
-  server.router.use(
-    route,
-    convert(
-      proxy({
-        host: 'https://hedvig.netlify.com',
-      }),
-    ),
-  )
-})
+server.router.get(routes.map(({ path }) => path), getPageMiddleware)
 
-routes.forEach((route) => {
-  server.router.get(route.path, getPageMiddleware)
-})
+server.router.use(
+  tmpOldRoutes,
+  convert(
+    proxy({
+      host: 'https://hedvig.netlify.com',
+    }),
+  ),
+)
 
 server.app.listen(getPort(), () => {
   appLogger.info(`Server started 🚀 listening on port ${getPort()}`)
