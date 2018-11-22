@@ -6,7 +6,11 @@ import {
   MOBILE_BP_DOWN,
   SectionWrapper,
 } from '../components/blockHelpers'
-import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
+import {
+  BaseBlockProps,
+  ColorComponent,
+  MarkdownHtmlComponent,
+} from './BaseBlockProps'
 
 const AlignableContentWrapper = styled(ContentWrapper)(
   ({ textPosition }: { textPosition: TextPosition }) => ({
@@ -51,9 +55,10 @@ interface TitleParagraphBlockInterface extends BaseBlockProps {
   title: string
   text_position: TextPosition
   paragraph: MarkdownHtmlComponent
+  color: ColorComponent
 }
 
-export const TitleParagraphBlock: React.Function<
+export const TitleParagraphBlock: React.FunctionComponent<
   TitleParagraphBlockInterface
 > = ({ title, text_position, paragraph, color }) => {
   return (
