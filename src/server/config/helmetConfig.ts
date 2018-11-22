@@ -1,10 +1,10 @@
 import { IHelmetConfiguration } from 'helmet'
-import * as uuidV4 from 'uuid/v4'
+// import * as uuidV4 from 'uuid/v4'
 
 const defaultSrc = [
   "'self'",
   'cdn.hedvig.com',
-  'app.storyblok.com',
+  'https://*.storyblok.com',
   'www.googletagmanager.com',
   'https://*.hotjar.com',
   'wss://*.hotjar.com',
