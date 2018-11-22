@@ -70,13 +70,13 @@
       "name": "bullet_point_block",
       "display_name": "",
       "schema": {
-        "title": {
-          "type": "text",
-          "regex": "",
-          "required": false,
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
           "pos": 0
         },
-        "title_position": {
+        "bullet_points_position": {
           "type": "option",
           "options": [
             {
@@ -86,9 +86,13 @@
             {
               "value": "center",
               "name": "Center"
+            },
+            {
+              "value": "right",
+              "name": "Right"
             }
           ],
-          "default_value": "center",
+          "default_value": "left",
           "pos": 1
         },
         "bullet_points": {
@@ -96,7 +100,6 @@
           "maximum": "6",
           "restrict_components": true,
           "component_whitelist": [
-            "icon_bullet_point_item",
             "image_bullet_point_item"
           ],
           "required": true,
@@ -270,21 +273,28 @@
       "display_name": "",
       "schema": {
         "image": {
-          "type": "text",
+          "type": "image",
           "pos": 0,
-          "required": true
+          "required": true,
+          "display_name": "",
+          "regex": "",
+          "image_crop": false,
+          "image_width": "375",
+          "image_height": "240"
         },
         "title": {
           "type": "text",
           "required": true,
-          "default_value": "Default Text",
+          "default_value": "",
           "pos": 1
         },
         "paragraph": {
-          "type": "textarea",
-          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
+          "type": "custom",
+          "default_value": "",
           "required": true,
-          "pos": 2
+          "pos": 2,
+          "field_type": "markdown-html",
+          "options": []
         }
       },
       "image": null,
