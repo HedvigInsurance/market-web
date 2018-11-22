@@ -4,6 +4,7 @@ import { BaseBlockProps } from './BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock'
 import { HeaderBlock } from './HeaderBlock'
 import { ImageMultiTextBlock } from './ImageMultiTextBlock'
+import { ImageTextBlock } from './ImageTextBlock'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
 
 const blockComponents = {
@@ -12,6 +13,7 @@ const blockComponents = {
   bullet_point_block: BulletPointBlock,
   image_multi_text_block: ImageMultiTextBlock,
   single_quote_block: SingleQuoteBlock,
+  image_text_block: ImageTextBlock,
 }
 
 export const getBlockComponent = <
