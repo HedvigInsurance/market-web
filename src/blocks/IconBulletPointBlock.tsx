@@ -80,7 +80,7 @@ const BulletPointListComponent = styled('div')({
   },
 })
 
-export const BulletPointBlock: React.FunctionComponent<
+export const IconBulletPointBlock: React.FunctionComponent<
   BulletPointBlockInterface
 > = ({ title, title_position, bullet_points, color }) => {
   return (
