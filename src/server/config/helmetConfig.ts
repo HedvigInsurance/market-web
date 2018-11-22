@@ -29,7 +29,7 @@ export const helmetConfig = (): IHelmetConfiguration => ({
       defaultSrc,
       scriptSrc: [
         ...defaultSrc,
-        '"unsafe-inline"', // TODO remove this when old site is dead 💀
+        "'unsafe-inline'", // TODO remove this when old site is dead 💀
         "'unsafe-eval'",
         'browser.sentry-cdn.com',
         'cdn.segment.com',
