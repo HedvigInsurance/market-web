@@ -1,6 +1,11 @@
 import * as React from 'react'
 import styled from 'react-emotion'
-import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
+import {
+  ContentWrapper,
+  MOBILE_BP_DOWN,
+  SectionWrapper,
+  TABLET_BP_DOWN,
+} from '../components/blockHelpers'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 interface IconBulletPointItemBlockInterface {
@@ -15,9 +20,6 @@ interface BulletPointBlockInterface extends BaseBlockProps {
   title_position: string
   bullet_points: IconBulletPointItemBlockInterface[]
 }
-
-const MOBILE_BP_DOWN = '@media (max-width: 480px)'
-const TABLET_BP_DOWN = '@media (max-width: 800px)'
 
 const ParagraphComponent = styled('div')({
   width: '100%',
