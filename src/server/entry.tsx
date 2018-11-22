@@ -14,8 +14,8 @@ import { helmetConfig } from './config/helmetConfig'
 import { sentryConfig } from './config/sentry'
 import { appLogger } from './logging'
 import { inCaseOfEmergency } from './middlewares/enhancers'
-import { getPageMiddleware } from './page'
 import { forceHost } from './middlewares/redirects'
+import { getPageMiddleware } from './page'
 
 Sentry.init({
   ...sentryConfig(),
