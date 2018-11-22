@@ -2,17 +2,10 @@ import { fonts } from '@hedviginsurance/brand/dist'
 import * as React from 'react'
 import styled from 'react-emotion'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
+import { textFlexPositionMap, TextPosition } from '../utils/utils/textPosition'
 import { BaseBlockProps } from './BaseBlockProps'
 
 const TABLET_BP_DOWN = '@media (max-width: 850px)'
-
-type TextPosition = 'left' | 'right' | 'center'
-
-const textFlexPositionMap = {
-  left: 'flex-start',
-  center: 'space-around',
-  right: 'flex-end',
-}
 
 const Wrapper = styled('div')(
   ({ textPosition }: { textPosition: TextPosition }) => ({
