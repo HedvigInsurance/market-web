@@ -129,92 +129,87 @@ class Header extends React.PureComponent<
   public render() {
     return (
       <>
-        <>
-          <Mount
-            on={() => {
-              if (!this.props.is_transparent) {
-                return
-              }
+        <Mount
+          on={() => {
+            if (!this.props.is_transparent) {
+              return
+            }
 
-              setTimeout(() => {
-                this.updateHeaderTransparency() // update the scroll animation after mount because the server doesn't know scroll position
-              }, 1)
-              window.addEventListener('scroll', this.updateHeaderTransparency)
-            }}
-          />
-          <Unmount
-            on={() => {
-              if (!this.props.is_transparent) {
-                return
-              }
+            setTimeout(() => {
+              this.updateHeaderTransparency() // update the scroll animation after mount because the server doesn't know scroll position
+            }, 1)
+            window.addEventListener('scroll', this.updateHeaderTransparency)
+          }}
+        />
+        <Unmount
+          on={() => {
+            if (!this.props.is_transparent) {
+              return
+            }
 
-              window.removeEventListener(
-                'scroll',
-                this.updateHeaderTransparency,
-              )
-            }}
-          />
-          {!this.props.is_transparent && <Filler />}
+            window.removeEventListener('scroll', this.updateHeaderTransparency)
+          }}
+        />
+        {!this.props.is_transparent && <Filler />}
 
-          <Togglable>
-            {({ isOpen, isClosing, toggleOpen }) => (
-              <Wrapper
-                inverse={this.props.is_transparent && this.props.inverse_colors}
-                open={isOpen || isClosing}
+        <Togglable>
+          {({ isOpen, isClosing, toggleOpen }) => (
+            <Wrapper
+              inverse={this.props.is_transparent && this.props.inverse_colors}
+              open={isOpen || isClosing}
+              innerRef={(r) => {
+                this.wrapperRef = r
+              }}
+            >
+              <HeaderBackgroundFiller
+                transparent={this.props.is_transparent}
                 innerRef={(r) => {
-                  this.wrapperRef = r
+                  this.backgroundFillerRef = r
                 }}
-              >
-                <HeaderBackgroundFiller
-                  transparent={this.props.is_transparent}
-                  innerRef={(r) => {
-                    this.backgroundFillerRef = r
-                  }}
-                />
-                <ContentWrapper>
-                  <InnerHeaderWrapper>
-                    <LogoLink href="/">
-                      <HedvigWordmark height={30} />
-                    </LogoLink>
+              />
+              <ContentWrapper>
+                <InnerHeaderWrapper>
+                  <LogoLink href="/">
+                    <HedvigWordmark height={30} />
+                  </LogoLink>
 
-                    <Burger
-                      isOpen={isOpen}
-                      isClosing={isClosing}
-                      onClick={toggleOpen}
-                      preventInverse={this.props.inverse_colors && isOpen}
-                    />
-                    <Menu open={isOpen}>
-                      {(this.props.story.content.header_menu_items || []).map(
-                        (menuItem) => (
-                          <MenuLink
-                            key={menuItem._uid}
-                            href={getStoryblokLinkUrl(menuItem.link)}
-                          >
-                            {menuItem.label}
-                          </MenuLink>
-                        ),
-                      )}
+                  <Burger
+                    isOpen={isOpen}
+                    isClosing={isClosing}
+                    onClick={toggleOpen}
+                    preventInverse={this.props.inverse_colors && isOpen}
+                  />
+                  <Menu open={isOpen}>
+                    {(this.props.story.content.header_menu_items || []).map(
+                      (menuItem) => (
+                        <MenuLink
+                          key={menuItem._uid}
+                          href={getStoryblokLinkUrl(menuItem.link)}
+                        >
+                          {menuItem.label}
+                        </MenuLink>
+                      ),
+                    )}
 
-                      {this.props.story.content.show_cta && (
-                        <ButtonWrapper>
-                          <ButtonLink
-                            size="sm"
-                            bold
-                            href={getStoryblokLinkUrl(
-                              this.props.story.content.cta_link,
-                            )}
-                          >
-                            {this.props.story.content.cta_label}
-                          </ButtonLink>
-                        </ButtonWrapper>
-                      )}
-                    </Menu>
-                  </InnerHeaderWrapper>
-                </ContentWrapper>
-              </Wrapper>
-            )}
-          </Togglable>
-        </>
+                    {this.props.story.content.show_cta && (
+                      <ButtonWrapper>
+                        <ButtonLink
+                          size="sm"
+                          bold
+                          href={getStoryblokLinkUrl(
+                            this.props.story.content.cta_link,
+                          )}
+                        >
+                          {this.props.story.content.cta_label}
+                        </ButtonLink>
+                      </ButtonWrapper>
+                    )}
+                  </Menu>
+                </InnerHeaderWrapper>
+              </ContentWrapper>
+            </Wrapper>
+          )}
+        </Togglable>
       </>
     )
   }
@@ -241,15 +236,13 @@ class Header extends React.PureComponent<
 export const HeaderBlock: React.FunctionComponent<HeaderBlockProps> = (
   headerBlockProps,
 ) => (
-  <>
-    <Container<{ story: GlobalStory | undefined }> context="globalStory">
-      {({ story }) =>
-        story ? (
-          <Header story={story} {...headerBlockProps} />
-        ) : (
-          <ErrorBlock message="NO GLOBAL POST FOUND - remove header block or add a global post" />
-        )
-      }
-    </Container>
-  </>
+  <Container<{ story: GlobalStory | undefined }> context="globalStory">
+    {({ story }) =>
+      story ? (
+        <Header story={story} {...headerBlockProps} />
+      ) : (
+        <ErrorBlock message="NO GLOBAL POST FOUND - remove header block or add a global post" />
+      )
+    }
+  </Container>
 )
