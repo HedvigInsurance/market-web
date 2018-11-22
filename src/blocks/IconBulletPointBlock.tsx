@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from 'react-emotion'
+import { TextPosition } from 'src/utils/utils/textPosition'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
@@ -17,7 +18,7 @@ interface IconBulletPointItemBlockInterface {
 
 interface BulletPointBlockInterface extends BaseBlockProps {
   title: string
-  title_position: string
+  title_position: TextPosition
   bullet_points: IconBulletPointItemBlockInterface[]
 }
 
@@ -62,7 +63,7 @@ const IconComponent = styled('img')({
 })
 
 const AlignableContentComponent = styled(ContentWrapper)(
-  ({ titlePosition }: { titlePosition: string }) => ({
+  ({ titlePosition }: { titlePosition: TextPosition }) => ({
     display: 'flex',
     flexDirection: 'column',
     textAlign: titlePosition === 'center' ? 'center' : 'left',
