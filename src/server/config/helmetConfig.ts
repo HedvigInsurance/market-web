@@ -34,11 +34,12 @@ export const helmetConfig = (): IHelmetConfiguration => ({
         'browser.sentry-cdn.com',
         'cdn.segment.com',
         'www.googletagmanager.com',
+        // TODO activate nonce when old site is dead
         // tslint:disable-next-line variable-name
-        (_request: unknown, response: any) => {
-          response.cspNonce = uuidV4()
-          return `'nonce-${(response as any).cspNonce}'`
-        },
+        // (_request: unknown, response: any) => {
+        //   response.cspNonce = uuidV4()
+        //   return `'nonce-${(response as any).cspNonce}'`
+        // },
       ],
       connectSrc: [
         ...defaultSrc,
