@@ -9,20 +9,52 @@ const buttonSizes = {
 interface ButtonProps {
   size?: keyof typeof buttonSizes
   bold?: boolean
+  type?: 'filled' | 'outlined' | 'plain'
+}
+
+const getButtonTypeStyle = (buttonType: 'filled' | 'outlined' | 'plain') => {
+  const buttonTypeStyles = {
+    filled: {
+      backgroundColor: colors.GREEN,
+      color: colors.WHITE,
+    },
+    outlined: {
+      backgroundColor: 'transparant',
+      color: colors.GREEN,
+    },
+    plain: {
+      border: 'none',
+      padding: '0',
+      backgroundColor: 'transparant',
+      color: colors.GREEN,
+    },
+  }
+  return buttonTypeStyles[buttonType]
 }
 
 export const Button = styled('button')(
-  ({ size = 'md', bold = false }: ButtonProps) => ({
+  ({ size = 'md', bold = false, type = 'filled' }: ButtonProps) => ({
     display: 'inline-block',
-    backgroundColor: colors.GREEN,
     padding: buttonSizes[size],
     borderRadius: 30,
-    border: 'none',
+    border: `2px solid ${colors.GREEN}`,
     textDecoration: 'none',
     fontWeight: bold ? 'bold' : 'normal',
-    color: colors.WHITE,
     cursor: 'pointer',
+    ...getButtonTypeStyle(type),
   }),
 )
+
+export const FilledButtonComponent = styled(Button)({
+  backgroundColor: colors.GREEN,
+  color: colors.WHITE,
+  border: `2px solid ${colors.GREEN}`,
+})
+
+export const OutlinedButtonComponent = styled(Button)({
+  color: colors.GREEN,
+  backgroundColor: 'transparent',
+  border: `2px solid ${colors.GREEN}`,
+})
 
 export const ButtonLink = Button.withComponent('a')

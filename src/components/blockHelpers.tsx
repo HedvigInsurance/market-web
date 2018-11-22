@@ -38,15 +38,33 @@ const colorMap = {
 const getColorStyles = (color?: colorComponentColors) =>
   colorMap[color || 'standard'] || colorMap.standard
 
+const getSectionSizeStyle = (sectionSize: 'sm' | 'lg' | 'xl') => {
+  const sectionSizeStyles = {
+    sm: {
+      padding: '3.5rem 0',
+    },
+    lg: {
+      padding: '7rem 0',
+    },
+    xl: {
+      padding: '14rem 0',
+      [TABLET_BP_DOWN]: {
+        padding: '7rem 0',
+      },
+    },
+  }
+  return sectionSizeStyles[sectionSize]
+}
+
 export const SectionWrapper = styled('section')(
   ({
     color,
     size = 'lg',
   }: {
     color?: colorComponentColors
-    size?: 'sm' | 'lg'
+    size?: 'sm' | 'lg' | 'xl'
   }) => ({
-    padding: `${size === 'lg' ? '7rem' : '3.5rem'} 0`,
+    ...getSectionSizeStyle(size),
     ...getColorStyles(color),
   }),
 )
@@ -55,6 +73,7 @@ export const CONTENT_GUTTER = '2rem'
 export const CONTENT_GUTTER_MOBILE = '1rem'
 export const MOBILE_BP_UP = '@media (min-width: 481px)'
 export const MOBILE_BP_DOWN = '@media (max-width: 480px)'
+export const TABLET_BP_DOWN = '@media (max-width: 800px)'
 export const ContentWrapper = styled('div')({
   width: '100%',
   maxWidth: 1200,
