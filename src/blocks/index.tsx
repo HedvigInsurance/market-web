@@ -5,6 +5,7 @@ import { BulletPointBlock } from './BulletPointBlock'
 import { HeaderBlock } from './HeaderBlock'
 import { ImageMultiTextBlock } from './ImageMultiTextBlock'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
+import { TitleParagraphBlock } from './TitleParagraphBlock'
 
 const blockComponents = {
   accordion_block: AccordionBlock,
@@ -12,6 +13,7 @@ const blockComponents = {
   bullet_point_block: BulletPointBlock,
   image_multi_text_block: ImageMultiTextBlock,
   single_quote_block: SingleQuoteBlock,
+  title_paragraph_block: TitleParagraphBlock,
 }
 
 export const getBlockComponent = <
