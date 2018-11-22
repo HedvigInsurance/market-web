@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from 'react-emotion'
+import { TextPosition } from 'src/utils/utils/textPosition'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
@@ -8,7 +9,7 @@ import {
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 const AlignableContentWrapperComponent = styled(ContentWrapper)(
-  ({ textPosition }: { textPosition: string }) => ({
+  ({ textPosition }: { textPosition: TextPosition }) => ({
     display: 'flex',
     flexDirection: textPosition === 'center' ? 'column' : 'row',
     justifyContent: textPosition === 'left' ? 'space-between' : 'center',
@@ -21,7 +22,7 @@ const AlignableContentWrapperComponent = styled(ContentWrapper)(
 )
 
 const TitleComponent = styled('h2')(
-  ({ textPosition }: { textPosition: string }) => ({
+  ({ textPosition }: { textPosition: TextPosition }) => ({
     fontSize: '3rem',
     marginRight: textPosition === 'left' ? 'auto' : 0,
     marginLeft: textPosition === 'right' ? 'auto' : 0,
@@ -34,7 +35,7 @@ const TitleComponent = styled('h2')(
 )
 
 const ParagraphComponent = styled('div')(
-  ({ textPosition }: { textPosition: string }) => ({
+  ({ textPosition }: { textPosition: TextPosition }) => ({
     display: textPosition === 'right' ? 'none' : 'block',
     maxWidth: textPosition === 'left' ? '40%' : '36rem',
     width: '100%',
@@ -48,7 +49,7 @@ const ParagraphComponent = styled('div')(
 
 interface TitleParagraphBlockInterface extends BaseBlockProps {
   title: string
-  text_position: string
+  text_position: TextPosition
   paragraph: MarkdownHtmlComponent
 }
 
