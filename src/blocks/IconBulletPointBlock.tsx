@@ -9,26 +9,26 @@ import {
 } from '../components/blockHelpers'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
-interface IconBulletPointItemBlockInterface {
+interface IconBulletPointItemBlockProps {
   _uid: string
   title: string
   paragraph: MarkdownHtmlComponent
   icon: string
 }
 
-interface BulletPointBlockInterface extends BaseBlockProps {
+interface BulletPointBlockProps extends BaseBlockProps {
   title: string
   title_position: TextPosition
-  bullet_points: IconBulletPointItemBlockInterface[]
+  bullet_points: IconBulletPointItemBlockProps[]
 }
 
-const ParagraphComponent = styled('div')({
+const Paragraph = styled('div')({
   width: '100%',
   fontSize: '1.25rem',
   wordBreak: 'break-all',
 })
 
-const IconBulletPointItemComponent = styled('div')(
+const IconBulletPointItem = styled('div')(
   ({ contentAlignment }: { contentAlignment: string }) => ({
     display: 'flex',
     flexDirection: 'row',
@@ -54,7 +54,7 @@ const IconBulletPointItemComponent = styled('div')(
   }),
 )
 
-const IconComponent = styled('img')({
+const Icon = styled('img')({
   display: 'block',
   width: '1.25rem',
   marginRight: '0.625rem',
@@ -62,7 +62,7 @@ const IconComponent = styled('img')({
   marginBottom: '0.5rem',
 })
 
-const AlignableContentComponent = styled(ContentWrapper)(
+const AlignableContent = styled(ContentWrapper)(
   ({ titlePosition }: { titlePosition: TextPosition }) => ({
     display: 'flex',
     flexDirection: 'column',
@@ -70,11 +70,11 @@ const AlignableContentComponent = styled(ContentWrapper)(
   }),
 )
 
-const MainTitleComponent = styled('h2')({
+const MainTitle = styled('h2')({
   marginBottom: '1.586rem',
 })
 
-const BulletPointListComponent = styled('div')({
+const BulletPointList = styled('div')({
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap',
@@ -84,37 +84,37 @@ const BulletPointListComponent = styled('div')({
 })
 
 export const IconBulletPointBlock: React.FunctionComponent<
-  BulletPointBlockInterface
+  BulletPointBlockProps
 > = ({ title, title_position, bullet_points, color }) => {
   return (
     <SectionWrapper color={color && color.color}>
-      <AlignableContentComponent titlePosition={title_position}>
-        <MainTitleComponent>{title}</MainTitleComponent>
-        <BulletPointListComponent>
+      <AlignableContent titlePosition={title_position}>
+        <MainTitle>{title}</MainTitle>
+        <BulletPointList>
           {bullet_points.map(
             ({ _uid, title: bulletPointTitle, paragraph, icon }) => {
               return (
-                <IconBulletPointItemComponent
+                <IconBulletPointItem
                   contentAlignment={title_position}
                   key={_uid}
                 >
-                  <IconComponent src={icon || ''} />
+                  <Icon src={icon || ''} />
                   <div>
                     <h4>{bulletPointTitle}</h4>
                     {
-                      <ParagraphComponent
+                      <Paragraph
                         dangerouslySetInnerHTML={{
                           __html: paragraph.html,
                         }}
                       />
                     }
                   </div>
-                </IconBulletPointItemComponent>
+                </IconBulletPointItem>
               )
             },
           )}
-        </BulletPointListComponent>
-      </AlignableContentComponent>
+        </BulletPointList>
+      </AlignableContent>
     </SectionWrapper>
   )
 }
