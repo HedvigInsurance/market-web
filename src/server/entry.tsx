@@ -15,6 +15,7 @@ import { sentryConfig } from './config/sentry'
 import { appLogger } from './logging'
 import { inCaseOfEmergency } from './middlewares/enhancers'
 import { getPageMiddleware } from './page'
+import { forceHost } from './middlewares/redirects'
 
 Sentry.init({
   ...sentryConfig(),
@@ -65,6 +66,9 @@ const server = createKoaServer({
   authConfig,
 })
 
+if (config.forceHost) {
+  server.router.use(forceHost({ host: config.forceHost }))
+}
 server.router.use('/*', removeTrailingSlashes())
 server.router.use(
   bodyParser({
