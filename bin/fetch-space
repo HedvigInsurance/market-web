@@ -6,6 +6,8 @@ const path = require('path')
 const chalk = require('chalk').default
 const axios = require('axios').default
 const yargs = require('yargs')
+const prettier = require('prettier')
+const prettierOptions = require('../.prettierrc')
 
 const client = axios.create({
   baseURL: 'https://api.storyblok.com',
@@ -50,7 +52,10 @@ const clone = async () => {
   }))
   fs.writeFileSync(
     path.resolve(__dirname, '../storyblok/components.json'),
-    JSON.stringify({ components }, null, 2),
+    prettier.format(JSON.stringify({ components }), {
+      ...prettierOptions,
+      parser: 'json',
+    }),
   )
 }
 
