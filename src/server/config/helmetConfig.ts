@@ -1,10 +1,10 @@
 import { IHelmetConfiguration } from 'helmet'
-import * as uuidV4 from 'uuid/v4'
+// import * as uuidV4 from 'uuid/v4'
 
 const defaultSrc = [
   "'self'",
   'cdn.hedvig.com',
-  'app.storyblok.com',
+  'https://*.storyblok.com',
   'www.googletagmanager.com',
   'https://*.hotjar.com',
   'wss://*.hotjar.com',
@@ -21,6 +21,11 @@ const defaultSrc = [
   '*.facebook.net',
   '*.facebook.com',
   '*.doubleclick.net',
+  'sc-static.net',
+  '*.branch.io',
+  '*.ravenjs.com',
+  'www.googleadservices.com',
+  'analytics.twitter.com',
 ]
 
 export const helmetConfig = (): IHelmetConfiguration => ({
@@ -29,15 +34,17 @@ export const helmetConfig = (): IHelmetConfiguration => ({
       defaultSrc,
       scriptSrc: [
         ...defaultSrc,
+        "'unsafe-inline'", // TODO remove this when old site is dead 💀
         "'unsafe-eval'",
         'browser.sentry-cdn.com',
         'cdn.segment.com',
         'www.googletagmanager.com',
+        // TODO activate nonce when old site is dead
         // tslint:disable-next-line variable-name
-        (_request: unknown, response: any) => {
-          response.cspNonce = uuidV4()
-          return `'nonce-${(response as any).cspNonce}'`
-        },
+        // (_request: unknown, response: any) => {
+        //   response.cspNonce = uuidV4()
+        //   return `'nonce-${(response as any).cspNonce}'`
+        // },
       ],
       connectSrc: [
         ...defaultSrc,
