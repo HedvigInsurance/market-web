@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Helmet from 'react-helmet-async'
 import { getBlockComponent } from '../blocks'
-import { BodyStory, Story, StoryContainer } from '../storyblok/StoryContainer'
+import { BodyStory, StoryContainer } from '../storyblok/StoryContainer'
 
 const getBlocks = (story: BodyStory) =>
   (story && story.content && story.content.body) || []
