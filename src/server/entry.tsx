@@ -8,7 +8,7 @@ import * as convert from 'koa-convert'
 import * as proxy from 'koa-proxy'
 import * as removeTrailingSlashes from 'koa-remove-trailing-slashes'
 import { Logger } from 'typescript-logging'
-import { routes, tmpOldRoutes } from '../routes'
+import { oldAssetRoutes, routes, tmpOldRoutes } from '../routes'
 import { config } from './config'
 import { helmetConfig } from './config/helmetConfig'
 import { sentryConfig } from './config/sentry'
@@ -92,16 +92,15 @@ server.router.post('/_report-csp-violation', (ctx) => {
   ctx.status = 204
 })
 
-server.router.get(routes.map(({ path }) => path), getPageMiddleware)
-
-server.router.use(
-  tmpOldRoutes,
-  convert(
-    proxy({
-      host: 'https://hedvig.netlify.com',
-    }),
-  ),
+const oldSiteProxy = convert(
+  proxy({
+    host: 'https://hedvig.netlify.com',
+  }),
 )
+
+server.router.use(oldAssetRoutes, oldSiteProxy)
+server.router.get(routes.map(({ path }) => path), getPageMiddleware)
+server.router.use(tmpOldRoutes, oldSiteProxy)
 
 server.app.listen(getPort(), () => {
   appLogger.info(`Server started 🚀 listening on port ${getPort()}`)

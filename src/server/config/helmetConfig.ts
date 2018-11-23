@@ -21,6 +21,11 @@ const defaultSrc = [
   '*.facebook.net',
   '*.facebook.com',
   '*.doubleclick.net',
+  'sc-static.net',
+  '*.branch.io',
+  '*.ravenjs.com',
+  'www.googleadservices.com',
+  'analytics.twitter.com',
 ]
 
 export const helmetConfig = (): IHelmetConfiguration => ({

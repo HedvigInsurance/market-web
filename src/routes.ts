@@ -11,14 +11,16 @@ export const routes: Route[] = [
   { path: '/*', exact: false, Component: StoryPage },
 ]
 
-export const tmpOldRoutes: string[] = [
+export const oldAssetRoutes: string[] = [
   '/*.js',
   '/static/*',
   '/assets/*',
   '/uploads/*',
   '/favicons/*',
   '/*.html',
+]
 
+export const tmpOldRoutes: string[] = [
   '/',
   '/student',
   '/giving-back',
