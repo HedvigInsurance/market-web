@@ -3,7 +3,7 @@ import Helmet from 'react-helmet-async'
 import { getBlockComponent } from '../blocks'
 import { BodyStory, StoryContainer } from '../storyblok/StoryContainer'
 
-const getBlocks = (story: BodyStory) =>
+const getBlocksOrDefault = (story: BodyStory) =>
   (story && story.content && story.content.body) || []
 
 export const StoryPage: React.FunctionComponent = () => (
@@ -23,7 +23,7 @@ export const StoryPage: React.FunctionComponent = () => (
           )}
         </Helmet>
 
-        {getBlocks(story).map((block) => {
+        {getBlocksOrDefault(story).map((block) => {
           const BlockComponent = getBlockComponent(block.component)
           if (!BlockComponent) {
             return null
