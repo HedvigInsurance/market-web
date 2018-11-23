@@ -12,23 +12,24 @@ interface ButtonProps {
   type?: 'filled' | 'outlined' | 'plain'
 }
 
+const buttonTypeStyles = {
+  filled: {
+    backgroundColor: colors.GREEN,
+    color: colors.WHITE,
+  },
+  outlined: {
+    backgroundColor: 'transparant',
+    color: colors.GREEN,
+  },
+  plain: {
+    border: 'none',
+    padding: '0',
+    backgroundColor: 'transparant',
+    color: colors.GREEN,
+  },
+}
+
 const getButtonTypeStyle = (buttonType: 'filled' | 'outlined' | 'plain') => {
-  const buttonTypeStyles = {
-    filled: {
-      backgroundColor: colors.GREEN,
-      color: colors.WHITE,
-    },
-    outlined: {
-      backgroundColor: 'transparant',
-      color: colors.GREEN,
-    },
-    plain: {
-      border: 'none',
-      padding: '0',
-      backgroundColor: 'transparant',
-      color: colors.GREEN,
-    },
-  }
   return buttonTypeStyles[buttonType]
 }
 
