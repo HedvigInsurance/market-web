@@ -10,11 +10,7 @@
           "options": [],
           "pos": 0
         },
-        "title": {
-          "type": "text",
-          "required": true,
-          "pos": 1
-        },
+        "title": { "type": "text", "required": true, "pos": 1 },
         "accordions": {
           "type": "bloks",
           "maximum": "",
@@ -77,18 +73,9 @@
         "bullet_points_position": {
           "type": "option",
           "options": [
-            {
-              "value": "left",
-              "name": "Left"
-            },
-            {
-              "value": "center",
-              "name": "Center"
-            },
-            {
-              "value": "right",
-              "name": "Right"
-            }
+            { "value": "left", "name": "Left" },
+            { "value": "center", "name": "Center" },
+            { "value": "right", "name": "Right" }
           ],
           "default_value": "left",
           "pos": 1
@@ -147,14 +134,8 @@
         "button_type": {
           "type": "option",
           "options": [
-            {
-              "value": "filled",
-              "name": "Filled"
-            },
-            {
-              "value": "ghost",
-              "name": "Ghost"
-            }
+            { "value": "filled", "name": "Filled" },
+            { "value": "ghost", "name": "Ghost" }
           ],
           "required": true,
           "default_value": "filled",
@@ -185,18 +166,9 @@
           "keys": ["show_cta", "cta_link", "cta_label"],
           "pos": 1
         },
-        "show_cta": {
-          "type": "boolean",
-          "pos": 2
-        },
-        "cta_label": {
-          "type": "text",
-          "pos": 3
-        },
-        "cta_link": {
-          "type": "multilink",
-          "pos": 4
-        }
+        "show_cta": { "type": "boolean", "pos": 2 },
+        "cta_label": { "type": "text", "pos": 3 },
+        "cta_link": { "type": "multilink", "pos": 4 }
       },
       "image": null,
       "preview_field": null,
@@ -210,10 +182,7 @@
       "name": "header_block",
       "display_name": null,
       "schema": {
-        "is_transparent": {
-          "type": "boolean",
-          "pos": 0
-        },
+        "is_transparent": { "type": "boolean", "pos": 0 },
         "inverse_colors": {
           "type": "boolean",
           "pos": 1,
@@ -239,23 +208,12 @@
           "pos": 0,
           "required": false
         },
-        "title": {
-          "type": "text",
-          "regex": "",
-          "required": false,
-          "pos": 1
-        },
+        "title": { "type": "text", "regex": "", "required": false, "pos": 1 },
         "title_position": {
           "type": "option",
           "options": [
-            {
-              "value": "left",
-              "name": "Left"
-            },
-            {
-              "value": "center",
-              "name": "Center"
-            }
+            { "value": "left", "name": "Left" },
+            { "value": "center", "name": "Center" }
           ],
           "default_value": "center",
           "pos": 2
@@ -284,11 +242,7 @@
       "name": "icon_bullet_point_item",
       "display_name": "",
       "schema": {
-        "icon": {
-          "type": "image",
-          "pos": 0,
-          "required": true
-        },
+        "icon": { "type": "image", "pos": 0, "required": true },
         "title": {
           "type": "text",
           "pos": 1,
@@ -360,11 +314,7 @@
           "required": true,
           "default_value": "Default Text"
         },
-        "image": {
-          "type": "image",
-          "required": true,
-          "pos": 1
-        },
+        "image": { "type": "image", "required": true, "pos": 1 },
         "title_color": {
           "type": "custom",
           "regex": "(^.*(rgb|#))",
@@ -402,28 +352,16 @@
           "description": "",
           "default_value": "left",
           "options": [
-            {
-              "value": "left",
-              "name": "Left"
-            },
-            {
-              "value": "right",
-              "name": "Right"
-            }
+            { "value": "left", "name": "Left" },
+            { "value": "right", "name": "Right" }
           ],
           "required": true
         },
         "button_type": {
           "type": "option",
           "options": [
-            {
-              "value": "filled",
-              "name": "Filled"
-            },
-            {
-              "value": "ghost",
-              "name": "Ghost"
-            }
+            { "value": "filled", "name": "Filled" },
+            { "value": "ghost", "name": "Ghost" }
           ],
           "required": true,
           "default_value": "filled",
@@ -451,14 +389,8 @@
         "image_position": {
           "type": "option",
           "options": [
-            {
-              "value": "left",
-              "name": "Left"
-            },
-            {
-              "value": "right",
-              "name": "Right"
-            }
+            { "value": "left", "name": "Left" },
+            { "value": "right", "name": "Right" }
           ],
           "required": true,
           "pos": 1
@@ -496,18 +428,9 @@
           "required": true,
           "regex": "",
           "options": [
-            {
-              "value": "sm",
-              "name": "Small"
-            },
-            {
-              "value": "lg",
-              "name": "Large"
-            },
-            {
-              "value": "xl",
-              "name": "X-Large"
-            }
+            { "value": "sm", "name": "Small" },
+            { "value": "lg", "name": "Large" },
+            { "value": "xl", "name": "X-Large" }
           ],
           "default_value": "lg",
           "pos": 0
@@ -536,28 +459,15 @@
         "text_position": {
           "type": "option",
           "options": [
-            {
-              "value": "right",
-              "name": "Right"
-            },
-            {
-              "value": "center",
-              "name": "Center"
-            },
-            {
-              "value": "left",
-              "name": "Left"
-            }
+            { "value": "right", "name": "Right" },
+            { "value": "center", "name": "Center" },
+            { "value": "left", "name": "Left" }
           ],
           "default_value": "left",
           "pos": 4,
           "required": true
         },
-        "image": {
-          "type": "image",
-          "required": true,
-          "pos": 5
-        },
+        "image": { "type": "image", "required": true, "pos": 5 },
         "button_title": {
           "type": "text",
           "required": true,
@@ -567,18 +477,9 @@
         "button_type": {
           "type": "option",
           "options": [
-            {
-              "value": "filled",
-              "name": "Filled"
-            },
-            {
-              "value": "outlined",
-              "name": "Outlined"
-            },
-            {
-              "value": "plain",
-              "name": "Plain"
-            }
+            { "value": "filled", "name": "Filled" },
+            { "value": "outlined", "name": "Outlined" },
+            { "value": "plain", "name": "Plain" }
           ],
           "required": true,
           "default_value": "filled",
@@ -610,13 +511,7 @@
     {
       "name": "logotype_item",
       "display_name": "",
-      "schema": {
-        "image": {
-          "type": "image",
-          "required": true,
-          "pos": 0
-        }
-      },
+      "schema": { "image": { "type": "image", "required": true, "pos": 0 } },
       "image": null,
       "preview_field": null,
       "is_root": false,
@@ -629,11 +524,7 @@
       "name": "menu_item",
       "display_name": null,
       "schema": {
-        "label": {
-          "type": "text",
-          "required": true,
-          "pos": 0
-        },
+        "label": { "type": "text", "required": true, "pos": 0 },
         "link": {
           "type": "multilink",
           "restrict_content_types": true,
@@ -675,11 +566,7 @@
     {
       "name": "page",
       "display_name": null,
-      "schema": {
-        "body": {
-          "type": "bloks"
-        }
-      },
+      "schema": { "body": { "type": "bloks" } },
       "image": null,
       "preview_field": null,
       "is_root": true,
@@ -698,39 +585,20 @@
           "options": [],
           "pos": 0
         },
-        "quote": {
-          "type": "text",
-          "pos": 1
-        },
-        "author": {
-          "type": "text",
-          "pos": 2
-        },
+        "quote": { "type": "text", "pos": 1 },
+        "author": { "type": "text", "pos": 2 },
         "text_position": {
           "type": "option",
           "options": [
-            {
-              "value": "right",
-              "name": "Right"
-            },
-            {
-              "value": "center",
-              "name": "Center"
-            },
-            {
-              "value": "left",
-              "name": "Left"
-            }
+            { "value": "right", "name": "Right" },
+            { "value": "center", "name": "Center" },
+            { "value": "left", "name": "Left" }
           ],
           "default_value": "center",
           "required": true,
           "pos": 3
         },
-        "background_image": {
-          "type": "image",
-          "required": false,
-          "pos": 4
-        }
+        "background_image": { "type": "image", "required": false, "pos": 4 }
       },
       "image": null,
       "preview_field": null,
@@ -750,10 +618,7 @@
           "required": true,
           "default_value": "Default Text"
         },
-        "subtitle": {
-          "type": "text",
-          "pos": 1
-        }
+        "subtitle": { "type": "text", "pos": 1 }
       },
       "image": null,
       "preview_field": null,
@@ -781,18 +646,9 @@
           "required": true,
           "pos": 1,
           "options": [
-            {
-              "value": "true",
-              "name": "left"
-            },
-            {
-              "value": "true",
-              "name": "center"
-            },
-            {
-              "value": "true",
-              "name": "right"
-            }
+            { "value": "true", "name": "left" },
+            { "value": "true", "name": "center" },
+            { "value": "true", "name": "right" }
           ]
         },
         "title_color": {
@@ -849,14 +705,8 @@
         "button_type": {
           "type": "option",
           "options": [
-            {
-              "value": "filled",
-              "name": "Filled"
-            },
-            {
-              "value": "outlined",
-              "name": "Outlined"
-            }
+            { "value": "filled", "name": "Filled" },
+            { "value": "outlined", "name": "Outlined" }
           ],
           "required": true,
           "default_value": "filled",
@@ -899,22 +749,14 @@
         "text_position": {
           "type": "option",
           "options": [
-            {
-              "value": "right",
-              "name": "Right"
-            },
-            {
-              "value": "center",
-              "name": "Center"
-            },
-            {
-              "value": "left",
-              "name": "Left"
-            }
+            { "value": "right", "name": "Right" },
+            { "value": "center", "name": "Center" },
+            { "value": "left", "name": "Left" }
           ],
           "required": true,
           "default_value": "center",
-          "pos": 3
+          "pos": 3,
+          "display_name": ""
         }
       },
       "image": null,
