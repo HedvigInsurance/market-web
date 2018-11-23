@@ -7,6 +7,8 @@ import {
 } from '../components/blockHelpers'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
+import { LinkComponent } from 'src/storyblok/StoryContainer'
+import { getStoryblokLinkUrl } from 'src/utils/storyblok-link'
 import { SectionSize } from 'src/utils/utils/SectionSize'
 import { TextPosition } from 'src/utils/utils/textPosition'
 import { ButtonLink } from '../components/buttons'
@@ -63,21 +65,13 @@ const Image = styled('img')(({ alignment }: { alignment: string }) => ({
   },
 }))
 
-interface ButtonLinkProps {
-  cached_url: string
-  fieldtype: string
-  id: string
-  linktype: string
-  url: string
-}
-
 interface ImageTextBlockProps extends BaseBlockProps {
   title: string
   paragraph: MarkdownHtmlComponent
   text_position: TextPosition
   button_title: string
   button_type: 'filled' | 'outlined'
-  button_link: ButtonLinkProps
+  button_link: LinkComponent
   show_button: boolean
   image: string
   size: SectionSize
@@ -107,7 +101,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
           />
           {show_button && (
             <ButtonLinkWithMargin
-              href={button_link.url}
+              href={getStoryblokLinkUrl(button_link)}
               type={button_type}
               size="sm"
               bold
