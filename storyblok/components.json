@@ -229,6 +229,58 @@
       "real_name": "header_block"
     },
     {
+      "name": "icon_bullet_point_block",
+      "display_name": "",
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0,
+          "required": false
+        },
+        "title": {
+          "type": "text",
+          "regex": "",
+          "required": false,
+          "pos": 1
+        },
+        "title_position": {
+          "type": "option",
+          "options": [
+            {
+              "value": "left",
+              "name": "Left"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            }
+          ],
+          "default_value": "center",
+          "pos": 2
+        },
+        "bullet_points": {
+          "type": "bloks",
+          "maximum": "9",
+          "restrict_components": true,
+          "component_whitelist": [
+            "icon_bullet_point_item",
+            "image_bullet_point_item"
+          ],
+          "required": true,
+          "pos": 3
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "icon_bullet_point_block"
+    },
+    {
       "name": "icon_bullet_point_item",
       "display_name": "",
       "schema": {
@@ -244,10 +296,13 @@
           "default_value": "Default Text"
         },
         "paragraph": {
-          "type": "text",
+          "type": "custom",
           "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
           "required": true,
-          "pos": 2
+          "pos": 2,
+          "rich_markdown": true,
+          "field_type": "markdown-html",
+          "options": []
         }
       },
       "image": null,
@@ -436,45 +491,78 @@
       "name": "image_text_block",
       "display_name": "",
       "schema": {
+        "size": {
+          "type": "option",
+          "required": true,
+          "regex": "",
+          "options": [
+            {
+              "value": "sm",
+              "name": "Small"
+            },
+            {
+              "value": "lg",
+              "name": "Large"
+            },
+            {
+              "value": "xl",
+              "name": "X-Large"
+            }
+          ],
+          "default_value": "lg",
+          "pos": 0
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "required": true,
+          "pos": 1
+        },
         "title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 0
+          "pos": 2
         },
         "paragraph": {
           "type": "custom",
           "required": true,
           "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
-          "pos": 1,
+          "pos": 3,
           "field_type": "markdown-html",
           "options": []
+        },
+        "text_position": {
+          "type": "option",
+          "options": [
+            {
+              "value": "right",
+              "name": "Right"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "left",
+              "name": "Left"
+            }
+          ],
+          "default_value": "left",
+          "pos": 4,
+          "required": true
         },
         "image": {
           "type": "image",
           "required": true,
-          "pos": 2
+          "pos": 5
         },
-        "title_position": {
-          "type": "option",
-          "options": [
-            {
-              "value": "true",
-              "name": "left"
-            },
-            {
-              "value": "true",
-              "name": "right"
-            }
-          ],
-          "default_value": "right",
-          "pos": 3
-        },
-        "button_text": {
+        "button_title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 4
+          "pos": 6
         },
         "button_type": {
           "type": "option",
@@ -484,13 +572,31 @@
               "name": "Filled"
             },
             {
-              "value": "ghost",
-              "name": "Ghost"
+              "value": "outlined",
+              "name": "Outlined"
+            },
+            {
+              "value": "plain",
+              "name": "Plain"
             }
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 5
+          "pos": 7
+        },
+        "button_link": {
+          "type": "multilink",
+          "description": "",
+          "display_name": "",
+          "required": true,
+          "default_value": "",
+          "pos": 8
+        },
+        "show_button": {
+          "type": "boolean",
+          "required": false,
+          "default_value": "true",
+          "pos": 9
         }
       },
       "image": null,
@@ -716,38 +822,99 @@
       "real_name": "title_block"
     },
     {
-      "name": "title_paragraph_block",
-      "display_name": null,
+      "name": "title_cta_block",
+      "display_name": "",
       "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "required": true,
+          "pos": 0
+        },
         "title": {
           "type": "text",
-          "pos": 0,
+          "pos": 1,
           "required": true,
           "default_value": "Default Text"
         },
-        "title_position": {
+        "button_title": {
+          "type": "text",
+          "required": true,
+          "regex": "",
+          "default_value": "",
+          "pos": 2,
+          "display_name": ""
+        },
+        "button_type": {
           "type": "option",
           "options": [
             {
-              "value": "left",
-              "name": "Left"
+              "value": "filled",
+              "name": "Filled"
             },
             {
-              "value": "center",
-              "name": "Center"
+              "value": "outlined",
+              "name": "Outlined"
             }
           ],
           "required": true,
-          "default_value": "center",
-          "pos": 1
+          "default_value": "filled",
+          "pos": 3
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "title_cta_block"
+    },
+    {
+      "name": "title_paragraph_block",
+      "display_name": null,
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "required": true,
+          "pos": 0
+        },
+        "title": {
+          "type": "text",
+          "pos": 1,
+          "required": true,
+          "default_value": "Default Text"
         },
         "paragraph": {
           "type": "custom",
-          "required": true,
+          "required": false,
           "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
           "pos": 2,
           "field_type": "markdown-html",
           "options": []
+        },
+        "text_position": {
+          "type": "option",
+          "options": [
+            {
+              "value": "right",
+              "name": "Right"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "left",
+              "name": "Left"
+            }
+          ],
+          "required": true,
+          "default_value": "center",
+          "pos": 3
         }
       },
       "image": null,
@@ -766,7 +933,7 @@
           "type": "text",
           "pos": 0,
           "required": true,
-          "default_value": ""
+          "default_value": "Default Text"
         },
         "paragraph": {
           "type": "custom",
