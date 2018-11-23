@@ -55,6 +55,7 @@ export const CONTENT_GUTTER = '2rem'
 export const CONTENT_GUTTER_MOBILE = '1rem'
 export const MOBILE_BP_UP = '@media (min-width: 481px)'
 export const MOBILE_BP_DOWN = '@media (max-width: 480px)'
+export const TABLET_BP_DOWN = '@media (max-width: 800px)'
 export const ContentWrapper = styled('div')({
   width: '100%',
   maxWidth: 1200,
