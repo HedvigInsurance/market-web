@@ -19,9 +19,7 @@
           "type": "bloks",
           "maximum": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "accordion_item"
-          ],
+          "component_whitelist": ["accordion_item"],
           "required": true,
           "description": "",
           "display_name": "",
@@ -99,9 +97,7 @@
           "type": "bloks",
           "maximum": "6",
           "restrict_components": true,
-          "component_whitelist": [
-            "image_bullet_point_item"
-          ],
+          "component_whitelist": ["image_bullet_point_item"],
           "required": true,
           "pos": 2
         }
@@ -182,17 +178,11 @@
           "pos": 0,
           "maximum": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "menu_item"
-          ]
+          "component_whitelist": ["menu_item"]
         },
         "cta": {
           "type": "section",
-          "keys": [
-            "show_cta",
-            "cta_link",
-            "cta_label"
-          ],
+          "keys": ["show_cta", "cta_link", "cta_label"],
           "pos": 1
         },
         "show_cta": {
@@ -428,9 +418,7 @@
         "text_items": {
           "type": "bloks",
           "restrict_components": true,
-          "component_whitelist": [
-            "title_paragraph_item"
-          ],
+          "component_whitelist": ["title_paragraph_item"],
           "maximum": "3",
           "required": true,
           "pos": 3
@@ -467,13 +455,6 @@
           "required": true,
           "pos": 2
         },
-        "title_color": {
-          "type": "text",
-          "regex": "(^.*(rgb|#))",
-          "required": true,
-          "default_value": "#000",
-          "pos": 3
-        },
         "title_position": {
           "type": "option",
           "options": [
@@ -487,13 +468,13 @@
             }
           ],
           "default_value": "right",
-          "pos": 4
+          "pos": 3
         },
         "button_text": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 5
+          "pos": 4
         },
         "button_type": {
           "type": "option",
@@ -509,13 +490,7 @@
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 6
-        },
-        "background_color": {
-          "type": "text",
-          "regex": "(^.*(rgb|#))",
-          "default_value": "#fff",
-          "pos": 7
+          "pos": 5
         }
       },
       "image": null,
@@ -556,9 +531,7 @@
         "link": {
           "type": "multilink",
           "restrict_content_types": true,
-          "component_whitelist": [
-            "page"
-          ],
+          "component_whitelist": ["page"],
           "required": true,
           "pos": 1
         }
@@ -580,9 +553,7 @@
           "maximum": "",
           "description": "",
           "restrict_components": true,
-          "component_whitelist": [
-            "logotype_item"
-          ],
+          "component_whitelist": ["logotype_item"],
           "required": true,
           "pos": 0
         }
