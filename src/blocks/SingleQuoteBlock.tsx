@@ -2,7 +2,7 @@ import { fonts } from '@hedviginsurance/brand/dist'
 import * as React from 'react'
 import styled from 'react-emotion'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
-import { textFlexPositionMap, TextPosition } from '../utils/utils/textPosition'
+import { textFlexPositionMap, TextPosition } from '../utils/textPosition'
 import { BaseBlockProps } from './BaseBlockProps'
 
 const TABLET_BP_DOWN = '@media (max-width: 850px)'

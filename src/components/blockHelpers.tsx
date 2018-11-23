@@ -2,7 +2,7 @@ import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
 import styled from 'react-emotion'
 import { RouteComponentProps, withRouter } from 'react-router'
-import { SectionSize } from 'src/utils/utils/SectionSize'
+import { SectionSize } from 'src/utils/SectionSize'
 import { colorComponentColors } from '../blocks/BaseBlockProps'
 
 export const CONTENT_GUTTER = '2rem'
