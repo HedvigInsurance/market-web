@@ -8,10 +8,10 @@ import {
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 import { LinkComponent } from 'src/storyblok/StoryContainer'
-import { getStoryblokLinkUrl } from 'src/utils/storyblok-link'
-import { SectionSize } from 'src/utils/utils/SectionSize'
-import { TextPosition } from 'src/utils/utils/textPosition'
+import { SectionSize } from 'src/utils/SectionSize'
+import { TextPosition } from 'src/utils/textPosition'
 import { ButtonLink } from '../components/buttons'
+import { getStoryblokLinkUrl } from '../utils/storyblok-link'
 
 const ButtonLinkWithMargin = styled(ButtonLink)({
   marginTop: '1.7rem',

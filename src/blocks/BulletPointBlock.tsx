@@ -5,7 +5,7 @@ import {
   MOBILE_BP_DOWN,
   SectionWrapper,
 } from '../components/blockHelpers'
-import { textFlexPositionMap, TextPosition } from '../utils/utils/textPosition'
+import { textFlexPositionMap, TextPosition } from '../utils/textPosition'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 const TABLET_BP_DOWN = '@media (max-width: 800px)'
