@@ -7,6 +7,7 @@ import {
 } from '../components/blockHelpers'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
+import { SectionSize } from 'src/utils/utils/SectionSize'
 import { TextPosition } from 'src/utils/utils/textPosition'
 import { ButtonLink } from '../components/buttons'
 
@@ -79,6 +80,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
   button_link: ButtonLinkProps
   show_button: boolean
   image: string
+  size: SectionSize
 }
 
 export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
@@ -91,9 +93,10 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   show_button,
   image,
   color,
+  size,
 }) => {
   return (
-    <SectionWrapper color={color && color.color} size="xl">
+    <SectionWrapper color={color && color.color} size={size}>
       <AlignableContentWrapper textPosition={text_position}>
         <TextWrapper textPosition={text_position}>
           <Title>{title}</Title>
