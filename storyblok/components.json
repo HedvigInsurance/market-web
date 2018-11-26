@@ -308,7 +308,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "icon_bullet_point_item"
@@ -345,7 +345,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "image_bullet_point_item"
