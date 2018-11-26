@@ -2,6 +2,7 @@ import * as React from 'react'
 import { AccordionBlock } from './AccordionBlock'
 import { BaseBlockProps } from './BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock'
+import { FooterBlock } from './FooterBlock'
 import { HeaderBlock } from './HeaderBlock'
 import { IconBulletPointBlock } from './IconBulletPointBlock'
 import { ImageMultiTextBlock } from './ImageMultiTextBlock'
@@ -20,6 +21,7 @@ const blockComponents = {
   icon_bullet_point_block: IconBulletPointBlock,
   title_paragraph_block: TitleParagraphBlock,
   title_cta_block: TitleCtaBlock,
+  footer_block: FooterBlock,
 }
 
 export const getBlockComponent = <

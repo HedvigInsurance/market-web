@@ -1,0 +1,174 @@
+import { colors } from '@hedviginsurance/brand'
+import * as React from 'react'
+import styled from 'react-emotion'
+import {
+  ContentWrapper,
+  MOBILE_BP_DOWN,
+  SectionWrapper,
+  TABLET_BP_DOWN,
+} from '../../components/blockHelpers'
+import { BaseBlockProps } from '../BaseBlockProps'
+import {
+  FacebookIcon,
+  InstagramIcon,
+  SweFlag,
+  TwitterIcon,
+  UkFlag,
+} from './icons'
+
+const BP_DOWN = '@media (max-width: 600px)'
+
+const FooterInnerWrapper = styled('footer')({
+  display: 'flex',
+  flexDirection: 'column',
+})
+
+const LinksWrapper = styled('div')({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  width: '100%',
+  [MOBILE_BP_DOWN]: {
+    flexDirection: 'column',
+  },
+})
+const LinksColumnsWrapper = styled('nav')({
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  [BP_DOWN]: {
+    flexDirection: 'column',
+  },
+})
+const LinkColumn = styled('div')({
+  '&:not(:last-of-type)': {
+    paddingRight: '7rem',
+    [TABLET_BP_DOWN]: {
+      paddingRight: '3rem',
+    },
+    [BP_DOWN]: {
+      paddingRight: 0,
+      paddingBottom: '2rem',
+    },
+  },
+  '&:last-of-type': {
+    [BP_DOWN]: {
+      paddingBottom: '2rem',
+    },
+  },
+})
+const Link = styled('a')({
+  display: 'block',
+  color: colors.WHITE,
+  textDecoration: 'none',
+  marginBottom: '1.5rem',
+})
+
+const AppstoreBadgeWrapper = styled('div')({
+  [MOBILE_BP_DOWN]: {
+    paddingBottom: '2rem',
+  },
+})
+const AppstoreLink = styled('a')({
+  display: 'block',
+  textAlign: 'right',
+  '&:not(:last-of-type)': {
+    paddingBottom: '1rem',
+  },
+
+  [MOBILE_BP_DOWN]: {
+    textAlign: 'left',
+  },
+})
+const ItunesImg = styled('img')({
+  height: 54,
+})
+const PlayImg = styled('img')({
+  height: 54,
+})
+
+const SocialMediaContainer = styled('div')({
+  display: 'flex',
+  flexDirection: 'row',
+  paddingBottom: '2rem',
+})
+const SocialMediaLink = styled('a')({
+  color: colors.WHITE,
+  display: 'block',
+  marginRight: '1rem',
+})
+const FooterFooter = styled('div')({})
+
+const LangSwitchersContainer = styled('div')({
+  paddingBottom: '2rem',
+})
+const LangSwitcher = styled('div')({
+  display: 'inline-flex',
+  paddingRight: '1rem',
+})
+
+type FooterBlockProps = BaseBlockProps
+
+export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
+  color,
+}) => (
+  <SectionWrapper color={color && color.color}>
+    <ContentWrapper>
+      <FooterInnerWrapper>
+        <LinksWrapper>
+          <LinksColumnsWrapper>
+            <LinkColumn>
+              <Link href="/faq">Vanliga fragor</Link>
+              <Link href="/about-us">Om Hedvig</Link>
+            </LinkColumn>
+            <LinkColumn>
+              <Link href="/faq">Vanliga fragor</Link>
+              <Link href="/about-us">Om Hedvig</Link>
+            </LinkColumn>
+          </LinksColumnsWrapper>
+          <AppstoreBadgeWrapper>
+            <AppstoreLink href="https://itunes.apple.com/se/app/hedvig/id1303668531?mt=8">
+              <ItunesImg src="https://cdn.hedvig.com/www/appstores/app-store-badge.svg" />
+            </AppstoreLink>
+            <AppstoreLink href="https://play.google.com/store/apps/details?id=com.hedvig.app">
+              <PlayImg src="https://cdn.hedvig.com/www/appstores/google-play-badge.svg" />
+            </AppstoreLink>
+          </AppstoreBadgeWrapper>
+        </LinksWrapper>
+
+        <SocialMediaContainer>
+          <SocialMediaLink>
+            <FacebookIcon />
+          </SocialMediaLink>
+          <SocialMediaLink>
+            <InstagramIcon />
+          </SocialMediaLink>
+          <SocialMediaLink>
+            <TwitterIcon />
+          </SocialMediaLink>
+        </SocialMediaContainer>
+
+        <LangSwitchersContainer>
+          <LangSwitcher>
+            <SweFlag />
+          </LangSwitcher>
+          <LangSwitcher>
+            <UkFlag />
+          </LangSwitcher>
+        </LangSwitchersContainer>
+
+        <FooterFooter>
+          <p>
+            © Hedvig AB. Huvudkontor: Artillerigatan 10, 114 51, Stockholm. Org.
+            nr. 559093-0334.
+          </p>
+          <p>
+            Exklusiv försäkringsgivare för Hedvigs försäkringar är International
+            Insurance Company of Hannover SE, Sverige filial, org. nr.
+            516402-6345. Hedvig står under Finansinspektionens tillsyn.
+          </p>
+        </FooterFooter>
+      </FooterInnerWrapper>
+    </ContentWrapper>
+  </SectionWrapper>
+)
