@@ -103,7 +103,7 @@ const FooterFooter = styled('div')({})
 const LangSwitchersContainer = styled('div')({
   paddingBottom: '2rem',
 })
-const LangSwitcher = styled('div')({
+const LangSwitcher = styled('a')({
   display: 'inline-flex',
   paddingRight: '1rem',
 })
@@ -162,10 +162,10 @@ export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
             </SocialMediaContainer>
 
             <LangSwitchersContainer>
-              <LangSwitcher>
+              <LangSwitcher href="/">
                 <SweFlag />
               </LangSwitcher>
-              <LangSwitcher>
+              <LangSwitcher href="/en">
                 <UkFlag />
               </LangSwitcher>
             </LangSwitchersContainer>
