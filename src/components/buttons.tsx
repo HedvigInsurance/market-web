@@ -48,4 +48,16 @@ export const Button = styled('button')(
   }),
 )
 
+export const FilledButtonComponent = styled(Button)({
+  backgroundColor: colors.GREEN,
+  color: colors.WHITE,
+  border: `2px solid ${colors.GREEN}`,
+})
+
+export const OutlinedButtonComponent = styled(Button)({
+  color: colors.GREEN,
+  backgroundColor: 'transparent',
+  border: `2px solid ${colors.GREEN}`,
+})
+
 export const ButtonLink = Button.withComponent('a')
