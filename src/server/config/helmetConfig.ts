@@ -19,6 +19,8 @@ const defaultSrc = [
   'app.getsentry.com',
   'www.google-analytics.com',
   'www.googleadservices.com',
+  'www.google.com',
+  'www.google.se',
   'd33wubrfki0l68.cloudfront.net',
   'tr.snapchat.com',
   'sc-static.net',
