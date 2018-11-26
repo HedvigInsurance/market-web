@@ -1,4 +1,3 @@
-import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
 import styled from 'react-emotion'
 import {
@@ -60,7 +59,7 @@ const LinkColumn = styled('div')({
 })
 const Link = styled('a')({
   display: 'block',
-  color: colors.WHITE,
+  color: 'inherit',
   textDecoration: 'none',
   marginBottom: '1.5rem',
 })
@@ -94,7 +93,7 @@ const SocialMediaContainer = styled('div')({
   paddingBottom: '2rem',
 })
 const SocialMediaLink = styled('a')({
-  color: colors.WHITE,
+  color: 'inherit',
   display: 'block',
   marginRight: '1rem',
 })
