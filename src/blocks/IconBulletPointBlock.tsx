@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styled from 'react-emotion'
-import { TextPosition } from 'src/utils/utils/textPosition'
+import { TextPosition } from 'src/utils/textPosition'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
