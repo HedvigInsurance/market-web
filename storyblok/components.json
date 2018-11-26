@@ -838,12 +838,28 @@
           "required": true,
           "default_value": "Default Text"
         },
+        "text_position": {
+          "type": "option",
+          "options": [
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "left",
+              "name": "Left"
+            }
+          ],
+          "required": true,
+          "default_value": "left",
+          "pos": 2
+        },
         "button_title": {
           "type": "text",
           "required": true,
           "regex": "",
           "default_value": "",
-          "pos": 2,
+          "pos": 3,
           "display_name": ""
         },
         "button_type": {
@@ -856,11 +872,23 @@
             {
               "value": "outlined",
               "name": "Outlined"
+            },
+            {
+              "value": "plain",
+              "name": "Plain"
             }
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 3
+          "pos": 4
+        },
+        "button_link": {
+          "type": "multilink",
+          "description": "",
+          "display_name": "",
+          "required": true,
+          "default_value": "",
+          "pos": 5
         }
       },
       "image": null,

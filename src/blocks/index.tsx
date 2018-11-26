@@ -6,6 +6,7 @@ import { HeaderBlock } from './HeaderBlock'
 import { IconBulletPointBlock } from './IconBulletPointBlock'
 import { ImageMultiTextBlock } from './ImageMultiTextBlock'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
+import { TitleCtaBlock } from './TitleCtaBlock'
 import { TitleParagraphBlock } from './TitleParagraphBlock'
 
 const blockComponents = {
@@ -16,6 +17,7 @@ const blockComponents = {
   single_quote_block: SingleQuoteBlock,
   icon_bullet_point_block: IconBulletPointBlock,
   title_paragraph_block: TitleParagraphBlock,
+  title_cta_block: TitleCtaBlock,
 }
 
 export const getBlockComponent = <
