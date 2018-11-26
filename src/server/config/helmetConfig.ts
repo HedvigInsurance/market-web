@@ -57,6 +57,10 @@ export const helmetConfig = (): IHelmetConfiguration => ({
         'https://api.segment.io',
         'https://sentry.io',
       ],
+      imgSrc: [
+        ...defaultSrc,
+        'res.cloudinary.com',
+      ],
       styleSrc: [...defaultSrc, "'unsafe-inline'"],
       upgradeInsecureRequests: true,
       objectSrc: ["'none'"],
