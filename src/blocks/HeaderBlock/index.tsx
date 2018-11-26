@@ -1,13 +1,15 @@
 import { colors } from '@hedviginsurance/brand'
-import { Container } from 'constate'
 import * as React from 'react'
 import styled from 'react-emotion'
 import { Mount, Unmount } from 'react-lifecycle-components'
-import { ContentWrapper, ErrorBlock } from '../../components/blockHelpers'
+import { ContentWrapper } from '../../components/blockHelpers'
 import { ButtonLink } from '../../components/buttons'
 import { Togglable } from '../../components/containers/Togglable'
 import { HedvigWordmark } from '../../components/icons/HedvigWordmark'
-import { GlobalStory } from '../../storyblok/StoryContainer'
+import {
+  GlobalStory,
+  GlobalStoryContainer,
+} from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok-link'
 import { BaseBlockProps } from '../BaseBlockProps'
 import { Burger, TABLET_BP_DOWN } from './mobile'
@@ -236,13 +238,7 @@ class Header extends React.PureComponent<
 export const HeaderBlock: React.FunctionComponent<HeaderBlockProps> = (
   headerBlockProps,
 ) => (
-  <Container<{ story: GlobalStory | undefined }> context="globalStory">
-    {({ story }) =>
-      story ? (
-        <Header story={story} {...headerBlockProps} />
-      ) : (
-        <ErrorBlock message="NO GLOBAL POST FOUND - remove header block or add a global post" />
-      )
-    }
-  </Container>
+  <GlobalStoryContainer>
+    {({ globalStory }) => <Header story={globalStory} {...headerBlockProps} />}
+  </GlobalStoryContainer>
 )

@@ -7,6 +7,7 @@ import {
   SectionWrapper,
   TABLET_BP_DOWN,
 } from '../../components/blockHelpers'
+import { GlobalStoryContainer } from '../../storyblok/StoryContainer'
 import { BaseBlockProps } from '../BaseBlockProps'
 import {
   FacebookIcon,
@@ -112,63 +113,73 @@ type FooterBlockProps = BaseBlockProps
 export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
   color,
 }) => (
-  <SectionWrapper color={color && color.color}>
-    <ContentWrapper>
-      <FooterInnerWrapper>
-        <LinksWrapper>
-          <LinksColumnsWrapper>
-            <LinkColumn>
-              <Link href="/faq">Vanliga fragor</Link>
-              <Link href="/about-us">Om Hedvig</Link>
-            </LinkColumn>
-            <LinkColumn>
-              <Link href="/faq">Vanliga fragor</Link>
-              <Link href="/about-us">Om Hedvig</Link>
-            </LinkColumn>
-          </LinksColumnsWrapper>
-          <AppstoreBadgeWrapper>
-            <AppstoreLink href="https://itunes.apple.com/se/app/hedvig/id1303668531?mt=8">
-              <ItunesImg src="https://cdn.hedvig.com/www/appstores/app-store-badge.svg" />
-            </AppstoreLink>
-            <AppstoreLink href="https://play.google.com/store/apps/details?id=com.hedvig.app">
-              <PlayImg src="https://cdn.hedvig.com/www/appstores/google-play-badge.svg" />
-            </AppstoreLink>
-          </AppstoreBadgeWrapper>
-        </LinksWrapper>
+  <GlobalStoryContainer>
+    {({ globalStory }) => (
+      <SectionWrapper color={color && color.color}>
+        <ContentWrapper>
+          <FooterInnerWrapper>
+            <LinksWrapper>
+              <LinksColumnsWrapper>
+                <LinkColumn>
+                  {(globalStory.content.footer_menu_items_1 || []).map(
+                    (link) => (
+                      <Link key={link._uid} href={link.link.cached_url}>
+                        {link.label}
+                      </Link>
+                    ),
+                  )}
+                </LinkColumn>
+                <LinkColumn>
+                  {(globalStory.content.footer_menu_items_2 || []).map(
+                    (link) => (
+                      <Link key={link._uid} href={link.link.cached_url}>
+                        {link.label}
+                      </Link>
+                    ),
+                  )}
+                </LinkColumn>
+              </LinksColumnsWrapper>
+              <AppstoreBadgeWrapper>
+                <AppstoreLink href="https://itunes.apple.com/se/app/hedvig/id1303668531?mt=8">
+                  <ItunesImg src="https://cdn.hedvig.com/www/appstores/app-store-badge.svg" />
+                </AppstoreLink>
+                <AppstoreLink href="https://play.google.com/store/apps/details?id=com.hedvig.app">
+                  <PlayImg src="https://cdn.hedvig.com/www/appstores/google-play-badge.svg" />
+                </AppstoreLink>
+              </AppstoreBadgeWrapper>
+            </LinksWrapper>
 
-        <SocialMediaContainer>
-          <SocialMediaLink>
-            <FacebookIcon />
-          </SocialMediaLink>
-          <SocialMediaLink>
-            <InstagramIcon />
-          </SocialMediaLink>
-          <SocialMediaLink>
-            <TwitterIcon />
-          </SocialMediaLink>
-        </SocialMediaContainer>
+            <SocialMediaContainer>
+              <SocialMediaLink>
+                <FacebookIcon />
+              </SocialMediaLink>
+              <SocialMediaLink>
+                <InstagramIcon />
+              </SocialMediaLink>
+              <SocialMediaLink>
+                <TwitterIcon />
+              </SocialMediaLink>
+            </SocialMediaContainer>
 
-        <LangSwitchersContainer>
-          <LangSwitcher>
-            <SweFlag />
-          </LangSwitcher>
-          <LangSwitcher>
-            <UkFlag />
-          </LangSwitcher>
-        </LangSwitchersContainer>
+            <LangSwitchersContainer>
+              <LangSwitcher>
+                <SweFlag />
+              </LangSwitcher>
+              <LangSwitcher>
+                <UkFlag />
+              </LangSwitcher>
+            </LangSwitchersContainer>
 
-        <FooterFooter>
-          <p>
-            © Hedvig AB. Huvudkontor: Artillerigatan 10, 114 51, Stockholm. Org.
-            nr. 559093-0334.
-          </p>
-          <p>
-            Exklusiv försäkringsgivare för Hedvigs försäkringar är International
-            Insurance Company of Hannover SE, Sverige filial, org. nr.
-            516402-6345. Hedvig står under Finansinspektionens tillsyn.
-          </p>
-        </FooterFooter>
-      </FooterInnerWrapper>
-    </ContentWrapper>
-  </SectionWrapper>
+            <FooterFooter
+              dangerouslySetInnerHTML={{
+                __html:
+                  globalStory.content.footer_paragraph &&
+                  globalStory.content.footer_paragraph.html,
+              }}
+            />
+          </FooterInnerWrapper>
+        </ContentWrapper>
+      </SectionWrapper>
+    )}
+  </GlobalStoryContainer>
 )
