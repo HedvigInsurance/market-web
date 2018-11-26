@@ -24,7 +24,7 @@ const Col = styled('div')(({ pad }: { pad: 'left' | 'right' }) => ({
   paddingRight: pad === 'right' ? '1rem' : 0,
   [TABLET_BP_DOWN]: {
     padding: 0,
-    width: 'auto',
+    width: '100%',
   },
 }))
 
