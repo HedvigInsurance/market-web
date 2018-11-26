@@ -42,28 +42,43 @@ const TextWrapper = styled('div')(
   }),
 )
 
-const Title = styled('h2')(({ size }: SectionSizeProps) => ({
-  fontSize: size === 'xl' ? '4.5rem' : '2.5rem',
-  width: '100%',
-  [TABLET_BP_DOWN]: {
-    fontSize: size === 'xl' ? '3.75rem' : '2rem',
-  },
-}))
+const Title = styled('h2')(
+  ({
+    size,
+    displayOrder,
+  }: SectionSizeProps & { displayOrder: 'top' | 'bottom' }) => ({
+    fontSize: size === 'xl' ? '4.5rem' : '2.5rem',
+    width: '100%',
+    [TABLET_BP_DOWN]: {
+      fontSize: size === 'xl' ? '3.75rem' : '2rem',
+      marginTop: displayOrder === 'top' ? '3rem' : '1.414rem',
+    },
+  }),
+)
 
 const Paragraph = styled('div')(({ size }: SectionSizeProps) => ({
   fontSize: size === 'xl' ? '1.125rem' : '1rem',
   marginTop: '1.5rem',
 }))
 
-const Image = styled('img')(({ alignment }: { alignment: string }) => ({
-  width: '40%',
-  display: alignment === 'center' ? 'none' : 'block',
-  [TABLET_BP_DOWN]: {
-    width: '100%',
-    marginTop: '3rem',
-    display: 'block',
-  },
-}))
+const Image = styled('img')(
+  ({
+    alignment,
+    displayOrder,
+  }: {
+    alignment: string
+    displayOrder: 'top' | 'bottom'
+  }) => ({
+    width: '40%',
+    display: alignment === 'center' ? 'none' : 'block',
+    [TABLET_BP_DOWN]: {
+      width: '100%',
+      marginTop: displayOrder === 'top' ? '0' : '3rem',
+      display: 'block',
+      order: displayOrder === 'top' ? -1 : 'initial',
+    },
+  }),
+)
 
 interface ImageTextBlockProps extends BaseBlockProps {
   title: string
@@ -75,6 +90,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
   show_button: boolean
   image: string
   size: SectionSize
+  media_position: 'top' | 'bottom'
 }
 
 export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
@@ -88,12 +104,15 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   image,
   color,
   size,
+  media_position,
 }) => {
   return (
     <SectionWrapper color={color && color.color} size={size}>
       <AlignableContentWrapper textPosition={text_position}>
         <TextWrapper textPosition={text_position}>
-          <Title size={size}>{title}</Title>
+          <Title size={size} displayOrder={media_position}>
+            {title}
+          </Title>
           <Paragraph
             size={size}
             dangerouslySetInnerHTML={{
@@ -111,7 +130,11 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
             </ButtonLinkWithMargin>
           )}
         </TextWrapper>
-        <Image alignment={text_position} src={image} />
+        <Image
+          alignment={text_position}
+          displayOrder={media_position}
+          src={image}
+        />
       </AlignableContentWrapper>
     </SectionWrapper>
   )
