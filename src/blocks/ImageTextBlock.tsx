@@ -8,7 +8,7 @@ import {
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 import { LinkComponent } from 'src/storyblok/StoryContainer'
-import { SectionSize } from 'src/utils/SectionSize'
+import { SectionSize, SectionSizeProps } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
 import { ButtonLink } from '../components/buttons'
 import { getStoryblokLinkUrl } from '../utils/storyblok-link'
@@ -42,18 +42,18 @@ const TextWrapper = styled('div')(
   }),
 )
 
-const Title = styled('h2')({
-  fontSize: '4.5rem',
+const Title = styled('h2')(({ size }: SectionSizeProps) => ({
+  fontSize: size === 'xl' ? '4.5rem' : '2.5rem',
   width: '100%',
   [TABLET_BP_DOWN]: {
-    fontSize: '3.75rem',
+    fontSize: size === 'xl' ? '3.75rem' : '2rem',
   },
-})
+}))
 
-const Paragraph = styled('div')({
-  fontSize: '1.125rem',
+const Paragraph = styled('div')(({ size }: SectionSizeProps) => ({
+  fontSize: size === 'xl' ? '1.125rem' : '1rem',
   marginTop: '1.5rem',
-})
+}))
 
 const Image = styled('img')(({ alignment }: { alignment: string }) => ({
   width: '40%',
@@ -93,8 +93,9 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
     <SectionWrapper color={color && color.color} size={size}>
       <AlignableContentWrapper textPosition={text_position}>
         <TextWrapper textPosition={text_position}>
-          <Title>{title}</Title>
+          <Title size={size}>{title}</Title>
           <Paragraph
+            size={size}
             dangerouslySetInnerHTML={{
               __html: paragraph.html,
             }}
