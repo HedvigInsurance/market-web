@@ -6,22 +6,45 @@ const buttonSizes = {
   md: '1rem 2rem',
 }
 
+export type ButtonType = 'filled' | 'outlined' | 'plain'
+
 interface ButtonProps {
   size?: keyof typeof buttonSizes
   bold?: boolean
+  type?: ButtonType
+}
+
+const buttonTypeStyles = {
+  filled: {
+    backgroundColor: colors.GREEN,
+    color: colors.WHITE,
+  },
+  outlined: {
+    backgroundColor: 'transparant',
+    color: colors.GREEN,
+  },
+  plain: {
+    border: 'none',
+    padding: '0',
+    backgroundColor: 'transparant',
+    color: colors.GREEN,
+  },
+}
+
+const getButtonTypeStyle = (buttonType: ButtonType) => {
+  return buttonTypeStyles[buttonType]
 }
 
 export const Button = styled('button')(
-  ({ size = 'md', bold = false }: ButtonProps) => ({
+  ({ size = 'md', bold = false, type = 'filled' }: ButtonProps) => ({
     display: 'inline-block',
-    backgroundColor: colors.GREEN,
     padding: buttonSizes[size],
     borderRadius: 30,
-    border: 'none',
+    border: `2px solid ${colors.GREEN}`,
     textDecoration: 'none',
     fontWeight: bold ? 'bold' : 'normal',
-    color: colors.WHITE,
     cursor: 'pointer',
+    ...getButtonTypeStyle(type),
   }),
 )
 
