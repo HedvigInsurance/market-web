@@ -2,21 +2,25 @@ import { Container } from 'constate'
 import * as React from 'react'
 import AnimateHeight from 'react-animate-height'
 import styled from 'react-emotion'
-import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
+import {
+  ContentWrapper,
+  SectionWrapper,
+  TABLET_BP_DOWN,
+} from '../components/blockHelpers'
 import { Plus } from '../components/icons/Plus'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 const SplitContentWrapper = styled(ContentWrapper)({
   display: 'flex',
   flexDirection: 'row',
-  '@media (max-width: 480px)': {
+  [TABLET_BP_DOWN]: {
     flexDirection: 'column',
   },
 })
 
 const Col = styled('div')({
   width: '50%',
-  '@media (max-width: 480px)': {
+  [TABLET_BP_DOWN]: {
     width: '100%',
   },
 })
