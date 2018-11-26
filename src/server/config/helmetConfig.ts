@@ -18,13 +18,17 @@ const defaultSrc = [
   'wss://*.intercomusercontent.com',
   'app.getsentry.com',
   'www.google-analytics.com',
+  'www.googleadservices.com',
+  'd33wubrfki0l68.cloudfront.net',
+  'tr.snapchat.com',
+  'sc-static.net',
   '*.facebook.net',
   '*.facebook.com',
   '*.doubleclick.net',
   'sc-static.net',
   '*.branch.io',
+  'app.link',
   '*.ravenjs.com',
-  'www.googleadservices.com',
   'analytics.twitter.com',
 ]
 
