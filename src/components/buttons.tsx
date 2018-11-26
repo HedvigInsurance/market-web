@@ -6,10 +6,12 @@ const buttonSizes = {
   md: '1rem 2rem',
 }
 
+export type ButtonType = 'filled' | 'outlined' | 'plain'
+
 interface ButtonProps {
   size?: keyof typeof buttonSizes
   bold?: boolean
-  type?: 'filled' | 'outlined' | 'plain'
+  type?: ButtonType
 }
 
 const buttonTypeStyles = {
@@ -29,7 +31,7 @@ const buttonTypeStyles = {
   },
 }
 
-const getButtonTypeStyle = (buttonType: 'filled' | 'outlined' | 'plain') => {
+const getButtonTypeStyle = (buttonType: ButtonType) => {
   return buttonTypeStyles[buttonType]
 }
 
