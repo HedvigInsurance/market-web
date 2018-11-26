@@ -3,9 +3,11 @@ import { AccordionBlock } from './AccordionBlock'
 import { BaseBlockProps } from './BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock'
 import { HeaderBlock } from './HeaderBlock'
+import { IconBulletPointBlock } from './IconBulletPointBlock'
 import { ImageMultiTextBlock } from './ImageMultiTextBlock'
 import { ImageTextBlock } from './ImageTextBlock'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
+import { TitleParagraphBlock } from './TitleParagraphBlock'
 
 const blockComponents = {
   accordion_block: AccordionBlock,
@@ -14,6 +16,8 @@ const blockComponents = {
   image_multi_text_block: ImageMultiTextBlock,
   single_quote_block: SingleQuoteBlock,
   image_text_block: ImageTextBlock,
+  icon_bullet_point_block: IconBulletPointBlock,
+  title_paragraph_block: TitleParagraphBlock,
 }
 
 export const getBlockComponent = <
