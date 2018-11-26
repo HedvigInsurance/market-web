@@ -592,11 +592,27 @@
           "default_value": "",
           "pos": 8
         },
+        "media_position": {
+          "type": "option",
+          "options": [
+            {
+              "value": "top",
+              "name": "Top"
+            },
+            {
+              "value": "bottom",
+              "name": "Bottom"
+            }
+          ],
+          "required": true,
+          "default_value": "top",
+          "pos": 9
+        },
         "show_button": {
           "type": "boolean",
           "required": false,
           "default_value": "true",
-          "pos": 9
+          "pos": 10
         }
       },
       "image": null,
