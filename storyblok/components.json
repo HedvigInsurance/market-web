@@ -743,7 +743,60 @@
       "display_name": null,
       "schema": {
         "body": {
-          "type": "bloks"
+          "type": "bloks",
+          "pos": 0
+        },
+        "seo": {
+          "type": "section",
+          "keys": [
+            "seo_meta_og_description",
+            "seo_meta_og_title",
+            "seo_meta_og_image",
+            "seo_meta_description",
+            "seo_meta_title",
+            "robots"
+          ],
+          "pos": 1
+        },
+        "robots": {
+          "type": "option",
+          "required": true,
+          "display_name": "",
+          "default_value": "index",
+          "pos": 2,
+          "options": [
+            {
+              "value": "index",
+              "name": "index"
+            },
+            {
+              "value": "noindex",
+              "name": "noindex"
+            }
+          ]
+        },
+        "seo_meta_title": {
+          "type": "text",
+          "pos": 3
+        },
+        "seo_meta_description": {
+          "type": "text",
+          "pos": 4
+        },
+        "seo_meta_og_title": {
+          "type": "text",
+          "pos": 5,
+          "display_name": "SEO Meta og:title"
+        },
+        "seo_meta_og_description": {
+          "type": "text",
+          "pos": 6,
+          "display_name": "SEO Meta og:description"
+        },
+        "seo_meta_og_image": {
+          "type": "image",
+          "pos": 7,
+          "display_name": "SEO Meta og:image"
         }
       },
       "image": null,
