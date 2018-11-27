@@ -170,6 +170,27 @@
       "real_name": "call_to_action_block"
     },
     {
+      "name": "footer_block",
+      "display_name": null,
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "default_value": "off-black-dark",
+          "pos": 0,
+          "display_name": ""
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "footer_block"
+    },
+    {
       "name": "global",
       "display_name": null,
       "schema": {
@@ -196,6 +217,35 @@
         "cta_link": {
           "type": "multilink",
           "pos": 4
+        },
+        "footer": {
+          "type": "section",
+          "keys": [
+            "footer_menu_items_1",
+            "footer_menu_items_2",
+            "footer_paragraph"
+          ],
+          "pos": 5
+        },
+        "footer_menu_items_1": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": ["menu_item"],
+          "display_name": "",
+          "pos": 6
+        },
+        "footer_menu_items_2": {
+          "type": "bloks",
+          "maximum": "",
+          "restrict_components": true,
+          "component_whitelist": ["menu_item"],
+          "pos": 7
+        },
+        "footer_paragraph": {
+          "type": "custom",
+          "field_type": "markdown-html",
+          "options": [],
+          "pos": 8
         }
       },
       "image": null,

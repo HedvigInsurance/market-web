@@ -1,6 +1,7 @@
 import { Container } from 'constate'
 import * as React from 'react'
-import { BaseBlockProps } from '../blocks/BaseBlockProps'
+import { BaseBlockProps, MarkdownHtmlComponent } from '../blocks/BaseBlockProps'
+import { ErrorBlock } from '../components/blockHelpers'
 
 export interface Story {
   name: string
@@ -31,19 +32,42 @@ export interface LinkComponent {
   cached_url: string // use this
 }
 
+interface MenuItem {
+  _uid: string
+  label: string
+  link: LinkComponent
+  component: 'menu_item'
+}
+
 export interface GlobalStory extends Story {
   content: {
-    header_menu_items?: ReadonlyArray<{
-      _uid: string
-      label: string
-      link: LinkComponent
-      component: 'menu_item'
-    }>
+    header_menu_items?: ReadonlyArray<MenuItem>
     show_cta: boolean
     cta_label: string
     cta_link: LinkComponent
+    footer_menu_items_1?: ReadonlyArray<MenuItem>
+    footer_menu_items_2?: ReadonlyArray<MenuItem>
+    footer_paragraph: MarkdownHtmlComponent
   }
 }
+
+export interface GlobalStoryContainerProps {
+  children: (props: { globalStory: GlobalStory }) => React.ReactNode
+}
+
+export const GlobalStoryContainer: React.FunctionComponent<
+  GlobalStoryContainerProps
+> = ({ children }) => (
+  <Container<{ story: GlobalStory | undefined }> context="globalStory">
+    {({ story }) =>
+      story ? (
+        children({ globalStory: story })
+      ) : (
+        <ErrorBlock message="NO GLOBAL POST FOUND - remove block or add a global post" />
+      )
+    }
+  </Container>
+)
 
 export interface StoryContainerProps {
   children: (props: WithStory) => React.ReactNode

@@ -1,4 +1,5 @@
 import { fonts, getCdnFontFaces } from '@hedviginsurance/brand'
+import * as React from 'react'
 import { injectGlobal } from 'react-emotion'
 
 export const GlobalStyles: React.FunctionComponent = () => {
@@ -44,6 +45,12 @@ h4 {
   font-size: 1.414rem;
 }
 
+a {
+  color: inherit;
+  &:hover, &:focus {
+    color: inherit;
+  }
+}
 
 img {
   max-width: 100%;
