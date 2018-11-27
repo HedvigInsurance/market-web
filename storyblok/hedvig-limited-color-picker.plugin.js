@@ -10,6 +10,8 @@ const Fieldtype = {
     <option value="blue-dark">Blue (dark)</option>
     <option value="pink-light">Pink (light)</option>
     <option value="off-white">Off white</option>
+    <option value="off-black">Off black</option>
+    <option value="off-black-dark">Off black (dark)</option>
     <option value="green">Green</option>
     <option value="purple">Purple</option>
   </select>

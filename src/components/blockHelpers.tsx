@@ -32,6 +32,14 @@ const colorMap = {
     color: colors.OFF_BLACK_DARK,
     background: colors.OFF_WHITE,
   },
+  'off-black': {
+    color: colors.WHITE,
+    background: colors.OFF_BLACK,
+  },
+  'off-black-dark': {
+    color: colors.WHITE,
+    background: colors.OFF_BLACK_DARK,
+  },
   green: {
     color: colors.WHITE,
     background: colors.GREEN,
