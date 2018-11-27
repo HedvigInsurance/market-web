@@ -8,7 +8,7 @@ import * as convert from 'koa-convert'
 import * as proxy from 'koa-proxy'
 import * as removeTrailingSlashes from 'koa-remove-trailing-slashes'
 import { Logger } from 'typescript-logging'
-import { oldAssetRoutes, routes, tmpOldRoutes } from '../routes'
+import { oldAssetRoutes, redirects, routes, tmpOldRoutes } from '../routes'
 import { config } from './config'
 import { helmetConfig } from './config/helmetConfig'
 import { sentryConfig } from './config/sentry'
@@ -70,6 +70,12 @@ if (config.forceHost) {
   server.router.use(forceHost({ host: config.forceHost }))
 }
 server.router.use('/*', removeTrailingSlashes())
+redirects.forEach(([source, target, code]) => {
+  server.router.get(source, (ctx) => {
+    ctx.status = code
+    ctx.redirect(target)
+  })
+})
 server.router.use(
   bodyParser({
     extendTypes: { json: ['application/csp-report'] },

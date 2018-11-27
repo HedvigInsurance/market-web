@@ -40,3 +40,11 @@ export const tmpOldRoutes: string[] = [
   '/en/legal',
   '/en/privacy',
 ]
+
+export const redirects: ReadonlyArray<[string, string, number]> = [
+  [
+    '/assets/press/hedvig-press-assets.zip',
+    'https://cdn.hedvig.com/identity/hedvig-press-assets.zip',
+    301,
+  ],
+]
