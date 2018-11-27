@@ -21,6 +21,36 @@ export const StoryPage: React.FunctionComponent = () => (
               )}`}
             />
           )}
+          {story.content.robots && (
+            <meta name="robots" content={story.content.robots} />
+          )}
+          {story.content.seo_meta_title && (
+            <meta name="title" content={story.content.seo_meta_title} />
+          )}
+          {story.content.seo_meta_description && (
+            <meta
+              name="description"
+              content={story.content.seo_meta_description}
+            />
+          )}
+          {story.content.seo_meta_og_title && (
+            <meta
+              property="og:title"
+              content={story.content.seo_meta_og_title}
+            />
+          )}
+          {story.content.seo_meta_og_description && (
+            <meta
+              property="og:description"
+              content={story.content.seo_meta_og_description}
+            />
+          )}
+          {story.content.seo_meta_og_image && (
+            <meta
+              property="og:image"
+              content={story.content.seo_meta_og_image}
+            />
+          )}
         </Helmet>
 
         {getBlocksOrDefault(story).map((block) => {

@@ -18,6 +18,12 @@ export interface BodyStory extends Story {
     _uid: string
     component: 'page'
     body: ReadonlyArray<BaseBlockProps>
+    robots: 'index' | 'noindex'
+    seo_meta_title: string
+    seo_meta_description: string
+    seo_meta_og_title: string
+    seo_meta_og_description: string
+    seo_meta_og_image: string
   }
 }
 
