@@ -43,6 +43,7 @@ const LinksColumnsWrapper = styled('nav')({
 const LinkColumn = styled('div')({
   '&:not(:last-of-type)': {
     paddingRight: '7rem',
+    paddingBottom: '.5rem',
     [TABLET_BP_DOWN]: {
       paddingRight: '3rem',
     },
@@ -149,13 +150,13 @@ export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
             </LinksWrapper>
 
             <SocialMediaContainer>
-              <SocialMediaLink>
+              <SocialMediaLink href="https://www.fb.me/hedvigapp">
                 <FacebookIcon />
               </SocialMediaLink>
-              <SocialMediaLink>
+              <SocialMediaLink href="https://www.instagram.com/hedvig.app/">
                 <InstagramIcon />
               </SocialMediaLink>
-              <SocialMediaLink>
+              <SocialMediaLink href="https://twitter.com/hedvigapp">
                 <TwitterIcon />
               </SocialMediaLink>
             </SocialMediaContainer>
