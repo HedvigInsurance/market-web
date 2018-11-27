@@ -4,10 +4,13 @@ import { WithStory } from '../storyblok/StoryContainer'
 export const getMeta = ({ story, nonce }: WithStory & { nonce?: string }) => (
   <>
     <title>{story.name}</title>
-    {typeof window === 'undefined' && (
+    {typeof window === 'undefined' && typeof process !== 'undefined' && (
       <link
         rel="canonical"
-        href={`${process.env.HOST}/${story.full_slug.replace(/\/?home$/, '')}`}
+        href={`${process.env.PUBLIC_HOST}/${story.full_slug.replace(
+          /\/?home$/,
+          '',
+        )}`}
       />
     )}
     {story.content.robots && (
