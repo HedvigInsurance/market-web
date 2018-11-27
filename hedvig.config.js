@@ -19,6 +19,8 @@ module.exports = {
     'CSP_REPORT_ENDPOINT',
     'SENTRY_DSN',
     'SENTRY_ENVIRONMENT',
+    'SEGMENT_API_KEY',
+    'BRANCH_API_KEY',
     'HEROKU_SLUG_COMMIT',
     'HEROKU_DYNO_ID',
   ], // Array of environment variables to pass through webpack. I.e. ['FOO', 'BAR']
