@@ -18,6 +18,7 @@ import {
   getPublishedStoryFromSlug,
   getStoryblokEditorScript,
 } from './utils/storyblok'
+import { allTracking } from './utils/tracking'
 
 const scriptLocation = getScriptLocation({
   statsLocation: path.resolve(__dirname, 'assets'),
@@ -48,6 +49,10 @@ const template = ({
     ${helmet.title}
     ${helmet.link}
     ${helmet.meta}
+    ${helmet.script}
+    <script nonce="${nonce}">
+    ${allTracking}
+    </script>
     ${favicons}
     <script src="https://browser.sentry-cdn.com/4.2.3/bundle.min.js" crossorigin="anonymous"></script>
     <script nonce="${nonce}">
@@ -127,7 +132,7 @@ export const getPageMiddleware: Koa.Middleware = async (ctx, next) => {
     >
       <StaticRouter location={ctx.request.originalUrl} context={routerContext}>
         <HelmetProvider context={helmetContext}>
-          <App />
+          <App nonce={(ctx.res as any).cspNonce} />
         </HelmetProvider>
       </StaticRouter>
     </Provider>
