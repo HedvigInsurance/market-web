@@ -3,7 +3,7 @@ import { StoryPage } from './pages/StoryPage'
 
 export interface Route {
   path: string
-  Component: React.ComponentType
+  Component: React.ComponentType<{ nonce?: string }>
   exact: boolean
 }
 
