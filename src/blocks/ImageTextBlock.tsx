@@ -14,7 +14,7 @@ import { ButtonLink } from '../components/buttons'
 import {
   getStoryblokImage,
   getStoryblokLinkUrl,
-  Image,
+  Image as StoryblokImage,
 } from '../utils/storyblok'
 
 const ButtonLinkWithMargin = styled(ButtonLink)({
@@ -92,7 +92,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
   button_type: 'filled' | 'outlined'
   button_link: LinkComponent
   show_button: boolean
-  image: Image
+  image: StoryblokImage
   size: SectionSize
   media_position: 'top' | 'bottom'
 }

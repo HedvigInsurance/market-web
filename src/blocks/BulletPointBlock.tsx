@@ -5,9 +5,9 @@ import {
   MOBILE_BP_DOWN,
   SectionWrapper,
 } from '../components/blockHelpers'
+import { getStoryblokImage, Image } from '../utils/storyblok'
 import { textFlexPositionMap, TextPosition } from '../utils/textPosition'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
-import { getStoryblokImage, Image } from '../utils/storyblok'
 
 const TABLET_BP_DOWN = '@media (max-width: 800px)'
 const GUTTER = '1rem'
