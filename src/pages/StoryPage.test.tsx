@@ -8,7 +8,9 @@ test('renders without 💥', () => {
   mount(
     <Provider
       initialState={{
-        story: { story: { name: 'blargh', content: { body: [] } } },
+        story: {
+          story: { name: 'blargh', full_slug: '/home', content: { body: [] } },
+        },
       }}
     >
       <HelmetProvider>
