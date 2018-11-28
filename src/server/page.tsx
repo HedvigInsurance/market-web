@@ -67,7 +67,8 @@ const template = ({
     }
     <div id="react-root">${body}</div>
       <script nonce="${nonce}">
-      window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}
+      window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
+      window.PUBLIC_HOST = ${JSON.stringify(process.env.PUBLIC_HOST || '')};
       </script>
     <script src="${scriptLocation}"></script>
   </body>

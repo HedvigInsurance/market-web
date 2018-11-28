@@ -18,9 +18,11 @@ export const getPublicHost = (): string | undefined => {
   return ''
 }
 export const getStoryblokImage = (url?: Image) =>
-  (url || '').replace(
-    /^(https?:)?\/\/a\.storyblok\.com\//,
-    getPublicHost() + '/',
-  )
+  getPublicHost()
+    ? (url || '').replace(
+        /^(https?:)?\/\/a\.storyblok\.com\//,
+        getPublicHost() + '/',
+      )
+    : url
 
 export type Image = string
