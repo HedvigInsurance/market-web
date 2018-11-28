@@ -8,7 +8,7 @@ import {
   TABLET_BP_DOWN,
 } from '../components/blockHelpers'
 import { ButtonLink, ButtonType } from '../components/buttons'
-import { getStoryblokLinkUrl } from '../utils/storyblok-link'
+import { getStoryblokLinkUrl } from '../utils/storyblok'
 import { BaseBlockProps } from './BaseBlockProps'
 
 const ButtonLinkWithMargin = styled(ButtonLink)({

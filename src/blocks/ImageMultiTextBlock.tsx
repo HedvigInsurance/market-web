@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
+import { getStoryblokImage, Image } from '../utils/storyblok'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 const TABLET_BP_DOWN = '@media (max-width: 800px)'
@@ -40,7 +41,7 @@ const TextContent = styled('div')({
 
 export interface ImageMultiTextBlockProps extends BaseBlockProps {
   image_position: 'left' | 'right'
-  image: string
+  image: Image
   text_items: ReadonlyArray<
     BaseBlockProps & { paragraph: MarkdownHtmlComponent; title: string }
   >
@@ -53,7 +54,7 @@ export const ImageMultiTextBlock: React.FunctionComponent<
     <ContentWrapper>
       <Wrapper imagePosition={image_position}>
         <Col pad={image_position === 'left' ? 'right' : 'left'}>
-          <img src={image} />
+          <img src={getStoryblokImage(image)} />
         </Col>
         <Col pad={image_position === 'left' ? 'left' : 'right'}>
           {text_items.map((item) => (
