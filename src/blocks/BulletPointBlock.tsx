@@ -7,6 +7,7 @@ import {
 } from '../components/blockHelpers'
 import { textFlexPositionMap, TextPosition } from '../utils/textPosition'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
+import { getStoryblokImage, Image } from '../utils/storyblok'
 
 const TABLET_BP_DOWN = '@media (max-width: 800px)'
 const GUTTER = '1rem'
@@ -41,7 +42,7 @@ interface BulletPointsBlockProps extends BaseBlockProps {
   bullet_points_position: TextPosition
   bullet_points: ReadonlyArray<
     BaseBlockProps & {
-      image: string
+      image: Image
       title: string
       paragraph: MarkdownHtmlComponent
     }
@@ -56,7 +57,7 @@ export const BulletPointBlock: React.FunctionComponent<
       <BulletPointsWrapper position={bullet_points_position}>
         {bullet_points.map((bullet) => (
           <BulletPoint key={bullet._uid}>
-            <img src={bullet.image} />
+            <img src={getStoryblokImage(bullet.image)} />
             <BulletPointTitle>{bullet.title}</BulletPointTitle>
             <div
               dangerouslySetInnerHTML={{
