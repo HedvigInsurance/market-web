@@ -10,7 +10,7 @@ import {
   GlobalStory,
   GlobalStoryContainer,
 } from '../../storyblok/StoryContainer'
-import { getStoryblokLinkUrl } from '../../utils/storyblok-link'
+import { getStoryblokLinkUrl } from '../../utils/storyblok'
 import { BaseBlockProps } from '../BaseBlockProps'
 import { Burger, TABLET_BP_DOWN } from './mobile'
 

@@ -2,6 +2,7 @@ import { Container } from 'constate'
 import * as React from 'react'
 import { BaseBlockProps, MarkdownHtmlComponent } from '../blocks/BaseBlockProps'
 import { ErrorBlock } from '../components/blockHelpers'
+import { Image } from '../utils/storyblok'
 
 export interface Story {
   name: string
@@ -23,7 +24,7 @@ export interface BodyStory extends Story {
     seo_meta_description: string
     seo_meta_og_title: string
     seo_meta_og_description: string
-    seo_meta_og_image: string
+    seo_meta_og_image: Image
   }
 }
 

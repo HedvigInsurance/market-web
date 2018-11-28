@@ -1,18 +1,14 @@
 import * as React from 'react'
 import { WithStory } from '../storyblok/StoryContainer'
+import { getPublicHost, getStoryblokImage } from './storyblok'
 
 export const getMeta = ({ story, nonce }: WithStory & { nonce?: string }) => (
   <>
     <title>{story.name}</title>
-    {typeof window === 'undefined' && typeof process !== 'undefined' && (
-      <link
-        rel="canonical"
-        href={`${process.env.PUBLIC_HOST}/${story.full_slug.replace(
-          /\/?home$/,
-          '',
-        )}`}
-      />
-    )}
+    <link
+      rel="canonical"
+      href={`${getPublicHost()}/${story.full_slug.replace(/\/?home$/, '')}`}
+    />
     {story.content.robots && (
       <meta name="robots" content={story.content.robots} />
     )}
@@ -32,7 +28,10 @@ export const getMeta = ({ story, nonce }: WithStory & { nonce?: string }) => (
       />
     )}
     {story.content.seo_meta_og_image && (
-      <meta property="og:image" content={story.content.seo_meta_og_image} />
+      <meta
+        property="og:image"
+        content={getStoryblokImage(story.content.seo_meta_og_image)}
+      />
     )}
     <meta name="twitter:site" content="@hedvigapp" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
