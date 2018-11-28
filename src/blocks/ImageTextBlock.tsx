@@ -11,7 +11,11 @@ import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { SectionSize, SectionSizeProps } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
 import { ButtonLink } from '../components/buttons'
-import { getStoryblokLinkUrl } from '../utils/storyblok-link'
+import {
+  getStoryblokImage,
+  getStoryblokLinkUrl,
+  Image as StoryblokImage,
+} from '../utils/storyblok'
 
 const ButtonLinkWithMargin = styled(ButtonLink)({
   marginTop: '1.7rem',
@@ -88,7 +92,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
   button_type: 'filled' | 'outlined'
   button_link: LinkComponent
   show_button: boolean
-  image: string
+  image: StoryblokImage
   size: SectionSize
   media_position: 'top' | 'bottom'
 }
@@ -133,7 +137,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
         <Image
           alignment={text_position}
           displayOrder={media_position}
-          src={image}
+          src={getStoryblokImage(image)}
         />
       </AlignableContentWrapper>
     </SectionWrapper>
