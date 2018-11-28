@@ -107,7 +107,8 @@ test('it stitches together a correct sitemap', () => {
     responseText: oldSitemapResponse,
   })
 
-  const request = supertest(app.listen())
+  const server = app.listen()
+  const request = supertest(server)
 
   return request
     .get('/sitemap.xml')
@@ -139,5 +140,8 @@ test('it stitches together a correct sitemap', () => {
           priority: u.priority[0],
         })),
       ).toEqual(partialExpectedResponse)
+    })
+    .finally(() => {
+      server.close()
     })
 })
