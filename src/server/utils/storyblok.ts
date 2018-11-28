@@ -14,15 +14,16 @@ setTimeout(() => {
   remoteCacheVersion = new Date()
 }, 60 * 15 * 1000)
 
-const apiClient = axios.create({
-  baseURL: 'https://api.storyblok.com',
-})
+const apiClient = () =>
+  axios.create({
+    baseURL: 'https://api.storyblok.com',
+  })
 
 export const getGlobalStory = async (
   bypassCache?: boolean,
 ): Promise<AxiosResponse<GlobalStory> | undefined> => {
   try {
-    return await apiClient.get<GlobalStory>(`/v1/cdn/stories/global`, {
+    return await apiClient().get<GlobalStory>(`/v1/cdn/stories/global`, {
       params: {
         token: config.storyblokApiToken,
         find_by: 'slug',
@@ -44,18 +45,21 @@ export const getPublishedStoryFromSlug = (
   path: string,
   bypassCache?: boolean,
 ) =>
-  apiClient.get<BodyStory>(`/v1/cdn/stories${path === '/' ? '/home' : path}`, {
-    params: {
-      token: config.storyblokApiToken,
-      find_by: 'slug',
-      cv: bypassCache
-        ? calculateCacheVersionTimestamp(new Date())
-        : getRemoteCacheVersionTimestamp(),
+  apiClient().get<BodyStory>(
+    `/v1/cdn/stories${path === '/' ? '/home' : path}`,
+    {
+      params: {
+        token: config.storyblokApiToken,
+        find_by: 'slug',
+        cv: bypassCache
+          ? calculateCacheVersionTimestamp(new Date())
+          : getRemoteCacheVersionTimestamp(),
+      },
     },
-  })
+  )
 
 export const getDraftedStoryById = (id: string, cacheVersion: string) =>
-  apiClient.get<BodyStory>(`/v1/cdn/stories/${id}`, {
+  apiClient().get<BodyStory>(`/v1/cdn/stories/${id}`, {
     params: {
       token: config.storyblokApiToken,
       find_by: 'id',
@@ -64,6 +68,28 @@ export const getDraftedStoryById = (id: string, cacheVersion: string) =>
     },
     headers: {
       'cache-control': 'no-cache',
+    },
+  })
+
+export interface Link {
+  id: number
+  slug: string
+  name: string
+  is_folder: boolean
+  parent_id: number
+  published: boolean
+  position: number
+  uuid: string
+  is_startpage: boolean
+}
+export interface LinkResult {
+  links: { [uuid: string]: Link }
+}
+export const getAllStoryblokLinks = () =>
+  apiClient().get<LinkResult>('/v1/cdn/links', {
+    params: {
+      token: config.storyblokApiToken,
+      cv: getRemoteCacheVersionTimestamp(),
     },
   })
 
