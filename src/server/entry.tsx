@@ -16,6 +16,7 @@ import { appLogger } from './logging'
 import { inCaseOfEmergency } from './middlewares/enhancers'
 import { forceHost } from './middlewares/redirects'
 import { getPageMiddleware } from './page'
+import { sitemapXml } from './sitemap'
 
 Sentry.init({
   ...sentryConfig(),
@@ -104,6 +105,7 @@ const oldSiteProxy = convert(
   }),
 )
 
+server.router.get('/sitemap.xml', sitemapXml)
 server.router.use(oldAssetRoutes, oldSiteProxy)
 server.router.get(routes.map(({ path }) => path), getPageMiddleware)
 server.router.use(tmpOldRoutes, oldSiteProxy)
