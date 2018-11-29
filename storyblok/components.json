@@ -1055,6 +1055,70 @@
       "real_name": "plain_text_block"
     },
     {
+      "name": "press_block",
+      "display_name": null,
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "items": {
+          "type": "bloks",
+          "pos": 1,
+          "restrict_components": true,
+          "component_whitelist": ["press_item"]
+        },
+        "title": {
+          "type": "text",
+          "pos": 2
+        },
+        "footnote": {
+          "type": "custom",
+          "field_type": "markdown-html",
+          "options": [],
+          "pos": 3
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "press_block"
+    },
+    {
+      "name": "press_item",
+      "display_name": null,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0
+        },
+        "logo": {
+          "type": "image",
+          "pos": 1
+        },
+        "text": {
+          "type": "text",
+          "pos": 2
+        },
+        "link": {
+          "type": "text",
+          "pos": 3
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "press_item"
+    },
+    {
       "name": "single_quote_block",
       "display_name": null,
       "schema": {
