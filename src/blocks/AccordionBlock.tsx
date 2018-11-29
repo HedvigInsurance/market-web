@@ -4,6 +4,7 @@ import AnimateHeight from 'react-animate-height'
 import styled from 'react-emotion'
 import {
   ContentWrapper,
+  MOBILE_BP_DOWN,
   SectionWrapper,
   TABLET_BP_DOWN,
 } from '../components/blockHelpers'
@@ -55,6 +56,11 @@ const ExpandToggler = styled('button')({
   color: 'inherit',
   cursor: 'pointer',
 
+  [MOBILE_BP_DOWN]: {
+    width: '100%',
+    justifyContent: 'space-between',
+  },
+
   '&:focus': {
     outline: 'none',
   },
@@ -71,6 +77,7 @@ const AccordionContent = styled('div')({
 const ExpanderIcon = styled(Plus)(({ isOpen }: { isOpen: boolean }) => ({
   transform: isOpen ? 'rotate(45deg)' : undefined,
   transition: 'transform 150ms',
+  flexShrink: 0,
 }))
 
 interface AccordionProps {
