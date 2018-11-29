@@ -3,6 +3,12 @@ import isIOS from 'is-ios'
 import * as React from 'react'
 import styled from 'react-emotion'
 
+import {
+  CONTENT_GUTTER,
+  CONTENT_GUTTER_MOBILE,
+  CONTENT_MAX_WIDTH,
+  MOBILE_BP_DOWN,
+} from '../../components/blockHelpers'
 import { BaseBlockProps } from '../BaseBlockProps'
 import { CloseButton } from './CloseButton'
 import { Player } from './Player'
@@ -22,7 +28,7 @@ const HeroContainer = styled('div')({
   width: '100%',
   position: 'relative',
   overflow: 'hidden',
-  maxWidth: 1500,
+  maxWidth: CONTENT_MAX_WIDTH,
   margin: '0 auto',
 })
 
@@ -38,11 +44,15 @@ const Shadow = styled('div')(
     top: 0,
     left: 0,
     backgroundColor: 'rgba(0,0,0,0.7)',
-    padding: 20,
+    padding: CONTENT_GUTTER,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     transition: 'opacity 1000ms',
+
+    [MOBILE_BP_DOWN]: {
+      padding: CONTENT_GUTTER_MOBILE,
+    },
   },
   ({ hidden }: ShadowProps) => ({
     opacity: hidden ? 0 : 1,
