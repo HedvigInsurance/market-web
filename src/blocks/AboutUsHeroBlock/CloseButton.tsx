@@ -42,6 +42,8 @@ const Button = styled('button')(
     ':active': {
       transform: 'scale(0.9)',
     },
+    background: 'transparent',
+    border: 0,
   },
   ({ hidden }: ButtonProps) => ({
     pointerEvents: hidden ? 'none' : 'all',
