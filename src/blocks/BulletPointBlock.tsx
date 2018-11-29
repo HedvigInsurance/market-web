@@ -10,7 +10,7 @@ import { textFlexPositionMap, TextPosition } from '../utils/textPosition'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 const TABLET_BP_DOWN = '@media (max-width: 800px)'
-const GUTTER = '1rem'
+const GUTTER = '2rem'
 
 const BulletPointsWrapper = styled('div')(
   ({ position }: { position: TextPosition }) => ({
@@ -23,7 +23,9 @@ const BulletPointsWrapper = styled('div')(
 )
 
 const BulletPoint = styled('div')({
-  margin: '1rem',
+  display: 'flex',
+  flexDirection: 'column',
+  margin: GUTTER,
   width: `calc(${(1 / 3) * 100}% - ${GUTTER}*2)`,
 
   [TABLET_BP_DOWN]: {
@@ -34,6 +36,17 @@ const BulletPoint = styled('div')({
     width: `calc(100% - ${GUTTER}*2)`,
   },
 })
+
+const BulletPointHead = styled('div')({
+  flexGrow: 1,
+})
+const BulletPointImage = styled('img')({
+  width: 'calc(100% - 4rem)',
+  margin: '0 2rem',
+})
+
+const BulletPointBody = styled('div')({})
+
 const BulletPointTitle = styled('h3')({
   fontSize: '1.25rem',
 })
@@ -57,13 +70,17 @@ export const BulletPointBlock: React.FunctionComponent<
       <BulletPointsWrapper position={bullet_points_position}>
         {bullet_points.map((bullet) => (
           <BulletPoint key={bullet._uid}>
-            <img src={getStoryblokImage(bullet.image)} />
-            <BulletPointTitle>{bullet.title}</BulletPointTitle>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: bullet.paragraph && bullet.paragraph.html,
-              }}
-            />
+            <BulletPointHead>
+              <BulletPointImage src={getStoryblokImage(bullet.image)} />
+            </BulletPointHead>
+            <BulletPointBody>
+              <BulletPointTitle>{bullet.title}</BulletPointTitle>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: bullet.paragraph && bullet.paragraph.html,
+                }}
+              />
+            </BulletPointBody>
           </BulletPoint>
         ))}
       </BulletPointsWrapper>
