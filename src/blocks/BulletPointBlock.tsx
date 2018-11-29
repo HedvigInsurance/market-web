@@ -38,11 +38,16 @@ const BulletPoint = styled('div')({
 })
 
 const BulletPointHead = styled('div')({
-  flexGrow: 1,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '16rem',
 })
 const BulletPointImage = styled('img')({
-  width: 'calc(100% - 4rem)',
-  margin: '0 2rem',
+  width: `calc(100% - ${GUTTER})`,
+  margin: 'auto',
+  maxWidth: '16rem',
+  maxHeight: '16rem',
 })
 
 const BulletPointBody = styled('div')({})
