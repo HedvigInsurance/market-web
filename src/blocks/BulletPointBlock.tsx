@@ -12,6 +12,10 @@ import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 const TABLET_BP_DOWN = '@media (max-width: 800px)'
 const GUTTER = '2rem'
 
+const BulletPointSectionWrapper = styled(SectionWrapper)({
+  overflowX: 'hidden',
+})
+
 const BulletPointsWrapper = styled('div')(
   ({ position }: { position: TextPosition }) => ({
     display: 'flex',
@@ -70,7 +74,7 @@ interface BulletPointsBlockProps extends BaseBlockProps {
 export const BulletPointBlock: React.FunctionComponent<
   BulletPointsBlockProps
 > = ({ color, bullet_points_position, bullet_points }) => (
-  <SectionWrapper color={color && color.color}>
+  <BulletPointSectionWrapper color={color && color.color}>
     <ContentWrapper>
       <BulletPointsWrapper position={bullet_points_position}>
         {bullet_points.map((bullet) => (
@@ -90,5 +94,5 @@ export const BulletPointBlock: React.FunctionComponent<
         ))}
       </BulletPointsWrapper>
     </ContentWrapper>
-  </SectionWrapper>
+  </BulletPointSectionWrapper>
 )
