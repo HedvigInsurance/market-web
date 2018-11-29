@@ -10,7 +10,11 @@ import { textFlexPositionMap, TextPosition } from '../utils/textPosition'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 const TABLET_BP_DOWN = '@media (max-width: 800px)'
-const GUTTER = '1rem'
+const GUTTER = '2rem'
+
+const BulletPointSectionWrapper = styled(SectionWrapper)({
+  overflowX: 'hidden',
+})
 
 const BulletPointsWrapper = styled('div')(
   ({ position }: { position: TextPosition }) => ({
@@ -23,7 +27,9 @@ const BulletPointsWrapper = styled('div')(
 )
 
 const BulletPoint = styled('div')({
-  margin: '1rem',
+  display: 'flex',
+  flexDirection: 'column',
+  margin: GUTTER,
   width: `calc(${(1 / 3) * 100}% - ${GUTTER}*2)`,
 
   [TABLET_BP_DOWN]: {
@@ -34,6 +40,22 @@ const BulletPoint = styled('div')({
     width: `calc(100% - ${GUTTER}*2)`,
   },
 })
+
+const BulletPointHead = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '16rem',
+})
+const BulletPointImage = styled('img')({
+  width: `calc(100% - ${GUTTER})`,
+  margin: 'auto',
+  maxWidth: '16rem',
+  maxHeight: '16rem',
+})
+
+const BulletPointBody = styled('div')({})
+
 const BulletPointTitle = styled('h3')({
   fontSize: '1.25rem',
 })
@@ -52,21 +74,25 @@ interface BulletPointsBlockProps extends BaseBlockProps {
 export const BulletPointBlock: React.FunctionComponent<
   BulletPointsBlockProps
 > = ({ color, bullet_points_position, bullet_points }) => (
-  <SectionWrapper color={color && color.color}>
+  <BulletPointSectionWrapper color={color && color.color}>
     <ContentWrapper>
       <BulletPointsWrapper position={bullet_points_position}>
         {bullet_points.map((bullet) => (
           <BulletPoint key={bullet._uid}>
-            <img src={getStoryblokImage(bullet.image)} />
-            <BulletPointTitle>{bullet.title}</BulletPointTitle>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: bullet.paragraph && bullet.paragraph.html,
-              }}
-            />
+            <BulletPointHead>
+              <BulletPointImage src={getStoryblokImage(bullet.image)} />
+            </BulletPointHead>
+            <BulletPointBody>
+              <BulletPointTitle>{bullet.title}</BulletPointTitle>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: bullet.paragraph && bullet.paragraph.html,
+                }}
+              />
+            </BulletPointBody>
           </BulletPoint>
         ))}
       </BulletPointsWrapper>
     </ContentWrapper>
-  </SectionWrapper>
+  </BulletPointSectionWrapper>
 )
