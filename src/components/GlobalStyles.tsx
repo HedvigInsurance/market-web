@@ -45,6 +45,24 @@ h4 {
   font-size: 1rem;
 }
 
+@media (max-width: 800px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+      font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  h2 {
+      font-size: 2rem;
+  }
+}
+
 a {
   color: inherit;
   &:hover, &:focus {
