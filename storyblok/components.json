@@ -323,6 +323,47 @@
       "real_name": "call_to_action_block"
     },
     {
+      "name": "facts_block",
+      "display_name": null,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0
+        },
+        "fact1_number": {
+          "type": "text",
+          "pos": 1
+        },
+        "fact1_explainer": {
+          "type": "text",
+          "pos": 2
+        },
+        "fact2_number": {
+          "type": "text",
+          "pos": 3
+        },
+        "fact2_explainer": {
+          "type": "text",
+          "pos": 4
+        },
+        "fact3_number": {
+          "type": "text",
+          "pos": 5
+        },
+        "fact3_explainer": {
+          "type": "text",
+          "pos": 6
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "facts_block"
+    },
+    {
       "name": "footer_block",
       "display_name": null,
       "schema": {
