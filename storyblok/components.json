@@ -891,6 +891,60 @@
       "real_name": "image_text_block"
     },
     {
+      "name": "investor_item",
+      "display_name": null,
+      "schema": {
+        "name": {
+          "type": "text",
+          "pos": 0
+        },
+        "image": {
+          "type": "image",
+          "pos": 1
+        },
+        "type": {
+          "type": "text",
+          "pos": 2
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "investor_item"
+    },
+    {
+      "name": "investors_block",
+      "display_name": null,
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "title": {
+          "type": "text",
+          "pos": 1
+        },
+        "items": {
+          "type": "bloks",
+          "restrict_components": true,
+          "pos": 2,
+          "component_whitelist": ["investor_item"]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "investors_block"
+    },
+    {
       "name": "logotype_item",
       "display_name": "",
       "schema": {
