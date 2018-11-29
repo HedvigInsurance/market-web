@@ -46,15 +46,17 @@ const Caption = styled('div')({
 
 const Shadow = styled('div')({
   position: 'absolute',
+  display: 'flex',
+  alignItems: 'flex-end',
   top: 0,
-  left: 0,
+  left: '50%',
   height: '100%',
   width: '100%',
+  maxWidth: `calc(${CONTENT_MAX_WIDTH}px - ${CONTENT_GUTTER}*2)`,
+  transform: 'translateX(-50%)',
   backgroundImage:
     'linear-gradient(transparent, transparent 20%, rgba(0,0,0,0.85))',
   color: 'white',
-  display: 'flex',
-  alignItems: 'flex-end',
   paddingBottom: 20,
   '@media(min-width: 900px)': {
     backgroundImage:
