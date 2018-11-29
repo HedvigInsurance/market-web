@@ -1,6 +1,31 @@
 {
   "components": [
     {
+      "name": "about_us_hero_block",
+      "display_name": null,
+      "schema": {
+        "headline": {
+          "type": "text",
+          "pos": 0
+        },
+        "title": {
+          "type": "text",
+          "pos": 1
+        },
+        "play_button_text": {
+          "type": "text",
+          "pos": 2
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "about_us_hero_block"
+    },
+    {
       "name": "accordion_block",
       "display_name": null,
       "schema": {
