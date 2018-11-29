@@ -11,6 +11,7 @@ import { ImageBlock } from './ImageBlock'
 import { ImageMultiTextBlock } from './ImageMultiTextBlock'
 import { ImageTextBlock } from './ImageTextBlock'
 import { PlainTextBlock } from './PlainTextBlock'
+import { PressBlock } from './PressBlock'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
 import { TitleCtaBlock } from './TitleCtaBlock'
@@ -30,6 +31,7 @@ const blockComponents = {
   title_paragraph_block: TitleParagraphBlock,
   title_cta_block: TitleCtaBlock,
   plain_text_block: PlainTextBlock,
+  press_block: PressBlock,
   spacer_block: SpacerBlock,
   footer_block: FooterBlock,
 }
