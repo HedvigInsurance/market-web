@@ -1275,16 +1275,20 @@
           "type": "option",
           "options": [
             {
-              "value": "right",
-              "name": "Right"
+              "value": "left",
+              "name": "Left"
             },
             {
               "value": "center",
               "name": "Center"
             },
             {
-              "value": "left",
-              "name": "Left"
+              "value": "center-but-left",
+              "name": "Center, but left"
+            },
+            {
+              "value": "right",
+              "name": "Right"
             }
           ],
           "required": true,
