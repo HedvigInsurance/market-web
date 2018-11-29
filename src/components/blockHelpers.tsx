@@ -53,9 +53,15 @@ const colorMap = {
 const sectionSizeStyles = {
   sm: {
     padding: '3.5rem 0',
+    [TABLET_BP_DOWN]: {
+      padding: '2rem 0',
+    },
   },
   lg: {
     padding: '7rem 0',
+    [TABLET_BP_DOWN]: {
+      padding: '5rem 0',
+    },
   },
   xl: {
     padding: '14rem 0',

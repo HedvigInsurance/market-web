@@ -7,6 +7,7 @@ import { HeaderBlock } from './HeaderBlock'
 import { IconBulletPointBlock } from './IconBulletPointBlock'
 import { ImageMultiTextBlock } from './ImageMultiTextBlock'
 import { ImageTextBlock } from './ImageTextBlock'
+import { PlainTextBlock } from './PlainTextBlock'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { TitleCtaBlock } from './TitleCtaBlock'
 import { TitleParagraphBlock } from './TitleParagraphBlock'
@@ -21,6 +22,7 @@ const blockComponents = {
   icon_bullet_point_block: IconBulletPointBlock,
   title_paragraph_block: TitleParagraphBlock,
   title_cta_block: TitleCtaBlock,
+  plain_text_block: PlainTextBlock,
   footer_block: FooterBlock,
 }
 
