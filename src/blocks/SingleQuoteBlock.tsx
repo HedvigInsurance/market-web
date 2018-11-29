@@ -1,10 +1,7 @@
 import { fonts } from '@hedviginsurance/brand/dist'
 import * as React from 'react'
 import styled from 'react-emotion'
-import {
-  ContentWrapper,
-  SectionWrapper,
-} from '../components/blockHelpers'
+import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
 import { textFlexPositionMap, TextPosition } from '../utils/textPosition'
 import { BaseBlockProps } from './BaseBlockProps'
 
