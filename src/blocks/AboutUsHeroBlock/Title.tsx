@@ -73,9 +73,9 @@ const PlayButton = styled(animated.button)({
   background: 'transparent',
   border: 0,
   width: '100%',
-  fontSize: 18,
-  marginTop: 30,
+  marginTop: '2rem',
   cursor: 'pointer',
+  fontSize: 'iniherit',
   ':focus': {
     outline: 0,
   },

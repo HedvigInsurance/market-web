@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 import { Spring } from 'react-spring'
+import { CONTENT_GUTTER } from '../../components/blockHelpers'
 
 interface ButtonProps {
   hidden: boolean
@@ -32,8 +33,8 @@ const CrossIcon: React.FunctionComponent = () => (
 const Button = styled('button')(
   {
     position: 'absolute',
-    top: 20,
-    left: 20,
+    top: CONTENT_GUTTER,
+    left: CONTENT_GUTTER,
     cursor: 'pointer',
     transition: 'transform 350ms',
     ':focus': {
