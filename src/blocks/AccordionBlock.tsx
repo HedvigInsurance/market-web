@@ -36,7 +36,7 @@ const AccordionWrapper = styled('li')({
 })
 
 const AccordionTitle = styled('h3')({
-  fontSize: '1.5rem',
+  fontSize: '1.25rem',
 })
 
 const ExpandToggler = styled('button')({
