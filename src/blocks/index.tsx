@@ -10,6 +10,7 @@ import { IconBulletPointBlock } from './IconBulletPointBlock'
 import { ImageBlock } from './ImageBlock'
 import { ImageMultiTextBlock } from './ImageMultiTextBlock'
 import { ImageTextBlock } from './ImageTextBlock'
+import { InvestorsBlock } from './InvestorsBlock'
 import { PlainTextBlock } from './PlainTextBlock'
 import { PressBlock } from './PressBlock'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
@@ -24,6 +25,7 @@ const blockComponents = {
   bullet_point_block: BulletPointBlock,
   facts_block: FactsBlock,
   image_multi_text_block: ImageMultiTextBlock,
+  investors_block: InvestorsBlock,
   single_quote_block: SingleQuoteBlock,
   image_text_block: ImageTextBlock,
   image_block: ImageBlock,
