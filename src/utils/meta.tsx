@@ -10,7 +10,10 @@ export const getMeta = ({ story, nonce }: WithStory & { nonce?: string }) => (
       href={`${getPublicHost()}/${story.full_slug.replace(/\/?home$/, '')}`}
     />
     {story.content.robots && (
-      <meta name="robots" content={story.content.robots} />
+      <meta
+        name="robots"
+        content={story.published_at ? story.content.robots : 'noindex'}
+      />
     )}
     {story.content.seo_meta_title && (
       <meta name="title" content={story.content.seo_meta_title} />

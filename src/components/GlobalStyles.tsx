@@ -33,16 +33,16 @@ p {
 
 h1 {
   margin-top: 0;
-  font-size: 3.998rem;
+  font-size: 3.5rem;
 }
 h2 {
-  font-size: 2.827rem;
+  font-size: 2.5rem;
 }
 h3 {
-  font-size: 1.999rem;
+  font-size: 1.25rem;
 }
 h4 {
-  font-size: 1.414rem;
+  font-size: 1rem;
 }
 
 a {
