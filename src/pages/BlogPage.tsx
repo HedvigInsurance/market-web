@@ -9,11 +9,11 @@ import {
   MOBILE_BP_DOWN,
   SectionWrapper,
 } from '../components/blockHelpers'
+import { Breadcrumb, Breadcrumbs } from '../components/Breadcrumbs'
+import { ButtonLink } from '../components/buttons'
 import { BlogStory, StoryContainer } from '../storyblok/StoryContainer'
 import { getMeta } from '../utils/meta'
-import { ButtonLink } from '../components/buttons'
 import { getStoryblokImage } from '../utils/storyblok'
-import { Breadcrumb, Breadcrumbs } from '../components/Breadcrumbs'
 import { truncate } from '../utils/truncate'
 
 const TopImageWrapper = styled('div')({
@@ -86,9 +86,11 @@ export const BlogPage: React.FunctionComponent<{ nonce?: string }> = ({
           component="blog"
         />
 
-        <TopImageWrapper>
-          <TopImage src={getStoryblokImage(story.content.top_image)} />
-        </TopImageWrapper>
+        {story.content.top_image && (
+          <TopImageWrapper>
+            <TopImage src={getStoryblokImage(story.content.top_image)} />
+          </TopImageWrapper>
+        )}
         <SectionWrapper size="sm">
           <ContentWrapper>
             <ArticleWrapper>
