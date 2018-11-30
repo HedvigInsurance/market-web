@@ -1,8 +1,11 @@
 import * as React from 'react'
-import { WithStory } from '../storyblok/StoryContainer'
+import { SeoContent, Story, WithStory } from '../storyblok/StoryContainer'
 import { getPublicHost, getStoryblokImage } from './storyblok'
 
-export const getMeta = ({ story, nonce }: WithStory & { nonce?: string }) => (
+export const getMeta = ({
+  story,
+  nonce,
+}: WithStory<Story & { content: SeoContent }> & { nonce?: string }) => (
   <>
     <title>{story.name}</title>
     <link

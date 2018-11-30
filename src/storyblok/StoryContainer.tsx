@@ -4,6 +4,15 @@ import { BaseBlockProps, MarkdownHtmlComponent } from '../blocks/BaseBlockProps'
 import { ErrorBlock } from '../components/blockHelpers'
 import { Image } from '../utils/storyblok'
 
+export interface SeoContent {
+  robots: 'index' | 'noindex'
+  seo_meta_title: string
+  seo_meta_description: string
+  seo_meta_og_title: string
+  seo_meta_og_description: string
+  seo_meta_og_image: Image
+}
+
 export interface Story {
   name: string
   created_at: string
@@ -12,24 +21,32 @@ export interface Story {
   uuid: string
   slug: string
   full_slug: string
+  tag_list?: ReadonlyArray<string>
 }
 
 export interface BodyStory extends Story {
-  content: {
+  content: SeoContent & {
     _uid: string
     component: 'page'
     body: ReadonlyArray<BaseBlockProps>
-    robots: 'index' | 'noindex'
-    seo_meta_title: string
-    seo_meta_description: string
-    seo_meta_og_title: string
-    seo_meta_og_description: string
-    seo_meta_og_image: Image
   }
 }
 
-export interface WithStory {
-  story: BodyStory
+export interface WithStory<TStoryType extends Story> {
+  story: TStoryType
+}
+
+export interface BlogStory extends Story {
+  content: SeoContent & {
+    _uid: string
+    component: 'blog'
+    top_image: Image
+    title: string
+    content: MarkdownHtmlComponent
+    show_cta: boolean
+    cta_label: string
+    cta_target: string
+  }
 }
 
 export interface LinkComponent {
@@ -76,14 +93,19 @@ export const GlobalStoryContainer: React.FunctionComponent<
   </Container>
 )
 
-export interface StoryContainerProps {
-  children: (props: WithStory) => React.ReactNode
+export interface StoryContainerProps<TStoryType extends Story> {
+  children: (props: WithStory<TStoryType>) => React.ReactNode
 }
 
-export const StoryContainer: React.FunctionComponent<StoryContainerProps> = ({
-  children,
-}) => (
-  <Container<WithStory> context="story" pure>
-    {(state) => children(state)}
-  </Container>
-)
+export class StoryContainer<
+  TStoryType extends Story
+> extends React.PureComponent<StoryContainerProps<TStoryType>> {
+  public render() {
+    const { children } = this.props
+    return (
+      <Container<WithStory<TStoryType>> context="story" pure>
+        {(state) => children(state)}
+      </Container>
+    )
+  }
+}
