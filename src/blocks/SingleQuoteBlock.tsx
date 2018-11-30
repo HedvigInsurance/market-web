@@ -50,7 +50,9 @@ const Quote = styled('blockquote')(({ shrink }: { shrink: boolean }) => ({
     fontSize: shrink ? '2rem' : '2.5rem',
   },
 }))
-const Cite = styled('cite')({})
+const Cite = styled('cite')({
+  fontStyle: 'normal',
+})
 
 export interface SingleQuoteBlockProps extends BaseBlockProps {
   quote: string
