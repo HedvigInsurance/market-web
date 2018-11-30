@@ -4,6 +4,7 @@ import styled from 'react-emotion'
 import Helmet from 'react-helmet-async'
 import { FooterBlock } from '../blocks/FooterBlock'
 import { HeaderBlock } from '../blocks/HeaderBlock'
+import { Badge } from '../components/Badge'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
@@ -12,6 +13,7 @@ import {
 import { Breadcrumb, Breadcrumbs } from '../components/Breadcrumbs'
 import { ButtonLink } from '../components/buttons'
 import { BlogStory, StoryContainer } from '../storyblok/StoryContainer'
+import { kebabCaseTag } from '../utils/kebabCase'
 import { getMeta } from '../utils/meta'
 import { getStoryblokImage } from '../utils/storyblok'
 import { truncate } from '../utils/truncate'
@@ -63,12 +65,16 @@ const BreadcrumbsWrapper = styled('div')({
 })
 
 const CtaWrapper = styled('div')({
-  paddingTop: '3rem',
+  padding: '3rem 0',
   textAlign: 'center',
 
   [MOBILE_BP_DOWN]: {
     paddingTop: '1.5rem',
   },
+})
+
+const PlainLink = styled('a')({
+  textDecoration: 'none',
 })
 
 export const BlogPage: React.FunctionComponent<{ nonce?: string }> = ({
@@ -115,6 +121,16 @@ export const BlogPage: React.FunctionComponent<{ nonce?: string }> = ({
                   </ButtonLink>
                 </CtaWrapper>
               )}
+
+              {story.tag_list &&
+                story.tag_list.map((tag) => (
+                  <PlainLink
+                    href={`/blog/tags/${kebabCaseTag(tag)}`}
+                    key={kebabCaseTag(tag)}
+                  >
+                    <Badge># {tag}</Badge>
+                  </PlainLink>
+                ))}
             </ArticleWrapper>
           </ContentWrapper>
         </SectionWrapper>
