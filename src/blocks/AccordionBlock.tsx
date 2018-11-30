@@ -9,8 +9,8 @@ import {
   TABLET_BP_DOWN,
 } from '../components/blockHelpers'
 import { Plus } from '../components/icons/Plus'
-import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 import { SectionSize } from '../utils/SectionSize'
+import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 const SplitContentWrapper = styled(ContentWrapper)({
   display: 'flex',
