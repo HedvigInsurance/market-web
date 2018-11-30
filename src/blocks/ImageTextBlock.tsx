@@ -76,7 +76,8 @@ const Image = styled('img')(
     width: '40%',
     display: alignment === 'center' ? 'none' : 'block',
     [TABLET_BP_DOWN]: {
-      width: '100%',
+      maxWidth: '100%',
+      width: 'auto',
       marginTop: displayOrder === 'top' ? '0' : '3rem',
       display: 'block',
       order: displayOrder === 'top' ? -1 : 'initial',

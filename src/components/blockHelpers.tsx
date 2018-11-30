@@ -60,7 +60,7 @@ const sectionSizeStyles = {
   lg: {
     padding: '7rem 0',
     [TABLET_BP_DOWN]: {
-      padding: '5rem 0',
+      padding: '3.5rem 0',
     },
   },
   xl: {
@@ -71,16 +71,14 @@ const sectionSizeStyles = {
   },
 }
 
-const getColorStyles = (color?: colorComponentColors) =>
-  colorMap[color || 'standard'] || colorMap.standard
+const getColorStyles = (color: colorComponentColors) => colorMap[color]
 
-const getSectionSizeStyle = (sectionSize: SectionSize) => {
-  return sectionSizeStyles[sectionSize]
-}
+const getSectionSizeStyle = (sectionSize: SectionSize) =>
+  sectionSizeStyles[sectionSize]
 
 export const SectionWrapper = styled('section')(
   ({
-    color,
+    color = 'standard',
     size = 'lg',
   }: {
     color?: colorComponentColors
