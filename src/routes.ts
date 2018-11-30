@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { BlogPage } from './pages/BlogPage'
 import { StoryPage } from './pages/StoryPage'
 
 export interface Route {
@@ -8,6 +9,7 @@ export interface Route {
 }
 
 export const routes: Route[] = [
+  { path: '/blog/*', exact: false, Component: BlogPage },
   { path: '/*', exact: false, Component: StoryPage },
 ]
 
