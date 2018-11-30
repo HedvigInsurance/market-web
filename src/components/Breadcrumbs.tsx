@@ -7,11 +7,11 @@ interface BreadcrumbProps {
 
 const BreadcrumbComponent = styled('li')({
   display: 'inline-block',
-  fontSize: 16,
+  fontSize: '0.9rem',
   '&:not(:first-of-type):before': {
     content: '"\\203A"', // rsaquo
     display: 'inline-block',
-    padding: '0 10px',
+    padding: '0 .75rem',
   },
 })
 
