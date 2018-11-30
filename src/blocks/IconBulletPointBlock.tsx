@@ -24,7 +24,6 @@ interface BulletPointBlockProps extends BaseBlockProps {
 
 const Paragraph = styled('div')({
   width: '100%',
-  fontSize: '1.25rem',
 })
 
 const IconBulletPointItem = styled('div')(
@@ -59,6 +58,10 @@ const Icon = styled('img')({
   marginRight: '0.625rem',
   marginTop: '1.414rem',
   marginBottom: '0.5rem',
+})
+
+const BulletPointTitle = styled('h4')({
+  fontSize: '1.25rem',
 })
 
 const AlignableContent = styled(ContentWrapper)(
@@ -99,7 +102,7 @@ export const IconBulletPointBlock: React.FunctionComponent<
                 >
                   <Icon src={icon || ''} />
                   <div>
-                    <h4>{bulletPointTitle}</h4>
+                    <BulletPointTitle>{bulletPointTitle}</BulletPointTitle>
                     {
                       <Paragraph
                         dangerouslySetInnerHTML={{
