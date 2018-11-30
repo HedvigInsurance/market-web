@@ -855,6 +855,11 @@
           "type": "text",
           "pos": 2
         },
+        "is_long_quote": {
+          "type": "boolean",
+          "display_name": "This is a very long quote",
+          "pos": 3
+        },
         "text_position": {
           "type": "option",
           "options": [
@@ -873,12 +878,12 @@
           ],
           "default_value": "center",
           "required": true,
-          "pos": 3
+          "pos": 4
         },
         "background_image": {
           "type": "image",
           "required": false,
-          "pos": 4
+          "pos": 5
         }
       },
       "image": null,

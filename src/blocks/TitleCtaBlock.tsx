@@ -4,6 +4,7 @@ import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { CenterLeftTextPosition } from 'src/utils/textPosition'
 import {
   ContentWrapper,
+  MOBILE_BP_DOWN,
   SectionWrapper,
   TABLET_BP_DOWN,
 } from '../components/blockHelpers'
@@ -13,6 +14,7 @@ import { BaseBlockProps } from './BaseBlockProps'
 
 const ButtonLinkWithMargin = styled(ButtonLink)({
   marginTop: '1.7rem',
+  flexShrink: 0,
 })
 
 const contentPositionSylingMap: { center: object; left: object } = {
@@ -43,7 +45,14 @@ const FlexboxContentWrapperComponent = styled(ContentWrapper)(
 
 const TitleComponent = styled('h2')(({ alignment }: { alignment: string }) => ({
   fontSize: '3rem',
-  paddingRight: alignment === 'left' ? '7rem' : '0',
+  paddingRight: alignment === 'left' ? '7rem' : 0,
+  [TABLET_BP_DOWN]: {
+    paddingRight: alignment === 'left' ? '3rem' : 0,
+  },
+  [MOBILE_BP_DOWN]: {
+    fontSize: '2.5rem',
+    paddingRight: 0,
+  },
 }))
 
 interface TitleCtaBlockInterface extends BaseBlockProps {
