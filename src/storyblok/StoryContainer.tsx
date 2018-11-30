@@ -21,6 +21,7 @@ export interface Story {
   uuid: string
   slug: string
   full_slug: string
+  tag_list?: ReadonlyArray<string>
 }
 
 export interface BodyStory extends Story {
