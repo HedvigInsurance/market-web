@@ -25,7 +25,6 @@ interface BulletPointBlockProps extends BaseBlockProps {
 const Paragraph = styled('div')({
   width: '100%',
   fontSize: '1.25rem',
-  wordBreak: 'break-all',
 })
 
 const IconBulletPointItem = styled('div')(
