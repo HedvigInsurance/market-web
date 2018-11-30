@@ -45,6 +45,10 @@ export const Button = styled('button')(
     fontWeight: bold ? 'bold' : 'normal',
     cursor: 'pointer',
     ...getButtonTypeStyle(type),
+
+    '&:hover': {
+      ...getButtonTypeStyle(type),
+    },
   }),
 )
 

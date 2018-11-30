@@ -47,6 +47,7 @@
     "emotion-server": "^9.2.10",
     "es6-promise": "^4.2.5",
     "jest": "^23.6.0",
+    "just-kebab-case": "^1.1.0",
     "koa": "^2.5.3",
     "koa-bodyparser": "^4.2.1",
     "koa-compress": "^3.0.0",
