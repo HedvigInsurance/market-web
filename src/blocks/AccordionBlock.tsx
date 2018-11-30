@@ -9,6 +9,7 @@ import {
   TABLET_BP_DOWN,
 } from '../components/blockHelpers'
 import { Plus } from '../components/icons/Plus'
+import { SectionSize } from '../utils/SectionSize'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 const SplitContentWrapper = styled(ContentWrapper)({
@@ -113,16 +114,18 @@ export const Accordion: React.FunctionComponent<AccordionProps> = ({
 )
 
 interface AccordionBlockProps extends BaseBlockProps {
+  size: SectionSize
   title: string
   accordions: ReadonlyArray<AccordionProps>
 }
 
 export const AccordionBlock: React.FunctionComponent<AccordionBlockProps> = ({
+  size,
   title,
   accordions,
   color,
 }) => (
-  <SectionWrapper color={color && color.color}>
+  <SectionWrapper color={color && color.color} size={size}>
     <SplitContentWrapper>
       <Col>
         <h2>{title}</h2>
