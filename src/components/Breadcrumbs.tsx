@@ -15,14 +15,12 @@ const BreadcrumbComponent = styled('li')({
   },
 })
 
-const PlainBreadcrumb = styled('span')({})
-
 const Breadcrumb: React.SFC<BreadcrumbProps> = ({ href, children }) => (
   <BreadcrumbComponent>
     {href ? (
       <a href={href}>{children}</a>
     ) : (
-      <PlainBreadcrumb>{children}</PlainBreadcrumb>
+      <span>{children}</span>
     )}
   </BreadcrumbComponent>
 )
