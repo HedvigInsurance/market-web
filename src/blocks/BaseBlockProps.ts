@@ -4,6 +4,8 @@ export type colorComponentColors =
   | 'blue-dark'
   | 'pink-light'
   | 'off-white'
+  | 'off-black'
+  | 'off-black-dark'
   | 'green'
   | 'purple'
 

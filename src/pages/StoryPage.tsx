@@ -10,7 +10,7 @@ const getBlocksOrDefault = (story: BodyStory) =>
 export const StoryPage: React.FunctionComponent<{ nonce?: string }> = ({
   nonce,
 }) => (
-  <StoryContainer>
+  <StoryContainer<BodyStory>>
     {({ story }) => (
       <>
         <Helmet>{getMeta({ story, nonce })}</Helmet>
