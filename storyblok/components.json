@@ -95,36 +95,40 @@
           "type": "image",
           "pos": 0
         },
-        "title": {
+        "author": {
           "type": "text",
           "pos": 1
+        },
+        "title": {
+          "type": "text",
+          "pos": 2
         },
         "content": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 2
+          "pos": 3
         },
         "cta": {
           "type": "section",
           "keys": ["cta_target", "show_cta", "cta_label"],
-          "pos": 3
+          "pos": 4
         },
         "show_cta": {
           "type": "boolean",
-          "pos": 4
+          "pos": 5
         },
         "cta_label": {
           "type": "text",
-          "pos": 5
+          "pos": 6
         },
         "cta_target": {
           "type": "text",
-          "pos": 6
+          "pos": 7
         },
         "seo": {
           "type": "section",
-          "pos": 7,
+          "pos": 8,
           "keys": [
             "seo_robots",
             "seo_meta_title",
@@ -149,27 +153,27 @@
           "display_name": "Robots",
           "required": false,
           "default_value": "index",
-          "pos": 8
+          "pos": 9
         },
         "seo_meta_title": {
           "type": "text",
-          "pos": 9
+          "pos": 10
         },
         "seo_meta_description": {
           "type": "text",
-          "pos": 10
+          "pos": 11
         },
         "seo_meta_og_title": {
           "type": "text",
-          "pos": 11
+          "pos": 12
         },
         "seo_og_description": {
           "type": "text",
-          "pos": 12
+          "pos": 13
         },
         "seo_meta_og_image": {
           "type": "image",
-          "pos": 13
+          "pos": 14
         }
       },
       "image": null,

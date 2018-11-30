@@ -17,6 +17,7 @@ import { inCaseOfEmergency } from './middlewares/enhancers'
 import { forceHost } from './middlewares/redirects'
 import { getPageMiddleware } from './page'
 import { sitemapXml } from './sitemap'
+import { initializeTeamtailorUsers } from './utils/teamtailor'
 
 Sentry.init({
   ...sentryConfig(),
@@ -110,6 +111,12 @@ server.router.use(oldAssetRoutes, oldSiteProxy)
 server.router.get(routes.map(({ path }) => path), getPageMiddleware)
 server.router.use(tmpOldRoutes, oldSiteProxy)
 
-server.app.listen(getPort(), () => {
-  appLogger.info(`Server started 🚀 listening on port ${getPort()}`)
-})
+initializeTeamtailorUsers()
+  .catch(() => {
+    appLogger.error('Failed to fetch teamtailor users, ignoring')
+  })
+  .then(() => {
+    server.app.listen(getPort(), () => {
+      appLogger.info(`Server started 🚀 listening on port ${getPort()}`)
+    })
+  })
