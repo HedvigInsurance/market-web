@@ -4,16 +4,39 @@
       "name": "accordion_block",
       "display_name": null,
       "schema": {
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "None"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": 0,
+          "default_value": "lg"
+        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
           "options": [],
-          "pos": 0
+          "pos": 1
         },
         "title": {
           "type": "text",
           "required": true,
-          "pos": 1
+          "pos": 2
         },
         "accordions": {
           "type": "bloks",
@@ -24,7 +47,7 @@
           "description": "",
           "display_name": "",
           "default_value": "",
-          "pos": 2
+          "pos": 3
         }
       },
       "image": null,
@@ -893,6 +916,50 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "single_quote_block"
+    },
+    {
+      "name": "spacer_block",
+      "display_name": "",
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "None"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": 1,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "spacer_block"
     },
     {
       "name": "switcher_block",
