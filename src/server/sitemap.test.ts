@@ -61,17 +61,6 @@ const linksResponse = `
             "uuid": "5ffb3365-2172-4d1b-84b0-eb2a68ffa2ce",
             "is_startpage": false
         },
-        "2b5caae3-1b74-43ad-8cc1-e5ad019a9844": {
-            "id": 418071,
-            "slug": "home",
-            "name": "Hedvig Försäkring | Få hjälp när du behöver det",
-            "is_folder": false,
-            "parent_id": 0,
-            "published": true,
-            "position": -195815,
-            "uuid": "2b5caae3-1b74-43ad-8cc1-e5ad019a9844",
-            "is_startpage": false
-        },
         "06c44005-1ed9-4384-872b-ca69b14eebd8": {
             "id": 440756,
             "slug": "blog/hello-world-26",
@@ -127,10 +116,10 @@ test('it stitches together a correct sitemap', () => {
     )
     .then((response: SitemapXml) => {
       const partialExpectedResponse = [
-        { changefreq: 'daily', loc: '/', priority: '0.7' },
         { changefreq: 'daily', loc: '/blog/hello-world-26', priority: '0.7' },
         { changefreq: 'daily', loc: '/hemforsakring', priority: '0.7' },
         { changefreq: 'daily', loc: '/en', priority: '0.7' },
+        { changefreq: 'daily', loc: '/', priority: '0.7' },
       ]
 
       expect(
