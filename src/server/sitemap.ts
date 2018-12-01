@@ -16,7 +16,7 @@ export interface SitemapXml {
 }
 
 const normaliseOldSitemapLink = (link: string) =>
-  link.replace('https://www.hedvig.com', '').replace(/\/$/, '')
+  link.replace('https://www.hedvig.com', '').replace(/(.+)\/$/, '$1')
 const getStichedSitemapLinks = async (): Promise<ReadonlyArray<Url>> => {
   const nextLinks = await getAllStoryblokLinks()
   const nextSitemapLinks = Object.keys(nextLinks.data.links)
