@@ -23,6 +23,11 @@ export interface Story {
   slug: string
   full_slug: string
   tag_list?: ReadonlyArray<string>
+
+  content: {
+    _uid: string
+    component: 'page' | 'blog' | 'global'
+  }
 }
 
 export interface BodyStory extends Story {
@@ -67,6 +72,8 @@ interface MenuItem {
 
 export interface GlobalStory extends Story {
   content: {
+    _uid: string
+    component: 'global'
     header_menu_items?: ReadonlyArray<MenuItem>
     show_cta: boolean
     cta_label: string
