@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { BlogPostsPage } from './pages/BlogPostsPage'
+import { BlogPostsTagPage } from './pages/BlogPostsTagPage'
 import { PageFork } from './pages/PageFork'
 
 export interface Route {
@@ -10,6 +11,12 @@ export interface Route {
 }
 
 export const routes: Route[] = [
+  {
+    path: '/blog/tags/:tag',
+    exact: true,
+    Component: BlogPostsTagPage,
+    ignoreStoryblokMiss: true,
+  },
   {
     path: '/blog',
     exact: true,

@@ -21,3 +21,17 @@ export const addBlogPostsToState: Middleware = async (ctx, next) => {
   }
   await next()
 }
+
+export const addTagBlogPostsToState: Middleware = async (ctx, next) => {
+  const response = await getBlogPosts(
+    Boolean(ctx.query._storyblok_published),
+    ctx.params.tag,
+  )
+  ctx.state.additionalStates = {
+    ...ctx.state.additionalStates,
+    blogPosts: {
+      blogPosts: response.data.stories,
+    },
+  }
+  await next()
+}
