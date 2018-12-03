@@ -4,18 +4,18 @@ import styled from 'react-emotion'
 import Helmet from 'react-helmet-async'
 import { FooterBlock } from '../blocks/FooterBlock'
 import { HeaderBlock } from '../blocks/HeaderBlock'
-import { Badge } from '../components/Badge'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
   SectionWrapper,
 } from '../components/blockHelpers'
 import { BlogPostAuthor } from '../components/BlogPostAuthor'
+import { TagList } from '../components/BlogPostList/BlogPost'
 import { Breadcrumb, Breadcrumbs } from '../components/Breadcrumbs'
 import { ButtonLink } from '../components/buttons'
 import { UserContainer } from '../components/containers/UserContainer'
 import { BlogStory, StoryContainer } from '../storyblok/StoryContainer'
-import { kebabCaseTag } from '../utils/kebabCase'
+import { findAuthor } from '../utils/author'
 import { getMeta } from '../utils/meta'
 import { getStoryblokImage } from '../utils/storyblok'
 import { truncate } from '../utils/truncate'
@@ -75,10 +75,6 @@ const CtaWrapper = styled('div')({
   },
 })
 
-const PlainLink = styled('a')({
-  textDecoration: 'none',
-})
-
 export const BlogPage: React.FunctionComponent<{ nonce?: string }> = ({
   nonce,
 }) => (
@@ -113,12 +109,7 @@ export const BlogPage: React.FunctionComponent<{ nonce?: string }> = ({
 
               <UserContainer>
                 {({ users }) => {
-                  if (!users) {
-                    return null
-                  }
-                  const author = users.find(
-                    ({ name }) => name === story.content.author,
-                  )
+                  const author = findAuthor(users, story.content.author)
                   if (!author) {
                     return null
                   }
@@ -146,15 +137,7 @@ export const BlogPage: React.FunctionComponent<{ nonce?: string }> = ({
                 </CtaWrapper>
               )}
 
-              {story.tag_list &&
-                story.tag_list.map((tag) => (
-                  <PlainLink
-                    href={`/blog/tags/${kebabCaseTag(tag)}`}
-                    key={kebabCaseTag(tag)}
-                  >
-                    <Badge># {tag}</Badge>
-                  </PlainLink>
-                ))}
+              <TagList tagList={story.tag_list} />
             </ArticleWrapper>
           </ContentWrapper>
         </SectionWrapper>
