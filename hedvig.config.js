@@ -14,6 +14,7 @@ module.exports = {
     'TEAMTAILOR_API_TOKEN',
     'PUBLIC_HOST',
     'FORCE_HOST',
+    'REDIS_URL',
     'USE_AUTH',
     'AUTH_NAME',
     'AUTH_PASS',
