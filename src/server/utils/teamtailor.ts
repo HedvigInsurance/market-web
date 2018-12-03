@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { config } from '../config'
 import { appLogger } from '../logging'
-import { getAsync, setAsync } from './redis'
+import { redisClient } from './redis'
 
 interface TeamtailorUser {
   id: string
@@ -77,7 +77,7 @@ const handleTeamtailorResponse = async (
         : null,
     },
   }))
-  await setAsync('teamtailor_users', JSON.stringify(usersToSave))
+  await redisClient.set('teamtailor_users', JSON.stringify(usersToSave))
   appLogger.info(`Saved ${usersToSave.length} teamtailor users`)
 }
 
@@ -105,4 +105,4 @@ export const initializeTeamtailorUsers = () =>
     })
 
 export const getCachedTeamtailorUsers = async () =>
-  JSON.parse(await getAsync('teamtailor_users'))
+  JSON.parse((await redisClient.get('teamtailor_users')) || '[]')
