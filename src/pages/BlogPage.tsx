@@ -10,8 +10,10 @@ import {
   MOBILE_BP_DOWN,
   SectionWrapper,
 } from '../components/blockHelpers'
+import { BlogPostAuthor } from '../components/BlogPostAuthor'
 import { Breadcrumb, Breadcrumbs } from '../components/Breadcrumbs'
 import { ButtonLink } from '../components/buttons'
+import { UserContainer } from '../components/containers/UserContainer'
 import { BlogStory, StoryContainer } from '../storyblok/StoryContainer'
 import { kebabCaseTag } from '../utils/kebabCase'
 import { getMeta } from '../utils/meta'
@@ -108,6 +110,28 @@ export const BlogPage: React.FunctionComponent<{ nonce?: string }> = ({
               </BreadcrumbsWrapper>
 
               <h1>{story.content.title}</h1>
+
+              <UserContainer>
+                {({ users }) => {
+                  if (!users) {
+                    return null
+                  }
+                  const author = users.find(
+                    ({ name }) => name === story.content.author,
+                  )
+                  if (!author) {
+                    return null
+                  }
+
+                  return (
+                    <BlogPostAuthor
+                      author={author}
+                      date={story.first_published_at}
+                    />
+                  )
+                }}
+              </UserContainer>
+
               <div
                 dangerouslySetInnerHTML={{
                   __html: story.content.content && story.content.content.html,

@@ -18,6 +18,7 @@ import {
   getPublishedStoryFromSlug,
   getStoryblokEditorScript,
 } from './utils/storyblok'
+import { getCachedTeamtailorUsers } from './utils/teamtailor'
 import { allTracking } from './utils/tracking'
 
 const scriptLocation = getScriptLocation({
@@ -129,6 +130,7 @@ export const getPageMiddleware: Koa.Middleware = async (ctx, next) => {
       initialState={{
         story: story.data,
         globalStory: globalStory && globalStory.data,
+        teamtailorUsers: { users: await getCachedTeamtailorUsers() },
       }}
     >
       <StaticRouter location={ctx.request.originalUrl} context={routerContext}>
@@ -154,6 +156,7 @@ export const getPageMiddleware: Koa.Middleware = async (ctx, next) => {
     initialState: {
       story: story.data,
       globalStory: globalStory && globalStory.data,
+      teamtailorUsers: { users: await getCachedTeamtailorUsers() },
     },
     helmet: (helmetContext as FilledContext).helmet,
     dangerouslyExposeApiKeyToProvideEditing: ctx.request.query._storyblok,
