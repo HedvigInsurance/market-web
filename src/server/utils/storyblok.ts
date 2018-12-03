@@ -75,11 +75,12 @@ export const getDraftedStoryById = (id: string, cacheVersion: string) =>
     },
   })
 
-export const getBlogPosts = (bypassCache: boolean) =>
+export const getBlogPosts = (bypassCache: boolean, tag?: string) =>
   apiClient().get<{ stories: ReadonlyArray<BlogStory> }>(`/v1/cdn/stories`, {
     params: {
       token: config.storyblokApiToken,
       'filter_query[component][in]': 'blog',
+      with_tag: tag,
       sort_by: 'first_published_at:desc',
       cv: bypassCache
         ? calculateCacheVersionTimestamp(new Date())

@@ -3,7 +3,6 @@ import * as React from 'react'
 import styled from 'react-emotion'
 import { BlogStory } from '../../storyblok/StoryContainer'
 import { findAuthor } from '../../utils/author'
-import { kebabCaseTag } from '../../utils/kebabCase'
 import { getStoryblokImage } from '../../utils/storyblok'
 import { Badge } from '../Badge'
 import { BlogPostAuthor } from '../BlogPostAuthor'
@@ -38,10 +37,7 @@ export const TagList: React.FunctionComponent<{
   <>
     {tagList &&
       tagList.map((tag) => (
-        <PlainLink
-          href={`/blog/tags/${kebabCaseTag(tag)}`}
-          key={kebabCaseTag(tag)}
-        >
+        <PlainLink href={`/blog/tags/${encodeURIComponent(tag)}`} key={tag}>
           <Badge>{tag}</Badge>
         </PlainLink>
       ))}

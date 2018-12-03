@@ -17,6 +17,7 @@ import { inCaseOfEmergency } from './middlewares/enhancers'
 import { forceHost } from './middlewares/redirects'
 import {
   addBlogPostsToState,
+  addTagBlogPostsToState,
   addTeamtailorUsersToState,
 } from './middlewares/states'
 import { getPageMiddleware } from './page'
@@ -112,8 +113,9 @@ const oldSiteProxy = convert(
 
 server.router.get('/sitemap.xml', sitemapXml)
 server.router.use(oldAssetRoutes, oldSiteProxy)
-server.router.use('/blog', addTeamtailorUsersToState)
 server.router.use('/blog', addBlogPostsToState)
+server.router.use('/blog', addTeamtailorUsersToState)
+server.router.use('/blog/tags/:tag', addTagBlogPostsToState)
 routes.forEach((route) => {
   server.router.get(
     route.path,
