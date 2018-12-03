@@ -2,6 +2,7 @@ import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
 import styled from 'react-emotion'
 import { Mount, Unmount } from 'react-lifecycle-components'
+import { AppLink } from '../../components/AppLink'
 import { ContentWrapper } from '../../components/blockHelpers'
 import { ButtonLink } from '../../components/buttons'
 import { Togglable } from '../../components/containers/Togglable'
@@ -194,17 +195,20 @@ class Header extends React.PureComponent<
                     )}
 
                     {this.props.story.content.show_cta && (
-                      <ButtonWrapper>
-                        <ButtonLink
-                          size="sm"
-                          bold
-                          href={getStoryblokLinkUrl(
-                            this.props.story.content.cta_link,
-                          )}
-                        >
-                          {this.props.story.content.cta_label}
-                        </ButtonLink>
-                      </ButtonWrapper>
+                      <AppLink>
+                        {({ link, handleClick }) => (
+                          <ButtonWrapper>
+                            <ButtonLink
+                              size="sm"
+                              bold
+                              href={link}
+                              onClick={handleClick}
+                            >
+                              {this.props.story.content.cta_label}
+                            </ButtonLink>
+                          </ButtonWrapper>
+                        )}
+                      </AppLink>
                     )}
                   </Menu>
                 </InnerHeaderWrapper>
