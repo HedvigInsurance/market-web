@@ -49,6 +49,7 @@ export interface BlogStory extends Story {
     top_image: Image
     title: string
     author: string
+    excerpt: string
     content: MarkdownHtmlComponent
     show_cta: boolean
     cta_label: string
