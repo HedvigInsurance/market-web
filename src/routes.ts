@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { BlogPage } from './pages/BlogPage'
-import { StoryPage } from './pages/StoryPage'
+import { PageFork } from './pages/PageFork'
 
 export interface Route {
   path: string
@@ -9,8 +8,7 @@ export interface Route {
 }
 
 export const routes: Route[] = [
-  { path: '/blog/*', exact: false, Component: BlogPage },
-  { path: '/*', exact: false, Component: StoryPage },
+  { path: '/*', exact: false, Component: PageFork },
 ]
 
 export const oldAssetRoutes: string[] = [
