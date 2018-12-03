@@ -334,10 +334,6 @@
           "type": "text",
           "pos": 3
         },
-        "cta_link": {
-          "type": "multilink",
-          "pos": 4
-        },
         "footer": {
           "type": "section",
           "keys": [
@@ -345,27 +341,27 @@
             "footer_menu_items_2",
             "footer_paragraph"
           ],
-          "pos": 5
+          "pos": 4
         },
         "footer_menu_items_1": {
           "type": "bloks",
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
           "display_name": "",
-          "pos": 6
+          "pos": 5
         },
         "footer_menu_items_2": {
           "type": "bloks",
           "maximum": "",
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
-          "pos": 7
+          "pos": 6
         },
         "footer_paragraph": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 8
+          "pos": 7
         }
       },
       "image": null,
