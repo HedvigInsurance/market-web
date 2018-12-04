@@ -105,7 +105,9 @@ const getStoryblokResponseFromContext = async (ctx: Koa.Context) => {
   }
 }
 
-export const getPageMiddleware: Koa.Middleware = async (ctx, next) => {
+export const getPageMiddleware = (
+  ignoreStoryblokMiss: boolean,
+): Koa.Middleware => async (ctx, next) => {
   const routerContext: StaticRouterContext & { statusCode?: number } = {}
   const helmetContext = {}
 
@@ -119,7 +121,7 @@ export const getPageMiddleware: Koa.Middleware = async (ctx, next) => {
     ),
   ])
 
-  if (!story) {
+  if (!story && !ignoreStoryblokMiss) {
     await next()
     return
   }
@@ -127,8 +129,9 @@ export const getPageMiddleware: Koa.Middleware = async (ctx, next) => {
   const serverApp = (
     <Provider
       initialState={{
-        story: story.data,
+        story: story && story.data,
         globalStory: globalStory && globalStory.data,
+        ...(ctx.state.additionalStates || {}),
       }}
     >
       <StaticRouter location={ctx.request.originalUrl} context={routerContext}>
@@ -152,8 +155,9 @@ export const getPageMiddleware: Koa.Middleware = async (ctx, next) => {
   ctx.body = template({
     body,
     initialState: {
-      story: story.data,
+      story: story && story.data,
       globalStory: globalStory && globalStory.data,
+      ...(ctx.state.additionalStates || {}),
     },
     helmet: (helmetContext as FilledContext).helmet,
     dangerouslyExposeApiKeyToProvideEditing: ctx.request.query._storyblok,

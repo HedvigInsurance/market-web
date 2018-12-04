@@ -11,8 +11,10 @@ module.exports = {
   productionPublicPath: '/assets-next/', //  Client public path in production, i.e. "/assets/"
   envVars: [
     'STORYBLOK_API_TOKEN',
+    'TEAMTAILOR_API_TOKEN',
     'PUBLIC_HOST',
     'FORCE_HOST',
+    'REDIS_URL',
     'USE_AUTH',
     'AUTH_NAME',
     'AUTH_PASS',
