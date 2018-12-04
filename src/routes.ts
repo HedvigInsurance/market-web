@@ -1,16 +1,29 @@
 import * as React from 'react'
-import { BlogPage } from './pages/BlogPage'
-import { StoryPage } from './pages/StoryPage'
+import { BlogPostsPage } from './pages/BlogPostsPage'
+import { BlogPostsTagPage } from './pages/BlogPostsTagPage'
+import { PageFork } from './pages/PageFork'
 
 export interface Route {
   path: string
   Component: React.ComponentType<{ nonce?: string }>
   exact: boolean
+  ignoreStoryblokMiss?: boolean
 }
 
 export const routes: Route[] = [
-  { path: '/blog/*', exact: false, Component: BlogPage },
-  { path: '/*', exact: false, Component: StoryPage },
+  {
+    path: '/blog/tags/:tag',
+    exact: true,
+    Component: BlogPostsTagPage,
+    ignoreStoryblokMiss: true,
+  },
+  {
+    path: '/blog',
+    exact: true,
+    Component: BlogPostsPage,
+    ignoreStoryblokMiss: true,
+  },
+  { path: '/*', exact: false, Component: PageFork },
 ]
 
 export const oldAssetRoutes: string[] = [
@@ -44,6 +57,17 @@ export const tmpOldRoutes: string[] = [
 ]
 
 export const redirects: ReadonlyArray<[string, string, number]> = [
+  ['/blog/tags/meet-the-team', '/blog/tags/meet%20the%20team', 301],
+  [
+    '/blog/2018-11-16-meet-the-team-%E2%80%93-sofia',
+    '/blog/2018-11-16-meet-the-team-sofia',
+    301,
+  ],
+  [
+    '/blog/2018-10-12-hedvig-och-qasa-g%C3%B6r-det-enklare-och-tryggare-att-hyra-ut-din-bostad',
+    '/blog/2018-10-12-hedvig-och-qasa-gor-det-enklare-och-tryggare-att-hyra-ut-din-bostad',
+    301,
+  ],
   [
     '/assets/press/hedvig-press-assets.zip',
     'https://cdn.hedvig.com/identity/hedvig-press-assets.zip',
