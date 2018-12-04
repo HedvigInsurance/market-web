@@ -54,8 +54,8 @@ const InvestorContainer = styled('div')({
 })
 
 const InvestorImage = styled('img')({
-  width: '75px',
-  height: '75px',
+  width: '110px',
+  height: '110px',
   objectFit: 'cover',
   borderRadius: 5,
 })
