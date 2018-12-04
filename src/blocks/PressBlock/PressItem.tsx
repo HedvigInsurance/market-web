@@ -3,6 +3,7 @@ import * as React from 'react'
 import styled from 'react-emotion'
 
 import { PressItemProps } from '.'
+import { MOBILE_BP_DOWN } from '../../components/blockHelpers'
 
 const Link = styled('a')({
   textDecoration: 'none',
@@ -18,9 +19,13 @@ const PressItemContainer = styled('div')({
 })
 
 const Logo = styled('img')({
-  width: '75px',
-  height: '75px',
+  width: 75,
+  height: 75,
   objectFit: 'contain',
+  [MOBILE_BP_DOWN]: {
+    width: 50,
+    height: 50,
+  },
 })
 
 const Content = styled('div')({

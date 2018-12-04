@@ -7,10 +7,16 @@ import { colorComponentColors } from '../blocks/BaseBlockProps'
 
 export const CONTENT_GUTTER = '2rem'
 export const CONTENT_GUTTER_MOBILE = '1rem'
-export const CONTENT_MAX_WIDTH = 1200
 export const MOBILE_BP_UP = '@media (min-width: 481px)'
 export const MOBILE_BP_DOWN = '@media (max-width: 480px)'
 export const TABLET_BP_DOWN = '@media (max-width: 800px)'
+export const GIANT_BP_UP = '@media (min-width: 1700px)'
+export const CONTENT_MAX_WIDTH = {
+  maxWidth: 1200,
+  [GIANT_BP_UP]: {
+    maxWidth: 1500,
+  },
+}
 
 const colorMap = {
   standard: {
@@ -93,13 +99,14 @@ export const SectionWrapper = styled('section')(
 
 export const ContentWrapper = styled('div')({
   width: '100%',
-  maxWidth: CONTENT_MAX_WIDTH,
   padding: '0 ' + CONTENT_GUTTER,
   margin: '0 auto',
 
   [MOBILE_BP_DOWN]: {
     padding: '0 ' + CONTENT_GUTTER_MOBILE,
   },
+
+  ...CONTENT_MAX_WIDTH,
 })
 
 const ErrorBlockWrapper = styled(SectionWrapper)({

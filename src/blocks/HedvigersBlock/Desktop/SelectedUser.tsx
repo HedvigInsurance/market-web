@@ -142,7 +142,7 @@ const Name = styled('span')({
 })
 
 const Title = styled('span')({
-  fontSize: 1.25,
+  fontSize: '1.25rem',
   color: 'white',
 })
 
