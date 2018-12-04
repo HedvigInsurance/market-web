@@ -25,6 +25,8 @@ const Title = styled('h3')({
 const ListContainer = styled('ul')({
   display: 'flex',
   flexWrap: 'wrap',
+  padding: 0,
+  margin: 0,
   marginTop: 10,
 })
 
