@@ -3,6 +3,7 @@ import styled from 'react-emotion'
 import { TextPosition } from 'src/utils/textPosition'
 import {
   ContentWrapper,
+  GIANT_BP_UP,
   MOBILE_BP_DOWN,
   SectionWrapper,
 } from '../components/blockHelpers'
@@ -25,6 +26,9 @@ const AlignableContentWrapper = styled(ContentWrapper)(
     maxWidth: textPosition === 'center-but-left' ? '50rem' : undefined,
     [MOBILE_BP_DOWN]: {
       flexDirection: 'column',
+    },
+    [GIANT_BP_UP]: {
+      maxWidth: textPosition === 'center-but-left' ? '50rem' : undefined,
     },
   }),
 )
