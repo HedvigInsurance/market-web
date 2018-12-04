@@ -13,10 +13,12 @@ const calculateCacheVersionTimestamp = (date: Date) =>
 const getRemoteCacheVersionTimestamp = () =>
   calculateCacheVersionTimestamp(remoteCacheVersion)
 
-setTimeout(() => {
-  appLogger.info('Updating remote cache version')
-  remoteCacheVersion = new Date()
-}, 60 * 15 * 1000)
+if (process.env.NODE_ENV !== 'test') {
+  setTimeout(() => {
+    appLogger.info('Updating remote cache version')
+    remoteCacheVersion = new Date()
+  }, 60 * 15 * 1000)
+}
 
 const apiClient = () =>
   axios.create({
