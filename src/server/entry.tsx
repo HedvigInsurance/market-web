@@ -15,6 +15,11 @@ import { sentryConfig } from './config/sentry'
 import { appLogger } from './logging'
 import { inCaseOfEmergency } from './middlewares/enhancers'
 import { forceHost } from './middlewares/redirects'
+import {
+  addBlogPostsToState,
+  addTagBlogPostsToState,
+  addTeamtailorUsersToState,
+} from './middlewares/states'
 import { getPageMiddleware } from './page'
 import { sitemapXml } from './sitemap'
 import { initializeTeamtailorUsers } from './utils/teamtailor'
@@ -108,7 +113,15 @@ const oldSiteProxy = convert(
 
 server.router.get('/sitemap.xml', sitemapXml)
 server.router.use(oldAssetRoutes, oldSiteProxy)
-server.router.get(routes.map(({ path }) => path), getPageMiddleware)
+server.router.use('/blog', addBlogPostsToState)
+server.router.use('/blog', addTeamtailorUsersToState)
+server.router.use('/blog/tags/:tag', addTagBlogPostsToState)
+routes.forEach((route) => {
+  server.router.get(
+    route.path,
+    getPageMiddleware(Boolean(route.ignoreStoryblokMiss)),
+  )
+})
 server.router.use(tmpOldRoutes, oldSiteProxy)
 
 initializeTeamtailorUsers()
