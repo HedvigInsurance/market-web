@@ -6,6 +6,7 @@ import { BulletPointBlock } from './BulletPointBlock'
 import { FactsBlock } from './FactsBlock'
 import { FooterBlock } from './FooterBlock'
 import { HeaderBlock } from './HeaderBlock'
+import { HedvigersBlock } from './HedvigersBlock'
 import { IconBulletPointBlock } from './IconBulletPointBlock'
 import { ImageBlock } from './ImageBlock'
 import { ImageMultiTextBlock } from './ImageMultiTextBlock'
@@ -26,6 +27,7 @@ const blockComponents = {
   facts_block: FactsBlock,
   image_multi_text_block: ImageMultiTextBlock,
   investors_block: InvestorsBlock,
+  hedvigers_block: HedvigersBlock,
   single_quote_block: SingleQuoteBlock,
   image_text_block: ImageTextBlock,
   image_block: ImageBlock,
