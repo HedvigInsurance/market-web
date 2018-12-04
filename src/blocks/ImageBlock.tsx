@@ -1,4 +1,4 @@
-import { colors } from '@hedviginsurance/brand/dist'
+import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
 import styled from 'react-emotion'
 import {
