@@ -115,6 +115,7 @@ server.router.get('/sitemap.xml', sitemapXml)
 server.router.use(oldAssetRoutes, oldSiteProxy)
 server.router.use('/blog', addBlogPostsToState)
 server.router.use('/blog', addTeamtailorUsersToState)
+server.router.use('/about-us', addTeamtailorUsersToState)
 server.router.use('/blog/tags/:tag', addTagBlogPostsToState)
 routes.forEach((route) => {
   server.router.get(
