@@ -4,18 +4,21 @@ import styled from 'react-emotion'
 import Helmet from 'react-helmet-async'
 import { FooterBlock } from '../blocks/FooterBlock'
 import { HeaderBlock } from '../blocks/HeaderBlock'
-import { Badge } from '../components/Badge'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
+  MOBILE_BP_UP,
   SectionWrapper,
 } from '../components/blockHelpers'
+import { PrevNextCard } from '../components/BlogPost/PrevNextCard'
 import { BlogPostAuthor } from '../components/BlogPostAuthor'
+import { TagList } from '../components/BlogPostList/BlogPost'
 import { Breadcrumb, Breadcrumbs } from '../components/Breadcrumbs'
 import { ButtonLink } from '../components/buttons'
+import { BlogPostsContainer } from '../components/containers/BlogPostsContainer'
 import { UserContainer } from '../components/containers/UserContainer'
 import { BlogStory, StoryContainer } from '../storyblok/StoryContainer'
-import { kebabCaseTag } from '../utils/kebabCase'
+import { findAuthor } from '../utils/author'
 import { getMeta } from '../utils/meta'
 import { getStoryblokImage } from '../utils/storyblok'
 import { truncate } from '../utils/truncate'
@@ -75,11 +78,27 @@ const CtaWrapper = styled('div')({
   },
 })
 
-const PlainLink = styled('a')({
-  textDecoration: 'none',
+const PrevNextWrapper = styled(ContentWrapper)({
+  display: 'flex',
+  flexDirection: 'row',
+  width: '100%',
+  maxWidth: '50rem',
+  margin: 'auto',
+
+  [MOBILE_BP_DOWN]: {
+    padding: 0,
+  },
 })
 
-export const BlogPage: React.FunctionComponent<{ nonce?: string }> = ({
+const PrevNextSection = styled('div')({
+  backgroundColor: colors.LIGHT_GRAY,
+  [MOBILE_BP_UP]: {
+    paddingTop: '5rem',
+    paddingBottom: '5rem',
+  },
+})
+
+export const BlogPostPage: React.FunctionComponent<{ nonce?: string }> = ({
   nonce,
 }) => (
   <StoryContainer<BlogStory>>
@@ -105,7 +124,9 @@ export const BlogPage: React.FunctionComponent<{ nonce?: string }> = ({
               <BreadcrumbsWrapper>
                 <Breadcrumbs>
                   <Breadcrumb href="/blog">Blogg</Breadcrumb>
-                  <Breadcrumb>{truncate(25)(story.content.title)}</Breadcrumb>
+                  <Breadcrumb>
+                    {truncate(25)(story.content.title || '')}
+                  </Breadcrumb>
                 </Breadcrumbs>
               </BreadcrumbsWrapper>
 
@@ -113,12 +134,7 @@ export const BlogPage: React.FunctionComponent<{ nonce?: string }> = ({
 
               <UserContainer>
                 {({ users }) => {
-                  if (!users) {
-                    return null
-                  }
-                  const author = users.find(
-                    ({ name }) => name === story.content.author,
-                  )
+                  const author = findAuthor(users, story.content.author)
                   if (!author) {
                     return null
                   }
@@ -146,18 +162,40 @@ export const BlogPage: React.FunctionComponent<{ nonce?: string }> = ({
                 </CtaWrapper>
               )}
 
-              {story.tag_list &&
-                story.tag_list.map((tag) => (
-                  <PlainLink
-                    href={`/blog/tags/${kebabCaseTag(tag)}`}
-                    key={kebabCaseTag(tag)}
-                  >
-                    <Badge># {tag}</Badge>
-                  </PlainLink>
-                ))}
+              <TagList tagList={story.tag_list} />
             </ArticleWrapper>
           </ContentWrapper>
         </SectionWrapper>
+
+        <BlogPostsContainer>
+          {({ blogPosts }) => {
+            const index = blogPosts.findIndex(({ id }) => id === story.id)
+            return (
+              <PrevNextSection>
+                <PrevNextWrapper>
+                  <PrevNextCard
+                    story={
+                      index >= 0 && blogPosts[index + 1]
+                        ? blogPosts[index + 1]
+                        : undefined
+                    }
+                    phoneCardDirection="Föregånde inlägg"
+                    background="#f9fafc"
+                  />
+                  <PrevNextCard
+                    story={
+                      index >= 0 && blogPosts[index - 1]
+                        ? blogPosts[index - 1]
+                        : undefined
+                    }
+                    phoneCardDirection="Nästa inlägg"
+                    background="#f3f4f7"
+                  />
+                </PrevNextWrapper>
+              </PrevNextSection>
+            )
+          }}
+        </BlogPostsContainer>
 
         <FooterBlock
           component="blog"

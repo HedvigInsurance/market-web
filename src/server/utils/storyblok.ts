@@ -1,5 +1,9 @@
 import axios, { AxiosResponse } from 'axios'
-import { BodyStory, GlobalStory } from '../../storyblok/StoryContainer'
+import {
+  BlogStory,
+  BodyStory,
+  GlobalStory,
+} from '../../storyblok/StoryContainer'
 import { config } from '../config'
 import { appLogger } from '../logging'
 
@@ -68,6 +72,19 @@ export const getDraftedStoryById = (id: string, cacheVersion: string) =>
     },
     headers: {
       'cache-control': 'no-cache',
+    },
+  })
+
+export const getBlogPosts = (bypassCache: boolean, tag?: string) =>
+  apiClient().get<{ stories: ReadonlyArray<BlogStory> }>(`/v1/cdn/stories`, {
+    params: {
+      token: config.storyblokApiToken,
+      'filter_query[component][in]': 'blog',
+      with_tag: tag,
+      sort_by: 'first_published_at:desc',
+      cv: bypassCache
+        ? calculateCacheVersionTimestamp(new Date())
+        : getRemoteCacheVersionTimestamp(),
     },
   })
 

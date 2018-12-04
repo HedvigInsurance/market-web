@@ -1,39 +1,46 @@
 import * as React from 'react'
-import { SeoContent, Story, WithStory } from '../storyblok/StoryContainer'
+import { SeoContent, Story } from '../storyblok/StoryContainer'
 import { getPublicHost, getStoryblokImage } from './storyblok'
 
-export const getMeta = ({
-  story,
-  nonce,
-}: WithStory<Story & { content: SeoContent }> & { nonce?: string }) => (
+interface Meta {
+  story?: Story & { content: SeoContent }
+  nonce?: string
+  fullSlug?: string
+  title?: string
+}
+
+const getFullSlugFromStory = (story?: Story) =>
+  story && story.full_slug.replace(/\/?home$/, '')
+
+export const getMeta = ({ story, title, nonce, fullSlug }: Meta) => (
   <>
-    <title>{story.name}</title>
+    <title>{title ? title : story && story.name}</title>
     <link
       rel="canonical"
-      href={`${getPublicHost()}/${story.full_slug.replace(/\/?home$/, '')}`}
+      href={`${getPublicHost()}/${fullSlug || getFullSlugFromStory(story)}`}
     />
-    {story.content.robots && (
+    {story && story.content.robots && (
       <meta
         name="robots"
         content={story.published_at ? story.content.robots : 'noindex'}
       />
     )}
-    {story.content.seo_meta_title && (
+    {story && story.content.seo_meta_title && (
       <meta name="title" content={story.content.seo_meta_title} />
     )}
-    {story.content.seo_meta_description && (
+    {story && story.content.seo_meta_description && (
       <meta name="description" content={story.content.seo_meta_description} />
     )}
-    {story.content.seo_meta_og_title && (
+    {story && story.content.seo_meta_og_title && (
       <meta property="og:title" content={story.content.seo_meta_og_title} />
     )}
-    {story.content.seo_meta_og_description && (
+    {story && story.content.seo_meta_og_description && (
       <meta
         property="og:description"
         content={story.content.seo_meta_og_description}
       />
     )}
-    {story.content.seo_meta_og_image && (
+    {story && story.content.seo_meta_og_image && (
       <meta
         property="og:image"
         content={getStoryblokImage(story.content.seo_meta_og_image)}
