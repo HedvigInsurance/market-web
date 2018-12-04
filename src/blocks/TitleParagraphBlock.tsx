@@ -13,20 +13,26 @@ import {
 } from './BaseBlockProps'
 
 const AlignableContentWrapper = styled(ContentWrapper)(
-  ({ textPosition }: { textPosition: TextPosition }) => ({
+  ({ textPosition }: { textPosition: AltTextPosition }) => ({
     display: 'flex',
-    flexDirection: textPosition === 'center' ? 'column' : 'row',
+    flexDirection:
+      textPosition === 'center' || textPosition === 'center-but-left'
+        ? 'column'
+        : 'row',
     justifyContent: textPosition === 'left' ? 'space-between' : 'center',
     alignItems: textPosition === 'center' ? 'center' : 'start',
     textAlign: textPosition === 'center' ? 'center' : 'left',
+    maxWidth: textPosition === 'center-but-left' ? '50rem' : undefined,
     [MOBILE_BP_DOWN]: {
       flexDirection: 'column',
     },
   }),
 )
 
+type AltTextPosition = TextPosition | 'center-but-left'
+
 const Title = styled('h2')(
-  ({ textPosition }: { textPosition: TextPosition }) => ({
+  ({ textPosition }: { textPosition: AltTextPosition }) => ({
     fontSize: '3rem',
     marginRight: textPosition === 'left' ? 'auto' : 0,
     marginLeft: textPosition === 'right' ? 'auto' : 0,
@@ -38,10 +44,23 @@ const Title = styled('h2')(
   }),
 )
 
+const getParagraphMaxWidth = (textPosition: AltTextPosition) => {
+  if (textPosition === 'left') {
+    return '40%'
+  }
+  if (textPosition === 'center') {
+    return '36rem'
+  }
+  if (textPosition === 'center-but-left') {
+    return '50rem'
+  }
+  return 0
+}
+
 const Paragraph = styled('div')(
-  ({ textPosition }: { textPosition: TextPosition }) => ({
+  ({ textPosition }: { textPosition: AltTextPosition }) => ({
     display: textPosition === 'right' ? 'none' : 'block',
-    maxWidth: textPosition === 'left' ? '40%' : '36rem',
+    maxWidth: getParagraphMaxWidth(textPosition),
     width: '100%',
     fontSize: '1.25rem',
     [MOBILE_BP_DOWN]: {
@@ -53,7 +72,7 @@ const Paragraph = styled('div')(
 
 interface TitleParagraphBlockInterface extends BaseBlockProps {
   title: string
-  text_position: TextPosition
+  text_position: AltTextPosition
   paragraph: MarkdownHtmlComponent
   color: ColorComponent
 }
