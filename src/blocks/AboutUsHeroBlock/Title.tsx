@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 import { animated, config, Spring } from 'react-spring'
+import { MOBILE_BP_DOWN } from '../../components/blockHelpers'
 
 const PlayIcon: React.FunctionComponent<{ className?: string }> = ({
   className,
@@ -75,9 +76,12 @@ const PlayButton = styled(animated.button)({
   width: '100%',
   marginTop: '2rem',
   cursor: 'pointer',
-  fontSize: 'iniherit',
+  fontSize: 'inherit',
   ':focus': {
     outline: 0,
+  },
+  [MOBILE_BP_DOWN]: {
+    marginTop: '.5rem',
   },
 })
 
