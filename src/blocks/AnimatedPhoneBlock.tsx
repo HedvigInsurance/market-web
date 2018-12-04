@@ -85,7 +85,7 @@ const PhoneContainer = styled('div')(
       width: 'auto',
       marginTop: displayOrder === 'top' ? '0' : '3rem',
       display: 'block',
-      order: displayOrder === 'top' ? -1 : 'initial',
+      order: displayOrder === 'top' ? -1 : undefined,
     },
   }),
 )
