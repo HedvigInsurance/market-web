@@ -66,6 +66,7 @@ const Paragraph = styled('div')(
     [MOBILE_BP_DOWN]: {
       maxWidth: '100%',
       display: 'block',
+      fontSize: '1rem',
     },
   }),
 )

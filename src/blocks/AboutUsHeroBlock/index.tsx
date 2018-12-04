@@ -28,8 +28,8 @@ const HeroContainer = styled('div')({
   width: '100%',
   position: 'relative',
   overflow: 'hidden',
-  maxWidth: CONTENT_MAX_WIDTH,
   margin: '0 auto',
+  ...CONTENT_MAX_WIDTH,
 })
 
 interface ShadowProps {

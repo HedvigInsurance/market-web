@@ -2,9 +2,25 @@ import { colors, fonts } from '@hedviginsurance/brand'
 import * as React from 'react'
 import styled from 'react-emotion'
 
-import { ContentWrapper, SectionWrapper } from '../../components/blockHelpers'
+import {
+  CONTENT_GUTTER,
+  CONTENT_GUTTER_MOBILE,
+  CONTENT_MAX_WIDTH,
+  MOBILE_BP_DOWN,
+  SectionWrapper,
+} from '../../components/blockHelpers'
 import { BaseBlockProps, MarkdownHtmlComponent } from '../BaseBlockProps'
 import { PressItem } from './PressItem'
+
+const Wrapper = styled('div')({
+  ...CONTENT_MAX_WIDTH,
+  maxWidth: 700,
+  margin: '0 auto',
+  padding: `0 ${CONTENT_GUTTER}`,
+  [MOBILE_BP_DOWN]: {
+    padding: `0 ${CONTENT_GUTTER_MOBILE}`,
+  },
+})
 
 const Title = styled('h3')({
   fontSize: 60,
@@ -49,8 +65,8 @@ export const PressBlock: React.FunctionComponent<PressBlockProps> = ({
   footnote,
   color,
 }) => (
-  <SectionWrapper color={color && color.color}>
-    <ContentWrapper id="press">
+  <SectionWrapper color={color && color.color} size="sm">
+    <Wrapper id="press">
       <Title>{title}</Title>
       {items.map((pressItem) => (
         <PressItem key={pressItem._uid} {...pressItem} />
@@ -58,6 +74,6 @@ export const PressBlock: React.FunctionComponent<PressBlockProps> = ({
       <Footnote
         dangerouslySetInnerHTML={{ __html: footnote && footnote.html }}
       />
-    </ContentWrapper>
+    </Wrapper>
   </SectionWrapper>
 )
