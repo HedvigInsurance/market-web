@@ -103,32 +103,40 @@
           "type": "text",
           "pos": 2
         },
+        "excerpt": {
+          "type": "text",
+          "regex": "",
+          "description": "Content shown when listing the blog post",
+          "display_name": "",
+          "default_value": "",
+          "pos": 3
+        },
         "content": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 3
+          "pos": 4
         },
         "cta": {
           "type": "section",
           "keys": ["cta_target", "show_cta", "cta_label"],
-          "pos": 4
+          "pos": 5
         },
         "show_cta": {
           "type": "boolean",
-          "pos": 5
+          "pos": 6
         },
         "cta_label": {
           "type": "text",
-          "pos": 6
+          "pos": 7
         },
         "cta_target": {
           "type": "text",
-          "pos": 7
+          "pos": 8
         },
         "seo": {
           "type": "section",
-          "pos": 8,
+          "pos": 9,
           "keys": [
             "seo_robots",
             "seo_meta_title",
@@ -153,27 +161,27 @@
           "display_name": "Robots",
           "required": false,
           "default_value": "index",
-          "pos": 9
+          "pos": 10
         },
         "seo_meta_title": {
           "type": "text",
-          "pos": 10
+          "pos": 11
         },
         "seo_meta_description": {
           "type": "text",
-          "pos": 11
+          "pos": 12
         },
         "seo_meta_og_title": {
           "type": "text",
-          "pos": 12
+          "pos": 13
         },
         "seo_og_description": {
           "type": "text",
-          "pos": 13
+          "pos": 14
         },
         "seo_meta_og_image": {
           "type": "image",
-          "pos": 14
+          "pos": 15
         }
       },
       "image": null,
