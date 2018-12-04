@@ -31,6 +31,7 @@ interface Template {
   initialState: any
   dangerouslyExposeApiKeyToProvideEditing: boolean
   nonce: string
+  lang: string
 }
 
 const template = ({
@@ -39,9 +40,10 @@ const template = ({
   initialState,
   dangerouslyExposeApiKeyToProvideEditing,
   nonce,
+  lang,
 }: Template) => `
   <!doctype html>
-  <html lang="en">
+  <html lang="${lang === 'default' ? 'sv' : lang}">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -86,7 +88,7 @@ const getStoryblokResponseFromContext = async (ctx: Koa.Context) => {
       ;(ctx.state.getLogger('storyblok') as Logger).info(
         `Getting drafted story [id=${id}, cv=${contentVersion}]`,
       )
-      return await getDraftedStoryById(id, contentVersion)
+      return await getDraftedStoryById(ctx.request.path, contentVersion)
     } else {
       const bypassCache = Boolean(ctx.query._storyblok_published)
       ;(ctx.state.getLogger('storyblok') as Logger).info(
@@ -114,6 +116,7 @@ export const getPageMiddleware = (
   const [story, globalStory] = await Promise.all([
     getStoryblokResponseFromContext(ctx),
     getGlobalStory(
+      ctx.request.path.replace(/(^\/en)?.+/, '$1'),
       Boolean(
         ctx.request.query['_storyblok_tk[timestamp]'] ||
           ctx.query._storyblok_published,
@@ -162,5 +165,6 @@ export const getPageMiddleware = (
     helmet: (helmetContext as FilledContext).helmet,
     dangerouslyExposeApiKeyToProvideEditing: ctx.request.query._storyblok,
     nonce: (ctx.res as any).cspNonce,
+    lang: (story && story.data.story && story.data.story.lang) || 'default',
   })
 }

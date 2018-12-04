@@ -26,18 +26,22 @@ const apiClient = () =>
   })
 
 export const getGlobalStory = async (
+  locale: string,
   bypassCache?: boolean,
 ): Promise<AxiosResponse<GlobalStory> | undefined> => {
   try {
-    return await apiClient().get<GlobalStory>(`/v1/cdn/stories/global`, {
-      params: {
-        token: config.storyblokApiToken,
-        find_by: 'slug',
-        cv: bypassCache
-          ? calculateCacheVersionTimestamp(new Date())
-          : getRemoteCacheVersionTimestamp(),
+    return await apiClient().get<GlobalStory>(
+      `/v1/cdn/stories/${locale ? locale + '/' : ''}global`,
+      {
+        params: {
+          token: config.storyblokApiToken,
+          find_by: 'slug',
+          cv: bypassCache
+            ? calculateCacheVersionTimestamp(new Date())
+            : getRemoteCacheVersionTimestamp(),
+        },
       },
-    })
+    )
   } catch (e) {
     if (e.response && e.response.status === 404) {
       return undefined
@@ -51,8 +55,8 @@ export const getPublishedStoryFromSlug = (
   path: string,
   bypassCache?: boolean,
 ) =>
-  apiClient().get<BodyStory>(
-    `/v1/cdn/stories${path === '/' ? '/home' : path}`,
+  apiClient().get<{ story: BodyStory }>(
+    `/v1/cdn/stories${path.replace(/(en)?\/?$/, '$1/home')}`,
     {
       params: {
         token: config.storyblokApiToken,
@@ -65,10 +69,10 @@ export const getPublishedStoryFromSlug = (
   )
 
 export const getDraftedStoryById = (id: string, cacheVersion: string) =>
-  apiClient().get<BodyStory>(`/v1/cdn/stories/${id}`, {
+  apiClient().get<{ story: BodyStory }>(`/v1/cdn/stories/${id}`, {
     params: {
       token: config.storyblokApiToken,
-      find_by: 'id',
+      find_by: 'slug',
       version: 'draft',
       cv: cacheVersion || getRemoteCacheVersionTimestamp(),
     },

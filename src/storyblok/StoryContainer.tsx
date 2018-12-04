@@ -23,6 +23,7 @@ export interface Story {
   slug: string
   full_slug: string
   tag_list?: ReadonlyArray<string>
+  lang?: string
 
   content: {
     _uid: string
