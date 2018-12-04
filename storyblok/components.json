@@ -1488,6 +1488,10 @@
             {
               "value": "left",
               "name": "Left"
+            },
+            {
+              "value": "center-but-left",
+              "name": "Center, but left"
             }
           ],
           "required": true,
