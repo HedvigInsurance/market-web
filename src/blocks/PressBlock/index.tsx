@@ -6,6 +6,7 @@ import {
   CONTENT_GUTTER,
   CONTENT_GUTTER_MOBILE,
   CONTENT_MAX_WIDTH,
+  GIANT_BP_UP,
   MOBILE_BP_DOWN,
   SectionWrapper,
 } from '../../components/blockHelpers'
@@ -19,6 +20,9 @@ const Wrapper = styled('div')({
   padding: `0 ${CONTENT_GUTTER}`,
   [MOBILE_BP_DOWN]: {
     padding: `0 ${CONTENT_GUTTER_MOBILE}`,
+  },
+  [GIANT_BP_UP]: {
+    maxWidth: 700,
   },
 })
 
