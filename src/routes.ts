@@ -59,6 +59,16 @@ export const tmpOldRoutes: string[] = [
 export const redirects: ReadonlyArray<[string, string, number]> = [
   ['/blog/tags/meet-the-team', '/blog/tags/meet%20the%20team', 301],
   [
+    '/blog/2018-11-16-meet-the-team-%E2%80%93-sofia',
+    '/blog/2018-11-16-meet-the-team-sofia',
+    301,
+  ],
+  [
+    '/blog/2018-10-12-hedvig-och-qasa-g%C3%B6r-det-enklare-och-tryggare-att-hyra-ut-din-bostad',
+    '/blog/2018-10-12-hedvig-och-qasa-gor-det-enklare-och-tryggare-att-hyra-ut-din-bostad',
+    301,
+  ],
+  [
     '/assets/press/hedvig-press-assets.zip',
     'https://cdn.hedvig.com/identity/hedvig-press-assets.zip',
     301,
