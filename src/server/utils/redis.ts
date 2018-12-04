@@ -1,4 +1,8 @@
 import * as Redis from 'ioredis'
 import { config } from '../config'
 
-export const redisClient = new Redis(config.redisUrl)
+export let redisClient: Redis.Redis
+
+if (process.env.NODE_ENV !== 'test') {
+  redisClient = new Redis(config.redisUrl)
+}
