@@ -56,7 +56,7 @@ export const getPublishedStoryFromSlug = (
   bypassCache?: boolean,
 ) =>
   apiClient().get<{ story: BodyStory }>(
-    `/v1/cdn/stories${path.replace(/(en)?\/?$/, '$1/home')}`,
+    `/v1/cdn/stories${path.replace(/^(\/en|^\/)?$/, '$1/home')}`,
     {
       params: {
         token: config.storyblokApiToken,
