@@ -15,7 +15,7 @@ export const BlogPostsTagPageComponent: React.FunctionComponent<
       {getMeta({
         nonce,
         title: `Inlägg taggade med ${match.params.tag} | Hedvig`,
-        fullSlug: `blog/${encodeURIComponent(match.params.tag)}`,
+        fullSlug: `blog/tags/${encodeURIComponent(match.params.tag)}`,
       })}
     </Helmet>
     <HeaderBlock
