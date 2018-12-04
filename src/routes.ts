@@ -57,6 +57,7 @@ export const tmpOldRoutes: string[] = [
 ]
 
 export const redirects: ReadonlyArray<[string, string, number]> = [
+  ['/blog/tags/meet-the-team', '/blog/tags/meet%20the%20team', 301],
   [
     '/assets/press/hedvig-press-assets.zip',
     'https://cdn.hedvig.com/identity/hedvig-press-assets.zip',
