@@ -59,7 +59,7 @@ const Shadow = styled('div')({
   left: '50%',
   height: '100%',
   width: '100%',
-  maxWidth: `calc(${CONTENT_MAX_WIDTH}px - ${CONTENT_GUTTER}*2)`,
+  maxWidth: `calc(${CONTENT_MAX_WIDTH.maxWidth}px - ${CONTENT_GUTTER}*2)`,
   transform: 'translateX(-50%)',
   backgroundImage:
     'linear-gradient(transparent, transparent 20%, rgba(0,0,0,0.85))',
@@ -68,6 +68,11 @@ const Shadow = styled('div')({
   '@media(min-width: 900px)': {
     backgroundImage:
       'linear-gradient(transparent, transparent 60%, rgba(0,0,0,0.85))',
+  },
+  [GIANT_BP_UP]: {
+    maxWidth: `calc(${
+      CONTENT_MAX_WIDTH[GIANT_BP_UP].maxWidth
+    }px - ${CONTENT_GUTTER}*2)`,
   },
 })
 
