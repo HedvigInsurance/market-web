@@ -15,16 +15,14 @@ const BreadcrumbComponent = styled('li')({
   },
 })
 
-const Breadcrumb: React.SFC<BreadcrumbProps> = ({ href, children }) => (
+export const Breadcrumb: React.SFC<BreadcrumbProps> = ({ href, children }) => (
   <BreadcrumbComponent>
     {href ? <a href={href}>{children}</a> : <span>{children}</span>}
   </BreadcrumbComponent>
 )
 
-const Breadcrumbs = styled('ul')({
+export const Breadcrumbs = styled('ul')({
   listStyle: 'none',
   margin: 0,
   padding: 0,
 })
-
-export { Breadcrumbs, Breadcrumb }
