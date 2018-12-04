@@ -35,13 +35,15 @@ export const LazyLottie: React.SFC<ReactLottieProps> = (props) =>
         <Mount
           on={() => {
             props.options.animationData.then(setLoadedAnimationData)
-            import('react-lottie').then((lottieModule) => {
-              if (!lottieModule || !lottieModule.default) {
-                return
-              }
+            import(/* webpackChunkName: "react-lottie" */ 'react-lottie').then(
+              (lottieModule) => {
+                if (!lottieModule || !lottieModule.default) {
+                  return
+                }
 
-              setLoadedLottie(lottieModule.default)
-            })
+                setLoadedLottie(lottieModule.default)
+              },
+            )
           }}
         >
           {animationData !== null && ReactLottie !== null ? (
