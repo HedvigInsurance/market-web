@@ -469,6 +469,23 @@
       "real_name": "header_block"
     },
     {
+      "name": "hedvigers_block",
+      "display_name": null,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "hedvigers_block"
+    },
+    {
       "name": "icon_bullet_point_block",
       "display_name": "",
       "schema": {
@@ -1461,20 +1478,16 @@
           "type": "option",
           "options": [
             {
-              "value": "left",
-              "name": "Left"
+              "value": "right",
+              "name": "Right"
             },
             {
               "value": "center",
               "name": "Center"
             },
             {
-              "value": "center-but-left",
-              "name": "Center, but left"
-            },
-            {
-              "value": "right",
-              "name": "Right"
+              "value": "left",
+              "name": "Left"
             }
           ],
           "required": true,
