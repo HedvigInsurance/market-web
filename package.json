@@ -24,7 +24,7 @@
     "@hedviginsurance/react-swipeable-views": "^0.12.20",
     "@hedviginsurance/web-survival-kit": "^1.7.0",
     "@segment/snippet": "^4.4.0",
-    "@sentry/node": "^4.3.0",
+    "@sentry/node": "^4.4.1",
     "@types/date-fns": "^2.6.0",
     "@types/dotenv": "^6.1.0",
     "@types/ioredis": "^4.0.4",
