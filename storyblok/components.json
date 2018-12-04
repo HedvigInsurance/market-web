@@ -1294,6 +1294,137 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "title_paragraph_item"
+    },
+    {
+      "name": "animated_phone_block",
+      "display_name": "",
+      "schema": {
+        "size": {
+          "type": "option",
+          "required": true,
+          "regex": "",
+          "options": [
+            {
+              "value": "sm",
+              "name": "Small"
+            },
+            {
+              "value": "lg",
+              "name": "Large"
+            },
+            {
+              "value": "xl",
+              "name": "X-Large"
+            }
+          ],
+          "default_value": "lg",
+          "pos": 0
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "required": true,
+          "pos": 1
+        },
+        "title": {
+          "type": "text",
+          "required": true,
+          "default_value": "Default Text",
+          "pos": 2
+        },
+        "paragraph": {
+          "type": "custom",
+          "required": true,
+          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
+          "pos": 3,
+          "field_type": "markdown-html",
+          "options": []
+        },
+        "text_position": {
+          "type": "option",
+          "options": [
+            {
+              "value": "right",
+              "name": "Right"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "left",
+              "name": "Left"
+            }
+          ],
+          "default_value": "left",
+          "pos": 4,
+          "required": true
+        },
+        "button_title": {
+          "type": "text",
+          "required": true,
+          "default_value": "Default Text",
+          "pos": 6
+        },
+        "button_type": {
+          "type": "option",
+          "options": [
+            {
+              "value": "filled",
+              "name": "Filled"
+            },
+            {
+              "value": "outlined",
+              "name": "Outlined"
+            },
+            {
+              "value": "plain",
+              "name": "Plain"
+            }
+          ],
+          "required": true,
+          "default_value": "filled",
+          "pos": 7
+        },
+        "button_link": {
+          "type": "multilink",
+          "description": "",
+          "display_name": "",
+          "required": true,
+          "default_value": "",
+          "pos": 8
+        },
+        "media_position": {
+          "type": "option",
+          "options": [
+            {
+              "value": "top",
+              "name": "Top"
+            },
+            {
+              "value": "bottom",
+              "name": "Bottom"
+            }
+          ],
+          "required": true,
+          "default_value": "top",
+          "pos": 9
+        },
+        "show_button": {
+          "type": "boolean",
+          "required": false,
+          "default_value": "true",
+          "pos": 10
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "image_text_block"
     }
   ]
 }
