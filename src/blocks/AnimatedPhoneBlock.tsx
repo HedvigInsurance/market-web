@@ -21,7 +21,7 @@ const ButtonLinkWithMargin = styled(ButtonLink)({
 })
 
 const AlignableContentWrapper = styled(ContentWrapper)(
-  ({ textPosition }: { textPosition: string }) => ({
+  ({ textPosition }: { textPosition: TextPosition }) => ({
     display: 'flex',
     flexDirection: textPosition === 'right' ? 'row-reverse' : 'row',
     justifyContent: 'space-between',
@@ -33,7 +33,7 @@ const AlignableContentWrapper = styled(ContentWrapper)(
 )
 
 const TextWrapper = styled('div')(
-  ({ textPosition }: { textPosition: string }) => ({
+  ({ textPosition }: { textPosition: TextPosition }) => ({
     textAlign: textPosition === 'center' ? 'center' : 'left',
     width: '100%',
     paddingRight: textPosition === 'left' ? '7rem' : '0',
@@ -126,7 +126,7 @@ export const AnimatedPhoneBlock: React.FunctionComponent<
           <Paragraph
             size={size}
             dangerouslySetInnerHTML={{
-              __html: paragraph.html,
+              __html: paragraph && paragraph.html,
             }}
           />
           {show_button && (
