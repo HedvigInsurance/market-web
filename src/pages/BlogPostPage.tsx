@@ -7,12 +7,15 @@ import { HeaderBlock } from '../blocks/HeaderBlock'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
+  MOBILE_BP_UP,
   SectionWrapper,
 } from '../components/blockHelpers'
+import { PrevNextCard } from '../components/BlogPost/PrevNextCard'
 import { BlogPostAuthor } from '../components/BlogPostAuthor'
 import { TagList } from '../components/BlogPostList/BlogPost'
 import { Breadcrumb, Breadcrumbs } from '../components/Breadcrumbs'
 import { ButtonLink } from '../components/buttons'
+import { BlogPostsContainer } from '../components/containers/BlogPostsContainer'
 import { UserContainer } from '../components/containers/UserContainer'
 import { BlogStory, StoryContainer } from '../storyblok/StoryContainer'
 import { findAuthor } from '../utils/author'
@@ -75,7 +78,27 @@ const CtaWrapper = styled('div')({
   },
 })
 
-export const BlogPage: React.FunctionComponent<{ nonce?: string }> = ({
+const PrevNextWrapper = styled(ContentWrapper)({
+  display: 'flex',
+  flexDirection: 'row',
+  width: '100%',
+  maxWidth: '50rem',
+  margin: 'auto',
+
+  [MOBILE_BP_DOWN]: {
+    padding: 0,
+  },
+})
+
+const PrevNextSection = styled('div')({
+  backgroundColor: colors.LIGHT_GRAY,
+  [MOBILE_BP_UP]: {
+    paddingTop: '5rem',
+    paddingBottom: '5rem',
+  },
+})
+
+export const BlogPostPage: React.FunctionComponent<{ nonce?: string }> = ({
   nonce,
 }) => (
   <StoryContainer<BlogStory>>
@@ -101,7 +124,9 @@ export const BlogPage: React.FunctionComponent<{ nonce?: string }> = ({
               <BreadcrumbsWrapper>
                 <Breadcrumbs>
                   <Breadcrumb href="/blog">Blogg</Breadcrumb>
-                  <Breadcrumb>{truncate(25)(story.content.title)}</Breadcrumb>
+                  <Breadcrumb>
+                    {truncate(25)(story.content.title || '')}
+                  </Breadcrumb>
                 </Breadcrumbs>
               </BreadcrumbsWrapper>
 
@@ -141,6 +166,36 @@ export const BlogPage: React.FunctionComponent<{ nonce?: string }> = ({
             </ArticleWrapper>
           </ContentWrapper>
         </SectionWrapper>
+
+        <BlogPostsContainer>
+          {({ blogPosts }) => {
+            const index = blogPosts.findIndex(({ id }) => id === story.id)
+            return (
+              <PrevNextSection>
+                <PrevNextWrapper>
+                  <PrevNextCard
+                    story={
+                      index >= 0 && blogPosts[index + 1]
+                        ? blogPosts[index + 1]
+                        : undefined
+                    }
+                    phoneCardDirection="Föregånde inlägg"
+                    background="#f9fafc"
+                  />
+                  <PrevNextCard
+                    story={
+                      index >= 0 && blogPosts[index - 1]
+                        ? blogPosts[index - 1]
+                        : undefined
+                    }
+                    phoneCardDirection="Nästa inlägg"
+                    background="#f3f4f7"
+                  />
+                </PrevNextWrapper>
+              </PrevNextSection>
+            )
+          }}
+        </BlogPostsContainer>
 
         <FooterBlock
           component="blog"

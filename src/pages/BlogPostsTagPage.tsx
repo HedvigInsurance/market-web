@@ -1,11 +1,10 @@
-import { Container } from 'constate'
 import * as React from 'react'
 import Helmet from 'react-helmet-async'
 import { RouteComponentProps, withRouter } from 'react-router'
 import { FooterBlock } from '../blocks/FooterBlock'
 import { HeaderBlock } from '../blocks/HeaderBlock'
 import { BlogPostList } from '../components/BlogPostList'
-import { BlogStory } from '../storyblok/StoryContainer'
+import { BlogPostsContainer } from '../components/containers/BlogPostsContainer'
 import { getMeta } from '../utils/meta'
 
 export const BlogPostsTagPageComponent: React.FunctionComponent<
@@ -25,15 +24,16 @@ export const BlogPostsTagPageComponent: React.FunctionComponent<
       _uid={'header'}
       component={'header'}
     />
-    <Container<{ blogPosts: ReadonlyArray<BlogStory> }> context="blogPosts">
+
+    <BlogPostsContainer>
       {({ blogPosts }) => {
         if (blogPosts.length === 0 && staticContext) {
           staticContext.statusCode = 404
         }
         return <BlogPostList tag={match.params.tag} stories={blogPosts} />
       }}
-    </Container>
-    }
+    </BlogPostsContainer>
+
     <FooterBlock
       component={'footer'}
       _uid={'footer'}

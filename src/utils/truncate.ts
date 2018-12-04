@@ -1,4 +1,4 @@
-const truncate = (length: number, terminator: string = '...') => (
+export const truncate = (length: number, terminator: string = '...') => (
   text: string,
 ) => {
   if (length >= text.length) {
@@ -7,5 +7,3 @@ const truncate = (length: number, terminator: string = '...') => (
 
   return text.substr(0, length).trim() + terminator
 }
-
-export { truncate }

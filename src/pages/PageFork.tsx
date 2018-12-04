@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Story, StoryContainer } from '../storyblok/StoryContainer'
-import { BlogPage } from './BlogPage'
+import { BlogPostPage } from './BlogPostPage'
 import { StoryPage } from './StoryPage'
 
 export const PageFork: React.FunctionComponent<{ nonce?: string }> = (
@@ -12,7 +12,7 @@ export const PageFork: React.FunctionComponent<{ nonce?: string }> = (
         case 'page':
           return <StoryPage {...props} />
         case 'blog':
-          return <BlogPage {...props} />
+          return <BlogPostPage {...props} />
         default:
           return <StoryPage {...props} />
       }

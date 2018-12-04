@@ -1,4 +1,3 @@
-import { Container } from 'constate'
 import * as React from 'react'
 import styled from 'react-emotion'
 import Helmet from 'react-helmet-async'
@@ -6,7 +5,7 @@ import { FooterBlock } from '../blocks/FooterBlock'
 import { HeaderBlock } from '../blocks/HeaderBlock'
 import { ContentWrapper, TABLET_BP_DOWN } from '../components/blockHelpers'
 import { BlogPostList } from '../components/BlogPostList'
-import { BlogStory } from '../storyblok/StoryContainer'
+import { BlogPostsContainer } from '../components/containers/BlogPostsContainer'
 import { getMeta } from '../utils/meta'
 
 const Headline = styled('h1')({
@@ -50,9 +49,9 @@ export const BlogPostsPage: React.FunctionComponent<{ nonce?: string }> = ({
       </ContentWrapper>
     </BlogListHeader>
 
-    <Container<{ blogPosts: ReadonlyArray<BlogStory> }> context="blogPosts">
+    <BlogPostsContainer>
       {({ blogPosts }) => <BlogPostList stories={blogPosts} />}
-    </Container>
+    </BlogPostsContainer>
 
     <FooterBlock
       component={'footer'}
