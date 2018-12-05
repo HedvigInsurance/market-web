@@ -79,7 +79,8 @@ export const getPublishedStoryFromSlug = (
     .then((response) => {
       if (
         getLangFromPath(path) !== response.data.story.lang ||
-        !response.data.story.content.public
+        (response.data.story.content.component === 'page' &&
+          !response.data.story.content.public)
       ) {
         const err: any = new Error()
         err.response = { status: 404 }
