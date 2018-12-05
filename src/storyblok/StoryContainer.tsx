@@ -27,6 +27,7 @@ export interface Story {
 
   content: {
     _uid: string
+    page_title: string
     component: 'page' | 'blog' | 'global'
   }
 }
@@ -34,6 +35,8 @@ export interface Story {
 export interface BodyStory extends Story {
   content: SeoContent & {
     _uid: string
+    page_title: string
+    public: boolean
     component: 'page'
     body: ReadonlyArray<BaseBlockProps>
   }
@@ -46,6 +49,8 @@ export interface WithStory<TStoryType extends Story> {
 export interface BlogStory extends Story {
   content: SeoContent & {
     _uid: string
+    page_title: string
+    public: boolean
     component: 'blog'
     top_image: Image
     title: string
@@ -75,6 +80,7 @@ interface MenuItem {
 export interface GlobalStory extends Story {
   content: {
     _uid: string
+    page_title: string // NOT USED
     component: 'global'
     header_menu_items?: ReadonlyArray<MenuItem>
     show_cta: boolean
