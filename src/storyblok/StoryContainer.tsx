@@ -36,6 +36,7 @@ export interface BodyStory extends Story {
   content: SeoContent & {
     _uid: string
     page_title: string
+    public: boolean
     component: 'page'
     body: ReadonlyArray<BaseBlockProps>
   }
@@ -49,6 +50,7 @@ export interface BlogStory extends Story {
   content: SeoContent & {
     _uid: string
     page_title: string
+    public: boolean
     component: 'blog'
     top_image: Image
     title: string

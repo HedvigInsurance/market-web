@@ -1006,7 +1006,7 @@
           "type": "text",
           "required": true,
           "pos": 0,
-          "translatable": true
+          "translatable": false
         },
         "link": {
           "type": "multilink",
@@ -1014,7 +1014,7 @@
           "component_whitelist": ["page"],
           "required": true,
           "pos": 1,
-          "translatable": true
+          "translatable": false
         }
       },
       "image": null,
@@ -1059,9 +1059,14 @@
           "description": "",
           "display_name": ""
         },
+        "public": {
+          "type": "boolean",
+          "translatable": true,
+          "pos": 1
+        },
         "body": {
           "type": "bloks",
-          "pos": 1
+          "pos": 2
         },
         "seo": {
           "type": "section",
@@ -1073,14 +1078,14 @@
             "seo_meta_title",
             "robots"
           ],
-          "pos": 2
+          "pos": 3
         },
         "robots": {
           "type": "option",
           "required": true,
           "display_name": "",
           "default_value": "index",
-          "pos": 3,
+          "pos": 4,
           "options": [
             {
               "value": "index",
@@ -1095,29 +1100,29 @@
         },
         "seo_meta_title": {
           "type": "text",
-          "pos": 4,
+          "pos": 5,
           "translatable": true
         },
         "seo_meta_description": {
           "type": "text",
-          "pos": 5,
+          "pos": 6,
           "translatable": true
         },
         "seo_meta_og_title": {
           "type": "text",
-          "pos": 6,
+          "pos": 7,
           "display_name": "SEO Meta og:title",
           "translatable": true
         },
         "seo_meta_og_description": {
           "type": "text",
-          "pos": 7,
+          "pos": 8,
           "display_name": "SEO Meta og:description",
           "translatable": true
         },
         "seo_meta_og_image": {
           "type": "image",
-          "pos": 8,
+          "pos": 9,
           "display_name": "SEO Meta og:image"
         }
       },

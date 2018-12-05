@@ -77,13 +77,16 @@ export const getPublishedStoryFromSlug = (
       },
     )
     .then((response) => {
-      if (getLangFromPath(path) !== response.data.story.lang) {
-        return undefined
+      if (
+        getLangFromPath(path) !== response.data.story.lang ||
+        !response.data.story.content.public
+      ) {
+        const err: any = new Error()
+        err.response = { status: 404 }
+        throw err
       }
 
-      const err: any = new Error()
-      err.response = { status: 404 }
-      throw err
+      return response
     })
 
 export const getDraftedStoryById = (id: string, cacheVersion: string) =>
