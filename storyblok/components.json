@@ -6,15 +6,18 @@
       "schema": {
         "headline": {
           "type": "text",
-          "pos": 0
+          "pos": 0,
+          "translatable": true
         },
         "title": {
           "type": "text",
-          "pos": 1
+          "pos": 1,
+          "translatable": true
         },
         "play_button_text": {
           "type": "text",
-          "pos": 2
+          "pos": 2,
+          "translatable": true
         }
       },
       "image": null,
@@ -61,7 +64,8 @@
         "title": {
           "type": "text",
           "required": true,
-          "pos": 2
+          "pos": 2,
+          "translatable": true
         },
         "accordions": {
           "type": "bloks",
@@ -92,7 +96,8 @@
           "required": true,
           "default_value": "",
           "pos": 0,
-          "display_name": ""
+          "display_name": "",
+          "translatable": true
         },
         "paragraph": {
           "type": "custom",
@@ -101,7 +106,8 @@
           "pos": 1,
           "field_type": "markdown-html",
           "options": [],
-          "display_name": ""
+          "display_name": "",
+          "translatable": true
         }
       },
       "image": null,
@@ -252,7 +258,8 @@
           "restrict_components": true,
           "component_whitelist": ["image_bullet_point_item"],
           "required": true,
-          "pos": 2
+          "pos": 2,
+          "translatable": false
         }
       },
       "image": null,
@@ -264,71 +271,13 @@
       "real_name": "bullet_point_block"
     },
     {
-      "name": "call_to_action_block",
-      "display_name": "",
-      "schema": {
-        "title": {
-          "type": "text",
-          "pos": 0,
-          "required": true,
-          "default_value": "Default Text"
-        },
-        "title_color": {
-          "type": "text",
-          "required": true,
-          "regex": "(^.*(rgb|#))",
-          "default_value": "#000",
-          "pos": 1
-        },
-        "background_color": {
-          "type": "custom",
-          "pos": 2,
-          "regex": "(^.*(rgb|#))",
-          "default_value": "#fff",
-          "required": true,
-          "field_type": "native-color-picker",
-          "options": []
-        },
-        "button_title": {
-          "type": "text",
-          "required": true,
-          "regex": "",
-          "default_value": "",
-          "pos": 3,
-          "display_name": ""
-        },
-        "button_type": {
-          "type": "option",
-          "options": [
-            {
-              "value": "filled",
-              "name": "Filled"
-            },
-            {
-              "value": "ghost",
-              "name": "Ghost"
-            }
-          ],
-          "required": true,
-          "default_value": "filled",
-          "pos": 4
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "call_to_action_block"
-    },
-    {
       "name": "facts_block",
       "display_name": null,
       "schema": {
         "title": {
           "type": "text",
-          "pos": 0
+          "pos": 0,
+          "translatable": true
         },
         "fact1_number": {
           "type": "text",
@@ -336,7 +285,8 @@
         },
         "fact1_explainer": {
           "type": "text",
-          "pos": 2
+          "pos": 2,
+          "translatable": true
         },
         "fact2_number": {
           "type": "text",
@@ -344,7 +294,8 @@
         },
         "fact2_explainer": {
           "type": "text",
-          "pos": 4
+          "pos": 4,
+          "translatable": true
         },
         "fact3_number": {
           "type": "text",
@@ -352,7 +303,8 @@
         },
         "fact3_explainer": {
           "type": "text",
-          "pos": 6
+          "pos": 6,
+          "translatable": true
         }
       },
       "image": null,
@@ -393,7 +345,8 @@
           "pos": 0,
           "maximum": "",
           "restrict_components": true,
-          "component_whitelist": ["menu_item"]
+          "component_whitelist": ["menu_item"],
+          "translatable": false
         },
         "cta": {
           "type": "section",
@@ -402,11 +355,13 @@
         },
         "show_cta": {
           "type": "boolean",
-          "pos": 2
+          "pos": 2,
+          "translatable": true
         },
         "cta_label": {
           "type": "text",
-          "pos": 3
+          "pos": 3,
+          "translatable": true
         },
         "footer": {
           "type": "section",
@@ -422,20 +377,23 @@
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
           "display_name": "",
-          "pos": 5
+          "pos": 5,
+          "translatable": true
         },
         "footer_menu_items_2": {
           "type": "bloks",
           "maximum": "",
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
-          "pos": 6
+          "pos": 6,
+          "translatable": true
         },
         "footer_paragraph": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 7
+          "pos": 7,
+          "translatable": true
         }
       },
       "image": null,
@@ -474,7 +432,8 @@
       "schema": {
         "title": {
           "type": "text",
-          "pos": 0
+          "pos": 0,
+          "translatable": true
         }
       },
       "image": null,
@@ -500,7 +459,8 @@
           "type": "text",
           "regex": "",
           "required": false,
-          "pos": 1
+          "pos": 1,
+          "translatable": true
         },
         "title_position": {
           "type": "option",
@@ -526,7 +486,8 @@
             "image_bullet_point_item"
           ],
           "required": true,
-          "pos": 3
+          "pos": 3,
+          "translatable": false
         }
       },
       "image": null,
@@ -550,7 +511,8 @@
           "type": "text",
           "pos": 1,
           "required": true,
-          "default_value": "Default Text"
+          "default_value": "Default Text",
+          "translatable": true
         },
         "paragraph": {
           "type": "custom",
@@ -559,7 +521,8 @@
           "pos": 2,
           "rich_markdown": true,
           "field_type": "markdown-html",
-          "options": []
+          "options": [],
+          "translatable": true
         }
       },
       "image": null,
@@ -582,7 +545,8 @@
         },
         "caption": {
           "type": "text",
-          "pos": 1
+          "pos": 1,
+          "translatable": true
         },
         "caption_shadow": {
           "type": "boolean",
@@ -615,7 +579,8 @@
           "type": "text",
           "required": true,
           "default_value": "",
-          "pos": 1
+          "pos": 1,
+          "translatable": true
         },
         "paragraph": {
           "type": "custom",
@@ -623,7 +588,8 @@
           "required": true,
           "pos": 2,
           "field_type": "markdown-html",
-          "options": []
+          "options": [],
+          "translatable": true
         }
       },
       "image": null,
@@ -633,94 +599,6 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "image_bullet_point_item"
-    },
-    {
-      "name": "image_cta_text_block",
-      "display_name": "",
-      "schema": {
-        "title": {
-          "type": "text",
-          "pos": 0,
-          "required": true,
-          "default_value": "Default Text"
-        },
-        "image": {
-          "type": "image",
-          "required": true,
-          "pos": 1
-        },
-        "title_color": {
-          "type": "custom",
-          "regex": "(^.*(rgb|#))",
-          "default_value": "#000",
-          "required": true,
-          "pos": 2,
-          "field_type": "native-color-picker",
-          "options": []
-        },
-        "subtitle": {
-          "type": "text",
-          "pos": 3,
-          "description": "",
-          "default_value": ""
-        },
-        "button_text": {
-          "type": "text",
-          "pos": 4,
-          "required": true,
-          "default_value": "Default Text"
-        },
-        "background_color": {
-          "type": "text",
-          "regex": "(^.*(rgb|#))",
-          "description": "",
-          "pos": 5,
-          "required": true,
-          "default_value": "#fff"
-        },
-        "title_position": {
-          "type": "option",
-          "pos": 6,
-          "regex": "(^.*(right|center|left)$)",
-          "display_name": "",
-          "description": "",
-          "default_value": "left",
-          "options": [
-            {
-              "value": "left",
-              "name": "Left"
-            },
-            {
-              "value": "right",
-              "name": "Right"
-            }
-          ],
-          "required": true
-        },
-        "button_type": {
-          "type": "option",
-          "options": [
-            {
-              "value": "filled",
-              "name": "Filled"
-            },
-            {
-              "value": "ghost",
-              "name": "Ghost"
-            }
-          ],
-          "required": true,
-          "default_value": "filled",
-          "pos": 7
-        }
-      },
-      "image": null,
-      "preview_field": "Image",
-      "is_root": false,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "image_cta_text_block"
     },
     {
       "name": "image_multi_text_block",
@@ -807,7 +685,8 @@
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 2
+          "pos": 2,
+          "translatable": true
         },
         "paragraph": {
           "type": "custom",
@@ -815,7 +694,8 @@
           "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
           "pos": 3,
           "field_type": "markdown-html",
-          "options": []
+          "options": [],
+          "translatable": true
         },
         "text_position": {
           "type": "option",
@@ -846,7 +726,8 @@
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 6
+          "pos": 6,
+          "translatable": true
         },
         "button_type": {
           "type": "option",
@@ -874,7 +755,8 @@
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 8
+          "pos": 8,
+          "translatable": true
         },
         "media_position": {
           "type": "option",
@@ -986,14 +868,16 @@
         "label": {
           "type": "text",
           "required": true,
-          "pos": 0
+          "pos": 0,
+          "translatable": true
         },
         "link": {
           "type": "multilink",
           "restrict_content_types": true,
           "component_whitelist": ["page"],
           "required": true,
-          "pos": 1
+          "pos": 1,
+          "translatable": true
         }
       },
       "image": null,
@@ -1061,25 +945,30 @@
               "value": "noindex",
               "name": "noindex"
             }
-          ]
+          ],
+          "translatable": true
         },
         "seo_meta_title": {
           "type": "text",
-          "pos": 3
+          "pos": 3,
+          "translatable": true
         },
         "seo_meta_description": {
           "type": "text",
-          "pos": 4
+          "pos": 4,
+          "translatable": true
         },
         "seo_meta_og_title": {
           "type": "text",
           "pos": 5,
-          "display_name": "SEO Meta og:title"
+          "display_name": "SEO Meta og:title",
+          "translatable": true
         },
         "seo_meta_og_description": {
           "type": "text",
           "pos": 6,
-          "display_name": "SEO Meta og:description"
+          "display_name": "SEO Meta og:description",
+          "translatable": true
         },
         "seo_meta_og_image": {
           "type": "image",
@@ -1107,14 +996,16 @@
         },
         "title": {
           "type": "text",
-          "pos": 1
+          "pos": 1,
+          "translatable": true
         },
         "content": {
           "type": "custom",
           "required": true,
           "field_type": "markdown-html",
           "options": [],
-          "pos": 2
+          "pos": 2,
+          "translatable": true
         }
       },
       "image": null,
@@ -1143,13 +1034,15 @@
         },
         "title": {
           "type": "text",
-          "pos": 2
+          "pos": 2,
+          "translatable": true
         },
         "footnote": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 3
+          "pos": 3,
+          "translatable": true
         }
       },
       "image": null,
@@ -1166,7 +1059,8 @@
       "schema": {
         "title": {
           "type": "text",
-          "pos": 0
+          "pos": 0,
+          "translatable": true
         },
         "logo": {
           "type": "image",
@@ -1174,11 +1068,13 @@
         },
         "text": {
           "type": "text",
-          "pos": 2
+          "pos": 2,
+          "translatable": true
         },
         "link": {
           "type": "text",
-          "pos": 3
+          "pos": 3,
+          "translatable": true
         }
       },
       "image": null,
@@ -1201,16 +1097,19 @@
         },
         "quote": {
           "type": "text",
-          "pos": 1
+          "pos": 1,
+          "translatable": true
         },
         "author": {
           "type": "text",
-          "pos": 2
+          "pos": 2,
+          "translatable": true
         },
         "is_long_quote": {
           "type": "boolean",
           "display_name": "This is a very long quote",
-          "pos": 3
+          "pos": 3,
+          "translatable": true
         },
         "text_position": {
           "type": "option",
@@ -1230,7 +1129,8 @@
           ],
           "default_value": "center",
           "required": true,
-          "pos": 4
+          "pos": 4,
+          "translatable": false
         },
         "background_image": {
           "type": "image",
@@ -1298,11 +1198,13 @@
           "type": "text",
           "pos": 0,
           "required": true,
-          "default_value": "Default Text"
+          "default_value": "Default Text",
+          "translatable": true
         },
         "subtitle": {
           "type": "text",
-          "pos": 1
+          "pos": 1,
+          "translatable": true
         }
       },
       "image": null,
@@ -1312,64 +1214,6 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "switcher_block"
-    },
-    {
-      "name": "title_block",
-      "display_name": null,
-      "schema": {
-        "title": {
-          "type": "text",
-          "pos": 0,
-          "required": true,
-          "default_value": "Default Text"
-        },
-        "title_position": {
-          "type": "option",
-          "regex": "(^.*(right|center|left)$)",
-          "default_value": "left",
-          "description": "",
-          "required": true,
-          "pos": 1,
-          "options": [
-            {
-              "value": "true",
-              "name": "left"
-            },
-            {
-              "value": "true",
-              "name": "center"
-            },
-            {
-              "value": "true",
-              "name": "right"
-            }
-          ]
-        },
-        "title_color": {
-          "type": "text",
-          "regex": "(^.*(rgb|#))",
-          "pos": 2,
-          "required": true,
-          "default_value": "#000"
-        },
-        "background_color": {
-          "type": "custom",
-          "pos": 3,
-          "regex": "(^.*(rgb|#))",
-          "default_value": "#fff",
-          "required": true,
-          "field_type": "native-color-picker",
-          "options": [],
-          "display_name": ""
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "title_block"
     },
     {
       "name": "title_cta_block",
@@ -1386,7 +1230,8 @@
           "type": "text",
           "pos": 1,
           "required": true,
-          "default_value": "Default Text"
+          "default_value": "Default Text",
+          "translatable": true
         },
         "text_position": {
           "type": "option",
@@ -1410,7 +1255,8 @@
           "regex": "",
           "default_value": "",
           "pos": 3,
-          "display_name": ""
+          "display_name": "",
+          "translatable": true
         },
         "button_type": {
           "type": "option",
@@ -1438,7 +1284,8 @@
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 5
+          "pos": 5,
+          "translatable": true
         }
       },
       "image": null,
@@ -1464,7 +1311,8 @@
           "type": "text",
           "pos": 1,
           "required": true,
-          "default_value": "Default Text"
+          "default_value": "Default Text",
+          "translatable": true
         },
         "paragraph": {
           "type": "custom",
@@ -1472,7 +1320,8 @@
           "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
           "pos": 2,
           "field_type": "markdown-html",
-          "options": []
+          "options": [],
+          "translatable": true
         },
         "text_position": {
           "type": "option",
@@ -1515,7 +1364,8 @@
           "type": "text",
           "pos": 0,
           "required": true,
-          "default_value": "Default Text"
+          "default_value": "Default Text",
+          "translatable": true
         },
         "paragraph": {
           "type": "custom",
@@ -1524,7 +1374,8 @@
           "required": true,
           "pos": 1,
           "field_type": "markdown-html",
-          "options": []
+          "options": [],
+          "translatable": true
         }
       },
       "image": null,
