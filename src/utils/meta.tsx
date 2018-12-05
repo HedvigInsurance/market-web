@@ -12,9 +12,16 @@ interface Meta {
 const getFullSlugFromStory = (story?: Story) =>
   story && story.full_slug.replace(/\/?home$/, '')
 
+const getPageTitleFromStory = (story?: Story) => {
+  if (!story) {
+    return ''
+  }
+  return story.content.page_title || story.name
+}
+
 export const getMeta = ({ story, title, nonce, fullSlug }: Meta) => (
   <>
-    <title>{title ? title : story && story.name}</title>
+    <title>{title ? title : getPageTitleFromStory(story)}</title>
     <link
       rel="canonical"
       href={`${getPublicHost()}/${fullSlug || getFullSlugFromStory(story)}`}
