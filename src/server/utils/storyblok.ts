@@ -51,22 +51,40 @@ export const getGlobalStory = async (
   }
 }
 
+const getLangFromPath = (path: string) => {
+  switch (true) {
+    case /^\/en/.test(path):
+      return 'en'
+    default:
+      return 'default'
+  }
+}
 export const getPublishedStoryFromSlug = (
   path: string,
   bypassCache?: boolean,
 ) =>
-  apiClient().get<{ story: BodyStory }>(
-    `/v1/cdn/stories${path.replace(/^(\/en|^\/)?$/, '$1/home')}`,
-    {
-      params: {
-        token: config.storyblokApiToken,
-        find_by: 'slug',
-        cv: bypassCache
-          ? calculateCacheVersionTimestamp(new Date())
-          : getRemoteCacheVersionTimestamp(),
+  apiClient()
+    .get<{ story: BodyStory }>(
+      `/v1/cdn/stories${path.replace(/^(\/en|^\/)?$/, '$1/home')}`,
+      {
+        params: {
+          token: config.storyblokApiToken,
+          find_by: 'slug',
+          cv: bypassCache
+            ? calculateCacheVersionTimestamp(new Date())
+            : getRemoteCacheVersionTimestamp(),
+        },
       },
-    },
-  )
+    )
+    .then((response) => {
+      if (getLangFromPath(path) !== response.data.story.lang) {
+        return undefined
+      }
+
+      const err: any = new Error()
+      err.response = { status: 404 }
+      throw err
+    })
 
 export const getDraftedStoryById = (id: string, cacheVersion: string) =>
   apiClient().get<{ story: BodyStory }>(`/v1/cdn/stories/${id}`, {

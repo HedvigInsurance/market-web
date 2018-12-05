@@ -253,17 +253,22 @@
       "name": "blog",
       "display_name": null,
       "schema": {
+        "page_title": {
+          "type": "text",
+          "translatable": true,
+          "pos": 0
+        },
         "top_image": {
           "type": "image",
-          "pos": 0
+          "pos": 1
         },
         "author": {
           "type": "text",
-          "pos": 1
+          "pos": 2
         },
         "title": {
           "type": "text",
-          "pos": 2
+          "pos": 3
         },
         "excerpt": {
           "type": "text",
@@ -271,34 +276,34 @@
           "description": "Content shown when listing the blog post",
           "display_name": "",
           "default_value": "",
-          "pos": 3
+          "pos": 4
         },
         "content": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 4
+          "pos": 5
         },
         "cta": {
           "type": "section",
           "keys": ["cta_target", "show_cta", "cta_label"],
-          "pos": 5
+          "pos": 6
         },
         "show_cta": {
           "type": "boolean",
-          "pos": 6
+          "pos": 7
         },
         "cta_label": {
           "type": "text",
-          "pos": 7
+          "pos": 8
         },
         "cta_target": {
           "type": "text",
-          "pos": 8
+          "pos": 9
         },
         "seo": {
           "type": "section",
-          "pos": 9,
+          "pos": 10,
           "keys": [
             "seo_robots",
             "seo_meta_title",
@@ -323,27 +328,27 @@
           "display_name": "Robots",
           "required": false,
           "default_value": "index",
-          "pos": 10
+          "pos": 11
         },
         "seo_meta_title": {
           "type": "text",
-          "pos": 11
+          "pos": 12
         },
         "seo_meta_description": {
           "type": "text",
-          "pos": 12
+          "pos": 13
         },
         "seo_meta_og_title": {
           "type": "text",
-          "pos": 13
+          "pos": 14
         },
         "seo_og_description": {
           "type": "text",
-          "pos": 14
+          "pos": 15
         },
         "seo_meta_og_image": {
           "type": "image",
-          "pos": 15
+          "pos": 16
         }
       },
       "image": null,
@@ -477,7 +482,7 @@
           "maximum": "",
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
-          "translatable": false
+          "translatable": true
         },
         "cta": {
           "type": "section",
@@ -1044,11 +1049,19 @@
     },
     {
       "name": "page",
-      "display_name": null,
+      "display_name": "",
       "schema": {
+        "page_title": {
+          "type": "text",
+          "translatable": true,
+          "pos": 0,
+          "regex": "",
+          "description": "",
+          "display_name": ""
+        },
         "body": {
           "type": "bloks",
-          "pos": 0
+          "pos": 1
         },
         "seo": {
           "type": "section",
@@ -1060,14 +1073,14 @@
             "seo_meta_title",
             "robots"
           ],
-          "pos": 1
+          "pos": 2
         },
         "robots": {
           "type": "option",
           "required": true,
           "display_name": "",
           "default_value": "index",
-          "pos": 2,
+          "pos": 3,
           "options": [
             {
               "value": "index",
@@ -1082,29 +1095,29 @@
         },
         "seo_meta_title": {
           "type": "text",
-          "pos": 3,
+          "pos": 4,
           "translatable": true
         },
         "seo_meta_description": {
           "type": "text",
-          "pos": 4,
+          "pos": 5,
           "translatable": true
         },
         "seo_meta_og_title": {
           "type": "text",
-          "pos": 5,
+          "pos": 6,
           "display_name": "SEO Meta og:title",
           "translatable": true
         },
         "seo_meta_og_description": {
           "type": "text",
-          "pos": 6,
+          "pos": 7,
           "display_name": "SEO Meta og:description",
           "translatable": true
         },
         "seo_meta_og_image": {
           "type": "image",
-          "pos": 7,
+          "pos": 8,
           "display_name": "SEO Meta og:image"
         }
       },
