@@ -1661,6 +1661,119 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "animated_phone_block"
+    },
+    {
+      "name": "animated_cta_block",
+      "display_name": "",
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "title": {
+          "type": "text",
+          "pos": 1
+        },
+        "bullet_points_position": {
+          "type": "option",
+          "options": [
+            {
+              "value": "left",
+              "name": "Left"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "right",
+              "name": "Right"
+            }
+          ],
+          "default_value": "left",
+          "pos": 2
+        },
+        "bullet_points": {
+          "type": "bloks",
+          "maximum": "6",
+          "restrict_components": true,
+          "component_whitelist": ["animated_cta_item"],
+          "required": true,
+          "pos": 3
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "animated_cta_block"
+    },
+    {
+      "name": "animated_cta_item",
+      "display_name": "",
+      "schema": {
+        "animation_type": {
+          "type": "option",
+          "options": [
+            {
+              "value": "progressiveSuccess",
+              "name": "Progressive Success"
+            },
+            {
+              "value": "smallMobileChat",
+              "name": "Small Mobile Chat"
+            },
+            {
+              "value": "bellNotification",
+              "name": "Bell Notification"
+            }
+          ],
+          "required": true,
+          "default_value": "left",
+          "pos": 0
+        },
+        "title": {
+          "type": "text",
+          "required": true,
+          "default_value": "",
+          "pos": 1
+        },
+        "paragraph": {
+          "type": "custom",
+          "default_value": "",
+          "required": true,
+          "pos": 2,
+          "field_type": "markdown-html",
+          "options": []
+        },
+        "text_position": {
+          "type": "option",
+          "options": [
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "left",
+              "name": "Left"
+            }
+          ],
+          "required": true,
+          "default_value": "center",
+          "pos": 3
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "animated_cta_item"
     }
   ]
 }
