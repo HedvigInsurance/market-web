@@ -1749,22 +1749,6 @@
           "pos": 2,
           "field_type": "markdown-html",
           "options": []
-        },
-        "text_position": {
-          "type": "option",
-          "options": [
-            {
-              "value": "center",
-              "name": "Center"
-            },
-            {
-              "value": "left",
-              "name": "Left"
-            }
-          ],
-          "required": true,
-          "default_value": "center",
-          "pos": 3
         }
       },
       "image": null,
