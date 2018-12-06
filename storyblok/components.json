@@ -855,14 +855,19 @@
         },
         "image": {
           "type": "image",
-          "required": true,
+          "required": false,
           "pos": 5
+        },
+        "background_image": {
+          "type": "image",
+          "required": false,
+          "pos": 6
         },
         "button_title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 6,
+          "pos": 7,
           "translatable": true
         },
         "button_type": {
@@ -883,7 +888,7 @@
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 7
+          "pos": 8
         },
         "button_link": {
           "type": "multilink",
@@ -891,7 +896,7 @@
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 8,
+          "pos": 9,
           "translatable": true
         },
         "media_position": {
@@ -908,13 +913,13 @@
           ],
           "required": true,
           "default_value": "top",
-          "pos": 9
+          "pos": 10
         },
         "show_button": {
           "type": "boolean",
           "required": false,
           "default_value": "true",
-          "pos": 10
+          "pos": 11
         }
       },
       "image": null,
