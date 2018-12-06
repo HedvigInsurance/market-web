@@ -15,6 +15,7 @@ import {
 } from '../components/blockHelpers'
 
 import { getStoryblokLinkUrl } from '../utils/storyblok'
+import { AppLink } from '../components/AppLink'
 
 const ButtonLinkWithMargin = styled(ButtonLink)({
   marginTop: '1.7rem',
@@ -96,6 +97,7 @@ interface AnimatedPhoneBlockProps extends BaseBlockProps {
   text_position: TextPosition
   button_title: string
   button_type: 'filled' | 'outlined'
+  button_branch_link: boolean
   button_link: LinkComponent
   show_button: boolean
   size: SectionSize
@@ -110,6 +112,7 @@ export const AnimatedPhoneBlock: React.FunctionComponent<
   text_position,
   button_title,
   button_type,
+  button_branch_link,
   button_link,
   show_button,
   color,
@@ -129,16 +132,31 @@ export const AnimatedPhoneBlock: React.FunctionComponent<
               __html: paragraph && paragraph.html,
             }}
           />
-          {show_button && (
-            <ButtonLinkWithMargin
-              href={getStoryblokLinkUrl(button_link)}
-              type={button_type}
-              size="sm"
-              bold
-            >
-              {button_title}
-            </ButtonLinkWithMargin>
-          )}
+          {show_button &&
+            (button_branch_link ? (
+              <AppLink>
+                {({ link, handleClick }) => (
+                  <ButtonLinkWithMargin
+                    href={link}
+                    onClick={handleClick}
+                    type={button_type}
+                    size="sm"
+                    bold
+                  >
+                    {button_title}
+                  </ButtonLinkWithMargin>
+                )}
+              </AppLink>
+            ) : (
+              <ButtonLinkWithMargin
+                href={getStoryblokLinkUrl(button_link)}
+                type={button_type}
+                size="sm"
+                bold
+              >
+                {button_title}
+              </ButtonLinkWithMargin>
+            ))}
         </TextWrapper>
         <PhoneContainer alignment={text_position} displayOrder={media_position}>
           <LazyLottie

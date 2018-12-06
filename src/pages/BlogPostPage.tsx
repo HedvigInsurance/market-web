@@ -22,6 +22,7 @@ import { findAuthor } from '../utils/author'
 import { getMeta } from '../utils/meta'
 import { getStoryblokImage } from '../utils/storyblok'
 import { truncate } from '../utils/truncate'
+import { AppLink } from '../components/AppLink'
 
 const TopImageWrapper = styled('div')({
   display: 'flex',
@@ -156,9 +157,19 @@ export const BlogPostPage: React.FunctionComponent<{ nonce?: string }> = ({
 
               {story.content.show_cta && (
                 <CtaWrapper>
-                  <ButtonLink href={story.content.cta_target}>
-                    {story.content.cta_label}
-                  </ButtonLink>
+                  {story.content.cta_branch_link ? (
+                    <AppLink>
+                      {({ link, handleClick }) => (
+                        <ButtonLink href={link} onClick={handleClick}>
+                          {story.content.cta_label}
+                        </ButtonLink>
+                      )}
+                    </AppLink>
+                  ) : (
+                    <ButtonLink href={story.content.cta_target}>
+                      {story.content.cta_label}
+                    </ButtonLink>
+                  )}
                 </CtaWrapper>
               )}
 

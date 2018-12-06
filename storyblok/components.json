@@ -154,7 +154,8 @@
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 2
+          "pos": 2,
+          "translatable": true
         },
         "paragraph": {
           "type": "custom",
@@ -162,7 +163,8 @@
           "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
           "pos": 3,
           "field_type": "markdown-html",
-          "options": []
+          "options": [],
+          "translatable": true
         },
         "text_position": {
           "type": "option",
@@ -188,7 +190,8 @@
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 6
+          "pos": 5,
+          "translatable": true
         },
         "button_type": {
           "type": "option",
@@ -208,6 +211,12 @@
           ],
           "required": true,
           "default_value": "filled",
+          "pos": 6
+        },
+        "button_branch_link": {
+          "type": "boolean",
+          "required": false,
+          "description": "Create a branch link instead of the link field",
           "pos": 7
         },
         "button_link": {
@@ -216,7 +225,8 @@
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 8
+          "pos": 8,
+          "translatable": true
         },
         "media_position": {
           "type": "option",
@@ -297,13 +307,18 @@
           "type": "text",
           "pos": 8
         },
+        "cta_branch_link": {
+          "type": "boolean",
+          "description": "Create a branch link instead of the link field",
+          "pos": 9
+        },
         "cta_target": {
           "type": "text",
-          "pos": 9
+          "pos": 10
         },
         "seo": {
           "type": "section",
-          "pos": 10,
+          "pos": 11,
           "keys": [
             "seo_robots",
             "seo_meta_title",
@@ -328,27 +343,27 @@
           "display_name": "Robots",
           "required": false,
           "default_value": "index",
-          "pos": 11
+          "pos": 12
         },
         "seo_meta_title": {
           "type": "text",
-          "pos": 12
+          "pos": 13
         },
         "seo_meta_description": {
           "type": "text",
-          "pos": 13
+          "pos": 14
         },
         "seo_meta_og_title": {
           "type": "text",
-          "pos": 14
+          "pos": 15
         },
         "seo_og_description": {
           "type": "text",
-          "pos": 15
+          "pos": 16
         },
         "seo_meta_og_image": {
           "type": "image",
-          "pos": 16
+          "pos": 17
         }
       },
       "image": null,
@@ -885,13 +900,18 @@
           "default_value": "filled",
           "pos": 7
         },
+        "button_branch_link": {
+          "type": "boolean",
+          "description": "Create a branch link instead of the link field",
+          "pos": 8
+        },
         "button_link": {
           "type": "multilink",
           "description": "",
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 8,
+          "pos": 9,
           "translatable": true
         },
         "media_position": {
@@ -908,13 +928,13 @@
           ],
           "required": true,
           "default_value": "top",
-          "pos": 9
+          "pos": 10
         },
         "show_button": {
           "type": "boolean",
           "required": false,
           "default_value": "true",
-          "pos": 10
+          "pos": 11
         }
       },
       "image": null,
@@ -1429,13 +1449,18 @@
           "default_value": "filled",
           "pos": 4
         },
+        "button_branch_link": {
+          "type": "boolean",
+          "description": "Create a branch link instead of the link field",
+          "pos": 5
+        },
         "button_link": {
           "type": "multilink",
           "description": "",
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 5,
+          "pos": 6,
           "translatable": true
         }
       },
