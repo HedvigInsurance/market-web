@@ -10,13 +10,13 @@ import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { SectionSize, SectionSizeProps } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
+import { AppLink } from '../components/AppLink'
 import { ButtonLink } from '../components/buttons'
 import {
   getStoryblokImage,
   getStoryblokLinkUrl,
   Image as StoryblokImage,
 } from '../utils/storyblok'
-import { AppLink } from '../components/AppLink'
 
 const ButtonLinkWithMargin = styled(ButtonLink)({
   marginTop: '1.7rem',

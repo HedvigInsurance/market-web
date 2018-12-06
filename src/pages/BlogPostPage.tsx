@@ -4,6 +4,7 @@ import styled from 'react-emotion'
 import Helmet from 'react-helmet-async'
 import { FooterBlock } from '../blocks/FooterBlock'
 import { HeaderBlock } from '../blocks/HeaderBlock'
+import { AppLink } from '../components/AppLink'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
@@ -22,7 +23,6 @@ import { findAuthor } from '../utils/author'
 import { getMeta } from '../utils/meta'
 import { getStoryblokImage } from '../utils/storyblok'
 import { truncate } from '../utils/truncate'
-import { AppLink } from '../components/AppLink'
 
 const TopImageWrapper = styled('div')({
   display: 'flex',

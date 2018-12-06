@@ -14,8 +14,8 @@ import {
   TABLET_BP_DOWN,
 } from '../components/blockHelpers'
 
-import { getStoryblokLinkUrl } from '../utils/storyblok'
 import { AppLink } from '../components/AppLink'
+import { getStoryblokLinkUrl } from '../utils/storyblok'
 
 const ButtonLinkWithMargin = styled(ButtonLink)({
   marginTop: '1.7rem',

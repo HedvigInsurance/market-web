@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled from 'react-emotion'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { CenterLeftTextPosition } from 'src/utils/textPosition'
+import { AppLink } from '../components/AppLink'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
@@ -11,7 +12,6 @@ import {
 import { ButtonLink, ButtonType } from '../components/buttons'
 import { getStoryblokLinkUrl } from '../utils/storyblok'
 import { BaseBlockProps } from './BaseBlockProps'
-import { AppLink } from '../components/AppLink'
 
 const ButtonLinkWithMargin = styled(ButtonLink)({
   marginTop: '1.7rem',
