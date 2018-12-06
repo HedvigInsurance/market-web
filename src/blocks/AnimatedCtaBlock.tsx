@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled from 'react-emotion'
 import {
   ContentWrapper,
+  CONTENT_GUTTER,
   MOBILE_BP_DOWN,
   SectionWrapper,
 } from '../components/blockHelpers'
@@ -22,17 +23,17 @@ const AnimatedCta = styled('div')({
   flexDirection: 'column',
   marginRight: 'auto',
   textAlign: 'center',
-  width: 'calc(33.333333% - 20px)',
+  width: `calc(33.333333% - 1.333333333rem)`,
   '&:not(:nth-of-type(3n))': {
-    marginRight: '30px',
+    marginRight: CONTENT_GUTTER,
   },
   [TABLET_BP_DOWN]: {
-    width: 'calc(50% - 15px)',
+    width: 'calc(50% - 1rem)',
     '&:not(:nth-of-type(3n))': {
       marginRight: 0,
     },
     '&:not(:nth-of-type(2n))': {
-      marginRight: '30px',
+      marginRight: CONTENT_GUTTER,
     },
   },
   [MOBILE_BP_DOWN]: {
@@ -57,10 +58,11 @@ const AnimatedCtaHead = styled('div')({
   alignItems: 'center',
   justifyContent: 'center',
   maxWidth: '13.125rem',
-  margin: 'auto',
+  marginLeft: 'auto',
+  marginRight: 'auto',
 })
 
-const AnimatedCtaBody = styled('div')({})
+const AnimatedCtaBody = styled('div')()
 
 const AnimatedCtaTitle = styled('h3')({
   fontSize: '1.375rem',
