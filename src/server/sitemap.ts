@@ -26,7 +26,9 @@ const getStichedSitemapLinks = async (): Promise<ReadonlyArray<Url>> => {
         !nextLinks.data.links[key].is_folder &&
         !/^global\//.test(nextLinks.data.links[key].slug),
     )
-    .map((key) => '/' + nextLinks.data.links[key].slug.replace(/^home$/, ''))
+    .map(
+      (key) => '/' + nextLinks.data.links[key].slug.replace(/(^|\/)home$/, ''),
+    )
   const oldLinksResponse = await axios.get<string>(
     'https://hedvig.netlify.com/sitemap.xml',
     {},
