@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 import {
-  ContentWrapper,
   CONTENT_GUTTER,
+  ContentWrapper,
   MOBILE_BP_DOWN,
   SectionWrapper,
 } from '../components/blockHelpers'
