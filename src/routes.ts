@@ -57,6 +57,11 @@ export const tmpOldRoutes: string[] = [
 ]
 
 export const redirects: ReadonlyArray<[string, string, number]> = [
+  [
+    '/uploads/press-2018-09-19.pdf',
+    '/f/50672/x/6eb539f57f/press-2018-09-19.pdf',
+    301,
+  ],
   ['/blog/tags/meet-the-team', '/blog/tags/meet%20the%20team', 301],
   [
     '/blog/2018-11-16-meet-the-team-%E2%80%93-sofia',
