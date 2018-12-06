@@ -56,7 +56,8 @@ const AnimatedCtaHead = styled('div')({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '16rem',
+  maxWidth: '13.125rem',
+  margin: 'auto',
 })
 
 const AnimatedCtaBody = styled('div')({})
