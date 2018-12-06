@@ -10,6 +10,7 @@ import { FooterBlock } from './FooterBlock'
 import { HeaderBlock } from './HeaderBlock'
 import { HedvigersBlock } from './HedvigersBlock'
 import { IconBulletPointBlock } from './IconBulletPointBlock'
+import { IconForestBlock } from './IconForestBlock'
 import { ImageBlock } from './ImageBlock'
 import { ImageMultiTextBlock } from './ImageMultiTextBlock'
 import { ImageTextBlock } from './ImageTextBlock'
@@ -20,7 +21,6 @@ import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
 import { TitleCtaBlock } from './TitleCtaBlock'
 import { TitleParagraphBlock } from './TitleParagraphBlock'
-import { IconForestBlock } from './IconForestBlock'
 
 const blockComponents = {
   header_block: HeaderBlock,

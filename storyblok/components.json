@@ -1777,6 +1777,7 @@
         },
         "title": {
           "type": "text",
+          "required": true,
           "pos": 1
         },
         "paragraph": {

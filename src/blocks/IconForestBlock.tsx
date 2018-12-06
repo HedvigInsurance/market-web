@@ -4,7 +4,6 @@ import {
   ContentWrapper,
   SectionWrapper,
   TABLET_BP_DOWN,
-  TABLET_BP_WIDTH,
 } from '../components/blockHelpers'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
@@ -60,13 +59,10 @@ export const IconForestBlock: React.FunctionComponent<IconForestBlockProps> = ({
         <Title>{title}</Title>
         <Picture>
           <source
-            media={`(max-width: ${TABLET_BP_WIDTH})`}
-            srcSet="https://www.hedvig.com/static/peril-forest-mobile@2x-6547d47ab83c06a2666b03b772f01d35-7c9e1.png"
+            media={`(max-width: 47.125rem)`}
+            srcSet="/assets-next/iconForest/peril-forest-mobile@2x-6547d47ab83c06a2666b03b772f01d35-7c9e1.png"
           />
-          <img
-            src="https://www.hedvig.com/static/peril-forest-desktop@2x-50b53f81490d1b09659efe5814fe6cce-d1e5a.png"
-            alt="Flowers"
-          />
+          <img src="/assets-next/iconForest/peril-forest-desktop@2x-50b53f81490d1b09659efe5814fe6cce-d1e5a.png" />
         </Picture>
         <Paragraph
           dangerouslySetInnerHTML={{
