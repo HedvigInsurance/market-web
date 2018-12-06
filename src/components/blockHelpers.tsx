@@ -5,12 +5,18 @@ import { RouteComponentProps, withRouter } from 'react-router'
 import { SectionSize } from 'src/utils/SectionSize'
 import { colorComponentColors } from '../blocks/BaseBlockProps'
 
+export const MOBILE_BP_WIDTH = '480px'
+export const MOBILE_BP_UP_WIDTH = '481px'
+export const TABLET_BP_WIDTH = '800px'
+export const GIANT_BP_WIDTH = '1700px'
+
 export const CONTENT_GUTTER = '2rem'
 export const CONTENT_GUTTER_MOBILE = '1rem'
-export const MOBILE_BP_UP = '@media (min-width: 481px)'
-export const MOBILE_BP_DOWN = '@media (max-width: 480px)'
-export const TABLET_BP_DOWN = '@media (max-width: 800px)'
-export const GIANT_BP_UP = '@media (min-width: 1700px)'
+export const MOBILE_BP_UP = `@media (min-width: ${MOBILE_BP_UP_WIDTH})`
+export const MOBILE_BP_DOWN = `@media (max-width: ${MOBILE_BP_WIDTH})`
+export const TABLET_BP_DOWN = `@media (max-width: ${TABLET_BP_WIDTH})`
+export const GIANT_BP_UP = `@media (min-width: ${GIANT_BP_WIDTH})`
+
 export const CONTENT_MAX_WIDTH = {
   maxWidth: 1200,
   [GIANT_BP_UP]: {
@@ -66,7 +72,7 @@ const sectionSizeStyles = {
     },
   },
   lg: {
-    padding: '7rem 0',
+    padding: '7.8125rem 0',
     [TABLET_BP_DOWN]: {
       padding: '3.5rem 0',
     },
