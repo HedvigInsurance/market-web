@@ -94,6 +94,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
   button_link: LinkComponent
   show_button: boolean
   image: StoryblokImage
+  background_image: string
   size: SectionSize
   media_position: 'top' | 'bottom'
 }
@@ -107,12 +108,17 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   button_link,
   show_button,
   image,
+  background_image,
   color,
   size,
   media_position,
 }) => {
   return (
-    <SectionWrapper color={color && color.color} size={size}>
+    <SectionWrapper
+      color={color && color.color}
+      size={size}
+      backgroundImage={background_image}
+    >
       <AlignableContentWrapper textPosition={text_position}>
         <TextWrapper textPosition={text_position}>
           <Title size={size} displayOrder={media_position}>
@@ -135,11 +141,13 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
             </ButtonLinkWithMargin>
           )}
         </TextWrapper>
-        <Image
-          alignment={text_position}
-          displayOrder={media_position}
-          src={getStoryblokImage(image)}
-        />
+        {image && (
+          <Image
+            alignment={text_position}
+            displayOrder={media_position}
+            src={getStoryblokImage(image)}
+          />
+        )}
       </AlignableContentWrapper>
     </SectionWrapper>
   )
