@@ -16,6 +16,7 @@ import {
   getStoryblokLinkUrl,
   Image as StoryblokImage,
 } from '../utils/storyblok'
+import { AppLink } from '../components/AppLink'
 
 const ButtonLinkWithMargin = styled(ButtonLink)({
   marginTop: '1.7rem',
@@ -91,6 +92,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
   text_position: TextPosition
   button_title: string
   button_type: 'filled' | 'outlined'
+  button_branch_link: boolean
   button_link: LinkComponent
   show_button: boolean
   image: StoryblokImage
@@ -104,6 +106,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   text_position,
   button_title,
   button_type,
+  button_branch_link,
   button_link,
   show_button,
   image,
@@ -124,16 +127,31 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
               __html: paragraph.html,
             }}
           />
-          {show_button && (
-            <ButtonLinkWithMargin
-              href={getStoryblokLinkUrl(button_link)}
-              type={button_type}
-              size="sm"
-              bold
-            >
-              {button_title}
-            </ButtonLinkWithMargin>
-          )}
+          {show_button &&
+            (button_branch_link ? (
+              <AppLink>
+                {({ link, handleClick }) => (
+                  <ButtonLinkWithMargin
+                    href={link}
+                    onClick={handleClick}
+                    type={button_type}
+                    size="sm"
+                    bold
+                  >
+                    {button_title}
+                  </ButtonLinkWithMargin>
+                )}
+              </AppLink>
+            ) : (
+              <ButtonLinkWithMargin
+                href={getStoryblokLinkUrl(button_link)}
+                type={button_type}
+                size="sm"
+                bold
+              >
+                {button_title}
+              </ButtonLinkWithMargin>
+            ))}
         </TextWrapper>
         <Image
           alignment={text_position}

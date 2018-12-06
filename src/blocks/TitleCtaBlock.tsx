@@ -11,6 +11,7 @@ import {
 import { ButtonLink, ButtonType } from '../components/buttons'
 import { getStoryblokLinkUrl } from '../utils/storyblok'
 import { BaseBlockProps } from './BaseBlockProps'
+import { AppLink } from '../components/AppLink'
 
 const ButtonLinkWithMargin = styled(ButtonLink)({
   marginTop: '1.7rem',
@@ -61,6 +62,7 @@ interface TitleCtaBlockInterface extends BaseBlockProps {
   text_position: CenterLeftTextPosition
   button_title: string
   button_type: ButtonType
+  button_branch_link: boolean
   button_link: LinkComponent
   show_button: boolean
 }
@@ -70,6 +72,7 @@ export const TitleCtaBlock: React.FunctionComponent<TitleCtaBlockInterface> = ({
   text_position,
   button_title,
   button_type,
+  button_branch_link,
   button_link,
   color,
 }) => {
@@ -77,14 +80,30 @@ export const TitleCtaBlock: React.FunctionComponent<TitleCtaBlockInterface> = ({
     <SectionWrapper color={color && color.color}>
       <FlexboxContentWrapperComponent contentAlignment={text_position}>
         <TitleComponent alignment={text_position}>{title}</TitleComponent>
-        <ButtonLinkWithMargin
-          href={getStoryblokLinkUrl(button_link)}
-          type={button_type}
-          size="sm"
-          bold
-        >
-          {button_title}
-        </ButtonLinkWithMargin>
+        {button_branch_link ? (
+          <AppLink>
+            {({ link, handleClick }) => (
+              <ButtonLinkWithMargin
+                href={link}
+                onClick={handleClick}
+                type={button_type}
+                size="sm"
+                bold
+              >
+                {button_title}
+              </ButtonLinkWithMargin>
+            )}
+          </AppLink>
+        ) : (
+          <ButtonLinkWithMargin
+            href={getStoryblokLinkUrl(button_link)}
+            type={button_type}
+            size="sm"
+            bold
+          >
+            {button_title}
+          </ButtonLinkWithMargin>
+        )}
       </FlexboxContentWrapperComponent>
     </SectionWrapper>
   )
