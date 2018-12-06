@@ -20,6 +20,7 @@ import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
 import { TitleCtaBlock } from './TitleCtaBlock'
 import { TitleParagraphBlock } from './TitleParagraphBlock'
+import { IconForestBlock } from './IconForestBlock'
 
 const blockComponents = {
   header_block: HeaderBlock,
@@ -42,6 +43,7 @@ const blockComponents = {
   footer_block: FooterBlock,
   animated_phone_block: AnimatedPhoneBlock,
   animated_cta_block: AnimatedCtaBlock,
+  icon_forest_block: IconForestBlock,
 }
 
 export const getBlockComponent = <
