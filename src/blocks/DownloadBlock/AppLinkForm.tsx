@@ -47,6 +47,8 @@ const Form = styled('form')({
   justifyContent: 'center',
   [VERTICAL_BP]: {
     flexDirection: 'column',
+    maxWidth: 450,
+    margin: '0 auto',
   },
 })
 
