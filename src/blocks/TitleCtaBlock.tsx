@@ -9,7 +9,7 @@ import {
   SectionWrapper,
   TABLET_BP_DOWN,
 } from '../components/blockHelpers'
-import { ButtonLink, ButtonType } from '../components/buttons'
+import { ButtonLink, ButtonStyleType } from '../components/buttons'
 import { getStoryblokLinkUrl } from '../utils/storyblok'
 import { BaseBlockProps } from './BaseBlockProps'
 
@@ -61,7 +61,7 @@ interface TitleCtaBlockInterface extends BaseBlockProps {
   title: string
   text_position: CenterLeftTextPosition
   button_title: string
-  button_type: ButtonType
+  button_type: ButtonStyleType
   button_branch_link: boolean
   button_link: LinkComponent
   show_button: boolean
@@ -86,7 +86,7 @@ export const TitleCtaBlock: React.FunctionComponent<TitleCtaBlockInterface> = ({
               <ButtonLinkWithMargin
                 href={link}
                 onClick={handleClick}
-                type={button_type}
+                styleType={button_type}
                 size="sm"
                 bold
               >
@@ -97,7 +97,7 @@ export const TitleCtaBlock: React.FunctionComponent<TitleCtaBlockInterface> = ({
         ) : (
           <ButtonLinkWithMargin
             href={getStoryblokLinkUrl(button_link)}
-            type={button_type}
+            styleType={button_type}
             size="sm"
             bold
           >
