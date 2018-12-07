@@ -4,6 +4,7 @@ import styled from 'react-emotion'
 import Helmet from 'react-helmet-async'
 import { FooterBlock } from '../blocks/FooterBlock'
 import { HeaderBlock } from '../blocks/HeaderBlock'
+import { AppLink } from '../components/AppLink'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
@@ -156,9 +157,19 @@ export const BlogPostPage: React.FunctionComponent<{ nonce?: string }> = ({
 
               {story.content.show_cta && (
                 <CtaWrapper>
-                  <ButtonLink href={story.content.cta_target}>
-                    {story.content.cta_label}
-                  </ButtonLink>
+                  {story.content.cta_branch_link ? (
+                    <AppLink>
+                      {({ link, handleClick }) => (
+                        <ButtonLink href={link} onClick={handleClick}>
+                          {story.content.cta_label}
+                        </ButtonLink>
+                      )}
+                    </AppLink>
+                  ) : (
+                    <ButtonLink href={story.content.cta_target}>
+                      {story.content.cta_label}
+                    </ButtonLink>
+                  )}
                 </CtaWrapper>
               )}
 
