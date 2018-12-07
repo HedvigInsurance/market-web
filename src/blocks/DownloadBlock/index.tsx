@@ -78,9 +78,7 @@ export const DownloadBlock: React.FunctionComponent<DownloadBlockProps> = ({
           <RotatingPhoneVideo />
         </Column>
         <Column>
-          <div className="u-textCenter">
-            <Heading>{title}</Heading>
-          </div>
+          <Heading>{title}</Heading>
           <SpacedAppLinkForm
             phoneNumberPlaceholder={phone_number_placeholder}
             ctaText={cta_text}
