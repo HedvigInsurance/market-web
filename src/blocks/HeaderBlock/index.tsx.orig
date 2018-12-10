@@ -12,8 +12,12 @@ import {
   GlobalStoryContainer,
 } from '../../storyblok/StoryContainer'
 import { BaseBlockProps } from '../BaseBlockProps'
-import { MenuItem } from './MenuItem'
+<<<<<<< Updated upstream
 import { Burger } from './mobile'
+=======
+import { MenuItem } from './MenuItem'
+import { Burger, TABLET_BP_DOWN } from './mobile'
+>>>>>>> Stashed changes
 
 export const WRAPPER_HEIGHT = '5rem'
 export const HEADER_VERTICAL_PADDING = '1.5rem'
