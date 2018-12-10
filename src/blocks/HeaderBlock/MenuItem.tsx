@@ -3,9 +3,9 @@ import { Container } from 'constate'
 import * as React from 'react'
 import AnimateHeight from 'react-animate-height'
 import styled from 'react-emotion'
+import { TABLET_BP_DOWN } from '../../components/blockHelpers'
 import { MenuItem as MenuItemType } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok'
-import { TABLET_BP_DOWN } from './mobile'
 
 const MenuListItem = styled('li')({
   position: 'relative',
@@ -75,8 +75,10 @@ const Toggler = styled('button')(({ isOpen }: { isOpen: boolean }) => ({
     borderWidth: '6px 5px 0 5px',
     borderColor: 'currentColor transparent transparent transparent',
     borderStyle: 'solid',
-    transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-    transition: 'transform 250ms',
+    [TABLET_BP_DOWN]: {
+      transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+      transition: 'transform 250ms',
+    },
   },
 }))
 
