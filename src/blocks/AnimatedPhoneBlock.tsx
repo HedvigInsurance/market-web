@@ -139,7 +139,7 @@ export const AnimatedPhoneBlock: React.FunctionComponent<
                   <ButtonLinkWithMargin
                     href={link}
                     onClick={handleClick}
-                    type={button_type}
+                    styleType={button_type}
                     size="sm"
                     bold
                   >
@@ -150,7 +150,7 @@ export const AnimatedPhoneBlock: React.FunctionComponent<
             ) : (
               <ButtonLinkWithMargin
                 href={getStoryblokLinkUrl(button_link)}
-                type={button_type}
+                styleType={button_type}
                 size="sm"
                 bold
               >
