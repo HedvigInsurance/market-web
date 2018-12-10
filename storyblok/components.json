@@ -1711,6 +1711,7 @@
         },
         "title": {
           "type": "text",
+          "translatable": true,
           "pos": 1
         },
         "bullet_points_position": {
@@ -1776,6 +1777,7 @@
         "title": {
           "type": "text",
           "required": true,
+          "translatable": true,
           "default_value": "",
           "pos": 1
         },
@@ -1783,6 +1785,7 @@
           "type": "custom",
           "default_value": "",
           "required": true,
+          "translatable": true,
           "pos": 2,
           "field_type": "markdown-html",
           "options": []
