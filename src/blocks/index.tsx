@@ -4,6 +4,7 @@ import { AccordionBlock } from './AccordionBlock'
 import { AnimatedPhoneBlock } from './AnimatedPhoneBlock'
 import { BaseBlockProps } from './BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock'
+import { DownloadBlock } from './DownloadBlock'
 import { FactsBlock } from './FactsBlock'
 import { FooterBlock } from './FooterBlock'
 import { HeaderBlock } from './HeaderBlock'
@@ -25,6 +26,7 @@ const blockComponents = {
   about_us_hero_block: AboutUsHeroBlock,
   accordion_block: AccordionBlock,
   bullet_point_block: BulletPointBlock,
+  download_block: DownloadBlock,
   facts_block: FactsBlock,
   image_multi_text_block: ImageMultiTextBlock,
   investors_block: InvestorsBlock,
