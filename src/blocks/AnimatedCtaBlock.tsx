@@ -1,15 +1,14 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 import {
-  ContentWrapper,
   CONTENT_GUTTER,
+  ContentWrapper,
   MOBILE_BP_DOWN,
   SectionWrapper,
+  TABLET_BP_DOWN,
 } from '../components/blockHelpers'
 import { LazyLottie } from '../components/LazyLottie'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
-
-const TABLET_BP_DOWN = '@media (max-width: 800px)'
 
 const AnimatedCtaWrapper = styled('div')({
   display: 'flex',
@@ -95,9 +94,12 @@ interface AnimationMapProps {
 }
 
 const animationMap: AnimationMapProps = {
-  progressiveSuccess: import(/* webpackChunkName: "progressive-success-animation" */ 'animations/progressiveSuccess.json'),
-  smallMobileChat: import(/* webpackChunkName: "small-mobile-chat-animation" */ 'animations/smallMobileChat.json'),
-  bellNotification: import(/* webpackChunkName: "bell-notification-animation" */ 'animations/bellNotification.json'),
+  progressiveSuccess: () =>
+    import(/* webpackChunkName: "progressive-success-animation" */ 'animations/progressiveSuccess.json'),
+  smallMobileChat: () =>
+    import(/* webpackChunkName: "small-mobile-chat-animation" */ 'animations/smallMobileChat.json'),
+  bellNotification: () =>
+    import(/* webpackChunkName: "bell-notification-animation" */ 'animations/bellNotification.json'),
 }
 
 export const AnimatedCtaBlock: React.FunctionComponent<
@@ -113,7 +115,7 @@ export const AnimatedCtaBlock: React.FunctionComponent<
               {bullet.animation_type && (
                 <LazyLottie
                   options={{
-                    animationData: animationMap[bullet.animation_type],
+                    animationData: animationMap[bullet.animation_type](),
                   }}
                 />
               )}
