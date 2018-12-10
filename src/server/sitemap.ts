@@ -64,9 +64,9 @@ export const sitemapXml: Middleware = async (ctx) => {
     cacheTime: 60 * 10 * 1000,
     urls: await getStichedSitemapLinks(),
   })
-  const sitemap = await promisify(sitemapCreator.toXML.bind(sitemapCreator))(
-    undefined,
-  )
+  // Something breaks if we pass `undefined` as a first argument but promisify requires us to do it = just ignore this
+  // @ts-ignore
+  const sitemap = await promisify(sitemapCreator.toXML.bind(sitemapCreator))()
   ctx.type = 'xml'
   ctx.body = sitemap
 }
