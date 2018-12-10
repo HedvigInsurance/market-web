@@ -71,11 +71,12 @@ export interface LinkComponent {
   cached_url: string // use this
 }
 
-interface MenuItem {
+export interface MenuItem {
   _uid: string
   label: string
   link: LinkComponent
   component: 'menu_item'
+  menu_items?: ReadonlyArray<MenuItem>
 }
 
 export interface GlobalStory extends Story {
