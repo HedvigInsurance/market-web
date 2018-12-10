@@ -73,6 +73,10 @@ a {
 img {
   max-width: 100%;
 }
+  
+input, button {
+  font-size: inherit;
+}
 `
 
   return null
