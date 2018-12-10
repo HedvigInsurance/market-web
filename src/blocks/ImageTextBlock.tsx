@@ -95,7 +95,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
   button_branch_link: boolean
   button_link: LinkComponent
   show_button: boolean
-  image: StoryblokImage
+  image?: StoryblokImage
   background_image: string
   size: SectionSize
   media_position: 'top' | 'bottom'
