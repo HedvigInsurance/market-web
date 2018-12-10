@@ -7,29 +7,21 @@ interface Options {
   sanitisePath?: boolean
 }
 
-export const proxy = (options: Options): Middleware => (ctx) => {
+export const proxy = (options: Options): Middleware => async (ctx) => {
   const path = options.sanitisePath ? encodeURI(ctx.path) : ctx.path
   const url = new Url.URL(path, options.host)
   url.search = ctx.request.querystring
 
   return new Promise((resolve, reject) => {
-    https.get(
-      url.href,
-      {
-        method: ctx.request.method,
-      },
-      (response) => {
-        if (response.statusCode) {
-          ctx.status = response.statusCode
-        }
-        ctx.set('content-type', response.headers['content-type']!)
-        response
-          .pipe(ctx.response.res)
-          .on('error', (error) => {
-            reject(error)
-          })
-          .on('end', resolve)
-      },
-    )
+    https.get(url.href, (response) => {
+      if (response.statusCode) {
+        ctx.status = response.statusCode
+      }
+      ctx.set('content-type', response.headers['content-type']!)
+      response
+        .pipe(ctx.res)
+        .on('error', reject)
+        .on('end', resolve)
+    })
   })
 }
