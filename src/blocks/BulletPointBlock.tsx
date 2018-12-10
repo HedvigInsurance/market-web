@@ -41,18 +41,28 @@ const BulletPoint = styled('div')({
   },
 })
 
-const BulletPointHead = styled('div')({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  height: '16rem',
-})
-const BulletPointImage = styled('img')({
-  width: `calc(100% - ${GUTTER})`,
-  margin: 'auto',
-  maxWidth: '16rem',
-  maxHeight: '16rem',
-})
+const BulletPointHead = styled('div')(
+  ({ forceSize }: { forceSize: boolean }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: forceSize ? '16rem' : undefined,
+  }),
+)
+const BulletPointImage = styled('img')(
+  ({ forceSize }: { forceSize: boolean }) => ({
+    margin: 'auto',
+    ...(forceSize
+      ? {
+          width: `calc(100% - ${GUTTER})`,
+          maxWidth: '16rem',
+          maxHeight: '16rem',
+        }
+      : {
+          width: '100%',
+        }),
+  }),
+)
 
 const BulletPointBody = styled('div')({})
 
@@ -62,6 +72,7 @@ const BulletPointTitle = styled('h3')({
 
 interface BulletPointsBlockProps extends BaseBlockProps {
   bullet_points_position: TextPosition
+  enforce_size: boolean
   bullet_points: ReadonlyArray<
     BaseBlockProps & {
       image: Image
@@ -73,14 +84,17 @@ interface BulletPointsBlockProps extends BaseBlockProps {
 
 export const BulletPointBlock: React.FunctionComponent<
   BulletPointsBlockProps
-> = ({ color, bullet_points_position, bullet_points }) => (
+> = ({ color, enforce_size, bullet_points_position, bullet_points }) => (
   <BulletPointSectionWrapper color={color && color.color}>
     <ContentWrapper>
       <BulletPointsWrapper position={bullet_points_position}>
         {bullet_points.map((bullet) => (
           <BulletPoint key={bullet._uid}>
-            <BulletPointHead>
-              <BulletPointImage src={getStoryblokImage(bullet.image)} />
+            <BulletPointHead forceSize={enforce_size}>
+              <BulletPointImage
+                src={getStoryblokImage(bullet.image)}
+                forceSize={enforce_size}
+              />
             </BulletPointHead>
             <BulletPointBody>
               <BulletPointTitle>{bullet.title}</BulletPointTitle>
