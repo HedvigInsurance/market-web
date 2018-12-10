@@ -64,7 +64,9 @@ export const sitemapXml: Middleware = async (ctx) => {
     cacheTime: 60 * 10 * 1000,
     urls: await getStichedSitemapLinks(),
   })
-  const sitemap = await promisify(sitemapCreator.toXML.bind(sitemapCreator))()
+  const sitemap = await promisify(sitemapCreator.toXML.bind(sitemapCreator))(
+    undefined,
+  )
   ctx.type = 'xml'
   ctx.body = sitemap
 }
