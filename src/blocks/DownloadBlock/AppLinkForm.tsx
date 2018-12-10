@@ -2,10 +2,10 @@ import { colors } from '@hedviginsurance/brand'
 import * as Cookies from 'js-cookie'
 import * as React from 'react'
 import styled from 'react-emotion'
+import { TABLET_BP_UP } from '../../components/blockHelpers'
 import { Button } from '../../components/buttons'
 import { trackEvent } from '../../utils/tracking/trackEvent'
 import { utmParamsToBranchLinkOptions } from '../../utils/tracking/utmToBranch'
-import { TABLET_BP_UP } from '../HeaderBlock/mobile'
 import { DownloadSpinner } from './DownloadSpinner'
 
 const CustomButton = styled(Button)(
