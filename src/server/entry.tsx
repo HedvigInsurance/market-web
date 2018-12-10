@@ -4,8 +4,6 @@ import { createKoaServer } from '@hedviginsurance/web-survival-kit'
 import * as Sentry from '@sentry/node'
 import { IHelmetConfiguration } from 'helmet'
 import * as bodyParser from 'koa-bodyparser'
-import * as convert from 'koa-convert'
-import * as proxy from 'koa-proxy'
 import * as removeTrailingSlashes from 'koa-remove-trailing-slashes'
 import { Logger } from 'typescript-logging'
 import { oldAssetRoutes, redirects, routes, tmpOldRoutes } from '../routes'
@@ -14,6 +12,7 @@ import { helmetConfig } from './config/helmetConfig'
 import { sentryConfig } from './config/sentry'
 import { appLogger } from './logging'
 import { inCaseOfEmergency } from './middlewares/enhancers'
+import { proxy } from './middlewares/proxy'
 import { forceHost } from './middlewares/redirects'
 import {
   addBlogPostsToState,
@@ -105,11 +104,10 @@ server.router.post('/_report-csp-violation', (ctx) => {
   ctx.status = 204
 })
 
-const oldSiteProxy = convert(
-  proxy({
-    host: 'https://hedvig.netlify.com',
-  }),
-)
+const oldSiteProxy = proxy({
+  host: 'https://hedvig.netlify.com',
+  sanitisePath: true,
+})
 
 server.router.get('/sitemap.xml', sitemapXml)
 server.router.use(oldAssetRoutes, oldSiteProxy)
