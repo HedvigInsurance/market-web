@@ -67,7 +67,7 @@ const sectionSizeStyles = {
     },
   },
   lg: {
-    padding: '7.8125rem 0',
+    padding: '7rem 0',
     [TABLET_BP_DOWN]: {
       padding: '3.5rem 0',
     },
