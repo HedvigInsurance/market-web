@@ -31,7 +31,7 @@ export const getGlobalStory = async (
 ): Promise<AxiosResponse<GlobalStory> | undefined> => {
   try {
     return await apiClient().get<GlobalStory>(
-      `/v1/cdn/stories/${locale ? locale + '/' : ''}global`,
+      encodeURI(`/v1/cdn/stories/${locale ? locale + '/' : ''}global`),
       {
         params: {
           token: config.storyblokApiToken,
@@ -65,7 +65,7 @@ export const getPublishedStoryFromSlug = (
 ) =>
   apiClient()
     .get<{ story: BodyStory }>(
-      `/v1/cdn/stories${path.replace(/^(\/en|^\/)?$/, '$1/home')}`,
+      encodeURI(`/v1/cdn/stories${path.replace(/^(\/en|^\/)?$/, '$1/home')}`),
       {
         params: {
           token: config.storyblokApiToken,
@@ -91,7 +91,7 @@ export const getPublishedStoryFromSlug = (
     })
 
 export const getDraftedStoryById = (id: string, cacheVersion: string) =>
-  apiClient().get<{ story: BodyStory }>(`/v1/cdn/stories/${id}`, {
+  apiClient().get<{ story: BodyStory }>(encodeURI(`/v1/cdn/stories/${id}`), {
     params: {
       token: config.storyblokApiToken,
       find_by: 'slug',
