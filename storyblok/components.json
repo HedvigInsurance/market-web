@@ -1778,6 +1778,7 @@
         "title": {
           "type": "text",
           "required": true,
+          "translatable": true,
           "pos": 1
         },
         "paragraph": {
