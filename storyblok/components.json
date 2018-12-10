@@ -431,40 +431,34 @@
       "name": "download_block",
       "display_name": null,
       "schema": {
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 0
-        },
         "title": {
           "type": "text",
           "translatable": true,
-          "pos": 1
+          "pos": 0
         },
         "cta_text": {
           "type": "text",
           "translatable": true,
-          "pos": 2
+          "pos": 1
         },
         "error_text": {
           "type": "text",
           "translatable": true,
           "default_value": "Ojdå! Det gick inte att skicka sms till det angivna numret. Dubbelkolla numret och prova igen.",
-          "pos": 3
+          "pos": 2
         },
         "success_text": {
           "type": "text",
           "translatable": true,
           "default_value": "Vi har skickat dig ett sms med en länk för att ladda ner Hedvig-appen",
-          "pos": 4
+          "pos": 3
         },
         "phone_number_placeholder": {
           "type": "text",
           "translatable": true,
           "description": "",
           "default_value": "Skriv in ditt mobilnummer",
-          "pos": 5
+          "pos": 4
         }
       },
       "image": null,
