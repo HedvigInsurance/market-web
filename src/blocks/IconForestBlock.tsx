@@ -25,7 +25,7 @@ const Title = styled('h2')({
 })
 
 const Picture = styled('picture')({
-  maxWidth: '47.125rem',
+  maxWidth: '46.875rem',
   marginTop: '3.125rem',
   [TABLET_BP_DOWN]: {
     maxWidth: '100%',
@@ -59,7 +59,7 @@ export const IconForestBlock: React.FunctionComponent<IconForestBlockProps> = ({
         <Title>{title}</Title>
         <Picture>
           <source
-            media={`(max-width: 47.125rem)`}
+            media={`(max-width: 46.875rem)`}
             srcSet="/assets-next/iconForest/peril-forest-mobile@2x-6547d47ab83c06a2666b03b772f01d35-7c9e1.png"
           />
           <img src="/assets-next/iconForest/peril-forest-desktop@2x-50b53f81490d1b09659efe5814fe6cce-d1e5a.png" />
