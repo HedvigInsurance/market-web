@@ -6,9 +6,9 @@ import {
   ContentWrapper,
   MOBILE_BP_DOWN,
   SectionWrapper,
+  TABLET_BP_UP,
 } from '../../components/blockHelpers'
 import { BaseBlockProps } from '../BaseBlockProps'
-import { TABLET_BP_UP } from '../HeaderBlock/mobile'
 import { AppLinkForm } from './AppLinkForm'
 import { RotatingPhoneVideo } from './RotatingPhoneVideo'
 
