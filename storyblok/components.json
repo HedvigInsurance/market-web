@@ -918,14 +918,19 @@
         },
         "image": {
           "type": "image",
-          "required": true,
+          "required": false,
           "pos": 5
+        },
+        "background_image": {
+          "type": "image",
+          "required": false,
+          "pos": 6
         },
         "button_title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 6,
+          "pos": 7,
           "translatable": true
         },
         "button_type": {
@@ -946,12 +951,12 @@
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 7
+          "pos": 8
         },
         "button_branch_link": {
           "type": "boolean",
           "description": "Create a branch link instead of the link field",
-          "pos": 8
+          "pos": 9
         },
         "button_link": {
           "type": "multilink",
@@ -959,7 +964,7 @@
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 9,
+          "pos": 10,
           "translatable": true
         },
         "media_position": {
@@ -976,13 +981,13 @@
           ],
           "required": true,
           "default_value": "top",
-          "pos": 10
+          "pos": 11
         },
         "show_button": {
           "type": "boolean",
           "required": false,
           "default_value": "true",
-          "pos": 11
+          "pos": 12
         }
       },
       "image": null,
@@ -1428,10 +1433,12 @@
           "default_value": "Default Text",
           "translatable": true
         },
-        "subtitle": {
-          "type": "text",
+        "paragraph": {
+          "type": "custom",
           "pos": 1,
-          "translatable": true
+          "translatable": true,
+          "field_type": "markdown-html",
+          "options": []
         }
       },
       "image": null,
@@ -1630,6 +1637,7 @@
         },
         "title": {
           "type": "text",
+          "translatable": true,
           "pos": 1
         },
         "bullet_points_position": {
@@ -1695,6 +1703,7 @@
         "title": {
           "type": "text",
           "required": true,
+          "translatable": true,
           "default_value": "",
           "pos": 1
         },
@@ -1702,6 +1711,7 @@
           "type": "custom",
           "default_value": "",
           "required": true,
+          "translatable": true,
           "pos": 2,
           "field_type": "markdown-html",
           "options": []
