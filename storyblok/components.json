@@ -915,14 +915,19 @@
         },
         "image": {
           "type": "image",
-          "required": true,
+          "required": false,
           "pos": 5
+        },
+        "background_image": {
+          "type": "image",
+          "required": false,
+          "pos": 6
         },
         "button_title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 6,
+          "pos": 7,
           "translatable": true
         },
         "button_type": {
@@ -943,12 +948,12 @@
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 7
+          "pos": 8
         },
         "button_branch_link": {
           "type": "boolean",
           "description": "Create a branch link instead of the link field",
-          "pos": 8
+          "pos": 9
         },
         "button_link": {
           "type": "multilink",
@@ -956,7 +961,7 @@
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 9,
+          "pos": 10,
           "translatable": true
         },
         "media_position": {
@@ -973,13 +978,13 @@
           ],
           "required": true,
           "default_value": "top",
-          "pos": 10
+          "pos": 11
         },
         "show_button": {
           "type": "boolean",
           "required": false,
           "default_value": "true",
-          "pos": 11
+          "pos": 12
         }
       },
       "image": null,
@@ -1425,10 +1430,12 @@
           "default_value": "Default Text",
           "translatable": true
         },
-        "subtitle": {
-          "type": "text",
+        "paragraph": {
+          "type": "custom",
           "pos": 1,
-          "translatable": true
+          "translatable": true,
+          "field_type": "markdown-html",
+          "options": []
         }
       },
       "image": null,
@@ -1614,6 +1621,250 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "title_paragraph_item"
+    },
+    {
+      "name": "animated_cta_block",
+      "display_name": "",
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "title": {
+          "type": "text",
+          "translatable": true,
+          "pos": 1
+        },
+        "bullet_points_position": {
+          "type": "option",
+          "options": [
+            {
+              "value": "left",
+              "name": "Left"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "right",
+              "name": "Right"
+            }
+          ],
+          "default_value": "left",
+          "pos": 2
+        },
+        "bullet_points": {
+          "type": "bloks",
+          "maximum": "6",
+          "restrict_components": true,
+          "component_whitelist": ["animated_cta_item"],
+          "required": true,
+          "pos": 3
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "animated_cta_block"
+    },
+    {
+      "name": "animated_cta_item",
+      "display_name": "",
+      "schema": {
+        "animation_type": {
+          "type": "option",
+          "options": [
+            {
+              "value": "progressiveSuccess",
+              "name": "Progressive Success"
+            },
+            {
+              "value": "smallMobileChat",
+              "name": "Small Mobile Chat"
+            },
+            {
+              "value": "bellNotification",
+              "name": "Bell Notification"
+            }
+          ],
+          "required": true,
+          "default_value": "left",
+          "pos": 0
+        },
+        "title": {
+          "type": "text",
+          "required": true,
+          "translatable": true,
+          "default_value": "",
+          "pos": 1
+        },
+        "paragraph": {
+          "type": "custom",
+          "default_value": "",
+          "required": true,
+          "translatable": true,
+          "pos": 2,
+          "field_type": "markdown-html",
+          "options": []
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "animated_cta_item"
+    },
+    ,
+    {
+      "name": "card_checklist_bullet_point_block",
+      "display_name": "",
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "bullet_points_position": {
+          "type": "option",
+          "options": [
+            {
+              "value": "left",
+              "name": "Left"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "right",
+              "name": "Right"
+            }
+          ],
+          "default_value": "left",
+          "pos": 1
+        },
+        "enforce_size": {
+          "type": "boolean",
+          "pos": 2,
+          "default_value": "true",
+          "description": "By unchecking this, I hereby promise that the images i upload are of exacly the same size"
+        },
+        "bullet_points": {
+          "type": "bloks",
+          "maximum": "6",
+          "restrict_components": true,
+          "component_whitelist": ["card_checklist_bullet_point_item"],
+          "required": true,
+          "pos": 3,
+          "translatable": false
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "card_checklist_bullet_point_block"
+    },
+    {
+      "name": "card_checklist_bullet_point_item",
+      "display_name": "",
+      "schema": {
+        "image": {
+          "type": "image",
+          "pos": 0,
+          "required": true,
+          "display_name": "",
+          "regex": "",
+          "image_crop": false,
+          "image_width": "375",
+          "image_height": "240"
+        },
+        "title": {
+          "type": "text",
+          "required": true,
+          "default_value": "",
+          "pos": 1,
+          "translatable": true
+        },
+        "paragraph": {
+          "type": "custom",
+          "default_value": "",
+          "required": true,
+          "pos": 2,
+          "field_type": "markdown-html",
+          "options": [],
+          "translatable": true
+        },
+        "check_list": {
+          "type": "options",
+          "pos": 3,
+          "translatable": true,
+          "options": [
+            {
+              "value": "Eldsvåda",
+              "name": "Eldsvåda"
+            },
+            {
+              "value": "Inbrott",
+              "name": "Inbrott"
+            },
+            {
+              "value": "Oväder",
+              "name": "Oväder"
+            },
+            {
+              "value": "Vattenläcka",
+              "name": "Vattenläcka"
+            },
+            {
+              "value": "Vitvaror",
+              "name": "Vitvaror"
+            },
+            {
+              "value": "Drulle",
+              "name": "Stöld"
+            },
+            {
+              "value": "Skadegörelse",
+              "name": "Skadegörelse"
+            },
+            {
+              "value": "Juridisk tvist",
+              "name": "Juridisk tvist"
+            },
+            {
+              "value": "Resetrubbel",
+              "name": "Resetrubbel"
+            },
+            {
+              "value": "Överfall",
+              "name": "Överfall"
+            },
+            {
+              "value": "Sjukdom",
+              "name": "Sjukdom"
+            }
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "card_checklist_bullet_point_item"
     }
   ]
 }
