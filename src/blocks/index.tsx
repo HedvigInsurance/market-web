@@ -18,6 +18,7 @@ import { PlainTextBlock } from './PlainTextBlock'
 import { PressBlock } from './PressBlock'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
+import { SwitcherBlock } from './SwitcherBlock'
 import { TitleCtaBlock } from './TitleCtaBlock'
 import { TitleParagraphBlock } from './TitleParagraphBlock'
 
@@ -35,6 +36,7 @@ const blockComponents = {
   image_text_block: ImageTextBlock,
   image_block: ImageBlock,
   icon_bullet_point_block: IconBulletPointBlock,
+  switcher_block: SwitcherBlock,
   title_paragraph_block: TitleParagraphBlock,
   title_cta_block: TitleCtaBlock,
   plain_text_block: PlainTextBlock,
