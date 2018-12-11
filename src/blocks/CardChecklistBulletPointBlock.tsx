@@ -1,6 +1,6 @@
+import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
 import styled from 'react-emotion'
-import { colors } from '@hedviginsurance/brand'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
