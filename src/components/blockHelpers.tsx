@@ -89,12 +89,20 @@ export const SectionWrapper = styled('section')(
   ({
     color = 'standard',
     size = 'lg',
+    backgroundImage = 'none',
   }: {
     color?: colorComponentColors
     size?: SectionSize
+    backgroundImage?: string
   }) => ({
     ...getSectionSizeStyle(size),
     ...getColorStyles(color),
+    ...(backgroundImage !== 'none' && {
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
+      backgroundRepeat: 'no-repeat',
+    }),
   }),
 )
 
