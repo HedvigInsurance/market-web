@@ -1433,10 +1433,12 @@
           "default_value": "Default Text",
           "translatable": true
         },
-        "subtitle": {
-          "type": "text",
+        "paragraph": {
+          "type": "custom",
           "pos": 1,
-          "translatable": true
+          "translatable": true,
+          "field_type": "markdown-html",
+          "options": []
         }
       },
       "image": null,
