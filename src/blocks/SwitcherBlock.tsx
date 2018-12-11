@@ -292,9 +292,7 @@ export const SwitcherBlock: React.FunctionComponent<SwitcherBlockProps> = ({
               <Section color={color && color.color}>
                 <ContentWrapper>
                   <HeadlineSection>
-                    <Headline className="u-md-fontSize2 u-lg-fontSize2">
-                      {title}
-                    </Headline>
+                    <Headline>{title}</Headline>
                     <Paragraph
                       dangerouslySetInnerHTML={{
                         __html: paragraph && paragraph.html,
@@ -302,7 +300,7 @@ export const SwitcherBlock: React.FunctionComponent<SwitcherBlockProps> = ({
                     />
                   </HeadlineSection>
                   <Table innerRef={measureRef}>
-                    <BackgroundImage src={'/assets/backgrounds/mesh@2x.png'} />
+                    <BackgroundImage src="/assets-next/backgrounds/mesh@2x.png" />
                     <BarsContainer>
                       {COMPANIES.map((company, index) => (
                         <TableRow key={company.name}>
