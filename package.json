@@ -107,7 +107,6 @@
     "@types/enzyme": "^3.1.14",
     "@types/jest": "^23.3.2",
     "@types/moxios": "^0.4.8",
-    "@types/react-native": "^0.57.18",
     "@types/supertest": "^2.0.6",
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",

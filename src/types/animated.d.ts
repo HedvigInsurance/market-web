@@ -1,4 +1,4 @@
 declare module 'animated' {
-  import { Animated } from 'react-native'
+  const Animated: any
   export default Animated
 }

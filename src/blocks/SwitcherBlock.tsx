@@ -166,7 +166,7 @@ const COMPANIES = [
 const MAX_WEIGHT = 29
 
 interface GetStyle {
-  animatedValue: Animated.Value
+  animatedValue: any
   offsetTop: number
   offset: number
   percent: number
@@ -251,7 +251,7 @@ const getPercentageTextStyle = ({
 }
 
 interface State {
-  animatedValue: Animated.Value
+  animatedValue: any
   eventHandler: (...args: any[]) => void
   isMounted: boolean
 }
