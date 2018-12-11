@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { AboutUsHeroBlock } from './AboutUsHeroBlock'
 import { AccordionBlock } from './AccordionBlock'
+import { AnimatedCtaBlock } from './AnimatedCtaBlock'
 import { AnimatedPhoneBlock } from './AnimatedPhoneBlock'
 import { BaseBlockProps } from './BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock'
@@ -42,6 +43,7 @@ const blockComponents = {
   spacer_block: SpacerBlock,
   footer_block: FooterBlock,
   animated_phone_block: AnimatedPhoneBlock,
+  animated_cta_block: AnimatedCtaBlock,
 }
 
 export const getBlockComponent = <
