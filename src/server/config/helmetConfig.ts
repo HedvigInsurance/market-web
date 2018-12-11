@@ -36,6 +36,7 @@ const defaultSrc = [
   'bnc.lt',
   'www.studentkortet.se',
   'app.link',
+  'hedvig.app.link',
   '*.ravenjs.com',
   'analytics.twitter.com',
 ]
