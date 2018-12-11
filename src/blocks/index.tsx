@@ -4,6 +4,7 @@ import { AccordionBlock } from './AccordionBlock'
 import { AnimatedPhoneBlock } from './AnimatedPhoneBlock'
 import { BaseBlockProps } from './BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock'
+import { CardChecklistBulletPointBlock } from './CardChecklistBulletPointBlock'
 import { FactsBlock } from './FactsBlock'
 import { FooterBlock } from './FooterBlock'
 import { HeaderBlock } from './HeaderBlock'
@@ -40,6 +41,7 @@ const blockComponents = {
   spacer_block: SpacerBlock,
   footer_block: FooterBlock,
   animated_phone_block: AnimatedPhoneBlock,
+  card_checklist_bullet_point_block: CardChecklistBulletPointBlock,
 }
 
 export const getBlockComponent = <
