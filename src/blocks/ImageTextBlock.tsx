@@ -134,7 +134,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
                   <ButtonLinkWithMargin
                     href={link}
                     onClick={handleClick}
-                    type={button_type}
+                    styleType={button_type}
                     size="sm"
                     bold
                   >
@@ -145,7 +145,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
             ) : (
               <ButtonLinkWithMargin
                 href={getStoryblokLinkUrl(button_link)}
-                type={button_type}
+                styleType={button_type}
                 size="sm"
                 bold
               >
