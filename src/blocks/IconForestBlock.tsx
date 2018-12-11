@@ -59,9 +59,9 @@ export const IconForestBlock: React.FunctionComponent<IconForestBlockProps> = ({
         <Picture>
           <source
             media={`(max-width: 47rem)`}
-            srcSet="/assets-next/iconForest/peril-forest-mobile@2x-6547d47ab83c06a2666b03b772f01d35-7c9e1.png"
+            srcSet="/assets-next/iconForest/peril-forest-mobile@2x.png"
           />
-          <img src="/assets-next/iconForest/peril-forest-desktop@2x-50b53f81490d1b09659efe5814fe6cce-d1e5a.png" />
+          <img src="/assets-next/iconForest/peril-forest-desktop@2x.png" />
         </Picture>
         <Paragraph
           dangerouslySetInnerHTML={{
