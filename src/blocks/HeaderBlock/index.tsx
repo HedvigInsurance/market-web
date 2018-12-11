@@ -11,8 +11,8 @@ import {
   GlobalStory,
   GlobalStoryContainer,
 } from '../../storyblok/StoryContainer'
-import { getStoryblokLinkUrl } from '../../utils/storyblok'
 import { BaseBlockProps } from '../BaseBlockProps'
+import { MenuItem } from './MenuItem'
 import { Burger } from './mobile'
 
 export const WRAPPER_HEIGHT = '5rem'
@@ -63,45 +63,32 @@ const InnerHeaderWrapper = styled('div')({
   height: WRAPPER_HEIGHT,
   padding: HEADER_VERTICAL_PADDING + ' 0',
 })
-const Menu = styled('div')(({ open }: { open: boolean }) => ({
+const Menu = styled('ul')(({ open }: { open: boolean }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
+  margin: 0,
+  padding: 0,
+  listStyle: 'none',
 
   [TABLET_BP_DOWN]: {
     position: 'absolute',
     display: 'block',
     zIndex: 101,
     width: '80%',
+    height: '100vh',
     top: 0,
     bottom: 0,
     left: open ? '20%' : '100%',
     paddingTop: `calc(${WRAPPER_HEIGHT} + ${HEADER_VERTICAL_PADDING})`,
+    fontSize: 18,
     background: colors.WHITE,
     transition: `left ${TOGGLE_TRANSITION_TIME}ms`,
     color: colors.OFF_BLACK_DARK,
+    overflow: 'scroll',
+    '-webkit-overflow-scrolling': 'touch',
   },
 }))
-
-const MenuLink = styled('a')({
-  color: 'inherit',
-  textDecoration: 'none',
-  padding: '0 1rem',
-
-  '&:last-of-type': {
-    paddingRight: 0,
-  },
-
-  [TABLET_BP_DOWN]: {
-    display: 'block',
-    width: '100%',
-    padding: `1rem 2rem`,
-
-    '&:first-of-type': {
-      paddingTop: 0,
-    },
-  },
-})
 
 const LogoLink = styled('a')({
   display: 'inline-flex',
@@ -115,6 +102,7 @@ const ButtonWrapper = styled('div')({
   [TABLET_BP_DOWN]: {
     paddingTop: '1.5rem',
     paddingLeft: '1rem',
+    paddingBottom: HEADER_VERTICAL_PADDING,
   },
 })
 
@@ -185,12 +173,7 @@ class Header extends React.PureComponent<
                   <Menu open={isOpen}>
                     {(this.props.story.content.header_menu_items || []).map(
                       (menuItem) => (
-                        <MenuLink
-                          key={menuItem._uid}
-                          href={getStoryblokLinkUrl(menuItem.link)}
-                        >
-                          {menuItem.label}
-                        </MenuLink>
+                        <MenuItem menuItem={menuItem} key={menuItem._uid} />
                       ),
                     )}
 
