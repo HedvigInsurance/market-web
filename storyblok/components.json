@@ -1083,6 +1083,14 @@
           "required": true,
           "pos": 1,
           "translatable": false
+        },
+        "menu_items": {
+          "type": "bloks",
+          "translatable": true,
+          "restrict_components": true,
+          "component_whitelist": ["menu_item"],
+          "display_name": "Sub menu items",
+          "pos": 2
         }
       },
       "image": null,
