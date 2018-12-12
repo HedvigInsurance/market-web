@@ -40,7 +40,7 @@
     "@types/react-hot-loader": "^4.1.0",
     "@types/react-measure": "^2.0.4",
     "@types/react-responsive": "^3.0.2",
-    "@types/react-router": "^4.4.1",
+    "@types/react-router": "^4.4.2",
     "@types/react-router-dom": "^4.3.1",
     "@types/react-transition-group": "^2.0.14",
     "@types/react-visibility-sensor": "^5.0.0",
