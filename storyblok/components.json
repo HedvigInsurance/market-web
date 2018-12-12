@@ -1721,6 +1721,41 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "animated_cta_item"
+    },
+    {
+      "name": "icon_forest_block",
+      "display_name": "",
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "title": {
+          "type": "text",
+          "required": true,
+          "translatable": true,
+          "pos": 1
+        },
+        "paragraph": {
+          "type": "custom",
+          "required": true,
+          "default_value": "",
+          "pos": 1,
+          "field_type": "markdown-html",
+          "options": [],
+          "display_name": "",
+          "translatable": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "icon_forest_block"
     }
   ]
 }
