@@ -11,6 +11,7 @@ import { FooterBlock } from './FooterBlock'
 import { HeaderBlock } from './HeaderBlock'
 import { HedvigersBlock } from './HedvigersBlock'
 import { IconBulletPointBlock } from './IconBulletPointBlock'
+import { IconForestBlock } from './IconForestBlock'
 import { ImageBlock } from './ImageBlock'
 import { ImageMultiTextBlock } from './ImageMultiTextBlock'
 import { ImageTextBlock } from './ImageTextBlock'
@@ -46,6 +47,7 @@ const blockComponents = {
   footer_block: FooterBlock,
   animated_phone_block: AnimatedPhoneBlock,
   animated_cta_block: AnimatedCtaBlock,
+  icon_forest_block: IconForestBlock,
 }
 
 export const getBlockComponent = <
