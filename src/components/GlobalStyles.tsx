@@ -24,19 +24,17 @@ h1, h2, h3, h4, h5, h6 {
   font-kerning: none;
   margin: 1.414rem 0 0.5rem;
   font-weight: inherit;
-  line-height: 1.2;
-}
-
-p {
-  margin-bottom: 1.3rem;
+  line-height: 1.2rem
 }
 
 h1 {
   margin-top: 0;
   font-size: 3.5rem;
+  line-height: 4.75rem;
 }
 h2 {
   font-size: 2.5rem;
+  line-height: 4.125rem;
 }
 h3 {
   font-size: 1.25rem;
@@ -48,9 +46,11 @@ h4 {
 @media (max-width: 800px) {
   h1 {
     font-size: 3rem;
+    line-height: 4.125rem;
   }
   h2 {
       font-size: 2.25rem;
+      line-height: 3.125rem;
   }
 }
 
