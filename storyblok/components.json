@@ -1756,6 +1756,126 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "icon_forest_block"
+    },
+    {
+      "name": "card_checklist_bullet_point_block",
+      "display_name": "",
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "bullet_points_position": {
+          "type": "option",
+          "options": [
+            {
+              "value": "left",
+              "name": "Left"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "right",
+              "name": "Right"
+            }
+          ],
+          "default_value": "left",
+          "pos": 1
+        },
+        "enforce_size": {
+          "type": "boolean",
+          "pos": 2,
+          "default_value": "true",
+          "description": "By unchecking this, I hereby promise that the images i upload are of exacly the same size"
+        },
+        "bullet_points": {
+          "type": "bloks",
+          "maximum": "6",
+          "restrict_components": true,
+          "component_whitelist": ["card_checklist_bullet_point_item"],
+          "required": true,
+          "pos": 3,
+          "translatable": false
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "card_checklist_bullet_point_block"
+    },
+    {
+      "name": "card_checklist_bullet_point_item",
+      "display_name": "",
+      "schema": {
+        "image": {
+          "type": "image",
+          "pos": 0,
+          "required": true,
+          "display_name": "",
+          "regex": "",
+          "image_crop": false,
+          "image_width": "375",
+          "image_height": "240"
+        },
+        "title": {
+          "type": "text",
+          "required": true,
+          "default_value": "",
+          "pos": 1,
+          "translatable": true
+        },
+        "paragraph": {
+          "type": "custom",
+          "default_value": "",
+          "required": true,
+          "pos": 2,
+          "field_type": "markdown-html",
+          "options": [],
+          "translatable": true
+        },
+        "check_list": {
+          "type": "bloks",
+          "maximum": "8",
+          "restrict_components": true,
+          "component_whitelist": ["checklist_bullet_point_item_check_block"],
+          "required": false,
+          "pos": 3,
+          "translatable": false
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "card_checklist_bullet_point_item"
+    },
+    {
+      "name": "checklist_bullet_point_item_check_block",
+      "display_name": "",
+      "schema": {
+        "title": {
+          "type": "text",
+          "required": true,
+          "translatable": true,
+          "pos": 0
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "checklist_bullet_point_block_Item"
     }
   ]
 }
