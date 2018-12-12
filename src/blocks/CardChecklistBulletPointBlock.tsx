@@ -103,6 +103,10 @@ const CheckIcon = styled('div')({
   },
 })
 
+interface Check {
+  title: string
+}
+
 interface BulletPointsBlockProps extends BaseBlockProps {
   bullet_points_position: TextPosition
   bullet_points: ReadonlyArray<
@@ -110,7 +114,7 @@ interface BulletPointsBlockProps extends BaseBlockProps {
       image: Image
       title: string
       paragraph: MarkdownHtmlComponent
-      check_list: ReadonlyArray<string>
+      check_list: ReadonlyArray<Check>
     }
   >
 }
@@ -135,13 +139,13 @@ export const CardChecklistBulletPointBlock: React.FunctionComponent<
               />
               <div>
                 <BulletPointChecklist>
-                  {bullet.check_list.slice(0, 8).map((check) => {
+                  {bullet.check_list.map((check) => {
                     return (
                       <BulletPointChecklistItem>
                         <CheckIcon>
                           <img src="/assets-next/tick.svg" />
                         </CheckIcon>
-                        {check}
+                        {check.title}
                       </BulletPointChecklistItem>
                     )
                   })}
