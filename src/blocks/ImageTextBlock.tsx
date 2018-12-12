@@ -8,7 +8,7 @@ import {
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 import { LinkComponent } from 'src/storyblok/StoryContainer'
-import { SectionSize, SectionSizeProps } from 'src/utils/SectionSize'
+import { SectionSize } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
 import { AppLink } from '../components/AppLink'
 import { ButtonLink } from '../components/buttons'
@@ -47,24 +47,23 @@ const TextWrapper = styled('div')(
   }),
 )
 
-const Title = styled('h2')(
-  ({
-    size,
-    displayOrder,
-  }: SectionSizeProps & { displayOrder: 'top' | 'bottom' }) => ({
-    fontSize: size === 'xl' ? '4.5rem' : '2.5rem',
+const Title = styled('h1')(
+  ({ displayOrder }: { displayOrder: 'top' | 'bottom' }) => ({
+    fontSize: '4.5rem',
     width: '100%',
+    maxWidth: '31rem',
     [TABLET_BP_DOWN]: {
-      fontSize: size === 'xl' ? '3.75rem' : '2rem',
+      fontSize: '3.75rem',
       marginTop: displayOrder === 'top' ? '3rem' : '1.414rem',
     },
   }),
 )
 
-const Paragraph = styled('div')(({ size }: SectionSizeProps) => ({
-  fontSize: size === 'xl' ? '1.125rem' : '1rem',
+const Paragraph = styled('div')({
+  fontSize: '1.125rem',
   marginTop: '1.5rem',
-}))
+  maxWidth: '31rem',
+})
 
 const Image = styled('img')(
   ({
@@ -124,11 +123,8 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
     >
       <AlignableContentWrapper textPosition={text_position}>
         <TextWrapper textPosition={text_position}>
-          <Title size={size} displayOrder={media_position}>
-            {title}
-          </Title>
+          <Title displayOrder={media_position}>{title}</Title>
           <Paragraph
-            size={size}
             dangerouslySetInnerHTML={{
               __html: paragraph.html,
             }}
