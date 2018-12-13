@@ -9,7 +9,7 @@ const Wrapper = styled('div')({
   fontSize: 0,
 })
 const Image = styled('img')({
-  height: 100,
+  maxHeight: 100,
   width: 'auto',
 })
 
