@@ -56,6 +56,7 @@ const Title = styled('h2')(
   }: { size?: TitleSize } & { displayOrder: 'top' | 'bottom' }) => ({
     fontSize: size === 'lg' ? '4.5rem' : '2.5rem',
     width: '100%',
+    maxWidth: '31rem',
     [TABLET_BP_DOWN]: {
       fontSize: size === 'lg' ? '3.75rem' : '2rem',
       marginTop: displayOrder === 'top' ? '3rem' : '1.414rem',
