@@ -1,5 +1,4 @@
-import { fonts, getCdnFontFaces } from '@hedviginsurance/brand'
-import { colors } from '@hedviginsurance/brand/dist'
+import { colors, fonts, getCdnFontFaces } from '@hedviginsurance/brand'
 import * as React from 'react'
 import { injectGlobal } from 'react-emotion'
 
