@@ -129,7 +129,9 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
     >
       <AlignableContentWrapper textPosition={text_position}>
         <TextWrapper textPosition={text_position}>
-          <Title size={title_size} displayOrder={media_position}>{title}</Title>
+          <Title size={title_size} displayOrder={media_position}>
+            {title}
+          </Title>
           <Paragraph
             dangerouslySetInnerHTML={{
               __html: paragraph.html,
