@@ -54,6 +54,9 @@ const MenuLink = styled('a')({
     },
   },
 })
+const MenuFakeLink = styled(MenuLink)({ cursor: 'normal' }).withComponent(
+  'span',
+)
 const DropdownMenuLink = styled(MenuLink)({
   display: 'block',
   padding: 0,
@@ -88,6 +91,7 @@ interface State {
   closeAnimationTimeout?: number
   closeTimeout?: number
 }
+
 interface Effects {
   open: () => void
   close: () => void
@@ -156,9 +160,13 @@ export const MenuItem: React.FunctionComponent<{ menuItem: MenuItemType }> = ({
         }}
         onMouseOut={() => close()}
       >
-        <MenuLink href={getStoryblokLinkUrl(menuItem.link)}>
-          {menuItem.label}
-        </MenuLink>
+        {menuItem.link && menuItem.link.cached_url ? (
+          <MenuLink href={getStoryblokLinkUrl(menuItem.link)}>
+            {menuItem.label}
+          </MenuLink>
+        ) : (
+          <MenuFakeLink>{menuItem.label}</MenuFakeLink>
+        )}
 
         {menuItem.menu_items && menuItem.menu_items.length > 0 && (
           <Toggler
