@@ -7575,10 +7575,10 @@ react-router@^4.3.1:
     prop-types "^15.6.1"
     warning "^4.0.1"
 
-react-spring@^6.1.10:
-  version "6.1.10"
-  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-6.1.10.tgz#ae28796dccfb32baa02d34fb94289c2088f63a1b"
-  integrity sha512-msMoHyXHzb3KdHNY6Yo6wm1t+1GKjy6k2kqaYT3bG6nM//HOL5798OD6Qg719SEDskRDh2vXxIyJ5KEoAUbecA==
+react-spring@^7.1.1:
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/react-spring/-/react-spring-7.1.1.tgz#029a47d2b8d3b31774e5823de4c9760ed00ee84e"
+  integrity sha512-xrc7TRZp5xOLBkbgtkcB3G9B/H0igUZfbi0bgW+3SoY2RqjKttgYkpYRUpubYdggqpbG1TVm1jHjxezLwic3ug==
   dependencies:
     "@babel/runtime" "^7.0.0"
 
