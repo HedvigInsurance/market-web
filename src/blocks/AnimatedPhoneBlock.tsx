@@ -3,7 +3,7 @@ import styled from 'react-emotion'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 import { LinkComponent } from 'src/storyblok/StoryContainer'
-import { SectionSize, SectionSizeProps } from 'src/utils/SectionSize'
+import { SectionSize } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
 import { ButtonLink } from '../components/buttons'
 import { LazyLottie } from '../components/LazyLottie'
