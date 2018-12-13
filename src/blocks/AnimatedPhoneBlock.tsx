@@ -3,7 +3,7 @@ import styled from 'react-emotion'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 import { LinkComponent } from 'src/storyblok/StoryContainer'
-import { SectionSize, SectionSizeProps } from 'src/utils/SectionSize'
+import { SectionSize } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
 import { ButtonLink } from '../components/buttons'
 import { LazyLottie } from '../components/LazyLottie'
@@ -47,25 +47,22 @@ const TextWrapper = styled('div')(
 )
 
 const Title = styled('h2')(
-  ({
-    size,
-    displayOrder,
-  }: SectionSizeProps & { displayOrder: 'top' | 'bottom' }) => ({
-    fontSize: size === 'xl' ? '4.5rem' : '2.5rem',
+  ({ displayOrder }: { displayOrder: 'top' | 'bottom' }) => ({
+    fontSize: '4.5rem',
     wordWrap: 'break-word',
     width: '100%',
     [TABLET_BP_DOWN]: {
-      fontSize: size === 'xl' ? '3.75rem' : '2rem',
+      fontSize: '3.75rem',
       marginTop: displayOrder === 'top' ? '3rem' : '1.414rem',
     },
   }),
 )
 
-const Paragraph = styled('div')(({ size }: SectionSizeProps) => ({
-  fontSize: size === 'xl' ? '1.125rem' : '1rem',
+const Paragraph = styled('div')({
+  fontSize: '1.125rem',
   wordWrap: 'break-word',
   marginTop: '1.5rem',
-}))
+})
 
 const PhoneContainer = styled('div')(
   ({
@@ -123,11 +120,8 @@ export const AnimatedPhoneBlock: React.FunctionComponent<
     <SectionWrapper color={color && color.color} size={size}>
       <AlignableContentWrapper textPosition={text_position}>
         <TextWrapper textPosition={text_position}>
-          <Title size={size} displayOrder={media_position}>
-            {title}
-          </Title>
+          <Title displayOrder={media_position}>{title}</Title>
           <Paragraph
-            size={size}
             dangerouslySetInnerHTML={{
               __html: paragraph && paragraph.html,
             }}
