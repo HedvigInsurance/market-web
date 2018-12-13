@@ -111,6 +111,7 @@ const CheckIconSvg = () => (
 )
 
 interface Check {
+  _uid: string
   title: string
 }
 
@@ -146,9 +147,9 @@ export const CardChecklistBulletPointBlock: React.FunctionComponent<
               />
               <div>
                 <BulletPointChecklist>
-                  {bullet.check_list.map((check, id) => {
+                  {bullet.check_list.map((check) => {
                     return (
-                      <BulletPointChecklistItem key={id}>
+                      <BulletPointChecklistItem key={check._uid}>
                         <CheckIcon>
                           <CheckIconSvg />
                         </CheckIcon>
