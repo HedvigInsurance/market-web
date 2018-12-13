@@ -7,13 +7,14 @@ import {
   SectionWrapper,
   TABLET_BP_DOWN,
 } from '../components/blockHelpers'
+import { getStoryblokImage, Image } from '../utils/storyblok'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 interface IconBulletPointItemBlockProps {
   _uid: string
   title: string
   paragraph: MarkdownHtmlComponent
-  icon: string
+  icon?: Image
 }
 
 interface BulletPointBlockProps extends BaseBlockProps {
@@ -100,7 +101,7 @@ export const IconBulletPointBlock: React.FunctionComponent<
                   contentAlignment={title_position}
                   key={_uid}
                 >
-                  <Icon src={icon || ''} />
+                  <Icon src={getStoryblokImage(icon) || ''} />
                   <div>
                     <BulletPointTitle>{bulletPointTitle}</BulletPointTitle>
                     {
