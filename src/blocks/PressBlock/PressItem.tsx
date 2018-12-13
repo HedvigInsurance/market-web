@@ -4,6 +4,7 @@ import styled from 'react-emotion'
 
 import { PressItemProps } from '.'
 import { MOBILE_BP_DOWN } from '../../components/blockHelpers'
+import { getStoryblokImage } from '../../utils/storyblok'
 
 const Link = styled('a')({
   textDecoration: 'none',
@@ -54,7 +55,7 @@ export const PressItem: React.FunctionComponent<PressItemProps> = ({
 }) => (
   <Link href={link}>
     <PressItemContainer>
-      <Logo src={logo} />
+      <Logo src={getStoryblokImage(logo)} />
       <Content>
         <Title>{title}</Title>
         <Text>{text}</Text>

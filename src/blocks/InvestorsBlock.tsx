@@ -2,11 +2,12 @@ import { fonts } from '@hedviginsurance/brand'
 import * as React from 'react'
 import styled from 'react-emotion'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
+import { getStoryblokImage, Image } from '../utils/storyblok'
 import { BaseBlockProps } from './BaseBlockProps'
 
 interface Investor {
   _uid: string
-  image: string
+  image: Image
   name: string
   type: string
 }
@@ -85,7 +86,7 @@ export const InvestorsBlock: React.FunctionComponent<InvestorsBlockProps> = ({
         <InvestorList>
           {items.map(({ _uid, name, image, type }) => (
             <InvestorContainer key={_uid}>
-              <InvestorImage src={image} />
+              <InvestorImage src={getStoryblokImage(image)} />
               <InvestorName>{name}</InvestorName>
               <InvestorType>{type}</InvestorType>
             </InvestorContainer>

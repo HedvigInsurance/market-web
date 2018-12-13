@@ -2,6 +2,7 @@ import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
 import styled from 'react-emotion'
 import { BlogStory } from '../../storyblok/StoryContainer'
+import { getStoryblokImage } from '../../utils/storyblok'
 import { truncate } from '../../utils/truncate'
 import { MOBILE_BP_UP } from '../blockHelpers'
 
@@ -108,7 +109,7 @@ export const PrevNextCard: React.FunctionComponent<Props> = ({
       <Card>
         <div>
           {story.content.top_image ? (
-            <CardImage src={story.content.top_image} />
+            <CardImage src={getStoryblokImage(story.content.top_image)} />
           ) : (
             <ImagePlaceholder />
           )}

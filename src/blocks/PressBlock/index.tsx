@@ -10,6 +10,7 @@ import {
   MOBILE_BP_DOWN,
   SectionWrapper,
 } from '../../components/blockHelpers'
+import { Image } from '../../utils/storyblok'
 import { BaseBlockProps, MarkdownHtmlComponent } from '../BaseBlockProps'
 import { PressItem } from './PressItem'
 
@@ -51,7 +52,7 @@ const Footnote = styled('span')({
 
 export interface PressItemProps {
   _uid: string
-  logo: string
+  logo: Image
   title: string
   text: string
   link: string
