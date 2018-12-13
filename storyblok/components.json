@@ -1126,18 +1126,34 @@
           "required": true,
           "pos": 1
         },
+        "title_size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            }
+          ],
+          "description": "",
+          "default_value": "sm",
+          "pos": 2
+        },
         "title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 2,
+          "pos": 3,
           "translatable": true
         },
         "paragraph": {
           "type": "custom",
           "required": true,
           "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
-          "pos": 3,
+          "pos": 4,
           "field_type": "markdown-html",
           "options": [],
           "translatable": true
@@ -1159,24 +1175,24 @@
             }
           ],
           "default_value": "left",
-          "pos": 4,
+          "pos": 5,
           "required": true
         },
         "image": {
           "type": "image",
           "required": false,
-          "pos": 5
+          "pos": 6
         },
         "background_image": {
           "type": "image",
           "required": false,
-          "pos": 6
+          "pos": 7
         },
         "button_title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 7,
+          "pos": 8,
           "translatable": true
         },
         "button_type": {
@@ -1197,12 +1213,12 @@
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 8
+          "pos": 9
         },
         "button_branch_link": {
           "type": "boolean",
           "description": "Create a branch link instead of the link field",
-          "pos": 9
+          "pos": 10
         },
         "button_link": {
           "type": "multilink",
@@ -1210,7 +1226,7 @@
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 10,
+          "pos": 11,
           "translatable": true
         },
         "media_position": {
@@ -1227,13 +1243,13 @@
           ],
           "required": true,
           "default_value": "top",
-          "pos": 11
+          "pos": 12
         },
         "show_button": {
           "type": "boolean",
           "required": false,
           "default_value": "true",
-          "pos": 12
+          "pos": 13
         }
       },
       "image": null,

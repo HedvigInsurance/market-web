@@ -116,6 +116,7 @@ export const AnimatedCtaBlock: React.FunctionComponent<
                 <LazyLottie
                   options={{
                     animationData: animationMap[bullet.animation_type](),
+                    loop: false,
                   }}
                 />
               )}
