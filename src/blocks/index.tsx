@@ -5,6 +5,7 @@ import { AnimatedCtaBlock } from './AnimatedCtaBlock'
 import { AnimatedPhoneBlock } from './AnimatedPhoneBlock'
 import { BaseBlockProps } from './BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock'
+import { CardChecklistBulletPointBlock } from './CardChecklistBulletPointBlock'
 import { DownloadBlock } from './DownloadBlock'
 import { FactsBlock } from './FactsBlock'
 import { FooterBlock } from './FooterBlock'
@@ -46,6 +47,7 @@ const blockComponents = {
   spacer_block: SpacerBlock,
   footer_block: FooterBlock,
   animated_phone_block: AnimatedPhoneBlock,
+  card_checklist_bullet_point_block: CardChecklistBulletPointBlock,
   animated_cta_block: AnimatedCtaBlock,
   icon_forest_block: IconForestBlock,
 }
