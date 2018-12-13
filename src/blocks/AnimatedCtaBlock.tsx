@@ -1,5 +1,8 @@
+import { Container } from 'constate'
 import * as React from 'react'
 import styled from 'react-emotion'
+import ReactLottie from 'react-lottie'
+import VisibilitySensor from 'react-visibility-sensor'
 import {
   CONTENT_GUTTER,
   ContentWrapper,
@@ -111,15 +114,49 @@ export const AnimatedCtaBlock: React.FunctionComponent<
         <SectionTitle>{title}</SectionTitle>
         {bullet_points.map((bullet) => (
           <AnimatedCta key={bullet._uid}>
-            <AnimatedCtaHead>
-              {bullet.animation_type && (
-                <LazyLottie
-                  options={{
-                    animationData: animationMap[bullet.animation_type](),
+            <Container<
+              { lottieRef: React.RefObject<typeof ReactLottie> },
+              {},
+              {},
+              { play: () => void }
+            >
+              initialState={{ lottieRef: React.createRef() }}
+              effects={{
+                play: () => ({ state }) => {
+                  if (state.lottieRef.current) {
+                    ;(state.lottieRef.current as any).stop()
+                    ;(state.lottieRef.current as any).play()
+                  }
+                },
+              }}
+            >
+              {({ lottieRef, play }) => (
+                <VisibilitySensor
+                  onChange={(isVisible) => {
+                    if (isVisible) {
+                      play()
+                    }
                   }}
-                />
+                >
+                  {() => (
+                    <AnimatedCtaHead>
+                      {bullet.animation_type && (
+                        <LazyLottie
+                          options={{
+                            animationData: animationMap[
+                              bullet.animation_type
+                            ](),
+                            autoplay: false,
+                            loop: bullet.animation_type === 'smallMobileChat',
+                          }}
+                          innerRef={lottieRef}
+                        />
+                      )}
+                    </AnimatedCtaHead>
+                  )}
+                </VisibilitySensor>
               )}
-            </AnimatedCtaHead>
+            </Container>
             <AnimatedCtaBody>
               <AnimatedCtaTitle>{bullet.title}</AnimatedCtaTitle>
               <AnimatedCtaParagraph

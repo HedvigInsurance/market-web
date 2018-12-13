@@ -18,6 +18,8 @@ import {
   Image as StoryblokImage,
 } from '../utils/storyblok'
 
+type TitleSize = 'sm' | 'lg'
+
 const ButtonLinkWithMargin = styled(ButtonLink)({
   marginTop: '1.7rem',
 })
@@ -47,13 +49,15 @@ const TextWrapper = styled('div')(
   }),
 )
 
-const Title = styled('h1')(
-  ({ displayOrder }: { displayOrder: 'top' | 'bottom' }) => ({
-    fontSize: '4.5rem',
+const Title = styled('h2')(
+  ({
+    size,
+    displayOrder,
+  }: { size?: TitleSize } & { displayOrder: 'top' | 'bottom' }) => ({
+    fontSize: size === 'lg' ? '4.5rem' : '2.5rem',
     width: '100%',
-    maxWidth: '31rem',
     [TABLET_BP_DOWN]: {
-      fontSize: '3.75rem',
+      fontSize: size === 'lg' ? '3.75rem' : '2rem',
       marginTop: displayOrder === 'top' ? '3rem' : '1.414rem',
     },
   }),
@@ -86,6 +90,7 @@ const Image = styled('img')(
 )
 
 interface ImageTextBlockProps extends BaseBlockProps {
+  title_size?: TitleSize
   title: string
   paragraph: MarkdownHtmlComponent
   text_position: TextPosition
@@ -101,6 +106,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
 }
 
 export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
+  title_size,
   title,
   paragraph,
   text_position,
@@ -123,7 +129,9 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
     >
       <AlignableContentWrapper textPosition={text_position}>
         <TextWrapper textPosition={text_position}>
-          <Title displayOrder={media_position}>{title}</Title>
+          <Title size={title_size} displayOrder={media_position}>
+            {title}
+          </Title>
           <Paragraph
             dangerouslySetInnerHTML={{
               __html: paragraph.html,
