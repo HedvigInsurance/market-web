@@ -16,6 +16,7 @@ import { ImageBlock } from './ImageBlock'
 import { ImageMultiTextBlock } from './ImageMultiTextBlock'
 import { ImageTextBlock } from './ImageTextBlock'
 import { InvestorsBlock } from './InvestorsBlock'
+import { MediaLogosBlock } from './MediaLogosBlock'
 import { PlainTextBlock } from './PlainTextBlock'
 import { PressBlock } from './PressBlock'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
@@ -37,6 +38,7 @@ const blockComponents = {
   single_quote_block: SingleQuoteBlock,
   image_text_block: ImageTextBlock,
   image_block: ImageBlock,
+  media_logos_block: MediaLogosBlock,
   icon_bullet_point_block: IconBulletPointBlock,
   switcher_block: SwitcherBlock,
   title_paragraph_block: TitleParagraphBlock,

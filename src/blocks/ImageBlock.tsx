@@ -8,10 +8,11 @@ import {
   GIANT_BP_UP,
   MOBILE_BP_DOWN,
 } from '../components/blockHelpers'
+import { getStoryblokImage, Image as ImageType } from '../utils/storyblok'
 import { BaseBlockProps } from './BaseBlockProps'
 
 interface ImageBlockProps extends BaseBlockProps {
-  image: string
+  image: ImageType
   caption?: string
   caption_shadow: boolean
 }
@@ -82,7 +83,7 @@ export const ImageBlock: React.FunctionComponent<ImageBlockProps> = ({
   caption_shadow,
 }) => (
   <Wrapper>
-    <Image src={image} />
+    <Image src={getStoryblokImage(image)} />
     {caption_shadow && <Shadow />}
     {caption && <Caption>{caption}</Caption>}
   </Wrapper>

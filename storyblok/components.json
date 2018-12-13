@@ -1072,6 +1072,26 @@
       "real_name": "logotype_item"
     },
     {
+      "name": "media_logos_block",
+      "display_name": null,
+      "schema": {
+        "media_logos": {
+          "type": "image",
+          "pos": 0,
+          "translatable": false,
+          "restrict_components": true,
+          "component_whitelist": ["media_logo"]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "media_logos_block"
+    },
+    {
       "name": "menu_item",
       "display_name": null,
       "schema": {
