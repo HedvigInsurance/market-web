@@ -7,6 +7,7 @@ import {
 import { config } from '../config'
 import { appLogger } from '../logging'
 import { redisClient } from './redis'
+import { Middleware } from 'koa'
 
 const calculateCacheVersionTimestamp = (date: Date) =>
   String(Math.round(Number(date) / 1000))
@@ -15,6 +16,13 @@ const apiClient = () =>
   axios.create({
     baseURL: 'https://api.storyblok.com',
   })
+
+export const nukeCache: Middleware = async (ctx) => {
+  const keys = await redisClient.keys('storyblok:*')
+  appLogger.warn(`Nuking cache for ${keys.length} pages`)
+  await redisClient.del(...keys)
+  ctx.status = 204
+}
 
 const cachedGet = async <T>(
   cacheKey: string,
