@@ -21,8 +21,8 @@ import {
 } from './middlewares/states'
 import { getPageMiddleware } from './page'
 import { sitemapXml } from './sitemap'
-import { initializeTeamtailorUsers } from './utils/teamtailor'
 import { nukeCache } from './utils/storyblok'
+import { initializeTeamtailorUsers } from './utils/teamtailor'
 
 Sentry.init({
   ...sentryConfig(),
