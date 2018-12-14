@@ -21,6 +21,7 @@ import {
 } from './middlewares/states'
 import { getPageMiddleware } from './page'
 import { sitemapXml } from './sitemap'
+import { nukeCache } from './utils/storyblok'
 import { initializeTeamtailorUsers } from './utils/teamtailor'
 
 Sentry.init({
@@ -122,6 +123,7 @@ routes.forEach((route) => {
     getPageMiddleware(Boolean(route.ignoreStoryblokMiss)),
   )
 })
+server.router.post('/_nuke-cache', nukeCache)
 server.router.use(tmpOldRoutes, oldSiteProxy)
 
 initializeTeamtailorUsers()
