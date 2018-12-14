@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from 'axios'
+import axios, { AxiosRequestConfig } from 'axios'
 import {
   BlogStory,
   BodyStory,
@@ -6,49 +6,77 @@ import {
 } from '../../storyblok/StoryContainer'
 import { config } from '../config'
 import { appLogger } from '../logging'
+import { redisClient } from './redis'
 
-let remoteCacheVersion = new Date()
 const calculateCacheVersionTimestamp = (date: Date) =>
   String(Math.round(Number(date) / 1000))
-const getRemoteCacheVersionTimestamp = () =>
-  calculateCacheVersionTimestamp(remoteCacheVersion)
-
-if (process.env.NODE_ENV !== 'test') {
-  setTimeout(() => {
-    appLogger.info('Updating remote cache version')
-    remoteCacheVersion = new Date()
-  }, 60 * 15 * 1000)
-}
 
 const apiClient = () =>
   axios.create({
     baseURL: 'https://api.storyblok.com',
   })
 
-export const getGlobalStory = async (
-  locale: string,
+const cachedGet = async <T>(
+  cacheKey: string,
+  axiosParams: [string, AxiosRequestConfig | undefined],
   bypassCache?: boolean,
-): Promise<AxiosResponse<GlobalStory> | undefined> => {
+): Promise<{ status: number; data: T }> => {
+  if (!bypassCache) {
+    const cached = await redisClient.get(`storyblok:${cacheKey}`)
+    if (cached) {
+      const result = JSON.parse(cached)
+      appLogger.info(`Cache hit [key="${cacheKey}", status=${result.status}]`)
+      return result
+    }
+  }
+
+  appLogger.info(`Cache miss [key="${cacheKey}"]`)
   try {
-    return await apiClient().get<GlobalStory>(
-      encodeURI(`/v1/cdn/stories/${locale ? locale + '/' : ''}global`),
-      {
-        params: {
-          token: config.storyblokApiToken,
-          find_by: 'slug',
-          cv: bypassCache
-            ? calculateCacheVersionTimestamp(new Date())
-            : getRemoteCacheVersionTimestamp(),
-        },
-      },
+    const response = await apiClient().get<T>(...axiosParams)
+    const result = { status: response.status, data: response.data }
+    await redisClient.set(
+      `storyblok:${cacheKey}`,
+      JSON.stringify(result),
+      'EX',
+      60 * 10,
     )
+    return result
   } catch (e) {
-    if (e.response && e.response.status === 404) {
-      return undefined
+    if (e.response && e.response.status && e.response.status === 404) {
+      const result = { status: e.response.status, data: e.response.data }
+      await redisClient.set(
+        `storyblok:${cacheKey}`,
+        JSON.stringify(result),
+        'EX',
+        60 * 10,
+      )
+      return result
     }
 
     throw e
   }
+}
+
+export const getGlobalStory = async (
+  locale: string,
+  bypassCache?: boolean,
+): Promise<{ story: GlobalStory } | undefined> => {
+  const uri = encodeURI(`/v1/cdn/stories/${locale ? locale + '/' : ''}global`)
+  const result = await cachedGet<{ story: GlobalStory }>(
+    uri,
+    [
+      uri,
+      {
+        params: {
+          token: config.storyblokApiToken,
+          find_by: 'slug',
+          cv: calculateCacheVersionTimestamp(new Date()),
+        },
+      },
+    ],
+    bypassCache,
+  )
+  return result && result.data && result.data
 }
 
 const getLangFromPath = (path: string) => {
@@ -59,62 +87,77 @@ const getLangFromPath = (path: string) => {
       return 'default'
   }
 }
-export const getPublishedStoryFromSlug = (
+export const getPublishedStoryFromSlug = async (
   path: string,
   bypassCache?: boolean,
-) =>
-  apiClient()
-    .get<{ story: BodyStory }>(
-      encodeURI(`/v1/cdn/stories${path.replace(/^(\/en|^\/)?$/, '$1/home')}`),
+): Promise<{ story: BodyStory }> => {
+  const uri = encodeURI(
+    `/v1/cdn/stories${path.replace(/^(\/en|^\/)?$/, '$1/home')}`,
+  )
+  const result = await cachedGet<{ story: BodyStory }>(
+    uri,
+    [
+      uri,
       {
         params: {
           token: config.storyblokApiToken,
           find_by: 'slug',
-          cv: bypassCache
-            ? calculateCacheVersionTimestamp(new Date())
-            : getRemoteCacheVersionTimestamp(),
+          cv: calculateCacheVersionTimestamp(new Date()),
         },
       },
-    )
-    .then((response) => {
-      if (
-        getLangFromPath(path) !== response.data.story.lang ||
-        (response.data.story.content.component === 'page' &&
-          !response.data.story.content.public)
-      ) {
-        const err: any = new Error()
-        err.response = { status: 404 }
-        throw err
-      }
+    ],
+    bypassCache,
+  )
 
-      return response
-    })
+  const lang =
+    (result.data && result.data.story && result.data.story.lang) || ''
+  const component =
+    result.data && result.data.story && result.data.story.content.component
+  const isPublic =
+    result.data && result.data.story && result.data.story.content.public
 
+  if (getLangFromPath(path) !== lang || (component === 'page' && !isPublic)) {
+    const err: any = new Error()
+    err.response = { status: 404 }
+    throw err
+  }
+
+  return result.data
+}
 export const getDraftedStoryById = (id: string, cacheVersion: string) =>
-  apiClient().get<{ story: BodyStory }>(encodeURI(`/v1/cdn/stories/${id}`), {
-    params: {
-      token: config.storyblokApiToken,
-      find_by: 'slug',
-      version: 'draft',
-      cv: cacheVersion || getRemoteCacheVersionTimestamp(),
-    },
-    headers: {
-      'cache-control': 'no-cache',
-    },
-  })
+  apiClient()
+    .get<{ story: BodyStory }>(encodeURI(`/v1/cdn/stories/${id}`), {
+      params: {
+        token: config.storyblokApiToken,
+        find_by: 'slug',
+        version: 'draft',
+        cv: cacheVersion || calculateCacheVersionTimestamp(new Date()),
+      },
+      headers: {
+        'cache-control': 'no-cache',
+      },
+    })
+    .then(({ data }) => data)
 
-export const getBlogPosts = (bypassCache: boolean, tag?: string) =>
-  apiClient().get<{ stories: ReadonlyArray<BlogStory> }>(`/v1/cdn/stories`, {
-    params: {
-      token: config.storyblokApiToken,
-      'filter_query[component][in]': 'blog',
-      with_tag: tag,
-      sort_by: 'first_published_at:desc',
-      cv: bypassCache
-        ? calculateCacheVersionTimestamp(new Date())
-        : getRemoteCacheVersionTimestamp(),
-    },
-  })
+export const getBlogPosts = (bypassCache: boolean, tag?: string) => {
+  const cacheKey = `/v1/cdn/stories?filter_query[component][in]=blog&with_tag=${tag}`
+  return cachedGet<{ stories: ReadonlyArray<BlogStory> }>(
+    cacheKey,
+    [
+      '/v1/cdn/stories',
+      {
+        params: {
+          token: config.storyblokApiToken,
+          'filter_query[component][in]': 'blog',
+          with_tag: tag,
+          sort_by: 'first_published_at:desc',
+          cv: calculateCacheVersionTimestamp(new Date()),
+        },
+      },
+    ],
+    bypassCache,
+  )
+}
 
 export interface Link {
   id: number
@@ -134,7 +177,7 @@ export const getAllStoryblokLinks = () =>
   apiClient().get<LinkResult>('/v1/cdn/links', {
     params: {
       token: config.storyblokApiToken,
-      cv: getRemoteCacheVersionTimestamp(),
+      cv: calculateCacheVersionTimestamp(new Date()),
     },
   })
 

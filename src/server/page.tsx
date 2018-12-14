@@ -132,8 +132,8 @@ export const getPageMiddleware = (
   const serverApp = (
     <Provider
       initialState={{
-        story: story && story.data,
-        globalStory: globalStory && globalStory.data,
+        story,
+        globalStory,
         ...(ctx.state.additionalStates || {}),
       }}
     >
@@ -158,13 +158,13 @@ export const getPageMiddleware = (
   ctx.body = template({
     body,
     initialState: {
-      story: story && story.data,
-      globalStory: globalStory && globalStory.data,
+      story,
+      globalStory,
       ...(ctx.state.additionalStates || {}),
     },
     helmet: (helmetContext as FilledContext).helmet,
     dangerouslyExposeApiKeyToProvideEditing: ctx.request.query._storyblok,
     nonce: (ctx.res as any).cspNonce,
-    lang: (story && story.data.story && story.data.story.lang) || 'default',
+    lang: (story && story.story.lang) || 'default',
   })
 }
