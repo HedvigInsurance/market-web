@@ -7,6 +7,7 @@ import {
   TABLET_BP_DOWN,
 } from '../../components/blockHelpers'
 import { GlobalStoryContainer } from '../../storyblok/StoryContainer'
+import { getStoryblokLinkUrl } from '../../utils/storyblok'
 import { BaseBlockProps } from '../BaseBlockProps'
 import {
   FacebookIcon,
@@ -123,7 +124,10 @@ export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
                 <LinkColumn>
                   {(globalStory.content.footer_menu_items_1 || []).map(
                     (link) => (
-                      <Link key={link._uid} href={link.link.cached_url}>
+                      <Link
+                        key={link._uid}
+                        href={getStoryblokLinkUrl(link.link)}
+                      >
                         {link.label}
                       </Link>
                     ),
@@ -132,7 +136,10 @@ export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
                 <LinkColumn>
                   {(globalStory.content.footer_menu_items_2 || []).map(
                     (link) => (
-                      <Link key={link._uid} href={link.link.cached_url}>
+                      <Link
+                        key={link._uid}
+                        href={getStoryblokLinkUrl(link.link)}
+                      >
                         {link.label}
                       </Link>
                     ),
