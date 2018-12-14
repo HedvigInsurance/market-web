@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios'
+import { Middleware } from 'koa'
 import {
   BlogStory,
   BodyStory,
@@ -7,7 +8,6 @@ import {
 import { config } from '../config'
 import { appLogger } from '../logging'
 import { redisClient } from './redis'
-import { Middleware } from 'koa'
 
 const calculateCacheVersionTimestamp = (date: Date) =>
   String(Math.round(Number(date) / 1000))
