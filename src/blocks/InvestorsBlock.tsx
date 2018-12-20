@@ -2,6 +2,7 @@ import { fonts } from '@hedviginsurance/brand'
 import * as React from 'react'
 import styled from 'react-emotion'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
+import { DeferredImage } from '../components/DeferredImage'
 import { getStoryblokImage, Image } from '../utils/storyblok'
 import { BaseBlockProps } from './BaseBlockProps'
 
@@ -54,7 +55,7 @@ const InvestorContainer = styled('div')({
   },
 })
 
-const InvestorImage = styled('img')({
+const InvestorImage = styled(DeferredImage)({
   width: '110px',
   height: '110px',
   objectFit: 'cover',

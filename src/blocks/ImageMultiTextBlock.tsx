@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
+import { DeferredImage } from '../components/DeferredImage'
 import { getStoryblokImage, Image as StoryblokImage } from '../utils/storyblok'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
@@ -29,7 +30,7 @@ const Col = styled('div')(({ pad }: { pad: 'left' | 'right' }) => ({
   },
 }))
 
-const Image = styled('img')(({ pull }: { pull: 'left' | 'right' }) => ({
+const Image = styled(DeferredImage)(({ pull }: { pull: 'left' | 'right' }) => ({
   display: 'block',
   marginLeft: pull === 'left' ? undefined : 'auto',
   marginRight: pull === 'right' ? undefined : 'auto',

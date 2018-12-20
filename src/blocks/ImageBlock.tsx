@@ -8,6 +8,7 @@ import {
   GIANT_BP_UP,
   MOBILE_BP_DOWN,
 } from '../components/blockHelpers'
+import { DeferredImage } from '../components/DeferredImage'
 import { getStoryblokImage, Image as ImageType } from '../utils/storyblok'
 import { BaseBlockProps } from './BaseBlockProps'
 
@@ -27,7 +28,7 @@ const Wrapper = styled('div')({
   overflow: 'hidden',
 })
 
-const Image = styled('img')({
+const Image = styled(DeferredImage)({
   maxWidth: `calc(${CONTENT_MAX_WIDTH.maxWidth}px - ${CONTENT_GUTTER}*2)`,
   width: '100%',
   marginLeft: 'auto',
