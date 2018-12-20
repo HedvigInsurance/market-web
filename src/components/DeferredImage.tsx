@@ -1,6 +1,5 @@
 import * as React from 'react'
 import VisibilitySensor from 'react-visibility-sensor'
-import { EMPTY_PIXEL } from '../utils/pixel'
 
 interface State {
   width?: number
@@ -45,7 +44,7 @@ export class DeferredImage extends React.PureComponent<
         {({ isVisible }) => (
           <img
             {...this.props}
-            src={isVisible ? this.props.src : EMPTY_PIXEL}
+            src={isVisible ? this.props.src : '/assets-next/empty.png'}
             ref={this.state.ref}
             width={this.state.width}
             height={this.state.height}
