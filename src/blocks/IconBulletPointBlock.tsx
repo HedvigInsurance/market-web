@@ -55,6 +55,7 @@ const IconBulletPointItem = styled('div')(
 
 const Icon = styled('img')({
   display: 'block',
+  flexShrink: 0,
   width: '1.25rem',
   marginRight: '0.625rem',
   marginTop: '1.414rem',

@@ -7,6 +7,7 @@ import {
   SectionWrapper,
   TABLET_BP_DOWN,
 } from '../components/blockHelpers'
+import { DeferredImage } from '../components/DeferredImage'
 import { getStoryblokImage, Image } from '../utils/storyblok'
 import { textFlexPositionMap, TextPosition } from '../utils/textPosition'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
@@ -49,7 +50,7 @@ const BulletPointHead = styled('div')({
   justifyContent: 'center',
 })
 
-const BulletPointImage = styled('img')({
+const BulletPointImage = styled(DeferredImage)({
   width: '100%',
 })
 

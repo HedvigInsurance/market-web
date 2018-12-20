@@ -6,6 +6,7 @@ import {
   SectionWrapper,
   TABLET_BP_DOWN,
 } from '../../components/blockHelpers'
+import { DeferredImage } from '../../components/DeferredImage'
 import { GlobalStoryContainer } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok'
 import { BaseBlockProps } from '../BaseBlockProps'
@@ -82,10 +83,10 @@ const AppstoreLink = styled('a')({
     textAlign: 'left',
   },
 })
-const ItunesImg = styled('img')({
+const ItunesImg = styled(DeferredImage)({
   height: 54,
 })
-const PlayImg = styled('img')({
+const PlayImg = styled(DeferredImage)({
   height: 54,
 })
 
