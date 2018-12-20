@@ -57,6 +57,9 @@ export const tmpOldRoutes: string[] = [
 ]
 
 export const redirects: ReadonlyArray<[string, string, number]> = [
+  ['/press', '/about-us', 301],
+  ['/terms', '/villkor', 301],
+  ['/student', '/hemforsakring/student', 301],
   [
     '/uploads/press-2018-09-19.pdf',
     '/f/50672/x/6eb539f57f/press-2018-09-19.pdf',
