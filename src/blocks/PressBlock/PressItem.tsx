@@ -4,6 +4,7 @@ import styled from 'react-emotion'
 
 import { PressItemProps } from '.'
 import { MOBILE_BP_DOWN } from '../../components/blockHelpers'
+import { DeferredImage } from '../../components/DeferredImage'
 import { getStoryblokImage } from '../../utils/storyblok'
 
 const Link = styled('a')({
@@ -19,7 +20,7 @@ const PressItemContainer = styled('div')({
   backgroundColor: 'white',
 })
 
-const Logo = styled('img')({
+const Logo = styled(DeferredImage)({
   width: 75,
   height: 75,
   objectFit: 'contain',

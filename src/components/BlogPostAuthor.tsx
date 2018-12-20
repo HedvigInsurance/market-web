@@ -4,6 +4,7 @@ import * as parse from 'date-fns/parse'
 import * as React from 'react'
 import styled from 'react-emotion'
 import { User } from '../server/utils/teamtailor'
+import { DeferredImage } from './DeferredImage'
 
 const PortraitContainer = styled('div')({
   width: 40,
@@ -14,7 +15,7 @@ const PortraitContainer = styled('div')({
   marginRight: 12,
 })
 
-const Portrait = styled('img')({
+const Portrait = styled(DeferredImage)({
   display: 'inline',
   margin: '0 auto !important',
   height: '100%',
