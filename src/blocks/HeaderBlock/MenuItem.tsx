@@ -59,6 +59,7 @@ const MenuFakeLink = styled(MenuLink)({ cursor: 'normal' }).withComponent(
 )
 const DropdownMenuLink = styled(MenuLink)({
   display: 'block',
+  whiteSpace: 'nowrap',
   padding: 0,
   paddingBottom: '1rem',
 })

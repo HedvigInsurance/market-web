@@ -6,6 +6,7 @@ import styled from 'react-emotion'
 import { Mount, Unmount } from 'react-lifecycle-components'
 import Measure from 'react-measure'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
+import { DeferredImage } from '../components/DeferredImage'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 interface SwitcherBlockProps extends BaseBlockProps {
@@ -25,7 +26,7 @@ const Table = styled('div')({
   width: '100%',
 })
 
-const BackgroundImage = styled('img')({
+const BackgroundImage = styled(DeferredImage)({
   objectFit: 'cover',
   position: 'absolute',
   width: '82%',

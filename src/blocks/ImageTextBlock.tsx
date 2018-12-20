@@ -12,6 +12,7 @@ import { SectionSize } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
 import { AppLink } from '../components/AppLink'
 import { ButtonLink } from '../components/buttons'
+import { DeferredImage } from '../components/DeferredImage'
 import {
   getStoryblokImage,
   getStoryblokLinkUrl,
@@ -70,7 +71,7 @@ const Paragraph = styled('div')({
   maxWidth: '31rem',
 })
 
-const Image = styled('img')(
+const Image = styled(DeferredImage)(
   ({
     alignment,
     displayOrder,
