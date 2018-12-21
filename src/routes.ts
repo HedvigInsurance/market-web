@@ -23,7 +23,7 @@ export const routes: Route[] = [
     Component: BlogPostsPage,
     ignoreStoryblokMiss: true,
   },
-  { path: '/*', exact: false, Component: PageFork },
+  { path: '/*', exact: false, Component: PageFork, ignoreStoryblokMiss: true },
 ]
 
 export const oldAssetRoutes: string[] = [
@@ -36,24 +36,9 @@ export const oldAssetRoutes: string[] = [
 ]
 
 export const tmpOldRoutes: string[] = [
-  '/',
-  '/student',
-  '/giving-back',
-  '/faq',
-  '/about-us',
-  '/contact',
-  '/legal',
-  '/privacy',
-  '/blog*',
-
   '/en',
   '/en/student',
-  '/en/giving-back',
   '/en/faq',
-  '/en/about-us',
-  '/en/contact',
-  '/en/legal',
-  '/en/privacy',
 ]
 
 export const redirects: ReadonlyArray<[string, string, number]> = [
