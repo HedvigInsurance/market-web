@@ -117,6 +117,7 @@ server.router.use('/blog', addTeamtailorUsersToState)
 server.router.use('/about-us', addTeamtailorUsersToState)
 server.router.use('/en/about-us', addTeamtailorUsersToState)
 server.router.use('/blog/tags/:tag', addTagBlogPostsToState)
+server.router.use(tmpOldRoutes, oldSiteProxy)
 routes.forEach((route) => {
   server.router.get(
     route.path,
@@ -124,7 +125,6 @@ routes.forEach((route) => {
   )
 })
 server.router.post('/_nuke-cache', nukeCache)
-server.router.use(tmpOldRoutes, oldSiteProxy)
 
 initializeTeamtailorUsers()
   .catch(() => {
