@@ -35,11 +35,7 @@ export const oldAssetRoutes: string[] = [
   '/*.html',
 ]
 
-export const tmpOldRoutes: string[] = [
-  '/en',
-  '/en/student',
-  '/en/faq',
-]
+export const tmpOldRoutes: string[] = ['/en', '/en/student', '/en/faq']
 
 export const redirects: ReadonlyArray<[string, string, number]> = [
   ['/press', '/about-us', 301],
