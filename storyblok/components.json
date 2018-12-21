@@ -1498,6 +1498,41 @@
       "real_name": "page"
     },
     {
+      "name": "papers_phone_video_block",
+      "display_name": null,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0
+        },
+        "paragraph": {
+          "type": "custom",
+          "field_type": "markdown-html",
+          "options": [],
+          "pos": 1
+        },
+        "cta_label": {
+          "type": "text",
+          "pos": 2
+        },
+        "cta_branch_link": {
+          "type": "boolean",
+          "pos": 3
+        },
+        "cta_target": {
+          "type": "multilink",
+          "pos": 4
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "papers_phone_video_block"
+    },
+    {
       "name": "plain_text_block",
       "display_name": null,
       "schema": {
