@@ -1,5 +1,6 @@
 import * as React from 'react'
 import styled from 'react-emotion'
+import { AppLink } from '../../components/AppLink'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
@@ -148,12 +149,20 @@ export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
                 </LinkColumn>
               </LinksColumnsWrapper>
               <AppstoreBadgeWrapper>
-                <AppstoreLink href="https://itunes.apple.com/se/app/hedvig/id1303668531?mt=8">
-                  <ItunesImg src="https://cdn.hedvig.com/www/appstores/app-store-badge.svg" />
-                </AppstoreLink>
-                <AppstoreLink href="https://play.google.com/store/apps/details?id=com.hedvig.app">
-                  <PlayImg src="https://cdn.hedvig.com/www/appstores/google-play-badge.svg" />
-                </AppstoreLink>
+                <AppLink>
+                  {({ link, handleClick }) => (
+                    <AppstoreLink href={link} onClick={handleClick}>
+                      <ItunesImg src="https://cdn.hedvig.com/www/appstores/app-store-badge.svg" />
+                    </AppstoreLink>
+                  )}
+                </AppLink>
+                <AppLink>
+                  {({ link, handleClick }) => (
+                    <AppstoreLink href={link} onClick={handleClick}>
+                      <PlayImg src="https://cdn.hedvig.com/www/appstores/google-play-badge.svg" />
+                    </AppstoreLink>
+                  )}
+                </AppLink>
               </AppstoreBadgeWrapper>
             </LinksWrapper>
 
