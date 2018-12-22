@@ -46,8 +46,8 @@ export class DeferredImage extends React.PureComponent<
             {...this.props}
             src={isVisible ? this.props.src : '/assets-next/empty.png'}
             ref={this.state.ref}
-            width={this.state.width}
-            height={this.state.height}
+            width={isVisible ? undefined : this.state.width}
+            height={isVisible ? undefined : this.state.height}
           />
         )}
       </VisibilitySensor>
