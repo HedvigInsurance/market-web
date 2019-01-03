@@ -3,9 +3,9 @@ import { Container } from 'constate'
 import * as React from 'react'
 import AnimateHeight from 'react-animate-height'
 import styled from 'react-emotion'
-import { TABLET_BP_DOWN } from '../../components/blockHelpers'
 import { MenuItem as MenuItemType } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok'
+import { TABLET_BP_DOWN } from './mobile';
 
 const MenuListItem = styled('li')({
   position: 'relative',
