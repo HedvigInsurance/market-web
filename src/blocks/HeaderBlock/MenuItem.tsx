@@ -5,7 +5,7 @@ import AnimateHeight from 'react-animate-height'
 import styled from 'react-emotion'
 import { MenuItem as MenuItemType } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok'
-import { TABLET_BP_DOWN } from './mobile';
+import { TABLET_BP_DOWN } from './mobile'
 
 const MenuListItem = styled('li')({
   position: 'relative',
