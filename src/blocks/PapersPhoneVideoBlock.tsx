@@ -37,7 +37,14 @@ const Background = styled('div')({
   width: '100%',
   height: '100%',
   zIndex: -1,
-  backgroundColor: 'rgb(97, 8, 247)',
+  backgroundColor: 'rgb(97, 55, 243)',
+})
+const BackgroundEvener = styled('div')({
+  height: 60,
+  position: 'relative',
+  marginTop: -60,
+  zIndex: 2,
+  background: 'linear-gradient(to bottom, transparent, rgba(97, 55, 243, 1))',
 })
 const Video = styled('video')({
   position: 'relative',
@@ -168,6 +175,7 @@ export const PapersPhoneVideoBlock: React.FunctionComponent<
                   />
                 </Video>
               </MediaQuery>
+              <BackgroundEvener />
             </>
           )}
 
