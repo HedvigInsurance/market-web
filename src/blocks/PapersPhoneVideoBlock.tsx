@@ -44,7 +44,7 @@ const BackgroundEvener = styled('div')({
   position: 'relative',
   marginTop: -60,
   zIndex: 2,
-  background: 'linear-gradient(to bottom, transparent, rgba(97, 55, 243, 1))',
+  background: 'linear-gradient(to bottom, rgba(97, 55, 243,0), rgba(97, 55, 243, 1))',
 })
 const Video = styled('video')({
   position: 'relative',
