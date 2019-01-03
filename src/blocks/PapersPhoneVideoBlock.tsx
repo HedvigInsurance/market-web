@@ -5,17 +5,23 @@ import styled from 'react-emotion'
 import { Mount } from 'react-lifecycle-components'
 import MediaQuery from 'react-responsive'
 import { AppLink } from '../components/AppLink'
-import { ContentWrapper, MOBILE_BP_DOWN } from '../components/blockHelpers'
+import {
+  CONTENT_GUTTER_MOBILE,
+  ContentWrapper,
+  MOBILE_BP_DOWN,
+} from '../components/blockHelpers'
 import { ButtonLink } from '../components/buttons'
 import { LinkComponent } from '../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../utils/storyblok'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
-const TABLET_BP_DOWN = '@media (max-width: 900px)'
+const TABLET_BP_DOWN = '@media (max-width: 800px)'
 
 const Wrapper = styled('section')({
   position: 'relative',
   overflow: 'hidden',
+  minHeight: '50vh',
+  transition: 'height 1500ms',
 
   [TABLET_BP_DOWN]: {
     textAlign: 'center',
@@ -37,6 +43,7 @@ const Video = styled('video')({
   position: 'relative',
   width: '100%',
   zIndex: -1,
+  transition: 'height 1500ms',
 })
 
 const Content = styled(ContentWrapper)({
@@ -50,6 +57,7 @@ const Content = styled(ContentWrapper)({
   [TABLET_BP_DOWN]: {
     position: 'static',
     transform: 'none',
+    padding: `1.5rem ${CONTENT_GUTTER_MOBILE} 3.5rem ${CONTENT_GUTTER_MOBILE}`,
   },
 })
 
@@ -62,7 +70,7 @@ const Title = styled('h1')({
     maxWidth: 'none',
   },
   [MOBILE_BP_DOWN]: {
-    fontsize: '3rem',
+    fontSize: '3rem',
   },
 })
 const Paragraph = styled('div')({
@@ -93,82 +101,100 @@ interface PapersPhoneVideoBlockProps extends BaseBlockProps {
   cta_target: LinkComponent
 }
 
-export class PapersPhoneVideoBlock extends React.Component<
+export const PapersPhoneVideoBlock: React.FunctionComponent<
   PapersPhoneVideoBlockProps
-> {
-  private timeout: number | null = null
-
-  public render() {
-    return (
-      <Wrapper>
-        <Background />
-        <Video autoPlay loop>
-          <>
-            {/*<MediaQuery query="(max-width: 900px)">*/}
-            {/*<source*/}
-            {/*src="https://cdn.hedvig.com/www/papers-phone/md.webm"*/}
-            {/*type="video/webm"*/}
-            {/*/>*/}
-            {/*<source*/}
-            {/*src="https://cdn.hedvig.com/www/papers-phone/md.mp4"*/}
-            {/*type="video/mp4"*/}
-            {/*/>*/}
-            {/*</MediaQuery>*/}
-            {/*<MediaQuery query="(min-width: 901px)">*/}
-            <source
-              src="https://cdn.hedvig.com/www/papers-phone/xl.webm"
-              type="video/webm"
-            />
-            <source
-              src="https://cdn.hedvig.com/www/papers-phone/xl.mp4"
-              type="video/mp4"
-            />
-            {/*</MediaQuery>*/}
-          </>
-        </Video>
-
-        <Content>
-          <Title>{this.props.title}</Title>
-          <Paragraph
-            dangerouslySetInnerHTML={{
-              __html: this.props.paragraph && this.props.paragraph.html,
-            }}
-          />
-
-          {this.props.cta_branch_link ? (
-            <AppLink>
-              {({ link, handleClick }) => (
-                <Cta href={link} onClick={handleClick} size="sm" bold>
-                  {this.props.cta_label}
-                </Cta>
-              )}
-            </AppLink>
-          ) : (
-            <Cta
-              href={getStoryblokLinkUrl(this.props.cta_target)}
-              size="sm"
-              bold
-            >
-              {this.props.cta_label}
-            </Cta>
+> = (props) => (
+  <Container<{ isMounted: boolean }, { mount: () => void }>
+    initialState={{ isMounted: false }}
+    actions={{ mount: () => () => ({ isMounted: true }) }}
+  >
+    {({ mount, isMounted }) => (
+      <Mount on={mount}>
+        <Wrapper>
+          <Background />
+          {isMounted && (
+            <>
+              <MediaQuery query="(max-width: 800px)">
+                <Video
+                  playsInline
+                  muted
+                  autoPlay
+                  loop
+                  poster="https://cdn.hedvig.com/www/papers-phone/md.gif"
+                >
+                  <source
+                    src="https://cdn.hedvig.com/www/papers-phone/md.webm"
+                    type="video/webm"
+                  />
+                  <source
+                    src="https://cdn.hedvig.com/www/papers-phone/md.mp4"
+                    type="video/mp4"
+                  />
+                </Video>
+              </MediaQuery>
+              <MediaQuery query="(min-width: 801px) and (max-width: 1200px)">
+                <Video
+                  playsInline
+                  muted
+                  autoPlay
+                  loop
+                  poster="https://cdn.hedvig.com/www/papers-phone/lg.gif"
+                >
+                  <source
+                    src="https://cdn.hedvig.com/www/papers-phone/lg.webm"
+                    type="video/webm"
+                  />
+                  <source
+                    src="https://cdn.hedvig.com/www/papers-phone/lg.mp4"
+                    type="video/mp4"
+                  />
+                </Video>
+              </MediaQuery>
+              <MediaQuery query="(min-width: 1201px)">
+                <Video
+                  playsInline
+                  muted
+                  autoPlay
+                  loop
+                  poster="https://cdn.hedvig.com/www/papers-phone/xl.gif"
+                >
+                  <source
+                    src="https://cdn.hedvig.com/www/papers-phone/xl.webm"
+                    type="video/webm"
+                  />
+                  <source
+                    src="https://cdn.hedvig.com/www/papers-phone/xl.mp4"
+                    type="video/mp4"
+                  />
+                </Video>
+              </MediaQuery>
+            </>
           )}
-        </Content>
-      </Wrapper>
-    )
-  }
 
-  // public componentDidMount(): void {
-  //   this.timeout = window.setInterval(() => {
-  //     this.handleResize()
-  //   }, 100)
-  // }
-  //
-  // public componentWillUnmount(): void {
-  //   window.clearTimeout(this.timeout!)
-  //   this.timeout = null
-  // }
-  //
-  // private handleResize = () => {
-  //   this.forceUpdate()
-  // }
-}
+          <Content>
+            <Title>{props.title}</Title>
+            <Paragraph
+              dangerouslySetInnerHTML={{
+                __html: props.paragraph && props.paragraph.html,
+              }}
+            />
+
+            {props.cta_branch_link ? (
+              <AppLink>
+                {({ link, handleClick }) => (
+                  <Cta href={link} onClick={handleClick} size="sm" bold>
+                    {props.cta_label}
+                  </Cta>
+                )}
+              </AppLink>
+            ) : (
+              <Cta href={getStoryblokLinkUrl(props.cta_target)} size="sm" bold>
+                {props.cta_label}
+              </Cta>
+            )}
+          </Content>
+        </Wrapper>
+      </Mount>
+    )}
+  </Container>
+)
