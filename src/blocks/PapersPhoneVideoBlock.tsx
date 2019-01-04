@@ -128,7 +128,7 @@ export const PapersPhoneVideoBlock: React.FunctionComponent<
                   muted
                   autoPlay
                   loop
-                  poster="https://cdn.hedvig.com/www/papers-phone/md.gif"
+                  poster="https://cdn.hedvig.com/www/papers-phone/md.png"
                 >
                   <source
                     src="https://cdn.hedvig.com/www/papers-phone/md.webm"
@@ -146,7 +146,7 @@ export const PapersPhoneVideoBlock: React.FunctionComponent<
                   muted
                   autoPlay
                   loop
-                  poster="https://cdn.hedvig.com/www/papers-phone/lg.gif"
+                  poster="https://cdn.hedvig.com/www/papers-phone/lg.png"
                 >
                   <source
                     src="https://cdn.hedvig.com/www/papers-phone/lg.webm"
@@ -158,13 +158,13 @@ export const PapersPhoneVideoBlock: React.FunctionComponent<
                   />
                 </Video>
               </MediaQuery>
-              <MediaQuery query="(min-width: 1201px)">
+              <MediaQuery query="(min-width: 1201px) and (max-width: 1500px)">
                 <Video
                   playsInline
                   muted
                   autoPlay
                   loop
-                  poster="https://cdn.hedvig.com/www/papers-phone/xl.gif"
+                  poster="https://cdn.hedvig.com/www/papers-phone/xl.png"
                 >
                   <source
                     src="https://cdn.hedvig.com/www/papers-phone/xl.webm"
@@ -172,6 +172,24 @@ export const PapersPhoneVideoBlock: React.FunctionComponent<
                   />
                   <source
                     src="https://cdn.hedvig.com/www/papers-phone/xl.mp4"
+                    type="video/mp4"
+                  />
+                </Video>
+              </MediaQuery>
+              <MediaQuery query="(min-width: 1501px)">
+                <Video
+                  playsInline
+                  muted
+                  autoPlay
+                  loop
+                  poster="https://cdn.hedvig.com/www/papers-phone/xxl.png"
+                >
+                  <source
+                    src="https://cdn.hedvig.com/www/papers-phone/xxl.webm"
+                    type="video/webm"
+                  />
+                  <source
+                    src="https://cdn.hedvig.com/www/papers-phone/xxl.mp4"
                     type="video/mp4"
                   />
                 </Video>
