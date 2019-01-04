@@ -12,6 +12,8 @@ interface Meta {
 const getFullSlugFromStory = (story?: Story) =>
   story && story.full_slug.replace(/\/?home$/, '')
 
+const isStoryStartPage = (story?: Story) => getFullSlugFromStory(story) === ''
+
 const getPageTitleFromStory = (story?: Story) => {
   if (!story) {
     return ''
@@ -19,8 +21,56 @@ const getPageTitleFromStory = (story?: Story) => {
   return story.content.page_title || story.name
 }
 
-export const getMeta = ({ story, title, nonce, fullSlug }: Meta) => (
+export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
   <>
+    {isStoryStartPage(story) && (
+      <style key="async-hide">{`.async-hide { opacity: 0 !important}`}</style>
+    )}
+    {[
+      isStoryStartPage(story) && (
+        <script nonce={nonce} key="thing">
+          {`(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
+h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
+(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
+})(window,document.documentElement,'async-hide','dataLayer',4000,
+{'GTM-KDM39NC':true});
+        `}
+        </script>
+      ),
+      <script type="application/ld+json" nonce={nonce}>
+        {`
+[
+  {
+    "name": "Hedvig",
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "https://www.hedvig.com",
+    "description": "Hedvig är en ny typ av försäkring. Byggd på smart teknik, omtanke och sunt förnuft. Så att du kan få hjälp på sekunder, och ersättning på minuter."
+  },
+  {
+    "@context": "http://schema.org",
+    "@type": "Organization",
+    "url": "https://www.hedvig.com",
+    "logo": "https://www.hedvig.com/assets/identity/hedvig-wordmark-color@2x.png",
+    "name": "Hedvig",
+    "description": "Hedvig är en ny typ av försäkring. Byggd på smart teknik, omtanke och sunt förnuft. Så att du kan få hjälp på sekunder, och ersättning på minuter.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Artillerigatan 10",
+      "addressLocality": "Stockholm",
+      "postalCode": "11451",
+      "addressCountry": "SE"
+    },
+    "sameAs": [
+      "https://www.fb.me/hedvigapp/",
+      "https://twitter.com/hedvigapp",
+      "https://www.instagram.com/hedvig.app/",
+      "https://www.linkedin.com/company/hedvig/"
+    ]
+  }
+]`}
+      </script>,
+    ]}
     <title>{title ? title : getPageTitleFromStory(story)}</title>
     <link
       rel="canonical"
@@ -56,42 +106,5 @@ export const getMeta = ({ story, title, nonce, fullSlug }: Meta) => (
     <meta name="twitter:site" content="@hedvigapp" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <meta name="theme-color" content="#651eff" />
-    <script
-      type="application/ld+json"
-      nonce={nonce}
-      dangerouslySetInnerHTML={{
-        __html: `
-[
-  {
-    "name": "Hedvig",
-    "@context": "http://schema.org",
-    "@type": "WebSite",
-    "url": "https://www.hedvig.com",
-    "description": "Hedvig är en ny typ av försäkring. Byggd på smart teknik, omtanke och sunt förnuft. Så att du kan få hjälp på sekunder, och ersättning på minuter."
-  },
-  {
-    "@context": "http://schema.org",
-    "@type": "Organization",
-    "url": "https://www.hedvig.com",
-    "logo": "https://www.hedvig.com/assets/identity/hedvig-wordmark-color@2x.png",
-    "name": "Hedvig",
-    "description": "Hedvig är en ny typ av försäkring. Byggd på smart teknik, omtanke och sunt förnuft. Så att du kan få hjälp på sekunder, och ersättning på minuter.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Artillerigatan 10",
-      "addressLocality": "Stockholm",
-      "postalCode": "11451",
-      "addressCountry": "SE"
-    },
-    "sameAs": [
-      "https://www.fb.me/hedvigapp/",
-      "https://twitter.com/hedvigapp",
-      "https://www.instagram.com/hedvig.app/",
-      "https://www.linkedin.com/company/hedvig/"
-    ]
-  }
-]`,
-      }}
-    />
   </>
 )
