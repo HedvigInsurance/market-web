@@ -5,10 +5,12 @@ import {
   CONTENT_GUTTER,
   CONTENT_GUTTER_MOBILE,
   MOBILE_BP_DOWN,
-  TABLET_BP_UP,
 } from '../../components/blockHelpers'
 import { TogglableState } from '../../components/containers/Togglable'
 import { HEADER_VERTICAL_PADDING, TOGGLE_TRANSITION_TIME } from './index'
+
+export const TABLET_BP_DOWN = '@media (max-width: 1000px)'
+export const TABLET_BP_UP = '@media (min-width: 1001px)'
 
 export const CrossBurger = styled('div')(
   ({ isOpen, isClosing }: TogglableState) => ({

@@ -48,13 +48,13 @@ const template = ({
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    ${helmet.base}
     ${helmet.title}
     ${helmet.link}
     ${helmet.meta}
+    ${helmet.style}
     ${helmet.script}
-    <script nonce="${nonce}">
-    ${allTracking}
-    </script>
+    <script nonce="${nonce}">${allTracking}</script>
     ${favicons}
     <script src="https://browser.sentry-cdn.com/4.2.3/bundle.min.js" crossorigin="anonymous"></script>
     <script nonce="${nonce}">
