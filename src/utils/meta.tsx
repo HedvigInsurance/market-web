@@ -12,8 +12,6 @@ interface Meta {
 const getFullSlugFromStory = (story?: Story) =>
   story && story.full_slug.replace(/\/?home$/, '')
 
-const isStoryStartPage = (story?: Story) => getFullSlugFromStory(story) === ''
-
 const getPageTitleFromStory = (story?: Story) => {
   if (!story) {
     return ''
@@ -23,20 +21,7 @@ const getPageTitleFromStory = (story?: Story) => {
 
 export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
   <>
-    {isStoryStartPage(story) && (
-      <style key="async-hide">{`.async-hide { opacity: 0 !important}`}</style>
-    )}
     {[
-      isStoryStartPage(story) && (
-        <script nonce={nonce} key="thing">
-          {`(function(a,s,y,n,c,h,i,d,e){s.className+=' '+y;h.start=1*new Date;
-h.end=i=function(){s.className=s.className.replace(RegExp(' ?'+y),'')};
-(a[n]=a[n]||[]).hide=h;setTimeout(function(){i();h.end=null},c);h.timeout=c;
-})(window,document.documentElement,'async-hide','dataLayer',4000,
-{'GTM-KDM39NC':true});
-        `}
-        </script>
-      ),
       <script type="application/ld+json" nonce={nonce}>
         {`
 [
