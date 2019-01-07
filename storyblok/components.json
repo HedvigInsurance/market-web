@@ -484,6 +484,13 @@
           "options": [],
           "pos": 0
         },
+        "title": {
+          "type": "text",
+          "required": false,
+          "default_value": "",
+          "pos": 1,
+          "translatable": true
+        },
         "bullet_points_position": {
           "type": "option",
           "options": [
@@ -494,18 +501,14 @@
             {
               "value": "center",
               "name": "Center"
-            },
-            {
-              "value": "right",
-              "name": "Right"
             }
           ],
           "default_value": "left",
-          "pos": 1
+          "pos": 2
         },
         "enforce_size": {
           "type": "boolean",
-          "pos": 2,
+          "pos": 3,
           "default_value": "true",
           "description": "By unchecking this, I hereby promise that the images i upload are of exacly the same size"
         },
@@ -515,7 +518,7 @@
           "restrict_components": true,
           "component_whitelist": ["image_bullet_point_item"],
           "required": true,
-          "pos": 3,
+          "pos": 4,
           "translatable": false
         }
       },
@@ -1022,7 +1025,7 @@
         },
         "title": {
           "type": "text",
-          "required": true,
+          "required": false,
           "default_value": "",
           "pos": 1,
           "translatable": true
@@ -1030,7 +1033,7 @@
         "paragraph": {
           "type": "custom",
           "default_value": "",
-          "required": true,
+          "required": false,
           "pos": 2,
           "field_type": "markdown-html",
           "options": [],
