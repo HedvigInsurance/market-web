@@ -843,6 +843,13 @@
   dependencies:
     "@ndhoule/keys" "^2.0.0"
 
+"@ndhoule/foldl@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@ndhoule/foldl/-/foldl-2.0.1.tgz#788acedfa2cfd12ecb0b84d2beaf650d97be84f2"
+  integrity sha1-eIrO36LP0S7LC4TSvq9lDZe+hPI=
+  dependencies:
+    "@ndhoule/each" "^2.0.1"
+
 "@ndhoule/keys@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@ndhoule/keys/-/keys-2.0.0.tgz#3d64ae677c65a261747bf3a457c62eb292a4e0ce"
@@ -868,6 +875,14 @@
   integrity sha1-FT8XuASKJ2S7sTQ6YfPDwk2gOOI=
   dependencies:
     "@ndhoule/map" "^2.0.1"
+
+"@segment/utm-params@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@segment/utm-params/-/utm-params-2.0.0.tgz#fea3c8a92bfba0d69e861fb3b26d7d882f139334"
+  integrity sha1-/qPIqSv7oNaehh+zsm19iC8TkzQ=
+  dependencies:
+    "@ndhoule/foldl" "^2.0.1"
+    component-querystring "^2.0.0"
 
 "@sentry/core@4.4.1":
   version "4.4.1"
@@ -2557,6 +2572,19 @@ component-emitter@^1.2.0, component-emitter@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.2.1.tgz#137918d6d78283f7df7a6b7c5a63e140e69425e6"
   integrity sha1-E3kY1teCg/ffemt8WmPhQOaUJeY=
+
+component-querystring@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/component-querystring/-/component-querystring-2.0.0.tgz#84a95d18e471c8491b043df240f0d18d4db527ec"
+  integrity sha1-hKldGORxyEkbBD3yQPDRjU21J+w=
+  dependencies:
+    component-type "1.1.0"
+    trim "0.0.1"
+
+component-type@1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/component-type/-/component-type-1.1.0.tgz#95b666aad53e5c8d1f2be135c45b5d499197c0c5"
+  integrity sha1-lbZmqtU+XI0fK+E1xFtdSZGXwMU=
 
 compressible@^2.0.0, compressible@~2.0.14:
   version "2.0.15"
@@ -8930,6 +8958,11 @@ trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
   integrity sha1-yy4SAwZ+DI3h9hQJS5/kVwTqYAM=
+
+trim@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/trim/-/trim-0.0.1.tgz#5858547f6b290757ee95cccc666fb50084c460dd"
+  integrity sha1-WFhUf2spB1fulczMZm+1AITEYN0=
 
 ts-jest@^23.10.0:
   version "23.10.5"
