@@ -23,7 +23,7 @@ const AlignableContentWrapper = styled(ContentWrapper)(
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: textFlexPositionMap[position],
-    alignItems: textFlexPositionMap[position],
+    alignItems: 'flex-start',
     textAlign: position === 'center' ? 'center' : 'left',
     [MOBILE_BP_DOWN]: {
       flexDirection: 'column',
