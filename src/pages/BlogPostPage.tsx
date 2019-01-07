@@ -190,7 +190,7 @@ export const BlogPostPage: React.FunctionComponent<{ nonce?: string }> = ({
                         ? blogPosts[index + 1]
                         : undefined
                     }
-                    phoneCardDirection="Föregånde inlägg"
+                    phoneCardDirection="Föregående inlägg"
                     background="#f9fafc"
                   />
                   <PrevNextCard
