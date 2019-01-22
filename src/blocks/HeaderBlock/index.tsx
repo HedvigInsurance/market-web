@@ -160,7 +160,14 @@ class Header extends React.PureComponent<
               />
               <ContentWrapper>
                 <InnerHeaderWrapper>
-                  <LogoLink href="/">
+                  <LogoLink
+                    href={
+                      '/' +
+                      (this.props.story.lang === 'default'
+                        ? ''
+                        : this.props.story.lang)
+                    }
+                  >
                     <HedvigWordmark height={30} />
                   </LogoLink>
 
