@@ -1,7 +1,9 @@
 import { LinkComponent } from '../storyblok/StoryContainer'
 
 export const getStoryblokLinkUrl = (link: LinkComponent) =>
-  /^\/[^\/]/.test(link.cached_url) ? link.cached_url : `/${link.cached_url}`
+  link.linktype !== 'story' || /^\/[^\/]/.test(link.cached_url)
+    ? link.cached_url
+    : `/${link.cached_url}`
 export const getPublicHost = (): string | undefined => {
   if (
     typeof window === 'undefined' &&
