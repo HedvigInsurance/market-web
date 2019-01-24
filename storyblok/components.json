@@ -1509,25 +1509,30 @@
       "schema": {
         "title": {
           "type": "text",
-          "pos": 0
+          "pos": 0,
+          "translatable": true
         },
         "paragraph": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 1
+          "pos": 1,
+          "translatable": true
         },
         "cta_label": {
           "type": "text",
-          "pos": 2
+          "pos": 2,
+          "translatable": true
         },
         "cta_branch_link": {
           "type": "boolean",
-          "pos": 3
+          "pos": 3,
+          "translatable": true
         },
         "cta_target": {
           "type": "multilink",
-          "pos": 4
+          "pos": 4,
+          "translatable": true
         }
       },
       "image": null,
