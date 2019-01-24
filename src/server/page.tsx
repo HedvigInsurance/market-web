@@ -116,7 +116,7 @@ export const getPageMiddleware = (
   const [story, globalStory] = await Promise.all([
     getStoryblokResponseFromContext(ctx),
     getGlobalStory(
-      ctx.request.path.replace(/(^\/en)?.+/, '$1'),
+      ctx.request.path.replace(/(^\/en)?.*/, '$1'),
       Boolean(
         ctx.request.query['_storyblok_tk[timestamp]'] ||
           ctx.query._storyblok_published,
