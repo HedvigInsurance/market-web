@@ -586,7 +586,8 @@
           "regex": "",
           "image_crop": false,
           "image_width": "375",
-          "image_height": "240"
+          "image_height": "240",
+          "translatable": true
         },
         "title": {
           "type": "text",
@@ -986,7 +987,8 @@
           "type": "image",
           "display_name": "",
           "description": "Around 1200x500 px",
-          "pos": 0
+          "pos": 0,
+          "translatable": true
         },
         "caption": {
           "type": "text",
@@ -1018,7 +1020,8 @@
           "regex": "",
           "image_crop": false,
           "image_width": "375",
-          "image_height": "240"
+          "image_height": "240",
+          "translatable": true
         },
         "title": {
           "type": "text",
@@ -1075,7 +1078,8 @@
           "required": true,
           "pos": 2,
           "image_crop": true,
-          "image_width": "560"
+          "image_width": "560",
+          "translatable": true
         },
         "text_items": {
           "type": "bloks",
@@ -1270,7 +1274,8 @@
         },
         "image": {
           "type": "image",
-          "pos": 1
+          "pos": 1,
+          "translatable": true
         },
         "type": {
           "type": "text",
@@ -1322,7 +1327,8 @@
         "image": {
           "type": "image",
           "required": true,
-          "pos": 0
+          "pos": 0,
+          "translatable": true
         }
       },
       "image": null,
@@ -1613,7 +1619,8 @@
         },
         "logo": {
           "type": "image",
-          "pos": 1
+          "pos": 1,
+          "translatable": true
         },
         "text": {
           "type": "text",
