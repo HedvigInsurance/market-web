@@ -12,10 +12,10 @@ export const App: React.FunctionComponent<{ nonce?: string }> = ({ nonce }) => (
       on={() => {
         // tslint:disable-next-line no-console
         console.log(
-          `%cHey there! Thanks for checking us out. Curious how we built this? Check out https://github.com/HedvigInsurance to see all our source code.\nLike it, and want to change the insurance industry? Of course we're hiring: https://join.hedvig.com`,
-          `font-size: 2rem; font-family: sans-serif; color: ${
-            colors.DARK_PURPLE
-          }; padding: 2rem; display: block; background-color: #fff;`,
+          `%cHey there! Thanks for checking us out. Curious how we built this? You can see all our source code at https://github.com/HedvigInsurance !\nLike it, and want to change the insurance industry? Of course we're hiring: https://join.hedvig.com`,
+          `font-size: 2rem; font-family: sans-serif; color: #fff; padding: 2rem; display: block; background-color: ${
+            colors.PURPLE
+          };`,
         )
       }}
     >
