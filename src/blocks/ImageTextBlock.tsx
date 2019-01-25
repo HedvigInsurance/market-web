@@ -75,12 +75,28 @@ const Image = styled(DeferredImage)(
   ({
     alignment,
     displayOrder,
+    hasLink,
   }: {
     alignment: string
     displayOrder: 'top' | 'bottom'
+    hasLink?: boolean
   }) => ({
-    width: '40%',
+    width: hasLink ? '100%' : '40%',
     display: alignment === 'center' ? 'none' : 'block',
+    [TABLET_BP_DOWN]: {
+      maxWidth: '100%',
+      width: 'auto',
+      marginTop: displayOrder === 'top' ? '0' : '3rem',
+      display: 'block',
+      order: displayOrder === 'top' ? -1 : 'initial',
+    },
+  }),
+)
+const ImageLink = styled('a')(
+  ({ displayOrder }: { displayOrder: 'top' | 'bottom' }) => ({
+    display: 'inline-block',
+    width: '40%',
+
     [TABLET_BP_DOWN]: {
       maxWidth: '100%',
       width: 'auto',
@@ -102,6 +118,8 @@ interface ImageTextBlockProps extends BaseBlockProps {
   button_link: LinkComponent
   show_button: boolean
   image?: StoryblokImage
+  use_image_link: boolean
+  image_link: LinkComponent
   background_image: string
   size: SectionSize
   media_position: 'top' | 'bottom'
@@ -118,6 +136,8 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   button_link,
   show_button,
   image,
+  use_image_link,
+  image_link,
   background_image,
   color,
   size,
@@ -165,13 +185,26 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
               </ButtonLinkWithMargin>
             ))}
         </TextWrapper>
-        {image && (
-          <Image
-            alignment={text_position}
-            displayOrder={media_position}
-            src={getStoryblokImage(image)}
-          />
-        )}
+        {image &&
+          (use_image_link ? (
+            <ImageLink
+              href={getStoryblokLinkUrl(image_link)}
+              displayOrder={media_position}
+            >
+              <Image
+                alignment={text_position}
+                displayOrder={media_position}
+                src={getStoryblokImage(image)}
+                hasLink
+              />
+            </ImageLink>
+          ) : (
+            <Image
+              alignment={text_position}
+              displayOrder={media_position}
+              src={getStoryblokImage(image)}
+            />
+          ))}
       </AlignableContentWrapper>
     </SectionWrapper>
   )
