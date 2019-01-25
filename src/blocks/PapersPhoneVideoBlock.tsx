@@ -100,6 +100,11 @@ const Cta = styled(ButtonLink)({
     marginBottom: '1.7rem',
   },
 })
+const GhostCta = styled(Cta)({
+  color: colors.WHITE,
+  borderColor: colors.WHITE,
+  marginLeft: '1rem',
+})
 
 interface PapersPhoneVideoBlockProps extends BaseBlockProps {
   title: string
@@ -107,6 +112,9 @@ interface PapersPhoneVideoBlockProps extends BaseBlockProps {
   cta_label: string
   cta_branch_link: boolean
   cta_target: LinkComponent
+  ghost_cta: boolean
+  ghost_cta_target: LinkComponent
+  ghost_cta_label: string
 }
 
 export const PapersPhoneVideoBlock: React.FunctionComponent<
@@ -218,6 +226,16 @@ export const PapersPhoneVideoBlock: React.FunctionComponent<
               <Cta href={getStoryblokLinkUrl(props.cta_target)} size="sm" bold>
                 {props.cta_label}
               </Cta>
+            )}
+            {props.ghost_cta && (
+              <GhostCta
+                href={getStoryblokLinkUrl(props.ghost_cta_target)}
+                size="sm"
+                styleType="outlined"
+                bold
+              >
+                {props.ghost_cta_label}
+              </GhostCta>
             )}
           </Content>
         </Wrapper>
