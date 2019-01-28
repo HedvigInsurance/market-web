@@ -23,9 +23,10 @@ declare module 'react-visibility-sensor' {
     resizeDelay?: number
     resizeThrottle?: number
     delayedCall?: boolean
-    children?: (
-      args: { isVisible: boolean; visibilityRect?: Shape },
-    ) => React.ReactNode
+    children?: (args: {
+      isVisible: boolean
+      visibilityRect?: Shape
+    }) => React.ReactNode
   }
 
   export const ReactVisibilitySensor: React.FunctionComponent<Props>

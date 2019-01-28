@@ -12,12 +12,10 @@ import { utmParamsToBranchLinkOptions } from '../utils/tracking/utmToBranch'
 // any utm tags sent from ad networks
 
 interface AppLinkProps {
-  children: (
-    props: {
-      handleClick: (e: React.MouseEvent<HTMLElement>) => void
-      link: string
-    },
-  ) => React.ReactNode
+  children: (props: {
+    handleClick: (e: React.MouseEvent<HTMLElement>) => void
+    link: string
+  }) => React.ReactNode
   channel?: string
   campaign?: string
   tags?: ReadonlyArray<string>
