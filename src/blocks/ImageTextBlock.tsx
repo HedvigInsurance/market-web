@@ -54,10 +54,16 @@ const Title = styled('h2')(
   ({
     size,
     displayOrder,
-  }: { size?: TitleSize } & { displayOrder: 'top' | 'bottom' }) => ({
+    textPosition,
+  }: {
+    size?: TitleSize
+    displayOrder: 'top' | 'bottom'
+    textPosition: TextPosition
+  }) => ({
+    margin: textPosition === 'center' ? 'auto' : undefined,
     fontSize: size === 'lg' ? '4.5rem' : '2.5rem',
     width: '100%',
-    maxWidth: '31rem',
+    maxWidth: textPosition === 'center' ? '40rem' : '31rem',
     [TABLET_BP_DOWN]: {
       fontSize: size === 'lg' ? '3.75rem' : '2rem',
       marginTop: displayOrder === 'top' ? '3rem' : '1.414rem',
@@ -65,11 +71,14 @@ const Title = styled('h2')(
   }),
 )
 
-const Paragraph = styled('div')({
-  fontSize: '1.125rem',
-  marginTop: '1.5rem',
-  maxWidth: '31rem',
-})
+const Paragraph = styled('div')(
+  ({ textPosition }: { textPosition: TextPosition }) => ({
+    margin: textPosition === 'center' ? 'auto' : undefined,
+    fontSize: '1.125rem',
+    marginTop: '1.5rem',
+    maxWidth: textPosition === 'center' ? '40rem' : '31rem',
+  }),
+)
 
 const Image = styled(DeferredImage)(
   ({
@@ -151,13 +160,18 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
     >
       <AlignableContentWrapper textPosition={text_position}>
         <TextWrapper textPosition={text_position}>
-          <Title size={title_size} displayOrder={media_position}>
+          <Title
+            size={title_size}
+            displayOrder={media_position}
+            textPosition={text_position}
+          >
             {title}
           </Title>
           <Paragraph
             dangerouslySetInnerHTML={{
               __html: paragraph.html,
             }}
+            textPosition={text_position}
           />
           {show_button &&
             (button_branch_link ? (
