@@ -317,7 +317,8 @@
           "type": "boolean",
           "required": false,
           "description": "Create a branch link instead of the link field",
-          "pos": 7
+          "pos": 7,
+          "translatable": true
         },
         "button_link": {
           "type": "multilink",
@@ -410,7 +411,8 @@
         "cta_branch_link": {
           "type": "boolean",
           "description": "Create a branch link instead of the link field",
-          "pos": 9
+          "pos": 9,
+          "translatable": true
         },
         "cta_target": {
           "type": "text",
@@ -1232,7 +1234,8 @@
         "button_branch_link": {
           "type": "boolean",
           "description": "Create a branch link instead of the link field",
-          "pos": 12
+          "pos": 12,
+          "translatable": true
         },
         "button_link": {
           "type": "multilink",
@@ -1869,7 +1872,8 @@
         "button_branch_link": {
           "type": "boolean",
           "description": "Create a branch link instead of the link field",
-          "pos": 5
+          "pos": 5,
+          "translatable": true
         },
         "button_link": {
           "type": "multilink",
