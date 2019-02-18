@@ -12,6 +12,7 @@ import { helmetConfig } from './config/helmetConfig'
 import { sentryConfig } from './config/sentry'
 import { appLogger } from './logging'
 import { inCaseOfEmergency } from './middlewares/enhancers'
+import { languageRedirect } from './middlewares/languageRedirect'
 import { proxy } from './middlewares/proxy'
 import { forceHost } from './middlewares/redirects'
 import {
@@ -112,6 +113,7 @@ const oldSiteProxy = proxy({
   testResponse: (response) => response.statusCode! < 400,
 })
 
+server.router.use(languageRedirect)
 server.router.get('/sitemap.xml', sitemapXml)
 server.router.use(oldAssetRoutes, oldSiteProxy)
 server.router.use('/blog', addBlogPostsToState)
