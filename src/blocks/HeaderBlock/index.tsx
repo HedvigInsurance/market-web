@@ -11,6 +11,7 @@ import {
   GlobalStory,
   GlobalStoryContainer,
 } from '../../storyblok/StoryContainer'
+import { getStoryblokLinkUrl } from '../../utils/storyblok'
 import { BaseBlockProps } from '../BaseBlockProps'
 import { MenuItem } from './MenuItem'
 import { Burger, TABLET_BP_DOWN } from './mobile'
@@ -184,22 +185,35 @@ class Header extends React.PureComponent<
                       ),
                     )}
 
-                    {this.props.story.content.show_cta && (
-                      <AppLink>
-                        {({ link, handleClick }) => (
-                          <ButtonWrapper>
-                            <ButtonLink
-                              size="sm"
-                              bold
-                              href={link}
-                              onClick={handleClick}
-                            >
-                              {this.props.story.content.cta_label}
-                            </ButtonLink>
-                          </ButtonWrapper>
-                        )}
-                      </AppLink>
-                    )}
+                    {this.props.story.content.show_cta &&
+                      (this.props.story.content.cta_branch_link ? (
+                        <AppLink>
+                          {({ link, handleClick }) => (
+                            <ButtonWrapper>
+                              <ButtonLink
+                                size="sm"
+                                bold
+                                href={link}
+                                onClick={handleClick}
+                              >
+                                {this.props.story.content.cta_label}
+                              </ButtonLink>
+                            </ButtonWrapper>
+                          )}
+                        </AppLink>
+                      ) : (
+                        <ButtonWrapper>
+                          <ButtonLink
+                            size="sm"
+                            bold
+                            href={getStoryblokLinkUrl(
+                              this.props.story.content.cta_link,
+                            )}
+                          >
+                            {this.props.story.content.cta_label}
+                          </ButtonLink>
+                        </ButtonWrapper>
+                      ))}
                   </Menu>
                 </InnerHeaderWrapper>
               </ContentWrapper>
