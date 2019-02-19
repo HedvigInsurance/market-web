@@ -16,7 +16,7 @@ export const StoryPage: React.FunctionComponent<{ nonce?: string }> = ({
       <>
         <Helmet>{getMeta({ story, nonce })}</Helmet>
 
-        {getBlocksOrDefault(story).map((block) => {
+        {getBlocksOrDefault(story!).map((block) => {
           const BlockComponent:
             | React.ComponentType<BaseBlockProps & any>
             | undefined = getBlockComponent(block.component)
