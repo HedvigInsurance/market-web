@@ -43,7 +43,7 @@ export interface BodyStory extends Story {
 }
 
 export interface WithStory<TStoryType extends Story> {
-  story: TStoryType
+  story?: TStoryType
 }
 
 export interface BlogStory extends Story {
