@@ -64,6 +64,7 @@ const AppLinkComponent: React.FunctionComponent<
                     keywords: props.keywords,
                     stage: props.stage,
                   })
+                  const lang = story ? story.lang : 'default'
 
                   const path = props.location.pathname
                   const host = getPublicHost() || 'https://www.hedvig.com'
@@ -72,7 +73,7 @@ const AppLinkComponent: React.FunctionComponent<
                       ...linkOptions,
                       data: {
                         $desktop_url: `${host}/${
-                          story.lang === 'default' ? '' : story.lang + '/'
+                          lang === 'default' ? '' : lang + '/'
                         }new-member`,
                         path,
                       },
