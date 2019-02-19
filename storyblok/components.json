@@ -766,7 +766,7 @@
         },
         "cta": {
           "type": "section",
-          "keys": ["show_cta", "cta_link", "cta_label"],
+          "keys": ["show_cta", "cta_branch_link", "cta_label", "cta_link"],
           "pos": 1
         },
         "show_cta": {
@@ -774,10 +774,20 @@
           "pos": 2,
           "translatable": true
         },
-        "cta_label": {
-          "type": "text",
+        "cta_branch_link": {
+          "type": "boolean",
           "pos": 3,
           "translatable": true
+        },
+        "cta_label": {
+          "type": "text",
+          "pos": 4,
+          "translatable": true
+        },
+        "cta_link": {
+          "type": "multilink",
+          "translatable": true,
+          "pos": 5
         },
         "footer": {
           "type": "section",
@@ -786,14 +796,14 @@
             "footer_menu_items_2",
             "footer_paragraph"
           ],
-          "pos": 4
+          "pos": 6
         },
         "footer_menu_items_1": {
           "type": "bloks",
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
           "display_name": "",
-          "pos": 5,
+          "pos": 7,
           "translatable": true
         },
         "footer_menu_items_2": {
@@ -801,14 +811,14 @@
           "maximum": "",
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
-          "pos": 6,
+          "pos": 8,
           "translatable": true
         },
         "footer_paragraph": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 7,
+          "pos": 9,
           "translatable": true
         }
       },
