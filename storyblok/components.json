@@ -317,7 +317,8 @@
           "type": "boolean",
           "required": false,
           "description": "Create a branch link instead of the link field",
-          "pos": 7
+          "pos": 7,
+          "translatable": true
         },
         "button_link": {
           "type": "multilink",
@@ -410,7 +411,8 @@
         "cta_branch_link": {
           "type": "boolean",
           "description": "Create a branch link instead of the link field",
-          "pos": 9
+          "pos": 9,
+          "translatable": true
         },
         "cta_target": {
           "type": "text",
@@ -589,7 +591,8 @@
           "regex": "",
           "image_crop": false,
           "image_width": "375",
-          "image_height": "240"
+          "image_height": "240",
+          "translatable": true
         },
         "title": {
           "type": "text",
@@ -766,7 +769,7 @@
         },
         "cta": {
           "type": "section",
-          "keys": ["show_cta", "cta_link", "cta_label"],
+          "keys": ["show_cta", "cta_branch_link", "cta_label", "cta_link"],
           "pos": 1
         },
         "show_cta": {
@@ -774,10 +777,20 @@
           "pos": 2,
           "translatable": true
         },
-        "cta_label": {
-          "type": "text",
+        "cta_branch_link": {
+          "type": "boolean",
           "pos": 3,
           "translatable": true
+        },
+        "cta_label": {
+          "type": "text",
+          "pos": 4,
+          "translatable": true
+        },
+        "cta_link": {
+          "type": "multilink",
+          "translatable": true,
+          "pos": 5
         },
         "footer": {
           "type": "section",
@@ -786,14 +799,14 @@
             "footer_menu_items_2",
             "footer_paragraph"
           ],
-          "pos": 4
+          "pos": 6
         },
         "footer_menu_items_1": {
           "type": "bloks",
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
           "display_name": "",
-          "pos": 5,
+          "pos": 7,
           "translatable": true
         },
         "footer_menu_items_2": {
@@ -801,14 +814,14 @@
           "maximum": "",
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
-          "pos": 6,
+          "pos": 8,
           "translatable": true
         },
         "footer_paragraph": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 7,
+          "pos": 9,
           "translatable": true
         }
       },
@@ -989,7 +1002,8 @@
           "type": "image",
           "display_name": "",
           "description": "Around 1200x500 px",
-          "pos": 0
+          "pos": 0,
+          "translatable": true
         },
         "caption": {
           "type": "text",
@@ -1021,7 +1035,8 @@
           "regex": "",
           "image_crop": false,
           "image_width": "375",
-          "image_height": "240"
+          "image_height": "240",
+          "translatable": true
         },
         "title": {
           "type": "text",
@@ -1078,7 +1093,8 @@
           "required": true,
           "pos": 2,
           "image_crop": true,
-          "image_width": "560"
+          "image_width": "560",
+          "translatable": true
         },
         "text_items": {
           "type": "bloks",
@@ -1186,16 +1202,26 @@
           "required": false,
           "pos": 6
         },
+        "use_image_link": {
+          "type": "boolean",
+          "pos": 7,
+          "translatable": true
+        },
+        "image_link": {
+          "type": "multilink",
+          "translatable": true,
+          "pos": 8
+        },
         "background_image": {
           "type": "image",
           "required": false,
-          "pos": 7
+          "pos": 9
         },
         "button_title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 8,
+          "pos": 10,
           "translatable": true
         },
         "button_type": {
@@ -1216,12 +1242,13 @@
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 9
+          "pos": 11
         },
         "button_branch_link": {
           "type": "boolean",
           "description": "Create a branch link instead of the link field",
-          "pos": 10
+          "pos": 12,
+          "translatable": true
         },
         "button_link": {
           "type": "multilink",
@@ -1229,7 +1256,7 @@
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 11,
+          "pos": 13,
           "translatable": true
         },
         "media_position": {
@@ -1246,13 +1273,13 @@
           ],
           "required": true,
           "default_value": "top",
-          "pos": 12
+          "pos": 14
         },
         "show_button": {
           "type": "boolean",
           "required": false,
           "default_value": "true",
-          "pos": 13
+          "pos": 15
         }
       },
       "image": null,
@@ -1273,7 +1300,8 @@
         },
         "image": {
           "type": "image",
-          "pos": 1
+          "pos": 1,
+          "translatable": true
         },
         "type": {
           "type": "text",
@@ -1325,7 +1353,8 @@
         "image": {
           "type": "image",
           "required": true,
-          "pos": 0
+          "pos": 0,
+          "translatable": true
         }
       },
       "image": null,
@@ -1506,25 +1535,45 @@
       "schema": {
         "title": {
           "type": "text",
-          "pos": 0
+          "pos": 0,
+          "translatable": true
         },
         "paragraph": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 1
+          "pos": 1,
+          "translatable": true
         },
         "cta_label": {
           "type": "text",
-          "pos": 2
+          "pos": 2,
+          "translatable": true
         },
         "cta_branch_link": {
           "type": "boolean",
-          "pos": 3
+          "pos": 3,
+          "translatable": true
         },
         "cta_target": {
           "type": "multilink",
-          "pos": 4
+          "pos": 4,
+          "translatable": true
+        },
+        "ghost_cta": {
+          "type": "boolean",
+          "translatable": true,
+          "pos": 5
+        },
+        "ghost_cta_label": {
+          "type": "text",
+          "translatable": true,
+          "pos": 6
+        },
+        "ghost_cta_target": {
+          "type": "multilink",
+          "translatable": true,
+          "pos": 7
         }
       },
       "image": null,
@@ -1616,7 +1665,8 @@
         },
         "logo": {
           "type": "image",
-          "pos": 1
+          "pos": 1,
+          "translatable": true
         },
         "text": {
           "type": "text",
@@ -1835,7 +1885,8 @@
         "button_branch_link": {
           "type": "boolean",
           "description": "Create a branch link instead of the link field",
-          "pos": 5
+          "pos": 5,
+          "translatable": true
         },
         "button_link": {
           "type": "multilink",

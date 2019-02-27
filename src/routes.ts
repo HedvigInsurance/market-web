@@ -35,9 +35,12 @@ export const oldAssetRoutes: string[] = [
   '/*.html',
 ]
 
-export const tmpOldRoutes: string[] = ['/en', '/en/student', '/en/faq']
+export const tmpOldRoutes: Array<string | RegExp> = ['/en/faq']
 
 export const redirects: ReadonlyArray<[string, string, number]> = [
+  ['/en/legal', '/legal', 302],
+  ['/en/privacy', '/privacy', 302],
+  ['/en/student', '/en/hemforsakring/student', 301],
   ['/press', '/about-us', 301],
   ['/terms', '/villkor', 301],
   ['/student', '/hemforsakring/student', 301],

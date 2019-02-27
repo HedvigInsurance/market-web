@@ -43,7 +43,7 @@ export interface BodyStory extends Story {
 }
 
 export interface WithStory<TStoryType extends Story> {
-  story: TStoryType
+  story?: TStoryType
 }
 
 export interface BlogStory extends Story {
@@ -86,6 +86,7 @@ export interface GlobalStory extends Story {
     component: 'global'
     header_menu_items?: ReadonlyArray<MenuItem>
     show_cta: boolean
+    cta_branch_link: boolean
     cta_label: string
     cta_link: LinkComponent
     footer_menu_items_1?: ReadonlyArray<MenuItem>

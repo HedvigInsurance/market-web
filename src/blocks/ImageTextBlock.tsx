@@ -54,10 +54,16 @@ const Title = styled('h2')(
   ({
     size,
     displayOrder,
-  }: { size?: TitleSize } & { displayOrder: 'top' | 'bottom' }) => ({
+    textPosition,
+  }: {
+    size?: TitleSize
+    displayOrder: 'top' | 'bottom'
+    textPosition: TextPosition
+  }) => ({
+    margin: textPosition === 'center' ? 'auto' : undefined,
     fontSize: size === 'lg' ? '4.5rem' : '2.5rem',
     width: '100%',
-    maxWidth: '31rem',
+    maxWidth: textPosition === 'center' ? '40rem' : '31rem',
     [TABLET_BP_DOWN]: {
       fontSize: size === 'lg' ? '3.75rem' : '2rem',
       marginTop: displayOrder === 'top' ? '3rem' : '1.414rem',
@@ -65,22 +71,41 @@ const Title = styled('h2')(
   }),
 )
 
-const Paragraph = styled('div')({
-  fontSize: '1.125rem',
-  marginTop: '1.5rem',
-  maxWidth: '31rem',
-})
+const Paragraph = styled('div')(
+  ({ textPosition }: { textPosition: TextPosition }) => ({
+    margin: textPosition === 'center' ? 'auto' : undefined,
+    fontSize: '1.125rem',
+    marginTop: '1.5rem',
+    maxWidth: textPosition === 'center' ? '40rem' : '31rem',
+  }),
+)
 
 const Image = styled(DeferredImage)(
   ({
     alignment,
     displayOrder,
+    hasLink,
   }: {
     alignment: string
     displayOrder: 'top' | 'bottom'
+    hasLink?: boolean
   }) => ({
-    width: '40%',
+    width: hasLink ? '100%' : '40%',
     display: alignment === 'center' ? 'none' : 'block',
+    [TABLET_BP_DOWN]: {
+      maxWidth: '100%',
+      width: 'auto',
+      marginTop: displayOrder === 'top' ? '0' : '3rem',
+      display: 'block',
+      order: displayOrder === 'top' ? -1 : 'initial',
+    },
+  }),
+)
+const ImageLink = styled('a')(
+  ({ displayOrder }: { displayOrder: 'top' | 'bottom' }) => ({
+    display: 'inline-block',
+    width: '40%',
+
     [TABLET_BP_DOWN]: {
       maxWidth: '100%',
       width: 'auto',
@@ -102,6 +127,8 @@ interface ImageTextBlockProps extends BaseBlockProps {
   button_link: LinkComponent
   show_button: boolean
   image?: StoryblokImage
+  use_image_link: boolean
+  image_link: LinkComponent
   background_image: string
   size: SectionSize
   media_position: 'top' | 'bottom'
@@ -118,6 +145,8 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   button_link,
   show_button,
   image,
+  use_image_link,
+  image_link,
   background_image,
   color,
   size,
@@ -131,13 +160,18 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
     >
       <AlignableContentWrapper textPosition={text_position}>
         <TextWrapper textPosition={text_position}>
-          <Title size={title_size} displayOrder={media_position}>
+          <Title
+            size={title_size}
+            displayOrder={media_position}
+            textPosition={text_position}
+          >
             {title}
           </Title>
           <Paragraph
             dangerouslySetInnerHTML={{
               __html: paragraph.html,
             }}
+            textPosition={text_position}
           />
           {show_button &&
             (button_branch_link ? (
@@ -165,13 +199,26 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
               </ButtonLinkWithMargin>
             ))}
         </TextWrapper>
-        {image && (
-          <Image
-            alignment={text_position}
-            displayOrder={media_position}
-            src={getStoryblokImage(image)}
-          />
-        )}
+        {image &&
+          (use_image_link ? (
+            <ImageLink
+              href={getStoryblokLinkUrl(image_link)}
+              displayOrder={media_position}
+            >
+              <Image
+                alignment={text_position}
+                displayOrder={media_position}
+                src={getStoryblokImage(image)}
+                hasLink
+              />
+            </ImageLink>
+          ) : (
+            <Image
+              alignment={text_position}
+              displayOrder={media_position}
+              src={getStoryblokImage(image)}
+            />
+          ))}
       </AlignableContentWrapper>
     </SectionWrapper>
   )

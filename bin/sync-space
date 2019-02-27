@@ -6,6 +6,7 @@ const path = require('path')
 const chalk = require('chalk').default
 const axios = require('axios').default
 const yargs = require('yargs')
+const deepEqual = require('deep-equal')
 
 const client = axios.create({
   baseURL: 'https://api.storyblok.com',
@@ -48,6 +49,13 @@ const plan = async () => {
         (remoteComponent) => remoteComponent.name === localComponent.name,
       ),
     ])
+    .filter(
+      ([local, remote]) =>
+        !deepEqual(
+          { ...local, id: undefined, created_at: undefined },
+          { ...remote, id: undefined, created_at: undefined },
+        ),
+    )
   const deleted = remoteComponentsResponse.data.components.filter(
     (remoteComponent) =>
       !Boolean(

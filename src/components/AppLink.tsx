@@ -4,6 +4,7 @@ import * as React from 'react'
 import { Container } from 'constate'
 import { Mount } from 'react-lifecycle-components'
 import { RouteComponentProps, withRouter } from 'react-router'
+import { StoryContainer } from '../storyblok/StoryContainer'
 import { getPublicHost } from '../utils/storyblok'
 import { trackEvent } from '../utils/tracking/trackEvent'
 import { utmParamsToBranchLinkOptions } from '../utils/tracking/utmToBranch'
@@ -12,12 +13,10 @@ import { utmParamsToBranchLinkOptions } from '../utils/tracking/utmToBranch'
 // any utm tags sent from ad networks
 
 interface AppLinkProps {
-  children: (
-    props: {
-      handleClick: (e: React.MouseEvent<HTMLElement>) => void
-      link: string
-    },
-  ) => React.ReactNode
+  children: (props: {
+    handleClick: (e: React.MouseEvent<HTMLElement>) => void
+    link: string
+  }) => React.ReactNode
   channel?: string
   campaign?: string
   tags?: ReadonlyArray<string>
@@ -43,58 +42,67 @@ const AppLinkComponent: React.FunctionComponent<
   >
     {({ link, setLink }) => (
       <>
-        <Mount
-          on={() => {
-            const hasBranch =
-              window &&
-              (window as any).branch &&
-              typeof (window as any).branch.link === 'function'
-            if (!hasBranch) {
-              return
-            }
+        <StoryContainer>
+          {({ story }) => (
+            <>
+              <Mount
+                on={() => {
+                  const hasBranch =
+                    window &&
+                    (window as any).branch &&
+                    typeof (window as any).branch.link === 'function'
+                  if (!hasBranch) {
+                    return
+                  }
 
-            const utmParams = Cookies.getJSON('utm-params') || {}
-            const linkOptions = utmParamsToBranchLinkOptions(utmParams, {
-              channel: props.channel,
-              campaign: props.campaign,
-              feature: props.feature,
-              tags: props.tags,
-              keywords: props.keywords,
-              stage: props.stage,
-            })
+                  const utmParams = Cookies.getJSON('utm-params') || {}
+                  const linkOptions = utmParamsToBranchLinkOptions(utmParams, {
+                    channel: props.channel,
+                    campaign: props.campaign,
+                    feature: props.feature,
+                    tags: props.tags,
+                    keywords: props.keywords,
+                    stage: props.stage,
+                  })
+                  const lang = story ? story.lang : 'default'
 
-            const path = props.location.pathname
-            const host = getPublicHost() || 'https://www.hedvig.com'
-            ;(window as any).branch.link(
-              {
-                ...linkOptions,
-                data: {
-                  $desktop_url: `${host}/new-member`,
-                  path,
+                  const path = props.location.pathname
+                  const host = getPublicHost() || 'https://www.hedvig.com'
+                  ;(window as any).branch.link(
+                    {
+                      ...linkOptions,
+                      data: {
+                        $desktop_url: `${host}/${
+                          lang === 'default' ? '' : lang + '/'
+                        }new-member`,
+                        path,
+                      },
+                    },
+                    // tslint:disable-next-line variable-name
+                    (_err: Error | undefined, realLink: string | undefined) => {
+                      if (realLink) {
+                        setLink(realLink)
+                      }
+                    },
+                  )
+                }}
+              >
+                {null}
+              </Mount>
+
+              {props.children({
+                link,
+                handleClick: (e: React.MouseEvent<HTMLElement>) => {
+                  e.preventDefault()
+                  trackEvent('Click app link', {
+                    label: props.tags && props.tags.join(', '),
+                  })
+                  window.location.href = link
                 },
-              },
-              // tslint:disable-next-line variable-name
-              (_err: Error | undefined, realLink: string | undefined) => {
-                if (realLink) {
-                  setLink(realLink)
-                }
-              },
-            )
-          }}
-        >
-          {null}
-        </Mount>
-
-        {props.children({
-          link,
-          handleClick: (e: React.MouseEvent<HTMLElement>) => {
-            e.preventDefault()
-            trackEvent('Click app link', {
-              label: props.tags && props.tags.join(', '),
-            })
-            window.location.href = link
-          },
-        })}
+              })}
+            </>
+          )}
+        </StoryContainer>
       </>
     )}
   </Container>
