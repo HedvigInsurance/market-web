@@ -3,6 +3,8 @@ import { IHelmetConfiguration } from 'helmet'
 
 const defaultSrc = [
   "'self'",
+  'hedvig.com',
+  'www.hedvig.com',
   'cdn.hedvig.com',
   'https://*.storyblok.com',
   'https://*.hotjar.com',
@@ -39,6 +41,7 @@ const defaultSrc = [
   'hedvig.app.link',
   '*.ravenjs.com',
   'analytics.twitter.com',
+  'online.adservicemedia.dk',
 ]
 
 export const helmetConfig = (): IHelmetConfiguration => ({
