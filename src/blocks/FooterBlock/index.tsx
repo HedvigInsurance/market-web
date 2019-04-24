@@ -170,7 +170,7 @@ export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
               <SocialMediaLink href="https://www.fb.me/hedvigapp">
                 <FacebookIcon />
               </SocialMediaLink>
-              <SocialMediaLink href="https://www.instagram.com/hedvig.app/">
+              <SocialMediaLink href="https://www.instagram.com/hedvig/">
                 <InstagramIcon />
               </SocialMediaLink>
               <SocialMediaLink href="https://twitter.com/hedvigapp">
