@@ -36,12 +36,12 @@ export const HedvigersBlock: React.FunctionComponent<HedvigersBlockProps> = ({
         {({ Mobile, Desktop, setMobile, setDesktop }) => (
           <Mount
             on={() => {
-              import('./Desktop' /* webpackChunkName: "hedvigers-desktop" */).then(
-                (m) => setDesktop(m.Desktop),
-              )
-              import('./Mobile' /* webpackChunkName: "hedvigers-mobile" */).then(
-                (m) => setMobile(m.Mobile),
-              )
+              import(
+                './Desktop' /* webpackChunkName: "hedvigers-desktop" */
+              ).then((m) => setDesktop(m.Desktop))
+              import(
+                './Mobile' /* webpackChunkName: "hedvigers-mobile" */
+              ).then((m) => setMobile(m.Mobile))
             }}
           >
             <MediaQuery query="(max-width: 900px)">
