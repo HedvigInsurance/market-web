@@ -6,13 +6,12 @@ import { IHelmetConfiguration } from 'helmet'
 import * as bodyParser from 'koa-bodyparser'
 import * as removeTrailingSlashes from 'koa-remove-trailing-slashes'
 import { Logger } from 'typescript-logging'
-import { oldAssetRoutes, redirects, routes, tmpOldRoutes } from '../routes'
+import { redirects, routes } from '../routes'
 import { config } from './config'
 import { helmetConfig } from './config/helmetConfig'
 import { sentryConfig } from './config/sentry'
 import { appLogger } from './logging'
 import { inCaseOfEmergency } from './middlewares/enhancers'
-import { proxy } from './middlewares/proxy'
 import { forceHost } from './middlewares/redirects'
 import {
   addBlogPostsToState,
@@ -74,7 +73,7 @@ const server = createKoaServer({
 })
 
 if (config.forceHost) {
-  server.router.use(forceHost({ host: config.forceHost }))
+  server.router.use('/*', forceHost({ host: config.forceHost }))
 }
 server.router.use('/*', removeTrailingSlashes())
 redirects.forEach(([source, target, code]) => {
@@ -84,6 +83,7 @@ redirects.forEach(([source, target, code]) => {
   })
 })
 server.router.use(
+  '/*',
   bodyParser({
     extendTypes: { json: ['application/csp-report'] },
   }),
@@ -105,21 +105,12 @@ server.router.post('/_report-csp-violation', (ctx) => {
   ctx.status = 204
 })
 
-const oldSiteProxy = proxy({
-  host: 'https://hedvig.netlify.com',
-  sanitisePath: true,
-  addTrailingSlash: true,
-  testResponse: (response) => response.statusCode! < 400,
-})
-
 server.router.get('/sitemap.xml', sitemapXml)
-server.router.use(oldAssetRoutes, oldSiteProxy)
 server.router.use('/blog', addBlogPostsToState)
 server.router.use('/blog', addTeamtailorUsersToState)
 server.router.use('/about-us', addTeamtailorUsersToState)
 server.router.use('/en/about-us', addTeamtailorUsersToState)
 server.router.use('/blog/tags/:tag', addTagBlogPostsToState)
-tmpOldRoutes.forEach((route) => server.router.get(route, oldSiteProxy))
 routes.forEach((route) => {
   server.router.get(
     route.path,

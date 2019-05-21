@@ -155,7 +155,9 @@ export const AnimatedPhoneBlock: React.FunctionComponent<
         <PhoneContainer alignment={text_position} displayOrder={media_position}>
           <LazyLottie
             options={{
-              animationData: import(/* webpackChunkName: "chat-demo" */ 'animations/chatDemo.json'),
+              animationData: import(
+                /* webpackChunkName: "chat-demo" */ 'animations/chatDemo.json'
+              ),
             }}
           />
         </PhoneContainer>

@@ -98,11 +98,17 @@ interface AnimationMapProps {
 
 const animationMap: AnimationMapProps = {
   progressiveSuccess: () =>
-    import(/* webpackChunkName: "progressive-success-animation" */ 'animations/progressiveSuccess.json'),
+    import(
+      /* webpackChunkName: "progressive-success-animation" */ 'animations/progressiveSuccess.json'
+    ),
   smallMobileChat: () =>
-    import(/* webpackChunkName: "small-mobile-chat-animation" */ 'animations/smallMobileChat.json'),
+    import(
+      /* webpackChunkName: "small-mobile-chat-animation" */ 'animations/smallMobileChat.json'
+    ),
   bellNotification: () =>
-    import(/* webpackChunkName: "bell-notification-animation" */ 'animations/bellNotification.json'),
+    import(
+      /* webpackChunkName: "bell-notification-animation" */ 'animations/bellNotification.json'
+    ),
 }
 
 export const AnimatedCtaBlock: React.FunctionComponent<

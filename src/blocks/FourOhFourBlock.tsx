@@ -32,7 +32,9 @@ export const FourOhFourBlock: React.FunctionComponent = () => (
           <AnimationContainer>
             <LazyLottie
               options={{
-                animationData: import(/* webpackChunkName: "sad-hedvig" */ 'animations/sadHedvig.json'),
+                animationData: import(
+                  /* webpackChunkName: "sad-hedvig" */ 'animations/sadHedvig.json'
+                ),
                 autoplay: true,
                 loop: false,
               }}
