@@ -26,17 +26,6 @@ export const routes: Route[] = [
   { path: '/*', exact: false, Component: PageFork, ignoreStoryblokMiss: true },
 ]
 
-export const oldAssetRoutes: string[] = [
-  '/*.js',
-  '/static/*',
-  '/assets/*',
-  '/uploads/*',
-  '/favicons/*',
-  '/*.html',
-]
-
-export const tmpOldRoutes: Array<string | RegExp> = ['/en/faq']
-
 export const redirects: ReadonlyArray<[string, string, number]> = [
   ['/en/legal', '/legal', 302],
   ['/en/privacy', '/privacy', 302],
