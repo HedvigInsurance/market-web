@@ -5,26 +5,6 @@ const supertest = require('supertest') // tslint:disable-line
 import { parseString } from 'xml2js'
 import { SitemapXml, sitemapXml } from './sitemap'
 
-const oldSitemapResponse = `
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-   <url>
-      <loc>https://www.hedvig.com/hemforsakring/</loc>
-      <changefreq>daily</changefreq>
-      <priority>0.7</priority>
-   </url>
-   <url>
-      <loc>https://www.hedvig.com/en/</loc>
-      <changefreq>daily</changefreq>
-      <priority>0.7</priority>
-   </url>
-   <url>
-      <loc>https://www.hedvig.com/</loc>
-      <changefreq>daily</changefreq>
-      <priority>0.7</priority>
-   </url>
-</urlset>
-`
 const linksResponse = `
 {
     "links": {
@@ -91,10 +71,6 @@ test('it stitches together a correct sitemap', () => {
     status: 200,
     responseText: linksResponse,
   })
-  moxios.stubRequest(/^https:\/\/hedvig\.netlify\.com\/sitemap.xml/, {
-    status: 200,
-    responseText: oldSitemapResponse,
-  })
 
   const server = app.listen()
   const request = supertest(server)
@@ -117,9 +93,6 @@ test('it stitches together a correct sitemap', () => {
     .then((response: SitemapXml) => {
       const partialExpectedResponse = [
         { changefreq: 'daily', loc: '/blog/hello-world-26', priority: '0.7' },
-        { changefreq: 'daily', loc: '/hemforsakring', priority: '0.7' },
-        { changefreq: 'daily', loc: '/en', priority: '0.7' },
-        { changefreq: 'daily', loc: '/', priority: '0.7' },
       ]
 
       expect(
