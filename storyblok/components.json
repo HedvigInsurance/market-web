@@ -4,24 +4,29 @@
       "name": "about_us_hero_block",
       "display_name": null,
       "schema": {
-        "headline": {
+        "video_file_location": {
           "type": "text",
-          "pos": 0,
-          "translatable": true
+          "description": "Will be suffixed with \".<format>\" . Ie. https://cdn.hedvig.com/www/about-us-video/web. Formats that must be present are png (for the poster), m3u8, mp4 and webm",
+          "pos": 0
         },
-        "title": {
+        "headline": {
           "type": "text",
           "pos": 1,
           "translatable": true
         },
-        "play_button_text": {
+        "title": {
           "type": "text",
           "pos": 2,
+          "translatable": true
+        },
+        "play_button_text": {
+          "type": "text",
+          "pos": 3,
           "translatable": true
         }
       },
       "image": null,
-      "preview_field": null,
+      "preview_field": "",
       "is_root": false,
       "is_nestable": true,
       "all_presets": [],
@@ -379,47 +384,60 @@
           "display_name": "",
           "default_value": ""
         },
+        "use_text_drop_shadow": {
+          "type": "boolean",
+          "pos": 1,
+          "description": "",
+          "display_name": ""
+        },
+        "background_color": {
+          "type": "custom",
+          "pos": 2,
+          "field_type": "native-color-picker",
+          "options": [],
+          "description": "As shown while loading the poster"
+        },
         "title": {
           "type": "text",
-          "pos": 1,
+          "pos": 3,
           "translatable": true
         },
         "paragraph": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 2,
+          "pos": 4,
           "translatable": true
         },
         "cta_label": {
           "type": "text",
-          "pos": 3,
+          "pos": 5,
           "translatable": true
         },
         "cta_branch_link": {
           "type": "boolean",
-          "pos": 4,
+          "pos": 6,
           "translatable": true
         },
         "cta_target": {
           "type": "multilink",
-          "pos": 5,
+          "pos": 7,
           "translatable": true
         },
         "ghost_cta": {
           "type": "boolean",
           "translatable": true,
-          "pos": 6
+          "pos": 8
         },
         "ghost_cta_label": {
           "type": "text",
           "translatable": true,
-          "pos": 7
+          "pos": 9
         },
         "ghost_cta_target": {
           "type": "multilink",
           "translatable": true,
-          "pos": 8
+          "pos": 10
         }
       },
       "image": null,
@@ -1002,6 +1020,53 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "icon_bullet_point_block",
+      "component_group_uuid": null
+    },
+    {
+      "name": "hero_video_block",
+      "display_name": null,
+      "schema": {
+        "video_file_location": {
+          "type": "text",
+          "description": "Will be suffixed with \".<format>\" . Ie. https://cdn.hedvig.com/www/about-us-video/web. Formats that must be present are png (for the poster), m3u8, mp4 and webm",
+          "pos": 0
+        },
+        "use_text_drop_shadow": {
+          "type": "boolean",
+          "pos": 1,
+          "description": "",
+          "display_name": ""
+        },
+        "background_color": {
+          "type": "custom",
+          "pos": 2,
+          "field_type": "native-color-picker",
+          "options": [],
+          "description": "As shown while loading the poster"
+        },
+        "headline": {
+          "type": "text",
+          "pos": 3,
+          "translatable": true
+        },
+        "title": {
+          "type": "text",
+          "pos": 4,
+          "translatable": true
+        },
+        "play_button_text": {
+          "type": "text",
+          "pos": 5,
+          "translatable": true
+        }
+      },
+      "image": null,
+      "preview_field": "",
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "hero_video_block",
       "component_group_uuid": null
     },
     {
