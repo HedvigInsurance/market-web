@@ -18,7 +18,7 @@ import { ImageMultiTextBlock } from './ImageMultiTextBlock'
 import { ImageTextBlock } from './ImageTextBlock'
 import { InvestorsBlock } from './InvestorsBlock'
 import { MediaLogosBlock } from './MediaLogosBlock'
-import { PapersPhoneVideoBlock } from './PapersPhoneVideoBlock'
+import { BackgroundVideoBlock } from './BackgroundVideoBlock'
 import { PlainTextBlock } from './PlainTextBlock'
 import { PressBlock } from './PressBlock'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
@@ -45,7 +45,7 @@ const blockComponents = {
   switcher_block: SwitcherBlock,
   title_paragraph_block: TitleParagraphBlock,
   title_cta_block: TitleCtaBlock,
-  papers_phone_video_block: PapersPhoneVideoBlock,
+  background_video_block: BackgroundVideoBlock,
   plain_text_block: PlainTextBlock,
   press_block: PressBlock,
   spacer_block: SpacerBlock,
