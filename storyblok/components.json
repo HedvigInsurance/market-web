@@ -949,6 +949,12 @@
           "type": "boolean",
           "pos": 1,
           "display_name": "Inverse Colors (transparent header only)"
+        },
+        "override_cta_label": {
+          "type": "text"
+        },
+        "override_cta_link": {
+          "type": "multilink"
         }
       },
       "image": null,
