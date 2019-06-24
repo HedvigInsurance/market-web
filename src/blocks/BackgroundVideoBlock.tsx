@@ -41,6 +41,21 @@ const Background = styled('div')(
     backgroundColor,
   }),
 )
+const BackgroundEvener = styled('div')(
+  ({
+    backgroundGradientStart,
+    background,
+  }: {
+    backgroundGradientStart: string
+    background: string
+  }) => ({
+    height: 60,
+    position: 'relative',
+    marginTop: -60,
+    zIndex: 2,
+    background: `linear-gradient(to bottom, ${backgroundGradientStart}, ${background})`,
+  }),
+)
 const Video = styled('video')({
   position: 'relative',
   width: '100%',
@@ -112,7 +127,8 @@ const GhostCta = styled(Cta)({
 interface BackgroundVideoBlockProps extends BaseBlockProps {
   video_file_location: string
   use_text_drop_shadow: boolean
-  background_color: NativeColor
+  background_gradient_start: string
+  background_color: string
   title: string
   paragraph: MarkdownHtmlComponent
   cta_label: string
@@ -133,7 +149,7 @@ export const BackgroundVideoBlock: React.FunctionComponent<
     {({ mount, isMounted }) => (
       <Mount on={mount}>
         <Wrapper>
-          <Background backgroundColor={props.background_color.color} />
+          <Background backgroundColor={props.background_color} />
           {isMounted && (
             <>
               <MediaQuery query="(max-width: 800px)">
@@ -210,6 +226,10 @@ export const BackgroundVideoBlock: React.FunctionComponent<
               </MediaQuery>
             </>
           )}
+          <BackgroundEvener
+            backgroundGradientStart={props.background_gradient_start}
+            background={props.background_color}
+          />
 
           <Content>
             <Title useDropShadow={props.use_text_drop_shadow}>
