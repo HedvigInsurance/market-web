@@ -585,6 +585,32 @@
           "options": [],
           "pos": 0
         },
+        "title_position": {
+          "type": "option",
+          "pos": 1,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "left",
+              "name": "Left"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "right",
+              "name": "Right"
+            }
+          ],
+          "required": false,
+          "default_value": "center"
+        },
+        "title": {
+          "type": "text",
+          "pos": 2,
+          "translatable": true
+        },
         "bullet_points_position": {
           "type": "option",
           "options": [
@@ -602,11 +628,11 @@
             }
           ],
           "default_value": "left",
-          "pos": 1
+          "pos": 3
         },
         "enforce_size": {
           "type": "boolean",
-          "pos": 2,
+          "pos": 4,
           "default_value": "true",
           "description": "By unchecking this, I hereby promise that the images i upload are of exacly the same size"
         },
@@ -616,7 +642,7 @@
           "restrict_components": true,
           "component_whitelist": ["image_bullet_point_item"],
           "required": true,
-          "pos": 3,
+          "pos": 5,
           "translatable": false
         }
       },
@@ -639,6 +665,31 @@
           "options": [],
           "pos": 0
         },
+        "title": {
+          "type": "text",
+          "pos": 1,
+          "translatable": true
+        },
+        "title_position": {
+          "type": "option",
+          "pos": 2,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "left",
+              "name": "Left"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "right",
+              "name": "Right"
+            }
+          ],
+          "default_value": "center"
+        },
         "bullet_points_position": {
           "type": "option",
           "options": [
@@ -656,7 +707,7 @@
             }
           ],
           "default_value": "left",
-          "pos": 1
+          "pos": 3
         },
         "bullet_points": {
           "type": "bloks",
@@ -664,7 +715,7 @@
           "restrict_components": true,
           "component_whitelist": ["card_checklist_bullet_point_item"],
           "required": true,
-          "pos": 2,
+          "pos": 4,
           "translatable": false
         }
       },
