@@ -5,6 +5,9 @@ import { Update } from 'react-lifecycle-components'
 interface HeightContainerProps {
   isFullScreen: boolean
 }
+interface BackgroundProps {
+  backgroundColor: string
+}
 
 const fadeInKeyframe = keyframes({
   from: {
@@ -16,22 +19,22 @@ const fadeInKeyframe = keyframes({
 })
 
 const HeightContainer = styled('div')(
-  {
+  ({ backgroundColor }: HeightContainerProps & BackgroundProps) => ({
     animation: `${fadeInKeyframe} 2000ms forwards`,
     transition: 'height 1500ms, padding 1500ms',
     height: 475,
-    backgroundColor: 'black',
     overflow: 'hidden',
     display: 'flex',
     alignItems: 'center',
+    backgroundColor,
     '@media (min-width: 500px)': {
       height: 550,
     },
     '@media (min-width: 700px)': {
       height: 600,
     },
-  },
-  ({ isFullScreen }: HeightContainerProps) =>
+  }),
+  ({ isFullScreen }: HeightContainerProps & BackgroundProps) =>
     isFullScreen
       ? {
           height: 'calc(100vh - 70px) !important',
@@ -88,16 +91,20 @@ interface FullScreenUpdate {
   isFullScreen: boolean
 }
 
-export const Player: React.SFC<PlayerProps> = ({
+export const Player: React.SFC<PlayerProps & BackgroundProps> = ({
   isFullScreen,
   videoRef,
   baseVideoUrl,
+  backgroundColor,
 }) => (
   <Update<FullScreenUpdate>
     was={restartVideo({ isFullScreen, videoRef })}
     watched={{ isFullScreen }}
   >
-    <HeightContainer isFullScreen={isFullScreen}>
+    <HeightContainer
+      isFullScreen={isFullScreen}
+      backgroundColor={backgroundColor}
+    >
       <Video
         poster={`${baseVideoUrl}.png`}
         innerRef={videoRef}

@@ -70,6 +70,7 @@ const PlayButton = styled(animated.button)({
   display: 'flex',
   alignItems: 'center',
   textAlign: 'left',
+  textShadow: 'inherit',
   justifyContent: 'space-between',
   background: 'transparent',
   border: 0,
