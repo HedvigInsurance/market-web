@@ -12,7 +12,7 @@ import {
 } from '../components/blockHelpers'
 import { ButtonLink } from '../components/buttons'
 import { LinkComponent } from '../storyblok/StoryContainer'
-import { getStoryblokLinkUrl, NativeColor } from '../utils/storyblok'
+import { getStoryblokLinkUrl } from '../utils/storyblok'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 const TABLET_BP_DOWN = '@media (max-width: 800px)'
