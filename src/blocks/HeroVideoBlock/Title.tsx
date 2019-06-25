@@ -62,12 +62,14 @@ const ButtonsWrapper = styled('div')({
   display: 'flex',
   marginTop: '2rem',
   alignItems: 'center',
+  flexWrap: 'wrap',
 })
 
 const PlayButtonContainer = styled('div')({
   display: 'inline-block',
-  maxWidth: 260,
+  maxWidth: 300,
   paddingRight: '1rem',
+  paddingBottom: '1rem',
   transition: 'transform 350ms',
   ':active': {
     transform: 'scale(0.9)',
@@ -94,6 +96,9 @@ const PlayButton = styled(animated.button)({
   },
 })
 
+const CtaWrapper = styled('div')({
+  paddingBottom: '1rem',
+})
 const Cta = styled(animated.a)({
   display: 'inline-block',
   borderRadius: 30,
@@ -169,13 +174,15 @@ export const Title: React.FunctionComponent<TitleProps> = ({
             </PlayButton>
           </PlayButtonContainer>
           {ctaText && (
-            <AppLink>
-              {({ link, handleClick }) => (
-                <Cta href={link} onClick={handleClick} style={styles}>
-                  {ctaText}
-                </Cta>
-              )}
-            </AppLink>
+            <CtaWrapper>
+              <AppLink>
+                {({ link, handleClick }) => (
+                  <Cta href={link} onClick={handleClick} style={styles}>
+                    {ctaText}
+                  </Cta>
+                )}
+              </AppLink>
+            </CtaWrapper>
           )}
         </ButtonsWrapper>
       )}
