@@ -3,6 +3,7 @@ import { AboutUsHeroBlock } from './AboutUsHeroBlock'
 import { AccordionBlock } from './AccordionBlock'
 import { AnimatedCtaBlock } from './AnimatedCtaBlock'
 import { AnimatedPhoneBlock } from './AnimatedPhoneBlock'
+import { BackgroundVideoBlock } from './BackgroundVideoBlock'
 import { BaseBlockProps } from './BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock'
 import { CardChecklistBulletPointBlock } from './CardChecklistBulletPointBlock'
@@ -11,6 +12,7 @@ import { FactsBlock } from './FactsBlock'
 import { FooterBlock } from './FooterBlock'
 import { HeaderBlock } from './HeaderBlock'
 import { HedvigersBlock } from './HedvigersBlock'
+import { HeroVideoBlock } from './HeroVideoBlock'
 import { IconBulletPointBlock } from './IconBulletPointBlock'
 import { IconForestBlock } from './IconForestBlock'
 import { ImageBlock } from './ImageBlock'
@@ -18,7 +20,6 @@ import { ImageMultiTextBlock } from './ImageMultiTextBlock'
 import { ImageTextBlock } from './ImageTextBlock'
 import { InvestorsBlock } from './InvestorsBlock'
 import { MediaLogosBlock } from './MediaLogosBlock'
-import { PapersPhoneVideoBlock } from './PapersPhoneVideoBlock'
 import { PlainTextBlock } from './PlainTextBlock'
 import { PressBlock } from './PressBlock'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
@@ -37,6 +38,7 @@ const blockComponents = {
   image_multi_text_block: ImageMultiTextBlock,
   investors_block: InvestorsBlock,
   hedvigers_block: HedvigersBlock,
+  hero_video_block: HeroVideoBlock,
   single_quote_block: SingleQuoteBlock,
   image_text_block: ImageTextBlock,
   image_block: ImageBlock,
@@ -45,7 +47,7 @@ const blockComponents = {
   switcher_block: SwitcherBlock,
   title_paragraph_block: TitleParagraphBlock,
   title_cta_block: TitleCtaBlock,
-  papers_phone_video_block: PapersPhoneVideoBlock,
+  background_video_block: BackgroundVideoBlock,
   plain_text_block: PlainTextBlock,
   press_block: PressBlock,
   spacer_block: SpacerBlock,

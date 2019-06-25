@@ -4,29 +4,35 @@
       "name": "about_us_hero_block",
       "display_name": null,
       "schema": {
-        "headline": {
+        "video_file_location": {
           "type": "text",
-          "pos": 0,
-          "translatable": true
+          "description": "Will be suffixed with \".<format>\" . Ie. https://cdn.hedvig.com/www/about-us-video/web. Formats that must be present are png (for the poster), m3u8, mp4 and webm",
+          "pos": 0
         },
-        "title": {
+        "headline": {
           "type": "text",
           "pos": 1,
           "translatable": true
         },
-        "play_button_text": {
+        "title": {
           "type": "text",
           "pos": 2,
+          "translatable": true
+        },
+        "play_button_text": {
+          "type": "text",
+          "pos": 3,
           "translatable": true
         }
       },
       "image": null,
-      "preview_field": null,
+      "preview_field": "",
       "is_root": false,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "about_us_hero_block"
+      "real_name": "about_us_hero_block",
+      "component_group_uuid": null
     },
     {
       "name": "accordion_block",
@@ -85,7 +91,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "accordion_block"
+      "real_name": "accordion_block",
+      "component_group_uuid": null
     },
     {
       "name": "accordion_item",
@@ -116,7 +123,8 @@
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "accordion_item"
+      "real_name": "accordion_item",
+      "component_group_uuid": null
     },
     {
       "name": "animated_cta_block",
@@ -167,7 +175,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "animated_cta_block"
+      "real_name": "animated_cta_block",
+      "component_group_uuid": null
     },
     {
       "name": "animated_cta_item",
@@ -216,7 +225,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "animated_cta_item"
+      "real_name": "animated_cta_item",
+      "component_group_uuid": null
     },
     {
       "name": "animated_phone_block",
@@ -358,7 +368,95 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "animated_phone_block"
+      "real_name": "animated_phone_block",
+      "component_group_uuid": null
+    },
+    {
+      "name": "background_video_block",
+      "display_name": "",
+      "schema": {
+        "video_file_location": {
+          "type": "text",
+          "max_length": "",
+          "regex": "^https:\\/\\/",
+          "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4",
+          "pos": 0,
+          "display_name": "",
+          "default_value": ""
+        },
+        "use_text_drop_shadow": {
+          "type": "boolean",
+          "pos": 1,
+          "description": "",
+          "display_name": ""
+        },
+        "background_gradient_start": {
+          "type": "text",
+          "pos": 2,
+          "max_length": "",
+          "regex": "^rgba\\(\\d+,\\s*\\d+\\,\\s*\\d+,\\s*\\d*\\.?\\d*\\)$",
+          "description": "The start of the gradient, i.e. rgba(123, 123, 123, 0) (should always end with 0)",
+          "display_name": ""
+        },
+        "background_color": {
+          "type": "text",
+          "pos": 3,
+          "options": [],
+          "description": "As shown while loading the poster, in format rgb(123, 123, 123)",
+          "regex": "^rgb\\(\\d+,\\s*\\d+\\,\\s*\\d+\\)$",
+          "display_name": ""
+        },
+        "title": {
+          "type": "text",
+          "pos": 4,
+          "translatable": true
+        },
+        "paragraph": {
+          "type": "custom",
+          "field_type": "markdown-html",
+          "options": [],
+          "pos": 5,
+          "translatable": true
+        },
+        "cta_label": {
+          "type": "text",
+          "pos": 6,
+          "translatable": true
+        },
+        "cta_branch_link": {
+          "type": "boolean",
+          "pos": 7,
+          "translatable": true
+        },
+        "cta_target": {
+          "type": "multilink",
+          "pos": 8,
+          "translatable": true
+        },
+        "ghost_cta": {
+          "type": "boolean",
+          "translatable": true,
+          "pos": 9
+        },
+        "ghost_cta_label": {
+          "type": "text",
+          "translatable": true,
+          "pos": 10
+        },
+        "ghost_cta_target": {
+          "type": "multilink",
+          "translatable": true,
+          "pos": 11
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "background_video_block",
+      "component_group_uuid": null
     },
     {
       "name": "blog",
@@ -474,7 +572,8 @@
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "blog"
+      "real_name": "blog",
+      "component_group_uuid": null
     },
     {
       "name": "bullet_point_block",
@@ -486,6 +585,32 @@
           "options": [],
           "pos": 0
         },
+        "title_position": {
+          "type": "option",
+          "pos": 1,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "left",
+              "name": "Left"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "right",
+              "name": "Right"
+            }
+          ],
+          "required": false,
+          "default_value": "center"
+        },
+        "title": {
+          "type": "text",
+          "pos": 2,
+          "translatable": true
+        },
         "bullet_points_position": {
           "type": "option",
           "options": [
@@ -503,11 +628,11 @@
             }
           ],
           "default_value": "left",
-          "pos": 1
+          "pos": 3
         },
         "enforce_size": {
           "type": "boolean",
-          "pos": 2,
+          "pos": 4,
           "default_value": "true",
           "description": "By unchecking this, I hereby promise that the images i upload are of exacly the same size"
         },
@@ -517,7 +642,7 @@
           "restrict_components": true,
           "component_whitelist": ["image_bullet_point_item"],
           "required": true,
-          "pos": 3,
+          "pos": 5,
           "translatable": false
         }
       },
@@ -527,7 +652,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "bullet_point_block"
+      "real_name": "bullet_point_block",
+      "component_group_uuid": null
     },
     {
       "name": "card_checklist_bullet_point_block",
@@ -539,6 +665,31 @@
           "options": [],
           "pos": 0
         },
+        "title": {
+          "type": "text",
+          "pos": 1,
+          "translatable": true
+        },
+        "title_position": {
+          "type": "option",
+          "pos": 2,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "left",
+              "name": "Left"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "right",
+              "name": "Right"
+            }
+          ],
+          "default_value": "center"
+        },
         "bullet_points_position": {
           "type": "option",
           "options": [
@@ -556,7 +707,7 @@
             }
           ],
           "default_value": "left",
-          "pos": 1
+          "pos": 3
         },
         "bullet_points": {
           "type": "bloks",
@@ -564,7 +715,7 @@
           "restrict_components": true,
           "component_whitelist": ["card_checklist_bullet_point_item"],
           "required": true,
-          "pos": 2,
+          "pos": 4,
           "translatable": false
         }
       },
@@ -574,7 +725,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "card_checklist_bullet_point_block"
+      "real_name": "card_checklist_bullet_point_block",
+      "component_group_uuid": null
     },
     {
       "name": "card_checklist_bullet_point_item",
@@ -623,7 +775,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "card_checklist_bullet_point_item"
+      "real_name": "card_checklist_bullet_point_item",
+      "component_group_uuid": null
     },
     {
       "name": "checklist_bullet_point_item_check_item",
@@ -642,7 +795,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "checklist_bullet_point_item_check_item"
+      "real_name": "checklist_bullet_point_item_check_item",
+      "component_group_uuid": null
     },
     {
       "name": "download_block",
@@ -684,7 +838,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "download_block"
+      "real_name": "download_block",
+      "component_group_uuid": null
     },
     {
       "name": "facts_block",
@@ -729,7 +884,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "facts_block"
+      "real_name": "facts_block",
+      "component_group_uuid": null
     },
     {
       "name": "footer_block",
@@ -750,7 +906,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "footer_block"
+      "real_name": "footer_block",
+      "component_group_uuid": null
     },
     {
       "name": "global",
@@ -828,7 +985,8 @@
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "global"
+      "real_name": "global",
+      "component_group_uuid": null
     },
     {
       "name": "header_block",
@@ -842,6 +1000,12 @@
           "type": "boolean",
           "pos": 1,
           "display_name": "Inverse Colors (transparent header only)"
+        },
+        "override_cta_label": {
+          "type": "text"
+        },
+        "override_cta_link": {
+          "type": "multilink"
         }
       },
       "image": null,
@@ -850,7 +1014,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "header_block"
+      "real_name": "header_block",
+      "component_group_uuid": null
     },
     {
       "name": "hedvigers_block",
@@ -868,7 +1033,59 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "hedvigers_block"
+      "real_name": "hedvigers_block",
+      "component_group_uuid": null
+    },
+    {
+      "name": "hero_video_block",
+      "display_name": null,
+      "schema": {
+        "video_file_location": {
+          "type": "text",
+          "description": "Will be suffixed with \".<format>\" . Ie. https://cdn.hedvig.com/www/about-us-video/web. Formats that must be present are png (for the poster), m3u8, mp4 and webm",
+          "pos": 0
+        },
+        "headline": {
+          "type": "text",
+          "pos": 1,
+          "translatable": true
+        },
+        "title": {
+          "type": "text",
+          "pos": 2,
+          "translatable": true
+        },
+        "play_button_text": {
+          "type": "text",
+          "pos": 3,
+          "translatable": true
+        },
+        "use_text_drop_shadow": {
+          "type": "boolean",
+          "pos": 4,
+          "description": "",
+          "display_name": ""
+        },
+        "use_shadow": {
+          "type": "boolean",
+          "pos": 5
+        },
+        "background_color": {
+          "type": "custom",
+          "pos": 6,
+          "field_type": "native-color-picker",
+          "options": [],
+          "description": "As shown while loading the poster"
+        }
+      },
+      "image": null,
+      "preview_field": "",
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "hero_video_block",
+      "component_group_uuid": null
     },
     {
       "name": "icon_bullet_point_block",
@@ -919,7 +1136,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "icon_bullet_point_block"
+      "real_name": "icon_bullet_point_block",
+      "component_group_uuid": null
     },
     {
       "name": "icon_bullet_point_item",
@@ -954,7 +1172,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "icon_bullet_point_item"
+      "real_name": "icon_bullet_point_item",
+      "component_group_uuid": null
     },
     {
       "name": "icon_forest_block",
@@ -989,7 +1208,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "icon_forest_block"
+      "real_name": "icon_forest_block",
+      "component_group_uuid": null
     },
     {
       "name": "image_block",
@@ -1018,7 +1238,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "image_block"
+      "real_name": "image_block",
+      "component_group_uuid": null
     },
     {
       "name": "image_bullet_point_item",
@@ -1058,7 +1279,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "image_bullet_point_item"
+      "real_name": "image_bullet_point_item",
+      "component_group_uuid": null
     },
     {
       "name": "image_multi_text_block",
@@ -1108,7 +1330,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "image_multi_text_block"
+      "real_name": "image_multi_text_block",
+      "component_group_uuid": null
     },
     {
       "name": "image_text_block",
@@ -1285,7 +1508,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "image_text_block"
+      "real_name": "image_text_block",
+      "component_group_uuid": null
     },
     {
       "name": "investor_item",
@@ -1311,7 +1535,8 @@
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "investor_item"
+      "real_name": "investor_item",
+      "component_group_uuid": null
     },
     {
       "name": "investors_block",
@@ -1341,7 +1566,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "investors_block"
+      "real_name": "investors_block",
+      "component_group_uuid": null
     },
     {
       "name": "logotype_item",
@@ -1360,7 +1586,8 @@
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "logotype_item"
+      "real_name": "logotype_item",
+      "component_group_uuid": null
     },
     {
       "name": "media_logos_block",
@@ -1380,7 +1607,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "media_logos_block"
+      "real_name": "media_logos_block",
+      "component_group_uuid": null
     },
     {
       "name": "menu_item",
@@ -1415,7 +1643,8 @@
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "menu_item"
+      "real_name": "menu_item",
+      "component_group_uuid": null
     },
     {
       "name": "multi_logotype_block",
@@ -1437,7 +1666,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "multi_logotype_block"
+      "real_name": "multi_logotype_block",
+      "component_group_uuid": null
     },
     {
       "name": "page",
@@ -1524,62 +1754,8 @@
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "page"
-    },
-    {
-      "name": "papers_phone_video_block",
-      "display_name": null,
-      "schema": {
-        "title": {
-          "type": "text",
-          "pos": 0,
-          "translatable": true
-        },
-        "paragraph": {
-          "type": "custom",
-          "field_type": "markdown-html",
-          "options": [],
-          "pos": 1,
-          "translatable": true
-        },
-        "cta_label": {
-          "type": "text",
-          "pos": 2,
-          "translatable": true
-        },
-        "cta_branch_link": {
-          "type": "boolean",
-          "pos": 3,
-          "translatable": true
-        },
-        "cta_target": {
-          "type": "multilink",
-          "pos": 4,
-          "translatable": true
-        },
-        "ghost_cta": {
-          "type": "boolean",
-          "translatable": true,
-          "pos": 5
-        },
-        "ghost_cta_label": {
-          "type": "text",
-          "translatable": true,
-          "pos": 6
-        },
-        "ghost_cta_target": {
-          "type": "multilink",
-          "translatable": true,
-          "pos": 7
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "papers_phone_video_block"
+      "real_name": "page",
+      "component_group_uuid": null
     },
     {
       "name": "plain_text_block",
@@ -1611,7 +1787,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "plain_text_block"
+      "real_name": "plain_text_block",
+      "component_group_uuid": null
     },
     {
       "name": "press_block",
@@ -1649,7 +1826,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "press_block"
+      "real_name": "press_block",
+      "component_group_uuid": null
     },
     {
       "name": "press_item",
@@ -1682,7 +1860,8 @@
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "press_item"
+      "real_name": "press_item",
+      "component_group_uuid": null
     },
     {
       "name": "single_quote_block",
@@ -1743,7 +1922,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "single_quote_block"
+      "real_name": "single_quote_block",
+      "component_group_uuid": null
     },
     {
       "name": "spacer_block",
@@ -1787,7 +1967,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "spacer_block"
+      "real_name": "spacer_block",
+      "component_group_uuid": null
     },
     {
       "name": "switcher_block",
@@ -1814,7 +1995,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "switcher_block"
+      "real_name": "switcher_block",
+      "component_group_uuid": null
     },
     {
       "name": "title_cta_block",
@@ -1901,7 +2083,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "title_cta_block"
+      "real_name": "title_cta_block",
+      "component_group_uuid": null
     },
     {
       "name": "title_paragraph_block",
@@ -1961,7 +2144,8 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "title_paragraph_block"
+      "real_name": "title_paragraph_block",
+      "component_group_uuid": null
     },
     {
       "name": "title_paragraph_item",
@@ -1991,7 +2175,8 @@
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "title_paragraph_item"
+      "real_name": "title_paragraph_item",
+      "component_group_uuid": null
     }
   ]
 }
