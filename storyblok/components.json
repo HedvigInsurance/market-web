@@ -1060,19 +1060,24 @@
           "pos": 3,
           "translatable": true
         },
+        "cta_text": {
+          "type": "text",
+          "pos": 4,
+          "translatable": true
+        },
         "use_text_drop_shadow": {
           "type": "boolean",
-          "pos": 4,
+          "pos": 5,
           "description": "",
           "display_name": ""
         },
         "use_shadow": {
           "type": "boolean",
-          "pos": 5
+          "pos": 6
         },
         "background_color": {
           "type": "custom",
-          "pos": 6,
+          "pos": 7,
           "field_type": "native-color-picker",
           "options": [],
           "description": "As shown while loading the poster"
