@@ -18,6 +18,12 @@ const BulletPointSectionWrapper = styled(SectionWrapper)({
   overflowX: 'hidden',
 })
 
+const Title = styled('h2')(({ position }: { position: TextPosition }) => ({
+  display: 'flex',
+  justifyContent: textFlexPositionMap[position],
+  flexWrap: 'wrap',
+  minWidth: '100%',
+}))
 const BulletPointsWrapper = styled('div')(
   ({ position }: { position: TextPosition }) => ({
     display: 'flex',
@@ -117,6 +123,8 @@ interface Check {
 }
 
 interface BulletPointsBlockProps extends BaseBlockProps {
+  title?: string
+  title_position: TextPosition
   bullet_points_position: TextPosition
   bullet_points: ReadonlyArray<
     BaseBlockProps & {
@@ -130,9 +138,16 @@ interface BulletPointsBlockProps extends BaseBlockProps {
 
 export const CardChecklistBulletPointBlock: React.FunctionComponent<
   BulletPointsBlockProps
-> = ({ color, bullet_points_position, bullet_points }) => (
+> = ({
+  color,
+  title,
+  title_position,
+  bullet_points_position,
+  bullet_points,
+}) => (
   <BulletPointSectionWrapper color={color && color.color}>
     <ContentWrapper>
+      {title && <Title position={title_position}>{title}</Title>}
       <BulletPointsWrapper position={bullet_points_position}>
         {bullet_points.map((bullet) => (
           <BulletPoint key={bullet._uid}>
