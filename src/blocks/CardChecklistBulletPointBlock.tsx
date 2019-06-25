@@ -23,6 +23,8 @@ const Title = styled('h2')(({ position }: { position: TextPosition }) => ({
   justifyContent: textFlexPositionMap[position],
   flexWrap: 'wrap',
   minWidth: '100%',
+  marginTop: 0,
+  marginBottom: '2rem',
 }))
 const BulletPointsWrapper = styled('div')(
   ({ position }: { position: TextPosition }) => ({
