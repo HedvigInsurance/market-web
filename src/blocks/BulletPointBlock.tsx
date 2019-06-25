@@ -94,7 +94,14 @@ interface BulletPointsBlockProps extends BaseBlockProps {
 
 export const BulletPointBlock: React.FunctionComponent<
   BulletPointsBlockProps
-> = ({ color, title_position, title, enforce_size, bullet_points_position, bullet_points }) => (
+> = ({
+  color,
+  title_position,
+  title,
+  enforce_size,
+  bullet_points_position,
+  bullet_points,
+}) => (
   <BulletPointSectionWrapper color={color && color.color}>
     <ContentWrapper>
       {title && <Title position={title_position}>{title}</Title>}
