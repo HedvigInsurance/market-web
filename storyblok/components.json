@@ -994,33 +994,37 @@
           "description": "Will be suffixed with \".<format>\" . Ie. https://cdn.hedvig.com/www/about-us-video/web. Formats that must be present are png (for the poster), m3u8, mp4 and webm",
           "pos": 0
         },
-        "use_text_drop_shadow": {
-          "type": "boolean",
-          "pos": 1,
-          "description": "",
-          "display_name": ""
-        },
-        "background_color": {
-          "type": "custom",
-          "pos": 2,
-          "field_type": "native-color-picker",
-          "options": [],
-          "description": "As shown while loading the poster"
-        },
         "headline": {
           "type": "text",
-          "pos": 3,
+          "pos": 1,
           "translatable": true
         },
         "title": {
           "type": "text",
-          "pos": 4,
+          "pos": 2,
           "translatable": true
         },
         "play_button_text": {
           "type": "text",
-          "pos": 5,
+          "pos": 3,
           "translatable": true
+        },
+        "use_text_drop_shadow": {
+          "type": "boolean",
+          "pos": 4,
+          "description": "",
+          "display_name": ""
+        },
+        "use_shadow": {
+          "type": "boolean",
+          "pos": 5
+        },
+        "background_color": {
+          "type": "custom",
+          "pos": 6,
+          "field_type": "native-color-picker",
+          "options": [],
+          "description": "As shown while loading the poster"
         }
       },
       "image": null,

@@ -9,7 +9,7 @@ import {
   CONTENT_MAX_WIDTH,
   MOBILE_BP_DOWN,
 } from '../../components/blockHelpers'
-import { BaseBlockProps } from '../BaseBlockProps'
+import { BaseBlockProps, ColorComponent } from '../BaseBlockProps'
 import { CloseButton } from './CloseButton'
 import { Player } from './Player'
 import { Title } from './Title'
@@ -19,11 +19,23 @@ interface HeroVideoBlockProps extends BaseBlockProps {
   headline: string
   title: string
   play_button_text: string
+  background_color: ColorComponent
+  use_text_drop_shadow: boolean
+  use_shadow: boolean
 }
 
-const Background = styled('div')({
-  backgroundColor: 'black',
-})
+const Background = styled('div')(
+  ({
+    backgroundColor,
+    useTextDropShadow,
+  }: {
+    backgroundColor: string
+    useTextDropShadow: boolean
+  }) => ({
+    backgroundColor,
+    textShadow: useTextDropShadow ? '1px 1px 3px rgba(0, 0, 0, .5)' : undefined,
+  }),
+)
 
 const HeroContainer = styled('div')({
   width: '100%',
@@ -34,6 +46,7 @@ const HeroContainer = styled('div')({
 })
 
 interface ShadowProps {
+  useShadow: boolean
   hidden: boolean
 }
 
@@ -44,7 +57,6 @@ const Shadow = styled('div')(
     height: '100%',
     top: 0,
     left: 0,
-    backgroundColor: 'rgba(0,0,0,0.7)',
     padding: CONTENT_GUTTER,
     display: 'flex',
     flexDirection: 'column',
@@ -55,9 +67,10 @@ const Shadow = styled('div')(
       padding: CONTENT_GUTTER_MOBILE,
     },
   },
-  ({ hidden }: ShadowProps) => ({
+  ({ useShadow, hidden }: ShadowProps) => ({
     opacity: hidden ? 0 : 1,
     pointerEvents: hidden ? 'none' : 'all',
+    backgroundColor: useShadow ? 'rgba(0,0,0,0.7)' : undefined,
   }),
 )
 
@@ -105,8 +118,14 @@ export const HeroVideoBlock: React.FunctionComponent<HeroVideoBlockProps> = ({
   title,
   play_button_text,
   video_file_location,
+  background_color,
+  use_text_drop_shadow,
+  use_shadow,
 }) => (
-  <Background>
+  <Background
+    backgroundColor={background_color.color}
+    useTextDropShadow={use_text_drop_shadow}
+  >
     <Container
       actions={actions}
       initialState={{
@@ -120,8 +139,9 @@ export const HeroVideoBlock: React.FunctionComponent<HeroVideoBlockProps> = ({
             isFullScreen={isFullScreen}
             videoRef={videoRef}
             baseVideoUrl={video_file_location}
+            backgroundColor={background_color.color}
           />
-          <Shadow hidden={isFullScreen}>
+          <Shadow useShadow={use_shadow} hidden={isFullScreen}>
             <Title
               headline={headline}
               title={title}
