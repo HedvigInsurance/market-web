@@ -19,6 +19,7 @@ interface HeroVideoBlockProps extends BaseBlockProps {
   headline: string
   title: string
   play_button_text: string
+  cta_text: string
   background_color: ColorComponent
   use_text_drop_shadow: boolean
   use_shadow: boolean
@@ -117,6 +118,7 @@ export const HeroVideoBlock: React.FunctionComponent<HeroVideoBlockProps> = ({
   headline,
   title,
   play_button_text,
+  cta_text,
   video_file_location,
   background_color,
   use_text_drop_shadow,
@@ -146,6 +148,7 @@ export const HeroVideoBlock: React.FunctionComponent<HeroVideoBlockProps> = ({
               headline={headline}
               title={title}
               playButtonText={play_button_text}
+              ctaText={cta_text}
               clickedPlayButton={onPlay({ videoRef, setFullScreen })}
             />
           </Shadow>
