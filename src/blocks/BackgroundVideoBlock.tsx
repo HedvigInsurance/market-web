@@ -28,25 +28,34 @@ const Wrapper = styled('section')({
   },
 })
 
-const Background = styled('div')({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  bottom: 0,
-  width: '100%',
-  height: '100%',
-  zIndex: -1,
-  backgroundColor: 'rgb(97, 55, 243)',
-})
-const BackgroundEvener = styled('div')({
-  height: 60,
-  position: 'relative',
-  marginTop: -60,
-  zIndex: 2,
-  background:
-    'linear-gradient(to bottom, rgba(97, 55, 243,0), rgba(97, 55, 243, 1))',
-})
+const Background = styled('div')(
+  ({ backgroundColor }: { backgroundColor: string }) => ({
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: -1,
+    backgroundColor,
+  }),
+)
+const BackgroundEvener = styled('div')(
+  ({
+    backgroundGradientStart,
+    background,
+  }: {
+    backgroundGradientStart: string
+    background: string
+  }) => ({
+    height: 60,
+    position: 'relative',
+    marginTop: -60,
+    zIndex: 2,
+    background: `linear-gradient(to bottom, ${backgroundGradientStart}, ${background})`,
+  }),
+)
 const Video = styled('video')({
   position: 'relative',
   width: '100%',
@@ -69,9 +78,10 @@ const Content = styled(ContentWrapper)({
   },
 })
 
-const Title = styled('h1')({
+const Title = styled('h1')(({ useDropShadow }: { useDropShadow: boolean }) => ({
   maxWidth: '66%',
   fontSize: '4.5rem',
+  textShadow: useDropShadow ? '1px 1px 5px rgba(0, 0, 0, .3)' : undefined,
 
   [TABLET_BP_DOWN]: {
     fontSize: '3.75rem',
@@ -80,17 +90,19 @@ const Title = styled('h1')({
   [MOBILE_BP_DOWN]: {
     fontSize: '3rem',
   },
-})
-const Paragraph = styled('div')({
-  fontSize: '1.125rem',
-  marginTop: '1.5rem',
-  maxWidth: '50%',
+}))
+const Paragraph = styled('div')(
+  ({ useDropShadow }: { useDropShadow: boolean }) => ({
+    fontSize: '1.125rem',
+    marginTop: '1.5rem',
+    maxWidth: '50%',
 
-  [TABLET_BP_DOWN]: {
-    maxWidth: 'none',
-  },
-})
-
+    [TABLET_BP_DOWN]: {
+      maxWidth: 'none',
+    },
+    textShadow: useDropShadow ? '3px 3px 5px rgba(0, 0, 0, .3)' : undefined,
+  }),
+)
 const Cta = styled(ButtonLink)({
   marginTop: '1.7rem',
   fontsize: '1.25rem',
@@ -112,7 +124,11 @@ const GhostCta = styled(Cta)({
   },
 })
 
-interface PapersPhoneVideoBlockProps extends BaseBlockProps {
+interface BackgroundVideoBlockProps extends BaseBlockProps {
+  video_file_location: string
+  use_text_drop_shadow: boolean
+  background_gradient_start: string
+  background_color: string
   title: string
   paragraph: MarkdownHtmlComponent
   cta_label: string
@@ -123,8 +139,8 @@ interface PapersPhoneVideoBlockProps extends BaseBlockProps {
   ghost_cta_label: string
 }
 
-export const PapersPhoneVideoBlock: React.FunctionComponent<
-  PapersPhoneVideoBlockProps
+export const BackgroundVideoBlock: React.FunctionComponent<
+  BackgroundVideoBlockProps
 > = (props) => (
   <Container<{ isMounted: boolean }, { mount: () => void }>
     initialState={{ isMounted: false }}
@@ -133,7 +149,7 @@ export const PapersPhoneVideoBlock: React.FunctionComponent<
     {({ mount, isMounted }) => (
       <Mount on={mount}>
         <Wrapper>
-          <Background />
+          <Background backgroundColor={props.background_color} />
           {isMounted && (
             <>
               <MediaQuery query="(max-width: 800px)">
@@ -142,14 +158,14 @@ export const PapersPhoneVideoBlock: React.FunctionComponent<
                   muted
                   autoPlay
                   loop
-                  poster="https://cdn.hedvig.com/www/papers-phone/md.png"
+                  poster={`${props.video_file_location}/md.png`}
                 >
                   <source
-                    src="https://cdn.hedvig.com/www/papers-phone/md.webm"
+                    src={`${props.video_file_location}/md.webm`}
                     type="video/webm"
                   />
                   <source
-                    src="https://cdn.hedvig.com/www/papers-phone/md.mp4"
+                    src={`${props.video_file_location}/md.mp4`}
                     type="video/mp4"
                   />
                 </Video>
@@ -160,14 +176,14 @@ export const PapersPhoneVideoBlock: React.FunctionComponent<
                   muted
                   autoPlay
                   loop
-                  poster="https://cdn.hedvig.com/www/papers-phone/lg.png"
+                  poster={`${props.video_file_location}/lg.png`}
                 >
                   <source
-                    src="https://cdn.hedvig.com/www/papers-phone/lg.webm"
+                    src={`${props.video_file_location}/lg.webm`}
                     type="video/webm"
                   />
                   <source
-                    src="https://cdn.hedvig.com/www/papers-phone/lg.mp4"
+                    src={`${props.video_file_location}/lg.mp4`}
                     type="video/mp4"
                   />
                 </Video>
@@ -178,14 +194,14 @@ export const PapersPhoneVideoBlock: React.FunctionComponent<
                   muted
                   autoPlay
                   loop
-                  poster="https://cdn.hedvig.com/www/papers-phone/xl.png"
+                  poster={`${props.video_file_location}/xl.png`}
                 >
                   <source
-                    src="https://cdn.hedvig.com/www/papers-phone/xl.webm"
+                    src={`${props.video_file_location}/xl.webm`}
                     type="video/webm"
                   />
                   <source
-                    src="https://cdn.hedvig.com/www/papers-phone/xl.mp4"
+                    src={`${props.video_file_location}/xl.mp4`}
                     type="video/mp4"
                   />
                 </Video>
@@ -196,28 +212,34 @@ export const PapersPhoneVideoBlock: React.FunctionComponent<
                   muted
                   autoPlay
                   loop
-                  poster="https://cdn.hedvig.com/www/papers-phone/xxl.png"
+                  poster={`${props.video_file_location}/xxl.png`}
                 >
                   <source
-                    src="https://cdn.hedvig.com/www/papers-phone/xxl.webm"
+                    src={`${props.video_file_location}/xxl.webm`}
                     type="video/webm"
                   />
                   <source
-                    src="https://cdn.hedvig.com/www/papers-phone/xxl.mp4"
+                    src={`${props.video_file_location}/xxl.mp4`}
                     type="video/mp4"
                   />
                 </Video>
               </MediaQuery>
-              <BackgroundEvener />
             </>
           )}
+          <BackgroundEvener
+            backgroundGradientStart={props.background_gradient_start}
+            background={props.background_color}
+          />
 
           <Content>
-            <Title>{props.title}</Title>
+            <Title useDropShadow={props.use_text_drop_shadow}>
+              {props.title}
+            </Title>
             <Paragraph
               dangerouslySetInnerHTML={{
                 __html: props.paragraph && props.paragraph.html,
               }}
+              useDropShadow={props.use_text_drop_shadow}
             />
 
             {props.cta_branch_link ? (

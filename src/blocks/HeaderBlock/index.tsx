@@ -10,6 +10,7 @@ import { HedvigWordmark } from '../../components/icons/HedvigWordmark'
 import {
   GlobalStory,
   GlobalStoryContainer,
+  LinkComponent,
 } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok'
 import { BaseBlockProps } from '../BaseBlockProps'
@@ -110,6 +111,8 @@ const ButtonWrapper = styled('div')({
 interface HeaderBlockProps extends BaseBlockProps {
   is_transparent: boolean
   inverse_colors: boolean
+  override_cta_link?: LinkComponent | null
+  override_cta_label?: string | null
 }
 
 class Header extends React.PureComponent<
@@ -185,23 +188,53 @@ class Header extends React.PureComponent<
                       ),
                     )}
 
-                    {this.props.story.content.show_cta &&
-                      (this.props.story.content.cta_branch_link ? (
-                        <AppLink>
-                          {({ link, handleClick }) => (
-                            <ButtonWrapper>
-                              <ButtonLink
-                                size="sm"
-                                bold
-                                href={link}
-                                onClick={handleClick}
-                              >
-                                {this.props.story.content.cta_label}
-                              </ButtonLink>
-                            </ButtonWrapper>
-                          )}
-                        </AppLink>
-                      ) : (
+                    {(() => {
+                      const label =
+                        this.props.override_cta_label ||
+                        this.props.story.content.cta_label
+
+                      if (
+                        this.props.override_cta_link &&
+                        this.props.override_cta_link.cached_url
+                      ) {
+                        return (
+                          <ButtonWrapper>
+                            <ButtonLink
+                              size="sm"
+                              bold
+                              href={getStoryblokLinkUrl(
+                                this.props.override_cta_link,
+                              )}
+                            >
+                              {label}
+                            </ButtonLink>
+                          </ButtonWrapper>
+                        )
+                      }
+
+                      if (
+                        this.props.story.content.show_cta &&
+                        this.props.story.content.cta_branch_link
+                      ) {
+                        return (
+                          <AppLink>
+                            {({ link, handleClick }) => (
+                              <ButtonWrapper>
+                                <ButtonLink
+                                  size="sm"
+                                  bold
+                                  href={link}
+                                  onClick={handleClick}
+                                >
+                                  {label}
+                                </ButtonLink>
+                              </ButtonWrapper>
+                            )}
+                          </AppLink>
+                        )
+                      }
+
+                      return (
                         <ButtonWrapper>
                           <ButtonLink
                             size="sm"
@@ -210,10 +243,11 @@ class Header extends React.PureComponent<
                               this.props.story.content.cta_link,
                             )}
                           >
-                            {this.props.story.content.cta_label}
+                            {label}
                           </ButtonLink>
                         </ButtonWrapper>
-                      ))}
+                      )
+                    })()}
                   </Menu>
                 </InnerHeaderWrapper>
               </ContentWrapper>

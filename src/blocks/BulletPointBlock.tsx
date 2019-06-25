@@ -17,7 +17,7 @@ const BulletPointSectionWrapper = styled(SectionWrapper)({
   overflowX: 'hidden',
 })
 
-const BulletPointsWrapper = styled('div')(
+const InnerWrapper = styled('div')(
   ({ position }: { position: TextPosition }) => ({
     display: 'flex',
     justifyContent: textFlexPositionMap[position],
@@ -26,6 +26,13 @@ const BulletPointsWrapper = styled('div')(
     minWidth: '100%',
   }),
 )
+const Title = styled('h2')(({ position }: { position: TextPosition }) => ({
+  display: 'flex',
+  justifyContent: textFlexPositionMap[position],
+  minWidth: '100%',
+  marginTop: 0,
+  marginBottom: '2rem',
+}))
 
 const BulletPoint = styled('div')({
   display: 'flex',
@@ -72,6 +79,8 @@ const BulletPointTitle = styled('h3')({
 })
 
 interface BulletPointsBlockProps extends BaseBlockProps {
+  title?: string
+  title_position: TextPosition
   bullet_points_position: TextPosition
   enforce_size: boolean
   bullet_points: ReadonlyArray<
@@ -85,10 +94,18 @@ interface BulletPointsBlockProps extends BaseBlockProps {
 
 export const BulletPointBlock: React.FunctionComponent<
   BulletPointsBlockProps
-> = ({ color, enforce_size, bullet_points_position, bullet_points }) => (
+> = ({
+  color,
+  title_position,
+  title,
+  enforce_size,
+  bullet_points_position,
+  bullet_points,
+}) => (
   <BulletPointSectionWrapper color={color && color.color}>
     <ContentWrapper>
-      <BulletPointsWrapper position={bullet_points_position}>
+      {title && <Title position={title_position}>{title}</Title>}
+      <InnerWrapper position={bullet_points_position}>
         {bullet_points.map((bullet) => (
           <BulletPoint key={bullet._uid}>
             <BulletPointHead forceSize={enforce_size}>
@@ -107,7 +124,7 @@ export const BulletPointBlock: React.FunctionComponent<
             </BulletPointBody>
           </BulletPoint>
         ))}
-      </BulletPointsWrapper>
+      </InnerWrapper>
     </ContentWrapper>
   </BulletPointSectionWrapper>
 )
