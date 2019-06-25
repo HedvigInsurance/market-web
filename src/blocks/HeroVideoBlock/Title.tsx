@@ -1,6 +1,8 @@
+import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
 import styled from 'react-emotion'
 import { animated, config, Spring } from 'react-spring'
+import { AppLink } from '../../components/AppLink'
 import { MOBILE_BP_DOWN } from '../../components/blockHelpers'
 
 const PlayIcon: React.FunctionComponent<{ className?: string }> = ({
@@ -56,9 +58,16 @@ const Mission = styled(animated.h1)({
   },
 })
 
+const ButtonsWrapper = styled('div')({
+  display: 'flex',
+  marginTop: '2rem',
+  alignItems: 'center',
+})
+
 const PlayButtonContainer = styled('div')({
   display: 'inline-block',
-  width: 160,
+  maxWidth: 260,
+  paddingRight: '1rem',
   transition: 'transform 350ms',
   ':active': {
     transform: 'scale(0.9)',
@@ -75,7 +84,6 @@ const PlayButton = styled(animated.button)({
   background: 'transparent',
   border: 0,
   width: '100%',
-  marginTop: '2rem',
   cursor: 'pointer',
   fontSize: 'inherit',
   ':focus': {
@@ -86,6 +94,29 @@ const PlayButton = styled(animated.button)({
   },
 })
 
+const Cta = styled(animated.a)({
+  display: 'inline-block',
+  borderRadius: 30,
+  border: `2px solid ${colors.PURPLE}`,
+  textDecoration: 'none',
+  fontWeight: 'bold',
+  fontSize: 'inherit',
+  cursor: 'pointer',
+  padding: '1rem 2rem',
+  textShadow: 'none',
+
+  backgroundColor: colors.PURPLE,
+  borderColor: colors.PURPLE,
+  color: colors.WHITE,
+  whiteSpace: 'nowrap',
+
+  '&:hover, &:focus': {
+    backgroundColor: colors.PURPLE,
+    borderColor: colors.PURPLE,
+    color: colors.WHITE,
+  },
+})
+
 const DELAY = 500
 
 interface TitleProps {
@@ -93,6 +124,7 @@ interface TitleProps {
   headline: string
   title: string
   playButtonText: string
+  ctaText: string
 }
 
 export const Title: React.FunctionComponent<TitleProps> = ({
@@ -100,6 +132,7 @@ export const Title: React.FunctionComponent<TitleProps> = ({
   title,
   playButtonText,
   clickedPlayButton,
+  ctaText,
 }) => (
   <>
     <Spring
@@ -128,12 +161,23 @@ export const Title: React.FunctionComponent<TitleProps> = ({
       to={{ opacity: 1, transform: 'translateY(0)' }}
     >
       {(styles) => (
-        <PlayButtonContainer>
-          <PlayButton onClick={clickedPlayButton} style={styles}>
-            <PlayButtonIcon />
-            {playButtonText}
-          </PlayButton>
-        </PlayButtonContainer>
+        <ButtonsWrapper>
+          <PlayButtonContainer>
+            <PlayButton onClick={clickedPlayButton} style={styles}>
+              <PlayButtonIcon />
+              {playButtonText}
+            </PlayButton>
+          </PlayButtonContainer>
+          {ctaText && (
+            <AppLink>
+              {({ link, handleClick }) => (
+                <Cta href={link} onClick={handleClick} style={styles}>
+                  {ctaText}
+                </Cta>
+              )}
+            </AppLink>
+          )}
+        </ButtonsWrapper>
       )}
     </Spring>
   </>
