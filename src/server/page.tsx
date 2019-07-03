@@ -8,6 +8,7 @@ import * as React from 'react'
 import { renderToString } from 'react-dom/server'
 import { FilledContext, HelmetProvider } from 'react-helmet-async'
 import { StaticRouter, StaticRouterContext } from 'react-router'
+import { getLangFromPath } from 'server/utils/storyblok'
 import { Logger } from 'typescript-logging'
 import { App } from '../App'
 import { sentryConfig } from './config/sentry'
@@ -43,7 +44,7 @@ const template = ({
   lang,
 }: Template) => `
   <!doctype html>
-  <html lang="${lang === 'default' ? 'sv' : lang}">
+  <html lang="${lang}">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -113,11 +114,12 @@ export const getPageMiddleware = (
 ): Koa.Middleware => async (ctx, next) => {
   const routerContext: StaticRouterContext & { statusCode?: number } = {}
   const helmetContext = {}
+  const lang = getLangFromPath(ctx.path) || 'sv'
 
   const [story, globalStory] = await Promise.all([
     getStoryblokResponseFromContext(ctx),
     getGlobalStory(
-      ctx.request.path.replace(/(^\/en)?.*/, '$1'),
+      lang,
       Boolean(
         ctx.request.query['_storyblok_tk[timestamp]'] ||
           ctx.query._storyblok_published,
@@ -135,6 +137,7 @@ export const getPageMiddleware = (
       initialState={{
         story,
         globalStory,
+        context: { lang },
         ...(ctx.state.additionalStates || {}),
       }}
     >
@@ -158,14 +161,15 @@ export const getPageMiddleware = (
 
   ctx.body = template({
     body,
+    lang,
     initialState: {
       story,
       globalStory,
+      context: { lang },
       ...(ctx.state.additionalStates || {}),
     },
     helmet: (helmetContext as FilledContext).helmet,
     dangerouslyExposeApiKeyToProvideEditing: ctx.request.query._storyblok,
     nonce: (ctx.res as any).cspNonce,
-    lang: (story && story.story.lang) || 'default',
   })
 }

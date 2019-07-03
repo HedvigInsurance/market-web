@@ -21,7 +21,10 @@ import {
 import { getPageMiddleware } from './page'
 import { sitemapXml } from './sitemap'
 import { nukeCache } from './utils/storyblok'
-import { initializeTeamtailorUsers } from './utils/teamtailor'
+import {
+  getCachedTeamtailorUsers,
+  initializeTeamtailorUsers,
+} from './utils/teamtailor'
 
 Sentry.init({
   ...sentryConfig(),
@@ -119,7 +122,21 @@ routes.forEach((route) => {
 })
 server.router.post('/_nuke-cache', nukeCache)
 
-initializeTeamtailorUsers()
+getCachedTeamtailorUsers()
+  .then(async (users) => {
+    if (users.length === 0) {
+      appLogger.info(
+        'No teamtailor users found in cache, waiting for initialization to complete before starting server',
+      )
+      return initializeTeamtailorUsers() // wait for promise to complete before continuing
+    } else {
+      appLogger.info(
+        'Teamtailor users found in cache, starting server while refreshing cache',
+      )
+      initializeTeamtailorUsers() // ignore promise since we want to start even if we're timing out TT users
+      return users
+    }
+  })
   .catch(() => {
     appLogger.error('Failed to fetch teamtailor users, ignoring')
   })
