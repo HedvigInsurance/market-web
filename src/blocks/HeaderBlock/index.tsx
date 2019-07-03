@@ -16,6 +16,7 @@ import { getStoryblokLinkUrl } from '../../utils/storyblok'
 import { BaseBlockProps } from '../BaseBlockProps'
 import { MenuItem } from './MenuItem'
 import { Burger, TABLET_BP_DOWN } from './mobile'
+import { ContextContainer } from 'components/containers/ContextContainer'
 
 export const WRAPPER_HEIGHT = '5rem'
 export const HEADER_VERTICAL_PADDING = '1.5rem'
@@ -164,16 +165,15 @@ class Header extends React.PureComponent<
               />
               <ContentWrapper>
                 <InnerHeaderWrapper>
-                  <LogoLink
-                    href={
-                      '/' +
-                      (this.props.story.lang === 'default'
-                        ? ''
-                        : this.props.story.lang)
-                    }
-                  >
-                    <HedvigWordmark height={30} />
-                  </LogoLink>
+                  <ContextContainer>
+                    {(context) => (
+                      <LogoLink
+                        href={'/' + (context.lang === 'sv' ? '' : context.lang)}
+                      >
+                        <HedvigWordmark height={30} />
+                      </LogoLink>
+                    )}
+                  </ContextContainer>
 
                   <Burger
                     isOpen={isOpen}

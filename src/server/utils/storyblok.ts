@@ -4,6 +4,7 @@ import {
   BlogStory,
   BodyStory,
   GlobalStory,
+  Story,
 } from '../../storyblok/StoryContainer'
 import { config } from '../config'
 import { appLogger } from '../logging'
@@ -104,12 +105,17 @@ export const getLangFromPath = (path: string) => {
   }
 }
 
+const sanitizeStorySlug = (story: Story) => {
+  story.full_slug = story.full_slug.replace(/^sv(\/|$)/, '$1')
+}
+
 export const getPublishedStoryFromSlug = async (
   path: string,
   bypassCache?: boolean,
 ): Promise<{ story: BodyStory }> => {
-  const lang = getLangFromPath(path)
-  const uri = encodeURI(`/v1/cdn/stories${lang === null ? '/sv' + path : path}`)
+  const lang = getLangFromPath(path) || 'sv'
+  const realSlug = path === '/' || path === '/' + lang ? `/${lang}/home` : path
+  const uri = encodeURI(`/v1/cdn/stories${realSlug}`)
   const result = await cachedGet<{ story: BodyStory }>(
     uri,
     [
@@ -130,10 +136,18 @@ export const getPublishedStoryFromSlug = async (
   const isPublic =
     result.data && result.data.story && result.data.story.content.public
 
-  if (component === 'page' && !isPublic) {
+  if (
+    (component === 'page' && !isPublic) ||
+    path === '/sv' ||
+    path.startsWith('/sv/')
+  ) {
     const err: any = new Error()
     err.response = { status: 404 }
     throw err
+  }
+
+  if (result.data && result.data.story) {
+    sanitizeStorySlug(result.data.story)
   }
 
   return result.data
