@@ -1,8 +1,8 @@
+import { ContextContainer } from 'components/containers/ContextContainer'
 import * as React from 'react'
 import styled from 'react-emotion'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
 import { LazyLottie } from '../components/LazyLottie'
-import { GlobalStoryContainer } from '../storyblok/StoryContainer'
 
 const Title = styled('h1')({
   textAlign: 'center',
@@ -14,13 +14,13 @@ const AnimationContainer = styled('div')({
 })
 
 export const FourOhFourBlock: React.FunctionComponent = () => (
-  <GlobalStoryContainer>
-    {({ globalStory }) => (
+  <ContextContainer>
+    {(context) => (
       <SectionWrapper>
         <ContentWrapper>
           <Title>
             {(() => {
-              switch (globalStory.lang) {
+              switch (context.lang) {
                 case 'en':
                   return "Oops! There's nothing here."
 
@@ -43,5 +43,5 @@ export const FourOhFourBlock: React.FunctionComponent = () => (
         </ContentWrapper>
       </SectionWrapper>
     )}
-  </GlobalStoryContainer>
+  </ContextContainer>
 )
