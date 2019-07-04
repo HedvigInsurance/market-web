@@ -114,6 +114,7 @@ export const getPageMiddleware = (
 ): Koa.Middleware => async (ctx, next) => {
   const routerContext: StaticRouterContext & { statusCode?: number } = {}
   const helmetContext = {}
+
   const lang = getLangFromPath(ctx.path) || 'sv'
 
   const [story, globalStory] = await Promise.all([
@@ -129,6 +130,11 @@ export const getPageMiddleware = (
 
   if (!story && !ignoreStoryblokMiss) {
     await next()
+    return
+  }
+
+  if (getLangFromPath(ctx.path) === 'sv' && !ctx.query._storyblok) {
+    ctx.redirect(ctx.originalUrl.replace(/^\/sv/, ''))
     return
   }
 
