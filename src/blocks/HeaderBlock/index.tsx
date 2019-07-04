@@ -1,4 +1,5 @@
 import { colors } from '@hedviginsurance/brand'
+import { ContextContainer } from 'components/containers/ContextContainer'
 import * as React from 'react'
 import styled from 'react-emotion'
 import { Mount, Unmount } from 'react-lifecycle-components'
@@ -16,7 +17,6 @@ import { getStoryblokLinkUrl } from '../../utils/storyblok'
 import { BaseBlockProps } from '../BaseBlockProps'
 import { MenuItem } from './MenuItem'
 import { Burger, TABLET_BP_DOWN } from './mobile'
-import { ContextContainer } from 'components/containers/ContextContainer'
 
 export const WRAPPER_HEIGHT = '5rem'
 export const HEADER_VERTICAL_PADDING = '1.5rem'
