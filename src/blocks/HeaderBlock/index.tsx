@@ -1,4 +1,5 @@
 import { colors } from '@hedviginsurance/brand'
+import { ContextContainer } from 'components/containers/ContextContainer'
 import * as React from 'react'
 import styled from 'react-emotion'
 import { Mount, Unmount } from 'react-lifecycle-components'
@@ -164,16 +165,15 @@ class Header extends React.PureComponent<
               />
               <ContentWrapper>
                 <InnerHeaderWrapper>
-                  <LogoLink
-                    href={
-                      '/' +
-                      (this.props.story.lang === 'default'
-                        ? ''
-                        : this.props.story.lang)
-                    }
-                  >
-                    <HedvigWordmark height={30} />
-                  </LogoLink>
+                  <ContextContainer>
+                    {(context) => (
+                      <LogoLink
+                        href={'/' + (context.lang === 'sv' ? '' : context.lang)}
+                      >
+                        <HedvigWordmark height={30} />
+                      </LogoLink>
+                    )}
+                  </ContextContainer>
 
                   <Burger
                     isOpen={isOpen}

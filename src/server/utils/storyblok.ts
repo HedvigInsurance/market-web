@@ -4,6 +4,7 @@ import {
   BlogStory,
   BodyStory,
   GlobalStory,
+  Story,
 } from '../../storyblok/StoryContainer'
 import { config } from '../config'
 import { appLogger } from '../logging'
@@ -19,9 +20,15 @@ const apiClient = () =>
 
 export const nukeCache: Middleware = async (ctx) => {
   const keys = await redisClient.keys('storyblok:*')
+  ctx.status = 204
+
+  if (keys.length === 0) {
+    appLogger.info('Tried to nuke cache but no keys found, skipping')
+    return
+  }
+
   appLogger.warn(`Nuking cache for ${keys.length} pages`)
   await redisClient.del(...keys)
-  ctx.status = 204
 }
 
 const cachedGet = async <T>(
@@ -69,7 +76,7 @@ export const getGlobalStory = async (
   locale: string,
   bypassCache?: boolean,
 ): Promise<{ story: GlobalStory } | undefined> => {
-  const uri = encodeURI(`/v1/cdn/stories/${locale ? locale + '/' : ''}global`)
+  const uri = encodeURI(`/v1/cdn/stories/${locale}/global`)
   const result = await cachedGet<{ story: GlobalStory }>(
     uri,
     [
@@ -87,21 +94,28 @@ export const getGlobalStory = async (
   return result && result.data && result.data
 }
 
-const getLangFromPath = (path: string) => {
+export const getLangFromPath = (path: string) => {
   switch (true) {
-    case /^\/en/.test(path):
+    case /^\/en($|\/.*)/.test(path):
       return 'en'
+    case /^\/sv\/.*/.test(path):
+      return 'sv'
     default:
-      return 'default'
+      return null
   }
 }
+
+const sanitizeStorySlug = (story: Story) => {
+  story.full_slug = story.full_slug.replace(/^sv(\/|$)/, '$1')
+}
+
 export const getPublishedStoryFromSlug = async (
   path: string,
   bypassCache?: boolean,
 ): Promise<{ story: BodyStory }> => {
-  const uri = encodeURI(
-    `/v1/cdn/stories${path.replace(/^(\/en|^\/)?$/, '$1/home')}`,
-  )
+  const lang = getLangFromPath(path)
+  const realSlug = (lang === null ? '/sv' : '') + path
+  const uri = encodeURI(`/v1/cdn/stories${realSlug}`)
   const result = await cachedGet<{ story: BodyStory }>(
     uri,
     [
@@ -117,21 +131,28 @@ export const getPublishedStoryFromSlug = async (
     bypassCache,
   )
 
-  const lang =
-    (result.data && result.data.story && result.data.story.lang) || ''
   const component =
     result.data && result.data.story && result.data.story.content.component
   const isPublic =
     result.data && result.data.story && result.data.story.content.public
 
-  if (getLangFromPath(path) !== lang || (component === 'page' && !isPublic)) {
+  if (
+    (component === 'page' && !isPublic) ||
+    path === '/sv' ||
+    path.startsWith('/sv/')
+  ) {
     const err: any = new Error()
     err.response = { status: 404 }
     throw err
   }
 
+  if (result.data && result.data.story) {
+    sanitizeStorySlug(result.data.story)
+  }
+
   return result.data
 }
+
 export const getDraftedStoryById = (id: string, cacheVersion: string) =>
   apiClient()
     .get<{ story: BodyStory }>(encodeURI(`/v1/cdn/stories/${id}`), {
