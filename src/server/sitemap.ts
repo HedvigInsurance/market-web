@@ -20,11 +20,14 @@ const getSitemapLinks = async () => {
       (key) =>
         nextLinks.data.links[key].published &&
         !nextLinks.data.links[key].is_folder &&
-        !/^global\//.test(nextLinks.data.links[key].slug),
+        !/^[\w]{2}\/global\//.test(nextLinks.data.links[key].slug),
     )
     .map(
-      (key) => '/' + nextLinks.data.links[key].slug.replace(/(^|\/)home$/, ''),
+      (key) =>
+        '/' + nextLinks.data.links[key].slug.replace(/(^|\/)home$/, '$1'),
     )
+    .map((url) => url.replace(/^\/sv(\/|$)/, '$1'))
+    .map((url) => url.replace(/(.+)\/$/, '$1'))
     .map((url) => ({
       url,
       priority: 0.7,
