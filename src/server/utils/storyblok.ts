@@ -96,9 +96,9 @@ export const getGlobalStory = async (
 
 export const getLangFromPath = (path: string) => {
   switch (true) {
-    case /^\/en($|\/.+)/.test(path):
+    case /^\/en($|\/.*)/.test(path):
       return 'en'
-    case /^\/sv\/.+/.test(path):
+    case /^\/sv\/.*/.test(path):
       return 'sv'
     default:
       return null
@@ -113,8 +113,8 @@ export const getPublishedStoryFromSlug = async (
   path: string,
   bypassCache?: boolean,
 ): Promise<{ story: BodyStory }> => {
-  const lang = getLangFromPath(path) || 'sv'
-  const realSlug = path === '/' || path === '/' + lang ? `/${lang}/home` : path
+  const lang = getLangFromPath(path)
+  const realSlug = (lang === null ? '/sv' : '') + path
   const uri = encodeURI(`/v1/cdn/stories${realSlug}`)
   const result = await cachedGet<{ story: BodyStory }>(
     uri,
