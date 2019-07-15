@@ -30,16 +30,18 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
   margin-top: 0;
-  font-size: 3.5rem;
+  font-size: 5rem;
+  font-weight: 900;
 }
 h2 {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
+  font-weight: 600;
 }
 h3 {
-  font-size: 1.25rem;
+  font-size: 2.5rem;
 }
 h4 {
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 @media (max-width: 800px) {
