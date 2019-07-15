@@ -4,6 +4,9 @@
     "USE_AUTH": "true",
     "USE_HELMET": "true",
     "SYNC_STORYBLOK_ON_RELEASE": "false",
+    "REDIS_URL": {
+      "required": true
+    },
     "AUTH_NAME": {
       "required": true
     },
