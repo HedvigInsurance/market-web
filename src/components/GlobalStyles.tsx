@@ -25,7 +25,7 @@ h1, h2, h3, h4, h5, h6 {
   font-kerning: none;
   margin: 1.414rem 0 0.5rem;
   font-weight: inherit;
-  line-height: 1.2;
+  line-height: 1.0;
 }
 
 h1 {
