@@ -18,8 +18,8 @@ import { BaseBlockProps } from '../BaseBlockProps'
 import { MenuItem } from './MenuItem'
 import { Burger, TABLET_BP_DOWN } from './mobile'
 
-export const WRAPPER_HEIGHT = '5rem'
-export const HEADER_VERTICAL_PADDING = '1.5rem'
+export const WRAPPER_HEIGHT = '4rem'
+export const HEADER_VERTICAL_PADDING = '1.2rem'
 export const TOGGLE_TRANSITION_TIME = 250
 
 const isBelowScrollThreshold = () =>
@@ -53,7 +53,6 @@ const HeaderBackgroundFiller = styled('div')(
     height: WRAPPER_HEIGHT,
     backgroundColor: colors.WHITE,
     opacity: transparent && !isBelowScrollThreshold() ? 0 : 1,
-    boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.1), 0px 2px 5px rgba(0, 0, 0, 0.1)',
     transition: 'opacity 300ms',
   }),
 )

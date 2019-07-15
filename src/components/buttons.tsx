@@ -2,7 +2,7 @@ import { colors } from '@hedviginsurance/brand'
 import styled from 'react-emotion'
 
 const buttonSizes = {
-  sm: '.7rem 1.5rem',
+  sm: '.75rem 1.5rem',
   md: '1rem 2rem',
 }
 
@@ -44,6 +44,7 @@ export const Button = styled('button')(
     textDecoration: 'none',
     fontWeight: bold ? 'bold' : 'normal',
     cursor: 'pointer',
+    lineHeight: '1rem',
     ...getButtonTypeStyle(styleType),
 
     '&:hover': {
