@@ -15,7 +15,6 @@ const Title = styled('h3')({
   fontSize: 45,
   lineHeight: '50px',
   textAlign: 'center',
-  fontFamily: fonts.SORAY,
   [MEDIA_QUERY]: {
     fontSize: 60,
     lineHeight: '65px',
@@ -44,7 +43,7 @@ const Fact = styled('div')({
 const FactNumber = styled('span')({
   fontSize: 70,
   lineHeight: '75px',
-  fontFamily: fonts.SORAY,
+  fontFamily: fonts.GEOMANIST,
   [MEDIA_QUERY]: {
     fontSize: 90,
     lineHeight: '95px',

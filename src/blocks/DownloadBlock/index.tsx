@@ -1,4 +1,3 @@
-import { fonts } from '@hedviginsurance/brand'
 import * as React from 'react'
 import styled from 'react-emotion'
 
@@ -40,7 +39,6 @@ const Column = styled('div')({
 
 const Heading = styled('h1')({
   textAlign: 'center',
-  fontFamily: fonts.SORAY,
   fontSize: '2.5rem',
   [TABLET_BP_UP]: {
     fontSize: '3rem',

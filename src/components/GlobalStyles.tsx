@@ -21,7 +21,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: ${fonts.SORAY}, sans-serif;
+  font-family: ${fonts.GEOMANIST}, sans-serif;
   font-kerning: none;
   margin: 1.414rem 0 0.5rem;
   font-weight: inherit;

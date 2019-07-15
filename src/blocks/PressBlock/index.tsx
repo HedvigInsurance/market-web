@@ -1,4 +1,4 @@
-import { colors, fonts } from '@hedviginsurance/brand'
+import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
 import styled from 'react-emotion'
 
@@ -30,7 +30,6 @@ const Wrapper = styled('div')({
 const Title = styled('h3')({
   fontSize: 60,
   lineHeight: '65px',
-  fontFamily: fonts.SORAY,
   marginBottom: 40,
   '@media (max-width: 650px)': {
     fontSize: 45,

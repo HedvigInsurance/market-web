@@ -28,7 +28,6 @@ const InnerWrapper = styled('div')({
 const Title = styled('h3')({
   fontSize: 60,
   lineHeight: '65px',
-  fontFamily: fonts.SORAY,
   marginBottom: 50,
   textAlign: 'center',
   [MEDIA_QUERY]: {
@@ -63,7 +62,7 @@ const InvestorImage = styled(DeferredImage)({
 })
 
 const InvestorName = styled('span')({
-  fontFamily: fonts.SORAY,
+  fontFamily: fonts.GEOMANIST,
   fontSize: 18,
   lineHeight: '19px',
   marginTop: 15,
