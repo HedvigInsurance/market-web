@@ -49,7 +49,7 @@ const ArticleWrapper = styled('article')({
     backgroundColor: colors.PINK_LIGHT,
     borderRadius: 10,
     padding: '1.5rem',
-    fontFamily: fonts.SORAY,
+    fontFamily: fonts.GEOMANIST,
     fontSize: '2rem',
     lineHeight: 1.5,
     margin: '3rem 0',

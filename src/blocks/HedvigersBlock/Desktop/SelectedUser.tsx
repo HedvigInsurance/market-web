@@ -135,7 +135,7 @@ const Details = styled('div')(
 )
 
 const Name = styled('span')({
-  fontFamily: fonts.SORAY,
+  fontFamily: fonts.GEOMANIST,
   fontSize: '2rem',
   lineHeight: '2rem',
   color: 'white',

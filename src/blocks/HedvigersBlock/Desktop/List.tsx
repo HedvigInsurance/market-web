@@ -1,4 +1,4 @@
-import { colors, fonts } from '@hedviginsurance/brand'
+import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
 import styled from 'react-emotion'
 import { User } from '../../../server/utils/teamtailor'
@@ -17,7 +17,6 @@ const Container = styled('div')({
 
 const Title = styled('h3')({
   fontSize: '2rem',
-  fontFamily: fonts.SORAY,
   marginTop: '1.25rem',
   marginBottom: '2rem',
 })
