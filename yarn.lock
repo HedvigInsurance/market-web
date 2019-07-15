@@ -810,10 +810,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/utils/-/utils-0.8.2.tgz#576ff7fb1230185b619a75d258cbc98f0867a8dc"
   integrity sha512-rLu3wcBWH4P5q1CGoSSH/i9hrXs7SlbRLkoq9IGuoPYNGQvDJ3pt/wmOM+XgYjIDRMVIdkUWt0RsfzF50JfnCw==
 
-"@hedviginsurance/brand@^1.7.1":
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/@hedviginsurance/brand/-/brand-1.7.1.tgz#87b047fdaaf5e2b4cacafb6d8d331655285cbacf"
-  integrity sha512-A29o6dtDRlKqy2pxu7n6ukXOASqIyrwaBCvbtBxvOMFCiy1KQaMAwpFDXLXnTtgd1GAXiWzSVQLM2fIeD7C0gg==
+"@hedviginsurance/brand@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@hedviginsurance/brand/-/brand-1.8.0.tgz#ce550faf55772b0ec20b3c634cb85ceecbb19a27"
+  integrity sha512-6878STUY8eHd5vwGenh9C58qgQHUrUFhlOg0PzHJvsx6gpAM+tyXy7HWQ27/Ka+NUS6ULd1PpEbTy5/+ivGtpw==
 
 "@hedviginsurance/cli@^2.3.2":
   version "2.3.3"
