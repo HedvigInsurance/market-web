@@ -19,7 +19,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.1.0",
-    "@hedviginsurance/brand": "^1.7.1",
+    "@hedviginsurance/brand": "^1.8.0",
     "@hedviginsurance/cli": "^2.3.2",
     "@hedviginsurance/react-swipeable-views": "^0.12.20",
     "@hedviginsurance/web-survival-kit": "^1.7.0",
