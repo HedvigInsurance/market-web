@@ -37,6 +37,10 @@ const colorMap = {
     color: colors.OFF_BLACK_DARK,
     background: colors.PINK_LIGHT,
   },
+  'pink-dark': {
+    color: colors.OFF_BLACK_DARK,
+    background: colors.PINK,
+  },
   'off-white': {
     color: colors.OFF_BLACK_DARK,
     background: colors.OFF_WHITE,
@@ -53,9 +57,21 @@ const colorMap = {
     color: colors.WHITE,
     background: colors.GREEN,
   },
+  'green-dark': {
+    color: colors.WHITE,
+    background: colors.DARK_GREEN,
+  },
   purple: {
     color: colors.WHITE,
     background: colors.PURPLE,
+  },
+  'yellow-light': {
+    color: colors.LIGHT_YELLOW,
+    background: colors.OFF_BLACK_DARK,
+  },
+  'yellow-dark': {
+    color: colors.DARK_YELLOW,
+    background: colors.WHITE,
   },
 }
 

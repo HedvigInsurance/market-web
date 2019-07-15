@@ -3,11 +3,15 @@ export type colorComponentColors =
   | 'blue'
   | 'blue-dark'
   | 'pink-light'
+  | 'pink-dark'
   | 'off-white'
   | 'off-black'
   | 'off-black-dark'
   | 'green'
+  | 'green-dark'
   | 'purple'
+  | 'yellow-light'
+  | 'yellow-dark'
 
 export interface ColorComponent {
   _uid: string
