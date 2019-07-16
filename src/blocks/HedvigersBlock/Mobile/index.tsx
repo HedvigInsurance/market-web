@@ -49,7 +49,7 @@ const UserInfo = styled('div')({
 
 const CardName = styled('span')({
   fontSize: '1rem',
-  fontFamily: fonts.SORAY,
+  fontFamily: fonts.GEOMANIST,
 })
 
 const CardTitle = styled('span')({
@@ -59,7 +59,6 @@ const CardTitle = styled('span')({
 const Title = styled('h3')({
   fontSize: '2.5rem',
   lineHeight: '1.1rem',
-  fontFamily: fonts.SORAY,
   padding: '1rem 3rem',
   textAlign: 'center',
   '@media (min-width: 700px)': {

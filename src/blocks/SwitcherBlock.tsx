@@ -1,4 +1,4 @@
-import { colors, fonts } from '@hedviginsurance/brand'
+import { colors } from '@hedviginsurance/brand'
 import Animated from 'animated'
 import { Container } from 'constate'
 import * as React from 'react'
@@ -81,7 +81,6 @@ const HeadlineSection = styled('div')({
 
 const Headline = styled('h2')({
   paddingBottom: '2rem',
-  fontFamily: fonts.SORAY,
 })
 
 const Paragraph = styled('div')({
