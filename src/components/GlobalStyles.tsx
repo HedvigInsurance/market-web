@@ -21,25 +21,27 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: ${fonts.SORAY}, sans-serif;
+  font-family: ${fonts.GEOMANIST}, sans-serif;
   font-kerning: none;
   margin: 1.414rem 0 0.5rem;
   font-weight: inherit;
-  line-height: 1.2;
+  line-height: 1.0;
 }
 
 h1 {
   margin-top: 0;
-  font-size: 3.5rem;
+  font-size: 5rem;
+  font-weight: 900;
 }
 h2 {
-  font-size: 2.5rem;
+  font-size: 3.5rem;
+  font-weight: 600;
 }
 h3 {
-  font-size: 1.25rem;
+  font-size: 2.5rem;
 }
 h4 {
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 @media (max-width: 800px) {
