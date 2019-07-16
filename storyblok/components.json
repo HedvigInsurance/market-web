@@ -1006,6 +1006,13 @@
         },
         "override_cta_link": {
           "type": "multilink"
+        },
+        "override_mobile_header_cta_label": {
+          "type": "text",
+          "translatable": false
+        },
+        "override_mobile_header_cta_link": {
+          "type": "multilink"
         }
       },
       "image": null,
