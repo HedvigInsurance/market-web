@@ -62,7 +62,7 @@ const MiddleBurger = styled('div')(({ isOpen, isClosing }: TogglableState) => ({
   height: 3,
   backgroundColor: isOpen && !isClosing ? 'transparent' : 'currentColor',
   transition: 'background-color 300ms',
-  transform: 'translateY(-1.5px)',
+  transform: 'translateY(-1px)',
 }))
 
 export const NavToggle = styled('button')(
