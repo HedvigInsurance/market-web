@@ -124,6 +124,8 @@ interface HeaderBlockProps extends BaseBlockProps {
   inverse_colors: boolean
   override_cta_link?: LinkComponent | null
   override_cta_label?: string | null
+  override_mobile_header_cta_label?: string | null
+  override_mobile_header_cta_link?: LinkComponent | null
 }
 
 class Header extends React.PureComponent<
@@ -133,13 +135,15 @@ class Header extends React.PureComponent<
   private wrapperRef: null | HTMLDivElement = null
 
   public render() {
-    const ctaLabel =
-      this.props.override_cta_label || this.props.story.content.cta_label
-    const ctaLinkSrc = (this.props.override_cta_link &&
-    this.props.override_cta_link.cached_url
-      ? this.props.override_cta_link.cached_url
-      : this.props.story.content.cta_link) as LinkComponent
-    const ctaLink = getStoryblokLinkUrl(ctaLinkSrc)
+    const mobileHeaderCtaLabel =
+      this.props.override_mobile_header_cta_label ||
+      this.props.story.content.cta_label
+
+    const mobileHeaderCtaLinkSrc =
+      this.props.override_cta_link && this.props.override_cta_link.cached_url
+        ? this.props.override_cta_link
+        : this.props.story.content.cta_link
+    const mobileHeaderCtaLink = getStoryblokLinkUrl(mobileHeaderCtaLinkSrc)
     return (
       <>
         <Mount
@@ -204,8 +208,8 @@ class Header extends React.PureComponent<
                   </RightContainer>
 
                   {!isOpen && (
-                    <MobileHeaderLink size="sm" bold href={ctaLink}>
-                      {ctaLabel}
+                    <MobileHeaderLink size="sm" bold href={mobileHeaderCtaLink}>
+                      {mobileHeaderCtaLabel}
                     </MobileHeaderLink>
                   )}
 
@@ -217,6 +221,10 @@ class Header extends React.PureComponent<
                     )}
 
                     {(() => {
+                      const ctaLabel =
+                        this.props.override_cta_label ||
+                        this.props.story.content.cta_label
+
                       if (
                         this.props.override_cta_link &&
                         this.props.override_cta_link.cached_url
