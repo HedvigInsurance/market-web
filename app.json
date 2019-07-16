@@ -3,6 +3,7 @@
   "env": {
     "USE_AUTH": "true",
     "USE_HELMET": "true",
+    "SYNC_STORYBLOK_ON_RELEASE": "false",
     "AUTH_NAME": {
       "required": true
     },
@@ -16,7 +17,12 @@
       "required": true
     }
   },
-  "addons": [],
+  "addons": [
+    {
+      "plan": "heroku-redis:hobby-dev",
+      "as": "REDIS"
+    }
+  ],
   "buildpacks": [
     {
       "url": "heroku/nodejs"
