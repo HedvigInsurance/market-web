@@ -1,4 +1,4 @@
-import { colors } from '@hedviginsurance/brand'
+import { colors, fonts } from '@hedviginsurance/brand'
 import { Container } from 'constate'
 import * as React from 'react'
 import AnimateHeight from 'react-animate-height'
@@ -40,6 +40,8 @@ const MenuLink = styled('a')({
   color: 'inherit',
   textDecoration: 'none',
   padding: '0 1rem',
+  fontFamily: fonts.GEOMANIST,
+  fontSize: '1.5rem',
 
   '&:last-of-type': {
     paddingRight: 0,

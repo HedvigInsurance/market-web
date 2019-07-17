@@ -12,16 +12,19 @@ import { HEADER_VERTICAL_PADDING, TOGGLE_TRANSITION_TIME } from './index'
 export const TABLET_BP_DOWN = '@media (max-width: 1000px)'
 export const TABLET_BP_UP = '@media (min-width: 1001px)'
 
+const BURGER_LINE_WIDTH = '1.625rem'
+
 export const CrossBurger = styled('div')(
   ({ isOpen, isClosing }: TogglableState) => ({
     width: '100%',
+    position: 'absolute',
 
     '&::before, &::after': {
       position: 'absolute',
       left: 0,
       right: 0,
       content: '" "',
-      width: '100%',
+      width: BURGER_LINE_WIDTH,
       height: 3,
       backgroundColor: 'currentColor',
       transition:
@@ -29,7 +32,7 @@ export const CrossBurger = styled('div')(
     },
 
     '&::before': {
-      top: 0,
+      top: 6,
       ...(isOpen && !isClosing
         ? {
             transform: 'translateY(-1.5px) rotate(45deg)',
@@ -39,7 +42,7 @@ export const CrossBurger = styled('div')(
         : {}),
     },
     '&::after': {
-      bottom: 0,
+      bottom: 5,
       ...(isOpen && !isClosing
         ? {
             bottom: '50%',
@@ -52,7 +55,6 @@ export const CrossBurger = styled('div')(
 )
 
 const MiddleBurger = styled('div')(({ isOpen, isClosing }: TogglableState) => ({
-  position: 'absolute',
   width: '100%',
   top: '50%',
   left: 0,
@@ -60,20 +62,19 @@ const MiddleBurger = styled('div')(({ isOpen, isClosing }: TogglableState) => ({
   height: 3,
   backgroundColor: isOpen && !isClosing ? 'transparent' : 'currentColor',
   transition: 'background-color 300ms',
-  transform: 'translateY(-1.5px)',
+  transform: 'translateY(-1px)',
 }))
 
 export const NavToggle = styled('button')(
   ({ preventInverse }: { preventInverse: boolean }) => ({
     display: 'block',
-    position: 'absolute',
     right: CONTENT_GUTTER,
     top: HEADER_VERTICAL_PADDING,
     appearance: 'none',
     background: 'transparent',
     border: '0',
-    width: '1.5rem',
-    height: '1.5rem',
+    width: BURGER_LINE_WIDTH,
+    padding: 0,
     zIndex: 102,
     color: preventInverse ? colors.OFF_BLACK_DARK : 'inherit',
     transition: `color ${TOGGLE_TRANSITION_TIME}ms`,
