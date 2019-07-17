@@ -99,10 +99,30 @@ const sectionSizeStyles = {
 
 export const getColorStyles = (color: colorComponentColors) => colorMap[color]
 
-export const getSectionSizeStyle = (sectionSize: SectionSize) =>
-  sectionSizeStyles[sectionSize]
+export const getSectionSizeStyle = (size: SectionSize) =>
+  sectionSizeStyles[size]
 
 export const SectionWrapper = styled('section')(
+  ({
+    color = 'standard',
+    backgroundImage = 'none',
+  }: {
+    color?: colorComponentColors
+    size?: SectionSize
+    backgroundImage?: string
+  }) => ({
+    ...getColorStyles(color),
+    ...(backgroundImage !== 'none' &&
+      backgroundImage !== '' && {
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
+      }),
+  }),
+)
+
+export const MarginSectionWrapper = styled('section')(
   ({
     color = 'standard',
     size = 'lg',
@@ -114,12 +134,13 @@ export const SectionWrapper = styled('section')(
   }) => ({
     ...getSectionSizeStyle(size),
     ...getColorStyles(color),
-    ...(backgroundImage !== 'none' && {
-      backgroundImage: `url(${backgroundImage})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center center',
-      backgroundRepeat: 'no-repeat',
-    }),
+    ...(backgroundImage !== 'none' &&
+      backgroundImage !== '' && {
+        backgroundImage: `url(${backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center center',
+        backgroundRepeat: 'no-repeat',
+      }),
   }),
 )
 

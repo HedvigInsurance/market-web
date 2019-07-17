@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled from 'react-emotion'
 import {
   ContentWrapper,
-  SectionWrapper,
+  MarginSectionWrapper,
   TABLET_BP_DOWN,
 } from '../components/blockHelpers'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
@@ -153,7 +153,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   media_position,
 }) => {
   return (
-    <SectionWrapper
+    <MarginSectionWrapper
       color={color && color.color}
       size={size}
       backgroundImage={background_image}
@@ -220,6 +220,6 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
             />
           ))}
       </AlignableContentWrapper>
-    </SectionWrapper>
+    </MarginSectionWrapper>
   )
 }
