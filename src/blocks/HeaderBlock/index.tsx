@@ -16,10 +16,10 @@ import {
 import { getStoryblokLinkUrl } from '../../utils/storyblok'
 import { BaseBlockProps } from '../BaseBlockProps'
 import { MenuItem } from './MenuItem'
-import { Burger, TABLET_BP_DOWN } from './mobile'
+import { Burger, TABLET_BP_DOWN, TABLET_BP_UP } from './mobile'
 
-export const WRAPPER_HEIGHT = '5rem'
-export const HEADER_VERTICAL_PADDING = '1.5rem'
+export const WRAPPER_HEIGHT = '4rem'
+export const HEADER_VERTICAL_PADDING = '1.2rem'
 export const TOGGLE_TRANSITION_TIME = 250
 
 const isBelowScrollThreshold = () =>
@@ -53,7 +53,6 @@ const HeaderBackgroundFiller = styled('div')(
     height: WRAPPER_HEIGHT,
     backgroundColor: colors.WHITE,
     opacity: transparent && !isBelowScrollThreshold() ? 0 : 1,
-    boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.1), 0px 2px 5px rgba(0, 0, 0, 0.1)',
     transition: 'opacity 300ms',
   }),
 )
@@ -82,11 +81,11 @@ const Menu = styled('ul')(({ open }: { open: boolean }) => ({
     height: '100vh',
     top: 0,
     bottom: 0,
-    left: open ? '20%' : '100%',
+    right: open ? '20%' : '100%',
     paddingTop: `calc(${WRAPPER_HEIGHT} + ${HEADER_VERTICAL_PADDING})`,
     fontSize: 18,
     background: colors.WHITE,
-    transition: `left ${TOGGLE_TRANSITION_TIME}ms`,
+    transition: `right ${TOGGLE_TRANSITION_TIME}ms`,
     color: colors.OFF_BLACK_DARK,
     overflow: 'scroll',
     '-webkit-overflow-scrolling': 'touch',
@@ -97,6 +96,7 @@ const LogoLink = styled('a')({
   display: 'inline-flex',
   paddingTop: 3, // fix to push down logo a little or it looks unbalanced
   color: 'inherit',
+  marginLeft: '1rem',
 })
 
 const ButtonWrapper = styled('div')({
@@ -109,11 +109,23 @@ const ButtonWrapper = styled('div')({
   },
 })
 
+const RightContainer = styled('div')({
+  display: 'flex',
+})
+
+const MobileHeaderLink = styled(ButtonLink)({
+  [TABLET_BP_UP]: {
+    display: 'none',
+  },
+})
+
 interface HeaderBlockProps extends BaseBlockProps {
   is_transparent: boolean
   inverse_colors: boolean
   override_cta_link?: LinkComponent | null
   override_cta_label?: string | null
+  override_mobile_header_cta_label?: string | null
+  override_mobile_header_cta_link?: LinkComponent | null
 }
 
 class Header extends React.PureComponent<
@@ -123,6 +135,15 @@ class Header extends React.PureComponent<
   private wrapperRef: null | HTMLDivElement = null
 
   public render() {
+    const mobileHeaderCtaLabel =
+      this.props.override_mobile_header_cta_label ||
+      this.props.story.content.cta_label
+
+    const mobileHeaderCtaLinkSrc =
+      this.props.override_cta_link && this.props.override_cta_link.cached_url
+        ? this.props.override_cta_link
+        : this.props.story.content.cta_link
+    const mobileHeaderCtaLink = getStoryblokLinkUrl(mobileHeaderCtaLinkSrc)
     return (
       <>
         <Mount
@@ -165,22 +186,33 @@ class Header extends React.PureComponent<
               />
               <ContentWrapper>
                 <InnerHeaderWrapper>
-                  <ContextContainer>
-                    {(context) => (
-                      <LogoLink
-                        href={'/' + (context.lang === 'sv' ? '' : context.lang)}
-                      >
-                        <HedvigWordmark height={30} />
-                      </LogoLink>
-                    )}
-                  </ContextContainer>
+                  <RightContainer>
+                    <Burger
+                      isOpen={isOpen}
+                      isClosing={isClosing}
+                      onClick={toggleOpen}
+                      preventInverse={this.props.inverse_colors && isOpen}
+                    />
 
-                  <Burger
-                    isOpen={isOpen}
-                    isClosing={isClosing}
-                    onClick={toggleOpen}
-                    preventInverse={this.props.inverse_colors && isOpen}
-                  />
+                    <ContextContainer>
+                      {(context) => (
+                        <LogoLink
+                          href={
+                            '/' + (context.lang === 'sv' ? '' : context.lang)
+                          }
+                        >
+                          <HedvigWordmark height={24} />
+                        </LogoLink>
+                      )}
+                    </ContextContainer>
+                  </RightContainer>
+
+                  {!isOpen && (
+                    <MobileHeaderLink size="sm" bold href={mobileHeaderCtaLink}>
+                      {mobileHeaderCtaLabel}
+                    </MobileHeaderLink>
+                  )}
+
                   <Menu open={isOpen}>
                     {(this.props.story.content.header_menu_items || []).map(
                       (menuItem) => (
@@ -189,7 +221,7 @@ class Header extends React.PureComponent<
                     )}
 
                     {(() => {
-                      const label =
+                      const ctaLabel =
                         this.props.override_cta_label ||
                         this.props.story.content.cta_label
 
@@ -206,7 +238,7 @@ class Header extends React.PureComponent<
                                 this.props.override_cta_link,
                               )}
                             >
-                              {label}
+                              {ctaLabel}
                             </ButtonLink>
                           </ButtonWrapper>
                         )
@@ -226,7 +258,7 @@ class Header extends React.PureComponent<
                                   href={link}
                                   onClick={handleClick}
                                 >
-                                  {label}
+                                  {ctaLabel}
                                 </ButtonLink>
                               </ButtonWrapper>
                             )}
@@ -243,7 +275,7 @@ class Header extends React.PureComponent<
                               this.props.story.content.cta_link,
                             )}
                           >
-                            {label}
+                            {ctaLabel}
                           </ButtonLink>
                         </ButtonWrapper>
                       )
