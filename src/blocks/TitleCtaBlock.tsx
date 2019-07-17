@@ -47,6 +47,7 @@ const FlexboxContentWrapperComponent = styled(ContentWrapper)(
 const TitleComponent = styled('h2')(({ alignment }: { alignment: string }) => ({
   fontSize: '3rem',
   paddingRight: alignment === 'left' ? '7rem' : 0,
+  margin: 0,
   [TABLET_BP_DOWN]: {
     paddingRight: alignment === 'left' ? '3rem' : 0,
   },
