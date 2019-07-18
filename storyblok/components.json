@@ -360,6 +360,25 @@
           "required": false,
           "default_value": "true",
           "pos": 10
+        },
+        "button_color": {
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "type": "custom"
+        },
+        "button_weight": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "normal",
+              "name": "Normal"
+            },
+            {
+              "value": "bold",
+              "name": "Bold"
+            }
+          ]
         }
       },
       "image": null,
