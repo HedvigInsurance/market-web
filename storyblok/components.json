@@ -447,6 +447,27 @@
           "type": "multilink",
           "translatable": true,
           "pos": 11
+        },
+        "cta_color": {
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "type": "custom",
+          "pos": 12
+        },
+        "cta_weight": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "normal",
+              "name": "Normal"
+            },
+            {
+              "value": "bold",
+              "name": "Bold"
+            }
+          ],
+          "pos": 13
         }
       },
       "image": null,
@@ -1013,6 +1034,44 @@
         },
         "override_mobile_header_cta_link": {
           "type": "multilink"
+        },
+        "cta_color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": []
+        },
+        "cta_weight": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "normal",
+              "name": "Normal"
+            },
+            {
+              "value": "bold",
+              "name": "Bold"
+            }
+          ]
+        },
+        "mobile_header_cta_color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": []
+        },
+        "mobile_header_cta_weight": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "normal",
+              "name": "Normal"
+            },
+            {
+              "value": "bold",
+              "name": "Bold"
+            }
+          ]
         }
       },
       "image": null,
@@ -1512,6 +1571,27 @@
           "required": false,
           "default_value": "true",
           "pos": 15
+        },
+        "button_color": {
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "type": "custom",
+          "pos": 16
+        },
+        "button_weight": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "normal",
+              "name": "Normal"
+            },
+            {
+              "value": "bold",
+              "name": "Bold"
+            }
+          ],
+          "pos": 17
         }
       },
       "image": null,
@@ -2087,6 +2167,25 @@
           "default_value": "",
           "pos": 6,
           "translatable": true
+        },
+        "button_color": {
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "type": "custom"
+        },
+        "button_weight": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "normal",
+              "name": "Normal"
+            },
+            {
+              "value": "bold",
+              "name": "Bold"
+            }
+          ]
         }
       },
       "image": null,
