@@ -1842,6 +1842,57 @@
       "component_group_uuid": null
     },
     {
+      "name": "press_card_block",
+      "display_name": "Press Card Block",
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "cards": {
+          "type": "bloks",
+          "required": false,
+          "pos": 1,
+          "restrict_components": true,
+          "component_whitelist": ["press_card_item"]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Press Card Block",
+      "component_group_uuid": null
+    },
+    {
+      "name": "press_card_item",
+      "display_name": null,
+      "schema": {
+        "quote": {
+          "type": "text",
+          "pos": 0,
+          "required": true
+        },
+        "logo": {
+          "type": "image",
+          "pos": 1,
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "press_card_item",
+      "component_group_uuid": null
+    },
+    {
       "name": "press_item",
       "display_name": null,
       "schema": {

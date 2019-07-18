@@ -22,6 +22,7 @@ import { InvestorsBlock } from './InvestorsBlock'
 import { MediaLogosBlock } from './MediaLogosBlock'
 import { PlainTextBlock } from './PlainTextBlock'
 import { PressBlock } from './PressBlock'
+import { PressCardBlock } from './PressCardBlock'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
 import { SwitcherBlock } from './SwitcherBlock'
@@ -56,6 +57,7 @@ const blockComponents = {
   card_checklist_bullet_point_block: CardChecklistBulletPointBlock,
   animated_cta_block: AnimatedCtaBlock,
   icon_forest_block: IconForestBlock,
+  press_card_block: PressCardBlock,
 }
 
 export const getBlockComponent = <
