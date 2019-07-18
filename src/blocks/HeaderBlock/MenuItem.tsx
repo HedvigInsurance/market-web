@@ -40,8 +40,6 @@ const MenuLink = styled('a')({
   color: 'inherit',
   textDecoration: 'none',
   padding: '0 1rem',
-  fontFamily: fonts.GEOMANIST,
-  fontSize: '1.5rem',
 
   '&:last-of-type': {
     paddingRight: 0,
@@ -50,6 +48,8 @@ const MenuLink = styled('a')({
   [TABLET_BP_DOWN]: {
     display: 'inline-block',
     padding: `1rem 2rem`,
+    fontFamily: fonts.GEOMANIST,
+    fontSize: '1.5rem',
 
     '&:first-of-type': {
       paddingTop: 0,
