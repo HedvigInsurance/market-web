@@ -135,7 +135,7 @@ export const AnimatedPhoneBlock: React.FunctionComponent<
                     onClick={handleClick}
                     styleType={button_type}
                     size="sm"
-                    bold
+                    /* bold TODO Weight support*/
                   >
                     {button_title}
                   </ButtonLinkWithMargin>
@@ -146,7 +146,7 @@ export const AnimatedPhoneBlock: React.FunctionComponent<
                 href={getStoryblokLinkUrl(button_link)}
                 styleType={button_type}
                 size="sm"
-                bold
+                /* bold TODO Weight support*/
               >
                 {button_title}
               </ButtonLinkWithMargin>
