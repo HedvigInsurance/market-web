@@ -5,7 +5,11 @@ import styled from 'react-emotion'
 import { Mount, Unmount } from 'react-lifecycle-components'
 import { AppLink } from '../../components/AppLink'
 import { ContentWrapper } from '../../components/blockHelpers'
-import { ButtonLink, ButtonWeight } from '../../components/buttons'
+import {
+  ButtonLink,
+  ButtonStyleType,
+  ButtonWeight,
+} from '../../components/buttons'
 import { Togglable } from '../../components/containers/Togglable'
 import { HedvigWordmark } from '../../components/icons/HedvigWordmark'
 import {
@@ -126,10 +130,12 @@ interface HeaderBlockProps extends BaseBlockProps {
   override_cta_label?: string | null
   cta_color?: ColorComponent
   cta_weight?: ButtonWeight
+  cta_style?: ButtonStyleType
   override_mobile_header_cta_label?: string | null
   override_mobile_header_cta_link?: LinkComponent | null
   mobile_header_cta_color?: ColorComponent
   mobile_header_weight?: ButtonWeight
+  mobile_header_cta_style?: ButtonStyleType
 }
 
 class Header extends React.PureComponent<
@@ -212,17 +218,48 @@ class Header extends React.PureComponent<
                   </RightContainer>
 
                   {!isOpen && (
-                    <MobileHeaderLink
-                      size="sm"
-                      weight={this.props.mobile_header_weight}
-                      href={mobileHeaderCtaLink}
-                      color={
-                        this.props.mobile_header_cta_color &&
-                        this.props.mobile_header_cta_color.color
-                      }
-                    >
-                      {mobileHeaderCtaLabel}
-                    </MobileHeaderLink>
+                    <>
+                      {(() => {
+                        if (
+                          this.props.story.content.show_cta &&
+                          this.props.story.content.cta_branch_link
+                        ) {
+                          return (
+                            <AppLink>
+                              {({ link, handleClick }) => (
+                                <MobileHeaderLink
+                                  size="sm"
+                                  styleType={this.props.mobile_header_cta_style}
+                                  weight={this.props.mobile_header_weight}
+                                  color={
+                                    this.props.mobile_header_cta_color &&
+                                    this.props.mobile_header_cta_color.color
+                                  }
+                                  onClick={handleClick}
+                                  href={link}
+                                >
+                                  {mobileHeaderCtaLabel}
+                                </MobileHeaderLink>
+                              )}
+                            </AppLink>
+                          )
+                        }
+                        return (
+                          <MobileHeaderLink
+                            size="sm"
+                            styleType={this.props.mobile_header_cta_style}
+                            weight={this.props.mobile_header_weight}
+                            href={mobileHeaderCtaLink}
+                            color={
+                              this.props.mobile_header_cta_color &&
+                              this.props.mobile_header_cta_color.color
+                            }
+                          >
+                            {mobileHeaderCtaLabel}
+                          </MobileHeaderLink>
+                        )
+                      })()}
+                    </>
                   )}
 
                   <Menu open={isOpen}>
@@ -245,6 +282,7 @@ class Header extends React.PureComponent<
                           <ButtonWrapper>
                             <ButtonLink
                               size="sm"
+                              styleType={this.props.cta_style}
                               weight={this.props.cta_weight}
                               color={
                                 this.props.cta_color &&
@@ -271,6 +309,7 @@ class Header extends React.PureComponent<
                                 <ButtonLink
                                   size="sm"
                                   weight={this.props.cta_weight}
+                                  styleType={this.props.cta_style}
                                   color={
                                     this.props.cta_color &&
                                     this.props.cta_color.color
@@ -290,6 +329,7 @@ class Header extends React.PureComponent<
                         <ButtonWrapper>
                           <ButtonLink
                             size="sm"
+                            styleType={this.props.cta_style}
                             weight={this.props.cta_weight}
                             color={
                               this.props.cta_color && this.props.cta_color.color
