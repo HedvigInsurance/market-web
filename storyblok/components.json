@@ -487,6 +487,24 @@
             }
           ],
           "pos": 13
+        },
+        "cta_style": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "filled",
+              "name": "Filled"
+            },
+            {
+              "value": "outlined",
+              "name": "Outlined"
+            },
+            {
+              "value": "plain",
+              "name": "Plain"
+            }
+          ]
         }
       },
       "image": null,

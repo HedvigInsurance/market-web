@@ -10,7 +10,11 @@ import {
   ContentWrapper,
   MOBILE_BP_DOWN,
 } from '../components/blockHelpers'
-import { ButtonLink, ButtonWeight } from '../components/buttons'
+import {
+  ButtonLink,
+  ButtonStyleType,
+  ButtonWeight,
+} from '../components/buttons'
 import { LinkComponent } from '../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../utils/storyblok'
 import {
@@ -143,6 +147,7 @@ interface BackgroundVideoBlockProps extends BaseBlockProps {
   ghost_cta_label: string
   cta_color?: ColorComponent
   cta_weight?: ButtonWeight
+  cta_style?: ButtonStyleType
 }
 
 export const BackgroundVideoBlock: React.FunctionComponent<
@@ -257,6 +262,7 @@ export const BackgroundVideoBlock: React.FunctionComponent<
                     size="sm"
                     weight={props.cta_weight}
                     color={props.cta_color && props.cta_color.color}
+                    styleType={props.cta_style}
                   >
                     {props.cta_label}
                   </Cta>
@@ -268,6 +274,7 @@ export const BackgroundVideoBlock: React.FunctionComponent<
                 size="sm"
                 weight={props.cta_weight}
                 color={props.cta_color && props.cta_color.color}
+                styleType={props.cta_style}
               >
                 {props.cta_label}
               </Cta>
