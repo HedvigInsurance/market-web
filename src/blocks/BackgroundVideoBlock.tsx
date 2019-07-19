@@ -10,10 +10,18 @@ import {
   ContentWrapper,
   MOBILE_BP_DOWN,
 } from '../components/blockHelpers'
-import { ButtonLink } from '../components/buttons'
+import {
+  ButtonLink,
+  ButtonStyleType,
+  ButtonWeight,
+} from '../components/buttons'
 import { LinkComponent } from '../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../utils/storyblok'
-import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
+import {
+  BaseBlockProps,
+  ColorComponent,
+  MarkdownHtmlComponent,
+} from './BaseBlockProps'
 
 const TABLET_BP_DOWN = '@media (max-width: 800px)'
 
@@ -137,6 +145,9 @@ interface BackgroundVideoBlockProps extends BaseBlockProps {
   ghost_cta: boolean
   ghost_cta_target: LinkComponent
   ghost_cta_label: string
+  cta_color?: ColorComponent
+  cta_weight?: ButtonWeight
+  cta_style?: ButtonStyleType
 }
 
 export const BackgroundVideoBlock: React.FunctionComponent<
@@ -245,13 +256,26 @@ export const BackgroundVideoBlock: React.FunctionComponent<
             {props.cta_branch_link ? (
               <AppLink>
                 {({ link, handleClick }) => (
-                  <Cta href={link} onClick={handleClick} size="sm" bold>
+                  <Cta
+                    href={link}
+                    onClick={handleClick}
+                    size="sm"
+                    weight={props.cta_weight}
+                    color={props.cta_color && props.cta_color.color}
+                    styleType={props.cta_style}
+                  >
                     {props.cta_label}
                   </Cta>
                 )}
               </AppLink>
             ) : (
-              <Cta href={getStoryblokLinkUrl(props.cta_target)} size="sm" bold>
+              <Cta
+                href={getStoryblokLinkUrl(props.cta_target)}
+                size="sm"
+                weight={props.cta_weight}
+                color={props.cta_color && props.cta_color.color}
+                styleType={props.cta_style}
+              >
                 {props.cta_label}
               </Cta>
             )}
@@ -260,7 +284,8 @@ export const BackgroundVideoBlock: React.FunctionComponent<
                 href={getStoryblokLinkUrl(props.ghost_cta_target)}
                 size="sm"
                 styleType="outlined"
-                bold
+                color={props.cta_color && props.cta_color.color}
+                weight={props.cta_weight}
               >
                 {props.ghost_cta_label}
               </GhostCta>
