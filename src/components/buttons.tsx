@@ -72,7 +72,7 @@ const getButtonTypeStyle = (
 export const Button = styled('button')(
   ({
     size = 'md',
-    weight = 'normal',
+    weight = 'bold',
     styleType = 'filled',
     color = 'standard',
   }: ButtonProps) => ({
