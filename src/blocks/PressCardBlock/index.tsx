@@ -1,4 +1,3 @@
-// @ts-ignore
 import SwipeableViews from '@hedviginsurance/react-swipeable-views'
 import * as React from 'react'
 import styled from 'react-emotion'
@@ -9,7 +8,7 @@ import {
   SectionWrapper,
 } from '../../components/blockHelpers'
 import { Image } from '../../utils/storyblok'
-import { BaseBlockProps } from '../BaseBlockProps'
+import { BaseBlockProps, ColorComponent } from '../BaseBlockProps'
 import { PressCardItem } from './PressCardItem'
 
 const Wrapper = styled('div')({
@@ -31,6 +30,7 @@ export interface PressCardItemProps {
   _uid: string
   quote: string
   logo: Image
+  blockColor?: ColorComponent
 }
 
 interface PressBlockProps extends BaseBlockProps {
@@ -46,24 +46,24 @@ export const PressCardBlock: React.FunctionComponent<PressBlockProps> = ({
       <MediaQuery query="(max-width: 700px)">
         <Swiper resistance enableMouseEvents slideStyle={{ display: 'flex' }}>
           {cards.map((card) => (
-            <PressCardItem key={card._uid} {...card} />
+            <PressCardItem blockColor={color} key={card._uid} {...card} />
           ))}
         </Swiper>
       </MediaQuery>
-      <MediaQuery query="(min-width: 700px) and (max-width: 900px)">
+      <MediaQuery query="(min-width: 701px) and (max-width: 900px)">
         <Swiper
           resistance
           enableMouseEvents
           slideStyle={{ display: 'flex', width: '50%' }}
         >
           {cards.map((card) => (
-            <PressCardItem key={card._uid} {...card} />
+            <PressCardItem blockColor={color} key={card._uid} {...card} />
           ))}
         </Swiper>
       </MediaQuery>
-      <MediaQuery query="(min-width: 900px)">
+      <MediaQuery query="(min-width: 901px)">
         {cards.map((card) => (
-          <PressCardItem key={card._uid} {...card} />
+          <PressCardItem blockColor={color} key={card._uid} {...card} />
         ))}
       </MediaQuery>
     </Wrapper>
