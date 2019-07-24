@@ -1842,6 +1842,104 @@
       "component_group_uuid": null
     },
     {
+      "name": "trustpilot_block",
+      "display_name": null,
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "title": {
+          "type": "text",
+          "pos": 1,
+          "translatable": true
+        },
+        "ratings": {
+          "type": "bloks",
+          "required": false,
+          "pos": 2,
+          "restrict_components": true,
+          "component_whitelist": ["trustpilot_rating_item"]
+        },
+        "cards": {
+          "type": "bloks",
+          "required": false,
+          "pos": 3,
+          "restrict_components": true,
+          "component_whitelist": ["trustpilot_card_item"]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "trustpilot_block",
+      "component_group_uuid": null
+    },
+    {
+      "name": "trustpilot_rating_item",
+      "display_name": null,
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "title": {
+          "type": "text",
+          "pos": 1,
+          "required": true
+        },
+        "rating": {
+          "type": "number",
+          "pos": 2,
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "trustpilot_rating_item",
+      "component_group_uuid": null
+    },
+    {
+      "name": "trustpilot_card_item",
+      "display_name": null,
+      "schema": {
+        "quote": {
+          "type": "text",
+          "pos": 0,
+          "required": true
+        },
+        "author": {
+          "type": "text",
+          "pos": 1,
+          "required": true
+        },
+        "link": {
+          "type": "text",
+          "pos": 2,
+          "translatable": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "trustpilot_card_item",
+      "component_group_uuid": null
+    },
+    {
       "name": "press_card_block",
       "display_name": "Press Card Block",
       "schema": {

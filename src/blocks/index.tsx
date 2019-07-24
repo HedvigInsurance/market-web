@@ -28,6 +28,7 @@ import { SpacerBlock } from './SpacerBlock'
 import { SwitcherBlock } from './SwitcherBlock'
 import { TitleCtaBlock } from './TitleCtaBlock'
 import { TitleParagraphBlock } from './TitleParagraphBlock'
+import { TrustpilotBlock } from './TrustpilotBlock'
 
 const blockComponents = {
   header_block: HeaderBlock,
@@ -51,6 +52,7 @@ const blockComponents = {
   background_video_block: BackgroundVideoBlock,
   plain_text_block: PlainTextBlock,
   press_block: PressBlock,
+  trustpilot_block: TrustpilotBlock,
   spacer_block: SpacerBlock,
   footer_block: FooterBlock,
   animated_phone_block: AnimatedPhoneBlock,
