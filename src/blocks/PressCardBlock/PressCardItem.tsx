@@ -40,7 +40,7 @@ export const PressCardItem: React.FunctionComponent<PressCardItemProps> = ({
   blockColor,
 }) => (
   <PressItemWrapper offWhite={blockColor && blockColor.color === 'standard'}>
-    <Text>“{quote}”</Text>
+    <Text>{quote}</Text>
     <Logo src={getStoryblokImage(logo)} />
   </PressItemWrapper>
 )
