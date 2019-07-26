@@ -1682,6 +1682,20 @@
           "type": "custom",
           "pos": 17
         },
+        "button_size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "md",
+              "name": "MD"
+            }
+          ],
+          "pos": 18
+        },
         "button_weight": {
           "type": "option",
           "use_uuid": true,
@@ -1695,7 +1709,7 @@
               "name": "Bold"
             }
           ],
-          "pos": 18
+          "pos": 19
         },
         "button_position_mobile": {
           "type": "option",
@@ -1710,7 +1724,7 @@
               "name": "Below media"
             }
           ],
-          "pos": 19
+          "pos": 20
         }
       },
       "image": null,

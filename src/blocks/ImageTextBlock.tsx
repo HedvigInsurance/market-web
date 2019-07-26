@@ -12,12 +12,11 @@ import {
   MarkdownHtmlComponent,
 } from './BaseBlockProps'
 
-import { text } from 'body-parser'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { SectionSize } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
 import { AppLink } from '../components/AppLink'
-import { ButtonLink, ButtonWeight } from '../components/buttons'
+import { ButtonLink, buttonSizes, ButtonWeight } from '../components/buttons'
 import { DeferredImage } from '../components/DeferredImage'
 import {
   getStoryblokImage,
@@ -156,6 +155,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
   size: SectionSize
   media_position: 'top' | 'bottom'
   button_color?: ColorComponent
+  button_size?: keyof typeof buttonSizes
   button_weight?: ButtonWeight
   button_position_mobile?: 'above' | 'below'
 }
@@ -179,6 +179,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   size,
   media_position,
   button_color,
+  button_size,
   button_weight,
   button_position_mobile,
 }) => {
@@ -191,7 +192,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
             href={link}
             onClick={handleClick}
             styleType={button_type}
-            size="sm"
+            size={button_size ? button_size : 'sm'}
             color={button_color && button_color.color}
             weight={button_weight}
             mobilePosition={button_position_mobile}
@@ -204,7 +205,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
       <ButtonLinkWithMargin
         href={getStoryblokLinkUrl(button_link)}
         styleType={button_type}
-        size="sm"
+        size={button_size ? button_size : 'sm'}
         color={button_color && button_color.color}
         weight={button_weight}
         mobilePosition={button_position_mobile}
