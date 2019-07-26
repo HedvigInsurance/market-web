@@ -1,11 +1,15 @@
 import * as React from 'react'
 import styled from 'react-emotion'
-import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
+import {
+  BaseBlockProps,
+  ColorComponent,
+  MarkdownHtmlComponent,
+} from './BaseBlockProps'
 
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { SectionSize } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
-import { ButtonLink } from '../components/buttons'
+import { ButtonLink, ButtonWeight } from '../components/buttons'
 import { LazyLottie } from '../components/LazyLottie'
 
 import {
@@ -99,6 +103,8 @@ interface AnimatedPhoneBlockProps extends BaseBlockProps {
   show_button: boolean
   size: SectionSize
   media_position: 'top' | 'bottom'
+  button_color: ColorComponent
+  button_weight: ButtonWeight
 }
 
 export const AnimatedPhoneBlock: React.FunctionComponent<
@@ -114,6 +120,8 @@ export const AnimatedPhoneBlock: React.FunctionComponent<
   show_button,
   color,
   media_position,
+  button_color,
+  button_weight,
 }) => {
   return (
     <SectionWrapper color={color && color.color}>
@@ -134,7 +142,8 @@ export const AnimatedPhoneBlock: React.FunctionComponent<
                     onClick={handleClick}
                     styleType={button_type}
                     size="sm"
-                    bold
+                    color={button_color && button_color.color}
+                    weight={button_weight}
                   >
                     {button_title}
                   </ButtonLinkWithMargin>
@@ -145,7 +154,8 @@ export const AnimatedPhoneBlock: React.FunctionComponent<
                 href={getStoryblokLinkUrl(button_link)}
                 styleType={button_type}
                 size="sm"
-                bold
+                color={button_color && button_color.color}
+                weight={button_weight}
               >
                 {button_title}
               </ButtonLinkWithMargin>
