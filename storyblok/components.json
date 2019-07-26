@@ -316,6 +316,25 @@
           "required": false,
           "default_value": "true",
           "pos": 10
+        },
+        "button_color": {
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "type": "custom"
+        },
+        "button_weight": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "normal",
+              "name": "Normal"
+            },
+            {
+              "value": "bold",
+              "name": "Bold"
+            }
+          ]
         }
       },
       "image": null,
@@ -403,6 +422,45 @@
           "type": "multilink",
           "translatable": true,
           "pos": 11
+        },
+        "cta_color": {
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "type": "custom",
+          "pos": 12
+        },
+        "cta_weight": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "normal",
+              "name": "Normal"
+            },
+            {
+              "value": "bold",
+              "name": "Bold"
+            }
+          ],
+          "pos": 13
+        },
+        "cta_style": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "filled",
+              "name": "Filled"
+            },
+            {
+              "value": "outlined",
+              "name": "Outlined"
+            },
+            {
+              "value": "plain",
+              "name": "Plain"
+            }
+          ]
         }
       },
       "image": null,
@@ -958,17 +1016,102 @@
           "display_name": "Inverse Colors (transparent header only)"
         },
         "override_cta_label": {
-          "type": "text"
+          "type": "text",
+          "pos": 2
         },
         "override_cta_link": {
-          "type": "multilink"
+          "type": "multilink",
+          "pos": 3
         },
         "override_mobile_header_cta_label": {
           "type": "text",
-          "translatable": false
+          "translatable": false,
+          "pos": 4
         },
         "override_mobile_header_cta_link": {
-          "type": "multilink"
+          "type": "multilink",
+          "pos": 5
+        },
+        "cta_color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 6
+        },
+        "cta_weight": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "normal",
+              "name": "Normal"
+            },
+            {
+              "value": "bold",
+              "name": "Bold"
+            }
+          ],
+          "pos": 7
+        },
+        "mobile_header_cta_color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 8
+        },
+        "mobile_header_cta_weight": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "normal",
+              "name": "Normal"
+            },
+            {
+              "value": "bold",
+              "name": "Bold"
+            }
+          ],
+          "pos": 9
+        },
+        "cta_style": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "filled",
+              "name": "Filled"
+            },
+            {
+              "value": "outlined",
+              "name": "Outlined"
+            },
+            {
+              "value": "plain",
+              "name": "Plain"
+            }
+          ],
+          "description": "",
+          "pos": 10
+        },
+        "mobile_header_cta_style": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "filled",
+              "name": "Filled"
+            },
+            {
+              "value": "outlined",
+              "name": "Outlined"
+            },
+            {
+              "value": "plain",
+              "name": "Plain"
+            }
+          ],
+          "pos": 11
         }
       },
       "image": null,
@@ -1468,6 +1611,27 @@
           "required": false,
           "default_value": "true",
           "pos": 15
+        },
+        "button_color": {
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "type": "custom",
+          "pos": 16
+        },
+        "button_weight": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "normal",
+              "name": "Normal"
+            },
+            {
+              "value": "bold",
+              "name": "Bold"
+            }
+          ],
+          "pos": 17
         }
       },
       "image": null,
@@ -2043,6 +2207,25 @@
           "default_value": "",
           "pos": 6,
           "translatable": true
+        },
+        "button_color": {
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "type": "custom"
+        },
+        "button_weight": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "normal",
+              "name": "Normal"
+            },
+            {
+              "value": "bold",
+              "name": "Bold"
+            }
+          ]
         }
       },
       "image": null,
