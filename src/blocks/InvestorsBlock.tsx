@@ -29,6 +29,7 @@ const Title = styled('h3')({
   fontSize: 60,
   lineHeight: '65px',
   marginBottom: 50,
+  marginTop: 0,
   textAlign: 'center',
   [MEDIA_QUERY]: {
     fontSize: 45,
