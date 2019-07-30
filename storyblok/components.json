@@ -2142,6 +2142,33 @@
           "display_name": "",
           "description": "",
           "default_value": "lg"
+        },
+        "blob_direction": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "None"
+            },
+            {
+              "value": "up",
+              "name": "Up"
+            },
+            {
+              "value": "down",
+              "name": "Down"
+            }
+          ],
+          "pos": 2,
+          "display_name": "",
+          "description": "",
+          "default_value": "none"
+        },
+        "blob_color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 3
         }
       },
       "image": null,
