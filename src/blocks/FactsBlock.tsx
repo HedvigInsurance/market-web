@@ -4,7 +4,6 @@ import styled from 'react-emotion'
 
 const FactsContainer = styled('div')({
   backgroundColor: '#FFF3F2',
-  padding: '70px 20px',
   color: colors.BLACK_PURPLE,
 })
 
@@ -15,6 +14,7 @@ const Title = styled('h3')({
   fontSize: 45,
   lineHeight: '50px',
   textAlign: 'center',
+  margin: 0,
   [MEDIA_QUERY]: {
     fontSize: 60,
     lineHeight: '65px',
