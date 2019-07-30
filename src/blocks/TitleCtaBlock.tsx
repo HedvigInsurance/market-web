@@ -9,9 +9,13 @@ import {
   SectionWrapper,
   TABLET_BP_DOWN,
 } from '../components/blockHelpers'
-import { ButtonLink, ButtonStyleType } from '../components/buttons'
+import {
+  ButtonLink,
+  ButtonStyleType,
+  ButtonWeight,
+} from '../components/buttons'
 import { getStoryblokLinkUrl } from '../utils/storyblok'
-import { BaseBlockProps } from './BaseBlockProps'
+import { BaseBlockProps, ColorComponent } from './BaseBlockProps'
 
 const ButtonLinkWithMargin = styled(ButtonLink)({
   marginTop: '1.7rem',
@@ -65,6 +69,8 @@ interface TitleCtaBlockInterface extends BaseBlockProps {
   button_branch_link: boolean
   button_link: LinkComponent
   show_button: boolean
+  button_color?: ColorComponent
+  button_weight?: ButtonWeight
 }
 
 export const TitleCtaBlock: React.FunctionComponent<TitleCtaBlockInterface> = ({
@@ -75,6 +81,8 @@ export const TitleCtaBlock: React.FunctionComponent<TitleCtaBlockInterface> = ({
   button_branch_link,
   button_link,
   color,
+  button_color,
+  button_weight,
 }) => {
   return (
     <SectionWrapper color={color && color.color}>
@@ -88,7 +96,8 @@ export const TitleCtaBlock: React.FunctionComponent<TitleCtaBlockInterface> = ({
                 onClick={handleClick}
                 styleType={button_type}
                 size="sm"
-                bold
+                weight={button_weight}
+                color={button_color && button_color.color}
               >
                 {button_title}
               </ButtonLinkWithMargin>
@@ -99,7 +108,8 @@ export const TitleCtaBlock: React.FunctionComponent<TitleCtaBlockInterface> = ({
             href={getStoryblokLinkUrl(button_link)}
             styleType={button_type}
             size="sm"
-            bold
+            weight={button_weight}
+            color={button_color && button_color.color}
           >
             {button_title}
           </ButtonLinkWithMargin>
