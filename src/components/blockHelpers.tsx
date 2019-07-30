@@ -70,8 +70,8 @@ const colorMap = {
     background: colors.LIGHT_YELLOW,
   },
   'yellow-dark': {
-    color: colors.DARK_YELLOW,
-    background: colors.WHITE,
+    color: colors.WHITE,
+    background: colors.DARK_YELLOW,
   },
 }
 
@@ -99,10 +99,36 @@ const sectionSizeStyles = {
 
 export const getColorStyles = (color: colorComponentColors) => colorMap[color]
 
-export const getSectionSizeStyle = (sectionSize: SectionSize) =>
-  sectionSizeStyles[sectionSize]
+export const getSectionSizeStyle = (size: SectionSize) =>
+  sectionSizeStyles[size]
+
+const backgroundImageStyles = (backgroundImage: string) => {
+  return (
+    backgroundImage !== 'none' &&
+    backgroundImage !== '' && {
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center center',
+      backgroundRepeat: 'no-repeat',
+    }
+  )
+}
 
 export const SectionWrapper = styled('section')(
+  ({
+    color = 'standard',
+    backgroundImage = 'none',
+  }: {
+    color?: colorComponentColors
+    size?: SectionSize
+    backgroundImage?: string
+  }) => ({
+    ...getColorStyles(color),
+    ...backgroundImageStyles(backgroundImage),
+  }),
+)
+
+export const MarginSectionWrapper = styled('section')(
   ({
     color = 'standard',
     size = 'lg',
@@ -114,12 +140,7 @@ export const SectionWrapper = styled('section')(
   }) => ({
     ...getSectionSizeStyle(size),
     ...getColorStyles(color),
-    ...(backgroundImage !== 'none' && {
-      backgroundImage: `url(${backgroundImage})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center center',
-      backgroundRepeat: 'no-repeat',
-    }),
+    ...backgroundImageStyles(backgroundImage),
   }),
 )
 

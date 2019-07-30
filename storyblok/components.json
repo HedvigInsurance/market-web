@@ -38,29 +38,6 @@
       "name": "accordion_block",
       "display_name": null,
       "schema": {
-        "size": {
-          "type": "option",
-          "options": [
-            {
-              "value": "none",
-              "name": "None"
-            },
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "lg",
-              "name": "LG"
-            },
-            {
-              "value": "xl",
-              "name": "XL"
-            }
-          ],
-          "pos": 0,
-          "default_value": "lg"
-        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
@@ -232,27 +209,6 @@
       "name": "animated_phone_block",
       "display_name": "",
       "schema": {
-        "size": {
-          "type": "option",
-          "required": true,
-          "regex": "",
-          "options": [
-            {
-              "value": "sm",
-              "name": "Small"
-            },
-            {
-              "value": "lg",
-              "name": "Large"
-            },
-            {
-              "value": "xl",
-              "name": "X-Large"
-            }
-          ],
-          "default_value": "lg",
-          "pos": 0
-        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
