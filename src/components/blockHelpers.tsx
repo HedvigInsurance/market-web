@@ -66,8 +66,8 @@ const colorMap = {
     background: colors.PURPLE,
   },
   'yellow-light': {
-    color: colors.LIGHT_YELLOW,
-    background: colors.OFF_BLACK_DARK,
+    color: colors.OFF_BLACK_DARK,
+    background: colors.LIGHT_YELLOW,
   },
   'yellow-dark': {
     color: colors.DARK_YELLOW,
