@@ -86,7 +86,6 @@ export const TitleTextCtaBlock: React.FunctionComponent<
   title,
   title_color,
   paragraph,
-  text_position,
   button_title,
   button_type,
   button_branch_link,
