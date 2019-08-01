@@ -43,6 +43,7 @@ const Footnote = styled('span')({
   lineHeight: '24px',
   marginTop: 40,
   textAlign: 'center',
+  overflow: 'hidden',
 
   '& a[href^="mailto:"]': {
     color: colors.PURPLE,

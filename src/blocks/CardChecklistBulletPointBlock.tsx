@@ -30,7 +30,6 @@ const BulletPointsWrapper = styled('div')(
   ({ position }: { position: TextPosition }) => ({
     display: 'flex',
     justifyContent: textFlexPositionMap[position],
-    margin: `-${GUTTER}`,
     flexWrap: 'wrap',
     minWidth: '100%',
   }),
