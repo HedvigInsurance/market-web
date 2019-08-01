@@ -1471,14 +1471,14 @@
             }
           ],
           "default_value": "lg",
-          "pos": 0
+          "pos": -1
         },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
           "options": [],
           "required": true,
-          "pos": 1
+          "pos": 0
         },
         "title_size": {
           "type": "option",
@@ -1494,6 +1494,12 @@
           ],
           "description": "",
           "default_value": "sm",
+          "pos": 1
+        },
+        "title_color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
           "pos": 2
         },
         "title": {
@@ -1511,46 +1517,6 @@
           "field_type": "markdown-html",
           "options": [],
           "translatable": true
-        },
-        "text_position": {
-          "type": "option",
-          "options": [
-            {
-              "value": "right",
-              "name": "Right"
-            },
-            {
-              "value": "center",
-              "name": "Center"
-            },
-            {
-              "value": "left",
-              "name": "Left"
-            }
-          ],
-          "default_value": "left",
-          "pos": 5,
-          "required": true
-        },
-        "text_position_mobile": {
-          "type": "option",
-          "options": [
-            {
-              "value": "right",
-              "name": "Right"
-            },
-            {
-              "value": "center",
-              "name": "Center"
-            },
-            {
-              "value": "left",
-              "name": "Left"
-            }
-          ],
-          "default_value": "left",
-          "pos": 6,
-          "required": true
         },
         "background_image": {
           "type": "image",
@@ -1639,21 +1605,6 @@
             }
           ],
           "pos": 19
-        },
-        "button_position_mobile": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "value": "above",
-              "name": "Above media"
-            },
-            {
-              "value": "below",
-              "name": "Below media"
-            }
-          ],
-          "pos": 20
         }
       },
       "image": null,
@@ -1692,14 +1643,14 @@
             }
           ],
           "default_value": "lg",
-          "pos": 0
+          "pos": -1
         },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
           "options": [],
           "required": true,
-          "pos": 1
+          "pos": 0
         },
         "title_size": {
           "type": "option",
@@ -1715,14 +1666,20 @@
           ],
           "description": "",
           "default_value": "sm",
-          "pos": 2
+          "pos": 1
         },
         "title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 3,
+          "pos": 2,
           "translatable": true
+        },
+        "title_color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 3
         },
         "paragraph": {
           "type": "custom",

@@ -2,10 +2,10 @@ import * as React from 'react'
 import styled from 'react-emotion'
 
 import { LinkComponent } from 'src/storyblok/StoryContainer'
+import { ColorComponent } from '../blocks/BaseBlockProps'
 import { AppLink } from '../components/AppLink'
 import { TABLET_BP_DOWN } from '../components/blockHelpers'
 import { ButtonLink, buttonSizes, ButtonWeight } from '../components/buttons'
-import { ColorComponent } from '../blocks/BaseBlockProps'
 
 import { getStoryblokLinkUrl } from '../utils/storyblok'
 

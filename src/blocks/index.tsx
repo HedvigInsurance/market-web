@@ -18,7 +18,6 @@ import { IconForestBlock } from './IconForestBlock'
 import { ImageBlock } from './ImageBlock'
 import { ImageMultiTextBlock } from './ImageMultiTextBlock'
 import { ImageTextBlock } from './ImageTextBlock'
-import { TitleTextCtaBlock } from './TitleTextCtaBlock'
 import { InvestorsBlock } from './InvestorsBlock'
 import { MediaLogosBlock } from './MediaLogosBlock'
 import { PlainTextBlock } from './PlainTextBlock'
@@ -29,6 +28,7 @@ import { SpacerBlock } from './SpacerBlock'
 import { SwitcherBlock } from './SwitcherBlock'
 import { TitleCtaBlock } from './TitleCtaBlock'
 import { TitleParagraphBlock } from './TitleParagraphBlock'
+import { TitleTextCtaBlock } from './TitleTextCtaBlock'
 
 const blockComponents = {
   header_block: HeaderBlock,
