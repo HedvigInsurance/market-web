@@ -28,6 +28,7 @@ import { SpacerBlock } from './SpacerBlock'
 import { SwitcherBlock } from './SwitcherBlock'
 import { TitleCtaBlock } from './TitleCtaBlock'
 import { TitleParagraphBlock } from './TitleParagraphBlock'
+import { TitleTextCtaBlock } from './TitleTextCtaBlock'
 import { TrustpilotBlock } from './TrustpilotBlock'
 
 const blockComponents = {
@@ -43,6 +44,7 @@ const blockComponents = {
   hero_video_block: HeroVideoBlock,
   single_quote_block: SingleQuoteBlock,
   image_text_block: ImageTextBlock,
+  title_text_cta_block: TitleTextCtaBlock,
   image_block: ImageBlock,
   media_logos_block: MediaLogosBlock,
   icon_bullet_point_block: IconBulletPointBlock,

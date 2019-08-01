@@ -3,6 +3,7 @@ import styled from 'react-emotion'
 import MediaQuery from 'react-responsive'
 import {
   ContentWrapper,
+  getColorStyles,
   SectionWrapper,
   TABLET_BP_DOWN,
 } from '../components/blockHelpers'
@@ -15,8 +16,8 @@ import {
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { SectionSize } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
-import { AppLink } from '../components/AppLink'
-import { ButtonLink, buttonSizes, ButtonWeight } from '../components/buttons'
+import { AlignedButton } from '../components/AlignedButton'
+import { buttonSizes, ButtonWeight } from '../components/buttons'
 import { DeferredImage } from '../components/DeferredImage'
 import {
   getStoryblokImage,
@@ -25,15 +26,6 @@ import {
 } from '../utils/storyblok'
 
 type TitleSize = 'sm' | 'lg'
-
-const ButtonLinkWithMargin = styled(ButtonLink)(
-  ({ mobilePosition }: { mobilePosition?: 'above' | 'below' }) => ({
-    marginTop: '1.7rem',
-    [TABLET_BP_DOWN]: {
-      order: mobilePosition === 'below' ? 100 : 'initial',
-    },
-  }),
-)
 
 const AlignableContentWrapper = styled(ContentWrapper)(
   ({ textPosition }: { textPosition: string }) => ({
@@ -72,14 +64,17 @@ const Title = styled('h2')(
     size,
     displayOrder,
     textPosition,
+    color,
   }: {
     size?: TitleSize
     displayOrder: 'top' | 'bottom'
     textPosition: TextPosition
+    color: string
   }) => ({
     margin: textPosition === 'center' ? 'auto' : undefined,
     fontSize: size === 'lg' ? '4.5rem' : '2.5rem',
     width: '100%',
+    color,
     maxWidth: textPosition === 'center' ? '40rem' : '31rem',
     [TABLET_BP_DOWN]: {
       fontSize: size === 'lg' ? '3.75rem' : '2rem',
@@ -140,6 +135,7 @@ const ImageLink = styled('a')(
 interface ImageTextBlockProps extends BaseBlockProps {
   title_size?: TitleSize
   title: string
+  title_color?: ColorComponent
   paragraph: MarkdownHtmlComponent
   text_position: TextPosition
   text_position_mobile: TextPosition
@@ -160,67 +156,10 @@ interface ImageTextBlockProps extends BaseBlockProps {
   button_position_mobile?: 'above' | 'below'
 }
 
-interface AlignedButtonProps {
-  title: string
-  type: 'filled' | 'outlined'
-  branchLink: boolean
-  buttonLink: LinkComponent
-  show: boolean
-  color?: ColorComponent
-  size?: keyof typeof buttonSizes
-  weight?: ButtonWeight
-  positionMobile?: 'above' | 'below'
-}
-
-const AlignedButton: React.FunctionComponent<AlignedButtonProps> = ({
-  title,
-  type,
-  branchLink,
-  buttonLink,
-  show,
-  color,
-  size,
-  weight,
-  positionMobile,
-}) => {
-  return (
-    <>
-      {show &&
-        (branchLink ? (
-          <AppLink>
-            {({ link, handleClick }) => (
-              <ButtonLinkWithMargin
-                href={link}
-                onClick={handleClick}
-                styleType={type}
-                size={size ? size : 'sm'}
-                color={color && color.color}
-                weight={weight}
-                mobilePosition={positionMobile}
-              >
-                {title}
-              </ButtonLinkWithMargin>
-            )}
-          </AppLink>
-        ) : (
-          <ButtonLinkWithMargin
-            href={getStoryblokLinkUrl(buttonLink)}
-            styleType={type}
-            size={size ? size : 'sm'}
-            color={color && color.color}
-            weight={weight}
-            mobilePosition={positionMobile}
-          >
-            {title}
-          </ButtonLinkWithMargin>
-        ))}
-    </>
-  )
-}
-
 export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   title_size,
   title,
+  title_color,
   paragraph,
   text_position,
   text_position_mobile,
@@ -255,6 +194,13 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
           <Title
             size={title_size}
             displayOrder={media_position}
+            color={
+              title_color && title_color.color !== 'standard'
+                ? getColorStyles(title_color.color).background
+                : color
+                ? getColorStyles(color.color).color
+                : 'standard'
+            }
             textPosition={text_position}
           >
             {title}
