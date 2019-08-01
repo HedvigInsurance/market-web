@@ -1,6 +1,9 @@
 import * as React from 'react'
 import styled from 'react-emotion'
-import { getColorStyles, SectionWrapper } from '../components/blockHelpers'
+import {
+  getColorStyles,
+  MarginSectionWrapper,
+} from '../components/blockHelpers'
 import {
   BaseBlobProps,
   BlobDirection,
@@ -37,7 +40,7 @@ const Svg = styled('svg')(({ color, direction }: SvgProps) => ({
   left: 0,
 }))
 
-const Spacer = styled(SectionWrapper)({
+const Spacer = styled(MarginSectionWrapper)({
   paddingBottom: '0 !important',
   position: 'relative',
 })
