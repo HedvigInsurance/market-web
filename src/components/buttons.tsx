@@ -20,7 +20,7 @@ interface ButtonProps {
 type ColorMap = { [K in colorComponentColors]: string }
 
 const colorMap: ColorMap = {
-  standard: colors.GREEN,
+  standard: colors.PURPLE,
   blue: colors.BLACK_PURPLE,
   'blue-dark': colors.DARK_PURPLE,
   'pink-light': colors.PINK_LIGHT,
