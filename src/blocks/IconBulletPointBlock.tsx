@@ -75,6 +75,7 @@ const AlignableContent = styled(ContentWrapper)(
 )
 
 const MainTitle = styled('h2')({
+  marginTop: 0,
   marginBottom: '1.586rem',
 })
 
