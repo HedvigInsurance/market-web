@@ -2,7 +2,7 @@ import { colors } from '@hedviginsurance/brand'
 import styled from 'react-emotion'
 import { colorComponentColors } from 'src/blocks/BaseBlockProps'
 
-const buttonSizes = {
+export const buttonSizes = {
   sm: '.75rem 1.5rem',
   md: '1rem 2rem',
 }
