@@ -117,12 +117,14 @@ const backgroundImageStyles = (backgroundImage: string) => {
 export const SectionWrapper = styled('section')(
   ({
     color = 'standard',
+    size = 'lg',
     backgroundImage = 'none',
   }: {
     color?: colorComponentColors
     size?: SectionSize
     backgroundImage?: string
   }) => ({
+    ...getSectionSizeStyle(size),
     ...getColorStyles(color),
     ...backgroundImageStyles(backgroundImage),
   }),

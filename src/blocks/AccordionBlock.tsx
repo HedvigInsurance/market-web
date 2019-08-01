@@ -10,6 +10,7 @@ import {
 } from '../components/blockHelpers'
 import { Plus } from '../components/icons/Plus'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
+import { SectionSize } from '../utils/SectionSize';
 
 const SplitContentWrapper = styled(ContentWrapper)({
   display: 'flex',
@@ -121,8 +122,9 @@ export const AccordionBlock: React.FunctionComponent<AccordionBlockProps> = ({
   title,
   accordions,
   color,
+  size,
 }) => (
-  <SectionWrapper color={color && color.color}>
+  <SectionWrapper color={color && color.color} size={size}>
     <SplitContentWrapper>
       <Col>
         <h2>{title}</h2>
