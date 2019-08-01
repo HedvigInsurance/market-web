@@ -3,6 +3,7 @@ import styled from 'react-emotion'
 import MediaQuery from 'react-responsive'
 import {
   ContentWrapper,
+  getColorStyles,
   MarginSectionWrapper,
   TABLET_BP_DOWN,
 } from '../components/blockHelpers'
@@ -72,14 +73,17 @@ const Title = styled('h2')(
     size,
     displayOrder,
     textPosition,
+    color,
   }: {
     size?: TitleSize
     displayOrder: 'top' | 'bottom'
     textPosition: TextPosition
+    color: string
   }) => ({
     margin: textPosition === 'center' ? 'auto' : undefined,
     fontSize: size === 'lg' ? '4.5rem' : '2.5rem',
     width: '100%',
+    color,
     maxWidth: textPosition === 'center' ? '40rem' : '31rem',
     [TABLET_BP_DOWN]: {
       fontSize: size === 'lg' ? '3.75rem' : '2rem',
@@ -104,11 +108,11 @@ const Paragraph = styled('div')(
 const Image = styled(DeferredImage)(
   ({
     alignment,
-    displayOrder,
+    displayorder,
     hasLink,
   }: {
     alignment: string
-    displayOrder: 'top' | 'bottom'
+    displayorder: 'top' | 'bottom'
     hasLink?: boolean
   }) => ({
     width: hasLink ? '100%' : '40%',
@@ -116,9 +120,9 @@ const Image = styled(DeferredImage)(
     [TABLET_BP_DOWN]: {
       maxWidth: '100%',
       width: 'auto',
-      marginTop: displayOrder === 'top' ? '0' : '3rem',
+      marginTop: displayorder === 'top' ? '0' : '3rem',
       display: 'block',
-      order: displayOrder === 'top' ? -1 : 'initial',
+      order: displayorder === 'top' ? -1 : 'initial',
     },
   }),
 )
@@ -140,6 +144,7 @@ const ImageLink = styled('a')(
 interface ImageTextBlockProps extends BaseBlockProps {
   title_size?: TitleSize
   title: string
+  title_color?: ColorComponent
   paragraph: MarkdownHtmlComponent
   text_position: TextPosition
   text_position_mobile: TextPosition
@@ -221,6 +226,7 @@ const AlignedButton: React.FunctionComponent<AlignedButtonProps> = ({
 export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   title_size,
   title,
+  title_color,
   paragraph,
   text_position,
   text_position_mobile,
@@ -255,6 +261,13 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
           <Title
             size={title_size}
             displayOrder={media_position}
+            color={
+              title_color && title_color.color !== 'standard'
+                ? getColorStyles(title_color.color).background
+                : color
+                ? getColorStyles(color.color).color
+                : 'standard'
+            }
             textPosition={text_position}
           >
             {title}
@@ -300,7 +313,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
             >
               <Image
                 alignment={text_position}
-                displayOrder={media_position}
+                displayorder={media_position}
                 src={getStoryblokImage(image)}
                 hasLink
               />
@@ -308,7 +321,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
           ) : (
             <Image
               alignment={text_position}
-              displayOrder={media_position}
+              displayorder={media_position}
               src={getStoryblokImage(image)}
             />
           ))}

@@ -1471,14 +1471,14 @@
             }
           ],
           "default_value": "lg",
-          "pos": 0
+          "pos": -1
         },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
           "options": [],
           "required": true,
-          "pos": 1
+          "pos": 0
         },
         "title_size": {
           "type": "option",
@@ -1494,6 +1494,12 @@
           ],
           "description": "",
           "default_value": "sm",
+          "pos": 1
+        },
+        "title_color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
           "pos": 2
         },
         "title": {
