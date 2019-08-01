@@ -20,55 +20,37 @@ import { buttonSizes, ButtonWeight } from '../components/buttons'
 type TitleSize = 'sm' | 'lg'
 
 const AlignableContentWrapper = styled(ContentWrapper)(
-  ({ textPosition }: { textPosition: string }) => ({
+  ({
     display: 'flex',
-    flexDirection: textPosition === 'right' ? 'row-reverse' : 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'top',
     [TABLET_BP_DOWN]: {
       flexDirection: 'column',
     },
   }),
 )
 
-const TextWrapper = styled('div')(
+const TextCtaWrapper = styled('div')(
   ({
-    textPosition,
-    textPositionMobile,
-  }: {
-    textPosition: string
-    textPositionMobile: TextPosition
-  }) => ({
-    textAlign: textPosition === 'center' ? 'center' : 'left',
     width: '100%',
-    paddingRight: textPosition === 'left' ? '7rem' : '0',
-    paddingLeft: textPosition === 'right' ? '7rem' : '0',
     [TABLET_BP_DOWN]: {
       paddingRight: 0,
       paddingLeft: 0,
-      textAlign: textPositionMobile,
     },
   }),
 )
 
 const Title = styled('h2')(
   ({
-    size,
-    displayOrder,
-    textPosition,
+    size
   }: {
     size?: TitleSize
-    displayOrder: 'top' | 'bottom'
-    textPosition: TextPosition
   }) => ({
-    margin: textPosition === 'center' ? 'auto' : undefined,
     fontSize: size === 'lg' ? '4.5rem' : '2.5rem',
     width: '100%',
-    maxWidth: textPosition === 'center' ? '40rem' : '31rem',
+    marginRight: '1em',
     [TABLET_BP_DOWN]: {
       fontSize: size === 'lg' ? '3.75rem' : '2rem',
-      maxWidth: '100%',
-      marginTop: displayOrder === 'top' ? '3rem' : '1.414rem',
     },
   }),
 )
@@ -133,26 +115,20 @@ export const TitleTextCtaBlock: React.FunctionComponent<
       size={size}
       backgroundImage={background_image}
     >
-      <AlignableContentWrapper textPosition={text_position}>
-        <TextWrapper
-          textPosition={text_position}
-          textPositionMobile={text_position_mobile}
-        >
-          <Title
+      <AlignableContentWrapper>
+        <Title
             size={title_size}
-            displayOrder={media_position}
-            textPosition={text_position}
           >
             {title}
           </Title>
+        <TextCtaWrapper>
           <Paragraph
             dangerouslySetInnerHTML={{
               __html: paragraph.html,
             }}
             textPosition={text_position}
           />
-        </TextWrapper>
-        <AlignedButton
+          <AlignedButton
           title={button_title}
           type={button_type}
           branchLink={button_branch_link}
@@ -163,6 +139,7 @@ export const TitleTextCtaBlock: React.FunctionComponent<
           weight={button_weight}
           positionMobile={button_position_mobile}
         />
+        </TextCtaWrapper>
       </AlignableContentWrapper>
     </MarginSectionWrapper>
   )

@@ -43,7 +43,7 @@ const blockComponents = {
   hero_video_block: HeroVideoBlock,
   single_quote_block: SingleQuoteBlock,
   image_text_block: ImageTextBlock,
-  title_text_cta_block: TitleTextCtaBlock
+  title_text_cta_block: TitleTextCtaBlock,
   image_block: ImageBlock,
   media_logos_block: MediaLogosBlock,
   icon_bullet_point_block: IconBulletPointBlock,
