@@ -25,7 +25,7 @@ export interface BaseBlockProps {
   _uid: string
   component: string
   color?: ColorComponent
-  size: SectionSize
+  size?: SectionSize
 }
 
 export interface MarkdownHtmlComponent {
