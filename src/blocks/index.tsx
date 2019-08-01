@@ -18,6 +18,7 @@ import { IconForestBlock } from './IconForestBlock'
 import { ImageBlock } from './ImageBlock'
 import { ImageMultiTextBlock } from './ImageMultiTextBlock'
 import { ImageTextBlock } from './ImageTextBlock'
+import { TitleTextCtaBlock } from './TitleTextCtaBlock'
 import { InvestorsBlock } from './InvestorsBlock'
 import { MediaLogosBlock } from './MediaLogosBlock'
 import { PlainTextBlock } from './PlainTextBlock'
@@ -42,6 +43,7 @@ const blockComponents = {
   hero_video_block: HeroVideoBlock,
   single_quote_block: SingleQuoteBlock,
   image_text_block: ImageTextBlock,
+  title_text_cta_block: TitleTextCtaBlock
   image_block: ImageBlock,
   media_logos_block: MediaLogosBlock,
   icon_bullet_point_block: IconBulletPointBlock,
