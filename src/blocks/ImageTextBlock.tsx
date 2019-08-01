@@ -3,7 +3,7 @@ import styled from 'react-emotion'
 import MediaQuery from 'react-responsive'
 import {
   ContentWrapper,
-  MarginSectionWrapper,
+  SectionWrapper,
   TABLET_BP_DOWN,
 } from '../components/blockHelpers'
 import {
@@ -242,7 +242,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   button_position_mobile,
 }) => {
   return (
-    <MarginSectionWrapper
+    <SectionWrapper
       color={color && color.color}
       size={size}
       backgroundImage={background_image}
@@ -313,6 +313,6 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
             />
           ))}
       </AlignableContentWrapper>
-    </MarginSectionWrapper>
+    </SectionWrapper>
   )
 }

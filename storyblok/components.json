@@ -38,16 +38,41 @@
       "name": "accordion_block",
       "display_name": null,
       "schema": {
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": 1,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
           "options": [],
-          "pos": 1
+          "pos": 2
         },
         "title": {
           "type": "text",
           "required": true,
-          "pos": 2,
+          "pos": 3,
           "translatable": true
         },
         "accordions": {
@@ -59,7 +84,7 @@
           "description": "",
           "display_name": "",
           "default_value": "",
-          "pos": 3
+          "pos": 4
         }
       },
       "image": null,
@@ -209,6 +234,31 @@
       "name": "animated_phone_block",
       "display_name": "",
       "schema": {
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": 0,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
@@ -593,6 +643,31 @@
       "name": "bullet_point_block",
       "display_name": "",
       "schema": {
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": -1,
+          "display_name": "",
+          "description": "",
+          "default_value": "sm"
+        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
@@ -673,6 +748,31 @@
       "name": "card_checklist_bullet_point_block",
       "display_name": "",
       "schema": {
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": -1,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
@@ -1202,6 +1302,31 @@
       "name": "icon_bullet_point_block",
       "display_name": "",
       "schema": {
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": -1,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
@@ -1397,6 +1522,31 @@
       "name": "image_multi_text_block",
       "display_name": "",
       "schema": {
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": -1,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
@@ -1727,6 +1877,31 @@
       "name": "investors_block",
       "display_name": null,
       "schema": {
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": 1,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
@@ -1946,6 +2121,31 @@
       "name": "plain_text_block",
       "display_name": null,
       "schema": {
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": -1,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
@@ -2265,6 +2465,31 @@
       "name": "title_cta_block",
       "display_name": "",
       "schema": {
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": -1,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
@@ -2372,6 +2597,31 @@
       "name": "title_paragraph_block",
       "display_name": null,
       "schema": {
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": -1,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
