@@ -108,11 +108,11 @@ const Paragraph = styled('div')(
 const Image = styled(DeferredImage)(
   ({
     alignment,
-    displayorder,
+    displayOrder,
     hasLink,
   }: {
     alignment: string
-    displayorder: 'top' | 'bottom'
+    displayOrder: 'top' | 'bottom'
     hasLink?: boolean
   }) => ({
     width: hasLink ? '100%' : '40%',
@@ -120,9 +120,9 @@ const Image = styled(DeferredImage)(
     [TABLET_BP_DOWN]: {
       maxWidth: '100%',
       width: 'auto',
-      marginTop: displayorder === 'top' ? '0' : '3rem',
+      marginTop: displayOrder === 'top' ? '0' : '3rem',
       display: 'block',
-      order: displayorder === 'top' ? -1 : 'initial',
+      order: displayOrder === 'top' ? -1 : 'initial',
     },
   }),
 )
@@ -313,7 +313,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
             >
               <Image
                 alignment={text_position}
-                displayorder={media_position}
+                displayOrder={media_position}
                 src={getStoryblokImage(image)}
                 hasLink
               />
@@ -321,7 +321,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
           ) : (
             <Image
               alignment={text_position}
-              displayorder={media_position}
+              displayOrder={media_position}
               src={getStoryblokImage(image)}
             />
           ))}
