@@ -12,7 +12,7 @@ export const TrustpilotRatingItem: React.FunctionComponent<
     <StarRatings
       rating={Number(rating)}
       starRatedColor={getColorStyles(color && color.color).background}
-      starEmptyColor="rgba(255, 255, 255, 0.2)"
+      starEmptyColor="rgba(255, 255, 255, 0.4)"
       starDimension="25px"
       starSpacing="4px"
       numberOfStars={5}
