@@ -75,7 +75,7 @@
     "react": "^16.6.3",
     "react-animate-height": "^2.0.7",
     "react-dom": "^16.6.3",
-    "react-emotion": "^9.2.10",
+    "react-emotion": "^10.0.0",
     "react-helmet": "^5.2.0",
     "react-helmet-async": "^0.2.0",
     "react-hot-loader": "^4.3.11",
