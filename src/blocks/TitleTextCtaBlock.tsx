@@ -50,12 +50,12 @@ const Title = styled('h2')(
 )
 
 const Paragraph = styled('div')({
-    fontSize: '1.125rem',
-    marginTop: '1.5rem',
-    maxWidth: '31rem',
-    [TABLET_BP_DOWN]: {
-      maxWidth: '100%',
-    },
+  fontSize: '1.125rem',
+  marginTop: '1.5rem',
+  maxWidth: '31rem',
+  [TABLET_BP_DOWN]: {
+    maxWidth: '100%',
+  },
 })
 
 interface TitleTextCtaBlockProps extends BaseBlockProps {
