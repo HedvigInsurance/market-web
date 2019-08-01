@@ -119,13 +119,12 @@ export const AnimatedPhoneBlock: React.FunctionComponent<
   button_link,
   show_button,
   color,
-  size,
   media_position,
   button_color,
   button_weight,
 }) => {
   return (
-    <SectionWrapper color={color && color.color} size={size}>
+    <SectionWrapper color={color && color.color}>
       <AlignableContentWrapper textPosition={text_position}>
         <TextWrapper textPosition={text_position}>
           <Title displayOrder={media_position}>{title}</Title>

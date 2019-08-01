@@ -50,11 +50,12 @@ const TableRow = styled('div')({
   },
 })
 
-const TableCellName = styled('div')({
+const TableCellName = styled('div')(({ isLast }: { isLast: boolean }) => ({
   display: 'table-cell',
   paddingRight: 25,
-  paddingBottom: 30,
-})
+  paddingBottom: isLast ? 0 : 30,
+}))
+
 const TableCellBar = styled(AnimatedDiv)({
   display: 'table-cell',
   width: '100%',
@@ -80,6 +81,7 @@ const HeadlineSection = styled('div')({
 })
 
 const Headline = styled('h2')({
+  marginTop: 0,
   paddingBottom: '2rem',
 })
 
@@ -304,7 +306,9 @@ export const SwitcherBlock: React.FunctionComponent<SwitcherBlockProps> = ({
                     <BarsContainer>
                       {COMPANIES.map((company, index) => (
                         <TableRow key={company.name}>
-                          <TableCellName>
+                          <TableCellName
+                            isLast={index === COMPANIES.length - 1}
+                          >
                             <CompanyName>{company.name}</CompanyName>
                           </TableCellName>
                           <TableCellBar

@@ -40,6 +40,7 @@ const Title = styled('h2')(
     fontSize: '3rem',
     marginRight: textPosition === 'left' ? 'auto' : 0,
     marginLeft: textPosition === 'right' ? 'auto' : 0,
+    marginTop: 0,
     width: '100%',
     maxWidth: '50%',
     [MOBILE_BP_DOWN]: {
@@ -71,6 +72,10 @@ const Paragraph = styled('div')(
       maxWidth: '100%',
       display: 'block',
       fontSize: '1rem',
+    },
+
+    '> p:last-child': {
+      marginBottom: 0,
     },
   }),
 )
