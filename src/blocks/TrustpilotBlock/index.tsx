@@ -5,6 +5,7 @@ import styled from 'react-emotion'
 import MediaQuery from 'react-responsive'
 import {
   CONTENT_MAX_WIDTH,
+  getColorStyles,
   SectionWrapper,
 } from '../../components/blockHelpers'
 import { BaseBlockProps, ColorComponent } from '../BaseBlockProps'
@@ -41,6 +42,10 @@ const TrustpilotWrapper = styled(SectionWrapper)({
   justifyContent: 'center',
 })
 
+const Title = styled('h2')(({ color }: { color: string }) => ({
+  color,
+}))
+
 export interface TrustpilotRatingItemProps {
   _uid: string
   color: ColorComponent
@@ -58,6 +63,7 @@ export interface TrustpilotCardItemProps {
 
 interface TrustpilotBlockProps extends BaseBlockProps {
   title: string
+  title_color?: ColorComponent
   ratings: ReadonlyArray<TrustpilotRatingItemProps>
   cards: ReadonlyArray<TrustpilotCardItemProps>
 }
@@ -67,10 +73,21 @@ export const TrustpilotBlock: React.FunctionComponent<TrustpilotBlockProps> = ({
   color,
   ratings,
   title,
+  title_color,
   size,
 }) => (
   <TrustpilotWrapper color={color && color.color} size={size}>
-    <h2>{title}</h2>
+    <Title
+      color={
+        title_color && title_color.color !== 'standard'
+          ? getColorStyles(title_color.color).background
+          : color
+          ? getColorStyles(color.color).color
+          : 'standard'
+      }
+    >
+      {title}
+    </Title>
     <RatingsWrapper>
       {ratings.map((rating) => {
         return Number(rating.rating) ? (
