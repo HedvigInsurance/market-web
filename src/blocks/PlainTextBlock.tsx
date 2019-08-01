@@ -29,8 +29,9 @@ export const PlainTextBlock: React.FunctionComponent<PlainTextBlockProps> = ({
   color,
   title,
   content,
+  size,
 }) => (
-  <PlainTextSectionWrapper color={color && color.color}>
+  <PlainTextSectionWrapper color={color && color.color} size={size}>
     <ContentWrapper>
       <TitleWrapper>
         <h1>{title}</h1>

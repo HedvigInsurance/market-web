@@ -1,8 +1,9 @@
 import * as React from 'react'
 import styled from 'react-emotion'
+import MediaQuery from 'react-responsive'
 import {
   ContentWrapper,
-  MarginSectionWrapper,
+  SectionWrapper,
   TABLET_BP_DOWN,
 } from '../components/blockHelpers'
 import {
@@ -15,7 +16,7 @@ import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { SectionSize } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
 import { AppLink } from '../components/AppLink'
-import { ButtonLink, ButtonWeight } from '../components/buttons'
+import { ButtonLink, buttonSizes, ButtonWeight } from '../components/buttons'
 import { DeferredImage } from '../components/DeferredImage'
 import {
   getStoryblokImage,
@@ -25,9 +26,14 @@ import {
 
 type TitleSize = 'sm' | 'lg'
 
-const ButtonLinkWithMargin = styled(ButtonLink)({
-  marginTop: '1.7rem',
-})
+const ButtonLinkWithMargin = styled(ButtonLink)(
+  ({ mobilePosition }: { mobilePosition?: 'above' | 'below' }) => ({
+    marginTop: '1.7rem',
+    [TABLET_BP_DOWN]: {
+      order: mobilePosition === 'below' ? 100 : 'initial',
+    },
+  }),
+)
 
 const AlignableContentWrapper = styled(ContentWrapper)(
   ({ textPosition }: { textPosition: string }) => ({
@@ -42,7 +48,13 @@ const AlignableContentWrapper = styled(ContentWrapper)(
 )
 
 const TextWrapper = styled('div')(
-  ({ textPosition }: { textPosition: string }) => ({
+  ({
+    textPosition,
+    textPositionMobile,
+  }: {
+    textPosition: string
+    textPositionMobile: TextPosition
+  }) => ({
     textAlign: textPosition === 'center' ? 'center' : 'left',
     width: '100%',
     paddingRight: textPosition === 'left' ? '7rem' : '0',
@@ -50,6 +62,7 @@ const TextWrapper = styled('div')(
     [TABLET_BP_DOWN]: {
       paddingRight: 0,
       paddingLeft: 0,
+      textAlign: textPositionMobile,
     },
   }),
 )
@@ -70,6 +83,7 @@ const Title = styled('h2')(
     maxWidth: textPosition === 'center' ? '40rem' : '31rem',
     [TABLET_BP_DOWN]: {
       fontSize: size === 'lg' ? '3.75rem' : '2rem',
+      maxWidth: '100%',
       marginTop: displayOrder === 'top' ? '3rem' : '1.414rem',
     },
   }),
@@ -81,6 +95,9 @@ const Paragraph = styled('div')(
     fontSize: '1.125rem',
     marginTop: '1.5rem',
     maxWidth: textPosition === 'center' ? '40rem' : '31rem',
+    [TABLET_BP_DOWN]: {
+      maxWidth: '100%',
+    },
   }),
 )
 
@@ -125,6 +142,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
   title: string
   paragraph: MarkdownHtmlComponent
   text_position: TextPosition
+  text_position_mobile: TextPosition
   button_title: string
   button_type: 'filled' | 'outlined'
   button_branch_link: boolean
@@ -137,7 +155,67 @@ interface ImageTextBlockProps extends BaseBlockProps {
   size: SectionSize
   media_position: 'top' | 'bottom'
   button_color?: ColorComponent
+  button_size?: keyof typeof buttonSizes
   button_weight?: ButtonWeight
+  button_position_mobile?: 'above' | 'below'
+}
+
+interface AlignedButtonProps {
+  title: string
+  type: 'filled' | 'outlined'
+  branchLink: boolean
+  buttonLink: LinkComponent
+  show: boolean
+  color?: ColorComponent
+  size?: keyof typeof buttonSizes
+  weight?: ButtonWeight
+  positionMobile?: 'above' | 'below'
+}
+
+const AlignedButton: React.FunctionComponent<AlignedButtonProps> = ({
+  title,
+  type,
+  branchLink,
+  buttonLink,
+  show,
+  color,
+  size,
+  weight,
+  positionMobile,
+}) => {
+  return (
+    <>
+      {show &&
+        (branchLink ? (
+          <AppLink>
+            {({ link, handleClick }) => (
+              <ButtonLinkWithMargin
+                href={link}
+                onClick={handleClick}
+                styleType={type}
+                size={size ? size : 'sm'}
+                color={color && color.color}
+                weight={weight}
+                mobilePosition={positionMobile}
+              >
+                {title}
+              </ButtonLinkWithMargin>
+            )}
+          </AppLink>
+        ) : (
+          <ButtonLinkWithMargin
+            href={getStoryblokLinkUrl(buttonLink)}
+            styleType={type}
+            size={size ? size : 'sm'}
+            color={color && color.color}
+            weight={weight}
+            mobilePosition={positionMobile}
+          >
+            {title}
+          </ButtonLinkWithMargin>
+        ))}
+    </>
+  )
 }
 
 export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
@@ -145,6 +223,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   title,
   paragraph,
   text_position,
+  text_position_mobile,
   button_title,
   button_type,
   button_branch_link,
@@ -158,16 +237,21 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   size,
   media_position,
   button_color,
+  button_size,
   button_weight,
+  button_position_mobile,
 }) => {
   return (
-    <MarginSectionWrapper
+    <SectionWrapper
       color={color && color.color}
       size={size}
       backgroundImage={background_image}
     >
       <AlignableContentWrapper textPosition={text_position}>
-        <TextWrapper textPosition={text_position}>
+        <TextWrapper
+          textPosition={text_position}
+          textPositionMobile={text_position_mobile}
+        >
           <Title
             size={title_size}
             displayOrder={media_position}
@@ -181,34 +265,33 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
             }}
             textPosition={text_position}
           />
-          {show_button &&
-            (button_branch_link ? (
-              <AppLink>
-                {({ link, handleClick }) => (
-                  <ButtonLinkWithMargin
-                    href={link}
-                    onClick={handleClick}
-                    styleType={button_type}
-                    size="sm"
-                    color={button_color && button_color.color}
-                    weight={button_weight}
-                  >
-                    {button_title}
-                  </ButtonLinkWithMargin>
-                )}
-              </AppLink>
-            ) : (
-              <ButtonLinkWithMargin
-                href={getStoryblokLinkUrl(button_link)}
-                styleType={button_type}
-                size="sm"
-                color={button_color && button_color.color}
-                weight={button_weight}
-              >
-                {button_title}
-              </ButtonLinkWithMargin>
-            ))}
+          <MediaQuery query="(min-width: 801px)">
+            <AlignedButton
+              title={button_title}
+              type={button_type}
+              branchLink={button_branch_link}
+              buttonLink={button_link}
+              show={show_button}
+              color={button_color}
+              size={button_size ? button_size : 'sm'}
+              weight={button_weight}
+              positionMobile={button_position_mobile}
+            />
+          </MediaQuery>
         </TextWrapper>
+        <MediaQuery query="(max-width: 800px)">
+          <AlignedButton
+            title={button_title}
+            type={button_type}
+            branchLink={button_branch_link}
+            buttonLink={button_link}
+            show={show_button}
+            color={button_color}
+            size={button_size ? button_size : 'sm'}
+            weight={button_weight}
+            positionMobile={button_position_mobile}
+          />
+        </MediaQuery>
         {image &&
           (use_image_link ? (
             <ImageLink
@@ -230,6 +313,6 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
             />
           ))}
       </AlignableContentWrapper>
-    </MarginSectionWrapper>
+    </SectionWrapper>
   )
 }

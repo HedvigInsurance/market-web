@@ -1,8 +1,10 @@
 node_modules
 yarn-error.log
+dump.rdb
 .DS_Store
 /build/*
 /.env
+dump.rdb
 
 .vscode
 
