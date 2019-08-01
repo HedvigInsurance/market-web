@@ -69,8 +69,9 @@ export const PressBlock: React.FunctionComponent<PressBlockProps> = ({
   items,
   footnote,
   color,
+  size,
 }) => (
-  <SectionWrapper color={color && color.color} size="sm">
+  <SectionWrapper color={color && color.color} size={size}>
     <Wrapper id="press">
       <Title>{title}</Title>
       {items.map((pressItem) => (
