@@ -1,9 +1,6 @@
 import * as React from 'react'
 import styled from 'react-emotion'
-import {
-  getColorStyles,
-  SectionWrapper,
-} from '../components/blockHelpers'
+import { getColorStyles, SectionWrapper } from '../components/blockHelpers'
 import {
   BaseBlobProps,
   BlobDirection,

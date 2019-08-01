@@ -1,4 +1,4 @@
-import { SectionSize } from "../utils/SectionSize";
+import { SectionSize } from '../utils/SectionSize'
 
 export type colorComponentColors =
   | 'standard'
