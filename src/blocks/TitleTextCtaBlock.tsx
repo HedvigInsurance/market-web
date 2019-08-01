@@ -44,7 +44,7 @@ const Title = styled('h2')(
     color,
     marginRight: '1em',
     [TABLET_BP_DOWN]: {
-      fontSize: size === 'lg' ? '3.75rem' : '2rem',
+      fontSize: size === 'lg' ? '2.75rem' : '2rem',
     },
   }),
 )
