@@ -1,6 +1,5 @@
 import * as React from 'react'
 import styled from 'react-emotion'
-import MediaQuery from 'react-responsive'
 import {
   ContentWrapper,
   MarginSectionWrapper,
@@ -17,12 +16,6 @@ import { SectionSize } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
 import { AlignedButton } from '../components/AlignedButton'
 import { buttonSizes, ButtonWeight } from '../components/buttons'
-import { DeferredImage } from '../components/DeferredImage'
-import {
-  getStoryblokImage,
-  getStoryblokLinkUrl,
-  Image as StoryblokImage,
-} from '../utils/storyblok'
 
 type TitleSize = 'sm' | 'lg'
 
@@ -92,43 +85,7 @@ const Paragraph = styled('div')(
   }),
 )
 
-const Image = styled(DeferredImage)(
-  ({
-    alignment,
-    displayOrder,
-    hasLink,
-  }: {
-    alignment: string
-    displayOrder: 'top' | 'bottom'
-    hasLink?: boolean
-  }) => ({
-    width: hasLink ? '100%' : '40%',
-    display: alignment === 'center' ? 'none' : 'block',
-    [TABLET_BP_DOWN]: {
-      maxWidth: '100%',
-      width: 'auto',
-      marginTop: displayOrder === 'top' ? '0' : '3rem',
-      display: 'block',
-      order: displayOrder === 'top' ? -1 : 'initial',
-    },
-  }),
-)
-const ImageLink = styled('a')(
-  ({ displayOrder }: { displayOrder: 'top' | 'bottom' }) => ({
-    display: 'inline-block',
-    width: '40%',
-
-    [TABLET_BP_DOWN]: {
-      maxWidth: '100%',
-      width: 'auto',
-      marginTop: displayOrder === 'top' ? '0' : '3rem',
-      display: 'block',
-      order: displayOrder === 'top' ? -1 : 'initial',
-    },
-  }),
-)
-
-interface ImageTextBlockProps extends BaseBlockProps {
+interface TitleTextCtaBlockProps extends BaseBlockProps {
   title_size?: TitleSize
   title: string
   paragraph: MarkdownHtmlComponent
@@ -139,9 +96,6 @@ interface ImageTextBlockProps extends BaseBlockProps {
   button_branch_link: boolean
   button_link: LinkComponent
   show_button: boolean
-  image?: StoryblokImage
-  use_image_link: boolean
-  image_link: LinkComponent
   background_image: string
   size: SectionSize
   media_position: 'top' | 'bottom'
@@ -151,7 +105,9 @@ interface ImageTextBlockProps extends BaseBlockProps {
   button_position_mobile?: 'above' | 'below'
 }
 
-export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
+export const TitleTextCtaBlock: React.FunctionComponent<
+  TitleTextCtaBlockProps
+> = ({
   title_size,
   title,
   paragraph,
@@ -162,9 +118,6 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   button_branch_link,
   button_link,
   show_button,
-  image,
-  use_image_link,
-  image_link,
   background_image,
   color,
   size,
@@ -198,53 +151,18 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
             }}
             textPosition={text_position}
           />
-          <MediaQuery query="(min-width: 801px)">
-            <AlignedButton
-              title={button_title}
-              type={button_type}
-              branchLink={button_branch_link}
-              buttonLink={button_link}
-              show={show_button}
-              color={button_color}
-              size={button_size ? button_size : 'sm'}
-              weight={button_weight}
-              positionMobile={button_position_mobile}
-            />
-          </MediaQuery>
         </TextWrapper>
-        <MediaQuery query="(max-width: 800px)">
-          <AlignedButton
-            title={button_title}
-            type={button_type}
-            branchLink={button_branch_link}
-            buttonLink={button_link}
-            show={show_button}
-            color={button_color}
-            size={button_size ? button_size : 'sm'}
-            weight={button_weight}
-            positionMobile={button_position_mobile}
-          />
-        </MediaQuery>
-        {image &&
-          (use_image_link ? (
-            <ImageLink
-              href={getStoryblokLinkUrl(image_link)}
-              displayOrder={media_position}
-            >
-              <Image
-                alignment={text_position}
-                displayOrder={media_position}
-                src={getStoryblokImage(image)}
-                hasLink
-              />
-            </ImageLink>
-          ) : (
-            <Image
-              alignment={text_position}
-              displayOrder={media_position}
-              src={getStoryblokImage(image)}
-            />
-          ))}
+        <AlignedButton
+          title={button_title}
+          type={button_type}
+          branchLink={button_branch_link}
+          buttonLink={button_link}
+          show={show_button}
+          color={button_color}
+          size={button_size ? button_size : 'sm'}
+          weight={button_weight}
+          positionMobile={button_position_mobile}
+        />
       </AlignableContentWrapper>
     </MarginSectionWrapper>
   )
