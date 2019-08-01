@@ -100,8 +100,9 @@ export const BulletPointBlock: React.FunctionComponent<
   enforce_size,
   bullet_points_position,
   bullet_points,
+  size,
 }) => (
-  <BulletPointSectionWrapper color={color && color.color}>
+  <BulletPointSectionWrapper color={color && color.color} size={size}>
     <ContentWrapper>
       {title && <Title position={title_position}>{title}</Title>}
       <InnerWrapper position={bullet_points_position}>

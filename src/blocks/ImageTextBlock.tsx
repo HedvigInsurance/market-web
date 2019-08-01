@@ -2,7 +2,7 @@ import * as React from 'react'
 import styled from 'react-emotion'
 import {
   ContentWrapper,
-  MarginSectionWrapper,
+  SectionWrapper,
   TABLET_BP_DOWN,
 } from '../components/blockHelpers'
 import {
@@ -161,7 +161,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   button_weight,
 }) => {
   return (
-    <MarginSectionWrapper
+    <SectionWrapper
       color={color && color.color}
       size={size}
       backgroundImage={background_image}
@@ -230,6 +230,6 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
             />
           ))}
       </AlignableContentWrapper>
-    </MarginSectionWrapper>
+    </SectionWrapper>
   )
 }
