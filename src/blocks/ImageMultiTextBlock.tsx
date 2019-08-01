@@ -37,6 +37,7 @@ const Image = styled(DeferredImage)(({ pull }: { pull: 'left' | 'right' }) => ({
 }))
 
 const Title = styled('h3')({
+  marginTop: 0,
   fontSize: '1.25rem',
 })
 
