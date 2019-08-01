@@ -121,8 +121,9 @@ export const AccordionBlock: React.FunctionComponent<AccordionBlockProps> = ({
   title,
   accordions,
   color,
+  size,
 }) => (
-  <SectionWrapper color={color && color.color}>
+  <SectionWrapper color={color && color.color} size={size}>
     <SplitContentWrapper>
       <Col>
         <h2>{title}</h2>
