@@ -57,8 +57,8 @@ export interface ImageMultiTextBlockProps extends BaseBlockProps {
 
 export const ImageMultiTextBlock: React.FunctionComponent<
   ImageMultiTextBlockProps
-> = ({ color, image, image_position, text_items }) => (
-  <SectionWrapper color={color && color.color} size="sm">
+> = ({ color, image, image_position, text_items, size }) => (
+  <SectionWrapper color={color && color.color} size={size}>
     <ContentWrapper>
       <Wrapper imagePosition={image_position}>
         <Col pad={image_position === 'left' ? 'right' : 'left'}>

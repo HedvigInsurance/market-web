@@ -2,7 +2,7 @@ import { colors } from '@hedviginsurance/brand'
 import styled from 'react-emotion'
 import { colorComponentColors } from 'src/blocks/BaseBlockProps'
 
-const buttonSizes = {
+export const buttonSizes = {
   sm: '.75rem 1.5rem',
   md: '1rem 2rem',
 }
@@ -20,7 +20,7 @@ interface ButtonProps {
 type ColorMap = { [K in colorComponentColors]: string }
 
 const colorMap: ColorMap = {
-  standard: colors.GREEN,
+  standard: colors.PURPLE,
   blue: colors.BLACK_PURPLE,
   'blue-dark': colors.DARK_PURPLE,
   'pink-light': colors.PINK_LIGHT,
