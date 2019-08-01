@@ -1498,6 +1498,10 @@
           "regex": "",
           "options": [
             {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
               "value": "sm",
               "name": "Small"
             },
@@ -1572,7 +1576,7 @@
           "pos": 5,
           "required": true
         },
-        "text_alignment_mobile": {
+        "text_position_mobile": {
           "type": "option",
           "options": [
             {
