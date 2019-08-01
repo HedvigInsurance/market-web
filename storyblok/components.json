@@ -2218,6 +2218,31 @@
       "name": "trustpilot_block",
       "display_name": null,
       "schema": {
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": -1,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
@@ -2316,16 +2341,41 @@
       "name": "press_card_block",
       "display_name": "Press Card Block",
       "schema": {
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": 0,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
           "options": [],
-          "pos": 0
+          "pos": 1
         },
         "cards": {
           "type": "bloks",
           "required": false,
-          "pos": 1,
+          "pos": 2,
           "restrict_components": true,
           "component_whitelist": ["press_card_item"]
         }

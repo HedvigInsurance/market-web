@@ -67,8 +67,9 @@ export const TrustpilotBlock: React.FunctionComponent<TrustpilotBlockProps> = ({
   color,
   ratings,
   title,
+  size,
 }) => (
-  <TrustpilotWrapper color={color && color.color} size="sm">
+  <TrustpilotWrapper color={color && color.color} size={size}>
     <h2>{title}</h2>
     <RatingsWrapper>
       {ratings.map((rating) => {
