@@ -1699,8 +1699,7 @@
             }
           ],
           "default_value": "left",
-          "pos": 6,
-          "required": true
+          "pos": 6
         },
         "image": {
           "type": "image",
