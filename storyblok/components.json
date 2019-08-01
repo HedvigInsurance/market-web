@@ -1604,6 +1604,10 @@
           "regex": "",
           "options": [
             {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
               "value": "sm",
               "name": "Small"
             },
@@ -1678,31 +1682,51 @@
           "pos": 5,
           "required": true
         },
+        "text_position_mobile": {
+          "type": "option",
+          "options": [
+            {
+              "value": "right",
+              "name": "Right"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "left",
+              "name": "Left"
+            }
+          ],
+          "default_value": "left",
+          "pos": 6,
+          "required": true
+        },
         "image": {
           "type": "image",
           "required": false,
-          "pos": 6
+          "pos": 7
         },
         "use_image_link": {
           "type": "boolean",
-          "pos": 7,
+          "pos": 8,
           "translatable": true
         },
         "image_link": {
           "type": "multilink",
           "translatable": true,
-          "pos": 8
+          "pos": 9
         },
         "background_image": {
           "type": "image",
           "required": false,
-          "pos": 9
+          "pos": 10
         },
         "button_title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 10,
+          "pos": 11,
           "translatable": true
         },
         "button_type": {
@@ -1723,12 +1747,12 @@
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 11
+          "pos": 12
         },
         "button_branch_link": {
           "type": "boolean",
           "description": "Create a branch link instead of the link field",
-          "pos": 12,
+          "pos": 13,
           "translatable": true
         },
         "button_link": {
@@ -1737,7 +1761,7 @@
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 13,
+          "pos": 14,
           "translatable": true
         },
         "media_position": {
@@ -1754,19 +1778,33 @@
           ],
           "required": true,
           "default_value": "top",
-          "pos": 14
+          "pos": 15
         },
         "show_button": {
           "type": "boolean",
           "required": false,
           "default_value": "true",
-          "pos": 15
+          "pos": 16
         },
         "button_color": {
           "field_type": "hedvig-limited-color-picker",
           "options": [],
           "type": "custom",
-          "pos": 16
+          "pos": 17
+        },
+        "button_size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "md",
+              "name": "MD"
+            }
+          ],
+          "pos": 18
         },
         "button_weight": {
           "type": "option",
@@ -1781,7 +1819,22 @@
               "name": "Bold"
             }
           ],
-          "pos": 17
+          "pos": 19
+        },
+        "button_position_mobile": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "above",
+              "name": "Above media"
+            },
+            {
+              "value": "below",
+              "name": "Below media"
+            }
+          ],
+          "pos": 20
         }
       },
       "image": null,
