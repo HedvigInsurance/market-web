@@ -1595,6 +1595,52 @@
       "component_group_uuid": null
     },
     {
+      "name": "home_hero_block",
+      "display_name": null,
+      "schema": {
+        "video_file_location": {
+          "type": "text",
+          "description": "Will be suffixed with \".<format>\" . Ie. https://cdn.hedvig.com/www/about-us-video/web. Formats that must be present are png (for the poster), m3u8, mp4 and webm",
+          "pos": -1
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "title": {
+          "type": "text",
+          "pos": 1,
+          "translatable": true
+        },
+        "second_title": {
+          "type": "text",
+          "pos": 2,
+          "translatable": true
+        },
+        "title_color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 3
+        },
+        "subtitle": {
+          "type": "text",
+          "pos": 4,
+          "translatable": true
+        }
+      },
+      "image": null,
+      "preview_field": "",
+      "is_root": false,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "home_hero_block",
+      "component_group_uuid": null
+    },
+    {
       "name": "title_text_cta_block",
       "display_name": "",
       "schema": {
