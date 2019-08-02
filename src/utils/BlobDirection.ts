@@ -1,3 +1,5 @@
+import { SectionSize } from './SectionSize'
+
 export type BlobDirection = 'none' | 'up' | 'down'
 export interface BaseBlobProps {
   direction: BlobDirection
@@ -16,6 +18,37 @@ const blobDirectionStyles = {
     top: 0,
     bottom: 'auto',
   },
+}
+
+export const blobHeight = (parentSize: SectionSize) => {
+  switch (parentSize) {
+    case 'xl':
+      return 84
+    case 'lg':
+      return 45
+    case 'sm':
+      return 30
+    case 'none':
+      return 0
+  }
+}
+
+export const blobOffsetStyles = (
+  direction: BlobDirection,
+  overlap: boolean,
+  parentSize: SectionSize,
+) => {
+  if (overlap) {
+    switch (direction) {
+      case 'none':
+        return undefined
+      case 'up':
+        return { top: -blobHeight(parentSize) }
+      case 'down':
+        return { bottom: -blobHeight(parentSize) }
+    }
+  }
+  return undefined
 }
 
 const upBlobPathData =
