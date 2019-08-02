@@ -77,7 +77,7 @@ const Title = styled('h2')(
     color,
     maxWidth: textPosition === 'center' ? '40rem' : '31rem',
     [TABLET_BP_DOWN]: {
-      fontSize: size === 'lg' ? '3.75rem' : '2rem',
+      fontSize: size === 'lg' ? '2.75rem' : '2rem',
       maxWidth: '100%',
       marginTop: displayOrder === 'top' ? '3rem' : '1.414rem',
     },
