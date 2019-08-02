@@ -8,8 +8,8 @@ const PressItemWrapper = styled('div')(
   ({ offWhite = false }: { offWhite?: boolean }) => ({
     borderRadius: 8,
     padding: 24,
-    margin: '0 20px',
-    maxWidth: 330,
+    margin: '0 5%',
+    width: '90%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
