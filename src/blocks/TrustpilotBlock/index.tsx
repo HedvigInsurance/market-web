@@ -14,7 +14,8 @@ import { TrustpilotRatingItem } from './TrustpilotRatingItem'
 
 const CardWrapper = styled('div')({
   ...CONTENT_MAX_WIDTH,
-  margin: '0 auto',
+  margin: '0 auto 2em auto',
+  width: '100vw',
   display: 'flex',
   justifyContent: 'center',
 })
@@ -28,11 +29,7 @@ const RatingsWrapper = styled('div')({
 })
 
 const Swiper = styled(SwipeableViews)({
-  padding: '0 15%',
-
-  'min-width: 900px': {
-    padding: '0 5%',
-  },
+  width: '100%',
 })
 
 const TrustpilotWrapper = styled(SectionWrapper)({
@@ -97,7 +94,11 @@ export const TrustpilotBlock: React.FunctionComponent<TrustpilotBlockProps> = ({
     </RatingsWrapper>
     <CardWrapper id="trustpilot_cards">
       <MediaQuery query="(max-width: 700px)">
-        <Swiper resistance enableMouseEvents slideStyle={{ display: 'flex' }}>
+        <Swiper
+          resistance
+          enableMouseEvents
+          slideStyle={{ display: 'flex', minWidth: '0' }}
+        >
           {cards.map((card) => (
             <TrustpilotCardItem blockColor={color} key={card._uid} {...card} />
           ))}
