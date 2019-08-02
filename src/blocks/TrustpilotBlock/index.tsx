@@ -94,7 +94,11 @@ export const TrustpilotBlock: React.FunctionComponent<TrustpilotBlockProps> = ({
     </RatingsWrapper>
     <CardWrapper id="trustpilot_cards">
       <MediaQuery query="(max-width: 700px)">
-        <Swiper resistance enableMouseEvents slideStyle={{ display: 'flex', minWidth: '0' }}>
+        <Swiper
+          resistance
+          enableMouseEvents
+          slideStyle={{ display: 'flex', minWidth: '0' }}
+        >
           {cards.map((card) => (
             <TrustpilotCardItem blockColor={color} key={card._uid} {...card} />
           ))}
