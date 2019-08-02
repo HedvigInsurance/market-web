@@ -4,6 +4,8 @@ import { getColorStyles, SectionWrapper } from '../components/blockHelpers'
 import {
   BaseBlobProps,
   BlobDirection,
+  blobHeight,
+  blobOffsetStyles,
   getBlobPathData,
   getBlobStyles,
 } from '../utils/BlobDirection'
@@ -18,42 +20,61 @@ interface SpacerBlockProps extends BaseBlockProps {
   size: SectionSize
   blob_direction: BlobDirection
   blob_color?: ColorComponent
+  overlap: boolean
 }
 
 interface SvgProps extends BaseBlobProps {
   color?: colorComponentColors
+  overlap: boolean
+  parentSize: SectionSize
 }
 
 interface BlobProps extends BaseBlobProps {
   parentSize: SectionSize
   color?: colorComponentColors
+  overlap: boolean
 }
 
-const Svg = styled('svg')(({ color, direction }: SvgProps) => ({
-  fill: color ? getColorStyles(color).background : 'white',
-  ...getBlobStyles(direction),
-  position: 'absolute',
-  right: 0,
-  left: 0,
-}))
+interface SpacerProps extends BaseBlobProps {
+  overlap: boolean
+}
 
-const Spacer = styled(SectionWrapper)({
+const Svg = styled('svg')(
+  ({ color, direction, overlap, parentSize }: SvgProps) => ({
+    fill: color ? getColorStyles(color).background : 'white',
+    ...getBlobStyles(direction),
+    ...blobOffsetStyles(direction, overlap, parentSize),
+    position: 'absolute',
+    right: 0,
+    left: 0,
+  }),
+)
+
+const padding = (overlap: boolean) => {
+  return overlap ? { padding: '0 !important' } : undefined
+}
+
+const Spacer = styled(SectionWrapper)(({ overlap }: SpacerProps) => ({
   paddingBottom: '0 !important',
   position: 'relative',
-})
+  ...padding(overlap),
+}))
 
 const Blob: React.FunctionComponent<BlobProps> = ({
   color,
   parentSize,
   direction,
+  overlap,
 }) => (
   <Svg
     width="100%"
-    height={parentSize !== 'xl' ? '50%' : '84'}
+    height={blobHeight(parentSize)}
     viewBox="0 0 755 84"
     preserveAspectRatio="none"
     color={color}
     direction={direction}
+    overlap={overlap}
+    parentSize={parentSize}
   >
     <path d={getBlobPathData(direction)} />
   </Svg>
@@ -64,12 +85,19 @@ export const SpacerBlock: React.FunctionComponent<SpacerBlockProps> = ({
   color,
   blob_direction,
   blob_color,
+  overlap,
 }) => (
-  <Spacer size={size} color={color && color.color}>
+  <Spacer
+    size={size}
+    color={color && color.color}
+    overlap={overlap}
+    direction={blob_direction}
+  >
     <Blob
       parentSize={size}
       direction={blob_direction}
       color={blob_color && blob_color.color}
+      overlap={overlap}
     />
   </Spacer>
 )
