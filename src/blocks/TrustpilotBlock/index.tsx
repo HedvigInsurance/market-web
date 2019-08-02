@@ -14,7 +14,7 @@ import { TrustpilotRatingItem } from './TrustpilotRatingItem'
 
 const CardWrapper = styled('div')({
   ...CONTENT_MAX_WIDTH,
-  margin: '0 auto',
+  margin: '0 auto 2em auto',
   width: '100vw',
   display: 'flex',
   justifyContent: 'center',
