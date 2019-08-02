@@ -2742,11 +2742,17 @@
           "description": "",
           "default_value": "none"
         },
+        "overlap": {
+          "type": "boolean",
+          "pos": 3,
+          "default_value": "false",
+          "description": "Whether the blobs should overlap with the content above it in case of up-blob and below it in case of down-blob"
+        },
         "blob_color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
           "options": [],
-          "pos": 3
+          "pos": 4
         }
       },
       "image": null,
