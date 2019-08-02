@@ -13,6 +13,7 @@ import { FooterBlock } from './FooterBlock'
 import { HeaderBlock } from './HeaderBlock'
 import { HedvigersBlock } from './HedvigersBlock'
 import { HeroVideoBlock } from './HeroVideoBlock'
+import { HomeHeroBlock } from './HomeHeroBlock'
 import { IconBulletPointBlock } from './IconBulletPointBlock'
 import { IconForestBlock } from './IconForestBlock'
 import { ImageBlock } from './ImageBlock'
@@ -42,6 +43,7 @@ const blockComponents = {
   investors_block: InvestorsBlock,
   hedvigers_block: HedvigersBlock,
   hero_video_block: HeroVideoBlock,
+  home_hero_block: HomeHeroBlock,
   single_quote_block: SingleQuoteBlock,
   image_text_block: ImageTextBlock,
   title_text_cta_block: TitleTextCtaBlock,
