@@ -2431,17 +2431,23 @@
           "pos": 1,
           "translatable": true
         },
+        "title_color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 2
+        },
         "ratings": {
           "type": "bloks",
           "required": false,
-          "pos": 2,
+          "pos": 3,
           "restrict_components": true,
           "component_whitelist": ["trustpilot_rating_item"]
         },
         "cards": {
           "type": "bloks",
           "required": false,
-          "pos": 3,
+          "pos": 4,
           "restrict_components": true,
           "component_whitelist": ["trustpilot_card_item"]
         }
