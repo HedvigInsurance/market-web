@@ -30,7 +30,12 @@ type TitleSize = 'sm' | 'lg'
 const AlignableContentWrapper = styled(ContentWrapper)(
   ({ textPosition }: { textPosition: string }) => ({
     display: 'flex',
-    flexDirection: textPosition === 'right' ? 'row-reverse' : 'row',
+    flexDirection:
+      textPosition === 'right'
+        ? 'row-reverse'
+        : textPosition === 'center'
+        ? 'column'
+        : 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     [TABLET_BP_DOWN]: {
@@ -64,15 +69,19 @@ const Title = styled('h2')(
     size,
     displayOrder,
     textPosition,
+    alignment,
     color,
   }: {
     size?: TitleSize
+    alignment: string
     displayOrder: 'top' | 'bottom'
     textPosition: TextPosition
     color: string
   }) => ({
     margin: textPosition === 'center' ? 'auto' : undefined,
     fontSize: size === 'lg' ? '4.5rem' : '2.5rem',
+    marginTop:
+      alignment === 'center' && displayOrder === 'top' ? '3rem' : '1.414rem',
     width: '100%',
     color,
     maxWidth: textPosition === 'center' ? '40rem' : '31rem',
@@ -107,7 +116,8 @@ const Image = styled(DeferredImage)(
     hasLink?: boolean
   }) => ({
     width: hasLink ? '100%' : '40%',
-    display: alignment === 'center' ? 'none' : 'block',
+    display: 'block',
+    order: alignment === 'center' && displayOrder === 'top' ? -1 : 'initial',
     [TABLET_BP_DOWN]: {
       maxWidth: '100%',
       width: 'auto',
@@ -194,6 +204,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
           <Title
             size={title_size}
             displayOrder={media_position}
+            alignment={text_position}
             color={
               title_color && title_color.color !== 'standard'
                 ? getColorStyles(title_color.color).background
