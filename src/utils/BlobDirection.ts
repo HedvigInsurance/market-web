@@ -43,9 +43,9 @@ export const blobOffsetStyles = (
       case 'none':
         return undefined
       case 'up':
-        return { top: -(blobHeight(parentSize) - 1) }
+        return { top: -(blobHeight(parentSize) - 1), bottom: 'auto' }
       case 'down':
-        return { bottom: -(blobHeight(parentSize) - 1) }
+        return { bottom: -(blobHeight(parentSize) - 1), top: 'auto' }
     }
   }
   return undefined
