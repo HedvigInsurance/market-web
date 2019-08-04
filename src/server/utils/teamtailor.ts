@@ -92,7 +92,7 @@ export const initializeTeamtailorUsers = () =>
           e.status}", retrying after 5 sec...`,
       )
 
-      await new Promise((resolve) => setTimeout(resolve, 5000))
+      await new Promise((resolve) => setTimeout(resolve, 10))
 
       return getTeamtailorUsers({
         url: 'https://api.teamtailor.com/v1/users',

@@ -12,6 +12,9 @@ import { Player } from './Player'
 
 interface HeroVideoBlockProps extends BaseBlockProps {
   video_file_location: string
+  mobile_video_file_location: string
+  desktop_background_image: string
+  mobile_background_image: string
   title: string
   second_title?: string
   title_color?: ColorComponent
@@ -58,14 +61,19 @@ const TitleWrapper = styled('div')({
 
 interface State {
   videoRef: React.RefObject<HTMLVideoElement>
+  mobileVideoRef: React.RefObject<HTMLVideoElement>
 }
 
 interface Actions {
   setVideoRef: (videoRef: React.RefObject<HTMLVideoElement>) => void
+  setMobileVideoRef: (videoRef: React.RefObject<HTMLVideoElement>) => void
 }
 
 const actions: ActionMap<State, Actions> = {
   setVideoRef: (videoRef) => () => ({
+    videoRef,
+  }),
+  setMobileVideoRef: (videoRef) => () => ({
     videoRef,
   }),
 }
@@ -77,18 +85,26 @@ export const HomeHeroBlock: React.FunctionComponent<HeroVideoBlockProps> = ({
   subtitle,
   color,
   video_file_location,
+  mobile_video_file_location,
+  desktop_background_image,
+  mobile_background_image,
 }) => (
   <Container
     actions={actions}
     initialState={{
       videoRef: React.createRef<HTMLVideoElement>(),
+      mobileVideoRef: React.createRef<HTMLVideoElement>(),
     }}
   >
-    {({ videoRef }) => (
+    {({ videoRef, mobileVideoRef }) => (
       <HeroContainer>
         <Player
           videoRef={videoRef}
+          mobileVideoRef={mobileVideoRef}
+          desktopImage={desktop_background_image}
+          mobileImage={mobile_background_image}
           baseVideoUrl={video_file_location}
+          baseMobileVideoUrl={mobile_video_file_location}
           backgroundColor="standard"
         />
         <TitleWrapper>
