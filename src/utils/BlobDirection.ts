@@ -43,18 +43,18 @@ export const blobOffsetStyles = (
       case 'none':
         return undefined
       case 'up':
-        return { top: -blobHeight(parentSize) }
+        return { top: -(blobHeight(parentSize) - 1) }
       case 'down':
-        return { bottom: -blobHeight(parentSize) }
+        return { bottom: -(blobHeight(parentSize) - 1) }
     }
   }
   return undefined
 }
 
 const upBlobPathData =
-  'M755 89.2194H0C0 69.6543 15 63.1325 44 63.1325C190.4 59.5205 288.149 25.884 321.5 18.4839C373.5 6.94562 432.5 -9.50935 570.5 6.94545C708.5 23.4002 751 68.6509 755 89.2194Z'
+  'M.032 44A9.744 9.744 0 0 1 0 43.207c0-24.246 54 2.987 151-30.379s224 6.133 224 30.38c0 .263-.01.527-.031.792H.032z'
 const downBlobPathData =
-  'M755 7.36336e-05L7.29981e-06 7.62939e-06C5.58938e-06 19.5651 71.5 38.663 139.5 43.4999C259 52.0001 282.5 58.2313 318 64.0001C358 70.5002 398.461 83.5002 531 83.5002C649.5 83.5001 751 20.5686 755 7.36336e-05Z'
+  'M375 0c-1.88 24.168-89.064 56.443-187.5 39.073C89.08 21.705 1.91 23.413 0 0h375z'
 
 const blobPathData = {
   none: '',

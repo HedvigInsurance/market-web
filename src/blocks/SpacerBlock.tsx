@@ -69,7 +69,7 @@ const Blob: React.FunctionComponent<BlobProps> = ({
   <Svg
     width="100%"
     height={blobHeight(parentSize)}
-    viewBox="0 0 755 84"
+    viewBox="0 0 375 44"
     preserveAspectRatio="none"
     color={color}
     direction={direction}
