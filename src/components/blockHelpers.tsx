@@ -102,7 +102,7 @@ export const getColorStyles = (color: colorComponentColors) => colorMap[color]
 export const getSectionSizeStyle = (size: SectionSize) =>
   sectionSizeStyles[size]
 
-const backgroundImageStyles = (backgroundImage: string) => {
+export const backgroundImageStyles = (backgroundImage: string) => {
   return (
     backgroundImage !== 'none' &&
     backgroundImage !== '' && {
