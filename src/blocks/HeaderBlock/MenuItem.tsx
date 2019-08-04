@@ -28,6 +28,7 @@ const DropdownMenuItemList = styled('ul')(
     opacity: isOpen && !isClosing ? 1 : 0,
     transition: 'opacity 150ms',
     overflowY: 'hidden',
+    color: colors.OFF_BLACK_DARK,
 
     [TABLET_BP_DOWN]: {
       position: 'static',
@@ -70,6 +71,7 @@ const Toggler = styled('button')(({ isOpen }: { isOpen: boolean }) => ({
   appearance: 'none',
   background: 0,
   border: 0,
+  color: 'inherit',
 
   '&:before': {
     position: 'relative',
