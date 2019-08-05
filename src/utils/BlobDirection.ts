@@ -12,10 +12,10 @@ const blobDirectionStyles = {
   },
   up: {
     top: 'auto',
-    bottom: 0,
+    bottom: -1,
   },
   down: {
-    top: 0,
+    top: -1,
     bottom: 'auto',
   },
 }
