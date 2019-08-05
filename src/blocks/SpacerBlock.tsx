@@ -45,6 +45,7 @@ const Svg = styled('svg')(
     ...getBlobStyles(direction),
     ...blobOffsetStyles(direction, overlap, parentSize),
     position: 'absolute',
+    display: 'block',
     right: 0,
     left: 0,
   }),
