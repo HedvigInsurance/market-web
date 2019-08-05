@@ -8,6 +8,7 @@ import {
   TABLET_BP_DOWN,
 } from '../../components/blockHelpers'
 import { DeferredImage } from '../../components/DeferredImage'
+import { HedvigWordmark } from '../../components/icons/HedvigWordmark'
 import { GlobalStoryContainer } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok'
 import { BaseBlockProps } from '../BaseBlockProps'
@@ -23,34 +24,49 @@ const BP_DOWN = '@media (max-width: 600px)'
 
 const FooterInnerWrapper = styled('footer')({
   display: 'flex',
+  flexDirection: 'row',
+  [TABLET_BP_DOWN]: {
+    flexDirection: 'column',
+  },
+})
+
+const LinkTextWrapper = styled('div')({
+  display: 'flex',
   flexDirection: 'column',
 })
 
-const LinksWrapper = styled('div')({
+const WordmarkFlagWrapper = styled('div')({
   display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'space-between',
-  width: '100%',
-  [MOBILE_BP_DOWN]: {
-    flexDirection: 'column',
-  },
+  flexDirection: 'column',
+  marginRight: '15vw',
 })
+
 const LinksColumnsWrapper = styled('nav')({
   display: 'flex',
   flexDirection: 'row',
-  justifyContent: 'space-between',
+  justifyContent: 'flex-start',
+  [TABLET_BP_DOWN]: {
+    marginTop: '2rem',
+  },
   [BP_DOWN]: {
-    flexDirection: 'column',
+    flexWrap: 'wrap',
   },
 })
+
+const ColumnHeader = styled('div')({
+  paddingBottom: '1.5rem',
+  fontWeight: 'bold',
+})
+
 const LinkColumn = styled('div')({
   '&:not(:last-of-type)': {
     paddingRight: '7rem',
     paddingBottom: '.5rem',
-    [TABLET_BP_DOWN]: {
-      paddingRight: '3rem',
+    '@media(max-width:1100px)': {
+      paddingRight: '4rem',
     },
     [BP_DOWN]: {
+      width: '50%',
       paddingRight: 0,
       paddingBottom: '2rem',
     },
@@ -65,46 +81,18 @@ const Link = styled('a')({
   display: 'block',
   color: 'inherit',
   textDecoration: 'none',
-  marginBottom: '1.5rem',
+  marginBottom: '1rem',
 })
 
-const AppstoreBadgeWrapper = styled('div')({
-  [MOBILE_BP_DOWN]: {
-    paddingBottom: '2rem',
-  },
+const FooterFooter = styled('div')({
+  opacity: 0.28,
+  fontSize: '0.9rem',
+  marginTop: '2rem',
 })
-const AppstoreLink = styled('a')({
-  display: 'block',
-  textAlign: 'right',
-  '&:not(:last-of-type)': {
-    paddingBottom: '1rem',
-  },
-
-  [MOBILE_BP_DOWN]: {
-    textAlign: 'left',
-  },
-})
-const ItunesImg = styled(DeferredImage)({
-  height: 54,
-})
-const PlayImg = styled(DeferredImage)({
-  height: 54,
-})
-
-const SocialMediaContainer = styled('div')({
-  display: 'flex',
-  flexDirection: 'row',
-  paddingBottom: '2rem',
-})
-const SocialMediaLink = styled('a')({
-  color: 'inherit',
-  display: 'block',
-  marginRight: '1rem',
-})
-const FooterFooter = styled('div')({})
 
 const LangSwitchersContainer = styled('div')({
   paddingBottom: '2rem',
+  paddingTop: '1.5rem',
 })
 const LangSwitcher = styled('a')({
   display: 'inline-flex',
@@ -121,79 +109,107 @@ export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
       <SectionWrapper color={color && color.color}>
         <ContentWrapper>
           <FooterInnerWrapper>
-            <LinksWrapper>
-              <LinksColumnsWrapper>
-                <LinkColumn>
-                  {(globalStory.content.footer_menu_items_1 || []).map(
-                    (link) => (
+            <WordmarkFlagWrapper>
+              <HedvigWordmark height={30} />
+
+              <LangSwitchersContainer>
+                <LangSwitcher href="/">
+                  <SweFlag />
+                </LangSwitcher>
+                <LangSwitcher href="/en">
+                  <UkFlag />
+                </LangSwitcher>
+              </LangSwitchersContainer>
+            </WordmarkFlagWrapper>
+
+            <LinkTextWrapper>
+              {globalStory.content.get_started && globalStory.content.get_started.length &&
+              globalStory.content.company && globalStory.content.company.length &&
+              globalStory.content.legal && globalStory.content.legal.length &&
+              globalStory.content.social && globalStory.content.social.length ? (
+                <LinksColumnsWrapper>
+                  <LinkColumn>
+                    <ColumnHeader>{'Get started'}</ColumnHeader>
+                    {(globalStory.content.get_started || []).map((link) => (
                       <Link
                         key={link._uid}
                         href={getStoryblokLinkUrl(link.link)}
                       >
                         {link.label}
                       </Link>
-                    ),
-                  )}
-                </LinkColumn>
-                <LinkColumn>
-                  {(globalStory.content.footer_menu_items_2 || []).map(
-                    (link) => (
+                    ))}
+                  </LinkColumn>
+                  <LinkColumn>
+                    <ColumnHeader>{'Company'}</ColumnHeader>
+                    {(globalStory.content.company || []).map((link) => (
                       <Link
                         key={link._uid}
                         href={getStoryblokLinkUrl(link.link)}
                       >
                         {link.label}
                       </Link>
-                    ),
-                  )}
-                </LinkColumn>
-              </LinksColumnsWrapper>
-              <AppstoreBadgeWrapper>
-                <AppLink>
-                  {({ link, handleClick }) => (
-                    <AppstoreLink href={link} onClick={handleClick}>
-                      <ItunesImg src="https://cdn.hedvig.com/www/appstores/app-store-badge.svg" />
-                    </AppstoreLink>
-                  )}
-                </AppLink>
-                <AppLink>
-                  {({ link, handleClick }) => (
-                    <AppstoreLink href={link} onClick={handleClick}>
-                      <PlayImg src="https://cdn.hedvig.com/www/appstores/google-play-badge.svg" />
-                    </AppstoreLink>
-                  )}
-                </AppLink>
-              </AppstoreBadgeWrapper>
-            </LinksWrapper>
+                    ))}
+                  </LinkColumn>
+                  <LinkColumn>
+                    <ColumnHeader>{'Legal'}</ColumnHeader>
+                    {(globalStory.content.legal || []).map((link) => (
+                      <Link
+                        key={link._uid}
+                        href={getStoryblokLinkUrl(link.link)}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </LinkColumn>
+                  <LinkColumn>
+                    <ColumnHeader>{'Social'}</ColumnHeader>
+                    {(globalStory.content.social || []).map((link) => (
+                      <Link
+                        key={link._uid}
+                        href={getStoryblokLinkUrl(link.link)}
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </LinkColumn>
+                </LinksColumnsWrapper>
+              ) : (
+                <LinksColumnsWrapper>
+                  <LinkColumn>
+                    {(globalStory.content.footer_menu_items_1 || []).map(
+                      (link) => (
+                        <Link
+                          key={link._uid}
+                          href={getStoryblokLinkUrl(link.link)}
+                        >
+                          {link.label}
+                        </Link>
+                      ),
+                    )}
+                  </LinkColumn>
+                  <LinkColumn>
+                    {(globalStory.content.footer_menu_items_2 || []).map(
+                      (link) => (
+                        <Link
+                          key={link._uid}
+                          href={getStoryblokLinkUrl(link.link)}
+                        >
+                          {link.label}
+                        </Link>
+                      ),
+                    )}
+                  </LinkColumn>
+                </LinksColumnsWrapper>
+              )}
 
-            <SocialMediaContainer>
-              <SocialMediaLink href="https://www.fb.me/hedvigapp">
-                <FacebookIcon />
-              </SocialMediaLink>
-              <SocialMediaLink href="https://www.instagram.com/hedvig/">
-                <InstagramIcon />
-              </SocialMediaLink>
-              <SocialMediaLink href="https://twitter.com/hedvigapp">
-                <TwitterIcon />
-              </SocialMediaLink>
-            </SocialMediaContainer>
-
-            <LangSwitchersContainer>
-              <LangSwitcher href="/">
-                <SweFlag />
-              </LangSwitcher>
-              <LangSwitcher href="/en">
-                <UkFlag />
-              </LangSwitcher>
-            </LangSwitchersContainer>
-
-            <FooterFooter
-              dangerouslySetInnerHTML={{
-                __html:
-                  globalStory.content.footer_paragraph &&
-                  globalStory.content.footer_paragraph.html,
-              }}
-            />
+              <FooterFooter
+                dangerouslySetInnerHTML={{
+                  __html:
+                    globalStory.content.footer_paragraph &&
+                    globalStory.content.footer_paragraph.html,
+                }}
+              />
+            </LinkTextWrapper>
           </FooterInnerWrapper>
         </ContentWrapper>
       </SectionWrapper>
