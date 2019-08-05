@@ -91,6 +91,10 @@ export interface GlobalStory extends Story {
     cta_link: LinkComponent
     footer_menu_items_1?: ReadonlyArray<MenuItem>
     footer_menu_items_2?: ReadonlyArray<MenuItem>
+    get_started?: ReadonlyArray<MenuItem>
+    company?: ReadonlyArray<MenuItem>
+    legal?: ReadonlyArray<MenuItem>
+    social?: ReadonlyArray<MenuItem>
     footer_paragraph: MarkdownHtmlComponent
   }
 }

@@ -1063,6 +1063,10 @@
         "footer": {
           "type": "section",
           "keys": [
+            "get_started",
+            "company",
+            "legal",
+            "social",
             "footer_menu_items_1",
             "footer_menu_items_2",
             "footer_paragraph"
@@ -1085,11 +1089,43 @@
           "pos": 8,
           "translatable": true
         },
+        "get_started": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": ["menu_item"],
+          "display_name": "",
+          "pos": 9,
+          "translatable": true
+        },
+        "company": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": ["menu_item"],
+          "display_name": "",
+          "pos": 10,
+          "translatable": true
+        },
+        "legal": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": ["menu_item"],
+          "display_name": "",
+          "pos": 11,
+          "translatable": true
+        },
+        "social": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": ["menu_item"],
+          "display_name": "",
+          "pos": 12,
+          "translatable": true
+        },
         "footer_paragraph": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 9,
+          "pos": 13,
           "translatable": true
         }
       },
