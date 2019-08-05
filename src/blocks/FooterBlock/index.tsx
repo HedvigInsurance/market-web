@@ -9,10 +9,7 @@ import { HedvigWordmark } from '../../components/icons/HedvigWordmark'
 import { GlobalStoryContainer } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok'
 import { BaseBlockProps } from '../BaseBlockProps'
-import {
-  SweFlag,
-  UkFlag,
-} from './icons'
+import { SweFlag, UkFlag } from './icons'
 
 const BP_DOWN = '@media (max-width: 600px)'
 
@@ -117,10 +114,14 @@ export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
             </WordmarkFlagWrapper>
 
             <LinkTextWrapper>
-              {globalStory.content.get_started && globalStory.content.get_started.length &&
-              globalStory.content.company && globalStory.content.company.length &&
-              globalStory.content.legal && globalStory.content.legal.length &&
-              globalStory.content.social && globalStory.content.social.length ? (
+              {globalStory.content.get_started &&
+              globalStory.content.get_started.length &&
+              globalStory.content.company &&
+              globalStory.content.company.length &&
+              globalStory.content.legal &&
+              globalStory.content.legal.length &&
+              globalStory.content.social &&
+              globalStory.content.social.length ? (
                 <LinksColumnsWrapper>
                   <LinkColumn>
                     <ColumnHeader>{'Get started'}</ColumnHeader>
