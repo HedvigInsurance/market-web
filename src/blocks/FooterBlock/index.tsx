@@ -1,22 +1,16 @@
 import * as React from 'react'
 import styled from 'react-emotion'
-import { AppLink } from '../../components/AppLink'
 import {
   ContentWrapper,
-  MOBILE_BP_DOWN,
   SectionWrapper,
   TABLET_BP_DOWN,
 } from '../../components/blockHelpers'
-import { DeferredImage } from '../../components/DeferredImage'
 import { HedvigWordmark } from '../../components/icons/HedvigWordmark'
 import { GlobalStoryContainer } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok'
 import { BaseBlockProps } from '../BaseBlockProps'
 import {
-  FacebookIcon,
-  InstagramIcon,
   SweFlag,
-  TwitterIcon,
   UkFlag,
 } from './icons'
 
