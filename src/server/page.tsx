@@ -13,6 +13,7 @@ import { Logger } from 'typescript-logging'
 import { App } from '../App'
 import { sentryConfig } from './config/sentry'
 import { favicons } from './utils/favicons'
+import { optimizeSnippet } from './utils/optimize'
 import {
   getDraftedStoryById,
   getGlobalStory,
@@ -50,6 +51,7 @@ const template = ({
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="google-site-verification" content="vyJz48ojQHtV9m0aaTEAySwZwVUfAGDAWU6zr7SD5qo" />
+    ${optimizeSnippet}
     ${helmet.base}
     ${helmet.title}
     ${helmet.link}
