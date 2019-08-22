@@ -11,7 +11,10 @@ import { config } from './config'
 import { helmetConfig } from './config/helmetConfig'
 import { sentryConfig } from './config/sentry'
 import { appLogger } from './logging'
-import { inCaseOfEmergency } from './middlewares/enhancers'
+import {
+  inCaseOfEmergency,
+  savePartnershipCookie,
+} from './middlewares/enhancers'
 import { forceHost } from './middlewares/redirects'
 import {
   addBlogPostsToState,
@@ -78,6 +81,7 @@ const server = createKoaServer({
 if (config.forceHost) {
   server.router.use('/*', forceHost({ host: config.forceHost }))
 }
+server.router.use('/*', savePartnershipCookie)
 server.router.use('/*', removeTrailingSlashes())
 redirects.forEach(([source, target, code]) => {
   server.router.get(source, (ctx) => {
