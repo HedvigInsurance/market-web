@@ -63,8 +63,18 @@ export const savePartnershipCookie: Middleware = async (ctx, next) => {
     ctx.cookies.set('_hvpartner', ctx.query.partner.toLowerCase(), {
       httpOnly: false,
       path: '/',
+      signed: false,
     })
   }
+
+  if (ctx.query.code) {
+    ctx.cookies.set('_hvcode', ctx.query.code.toLowerCase(), {
+      httpOnly: false,
+      path: '/',
+      signed: false,
+    })
+  }
+
 
   await next()
 }
