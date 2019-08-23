@@ -57,3 +57,23 @@ export const nextWithSentry: Middleware = async (ctx, next) => {
     throw e
   }
 }
+
+export const savePartnershipCookie: Middleware = async (ctx, next) => {
+  if (ctx.query.partner) {
+    ctx.cookies.set('_hvpartner', ctx.query.partner.toLowerCase(), {
+      httpOnly: false,
+      path: '/',
+      signed: false,
+    })
+  }
+
+  if (ctx.query.code) {
+    ctx.cookies.set('_hvcode', ctx.query.code.toLowerCase(), {
+      httpOnly: false,
+      path: '/',
+      signed: false,
+    })
+  }
+
+  await next()
+}
