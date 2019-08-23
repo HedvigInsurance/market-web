@@ -75,6 +75,5 @@ export const savePartnershipCookie: Middleware = async (ctx, next) => {
     })
   }
 
-
   await next()
 }
