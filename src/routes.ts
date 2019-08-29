@@ -29,6 +29,7 @@ export const routes: Route[] = [
 export const redirects: ReadonlyArray<[string, string, number]> = [
   ['/en/legal', '/legal', 302],
   ['/en/privacy', '/privacy', 302],
+  ['/seb', '/hemforsakring/seb?partner=seb&code=bank', 302],
   ['/en/student', '/en/hemforsakring/student', 301],
   ['/press', '/about-us', 301],
   ['/terms', '/villkor', 301],
