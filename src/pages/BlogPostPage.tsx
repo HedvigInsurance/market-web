@@ -184,7 +184,7 @@ export const BlogPostPage: React.FunctionComponent<{ nonce?: string }> = ({
 
           <BlogPostsContainer>
             {({ blogPosts }) => {
-              const index = blogPosts.findIndex(({ id }) => id === story.id)
+              const index = blogPosts && blogPosts.findIndex(({ id }) => id === story.id)
               return (
                 <PrevNextSection>
                   <PrevNextWrapper>
