@@ -59,7 +59,7 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
     <title>{title ? title : getPageTitleFromStory(story)}</title>
     <link
       rel="canonical"
-      href={`${getPublicHost()}/${fullSlug || getFullSlugFromStory(story)}`}
+      href={`${getPublicHost()}${fullSlug || getFullSlugFromStory(story)}`}
     />
     {story && story.content.robots && (
       <meta
@@ -90,7 +90,7 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
     )}
     <meta
       property="og:url"
-      content={`${getPublicHost()}/${fullSlug || getFullSlugFromStory(story)}`}
+      content={`${getPublicHost()}${fullSlug || getFullSlugFromStory(story)}`}
     />
     {story && story.content.seo_meta_og_title && (
       <meta name="twitter:title" content={story.content.seo_meta_og_title} />
