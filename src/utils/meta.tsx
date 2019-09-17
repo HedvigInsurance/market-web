@@ -88,7 +88,30 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
         content={getStoryblokImage(story.content.seo_meta_og_image)}
       />
     )}
+    <meta
+      property="og:url"
+      content={`${getPublicHost()}/${fullSlug || getFullSlugFromStory(story)}`}
+    />
+    {story && story.content.seo_meta_og_title && (
+      <meta
+        property="twitter:title"
+        content={story.content.seo_meta_og_title}
+      />
+    )}
+    {story && story.content.seo_meta_og_description && (
+      <meta
+        property="twitter:description"
+        content={story.content.seo_meta_og_description}
+      />
+    )}
+    {story && story.content.seo_meta_og_image && (
+      <meta
+        property="twitter:image"
+        content={story.content.seo_meta_og_image}
+      />
+    )}
     <meta name="twitter:site" content="@hedvigapp" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <meta name="theme-color" content="#651eff" />
   </>
