@@ -102,7 +102,10 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
       />
     )}
     {story && story.content.seo_meta_og_image && (
-      <meta name="twitter:image" content={story.content.seo_meta_og_image} />
+      <meta
+        name="twitter:image"
+        content={getStoryblokImage(story.content.seo_meta_og_image)}
+      />
     )}
     <meta name="twitter:site" content="@hedvigapp" />
     <meta name="twitter:card" content="summary_large_image" />
