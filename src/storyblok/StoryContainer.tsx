@@ -10,6 +10,7 @@ export interface SeoContent {
   seo_meta_description: string
   seo_meta_og_title: string
   seo_meta_og_description: string
+  seo_og_description: string
   seo_meta_og_image: Image
 }
 

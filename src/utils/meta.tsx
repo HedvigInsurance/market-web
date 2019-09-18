@@ -76,12 +76,17 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
     {story && story.content.seo_meta_og_title && (
       <meta property="og:title" content={story.content.seo_meta_og_title} />
     )}
-    {story && story.content.seo_meta_og_description && (
-      <meta
-        property="og:description"
-        content={story.content.seo_meta_og_description}
-      />
-    )}
+    {story &&
+      (story.content.seo_meta_og_description ||
+        story.content.seo_og_description) && (
+        <meta
+          property="og:description"
+          content={
+            story.content.seo_meta_og_description ||
+            story.content.seo_og_description
+          }
+        />
+      )}
     {story && story.content.seo_meta_og_image && (
       <meta
         property="og:image"
@@ -95,12 +100,17 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
     {story && story.content.seo_meta_og_title && (
       <meta name="twitter:title" content={story.content.seo_meta_og_title} />
     )}
-    {story && story.content.seo_meta_og_description && (
-      <meta
-        name="twitter:description"
-        content={story.content.seo_meta_og_description}
-      />
-    )}
+    {story &&
+      (story.content.seo_meta_og_description ||
+        story.content.seo_og_description) && (
+        <meta
+          name="twitter:description"
+          content={
+            story.content.seo_meta_og_description ||
+            story.content.seo_og_description
+          }
+        />
+      )}
     {story && story.content.seo_meta_og_image && (
       <meta
         name="twitter:image"

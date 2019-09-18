@@ -28,6 +28,7 @@
       "image": null,
       "preview_field": "",
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -79,7 +80,9 @@
           "type": "bloks",
           "maximum": "",
           "restrict_components": true,
-          "component_whitelist": ["accordion_item"],
+          "component_whitelist": [
+            "accordion_item"
+          ],
           "required": true,
           "description": "",
           "display_name": "",
@@ -90,6 +93,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -122,6 +126,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
@@ -166,7 +171,9 @@
           "type": "bloks",
           "maximum": "6",
           "restrict_components": true,
-          "component_whitelist": ["animated_cta_item"],
+          "component_whitelist": [
+            "animated_cta_item"
+          ],
           "required": true,
           "pos": 3
         }
@@ -174,6 +181,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -224,6 +232,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -390,6 +399,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -516,6 +526,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -559,7 +570,11 @@
         },
         "cta": {
           "type": "section",
-          "keys": ["cta_target", "show_cta", "cta_label"],
+          "keys": [
+            "cta_target",
+            "show_cta",
+            "cta_label"
+          ],
           "pos": 6
         },
         "show_cta": {
@@ -621,18 +636,24 @@
           "type": "text",
           "pos": 15
         },
-        "seo_og_description": {
+        "seo_meta_og_description": {
           "type": "text",
           "pos": 16
         },
+        "seo_og_description": {
+          "type": "text",
+          "pos": 17,
+          "display_name": "Seo Og Description (Don't use)"
+        },
         "seo_meta_og_image": {
           "type": "image",
-          "pos": 17
+          "pos": 18
         }
       },
       "image": null,
       "preview_field": null,
       "is_root": true,
+      "preview_tmpl": null,
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
@@ -729,7 +750,9 @@
           "type": "bloks",
           "maximum": "6",
           "restrict_components": true,
-          "component_whitelist": ["image_bullet_point_item"],
+          "component_whitelist": [
+            "image_bullet_point_item"
+          ],
           "required": true,
           "pos": 5,
           "translatable": false
@@ -738,6 +761,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -827,7 +851,9 @@
           "type": "bloks",
           "maximum": "6",
           "restrict_components": true,
-          "component_whitelist": ["card_checklist_bullet_point_item"],
+          "component_whitelist": [
+            "card_checklist_bullet_point_item"
+          ],
           "required": true,
           "pos": 4,
           "translatable": false
@@ -836,6 +862,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -877,7 +904,9 @@
           "type": "bloks",
           "maximum": "8",
           "restrict_components": true,
-          "component_whitelist": ["checklist_bullet_point_item_check_item"],
+          "component_whitelist": [
+            "checklist_bullet_point_item_check_item"
+          ],
           "required": false,
           "pos": 3,
           "translatable": false
@@ -886,6 +915,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -906,6 +936,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -949,6 +980,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -995,6 +1027,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -1017,6 +1050,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -1032,12 +1066,19 @@
           "pos": 0,
           "maximum": "",
           "restrict_components": true,
-          "component_whitelist": ["menu_item"],
+          "component_whitelist": [
+            "menu_item"
+          ],
           "translatable": true
         },
         "cta": {
           "type": "section",
-          "keys": ["show_cta", "cta_branch_link", "cta_label", "cta_link"],
+          "keys": [
+            "show_cta",
+            "cta_branch_link",
+            "cta_label",
+            "cta_link"
+          ],
           "pos": 1
         },
         "show_cta": {
@@ -1076,7 +1117,9 @@
         "footer_menu_items_1": {
           "type": "bloks",
           "restrict_components": true,
-          "component_whitelist": ["menu_item"],
+          "component_whitelist": [
+            "menu_item"
+          ],
           "display_name": "",
           "pos": 7,
           "translatable": true
@@ -1085,14 +1128,18 @@
           "type": "bloks",
           "maximum": "",
           "restrict_components": true,
-          "component_whitelist": ["menu_item"],
+          "component_whitelist": [
+            "menu_item"
+          ],
           "pos": 8,
           "translatable": true
         },
         "get_started": {
           "type": "bloks",
           "restrict_components": true,
-          "component_whitelist": ["menu_item"],
+          "component_whitelist": [
+            "menu_item"
+          ],
           "display_name": "",
           "pos": 9,
           "translatable": true
@@ -1100,7 +1147,9 @@
         "company": {
           "type": "bloks",
           "restrict_components": true,
-          "component_whitelist": ["menu_item"],
+          "component_whitelist": [
+            "menu_item"
+          ],
           "display_name": "",
           "pos": 10,
           "translatable": true
@@ -1108,7 +1157,9 @@
         "legal": {
           "type": "bloks",
           "restrict_components": true,
-          "component_whitelist": ["menu_item"],
+          "component_whitelist": [
+            "menu_item"
+          ],
           "display_name": "",
           "pos": 11,
           "translatable": true
@@ -1116,7 +1167,9 @@
         "social": {
           "type": "bloks",
           "restrict_components": true,
-          "component_whitelist": ["menu_item"],
+          "component_whitelist": [
+            "menu_item"
+          ],
           "display_name": "",
           "pos": 12,
           "translatable": true
@@ -1132,6 +1185,7 @@
       "image": null,
       "preview_field": null,
       "is_root": true,
+      "preview_tmpl": null,
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
@@ -1253,6 +1307,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -1272,6 +1327,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -1328,10 +1384,73 @@
       "image": null,
       "preview_field": "",
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "hero_video_block",
+      "component_group_uuid": null
+    },
+    {
+      "name": "home_hero_block",
+      "display_name": null,
+      "schema": {
+        "video_file_location": {
+          "type": "text",
+          "description": "Will be suffixed with \".<format>\" . Ie. https://cdn.hedvig.com/www/about-us-video/web. Formats that must be present are png (for the poster), m3u8, mp4 and webm",
+          "pos": -1
+        },
+        "mobile_video_file_location": {
+          "type": "text",
+          "description": "Will be suffixed with \".<format>\" . Ie. https://cdn.hedvig.com/www/about-us-video/web. Formats that must be present are png (for the poster), m3u8, mp4 and webm",
+          "pos": 0
+        },
+        "desktop_background_image": {
+          "type": "image",
+          "pos": 2,
+          "description": "Optional background"
+        },
+        "mobile_background_image": {
+          "type": "image",
+          "pos": 2,
+          "description": "Optional background"
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "title": {
+          "type": "text",
+          "pos": 1,
+          "translatable": true
+        },
+        "second_title": {
+          "type": "text",
+          "pos": 2,
+          "translatable": true
+        },
+        "title_color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 3
+        },
+        "subtitle": {
+          "type": "text",
+          "pos": 4,
+          "translatable": true
+        }
+      },
+      "image": null,
+      "preview_field": "",
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "home_hero_block",
       "component_group_uuid": null
     },
     {
@@ -1396,7 +1515,9 @@
           "type": "bloks",
           "maximum": "9",
           "restrict_components": true,
-          "component_whitelist": ["icon_bullet_point_item"],
+          "component_whitelist": [
+            "icon_bullet_point_item"
+          ],
           "required": true,
           "pos": 3,
           "translatable": false
@@ -1405,6 +1526,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -1441,6 +1563,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -1477,6 +1600,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -1507,6 +1631,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -1548,6 +1673,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -1615,7 +1741,9 @@
         "text_items": {
           "type": "bloks",
           "restrict_components": true,
-          "component_whitelist": ["title_paragraph_item"],
+          "component_whitelist": [
+            "title_paragraph_item"
+          ],
           "maximum": "3",
           "required": true,
           "pos": 3
@@ -1624,243 +1752,11 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "image_multi_text_block",
-      "component_group_uuid": null
-    },
-    {
-      "name": "home_hero_block",
-      "display_name": null,
-      "schema": {
-        "video_file_location": {
-          "type": "text",
-          "description": "Will be suffixed with \".<format>\" . Ie. https://cdn.hedvig.com/www/about-us-video/web. Formats that must be present are png (for the poster), m3u8, mp4 and webm",
-          "pos": -1
-        },
-        "mobile_video_file_location": {
-          "type": "text",
-          "description": "Will be suffixed with \".<format>\" . Ie. https://cdn.hedvig.com/www/about-us-video/web. Formats that must be present are png (for the poster), m3u8, mp4 and webm",
-          "pos": 0
-        },
-        "desktop_background_image": {
-          "type": "image",
-          "pos": 2,
-          "description": "Optional background"
-        },
-        "mobile_background_image": {
-          "type": "image",
-          "pos": 2,
-          "description": "Optional background"
-        },
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 0
-        },
-        "title": {
-          "type": "text",
-          "pos": 1,
-          "translatable": true
-        },
-        "second_title": {
-          "type": "text",
-          "pos": 2,
-          "translatable": true
-        },
-        "title_color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 3
-        },
-        "subtitle": {
-          "type": "text",
-          "pos": 4,
-          "translatable": true
-        }
-      },
-      "image": null,
-      "preview_field": "",
-      "is_root": false,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "home_hero_block",
-      "component_group_uuid": null
-    },
-    {
-      "name": "title_text_cta_block",
-      "display_name": "",
-      "schema": {
-        "size": {
-          "type": "option",
-          "required": true,
-          "regex": "",
-          "options": [
-            {
-              "value": "none",
-              "name": "Zero margins"
-            },
-            {
-              "value": "sm",
-              "name": "Small"
-            },
-            {
-              "value": "lg",
-              "name": "Large"
-            },
-            {
-              "value": "xl",
-              "name": "X-Large"
-            }
-          ],
-          "default_value": "lg",
-          "pos": -1
-        },
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "required": true,
-          "pos": 0
-        },
-        "title_size": {
-          "type": "option",
-          "options": [
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "lg",
-              "name": "LG"
-            }
-          ],
-          "description": "",
-          "default_value": "sm",
-          "pos": 1
-        },
-        "title_color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 2
-        },
-        "title": {
-          "type": "text",
-          "required": true,
-          "default_value": "Default Text",
-          "pos": 3,
-          "translatable": true
-        },
-        "paragraph": {
-          "type": "custom",
-          "required": true,
-          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
-          "pos": 4,
-          "field_type": "markdown-html",
-          "options": [],
-          "translatable": true
-        },
-        "background_image": {
-          "type": "image",
-          "required": false,
-          "pos": 10
-        },
-        "button_title": {
-          "type": "text",
-          "required": true,
-          "default_value": "Default Text",
-          "pos": 11,
-          "translatable": true
-        },
-        "button_type": {
-          "type": "option",
-          "options": [
-            {
-              "value": "filled",
-              "name": "Filled"
-            },
-            {
-              "value": "outlined",
-              "name": "Outlined"
-            },
-            {
-              "value": "plain",
-              "name": "Plain"
-            }
-          ],
-          "required": true,
-          "default_value": "filled",
-          "pos": 12
-        },
-        "button_branch_link": {
-          "type": "boolean",
-          "description": "Create a branch link instead of the link field",
-          "pos": 13,
-          "translatable": true
-        },
-        "button_link": {
-          "type": "multilink",
-          "description": "",
-          "display_name": "",
-          "required": true,
-          "default_value": "",
-          "pos": 14,
-          "translatable": true
-        },
-        "show_button": {
-          "type": "boolean",
-          "required": false,
-          "default_value": "true",
-          "pos": 16
-        },
-        "button_color": {
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "type": "custom",
-          "pos": 17
-        },
-        "button_size": {
-          "type": "option",
-          "options": [
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "md",
-              "name": "MD"
-            }
-          ],
-          "pos": 18
-        },
-        "button_weight": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "value": "normal",
-              "name": "Normal"
-            },
-            {
-              "value": "bold",
-              "name": "Bold"
-            }
-          ],
-          "pos": 19
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "title_text_cta_block",
       "component_group_uuid": null
     },
     {
@@ -2114,6 +2010,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -2141,6 +2038,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
@@ -2191,12 +2089,15 @@
           "type": "bloks",
           "restrict_components": true,
           "pos": 2,
-          "component_whitelist": ["investor_item"]
+          "component_whitelist": [
+            "investor_item"
+          ]
         }
       },
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -2217,6 +2118,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
@@ -2232,12 +2134,15 @@
           "pos": 0,
           "translatable": false,
           "restrict_components": true,
-          "component_whitelist": ["media_logo"]
+          "component_whitelist": [
+            "media_logo"
+          ]
         }
       },
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -2257,7 +2162,9 @@
         "link": {
           "type": "multilink",
           "restrict_content_types": true,
-          "component_whitelist": ["page"],
+          "component_whitelist": [
+            "page"
+          ],
           "required": true,
           "pos": 1,
           "translatable": false
@@ -2266,7 +2173,9 @@
           "type": "bloks",
           "translatable": true,
           "restrict_components": true,
-          "component_whitelist": ["menu_item"],
+          "component_whitelist": [
+            "menu_item"
+          ],
           "display_name": "Sub menu items",
           "pos": 2
         }
@@ -2274,6 +2183,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
@@ -2289,7 +2199,9 @@
           "maximum": "",
           "description": "",
           "restrict_components": true,
-          "component_whitelist": ["logotype_item"],
+          "component_whitelist": [
+            "logotype_item"
+          ],
           "required": true,
           "pos": 0
         }
@@ -2297,6 +2209,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -2385,6 +2298,7 @@
       "image": null,
       "preview_field": null,
       "is_root": true,
+      "preview_tmpl": null,
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
@@ -2443,6 +2357,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -2463,7 +2378,9 @@
           "type": "bloks",
           "pos": 1,
           "restrict_components": true,
-          "component_whitelist": ["press_item"],
+          "component_whitelist": [
+            "press_item"
+          ],
           "translatable": true
         },
         "title": {
@@ -2482,139 +2399,11 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "press_block",
-      "component_group_uuid": null
-    },
-    {
-      "name": "trustpilot_block",
-      "display_name": null,
-      "schema": {
-        "size": {
-          "type": "option",
-          "options": [
-            {
-              "value": "none",
-              "name": "Zero margins"
-            },
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "lg",
-              "name": "LG"
-            },
-            {
-              "value": "xl",
-              "name": "XL"
-            }
-          ],
-          "pos": -1,
-          "display_name": "",
-          "description": "",
-          "default_value": "lg"
-        },
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 0
-        },
-        "title": {
-          "type": "text",
-          "pos": 1,
-          "translatable": true
-        },
-        "title_color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 2
-        },
-        "ratings": {
-          "type": "bloks",
-          "required": false,
-          "pos": 3,
-          "restrict_components": true,
-          "component_whitelist": ["trustpilot_rating_item"]
-        },
-        "cards": {
-          "type": "bloks",
-          "required": false,
-          "pos": 4,
-          "restrict_components": true,
-          "component_whitelist": ["trustpilot_card_item"]
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "trustpilot_block",
-      "component_group_uuid": null
-    },
-    {
-      "name": "trustpilot_rating_item",
-      "display_name": null,
-      "schema": {
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 0
-        },
-        "title": {
-          "type": "text",
-          "pos": 1,
-          "required": true
-        },
-        "rating": {
-          "type": "number",
-          "pos": 2,
-          "required": true
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "trustpilot_rating_item",
-      "component_group_uuid": null
-    },
-    {
-      "name": "trustpilot_card_item",
-      "display_name": null,
-      "schema": {
-        "quote": {
-          "type": "text",
-          "pos": 0,
-          "required": true
-        },
-        "author": {
-          "type": "text",
-          "pos": 1,
-          "required": true
-        },
-        "link": {
-          "type": "text",
-          "pos": 2,
-          "translatable": true
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "trustpilot_card_item",
       "component_group_uuid": null
     },
     {
@@ -2657,12 +2446,15 @@
           "required": false,
           "pos": 2,
           "restrict_components": true,
-          "component_whitelist": ["press_card_item"]
+          "component_whitelist": [
+            "press_card_item"
+          ]
         }
       },
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -2687,6 +2479,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -2721,6 +2514,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
@@ -2783,6 +2577,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -2861,6 +2656,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -2889,6 +2685,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -3021,6 +2818,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -3107,6 +2905,7 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
@@ -3138,10 +2937,320 @@
       "image": null,
       "preview_field": null,
       "is_root": false,
+      "preview_tmpl": null,
       "is_nestable": false,
       "all_presets": [],
       "preset_id": null,
       "real_name": "title_paragraph_item",
+      "component_group_uuid": null
+    },
+    {
+      "name": "title_text_cta_block",
+      "display_name": "",
+      "schema": {
+        "size": {
+          "type": "option",
+          "required": true,
+          "regex": "",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "Small"
+            },
+            {
+              "value": "lg",
+              "name": "Large"
+            },
+            {
+              "value": "xl",
+              "name": "X-Large"
+            }
+          ],
+          "default_value": "lg",
+          "pos": -1
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "required": true,
+          "pos": 0
+        },
+        "title_size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            }
+          ],
+          "description": "",
+          "default_value": "sm",
+          "pos": 1
+        },
+        "title_color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 2
+        },
+        "title": {
+          "type": "text",
+          "required": true,
+          "default_value": "Default Text",
+          "pos": 3,
+          "translatable": true
+        },
+        "paragraph": {
+          "type": "custom",
+          "required": true,
+          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
+          "pos": 4,
+          "field_type": "markdown-html",
+          "options": [],
+          "translatable": true
+        },
+        "background_image": {
+          "type": "image",
+          "required": false,
+          "pos": 10
+        },
+        "button_title": {
+          "type": "text",
+          "required": true,
+          "default_value": "Default Text",
+          "pos": 11,
+          "translatable": true
+        },
+        "button_type": {
+          "type": "option",
+          "options": [
+            {
+              "value": "filled",
+              "name": "Filled"
+            },
+            {
+              "value": "outlined",
+              "name": "Outlined"
+            },
+            {
+              "value": "plain",
+              "name": "Plain"
+            }
+          ],
+          "required": true,
+          "default_value": "filled",
+          "pos": 12
+        },
+        "button_branch_link": {
+          "type": "boolean",
+          "description": "Create a branch link instead of the link field",
+          "pos": 13,
+          "translatable": true
+        },
+        "button_link": {
+          "type": "multilink",
+          "description": "",
+          "display_name": "",
+          "required": true,
+          "default_value": "",
+          "pos": 14,
+          "translatable": true
+        },
+        "show_button": {
+          "type": "boolean",
+          "required": false,
+          "default_value": "true",
+          "pos": 16
+        },
+        "button_color": {
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "type": "custom",
+          "pos": 17
+        },
+        "button_size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "md",
+              "name": "MD"
+            }
+          ],
+          "pos": 18
+        },
+        "button_weight": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "normal",
+              "name": "Normal"
+            },
+            {
+              "value": "bold",
+              "name": "Bold"
+            }
+          ],
+          "pos": 19
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "title_text_cta_block",
+      "component_group_uuid": null
+    },
+    {
+      "name": "trustpilot_block",
+      "display_name": null,
+      "schema": {
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": -1,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "title": {
+          "type": "text",
+          "pos": 1,
+          "translatable": true
+        },
+        "title_color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 2
+        },
+        "ratings": {
+          "type": "bloks",
+          "required": false,
+          "pos": 3,
+          "restrict_components": true,
+          "component_whitelist": [
+            "trustpilot_rating_item"
+          ]
+        },
+        "cards": {
+          "type": "bloks",
+          "required": false,
+          "pos": 4,
+          "restrict_components": true,
+          "component_whitelist": [
+            "trustpilot_card_item"
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "trustpilot_block",
+      "component_group_uuid": null
+    },
+    {
+      "name": "trustpilot_card_item",
+      "display_name": null,
+      "schema": {
+        "quote": {
+          "type": "text",
+          "pos": 0,
+          "required": true
+        },
+        "author": {
+          "type": "text",
+          "pos": 1,
+          "required": true
+        },
+        "link": {
+          "type": "text",
+          "pos": 2,
+          "translatable": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "trustpilot_card_item",
+      "component_group_uuid": null
+    },
+    {
+      "name": "trustpilot_rating_item",
+      "display_name": null,
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "title": {
+          "type": "text",
+          "pos": 1,
+          "required": true
+        },
+        "rating": {
+          "type": "number",
+          "pos": 2,
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "trustpilot_rating_item",
       "component_group_uuid": null
     }
   ]
