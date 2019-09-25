@@ -62,6 +62,7 @@ const template = ({
     <script nonce="${nonce}">
       Sentry.init(${JSON.stringify(sentryConfig())})
     </script>
+    <script defer src="https://adtr.io/jsTag?ap=1412531808"></script>
   </head>
   <body>
     ${
