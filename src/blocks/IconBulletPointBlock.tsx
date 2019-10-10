@@ -60,6 +60,9 @@ const Icon = styled('img')({
   marginRight: '0.625rem',
   marginTop: '1.414rem',
   marginBottom: '0.5rem',
+  [MOBILE_BP_DOWN]: {
+    marginLeft: '-3rem',
+  },
 })
 
 const BulletPointTitle = styled('h4')({
@@ -77,6 +80,9 @@ const AlignableContent = styled(ContentWrapper)(
 const MainTitle = styled('h2')({
   marginTop: 0,
   marginBottom: '1.586rem',
+  [MOBILE_BP_DOWN]: {
+    textAlign: 'left',
+  },
 })
 
 const BulletPointList = styled('div')({
