@@ -79,7 +79,7 @@ const Title = styled('h2')(
     color: string
   }) => ({
     margin: textPosition === 'center' ? 'auto' : undefined,
-    fontSize: size === 'lg' ? '4.5rem' : '2.5rem',
+    fontSize: size === 'lg' ? '4.5rem' : '3.5rem',
     marginTop:
       alignment === 'center' && displayOrder === 'top' ? '3rem' : '1.414rem',
     width: '100%',
