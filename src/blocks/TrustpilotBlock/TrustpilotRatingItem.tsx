@@ -1,14 +1,19 @@
 import * as React from 'react'
+import styled from 'react-emotion'
 import StarRatings from 'react-star-ratings'
 
 import { TrustpilotRatingItemProps } from '.'
 import { getColorStyles } from '../../components/blockHelpers'
 
+const Title = styled('h4')({
+  textAlign: 'center',
+})
+
 export const TrustpilotRatingItem: React.FunctionComponent<
   TrustpilotRatingItemProps
 > = ({ color, title, rating }) => (
   <>
-    <h4>{title}</h4>
+    <Title>{title}</Title>
     <StarRatings
       rating={Number(rating)}
       starRatedColor={getColorStyles(color && color.color).background}

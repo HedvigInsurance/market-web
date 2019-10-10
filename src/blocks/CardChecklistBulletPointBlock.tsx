@@ -25,7 +25,11 @@ const Title = styled('h2')(({ position }: { position: TextPosition }) => ({
   minWidth: '100%',
   marginTop: 0,
   marginBottom: '2rem',
+  [MOBILE_BP_DOWN]: {
+    justifyContent: textFlexPositionMap.left,
+  },
 }))
+
 const BulletPointsWrapper = styled('div')(
   ({ position }: { position: TextPosition }) => ({
     display: 'flex',
@@ -47,7 +51,9 @@ const BulletPoint = styled('div')({
   },
 
   [MOBILE_BP_DOWN]: {
-    width: `calc(100% - ${GUTTER}*2)`,
+    width: '100%',
+    marginLeft: 0,
+    marginRight: 0,
   },
 })
 
