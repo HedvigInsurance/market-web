@@ -89,7 +89,6 @@ const Title = styled('h2')(
       fontSize: size === 'lg' ? '2.75rem' : '2rem',
       maxWidth: '100%',
       marginTop: displayOrder === 'top' ? '3rem' : '1.414rem',
-      textAlign: 'left',
     },
   }),
 )
@@ -102,7 +101,6 @@ const Paragraph = styled('div')(
     maxWidth: textPosition === 'center' ? '40rem' : '31rem',
     [TABLET_BP_DOWN]: {
       maxWidth: '100%',
-      textAlign: 'left',
     },
   }),
 )
