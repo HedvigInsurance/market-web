@@ -5,6 +5,7 @@ import {
   SectionWrapper,
   TABLET_BP_DOWN,
 } from '../../components/blockHelpers'
+import { ContextContainer } from '../../components/containers/ContextContainer'
 import { HedvigWordmark } from '../../components/icons/HedvigWordmark'
 import { GlobalStoryContainer } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok'
@@ -97,117 +98,127 @@ export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
 }) => (
   <GlobalStoryContainer>
     {({ globalStory }) => (
-      <SectionWrapper color={color && color.color}>
-        <ContentWrapper>
-          <FooterInnerWrapper>
-            <WordmarkFlagWrapper>
-              <HedvigWordmark height={30} />
+      <ContextContainer>
+        {(context) => (
+          <SectionWrapper color={color && color.color}>
+            <ContentWrapper>
+              <FooterInnerWrapper>
+                <WordmarkFlagWrapper>
+                  <HedvigWordmark height={30} />
 
-              <LangSwitchersContainer>
-                <LangSwitcher href="/">
-                  <SweFlag />
-                </LangSwitcher>
-                <LangSwitcher href="/en">
-                  <UkFlag />
-                </LangSwitcher>
-              </LangSwitchersContainer>
-            </WordmarkFlagWrapper>
+                  <LangSwitchersContainer>
+                    <LangSwitcher href="/">
+                      <SweFlag />
+                    </LangSwitcher>
+                    <LangSwitcher href="/en">
+                      <UkFlag />
+                    </LangSwitcher>
+                  </LangSwitchersContainer>
+                </WordmarkFlagWrapper>
 
-            <LinkTextWrapper>
-              {globalStory.content.get_started &&
-              globalStory.content.get_started.length &&
-              globalStory.content.company &&
-              globalStory.content.company.length &&
-              globalStory.content.legal &&
-              globalStory.content.legal.length &&
-              globalStory.content.social &&
-              globalStory.content.social.length ? (
-                <LinksColumnsWrapper>
-                  <LinkColumn>
-                    <ColumnHeader>{'Get started'}</ColumnHeader>
-                    {(globalStory.content.get_started || []).map((link) => (
-                      <Link
-                        key={link._uid}
-                        href={getStoryblokLinkUrl(link.link)}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </LinkColumn>
-                  <LinkColumn>
-                    <ColumnHeader>{'Company'}</ColumnHeader>
-                    {(globalStory.content.company || []).map((link) => (
-                      <Link
-                        key={link._uid}
-                        href={getStoryblokLinkUrl(link.link)}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </LinkColumn>
-                  <LinkColumn>
-                    <ColumnHeader>{'Legal'}</ColumnHeader>
-                    {(globalStory.content.legal || []).map((link) => (
-                      <Link
-                        key={link._uid}
-                        href={getStoryblokLinkUrl(link.link)}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </LinkColumn>
-                  <LinkColumn>
-                    <ColumnHeader>{'Social'}</ColumnHeader>
-                    {(globalStory.content.social || []).map((link) => (
-                      <Link
-                        key={link._uid}
-                        href={getStoryblokLinkUrl(link.link)}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </LinkColumn>
-                </LinksColumnsWrapper>
-              ) : (
-                <LinksColumnsWrapper>
-                  <LinkColumn>
-                    {(globalStory.content.footer_menu_items_1 || []).map(
-                      (link) => (
-                        <Link
-                          key={link._uid}
-                          href={getStoryblokLinkUrl(link.link)}
-                        >
-                          {link.label}
-                        </Link>
-                      ),
-                    )}
-                  </LinkColumn>
-                  <LinkColumn>
-                    {(globalStory.content.footer_menu_items_2 || []).map(
-                      (link) => (
-                        <Link
-                          key={link._uid}
-                          href={getStoryblokLinkUrl(link.link)}
-                        >
-                          {link.label}
-                        </Link>
-                      ),
-                    )}
-                  </LinkColumn>
-                </LinksColumnsWrapper>
-              )}
+                <LinkTextWrapper>
+                  {globalStory.content.get_started &&
+                  globalStory.content.get_started.length &&
+                  globalStory.content.company &&
+                  globalStory.content.company.length &&
+                  globalStory.content.legal &&
+                  globalStory.content.legal.length &&
+                  globalStory.content.social &&
+                  globalStory.content.social.length ? (
+                    <LinksColumnsWrapper>
+                      <LinkColumn>
+                        <ColumnHeader>
+                          {context.lang === 'sv'
+                            ? 'Hemförsäkring'
+                            : 'Home insurance'}
+                        </ColumnHeader>
+                        {(globalStory.content.get_started || []).map((link) => (
+                          <Link
+                            key={link._uid}
+                            href={getStoryblokLinkUrl(link.link)}
+                          >
+                            {link.label}
+                          </Link>
+                        ))}
+                      </LinkColumn>
+                      <LinkColumn>
+                        <ColumnHeader>
+                          {context.lang === 'sv' ? 'Hedvig' : 'Company'}
+                        </ColumnHeader>
+                        {(globalStory.content.company || []).map((link) => (
+                          <Link
+                            key={link._uid}
+                            href={getStoryblokLinkUrl(link.link)}
+                          >
+                            {link.label}
+                          </Link>
+                        ))}
+                      </LinkColumn>
+                      <LinkColumn>
+                        <ColumnHeader>{'Legal'}</ColumnHeader>
+                        {(globalStory.content.legal || []).map((link) => (
+                          <Link
+                            key={link._uid}
+                            href={getStoryblokLinkUrl(link.link)}
+                          >
+                            {link.label}
+                          </Link>
+                        ))}
+                      </LinkColumn>
+                      <LinkColumn>
+                        <ColumnHeader>{'Social'}</ColumnHeader>
+                        {(globalStory.content.social || []).map((link) => (
+                          <Link
+                            key={link._uid}
+                            href={getStoryblokLinkUrl(link.link)}
+                          >
+                            {link.label}
+                          </Link>
+                        ))}
+                      </LinkColumn>
+                    </LinksColumnsWrapper>
+                  ) : (
+                    <LinksColumnsWrapper>
+                      <LinkColumn>
+                        {(globalStory.content.footer_menu_items_1 || []).map(
+                          (link) => (
+                            <Link
+                              key={link._uid}
+                              href={getStoryblokLinkUrl(link.link)}
+                            >
+                              {link.label}
+                            </Link>
+                          ),
+                        )}
+                      </LinkColumn>
+                      <LinkColumn>
+                        {(globalStory.content.footer_menu_items_2 || []).map(
+                          (link) => (
+                            <Link
+                              key={link._uid}
+                              href={getStoryblokLinkUrl(link.link)}
+                            >
+                              {link.label}
+                            </Link>
+                          ),
+                        )}
+                      </LinkColumn>
+                    </LinksColumnsWrapper>
+                  )}
 
-              <FooterFooter
-                dangerouslySetInnerHTML={{
-                  __html:
-                    globalStory.content.footer_paragraph &&
-                    globalStory.content.footer_paragraph.html,
-                }}
-              />
-            </LinkTextWrapper>
-          </FooterInnerWrapper>
-        </ContentWrapper>
-      </SectionWrapper>
+                  <FooterFooter
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        globalStory.content.footer_paragraph &&
+                        globalStory.content.footer_paragraph.html,
+                    }}
+                  />
+                </LinkTextWrapper>
+              </FooterInnerWrapper>
+            </ContentWrapper>
+          </SectionWrapper>
+        )}
+      </ContextContainer>
     )}
   </GlobalStoryContainer>
 )
