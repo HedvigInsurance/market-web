@@ -33,7 +33,7 @@ const AppLinkComponent: React.FunctionComponent<
   > = (props) => (
     <Container<AppLinkState, { setLink: (link: string) => void }>
       initialState={{
-        link: null,
+        link: undefined,
       }}
       actions={{ setLink: (link) => () => ({ link }) }}
     >
@@ -65,7 +65,6 @@ const AppLinkComponent: React.FunctionComponent<
                 >
                   {null}
                 </Mount>
-
                 {props.children({
                   link,
                   handleClick: (e: React.MouseEvent<HTMLElement>) => {
