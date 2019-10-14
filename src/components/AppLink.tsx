@@ -7,11 +7,9 @@ import { RouteComponentProps, withRouter } from 'react-router'
 import { StoryContainer } from '../storyblok/StoryContainer'
 import { getPublicHost } from '../utils/storyblok'
 import { trackEvent } from '../utils/tracking/trackEvent'
-import { utmParamsToBranchLinkOptions } from '../utils/tracking/utmToBranch'
 
 // Dynamically creating a link automatically copies over
 // any utm tags sent from ad networks
-
 interface AppLinkProps {
   children: (props: {
     handleClick: (e: React.MouseEvent<HTMLElement>) => void
