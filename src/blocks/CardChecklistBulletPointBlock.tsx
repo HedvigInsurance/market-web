@@ -45,7 +45,9 @@ const BulletPoint = styled('div')({
   margin: GUTTER,
   width: `calc(${(1 / 3) * 100}% - ${GUTTER}*2)`,
   background: colors.WHITE,
-  boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.2)',
+  boxShadow: '0px 1px 10px rgba(0, 0, 0, 0.1)',
+  borderRadius: 8,
+  overflow: 'hidden',
   [TABLET_BP_DOWN]: {
     width: `calc(50% - ${GUTTER}*2)`,
   },
