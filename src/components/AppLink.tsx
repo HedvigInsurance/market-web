@@ -43,7 +43,11 @@ const generateLink = (
   const utmContentPath = content ? `utm_content=${content}&` : ''
   const utmKeywordsPath = content ? `utm_keywords=${keywords}` : ''
 
-  const link = `https://hedvig.page.link/?link=${desktopLink}&${utmSourcePath}${utmMediumPath}${utmNamePath}${utmContentPath}${utmKeywordsPath}`
+  const encodedApn = encodeURIComponent('com.hedvig.app')
+  const encodedIbi = encodeURIComponent('com.hedvig.app')
+  const encodedIsi = encodeURIComponent('1303668531')
+
+  const link = `https://hedvig.page.link/?link=${desktopLink}&apn=${encodedApn}&ibi=${encodedIbi}&isi=${encodedIsi}&${utmSourcePath}${utmMediumPath}${utmNamePath}${utmContentPath}${utmKeywordsPath}`
   return link.replace(/&\s*$/, '')
 }
 
