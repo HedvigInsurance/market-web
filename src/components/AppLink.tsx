@@ -1,17 +1,13 @@
 import * as Cookies from 'js-cookie'
 import * as React from 'react'
 
-import { Container } from 'constate'
-import { Mount } from 'react-lifecycle-components'
 import { RouteComponentProps, withRouter } from 'react-router'
-import { StoryContainer } from '../storyblok/StoryContainer'
+import { Story, StoryContainer } from '../storyblok/StoryContainer'
 import { getPublicHost } from '../utils/storyblok'
 import { trackEvent } from '../utils/tracking/trackEvent'
-import { utmParamsToBranchLinkOptions } from '../utils/tracking/utmToBranch'
 
 // Dynamically creating a link automatically copies over
 // any utm tags sent from ad networks
-
 interface AppLinkProps {
   children: (props: {
     handleClick: (e: React.MouseEvent<HTMLElement>) => void
@@ -24,88 +20,54 @@ interface AppLinkProps {
   feature?: string
   stage?: string
 }
-interface AppLinkState {
-  link: string
+
+const generateLink = (
+  props: AppLinkProps & RouteComponentProps,
+  story: Story | undefined,
+) => {
+  const utmParams = Cookies.getJSON('utm-params') || {}
+  const source = utmParams.source || props.channel
+  const medium = utmParams.medium || props.feature
+  const name = utmParams.name || props.campaign
+  const content = utmParams.content || props.tags
+  const keywords = utmParams.keywords || props.tags
+
+  const lang = story ? story.lang : 'sv'
+  const host = getPublicHost() || 'https://www.hedvig.com'
+
+  const desktopLink = `${host}/${lang === 'sv' ? '' : lang + '/'}new-member`
+
+  const utmSourcePath = source ? `utm_source=${source}&` : ''
+  const utmMediumPath = medium ? `utm_medium=${medium}&` : ''
+  const utmNamePath = name ? `utm_name=${name}&` : ''
+  const utmContentPath = content ? `utm_content=${content}&` : ''
+  const utmKeywordsPath = content ? `utm_keywords=${keywords}` : ''
+
+  const encodedApn = encodeURIComponent('com.hedvig.app')
+  const encodedIbi = encodeURIComponent('com.hedvig.app')
+  const encodedIsi = encodeURIComponent('1303668531')
+
+  const link = `https://hedvig.page.link/?link=${desktopLink}&apn=${encodedApn}&ibi=${encodedIbi}&isi=${encodedIsi}&${utmSourcePath}${utmMediumPath}${utmNamePath}${utmContentPath}${utmKeywordsPath}`
+  return link.replace(/&\s*$/, '')
 }
 
 const AppLinkComponent: React.FunctionComponent<
   AppLinkProps & RouteComponentProps
 > = (props) => (
-  <Container<AppLinkState, { setLink: (link: string) => void }>
-    initialState={{
-      // Fallback if link creation fails (static channel and source)
-      // Branch is blocked by adblockers (e.g. uBlock)
-      // https://dashboard.branch.io/quick-links/qlc/config/514349583263033320
-      link: 'https://hedvig.app.link/cD3ZL59gjN',
-    }}
-    actions={{ setLink: (link) => () => ({ link }) }}
-  >
-    {({ link, setLink }) => (
-      <>
-        <StoryContainer>
-          {({ story }) => (
-            <>
-              <Mount
-                on={() => {
-                  const hasBranch =
-                    window &&
-                    (window as any).branch &&
-                    typeof (window as any).branch.link === 'function'
-                  if (!hasBranch) {
-                    return
-                  }
-
-                  const utmParams = Cookies.getJSON('utm-params') || {}
-                  const linkOptions = utmParamsToBranchLinkOptions(utmParams, {
-                    channel: props.channel,
-                    campaign: props.campaign,
-                    feature: props.feature,
-                    tags: props.tags,
-                    keywords: props.keywords,
-                    stage: props.stage,
-                  })
-                  const lang = story ? story.lang : 'sv'
-
-                  const path = props.location.pathname
-                  const host = getPublicHost() || 'https://www.hedvig.com'
-                  ;(window as any).branch.link(
-                    {
-                      ...linkOptions,
-                      data: {
-                        $desktop_url: `${host}/${
-                          lang === 'sv' ? '' : lang + '/'
-                        }new-member`,
-                        path,
-                      },
-                    },
-                    // tslint:disable-next-line variable-name
-                    (_err: Error | undefined, realLink: string | undefined) => {
-                      if (realLink) {
-                        setLink(realLink)
-                      }
-                    },
-                  )
-                }}
-              >
-                {null}
-              </Mount>
-
-              {props.children({
-                link,
-                handleClick: (e: React.MouseEvent<HTMLElement>) => {
-                  e.preventDefault()
-                  trackEvent('Click app link', {
-                    label: props.tags && props.tags.join(', '),
-                  })
-                  window.location.href = link
-                },
-              })}
-            </>
-          )}
-        </StoryContainer>
-      </>
-    )}
-  </Container>
+  <StoryContainer>
+    {({ story }) =>
+      props.children({
+        link: generateLink(props, story),
+        handleClick: (e: React.MouseEvent<HTMLElement>) => {
+          e.preventDefault()
+          trackEvent('Click app link', {
+            label: props.tags && props.tags.join(', '),
+          })
+          window.location.href = generateLink(props, story)
+        },
+      })
+    }
+  </StoryContainer>
 )
 
 AppLinkComponent.defaultProps = {
