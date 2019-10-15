@@ -32,10 +32,12 @@ const generateLink = (
   const content = utmParams.content || props.tags
   const keywords = utmParams.keywords || props.tags
 
-  const lang = story ? story.lang : 'sv'
+  const lang = story ? story.lang : 'default'
   const host = getPublicHost() || 'https://www.hedvig.com'
 
-  const desktopLink = `${host}/${lang === 'sv' ? '' : lang + '/'}new-member`
+  const desktopLink = `${host}/${
+    lang === 'default' ? '' : lang + '/'
+  }new-member`
 
   const utmSourcePath = source ? `utm_source=${source}&` : ''
   const utmMediumPath = medium ? `utm_medium=${medium}&` : ''
