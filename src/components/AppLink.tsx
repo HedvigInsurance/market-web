@@ -7,11 +7,9 @@ import { RouteComponentProps, withRouter } from 'react-router'
 import { StoryContainer } from '../storyblok/StoryContainer'
 import { getPublicHost } from '../utils/storyblok'
 import { trackEvent } from '../utils/tracking/trackEvent'
-import { utmParamsToBranchLinkOptions } from '../utils/tracking/utmToBranch'
 
 // Dynamically creating a link automatically copies over
 // any utm tags sent from ad networks
-
 interface AppLinkProps {
   children: (props: {
     handleClick: (e: React.MouseEvent<HTMLElement>) => void
@@ -24,6 +22,7 @@ interface AppLinkProps {
   feature?: string
   stage?: string
 }
+
 interface AppLinkState {
   link: string
 }
@@ -33,10 +32,7 @@ const AppLinkComponent: React.FunctionComponent<
 > = (props) => (
   <Container<AppLinkState, { setLink: (link: string) => void }>
     initialState={{
-      // Fallback if link creation fails (static channel and source)
-      // Branch is blocked by adblockers (e.g. uBlock)
-      // https://dashboard.branch.io/quick-links/qlc/config/514349583263033320
-      link: 'https://hedvig.app.link/cD3ZL59gjN',
+      link: undefined,
     }}
     actions={{ setLink: (link) => () => ({ link }) }}
   >
@@ -47,49 +43,27 @@ const AppLinkComponent: React.FunctionComponent<
             <>
               <Mount
                 on={() => {
-                  const hasBranch =
-                    window &&
-                    (window as any).branch &&
-                    typeof (window as any).branch.link === 'function'
-                  if (!hasBranch) {
-                    return
-                  }
-
                   const utmParams = Cookies.getJSON('utm-params') || {}
-                  const linkOptions = utmParamsToBranchLinkOptions(utmParams, {
-                    channel: props.channel,
-                    campaign: props.campaign,
-                    feature: props.feature,
-                    tags: props.tags,
-                    keywords: props.keywords,
-                    stage: props.stage,
-                  })
-                  const lang = story ? story.lang : 'sv'
+                  const source = utmParams.source || props.channel
+                  const medium = utmParams.medium || props.feature
+                  const name = utmParams.name || props.campaign
+                  const content = utmParams.content || props.tags
+                  const keywords = utmParams.keywords || props.tags
 
-                  const path = props.location.pathname
+                  const lang = story ? story.lang : 'sv'
                   const host = getPublicHost() || 'https://www.hedvig.com'
-                  ;(window as any).branch.link(
-                    {
-                      ...linkOptions,
-                      data: {
-                        $desktop_url: `${host}/${
-                          lang === 'sv' ? '' : lang + '/'
-                        }new-member`,
-                        path,
-                      },
-                    },
-                    // tslint:disable-next-line variable-name
-                    (_err: Error | undefined, realLink: string | undefined) => {
-                      if (realLink) {
-                        setLink(realLink)
-                      }
-                    },
+
+                  const desktopLink = `${host}/${
+                    lang === 'sv' ? '' : lang + '/'
+                  }new-member`
+
+                  setLink(
+                    `https://hedvig.page.link/?link=${desktopLink}&utm_source=${source}&utm_medium=${medium}&utm_name=${name}&utm_content=${content}&utm_keywords=${keywords}`,
                   )
                 }}
               >
                 {null}
               </Mount>
-
               {props.children({
                 link,
                 handleClick: (e: React.MouseEvent<HTMLElement>) => {
