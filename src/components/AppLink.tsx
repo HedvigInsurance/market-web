@@ -11,12 +11,10 @@ import { trackEvent } from '../utils/tracking/trackEvent'
 // Dynamically creating a link automatically copies over
 // any utm tags sent from ad networks
 interface AppLinkProps {
-  children: (
-    props: {
-      handleClick: (e: React.MouseEvent<HTMLElement>) => void
-      link: string
-    },
-  ) => React.ReactNode
+  children: (props: {
+    handleClick: (e: React.MouseEvent<HTMLElement>) => void
+    link: string
+  }) => React.ReactNode
   channel?: string
   campaign?: string
   tags?: ReadonlyArray<string>
@@ -24,6 +22,7 @@ interface AppLinkProps {
   feature?: string
   stage?: string
 }
+
 interface AppLinkState {
   link: string
 }
