@@ -1,3 +1,4 @@
+import { ActionMap, Container } from 'constate'
 import * as React from 'react'
 import styled from 'react-emotion'
 import MediaQuery from 'react-responsive'
@@ -6,24 +7,25 @@ import {
   getColorStyles,
   SectionWrapper,
   TABLET_BP_DOWN,
-} from '../components/blockHelpers'
+} from '../../components/blockHelpers'
 import {
   BaseBlockProps,
   ColorComponent,
   MarkdownHtmlComponent,
-} from './BaseBlockProps'
-
+} from '../BaseBlockProps'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
+
 import { SectionSize } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
-import { AlignedButton } from '../components/AlignedButton'
-import { buttonSizes, ButtonWeight } from '../components/buttons'
-import { DeferredImage } from '../components/DeferredImage'
+import { AlignedButton } from '../../components/AlignedButton'
+import { buttonSizes, ButtonWeight } from '../../components/buttons'
+import { DeferredImage } from '../../components/DeferredImage'
 import {
   getStoryblokImage,
   getStoryblokLinkUrl,
   Image as StoryblokImage,
-} from '../utils/storyblok'
+} from '../../utils/storyblok'
+import { BackgroundVideo } from './BackgroundVideo'
 
 type TitleSize = 'sm' | 'lg'
 
@@ -52,6 +54,7 @@ const TextWrapper = styled('div')(
     textPosition: string
     textPositionMobile: TextPosition
   }) => ({
+    position: 'relative',
     textAlign: textPosition === 'center' ? 'center' : 'left',
     width: '100%',
     paddingRight: textPosition === 'left' ? '7rem' : '0',
@@ -142,6 +145,25 @@ const ImageLink = styled('a')(
   }),
 )
 
+interface State {
+  videoRef: React.RefObject<HTMLVideoElement>
+  mobileVideoRef: React.RefObject<HTMLVideoElement>
+}
+
+interface Actions {
+  setVideoRef: (videoRef: React.RefObject<HTMLVideoElement>) => void
+  setMobileVideoRef: (videoRef: React.RefObject<HTMLVideoElement>) => void
+}
+
+const actions: ActionMap<State, Actions> = {
+  setVideoRef: (videoRef) => () => ({
+    videoRef,
+  }),
+  setMobileVideoRef: (videoRef) => () => ({
+    videoRef,
+  }),
+}
+
 interface ImageTextBlockProps extends BaseBlockProps {
   title_size?: TitleSize
   title: string
@@ -158,6 +180,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
   use_image_link: boolean
   image_link: LinkComponent
   background_image: string
+  background_video_url: string
   size: SectionSize
   media_position: 'top' | 'bottom'
   button_color?: ColorComponent
@@ -182,6 +205,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   use_image_link,
   image_link,
   background_image,
+  background_video_url,
   color,
   size,
   media_position,
@@ -191,85 +215,107 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   button_position_mobile,
 }) => {
   return (
-    <SectionWrapper
-      color={color && color.color}
-      size={size}
-      backgroundImage={background_image}
+    <Container
+      actions={actions}
+      initialState={{
+        videoRef: React.createRef<HTMLVideoElement>(),
+        mobileVideoRef: React.createRef<HTMLVideoElement>(),
+      }}
     >
-      <AlignableContentWrapper textPosition={text_position}>
-        <TextWrapper
-          textPosition={text_position}
-          textPositionMobile={text_position_mobile}
+      {({ videoRef, mobileVideoRef }) => (
+        <SectionWrapper
+          color={color && color.color}
+          size={size}
+          backgroundImage={!background_video_url ? background_image : undefined}
         >
-          <Title
-            size={title_size}
-            displayOrder={media_position}
-            alignment={text_position}
-            color={
-              title_color && title_color.color !== 'standard'
-                ? getColorStyles(title_color.color).background
-                : color
-                ? getColorStyles(color.color).color
-                : 'standard'
-            }
-            textPosition={text_position}
-          >
-            {title}
-          </Title>
-          <Paragraph
-            dangerouslySetInnerHTML={{
-              __html: paragraph.html,
-            }}
-            textPosition={text_position}
-          />
-          <MediaQuery query="(min-width: 801px)">
-            <AlignedButton
-              title={button_title}
-              type={button_type}
-              branchLink={button_branch_link}
-              buttonLink={button_link}
-              show={show_button}
-              color={button_color}
-              size={button_size ? button_size : 'sm'}
-              weight={button_weight}
-              positionMobile={button_position_mobile}
+          {background_video_url && (
+            <BackgroundVideo
+              videoRef={videoRef}
+              mobileVideoRef={mobileVideoRef}
+              desktopImage={background_video_url}
+              mobileImage={background_video_url}
+              baseVideoUrl={background_video_url}
+              baseMobileVideoUrl={background_video_url}
+              backgroundColor="standard"
             />
-          </MediaQuery>
-        </TextWrapper>
-        <MediaQuery query="(max-width: 800px)">
-          <AlignedButton
-            title={button_title}
-            type={button_type}
-            branchLink={button_branch_link}
-            buttonLink={button_link}
-            show={show_button}
-            color={button_color}
-            size={button_size ? button_size : 'sm'}
-            weight={button_weight}
-            positionMobile={button_position_mobile}
-          />
-        </MediaQuery>
-        {image &&
-          (use_image_link ? (
-            <ImageLink
-              href={getStoryblokLinkUrl(image_link)}
-              displayOrder={media_position}
+          )}
+
+          <AlignableContentWrapper textPosition={text_position}>
+            <TextWrapper
+              textPosition={text_position}
+              textPositionMobile={text_position_mobile}
             >
-              <Image
-                alignment={text_position}
+              <Title
+                size={title_size}
                 displayOrder={media_position}
-                src={getStoryblokImage(image)}
-                hasLink
+                alignment={text_position}
+                color={
+                  title_color && title_color.color !== 'standard'
+                    ? getColorStyles(title_color.color).background
+                    : color
+                    ? getColorStyles(color.color).color
+                    : 'standard'
+                }
+                textPosition={text_position}
+              >
+                {title}
+              </Title>
+              <Paragraph
+                dangerouslySetInnerHTML={{
+                  __html: paragraph.html,
+                }}
+                textPosition={text_position}
               />
-            </ImageLink>
-          ) : (
-            <Image
-              alignment={text_position}
-              displayOrder={media_position}
-              src={getStoryblokImage(image)}
-            />
-          ))}
-      </AlignableContentWrapper>
-    </SectionWrapper>
+              <MediaQuery query="(min-width: 801px)">
+                <AlignedButton
+                  title={button_title}
+                  type={button_type}
+                  branchLink={button_branch_link}
+                  buttonLink={button_link}
+                  show={show_button}
+                  color={button_color}
+                  size={button_size ? button_size : 'sm'}
+                  weight={button_weight}
+                  positionMobile={button_position_mobile}
+                />
+              </MediaQuery>
+            </TextWrapper>
+            <MediaQuery query="(max-width: 800px)">
+              <AlignedButton
+                title={button_title}
+                type={button_type}
+                branchLink={button_branch_link}
+                buttonLink={button_link}
+                show={show_button}
+                color={button_color}
+                size={button_size ? button_size : 'sm'}
+                weight={button_weight}
+                positionMobile={button_position_mobile}
+              />
+            </MediaQuery>
+            {image &&
+              (use_image_link ? (
+                <ImageLink
+                  href={getStoryblokLinkUrl(image_link)}
+                  displayOrder={media_position}
+                >
+                  <Image
+                    alignment={text_position}
+                    displayOrder={media_position}
+                    src={getStoryblokImage(image)}
+                    hasLink
+                  />
+                </ImageLink>
+              ) : (
+                <Image
+                  alignment={text_position}
+                  displayOrder={media_position}
+                  src={getStoryblokImage(image)}
+                />
+              ))}
+          </AlignableContentWrapper>
+        </SectionWrapper>
+      )}
+    </Container>
   )
 }

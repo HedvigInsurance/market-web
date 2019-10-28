@@ -1996,11 +1996,16 @@
           "required": false,
           "pos": 10
         },
+        "background_video_url": {
+          "type": "text",
+          "required": false,
+          "pos": 11
+        },
         "button_title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 11,
+          "pos": 12,
           "translatable": true
         },
         "button_type": {
@@ -2021,12 +2026,12 @@
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 12
+          "pos": 13
         },
         "button_branch_link": {
           "type": "boolean",
           "description": "Create a branch link instead of the link field",
-          "pos": 13,
+          "pos": 14,
           "translatable": true
         },
         "button_link": {
@@ -2035,7 +2040,7 @@
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 14,
+          "pos": 15,
           "translatable": true
         },
         "media_position": {
@@ -2052,19 +2057,19 @@
           ],
           "required": true,
           "default_value": "top",
-          "pos": 15
+          "pos": 16
         },
         "show_button": {
           "type": "boolean",
           "required": false,
           "default_value": "true",
-          "pos": 16
+          "pos": 17
         },
         "button_color": {
           "field_type": "hedvig-limited-color-picker",
           "options": [],
           "type": "custom",
-          "pos": 17
+          "pos": 18
         },
         "button_size": {
           "type": "option",
@@ -2078,7 +2083,7 @@
               "name": "MD"
             }
           ],
-          "pos": 18
+          "pos": 19
         },
         "button_weight": {
           "type": "option",
@@ -2093,7 +2098,7 @@
               "name": "Bold"
             }
           ],
-          "pos": 19
+          "pos": 20
         },
         "button_position_mobile": {
           "type": "option",
@@ -2108,7 +2113,7 @@
               "name": "Below media"
             }
           ],
-          "pos": 20
+          "pos": 21
         }
       },
       "image": null,
