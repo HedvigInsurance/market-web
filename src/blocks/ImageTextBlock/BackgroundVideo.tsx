@@ -47,8 +47,6 @@ const VideoWrapper = styled('div')({
 })
 
 interface PlayerProps {
-  videoRef: React.RefObject<HTMLVideoElement>
-  mobileVideoRef: React.RefObject<HTMLVideoElement>
   baseMobileVideoUrl: string
   baseVideoUrl: string
   desktopImage: string
@@ -57,21 +55,15 @@ interface PlayerProps {
 
 interface VideoItemProps {
   videoUrl: string
-  videoRef: React.RefObject<HTMLVideoElement>
 }
 
-const VideoItem: React.FunctionComponent<VideoItemProps> = ({
-  videoUrl,
-  videoRef,
-}) => (
+const VideoItem: React.FunctionComponent<VideoItemProps> = ({ videoUrl }) => (
   <VideoWrapper>
     <DeferredVideo src={videoUrl} />
   </VideoWrapper>
 )
 
 export const BackgroundVideo: React.SFC<PlayerProps & BackgroundProps> = ({
-  videoRef,
-  mobileVideoRef,
   desktopImage,
   mobileImage,
   baseVideoUrl,
@@ -81,14 +73,14 @@ export const BackgroundVideo: React.SFC<PlayerProps & BackgroundProps> = ({
   <HeightContainer backgroundColor={backgroundColor}>
     <MediaQuery query="(max-width: 700px)">
       {baseMobileVideoUrl ? (
-        <VideoItem videoUrl={baseMobileVideoUrl} videoRef={mobileVideoRef} />
+        <VideoItem videoUrl={baseMobileVideoUrl} />
       ) : (
         mobileImage && <BackgroundImage image={mobileImage} />
       )}
     </MediaQuery>
     <MediaQuery query="(min-width: 701px)">
       {baseVideoUrl ? (
-        <VideoItem videoUrl={baseVideoUrl} videoRef={videoRef} />
+        <VideoItem videoUrl={baseVideoUrl} />
       ) : (
         desktopImage && <BackgroundImage image={desktopImage} />
       )}
