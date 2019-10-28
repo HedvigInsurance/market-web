@@ -179,8 +179,10 @@ interface ImageTextBlockProps extends BaseBlockProps {
   image?: StoryblokImage
   use_image_link: boolean
   image_link: LinkComponent
+  background_type: string
   background_image: string
-  background_video_url: string
+  background_video_file_location: string
+  mobile_background_video_file_location: string
   size: SectionSize
   media_position: 'top' | 'bottom'
   button_color?: ColorComponent
@@ -204,8 +206,10 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   image,
   use_image_link,
   image_link,
+  background_type,
   background_image,
-  background_video_url,
+  background_video_file_location,
+  mobile_background_video_file_location,
   color,
   size,
   media_position,
@@ -226,19 +230,23 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
         <SectionWrapper
           color={color && color.color}
           size={size}
-          backgroundImage={!background_video_url ? background_image : undefined}
+          backgroundImage={
+            background_type !== 'video' ? background_image : undefined
+          }
         >
-          {background_video_url && (
-            <BackgroundVideo
-              videoRef={videoRef}
-              mobileVideoRef={mobileVideoRef}
-              desktopImage={background_video_url}
-              mobileImage={background_video_url}
-              baseVideoUrl={background_video_url}
-              baseMobileVideoUrl={background_video_url}
-              backgroundColor="standard"
-            />
-          )}
+          {background_type === 'video' &&
+            background_video_file_location &&
+            mobile_background_video_file_location && (
+              <BackgroundVideo
+                videoRef={videoRef}
+                mobileVideoRef={mobileVideoRef}
+                desktopImage={background_video_file_location}
+                mobileImage={mobile_background_video_file_location}
+                baseVideoUrl={background_video_file_location}
+                baseMobileVideoUrl={mobile_background_video_file_location}
+                backgroundColor="standard"
+              />
+            )}
 
           <AlignableContentWrapper textPosition={text_position}>
             <TextWrapper
