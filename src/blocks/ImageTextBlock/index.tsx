@@ -169,22 +169,6 @@ const ImageVideo = styled(DeferredVideo)({
   borderRadius: 0.01,
 })
 
-const Video = styled('video')({
-  width: '100%',
-  objectFit: 'cover',
-  transition: 'height 1500ms',
-  overflow: 'hidden',
-  borderRadius: 0.01,
-  position: 'absolute',
-  bottom: 0,
-  right: 0,
-  left: 0,
-  height: '100%',
-  '@media(min-width: 1500px)': {
-    height: '110vh',
-  },
-})
-
 interface State {
   videoRef: React.RefObject<HTMLVideoElement>
   mobileVideoRef: React.RefObject<HTMLVideoElement>
@@ -376,7 +360,13 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
                   displayOrder={media_position}
                   hasLink
                 >
-                  <ImageVideo src={image_video_file_location} />
+                  <MediaQuery query="(max-width: 700px)">
+                    <ImageVideo src={mobile_image_video_file_location} />
+                  </MediaQuery>
+
+                  <MediaQuery query="(min-width: 701px)">
+                    <ImageVideo src={image_video_file_location} />
+                  </MediaQuery>
                 </ImageVideoWrapper>
               )
             )}
