@@ -2,29 +2,29 @@ import { ActionMap, Container } from 'constate'
 import * as React from 'react'
 import styled from 'react-emotion'
 import MediaQuery from 'react-responsive'
+import { LinkComponent } from 'src/storyblok/StoryContainer'
+import { SectionSize } from 'src/utils/SectionSize'
+import { TextPosition } from 'src/utils/textPosition'
+import { AlignedButton } from '../../components/AlignedButton'
 import {
   ContentWrapper,
   getColorStyles,
   SectionWrapper,
   TABLET_BP_DOWN,
 } from '../../components/blockHelpers'
-import {
-  BaseBlockProps,
-  ColorComponent,
-  MarkdownHtmlComponent,
-} from '../BaseBlockProps'
-import { LinkComponent } from 'src/storyblok/StoryContainer'
-
-import { SectionSize } from 'src/utils/SectionSize'
-import { TextPosition } from 'src/utils/textPosition'
-import { AlignedButton } from '../../components/AlignedButton'
 import { buttonSizes, ButtonWeight } from '../../components/buttons'
 import { DeferredImage } from '../../components/DeferredImage'
+import { DeferredVideo } from '../../components/DeferredVideo'
 import {
   getStoryblokImage,
   getStoryblokLinkUrl,
   Image as StoryblokImage,
 } from '../../utils/storyblok'
+import {
+  BaseBlockProps,
+  ColorComponent,
+  MarkdownHtmlComponent,
+} from '../BaseBlockProps'
 import { BackgroundVideo } from './BackgroundVideo'
 
 type TitleSize = 'sm' | 'lg'
@@ -130,6 +130,7 @@ const Image = styled(DeferredImage)(
     },
   }),
 )
+
 const ImageLink = styled('a')(
   ({ displayOrder }: { displayOrder: 'top' | 'bottom' }) => ({
     display: 'inline-block',
@@ -144,6 +145,45 @@ const ImageLink = styled('a')(
     },
   }),
 )
+
+const ImageVideoWrapper = styled('div')(
+  ({
+    alignment,
+    displayOrder,
+    hasLink,
+  }: {
+    alignment: string
+    displayOrder: 'top' | 'bottom'
+    hasLink?: boolean
+  }) => ({
+    width: hasLink ? '100%' : '40%',
+    display: 'block',
+  }),
+)
+
+const ImageVideo = styled(DeferredVideo)({
+  width: '100%',
+  objectFit: 'cover',
+  transition: 'height 1500ms',
+  overflow: 'hidden',
+  borderRadius: 0.01,
+})
+
+const Video = styled('video')({
+  width: '100%',
+  objectFit: 'cover',
+  transition: 'height 1500ms',
+  overflow: 'hidden',
+  borderRadius: 0.01,
+  position: 'absolute',
+  bottom: 0,
+  right: 0,
+  left: 0,
+  height: '100%',
+  '@media(min-width: 1500px)': {
+    height: '110vh',
+  },
+})
 
 interface State {
   videoRef: React.RefObject<HTMLVideoElement>
@@ -176,9 +216,12 @@ interface ImageTextBlockProps extends BaseBlockProps {
   button_branch_link: boolean
   button_link: LinkComponent
   show_button: boolean
+  image_type: 'image' | 'video'
   image?: StoryblokImage
   use_image_link: boolean
   image_link: LinkComponent
+  image_video_file_location?: string
+  mobile_image_video_file_location?: string
   background_type: string
   background_image: string
   background_video_file_location: string
@@ -203,9 +246,12 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   button_branch_link,
   button_link,
   show_button,
+  image_type,
   image,
   use_image_link,
   image_link,
+  image_video_file_location,
+  mobile_image_video_file_location,
   background_type,
   background_image,
   background_video_file_location,
@@ -301,8 +347,8 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
                 positionMobile={button_position_mobile}
               />
             </MediaQuery>
-            {image &&
-              (use_image_link ? (
+            {image && image_type !== 'video' ? (
+              use_image_link ? (
                 <ImageLink
                   href={getStoryblokLinkUrl(image_link)}
                   displayOrder={media_position}
@@ -320,7 +366,20 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
                   displayOrder={media_position}
                   src={getStoryblokImage(image)}
                 />
-              ))}
+              )
+            ) : (
+              image_type === 'video' &&
+              image_video_file_location &&
+              mobile_image_video_file_location && (
+                <ImageVideoWrapper
+                  alignment={text_position}
+                  displayOrder={media_position}
+                  hasLink
+                >
+                  <ImageVideo src={image_video_file_location} />
+                </ImageVideoWrapper>
+              )
+            )}
           </AlignableContentWrapper>
         </SectionWrapper>
       )}
