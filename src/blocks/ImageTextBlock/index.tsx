@@ -1,4 +1,3 @@
-import { ActionMap, Container } from 'constate'
 import * as React from 'react'
 import styled from 'react-emotion'
 import MediaQuery from 'react-responsive'
@@ -135,6 +134,7 @@ const ImageLink = styled('a')(
   ({ displayOrder }: { displayOrder: 'top' | 'bottom' }) => ({
     display: 'inline-block',
     width: '40%',
+    flexShrink: 0,
 
     [TABLET_BP_DOWN]: {
       maxWidth: '100%',
@@ -157,7 +157,16 @@ const ImageVideoWrapper = styled('div')(
     hasLink?: boolean
   }) => ({
     width: hasLink ? '100%' : '40%',
+    flexShrink: hasLink ? 1 : 0,
     display: 'block',
+    order: alignment === 'center' && displayOrder === 'top' ? -1 : 'initial',
+    [TABLET_BP_DOWN]: {
+      maxWidth: '100%',
+      width: 'auto',
+      marginTop: displayOrder === 'top' ? '0' : '3rem',
+      display: 'block',
+      order: displayOrder === 'top' ? -1 : 'initial',
+    },
   }),
 )
 
@@ -168,25 +177,6 @@ const ImageVideo = styled(DeferredVideo)({
   overflow: 'hidden',
   borderRadius: 0.01,
 })
-
-interface State {
-  videoRef: React.RefObject<HTMLVideoElement>
-  mobileVideoRef: React.RefObject<HTMLVideoElement>
-}
-
-interface Actions {
-  setVideoRef: (videoRef: React.RefObject<HTMLVideoElement>) => void
-  setMobileVideoRef: (videoRef: React.RefObject<HTMLVideoElement>) => void
-}
-
-const actions: ActionMap<State, Actions> = {
-  setVideoRef: (videoRef) => () => ({
-    videoRef,
-  }),
-  setMobileVideoRef: (videoRef) => () => ({
-    videoRef,
-  }),
-}
 
 interface ImageTextBlockProps extends BaseBlockProps {
   title_size?: TitleSize
@@ -249,130 +239,138 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   button_position_mobile,
 }) => {
   return (
-    <Container
-      actions={actions}
-      initialState={{
-        videoRef: React.createRef<HTMLVideoElement>(),
-        mobileVideoRef: React.createRef<HTMLVideoElement>(),
-      }}
+    <SectionWrapper
+      color={color && color.color}
+      size={size}
+      backgroundImage={
+        background_type !== 'video' ? background_image : undefined
+      }
     >
-      {({ videoRef, mobileVideoRef }) => (
-        <SectionWrapper
-          color={color && color.color}
-          size={size}
-          backgroundImage={
-            background_type !== 'video' ? background_image : undefined
-          }
+      {background_type === 'video' &&
+        background_video_file_location &&
+        mobile_background_video_file_location && (
+          <BackgroundVideo
+            desktopImage={background_video_file_location}
+            mobileImage={mobile_background_video_file_location}
+            baseVideoUrl={background_video_file_location}
+            baseMobileVideoUrl={mobile_background_video_file_location}
+            backgroundColor="standard"
+          />
+        )}
+
+      <AlignableContentWrapper textPosition={text_position}>
+        <TextWrapper
+          textPosition={text_position}
+          textPositionMobile={text_position_mobile}
         >
-          {background_type === 'video' &&
-            background_video_file_location &&
-            mobile_background_video_file_location && (
-              <BackgroundVideo
-                videoRef={videoRef}
-                mobileVideoRef={mobileVideoRef}
-                desktopImage={background_video_file_location}
-                mobileImage={mobile_background_video_file_location}
-                baseVideoUrl={background_video_file_location}
-                baseMobileVideoUrl={mobile_background_video_file_location}
-                backgroundColor="standard"
-              />
-            )}
-
-          <AlignableContentWrapper textPosition={text_position}>
-            <TextWrapper
-              textPosition={text_position}
-              textPositionMobile={text_position_mobile}
+          <Title
+            size={title_size}
+            displayOrder={media_position}
+            alignment={text_position}
+            color={
+              title_color && title_color.color !== 'standard'
+                ? getColorStyles(title_color.color).background
+                : color
+                ? getColorStyles(color.color).color
+                : 'standard'
+            }
+            textPosition={text_position}
+          >
+            {title}
+          </Title>
+          <Paragraph
+            dangerouslySetInnerHTML={{
+              __html: paragraph.html,
+            }}
+            textPosition={text_position}
+          />
+          <MediaQuery query="(min-width: 801px)">
+            <AlignedButton
+              title={button_title}
+              type={button_type}
+              branchLink={button_branch_link}
+              buttonLink={button_link}
+              show={show_button}
+              color={button_color}
+              size={button_size ? button_size : 'sm'}
+              weight={button_weight}
+              positionMobile={button_position_mobile}
+            />
+          </MediaQuery>
+        </TextWrapper>
+        <MediaQuery query="(max-width: 800px)">
+          <AlignedButton
+            title={button_title}
+            type={button_type}
+            branchLink={button_branch_link}
+            buttonLink={button_link}
+            show={show_button}
+            color={button_color}
+            size={button_size ? button_size : 'sm'}
+            weight={button_weight}
+            positionMobile={button_position_mobile}
+          />
+        </MediaQuery>
+        {image && image_type !== 'video' ? (
+          use_image_link ? (
+            <ImageLink
+              href={getStoryblokLinkUrl(image_link)}
+              displayOrder={media_position}
             >
-              <Title
-                size={title_size}
-                displayOrder={media_position}
+              <Image
                 alignment={text_position}
-                color={
-                  title_color && title_color.color !== 'standard'
-                    ? getColorStyles(title_color.color).background
-                    : color
-                    ? getColorStyles(color.color).color
-                    : 'standard'
-                }
-                textPosition={text_position}
+                displayOrder={media_position}
+                src={getStoryblokImage(image)}
+                hasLink={use_image_link}
+              />
+            </ImageLink>
+          ) : (
+            <Image
+              alignment={text_position}
+              displayOrder={media_position}
+              src={getStoryblokImage(image)}
+            />
+          )
+        ) : (
+          image_type === 'video' &&
+          image_video_file_location &&
+          mobile_image_video_file_location &&
+          (use_image_link ? (
+            <ImageLink
+              href={getStoryblokLinkUrl(image_link)}
+              displayOrder={media_position}
+            >
+              <ImageVideoWrapper
+                alignment={text_position}
+                displayOrder={media_position}
+                hasLink={use_image_link}
               >
-                {title}
-              </Title>
-              <Paragraph
-                dangerouslySetInnerHTML={{
-                  __html: paragraph.html,
-                }}
-                textPosition={text_position}
-              />
-              <MediaQuery query="(min-width: 801px)">
-                <AlignedButton
-                  title={button_title}
-                  type={button_type}
-                  branchLink={button_branch_link}
-                  buttonLink={button_link}
-                  show={show_button}
-                  color={button_color}
-                  size={button_size ? button_size : 'sm'}
-                  weight={button_weight}
-                  positionMobile={button_position_mobile}
-                />
-              </MediaQuery>
-            </TextWrapper>
-            <MediaQuery query="(max-width: 800px)">
-              <AlignedButton
-                title={button_title}
-                type={button_type}
-                branchLink={button_branch_link}
-                buttonLink={button_link}
-                show={show_button}
-                color={button_color}
-                size={button_size ? button_size : 'sm'}
-                weight={button_weight}
-                positionMobile={button_position_mobile}
-              />
-            </MediaQuery>
-            {image && image_type !== 'video' ? (
-              use_image_link ? (
-                <ImageLink
-                  href={getStoryblokLinkUrl(image_link)}
-                  displayOrder={media_position}
-                >
-                  <Image
-                    alignment={text_position}
-                    displayOrder={media_position}
-                    src={getStoryblokImage(image)}
-                    hasLink
-                  />
-                </ImageLink>
-              ) : (
-                <Image
-                  alignment={text_position}
-                  displayOrder={media_position}
-                  src={getStoryblokImage(image)}
-                />
-              )
-            ) : (
-              image_type === 'video' &&
-              image_video_file_location &&
-              mobile_image_video_file_location && (
-                <ImageVideoWrapper
-                  alignment={text_position}
-                  displayOrder={media_position}
-                  hasLink
-                >
-                  <MediaQuery query="(max-width: 700px)">
-                    <ImageVideo src={mobile_image_video_file_location} />
-                  </MediaQuery>
+                <MediaQuery query="(max-width: 700px)">
+                  <ImageVideo src={mobile_image_video_file_location} />
+                </MediaQuery>
 
-                  <MediaQuery query="(min-width: 701px)">
-                    <ImageVideo src={image_video_file_location} />
-                  </MediaQuery>
-                </ImageVideoWrapper>
-              )
-            )}
-          </AlignableContentWrapper>
-        </SectionWrapper>
-      )}
-    </Container>
+                <MediaQuery query="(min-width: 701px)">
+                  <ImageVideo src={image_video_file_location} />
+                </MediaQuery>
+              </ImageVideoWrapper>
+            </ImageLink>
+          ) : (
+            <ImageVideoWrapper
+              alignment={text_position}
+              displayOrder={media_position}
+              hasLink={use_image_link}
+            >
+              <MediaQuery query="(max-width: 700px)">
+                <ImageVideo src={mobile_image_video_file_location} />
+              </MediaQuery>
+
+              <MediaQuery query="(min-width: 701px)">
+                <ImageVideo src={image_video_file_location} />
+              </MediaQuery>
+            </ImageVideoWrapper>
+          ))
+        )}
+      </AlignableContentWrapper>
+    </SectionWrapper>
   )
 }
