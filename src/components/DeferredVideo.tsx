@@ -8,6 +8,10 @@ const Video = styled('video')({
   transition: 'height 1500ms',
   overflow: 'hidden',
   borderRadius: 0.01,
+  bottom: 0,
+  right: 0,
+  left: 0,
+  height: '100%',
 })
 
 interface State {

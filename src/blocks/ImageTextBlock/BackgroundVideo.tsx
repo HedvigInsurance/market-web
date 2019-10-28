@@ -2,6 +2,7 @@ import * as React from 'react'
 import styled, { keyframes } from 'react-emotion'
 import MediaQuery from 'react-responsive'
 import { backgroundImageStyles } from '../../components/blockHelpers'
+import { DeferredVideo } from '../../components/DeferredVideo'
 
 interface BackgroundProps {
   backgroundColor: string
@@ -45,22 +46,6 @@ const VideoWrapper = styled('div')({
   position: 'relative',
 })
 
-const Video = styled('video')({
-  width: '100%',
-  objectFit: 'cover',
-  transition: 'height 1500ms',
-  overflow: 'hidden',
-  borderRadius: 0.01,
-  position: 'absolute',
-  bottom: 0,
-  right: 0,
-  left: 0,
-  height: '100%',
-  '@media(min-width: 1500px)': {
-    height: '110vh',
-  },
-})
-
 interface PlayerProps {
   videoRef: React.RefObject<HTMLVideoElement>
   mobileVideoRef: React.RefObject<HTMLVideoElement>
@@ -80,19 +65,7 @@ const VideoItem: React.FunctionComponent<VideoItemProps> = ({
   videoRef,
 }) => (
   <VideoWrapper>
-    <Video
-      poster={`${videoUrl}.png`}
-      innerRef={videoRef}
-      playsInline
-      autoPlay
-      muted={true}
-      loop={true}
-      controls={false}
-    >
-      <source src={`${videoUrl}.m3u8`} type="application/vnd.apple.mpegurl" />
-      <source src={`${videoUrl}.mp4`} type="video/mp4" />
-      <source src={`${videoUrl}.webm`} type="video/webm" />
-    </Video>
+    <DeferredVideo src={videoUrl} />
   </VideoWrapper>
 )
 
