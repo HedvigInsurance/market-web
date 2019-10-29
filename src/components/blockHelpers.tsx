@@ -124,6 +124,7 @@ export const SectionWrapper = styled('section')(
     size?: SectionSize
     backgroundImage?: string
   }) => ({
+    position: 'relative',
     ...getSectionSizeStyle(size),
     ...getColorStyles(color),
     ...backgroundImageStyles(backgroundImage),

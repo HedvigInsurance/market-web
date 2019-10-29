@@ -1976,31 +1976,86 @@
           "default_value": "left",
           "pos": 6
         },
+        "image_type": {
+          "type": "option",
+          "options": [
+            {
+              "value": "image",
+              "name": "Image"
+            },
+            {
+              "value": "video",
+              "name": "Video"
+            }
+          ],
+          "default_value": "image",
+          "pos": 7
+        },
         "image": {
           "type": "image",
           "required": false,
-          "pos": 7
+          "pos": 8
         },
         "use_image_link": {
           "type": "boolean",
-          "pos": 8,
+          "pos": 9,
           "translatable": true
         },
         "image_link": {
           "type": "multilink",
           "translatable": true,
-          "pos": 9
+          "pos": 10
+        },
+        "image_video_file_location": {
+          "type": "text",
+          "required": false,
+          "pos": 11,
+          "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
+        },
+        "mobile_image_video_file_location": {
+          "type": "text",
+          "required": false,
+          "pos": 12,
+          "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
+        },
+        "background_type": {
+          "type": "option",
+          "options": [
+            {
+              "value": "image",
+              "name": "Image"
+            },
+            {
+              "value": "video",
+              "name": "Video"
+            }
+          ],
+          "required": false,
+          "default_value": "image",
+          "pos": 13
         },
         "background_image": {
           "type": "image",
           "required": false,
-          "pos": 10
+          "pos": 14
+        },
+        "background_video_file_location": {
+          "type": "text",
+          "required": false,
+          "pos": 15,
+          "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
+        },
+        "mobile_background_video_file_location": {
+          "type": "text",
+          "required": false,
+          "pos": 16,
+          "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
         },
         "button_title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 11,
+          "pos": 17,
           "translatable": true
         },
         "button_type": {
@@ -2021,12 +2076,12 @@
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 12
+          "pos": 18
         },
         "button_branch_link": {
           "type": "boolean",
           "description": "Create a branch link instead of the link field",
-          "pos": 13,
+          "pos": 19,
           "translatable": true
         },
         "button_link": {
@@ -2035,7 +2090,7 @@
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 14,
+          "pos": 20,
           "translatable": true
         },
         "media_position": {
@@ -2052,19 +2107,19 @@
           ],
           "required": true,
           "default_value": "top",
-          "pos": 15
+          "pos": 21
         },
         "show_button": {
           "type": "boolean",
           "required": false,
           "default_value": "true",
-          "pos": 16
+          "pos": 22
         },
         "button_color": {
           "field_type": "hedvig-limited-color-picker",
           "options": [],
           "type": "custom",
-          "pos": 17
+          "pos": 23
         },
         "button_size": {
           "type": "option",
@@ -2078,7 +2133,7 @@
               "name": "MD"
             }
           ],
-          "pos": 18
+          "pos": 24
         },
         "button_weight": {
           "type": "option",
@@ -2093,7 +2148,7 @@
               "name": "Bold"
             }
           ],
-          "pos": 19
+          "pos": 25
         },
         "button_position_mobile": {
           "type": "option",
@@ -2108,7 +2163,7 @@
               "name": "Below media"
             }
           ],
-          "pos": 20
+          "pos": 26
         }
       },
       "image": null,

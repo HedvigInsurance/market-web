@@ -58,6 +58,7 @@ const padding = (overlap: boolean) => {
 const Spacer = styled(SectionWrapper)(({ overlap }: SpacerProps) => ({
   paddingBottom: '0 !important',
   position: 'relative',
+  zIndex: 1,
   ...padding(overlap),
 }))
 
