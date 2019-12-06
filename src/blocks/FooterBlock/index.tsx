@@ -132,7 +132,7 @@ export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
                             ? 'Hemförsäkring'
                             : 'Home insurance'}
                         </ColumnHeader>
-                        {(globalStory.content.get_started || []).map((link) => (
+                        {(globalStory.content.get_started ?? []).map((link) => (
                           <Link
                             key={link._uid}
                             href={getStoryblokLinkUrl(link.link)}
@@ -145,7 +145,7 @@ export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
                         <ColumnHeader>
                           {context.lang === 'sv' ? 'Hedvig' : 'Company'}
                         </ColumnHeader>
-                        {(globalStory.content.company || []).map((link) => (
+                        {(globalStory.content.company ?? []).map((link) => (
                           <Link
                             key={link._uid}
                             href={getStoryblokLinkUrl(link.link)}
@@ -156,7 +156,7 @@ export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
                       </LinkColumn>
                       <LinkColumn>
                         <ColumnHeader>{'Legal'}</ColumnHeader>
-                        {(globalStory.content.legal || []).map((link) => (
+                        {(globalStory.content.legal ?? []).map((link) => (
                           <Link
                             key={link._uid}
                             href={getStoryblokLinkUrl(link.link)}
@@ -167,7 +167,7 @@ export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
                       </LinkColumn>
                       <LinkColumn>
                         <ColumnHeader>{'Social'}</ColumnHeader>
-                        {(globalStory.content.social || []).map((link) => (
+                        {(globalStory.content.social ?? []).map((link) => (
                           <Link
                             key={link._uid}
                             href={getStoryblokLinkUrl(link.link)}
@@ -180,7 +180,7 @@ export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
                   ) : (
                     <LinksColumnsWrapper>
                       <LinkColumn>
-                        {(globalStory.content.footer_menu_items_1 || []).map(
+                        {(globalStory.content.footer_menu_items_1 ?? []).map(
                           (link) => (
                             <Link
                               key={link._uid}
@@ -192,7 +192,7 @@ export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
                         )}
                       </LinkColumn>
                       <LinkColumn>
-                        {(globalStory.content.footer_menu_items_2 || []).map(
+                        {(globalStory.content.footer_menu_items_2 ?? []).map(
                           (link) => (
                             <Link
                               key={link._uid}
