@@ -1,6 +1,8 @@
+import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
+import ReactVisibilitySensor from 'react-visibility-sensor'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
@@ -39,7 +41,20 @@ const BulletPointsWrapper = styled('div')<{ position: TextPosition }>(
   }),
 )
 
-const BulletPoint = styled('div')({
+const fadeUp = keyframes({
+  from: { transform: 'translateY(5%)', opacity: 0 },
+  to: { transform: 'translateY(0)', opacity: 1 },
+})
+
+const fadeOut = keyframes({
+  from: { opacity: 1 },
+  to: { opacity: 0 },
+})
+
+const BulletPoint = styled('div')<{
+  isVisible: boolean
+  animationDelay: number
+}>(({ isVisible, animationDelay }) => ({
   display: 'flex',
   flexDirection: 'column',
   margin: GUTTER,
@@ -51,13 +66,16 @@ const BulletPoint = styled('div')({
   [TABLET_BP_DOWN]: {
     width: `calc(50% - ${GUTTER}*2)`,
   },
+  opacity: 0,
+  animation: `${isVisible ? fadeUp : fadeOut} 500ms forwards`,
+  animationDelay: isVisible ? `${animationDelay + 200}ms` : undefined,
 
   [MOBILE_BP_DOWN]: {
     width: '100%',
     marginLeft: 0,
     marginRight: 0,
   },
-})
+}))
 
 const BulletPointHead = styled('div')({
   display: 'flex',
@@ -152,41 +170,59 @@ export const CardChecklistBulletPointBlock: React.FunctionComponent<BulletPoints
   bullet_points_position,
   bullet_points,
   size,
-}) => (
-  <BulletPointSectionWrapper color={color && color.color} size={size}>
-    <ContentWrapper>
-      {title && <Title position={title_position}>{title}</Title>}
-      <BulletPointsWrapper position={bullet_points_position}>
-        {bullet_points.map((bullet) => (
-          <BulletPoint key={bullet._uid}>
-            <BulletPointHead>
-              <BulletPointImage src={getStoryblokImage(bullet.image)} />
-            </BulletPointHead>
-            <BulletPointBody>
-              <BulletPointTitle>{bullet.title}</BulletPointTitle>
-              <BulletPointParagraph
-                dangerouslySetInnerHTML={{
-                  __html: bullet.paragraph && bullet.paragraph.html,
-                }}
-              />
-              <div>
-                <BulletPointChecklist>
-                  {bullet.check_list.map((check) => {
-                    return (
-                      <BulletPointChecklistItem key={check._uid}>
-                        <CheckIcon>
-                          <CheckIconSvg />
-                        </CheckIcon>
-                        {check.title}
-                      </BulletPointChecklistItem>
-                    )
-                  })}
-                </BulletPointChecklist>
-              </div>
-            </BulletPointBody>
-          </BulletPoint>
-        ))}
-      </BulletPointsWrapper>
-    </ContentWrapper>
-  </BulletPointSectionWrapper>
-)
+}) => {
+  const [isVisible, setIsVisible] = React.useState(false)
+
+  return (
+    <BulletPointSectionWrapper color={color && color.color} size={size}>
+      <ContentWrapper>
+        {title && <Title position={title_position}>{title}</Title>}
+        <ReactVisibilitySensor
+          partialVisibility
+          offset={{ top: -100, bottom: -100 }}
+          onChange={(visible) => {
+            // if (visible) {
+            setIsVisible(visible)
+            // }
+          }}
+        >
+          <BulletPointsWrapper position={bullet_points_position}>
+            {bullet_points.map((bullet, index) => (
+              <BulletPoint
+                key={bullet._uid}
+                animationDelay={(index + 1) * 150}
+                isVisible={isVisible}
+              >
+                <BulletPointHead>
+                  <BulletPointImage src={getStoryblokImage(bullet.image)} />
+                </BulletPointHead>
+                <BulletPointBody>
+                  <BulletPointTitle>{bullet.title}</BulletPointTitle>
+                  <BulletPointParagraph
+                    dangerouslySetInnerHTML={{
+                      __html: bullet.paragraph && bullet.paragraph.html,
+                    }}
+                  />
+                  <div>
+                    <BulletPointChecklist>
+                      {bullet.check_list.map((check) => {
+                        return (
+                          <BulletPointChecklistItem key={check._uid}>
+                            <CheckIcon>
+                              <CheckIconSvg />
+                            </CheckIcon>
+                            {check.title}
+                          </BulletPointChecklistItem>
+                        )
+                      })}
+                    </BulletPointChecklist>
+                  </div>
+                </BulletPointBody>
+              </BulletPoint>
+            ))}
+          </BulletPointsWrapper>
+        </ReactVisibilitySensor>
+      </ContentWrapper>
+    </BulletPointSectionWrapper>
+  )
+}
