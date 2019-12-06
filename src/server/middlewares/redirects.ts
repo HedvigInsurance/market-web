@@ -1,10 +1,12 @@
 import { Middleware } from 'koa'
 import { Logger } from 'typescript-logging'
+import { State } from './states'
 
-export const forceHost = ({ host }: { host: string }): Middleware => async (
-  ctx,
-  next,
-) => {
+export const forceHost = ({
+  host,
+}: {
+  host: string
+}): Middleware<State, any> => async (ctx, next) => {
   if (ctx.get('host') !== host) {
     ;(ctx.state.getLogger('request') as Logger).info(
       `Redirecting to "${host}" because of host mismatch (got "${ctx.host}")`,

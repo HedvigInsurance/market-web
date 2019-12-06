@@ -39,9 +39,12 @@ const Link = styled('a')({
   textDecoration: 'none',
 })
 
-export const TrustpilotCardItem: React.FunctionComponent<
-  TrustpilotCardItemProps
-> = ({ quote, author, link, blockColor }) => (
+export const TrustpilotCardItem: React.FunctionComponent<TrustpilotCardItemProps> = ({
+  quote,
+  author,
+  link,
+  blockColor,
+}) => (
   <Link href={link}>
     <PressItemWrapper offWhite={blockColor && blockColor.color === 'standard'}>
       <Text>{quote}</Text>

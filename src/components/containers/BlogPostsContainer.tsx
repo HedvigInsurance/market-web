@@ -10,8 +10,6 @@ interface BlogPostsContainerProps {
   children: (props: State) => React.ReactNode
 }
 
-export const BlogPostsContainer: React.FunctionComponent<
-  BlogPostsContainerProps
-> = ({ children }) => (
-  <Container<State> context="blogPosts">{children}</Container>
-)
+export const BlogPostsContainer: React.FunctionComponent<BlogPostsContainerProps> = ({
+  children,
+}) => <Container<State> context="blogPosts">{children}</Container>

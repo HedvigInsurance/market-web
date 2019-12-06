@@ -94,9 +94,13 @@ const BulletPointList = styled('div')({
   },
 })
 
-export const IconBulletPointBlock: React.FunctionComponent<
-  BulletPointBlockProps
-> = ({ title, title_position, bullet_points, color, size }) => {
+export const IconBulletPointBlock: React.FunctionComponent<BulletPointBlockProps> = ({
+  title,
+  title_position,
+  bullet_points,
+  color,
+  size,
+}) => {
   return (
     <SectionWrapper color={color && color.color} size={size}>
       <AlignableContent titlePosition={title_position}>

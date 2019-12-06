@@ -163,9 +163,9 @@ const ErrorBlockWrapper = styled(SectionWrapper)({
   background: 'red',
   color: 'white',
 })
-export const ErrorBlockComponent: React.FunctionComponent<
-  { message: string } & RouteComponentProps
-> = ({ message, location }) =>
+export const ErrorBlockComponent: React.FunctionComponent<{
+  message: string
+} & RouteComponentProps> = ({ message, location }) =>
   location.search.includes('_storyblok=') ? (
     <ErrorBlockWrapper>
       <ContentWrapper>

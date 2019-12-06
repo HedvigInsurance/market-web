@@ -39,7 +39,7 @@ export const BlogPostsPage: React.FunctionComponent<{ nonce?: string }> = ({
     <HeaderBlock
       is_transparent={false}
       inverse_colors={false}
-      _uid={'header'}
+      _uid="header"
       component={'header'}
     />
 

@@ -9,9 +9,11 @@ const Title = styled('h4')({
   textAlign: 'center',
 })
 
-export const TrustpilotRatingItem: React.FunctionComponent<
-  TrustpilotRatingItemProps
-> = ({ color, title, rating }) => (
+export const TrustpilotRatingItem: React.FunctionComponent<TrustpilotRatingItemProps> = ({
+  color,
+  title,
+  rating,
+}) => (
   <>
     <Title>{title}</Title>
     <StarRatings

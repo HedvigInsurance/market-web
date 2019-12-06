@@ -5,7 +5,9 @@ declare module 'koa-remove-trailing-slashes' {
     defer?: boolean
     chained?: boolean
   }
-  const removeTrailingSlashes: (args?: RemoveTrailingSlashesArgs) => Middleware
+  const removeTrailingSlashes: <TState = {}, TContext = any>(
+    args?: RemoveTrailingSlashesArgs,
+  ) => Middleware<TState, TContext>
 
   export = removeTrailingSlashes
 }

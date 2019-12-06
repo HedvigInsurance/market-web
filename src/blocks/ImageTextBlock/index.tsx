@@ -69,28 +69,28 @@ const TextWrapper = styled('div')(
 const Title = styled('h2')(
   ({
     size,
-    displayOrder,
+    displayorder,
     textPosition,
     alignment,
     color,
   }: {
     size?: TitleSize
     alignment: string
-    displayOrder: 'top' | 'bottom'
+    displayorder: 'top' | 'bottom'
     textPosition: TextPosition
     color: string
   }) => ({
     margin: textPosition === 'center' ? 'auto' : undefined,
     fontSize: size === 'lg' ? '4.5rem' : '3.5rem',
     marginTop:
-      alignment === 'center' && displayOrder === 'top' ? '3rem' : '1.414rem',
+      alignment === 'center' && displayorder === 'top' ? '3rem' : '1.414rem',
     width: '100%',
     color,
     maxWidth: textPosition === 'center' ? '40rem' : '31rem',
     [TABLET_BP_DOWN]: {
       fontSize: size === 'lg' ? '2.75rem' : '2rem',
       maxWidth: '100%',
-      marginTop: displayOrder === 'top' ? '3rem' : '1.414rem',
+      marginTop: displayorder === 'top' ? '3rem' : '1.414rem',
     },
   }),
 )
@@ -110,28 +110,28 @@ const Paragraph = styled('div')(
 const Image = styled(DeferredImage)(
   ({
     alignment,
-    displayOrder,
+    displayorder,
     hasLink,
   }: {
     alignment: string
-    displayOrder: 'top' | 'bottom'
+    displayorder: 'top' | 'bottom'
     hasLink?: boolean
   }) => ({
     width: hasLink ? '100%' : '40%',
     display: 'block',
-    order: alignment === 'center' && displayOrder === 'top' ? -1 : 'initial',
+    order: alignment === 'center' && displayorder === 'top' ? -1 : 'initial',
     [TABLET_BP_DOWN]: {
       maxWidth: '100%',
       width: 'auto',
-      marginTop: displayOrder === 'top' ? '0' : '3rem',
+      marginTop: displayorder === 'top' ? '0' : '3rem',
       display: 'block',
-      order: displayOrder === 'top' ? -1 : 'initial',
+      order: displayorder === 'top' ? -1 : 'initial',
     },
   }),
 )
 
 const ImageLink = styled('a')(
-  ({ displayOrder }: { displayOrder: 'top' | 'bottom' }) => ({
+  ({ displayorder }: { displayorder: 'top' | 'bottom' }) => ({
     display: 'inline-block',
     width: '40%',
     flexShrink: 0,
@@ -139,9 +139,9 @@ const ImageLink = styled('a')(
     [TABLET_BP_DOWN]: {
       maxWidth: '100%',
       width: 'auto',
-      marginTop: displayOrder === 'top' ? '0' : '3rem',
+      marginTop: displayorder === 'top' ? '0' : '3rem',
       display: 'block',
-      order: displayOrder === 'top' ? -1 : 'initial',
+      order: displayorder === 'top' ? -1 : 'initial',
     },
   }),
 )
@@ -149,23 +149,23 @@ const ImageLink = styled('a')(
 const ImageVideoWrapper = styled('div')(
   ({
     alignment,
-    displayOrder,
+    displayorder,
     hasLink,
   }: {
     alignment: string
-    displayOrder: 'top' | 'bottom'
+    displayorder: 'top' | 'bottom'
     hasLink?: boolean
   }) => ({
     width: hasLink ? '100%' : '40%',
     flexShrink: hasLink ? 1 : 0,
     display: 'block',
-    order: alignment === 'center' && displayOrder === 'top' ? -1 : 'initial',
+    order: alignment === 'center' && displayorder === 'top' ? -1 : 'initial',
     [TABLET_BP_DOWN]: {
       maxWidth: '100%',
       width: 'auto',
-      marginTop: displayOrder === 'top' ? '0' : '3rem',
+      marginTop: displayorder === 'top' ? '0' : '3rem',
       display: 'block',
-      order: displayOrder === 'top' ? -1 : 'initial',
+      order: displayorder === 'top' ? -1 : 'initial',
     },
   }),
 )
@@ -265,7 +265,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
         >
           <Title
             size={title_size}
-            displayOrder={media_position}
+            displayorder={media_position}
             alignment={text_position}
             color={
               title_color && title_color.color !== 'standard'
@@ -315,11 +315,11 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
           use_image_link ? (
             <ImageLink
               href={getStoryblokLinkUrl(image_link)}
-              displayOrder={media_position}
+              displayorder={media_position}
             >
               <Image
                 alignment={text_position}
-                displayOrder={media_position}
+                displayorder={media_position}
                 src={getStoryblokImage(image)}
                 hasLink={use_image_link}
               />
@@ -327,7 +327,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
           ) : (
             <Image
               alignment={text_position}
-              displayOrder={media_position}
+              displayorder={media_position}
               src={getStoryblokImage(image)}
             />
           )
@@ -338,11 +338,11 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
           (use_image_link ? (
             <ImageLink
               href={getStoryblokLinkUrl(image_link)}
-              displayOrder={media_position}
+              displayorder={media_position}
             >
               <ImageVideoWrapper
                 alignment={text_position}
-                displayOrder={media_position}
+                displayorder={media_position}
                 hasLink={use_image_link}
               >
                 <MediaQuery query="(max-width: 700px)">
@@ -357,7 +357,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
           ) : (
             <ImageVideoWrapper
               alignment={text_position}
-              displayOrder={media_position}
+              displayorder={media_position}
               hasLink={use_image_link}
             >
               <MediaQuery query="(max-width: 700px)">
