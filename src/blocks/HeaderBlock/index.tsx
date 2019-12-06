@@ -263,7 +263,7 @@ class Header extends React.PureComponent<
                   )}
 
                   <Menu open={isOpen}>
-                    {(this.props.story.content.header_menu_items || []).map(
+                    {(this.props.story.content.header_menu_items ?? []).map(
                       (menuItem) => (
                         <MenuItem menuItem={menuItem} key={menuItem._uid} />
                       ),
