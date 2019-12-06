@@ -1,4 +1,3 @@
-import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
@@ -10,7 +9,7 @@ export const CONTENT_GUTTER = '2rem'
 export const CONTENT_GUTTER_MOBILE = '1rem'
 export const MOBILE_BP_UP = '@media (min-width: 481px)'
 export const MOBILE_BP_DOWN = '@media (max-width: 480px)'
-export const TABLET_BP_DOWN = '@media (max-width: 800px)'
+export const TABLET_BP_DOWN = '@media (max-width: 840px)'
 export const TABLET_BP_UP = '@media (min-width: 801px)'
 export const GIANT_BP_UP = '@media (min-width: 1700px)'
 

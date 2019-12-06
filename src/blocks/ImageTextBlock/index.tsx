@@ -8,6 +8,7 @@ import { AlignedButton } from '../../components/AlignedButton'
 import {
   ContentWrapper,
   getColorStyles,
+  MOBILE_BP_DOWN,
   SectionWrapper,
   TABLET_BP_DOWN,
 } from '../../components/blockHelpers'
@@ -40,7 +41,7 @@ const AlignableContentWrapper = styled(ContentWrapper)<{
       : 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
-  [TABLET_BP_DOWN]: {
+  [MOBILE_BP_DOWN]: {
     flexDirection: 'column',
   },
 }))
@@ -55,6 +56,10 @@ const TextWrapper = styled('div')<{
   paddingRight: textPosition === 'left' ? '7rem' : '0',
   paddingLeft: textPosition === 'right' ? '7rem' : '0',
   [TABLET_BP_DOWN]: {
+    paddingRight: textPosition === 'left' ? '3rem' : '0',
+    paddingLeft: textPosition === 'right' ? '3rem' : '0',
+  },
+  [MOBILE_BP_DOWN]: {
     paddingRight: 0,
     paddingLeft: 0,
     textAlign: textPositionMobile,
@@ -102,7 +107,7 @@ const Image = styled(DeferredImage)<{
   width: hasLink ? '100%' : '40%',
   display: 'block',
   order: alignment === 'center' && displayorder === 'top' ? -1 : 'initial',
-  [TABLET_BP_DOWN]: {
+  [MOBILE_BP_DOWN]: {
     maxWidth: '100%',
     width: 'auto',
     marginTop: displayorder === 'top' ? '0' : '3rem',
@@ -117,7 +122,7 @@ const ImageLink = styled('a')<{ displayorder: 'top' | 'bottom' }>(
     width: '40%',
     flexShrink: 0,
 
-    [TABLET_BP_DOWN]: {
+    [MOBILE_BP_DOWN]: {
       maxWidth: '100%',
       width: 'auto',
       marginTop: displayorder === 'top' ? '0' : '3rem',
@@ -136,7 +141,7 @@ const ImageVideoWrapper = styled('div')<{
   flexShrink: hasLink ? 1 : 0,
   display: 'block',
   order: alignment === 'center' && displayorder === 'top' ? -1 : 'initial',
-  [TABLET_BP_DOWN]: {
+  [MOBILE_BP_DOWN]: {
     maxWidth: '100%',
     width: 'auto',
     marginTop: displayorder === 'top' ? '0' : '3rem',

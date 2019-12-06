@@ -4,6 +4,7 @@ import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
 import ReactVisibilitySensor from 'react-visibility-sensor'
 import {
+  CONTENT_GUTTER_MOBILE,
   ContentWrapper,
   MOBILE_BP_DOWN,
   SectionWrapper,
@@ -64,7 +65,8 @@ const BulletPoint = styled('div')<{
   borderRadius: 8,
   overflow: 'hidden',
   [TABLET_BP_DOWN]: {
-    width: `calc(50% - ${GUTTER}*2)`,
+    margin: CONTENT_GUTTER_MOBILE,
+    width: `calc(${100 / 3}% - ${CONTENT_GUTTER_MOBILE} * 2)`,
   },
   opacity: 0,
   animation: `${isVisible ? fadeUp : fadeOut} 500ms forwards`,
@@ -98,6 +100,7 @@ const BulletPointTitle = styled('h3')({
 
 const BulletPointParagraph = styled('div')()
 
+const MEDIA_MD = '@media (min-width: 415px) and (max-width: 1100px)'
 const BulletPointChecklist = styled('ul')({
   listStyle: 'none',
   padding: 0,
@@ -105,6 +108,10 @@ const BulletPointChecklist = styled('ul')({
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap',
+
+  [MEDIA_MD]: {
+    flexDirection: 'column',
+  },
 })
 
 const BulletPointChecklistItem = styled('li')({
@@ -115,6 +122,10 @@ const BulletPointChecklistItem = styled('li')({
   alignItems: 'center',
   ':nth-child(odd)': {
     marginRight: '0.5rem',
+  },
+
+  [MEDIA_MD]: {
+    width: 'calc(100% - 0.25rem)',
   },
 })
 
