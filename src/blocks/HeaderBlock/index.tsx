@@ -1,7 +1,7 @@
+import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { Mount, Unmount } from 'react-lifecycle-components'
 import { AppLink } from '../../components/AppLink'
 import { ContentWrapper } from '../../components/blockHelpers'
@@ -29,8 +29,8 @@ export const TOGGLE_TRANSITION_TIME = 250
 const isBelowScrollThreshold = () =>
   typeof window !== 'undefined' && window.scrollY > 20
 
-const Wrapper = styled('div')(
-  ({ inverse, open }: { inverse: boolean; open: boolean }) => ({
+const Wrapper = styled('div')<{ inverse: boolean; open: boolean }>(
+  ({ inverse, open }) => ({
     position: 'fixed',
     top: 0,
     left: 0,
@@ -47,8 +47,8 @@ const Wrapper = styled('div')(
 const Filler = styled('div')({
   height: WRAPPER_HEIGHT,
 })
-const HeaderBackgroundFiller = styled('div')(
-  ({ transparent }: { transparent: boolean }) => ({
+const HeaderBackgroundFiller = styled('div')<{ transparent: boolean }>(
+  ({ transparent }) => ({
     position: 'absolute',
     top: 0,
     left: 0,
@@ -69,7 +69,7 @@ const InnerHeaderWrapper = styled('div')({
   height: WRAPPER_HEIGHT,
   padding: HEADER_VERTICAL_PADDING + ' 0',
 })
-const Menu = styled('ul')(({ open }: { open: boolean }) => ({
+const Menu = styled('ul')<{ open: boolean }>(({ open }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
@@ -184,13 +184,13 @@ class Header extends React.PureComponent<
             <Wrapper
               inverse={this.props.is_transparent && this.props.inverse_colors}
               open={isOpen || isClosing}
-              innerRef={(r) => {
+              ref={(r) => {
                 this.wrapperRef = r
               }}
             >
               <HeaderBackgroundFiller
                 transparent={this.props.is_transparent}
-                innerRef={(r) => {
+                ref={(r) => {
                   this.backgroundFillerRef = r
                 }}
               />
@@ -263,7 +263,7 @@ class Header extends React.PureComponent<
                   )}
 
                   <Menu open={isOpen}>
-                    {(this.props.story.content.header_menu_items || []).map(
+                    {(this.props.story.content.header_menu_items ?? []).map(
                       (menuItem) => (
                         <MenuItem menuItem={menuItem} key={menuItem._uid} />
                       ),

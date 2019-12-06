@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 import StarRatings from 'react-star-ratings'
 
 import { TrustpilotRatingItemProps } from '.'
@@ -9,9 +9,11 @@ const Title = styled('h4')({
   textAlign: 'center',
 })
 
-export const TrustpilotRatingItem: React.FunctionComponent<
-  TrustpilotRatingItemProps
-> = ({ color, title, rating }) => (
+export const TrustpilotRatingItem: React.FunctionComponent<TrustpilotRatingItemProps> = ({
+  color,
+  title,
+  rating,
+}) => (
   <>
     <Title>{title}</Title>
     <StarRatings

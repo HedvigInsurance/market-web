@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 import VisibilitySensor from 'react-visibility-sensor'
 
 const Video = styled('video')({
@@ -59,7 +59,7 @@ export class DeferredVideo extends React.PureComponent<
         {({ isVisible }) => (
           <Video
             poster={`${this.props.src}.png`}
-            innerRef={this.state.ref}
+            ref={this.state.ref}
             playsInline
             autoPlay
             muted={true}

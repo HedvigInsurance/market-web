@@ -1,6 +1,6 @@
+import styled from '@emotion/styled'
 import { Container } from 'constate'
 import * as React from 'react'
-import styled from 'react-emotion'
 import ReactLottie from 'react-lottie'
 import VisibilitySensor from 'react-visibility-sensor'
 import {
@@ -111,9 +111,11 @@ const animationMap: AnimationMapProps = {
     ),
 }
 
-export const AnimatedCtaBlock: React.FunctionComponent<
-  AnimatedCtaBlockProps
-> = ({ color, title, bullet_points }) => (
+export const AnimatedCtaBlock: React.FunctionComponent<AnimatedCtaBlockProps> = ({
+  color,
+  title,
+  bullet_points,
+}) => (
   <SectionWrapper color={color && color.color}>
     <ContentWrapper>
       <AnimatedCtaWrapper>

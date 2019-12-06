@@ -1,15 +1,15 @@
+import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
 import * as Cookies from 'js-cookie'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { TABLET_BP_UP } from '../../components/blockHelpers'
 import { Button } from '../../components/buttons'
 import { trackEvent } from '../../utils/tracking/trackEvent'
 import { utmParamsToBranchLinkOptions } from '../../utils/tracking/utmToBranch'
 import { DownloadSpinner } from './DownloadSpinner'
 
-const CustomButton = styled(Button)(
-  ({ disabled, touched }: { disabled: boolean; touched: boolean }) => ({
+const CustomButton = styled(Button)<{ disabled: boolean; touched: boolean }>(
+  ({ disabled, touched }) => ({
     backgroundColor: disabled && touched ? colors.LIGHT_GRAY : colors.GREEN,
     border: 0,
     marginBottom: '1rem',
@@ -21,7 +21,7 @@ const CustomButton = styled(Button)(
     },
   }),
 )
-const Input = styled('input')(({ error }: { error: boolean }) => ({
+const Input = styled('input')<{ error: boolean }>(({ error }) => ({
   minWidth: '18rem',
   borderWidth: 2,
   borderStyle: 'solid',

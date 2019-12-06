@@ -1,6 +1,6 @@
+import styled from '@emotion/styled'
 import { colors, fonts } from '@hedviginsurance/brand'
 import * as React from 'react'
-import styled from 'react-emotion'
 
 const FactsContainer = styled('div')({
   backgroundColor: '#FFF3F2',

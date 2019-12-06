@@ -1,6 +1,7 @@
+import { keyframes } from '@emotion/core'
+import styled from '@emotion/styled'
 import { fonts } from '@hedviginsurance/brand'
 import * as React from 'react'
-import styled, { keyframes } from 'react-emotion'
 import { Transition, TransitionGroup } from 'react-transition-group'
 import {
   ENTERED,
@@ -59,7 +60,7 @@ const getTransform = (status: TransitionStatus) => {
   }
 }
 
-const ImageContainer = styled('div')(
+const ImageContainer = styled('div')<ImageContainerProps>(
   {
     position: 'absolute',
     width: '100%',
@@ -67,7 +68,7 @@ const ImageContainer = styled('div')(
     willChange: 'transform',
     animationTimingFunction: 'cubic-bezier(.17,.67,.83,.67)',
   },
-  ({ status }: ImageContainerProps) => ({
+  ({ status }) => ({
     ...getTransform(status),
   }),
 )
@@ -121,7 +122,7 @@ interface DetailsProps {
   status: TransitionStatus
 }
 
-const Details = styled('div')(
+const Details = styled('div')<DetailsProps>(
   {
     position: 'absolute',
     padding: '5%',
@@ -129,7 +130,7 @@ const Details = styled('div')(
     display: 'flex',
     flexDirection: 'column',
   },
-  ({ status }: DetailsProps) => ({
+  ({ status }) => ({
     ...getDetailsAnimation(status),
   }),
 )

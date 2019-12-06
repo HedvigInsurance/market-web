@@ -1,8 +1,25 @@
-import { Middleware } from 'koa'
+import { IMiddleware } from 'koa-router'
+import { BlogStory } from 'storyblok/StoryContainer'
+import { Logger } from 'typescript-logging'
 import { getBlogPosts } from '../utils/storyblok'
 import { getCachedTeamtailorUsers } from '../utils/teamtailor'
 
-export const addTeamtailorUsersToState: Middleware = async (ctx, next) => {
+export interface State {
+  additionalStates?: {
+    teamtailorUsers?: { users: any }
+    blogPosts?: {
+      blogPosts: ReadonlyArray<BlogStory>
+    }
+  }
+
+  getLogger: (name: string) => Logger
+  requestUuid?: string
+}
+
+export const addTeamtailorUsersToState: IMiddleware<State> = async (
+  ctx,
+  next,
+) => {
   ctx.state.additionalStates = {
     ...ctx.state.additionalStates,
     teamtailorUsers: { users: await getCachedTeamtailorUsers() },
@@ -11,7 +28,7 @@ export const addTeamtailorUsersToState: Middleware = async (ctx, next) => {
   await next()
 }
 
-export const addBlogPostsToState: Middleware = async (ctx, next) => {
+export const addBlogPostsToState: IMiddleware<State> = async (ctx, next) => {
   const response = await getBlogPosts(Boolean(ctx.query._storyblok_published))
   ctx.state.additionalStates = {
     ...ctx.state.additionalStates,
@@ -22,7 +39,7 @@ export const addBlogPostsToState: Middleware = async (ctx, next) => {
   await next()
 }
 
-export const addTagBlogPostsToState: Middleware = async (ctx, next) => {
+export const addTagBlogPostsToState: IMiddleware<State> = async (ctx, next) => {
   const response = await getBlogPosts(
     Boolean(ctx.query._storyblok_published),
     ctx.params.tag,

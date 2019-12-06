@@ -1,5 +1,6 @@
+import { keyframes } from '@emotion/core'
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled, { keyframes } from 'react-emotion'
 import { Update } from 'react-lifecycle-components'
 
 interface HeightContainerProps {
@@ -15,7 +16,7 @@ const fadeInKeyframe = keyframes({
   },
 })
 
-const HeightContainer = styled('div')(
+const HeightContainer = styled('div')<HeightContainerProps>(
   {
     animation: `${fadeInKeyframe} 2000ms forwards`,
     transition: 'height 1500ms, padding 1500ms',
@@ -31,7 +32,7 @@ const HeightContainer = styled('div')(
       height: 600,
     },
   },
-  ({ isFullScreen }: HeightContainerProps) =>
+  ({ isFullScreen }) =>
     isFullScreen
       ? {
           height: 'calc(100vh - 70px) !important',
@@ -39,7 +40,7 @@ const HeightContainer = styled('div')(
       : null,
 )
 
-const Video = styled('video')(
+const Video = styled('video')<HeightContainerProps>(
   {
     width: '100%',
     objectFit: 'cover',
@@ -47,7 +48,7 @@ const Video = styled('video')(
     overflow: 'hidden',
     borderRadius: 0.01,
   },
-  ({ isFullScreen }: HeightContainerProps) =>
+  ({ isFullScreen }) =>
     isFullScreen
       ? {
           height: '30%',
@@ -94,7 +95,7 @@ export const Player: React.SFC<PlayerProps> = ({ isFullScreen, videoRef }) => (
     <HeightContainer isFullScreen={isFullScreen}>
       <Video
         poster="/assets-next/about-us/about-us-hero-poster.png"
-        innerRef={videoRef}
+        ref={videoRef}
         playsInline
         autoPlay
         muted={!isFullScreen}

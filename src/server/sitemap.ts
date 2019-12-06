@@ -1,6 +1,7 @@
-import { Middleware } from 'koa'
+import { IMiddleware } from 'koa-router'
 import { Changefreq, createSitemap } from 'sitemap'
 import { promisify } from 'util'
+import { State } from './middlewares/states'
 import { getAllStoryblokLinks } from './utils/storyblok'
 
 export interface SitemapXml {
@@ -36,7 +37,7 @@ const getSitemapLinks = async () => {
     .filter(({ url }) => Boolean(url))
 }
 
-export const sitemapXml: Middleware = async (ctx) => {
+export const sitemapXml: IMiddleware<State> = async (ctx) => {
   const sitemapCreator = createSitemap({
     hostname: process.env.PUBLIC_HOST || '',
     cacheTime: 60 * 10 * 1000,

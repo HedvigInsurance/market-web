@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
-import styled from 'react-emotion'
 
 export const Badge = styled('span')({
   backgroundColor: colors.LIGHT_GRAY,
