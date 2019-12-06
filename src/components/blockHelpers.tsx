@@ -130,26 +130,6 @@ export const SectionWrapper = styled('section')<SectionProps>(
   }),
 )
 
-const fadeIn = keyframes({
-  from: { opacity: 0 },
-  to: { opacity: 1 },
-})
-export const BackgroundLoader = styled('div')<{
-  backgroundImage?: string | null
-  isBackgroundLoaded?: boolean
-}>(({ backgroundImage, isBackgroundLoaded }) => ({
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  height: '100%',
-  objectFit: 'cover',
-  ...backgroundImageStyles(backgroundImage ?? 'none'),
-  opacity: 0,
-  animation: isBackgroundLoaded ? fadeIn + ' 500ms forwards' : undefined,
-  animationDelay: '300ms',
-}))
-
 export const MarginSectionWrapper = styled('section')<SectionProps>(
   ({ color = 'standard', size = 'lg', backgroundImage = 'none' }) => ({
     ...getSectionSizeStyle(size),

@@ -1845,13 +1845,6 @@
           "translatable": true,
           "pos": 10
         },
-        "background_image_tiny": {
-          "type": "image",
-          "pos": 11,
-          "description": "Add a tiny image for neater loading of the background",
-          "display_name": "",
-          "default_value": ""
-        },
         "background_image": {
           "type": "image",
           "required": false,
