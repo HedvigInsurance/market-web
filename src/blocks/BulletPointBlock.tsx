@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
@@ -17,15 +17,15 @@ const BulletPointSectionWrapper = styled(SectionWrapper)({
   overflowX: 'hidden',
 })
 
-const InnerWrapper = styled('div')(
-  ({ position }: { position: TextPosition }) => ({
+const InnerWrapper = styled('div')<{ position: TextPosition }>(
+  ({ position }) => ({
     display: 'flex',
     justifyContent: textFlexPositionMap[position],
     flexWrap: 'wrap',
     minWidth: '100%',
   }),
 )
-const Title = styled('h2')(({ position }: { position: TextPosition }) => ({
+const Title = styled('h2')<{ position: TextPosition }>(({ position }) => ({
   display: 'flex',
   justifyContent: textFlexPositionMap[position],
   minWidth: '100%',
@@ -48,18 +48,18 @@ const BulletPoint = styled('div')({
   },
 })
 
-const BulletPointHead = styled('div')(
-  ({ forceSize }: { forceSize: boolean }) => ({
+const BulletPointHead = styled('div')<{ forcesize: boolean }>(
+  ({ forcesize }) => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: forceSize ? '16rem' : undefined,
+    height: forcesize ? '16rem' : undefined,
   }),
 )
-const BulletPointImage = styled(DeferredImage)(
-  ({ forceSize }: { forceSize: boolean }) => ({
+const BulletPointImage = styled(DeferredImage)<{ forcesize: boolean }>(
+  ({ forcesize }) => ({
     margin: 'auto',
-    ...(forceSize
+    ...(forcesize
       ? {
           width: `calc(100% - ${GUTTER})`,
           maxWidth: '16rem',
@@ -106,10 +106,10 @@ export const BulletPointBlock: React.FunctionComponent<BulletPointsBlockProps> =
       <InnerWrapper position={bullet_points_position}>
         {bullet_points.map((bullet) => (
           <BulletPoint key={bullet._uid}>
-            <BulletPointHead forceSize={enforce_size}>
+            <BulletPointHead forcesize={enforce_size}>
               <BulletPointImage
                 src={getStoryblokImage(bullet.image)}
-                forceSize={enforce_size}
+                forcesize={enforce_size}
               />
             </BulletPointHead>
             <BulletPointBody>

@@ -1,7 +1,7 @@
+import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
 import { Container } from 'constate'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { Mount } from 'react-lifecycle-components'
 import MediaQuery from 'react-responsive'
 import { AppLink } from '../components/AppLink'
@@ -36,8 +36,8 @@ const Wrapper = styled('section')({
   },
 })
 
-const Background = styled('div')(
-  ({ backgroundColor }: { backgroundColor: string }) => ({
+const Background = styled('div')<{ backgroundColor: string }>(
+  ({ backgroundColor }) => ({
     position: 'absolute',
     top: 0,
     left: 0,
@@ -49,21 +49,16 @@ const Background = styled('div')(
     backgroundColor,
   }),
 )
-const BackgroundEvener = styled('div')(
-  ({
-    backgroundGradientStart,
-    background,
-  }: {
-    backgroundGradientStart: string
-    background: string
-  }) => ({
-    height: 60,
-    position: 'relative',
-    marginTop: -60,
-    zIndex: 2,
-    background: `linear-gradient(to bottom, ${backgroundGradientStart}, ${background})`,
-  }),
-)
+const BackgroundEvener = styled('div')<{
+  backgroundGradientStart: string
+  background: string
+}>(({ backgroundGradientStart, background }) => ({
+  height: 60,
+  position: 'relative',
+  marginTop: -60,
+  zIndex: 2,
+  background: `linear-gradient(to bottom, ${backgroundGradientStart}, ${background})`,
+}))
 const Video = styled('video')({
   position: 'relative',
   width: '100%',
@@ -86,7 +81,7 @@ const Content = styled(ContentWrapper)({
   },
 })
 
-const Title = styled('h1')(({ useDropShadow }: { useDropShadow: boolean }) => ({
+const Title = styled('h1')<{ useDropShadow: boolean }>(({ useDropShadow }) => ({
   maxWidth: '66%',
   fontSize: '4.5rem',
   textShadow: useDropShadow ? '1px 1px 5px rgba(0, 0, 0, .3)' : undefined,
@@ -99,8 +94,8 @@ const Title = styled('h1')(({ useDropShadow }: { useDropShadow: boolean }) => ({
     fontSize: '3rem',
   },
 }))
-const Paragraph = styled('div')(
-  ({ useDropShadow }: { useDropShadow: boolean }) => ({
+const Paragraph = styled('div')<{ useDropShadow: boolean }>(
+  ({ useDropShadow }) => ({
     fontSize: '1.125rem',
     marginTop: '1.5rem',
     maxWidth: '50%',

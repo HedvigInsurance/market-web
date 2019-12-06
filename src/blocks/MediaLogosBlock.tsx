@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { ContentWrapper } from '../components/blockHelpers'
 import { getStoryblokImage, Image as ImageType } from '../utils/storyblok'
 import { BaseBlockProps } from './BaseBlockProps'

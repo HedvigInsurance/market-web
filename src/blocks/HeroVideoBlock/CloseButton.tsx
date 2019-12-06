@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { Spring } from 'react-spring'
 import { CONTENT_GUTTER } from '../../components/blockHelpers'
 
@@ -30,7 +30,7 @@ const CrossIcon: React.FunctionComponent = () => (
   </svg>
 )
 
-const Button = styled('button')(
+const Button = styled('button')<ButtonProps>(
   {
     position: 'absolute',
     top: CONTENT_GUTTER,
@@ -46,7 +46,7 @@ const Button = styled('button')(
     background: 'transparent',
     border: 0,
   },
-  ({ hidden }: ButtonProps) => ({
+  ({ hidden }) => ({
     pointerEvents: hidden ? 'none' : 'all',
   }),
 )

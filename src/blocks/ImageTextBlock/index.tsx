@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 import MediaQuery from 'react-responsive'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { SectionSize } from 'src/utils/SectionSize'
@@ -28,75 +28,62 @@ import { BackgroundVideo } from './BackgroundVideo'
 
 type TitleSize = 'sm' | 'lg'
 
-const AlignableContentWrapper = styled(ContentWrapper)(
-  ({ textPosition }: { textPosition: string }) => ({
-    display: 'flex',
-    flexDirection:
-      textPosition === 'right'
-        ? 'row-reverse'
-        : textPosition === 'center'
-        ? 'column'
-        : 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    [TABLET_BP_DOWN]: {
-      flexDirection: 'column',
-    },
-  }),
-)
+const AlignableContentWrapper = styled(ContentWrapper)<{
+  textPosition: string
+}>(({ textPosition }) => ({
+  display: 'flex',
+  flexDirection:
+    textPosition === 'right'
+      ? 'row-reverse'
+      : textPosition === 'center'
+      ? 'column'
+      : 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  [TABLET_BP_DOWN]: {
+    flexDirection: 'column',
+  },
+}))
 
-const TextWrapper = styled('div')(
-  ({
-    textPosition,
-    textPositionMobile,
-  }: {
-    textPosition: string
-    textPositionMobile: TextPosition
-  }) => ({
-    position: 'relative',
-    textAlign: textPosition === 'center' ? 'center' : 'left',
-    width: '100%',
-    paddingRight: textPosition === 'left' ? '7rem' : '0',
-    paddingLeft: textPosition === 'right' ? '7rem' : '0',
-    [TABLET_BP_DOWN]: {
-      paddingRight: 0,
-      paddingLeft: 0,
-      textAlign: textPositionMobile,
-    },
-  }),
-)
+const TextWrapper = styled('div')<{
+  textPosition: string
+  textPositionMobile: TextPosition
+}>(({ textPosition, textPositionMobile }) => ({
+  position: 'relative',
+  textAlign: textPosition === 'center' ? 'center' : 'left',
+  width: '100%',
+  paddingRight: textPosition === 'left' ? '7rem' : '0',
+  paddingLeft: textPosition === 'right' ? '7rem' : '0',
+  [TABLET_BP_DOWN]: {
+    paddingRight: 0,
+    paddingLeft: 0,
+    textAlign: textPositionMobile,
+  },
+}))
 
-const Title = styled('h2')(
-  ({
-    size,
-    displayorder,
-    textPosition,
-    alignment,
-    color,
-  }: {
-    size?: TitleSize
-    alignment: string
-    displayorder: 'top' | 'bottom'
-    textPosition: TextPosition
-    color: string
-  }) => ({
-    margin: textPosition === 'center' ? 'auto' : undefined,
-    fontSize: size === 'lg' ? '4.5rem' : '3.5rem',
-    marginTop:
-      alignment === 'center' && displayorder === 'top' ? '3rem' : '1.414rem',
-    width: '100%',
-    color,
-    maxWidth: textPosition === 'center' ? '40rem' : '31rem',
-    [TABLET_BP_DOWN]: {
-      fontSize: size === 'lg' ? '2.75rem' : '2rem',
-      maxWidth: '100%',
-      marginTop: displayorder === 'top' ? '3rem' : '1.414rem',
-    },
-  }),
-)
+const Title = styled('h2')<{
+  size?: TitleSize
+  alignment: string
+  displayorder: 'top' | 'bottom'
+  textPosition: TextPosition
+  color: string
+}>(({ size, displayorder, textPosition, alignment, color }) => ({
+  margin: textPosition === 'center' ? 'auto' : undefined,
+  fontSize: size === 'lg' ? '4.5rem' : '3.5rem',
+  marginTop:
+    alignment === 'center' && displayorder === 'top' ? '3rem' : '1.414rem',
+  width: '100%',
+  color,
+  maxWidth: textPosition === 'center' ? '40rem' : '31rem',
+  [TABLET_BP_DOWN]: {
+    fontSize: size === 'lg' ? '2.75rem' : '2rem',
+    maxWidth: '100%',
+    marginTop: displayorder === 'top' ? '3rem' : '1.414rem',
+  },
+}))
 
-const Paragraph = styled('div')(
-  ({ textPosition }: { textPosition: TextPosition }) => ({
+const Paragraph = styled('div')<{ textPosition: TextPosition }>(
+  ({ textPosition }) => ({
     margin: textPosition === 'center' ? 'auto' : undefined,
     fontSize: '1.125rem',
     marginTop: '1.5rem',
@@ -107,31 +94,25 @@ const Paragraph = styled('div')(
   }),
 )
 
-const Image = styled(DeferredImage)(
-  ({
-    alignment,
-    displayorder,
-    hasLink,
-  }: {
-    alignment: string
-    displayorder: 'top' | 'bottom'
-    hasLink?: boolean
-  }) => ({
-    width: hasLink ? '100%' : '40%',
+const Image = styled(DeferredImage)<{
+  alignment: string
+  displayorder: 'top' | 'bottom'
+  hasLink?: boolean
+}>(({ alignment, displayorder, hasLink }) => ({
+  width: hasLink ? '100%' : '40%',
+  display: 'block',
+  order: alignment === 'center' && displayorder === 'top' ? -1 : 'initial',
+  [TABLET_BP_DOWN]: {
+    maxWidth: '100%',
+    width: 'auto',
+    marginTop: displayorder === 'top' ? '0' : '3rem',
     display: 'block',
-    order: alignment === 'center' && displayorder === 'top' ? -1 : 'initial',
-    [TABLET_BP_DOWN]: {
-      maxWidth: '100%',
-      width: 'auto',
-      marginTop: displayorder === 'top' ? '0' : '3rem',
-      display: 'block',
-      order: displayorder === 'top' ? -1 : 'initial',
-    },
-  }),
-)
+    order: displayorder === 'top' ? -1 : 'initial',
+  },
+}))
 
-const ImageLink = styled('a')(
-  ({ displayorder }: { displayorder: 'top' | 'bottom' }) => ({
+const ImageLink = styled('a')<{ displayorder: 'top' | 'bottom' }>(
+  ({ displayorder }) => ({
     display: 'inline-block',
     width: '40%',
     flexShrink: 0,
@@ -146,29 +127,23 @@ const ImageLink = styled('a')(
   }),
 )
 
-const ImageVideoWrapper = styled('div')(
-  ({
-    alignment,
-    displayorder,
-    hasLink,
-  }: {
-    alignment: string
-    displayorder: 'top' | 'bottom'
-    hasLink?: boolean
-  }) => ({
-    width: hasLink ? '100%' : '40%',
-    flexShrink: hasLink ? 1 : 0,
+const ImageVideoWrapper = styled('div')<{
+  alignment: string
+  displayorder: 'top' | 'bottom'
+  hasLink?: boolean
+}>(({ alignment, displayorder, hasLink }) => ({
+  width: hasLink ? '100%' : '40%',
+  flexShrink: hasLink ? 1 : 0,
+  display: 'block',
+  order: alignment === 'center' && displayorder === 'top' ? -1 : 'initial',
+  [TABLET_BP_DOWN]: {
+    maxWidth: '100%',
+    width: 'auto',
+    marginTop: displayorder === 'top' ? '0' : '3rem',
     display: 'block',
-    order: alignment === 'center' && displayorder === 'top' ? -1 : 'initial',
-    [TABLET_BP_DOWN]: {
-      maxWidth: '100%',
-      width: 'auto',
-      marginTop: displayorder === 'top' ? '0' : '3rem',
-      display: 'block',
-      order: displayorder === 'top' ? -1 : 'initial',
-    },
-  }),
-)
+    order: displayorder === 'top' ? -1 : 'initial',
+  },
+}))
 
 const ImageVideo = styled(DeferredVideo)({
   width: '100%',

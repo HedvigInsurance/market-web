@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 import {
   BaseBlockProps,
   ColorComponent,
@@ -25,20 +25,20 @@ const ButtonLinkWithMargin = styled(ButtonLink)({
   marginTop: '1.7rem',
 })
 
-const AlignableContentWrapper = styled(ContentWrapper)(
-  ({ textPosition }: { textPosition: TextPosition }) => ({
-    display: 'flex',
-    flexDirection: textPosition === 'right' ? 'row-reverse' : 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    [TABLET_BP_DOWN]: {
-      flexDirection: 'column',
-    },
-  }),
-)
+const AlignableContentWrapper = styled(ContentWrapper)<{
+  textPosition: TextPosition
+}>(({ textPosition }) => ({
+  display: 'flex',
+  flexDirection: textPosition === 'right' ? 'row-reverse' : 'row',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+  [TABLET_BP_DOWN]: {
+    flexDirection: 'column',
+  },
+}))
 
-const TextWrapper = styled('div')(
-  ({ textPosition }: { textPosition: TextPosition }) => ({
+const TextWrapper = styled('div')<{ textPosition: TextPosition }>(
+  ({ textPosition }) => ({
     textAlign: textPosition === 'center' ? 'center' : 'left',
     width: '100%',
     paddingRight: textPosition === 'left' ? '7rem' : '0',
@@ -50,8 +50,8 @@ const TextWrapper = styled('div')(
   }),
 )
 
-const Title = styled('h2')(
-  ({ displayorder }: { displayorder: 'top' | 'bottom' }) => ({
+const Title = styled('h2')<{ displayorder: 'top' | 'bottom' }>(
+  ({ displayorder }) => ({
     fontSize: '4.5rem',
     wordWrap: 'break-word',
     width: '100%',
@@ -68,29 +68,24 @@ const Paragraph = styled('div')({
   marginTop: '1.5rem',
 })
 
-const PhoneContainer = styled('div')(
-  ({
-    alignment,
-    displayorder,
-  }: {
-    alignment: string
-    displayorder: 'top' | 'bottom'
-  }) => ({
-    padding: '0 30px',
+const PhoneContainer = styled('div')<{
+  alignment: string
+  displayorder: 'top' | 'bottom'
+}>(({ alignment, displayorder }) => ({
+  padding: '0 30px',
+  width: '100%',
+  '&:>div': {
     width: '100%',
-    '&:>div': {
-      width: '100%',
-    },
-    display: alignment === 'center' ? 'none' : 'block',
-    [TABLET_BP_DOWN]: {
-      maxWidth: '100%',
-      width: 'auto',
-      marginTop: displayorder === 'top' ? '0' : '3rem',
-      display: 'block',
-      order: displayorder === 'top' ? -1 : undefined,
-    },
-  }),
-)
+  },
+  display: alignment === 'center' ? 'none' : 'block',
+  [TABLET_BP_DOWN]: {
+    maxWidth: '100%',
+    width: 'auto',
+    marginTop: displayorder === 'top' ? '0' : '3rem',
+    display: 'block',
+    order: displayorder === 'top' ? -1 : undefined,
+  },
+}))
 
 interface AnimatedPhoneBlockProps extends BaseBlockProps {
   title: string

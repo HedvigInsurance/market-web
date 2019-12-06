@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { getColorStyles, SectionWrapper } from '../components/blockHelpers'
 import {
   BaseBlobProps,
@@ -39,8 +39,8 @@ interface SpacerProps extends BaseBlobProps {
   overlap: boolean
 }
 
-const Svg = styled('svg')(
-  ({ color, direction, overlap, parentSize }: SvgProps) => ({
+const Svg = styled('svg')<SvgProps>(
+  ({ color, direction, overlap, parentSize }) => ({
     fill: color ? getColorStyles(color).background : 'white',
     ...getBlobStyles(direction),
     ...blobOffsetStyles(direction, overlap, parentSize),
@@ -55,7 +55,7 @@ const padding = (overlap: boolean) => {
   return overlap ? { padding: '0 !important' } : undefined
 }
 
-const Spacer = styled(SectionWrapper)(({ overlap }: SpacerProps) => ({
+const Spacer = styled(SectionWrapper)<SpacerProps>(({ overlap }) => ({
   paddingBottom: '0 !important',
   position: 'relative',
   zIndex: 1,

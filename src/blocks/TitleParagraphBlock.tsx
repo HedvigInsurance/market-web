@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { TextPosition } from 'src/utils/textPosition'
 import {
   ContentWrapper,
@@ -13,30 +13,30 @@ import {
   MarkdownHtmlComponent,
 } from './BaseBlockProps'
 
-const AlignableContentWrapper = styled(ContentWrapper)(
-  ({ textPosition }: { textPosition: AltTextPosition }) => ({
-    display: 'flex',
-    flexDirection:
-      textPosition === 'center' || textPosition === 'center-but-left'
-        ? 'column'
-        : 'row',
-    justifyContent: textPosition === 'left' ? 'space-between' : 'center',
-    alignItems: textPosition === 'center' ? 'center' : 'start',
-    textAlign: textPosition === 'center' ? 'center' : 'left',
+const AlignableContentWrapper = styled(ContentWrapper)<{
+  textPosition: AltTextPosition
+}>(({ textPosition }) => ({
+  display: 'flex',
+  flexDirection:
+    textPosition === 'center' || textPosition === 'center-but-left'
+      ? 'column'
+      : 'row',
+  justifyContent: textPosition === 'left' ? 'space-between' : 'center',
+  alignItems: textPosition === 'center' ? 'center' : 'start',
+  textAlign: textPosition === 'center' ? 'center' : 'left',
+  maxWidth: textPosition === 'center-but-left' ? '50rem' : undefined,
+  [MOBILE_BP_DOWN]: {
+    flexDirection: 'column',
+  },
+  [GIANT_BP_UP]: {
     maxWidth: textPosition === 'center-but-left' ? '50rem' : undefined,
-    [MOBILE_BP_DOWN]: {
-      flexDirection: 'column',
-    },
-    [GIANT_BP_UP]: {
-      maxWidth: textPosition === 'center-but-left' ? '50rem' : undefined,
-    },
-  }),
-)
+  },
+}))
 
 type AltTextPosition = TextPosition | 'center-but-left'
 
-const Title = styled('h2')(
-  ({ textPosition }: { textPosition: AltTextPosition }) => ({
+const Title = styled('h2')<{ textPosition: AltTextPosition }>(
+  ({ textPosition }) => ({
     fontSize: '3rem',
     marginRight: textPosition === 'left' ? 'auto' : 0,
     marginLeft: textPosition === 'right' ? 'auto' : 0,
@@ -62,8 +62,8 @@ const getParagraphMaxWidth = (textPosition: AltTextPosition) => {
   return 0
 }
 
-const Paragraph = styled('div')(
-  ({ textPosition }: { textPosition: AltTextPosition }) => ({
+const Paragraph = styled('div')<{ textPosition: AltTextPosition }>(
+  ({ textPosition }) => ({
     display: textPosition === 'right' ? 'none' : 'block',
     maxWidth: getParagraphMaxWidth(textPosition),
     width: '100%',

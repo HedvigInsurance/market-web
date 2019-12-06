@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { TextPosition } from 'src/utils/textPosition'
 import {
   ContentWrapper,
@@ -27,8 +27,8 @@ const Paragraph = styled('div')({
   width: '100%',
 })
 
-const IconBulletPointItem = styled('div')(
-  ({ contentAlignment }: { contentAlignment: string }) => ({
+const IconBulletPointItem = styled('div')<{ contentAlignment: string }>(
+  ({ contentAlignment }) => ({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'flex-start',
@@ -69,13 +69,13 @@ const BulletPointTitle = styled('h4')({
   fontSize: '1.25rem',
 })
 
-const AlignableContent = styled(ContentWrapper)(
-  ({ titlePosition }: { titlePosition: TextPosition }) => ({
-    display: 'flex',
-    flexDirection: 'column',
-    textAlign: titlePosition === 'center' ? 'center' : 'left',
-  }),
-)
+const AlignableContent = styled(ContentWrapper)<{
+  titlePosition: TextPosition
+}>(({ titlePosition }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  textAlign: titlePosition === 'center' ? 'center' : 'left',
+}))
 
 const MainTitle = styled('h2')({
   marginTop: 0,

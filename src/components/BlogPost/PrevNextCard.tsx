@@ -1,6 +1,6 @@
+import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { BlogStory } from '../../storyblok/StoryContainer'
 import { getStoryblokImage } from '../../utils/storyblok'
 import { truncate } from '../../utils/truncate'
@@ -42,7 +42,7 @@ const CardBody = styled('div')({
 
 const PHONE_UP = '@media (min-width: 480px)'
 
-const CardLink = styled('a')(({ background }: { background: string }) => ({
+const CardLink = styled('a')<{ background: string }>(({ background }) => ({
   background,
   display: 'flex',
   alignItems: 'flex-start',

@@ -1,9 +1,10 @@
+import { Global } from '@emotion/core'
 import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
 import { hot } from 'react-hot-loader'
 import { Mount } from 'react-lifecycle-components'
 import { Route, Switch } from 'react-router-dom'
-import { GlobalStyles } from './components/GlobalStyles'
+import { globalStyles } from './components/GlobalStyles'
 import { routes } from './routes'
 
 export const App: React.FunctionComponent<{ nonce?: string }> = ({ nonce }) => (
@@ -19,7 +20,7 @@ export const App: React.FunctionComponent<{ nonce?: string }> = ({ nonce }) => (
     >
       {null}
     </Mount>
-    <GlobalStyles />
+    <Global styles={globalStyles} />
     <Switch>
       {routes.map(({ Component, exact, path }) => (
         <Route

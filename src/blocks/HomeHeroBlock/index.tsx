@@ -1,6 +1,6 @@
+import styled from '@emotion/styled'
 import { ActionMap, Container } from 'constate'
 import * as React from 'react'
-import styled from 'react-emotion'
 
 import {
   CONTENT_GUTTER,
@@ -29,14 +29,14 @@ const HeroContainer = styled('div')({
   margin: '0 auto',
 })
 
-const Title = styled('h1')(({ color }: { color: string }) => ({
+const Title = styled('h1')<{ color: string }>(({ color }) => ({
   maxWidth: 600,
   marginBottom: 0,
   color,
   textShadow: '1px 1px 15px rgba(0, 0, 0, .3)',
 }))
 
-const Subtitle = styled('p')(({ color }: { color: string }) => ({
+const Subtitle = styled('p')<{ color: string }>(({ color }) => ({
   color,
   fontSize: '1.125rem',
   textShadow: '1px 1px 15px rgba(0, 0, 0, .3)',

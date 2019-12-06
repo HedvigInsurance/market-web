@@ -1,6 +1,6 @@
+import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
-import styled from 'react-emotion'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
@@ -18,7 +18,7 @@ const BulletPointSectionWrapper = styled(SectionWrapper)({
   overflowX: 'hidden',
 })
 
-const Title = styled('h2')(({ position }: { position: TextPosition }) => ({
+const Title = styled('h2')<{ position: TextPosition }>(({ position }) => ({
   display: 'flex',
   justifyContent: textFlexPositionMap[position],
   flexWrap: 'wrap',
@@ -30,8 +30,8 @@ const Title = styled('h2')(({ position }: { position: TextPosition }) => ({
   },
 }))
 
-const BulletPointsWrapper = styled('div')(
-  ({ position }: { position: TextPosition }) => ({
+const BulletPointsWrapper = styled('div')<{ position: TextPosition }>(
+  ({ position }) => ({
     display: 'flex',
     justifyContent: textFlexPositionMap[position],
     flexWrap: 'wrap',

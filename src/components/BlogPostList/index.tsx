@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { BlogStory } from '../../storyblok/StoryContainer'
 import { ContentWrapper, SectionWrapper } from '../blockHelpers'
 import { Breadcrumb, Breadcrumbs } from '../Breadcrumbs'
