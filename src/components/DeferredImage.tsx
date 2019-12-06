@@ -36,7 +36,7 @@ export class DeferredImage extends React.PureComponent<
   public render() {
     return (
       <VisibilitySensor
-        offset={{ top: -500, bottom: -500 }}
+        offset={{ top: -200, bottom: -200 }}
         partialVisibility
         onChange={(isVisible) => {
           if (isVisible) {
