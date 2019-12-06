@@ -1,7 +1,7 @@
+import styled from '@emotion/styled'
 import { Container } from 'constate'
 import * as React from 'react'
 import AnimateHeight from 'react-animate-height'
-import styled from 'react-emotion'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
@@ -74,7 +74,11 @@ const AccordionContent = styled('div')({
   overflowY: 'hidden',
 })
 
-const ExpanderIcon = styled(Plus)(({ isOpen }: { isOpen: boolean }) => ({
+interface Openable {
+  isOpen: boolean
+}
+
+const ExpanderIcon = styled(Plus)<Openable>(({ isOpen }) => ({
   transform: isOpen ? 'rotate(45deg)' : undefined,
   transition: 'transform 150ms',
   flexShrink: 0,
@@ -90,7 +94,7 @@ export const Accordion: React.FunctionComponent<AccordionProps> = ({
   title,
   paragraph,
 }) => (
-  <Container<{ isOpen: boolean }, { toggleIsOpen: () => { isOpen: boolean } }>
+  <Container<Openable, { toggleIsOpen: () => Openable }>
     initialState={{ isOpen: false }}
     actions={{ toggleIsOpen: () => ({ isOpen }) => ({ isOpen: !isOpen }) }}
   >

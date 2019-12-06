@@ -1,6 +1,6 @@
+import styled from '@emotion/styled'
 import SwipeableViews from '@hedviginsurance/react-swipeable-views'
 import * as React from 'react'
-import styled from 'react-emotion'
 
 import MediaQuery from 'react-responsive'
 import {
@@ -39,7 +39,7 @@ const TrustpilotWrapper = styled(SectionWrapper)({
   justifyContent: 'center',
 })
 
-const Title = styled('h2')(({ color }: { color: string }) => ({
+const Title = styled('h2')<{ color: string }>(({ color }) => ({
   color,
 }))
 

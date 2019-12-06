@@ -1,6 +1,6 @@
+import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
 import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 

@@ -1,5 +1,5 @@
 import { IHelmetConfiguration } from 'helmet'
-import * as uuidV4 from 'uuid/v4'
+import * as uuid from 'uuid'
 
 const defaultSrc = [
   "'self'",
@@ -56,7 +56,7 @@ export const helmetConfig = (): IHelmetConfiguration => ({
         'www.googletagmanager.com',
         // tslint:disable-next-line variable-name
         (_request: unknown, response: any) => {
-          response.cspNonce = uuidV4()
+          response.cspNonce = uuid.v4()
           return `'nonce-${(response as any).cspNonce}'`
         },
       ],

@@ -2,12 +2,13 @@ import { getScriptLocation } from '@hedviginsurance/web-survival-kit'
 import { AxiosError } from 'axios'
 import { Provider } from 'constate'
 import { renderStylesToString } from 'emotion-server'
-import * as Koa from 'koa'
+import { IMiddleware, RouterContext } from 'koa-router'
 import * as path from 'path'
 import * as React from 'react'
 import { renderToString } from 'react-dom/server'
 import { FilledContext, HelmetProvider } from 'react-helmet-async'
 import { StaticRouter, StaticRouterContext } from 'react-router'
+import { State } from 'server/middlewares/states'
 import { getLangFromPath } from 'server/utils/storyblok'
 import { Logger } from 'typescript-logging'
 import { App } from '../App'
@@ -80,7 +81,7 @@ const template = ({
   </html>
 `
 
-const getStoryblokResponseFromContext = async (ctx: Koa.Context) => {
+const getStoryblokResponseFromContext = async (ctx: RouterContext<State>) => {
   try {
     if (
       ctx.request.query._storyblok &&
@@ -112,7 +113,7 @@ const getStoryblokResponseFromContext = async (ctx: Koa.Context) => {
 
 export const getPageMiddleware = (
   ignoreStoryblokMiss: boolean,
-): Koa.Middleware => async (ctx, next) => {
+): IMiddleware<State> => async (ctx, next) => {
   const routerContext: StaticRouterContext & { statusCode?: number } = {}
   const helmetContext = {}
 

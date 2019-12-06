@@ -1,6 +1,7 @@
+import { keyframes } from '@emotion/core'
+import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
-import styled, { keyframes } from 'react-emotion'
 import {
   CONTENT_GUTTER,
   CONTENT_GUTTER_MOBILE,
@@ -14,8 +15,8 @@ export const TABLET_BP_UP = '@media (min-width: 1001px)'
 
 const BURGER_LINE_WIDTH = '1.625rem'
 
-export const CrossBurger = styled('div')(
-  ({ isOpen, isClosing }: TogglableState) => ({
+export const CrossBurger = styled('div')<TogglableState>(
+  ({ isOpen, isClosing }) => ({
     width: '100%',
     position: 'absolute',
 
@@ -54,7 +55,7 @@ export const CrossBurger = styled('div')(
   }),
 )
 
-const MiddleBurger = styled('div')(({ isOpen, isClosing }: TogglableState) => ({
+const MiddleBurger = styled('div')<TogglableState>(({ isOpen, isClosing }) => ({
   width: '100%',
   top: '50%',
   left: 0,
@@ -65,8 +66,8 @@ const MiddleBurger = styled('div')(({ isOpen, isClosing }: TogglableState) => ({
   transform: 'translateY(-1px)',
 }))
 
-export const NavToggle = styled('button')(
-  ({ preventInverse }: { preventInverse: boolean }) => ({
+export const NavToggle = styled('button')<{ preventInverse: boolean }>(
+  ({ preventInverse }) => ({
     display: 'block',
     right: CONTENT_GUTTER,
     top: HEADER_VERTICAL_PADDING,
@@ -98,7 +99,7 @@ const fadeIn = keyframes({
   from: { opacity: 0 },
   to: { opacity: 1 },
 })
-const Overlay = styled('div')(({ closing }: { closing: boolean }) => ({
+const Overlay = styled('div')<{ closing: boolean }>(({ closing }) => ({
   position: 'fixed',
   top: 0,
   right: 0,
@@ -115,10 +116,12 @@ const Overlay = styled('div')(({ closing }: { closing: boolean }) => ({
   },
 }))
 
-export const Burger: React.FunctionComponent<
-  TogglableState &
-    React.HTMLAttributes<HTMLButtonElement> & { preventInverse: boolean }
-> = ({ isOpen, isClosing, ...rest }) => (
+export const Burger: React.FunctionComponent<TogglableState &
+  React.HTMLAttributes<HTMLButtonElement> & { preventInverse: boolean }> = ({
+  isOpen,
+  isClosing,
+  ...rest
+}) => (
   <>
     <NavToggle {...rest}>
       <CrossBurger isOpen={isOpen} isClosing={isClosing} />

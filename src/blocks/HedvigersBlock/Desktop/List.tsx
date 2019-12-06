@@ -1,6 +1,6 @@
+import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { User } from '../../../server/utils/teamtailor'
 
 interface ListProps {
@@ -33,7 +33,7 @@ interface ListItemProps {
   active: boolean
 }
 
-const ListItem = styled('li')(
+const ListItem = styled('li')<ListItemProps>(
   {
     width: '48%',
     maxWidth: '48%',
@@ -62,7 +62,7 @@ const ListItem = styled('li')(
       },
     },
   },
-  ({ active }: ListItemProps) => ({
+  ({ active }) => ({
     color: active ? colors.WHITE : colors.BLACK,
     backgroundColor: active ? colors.PURPLE : colors.WHITE,
     transition: active

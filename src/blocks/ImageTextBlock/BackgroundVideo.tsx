@@ -1,5 +1,6 @@
+import { keyframes } from '@emotion/core'
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled, { keyframes } from 'react-emotion'
 import MediaQuery from 'react-responsive'
 import { backgroundImageStyles } from '../../components/blockHelpers'
 import { DeferredVideo } from '../../components/DeferredVideo'
@@ -17,8 +18,8 @@ const fadeInKeyframe = keyframes({
   },
 })
 
-const HeightContainer = styled('div')(
-  ({ backgroundColor }: BackgroundProps) => ({
+const HeightContainer = styled('div')<BackgroundProps>(
+  ({ backgroundColor }) => ({
     animation: `${fadeInKeyframe} 2000ms forwards`,
     transition: 'height 1500ms, padding 1500ms',
     overflow: 'hidden',
@@ -32,7 +33,7 @@ const HeightContainer = styled('div')(
   }),
 )
 
-const BackgroundImage = styled('div')(({ image }: { image: string }) => ({
+const BackgroundImage = styled('div')<{ image: string }>(({ image }) => ({
   height: '100%',
   overflow: 'hidden',
   width: '100%',

@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 import Helmet from 'react-helmet-async'
 import { FooterBlock } from '../blocks/FooterBlock'
 import { HeaderBlock } from '../blocks/HeaderBlock'
@@ -39,7 +39,7 @@ export const BlogPostsPage: React.FunctionComponent<{ nonce?: string }> = ({
     <HeaderBlock
       is_transparent={false}
       inverse_colors={false}
-      _uid={'header'}
+      _uid="header"
       component={'header'}
     />
 

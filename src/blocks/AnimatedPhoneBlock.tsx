@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 import {
   BaseBlockProps,
   ColorComponent,
@@ -25,8 +25,11 @@ const ButtonLinkWithMargin = styled(ButtonLink)({
   marginTop: '1.7rem',
 })
 
-const AlignableContentWrapper = styled(ContentWrapper)(
-  ({ textPosition }: { textPosition: TextPosition }) => ({
+interface WithTextPosition {
+  textPosition: TextPosition
+}
+const AlignableContentWrapper = styled(ContentWrapper)<WithTextPosition>(
+  ({ textPosition }) => ({
     display: 'flex',
     flexDirection: textPosition === 'right' ? 'row-reverse' : 'row',
     justifyContent: 'space-between',
@@ -37,27 +40,25 @@ const AlignableContentWrapper = styled(ContentWrapper)(
   }),
 )
 
-const TextWrapper = styled('div')(
-  ({ textPosition }: { textPosition: TextPosition }) => ({
-    textAlign: textPosition === 'center' ? 'center' : 'left',
-    width: '100%',
-    paddingRight: textPosition === 'left' ? '7rem' : '0',
-    paddingLeft: textPosition === 'right' ? '7rem' : '0',
-    [TABLET_BP_DOWN]: {
-      paddingRight: 0,
-      paddingLeft: 0,
-    },
-  }),
-)
+const TextWrapper = styled('div')<WithTextPosition>(({ textPosition }) => ({
+  textAlign: textPosition === 'center' ? 'center' : 'left',
+  width: '100%',
+  paddingRight: textPosition === 'left' ? '7rem' : '0',
+  paddingLeft: textPosition === 'right' ? '7rem' : '0',
+  [TABLET_BP_DOWN]: {
+    paddingRight: 0,
+    paddingLeft: 0,
+  },
+}))
 
-const Title = styled('h2')(
-  ({ displayOrder }: { displayOrder: 'top' | 'bottom' }) => ({
+const Title = styled('h2')<{ displayorder: 'top' | 'bottom' }>(
+  ({ displayorder }) => ({
     fontSize: '4.5rem',
     wordWrap: 'break-word',
     width: '100%',
     [TABLET_BP_DOWN]: {
       fontSize: '3.75rem',
-      marginTop: displayOrder === 'top' ? '3rem' : '1.414rem',
+      marginTop: displayorder === 'top' ? '3rem' : '1.414rem',
     },
   }),
 )
@@ -68,29 +69,24 @@ const Paragraph = styled('div')({
   marginTop: '1.5rem',
 })
 
-const PhoneContainer = styled('div')(
-  ({
-    alignment,
-    displayOrder,
-  }: {
-    alignment: string
-    displayOrder: 'top' | 'bottom'
-  }) => ({
-    padding: '0 30px',
+const PhoneContainer = styled('div')<{
+  alignment: string
+  displayorder: 'top' | 'bottom'
+}>(({ alignment, displayorder }) => ({
+  padding: '0 30px',
+  width: '100%',
+  '&:>div': {
     width: '100%',
-    '&:>div': {
-      width: '100%',
-    },
-    display: alignment === 'center' ? 'none' : 'block',
-    [TABLET_BP_DOWN]: {
-      maxWidth: '100%',
-      width: 'auto',
-      marginTop: displayOrder === 'top' ? '0' : '3rem',
-      display: 'block',
-      order: displayOrder === 'top' ? -1 : undefined,
-    },
-  }),
-)
+  },
+  display: alignment === 'center' ? 'none' : 'block',
+  [TABLET_BP_DOWN]: {
+    maxWidth: '100%',
+    width: 'auto',
+    marginTop: displayorder === 'top' ? '0' : '3rem',
+    display: 'block',
+    order: displayorder === 'top' ? -1 : undefined,
+  },
+}))
 
 interface AnimatedPhoneBlockProps extends BaseBlockProps {
   title: string
@@ -107,9 +103,7 @@ interface AnimatedPhoneBlockProps extends BaseBlockProps {
   button_weight: ButtonWeight
 }
 
-export const AnimatedPhoneBlock: React.FunctionComponent<
-  AnimatedPhoneBlockProps
-> = ({
+export const AnimatedPhoneBlock: React.FunctionComponent<AnimatedPhoneBlockProps> = ({
   title,
   paragraph,
   text_position,
@@ -128,7 +122,7 @@ export const AnimatedPhoneBlock: React.FunctionComponent<
     <SectionWrapper color={color && color.color} size={size}>
       <AlignableContentWrapper textPosition={text_position}>
         <TextWrapper textPosition={text_position}>
-          <Title displayOrder={media_position}>{title}</Title>
+          <Title displayorder={media_position}>{title}</Title>
           <Paragraph
             dangerouslySetInnerHTML={{
               __html: paragraph && paragraph.html,
@@ -162,7 +156,7 @@ export const AnimatedPhoneBlock: React.FunctionComponent<
               </ButtonLinkWithMargin>
             ))}
         </TextWrapper>
-        <PhoneContainer alignment={text_position} displayOrder={media_position}>
+        <PhoneContainer alignment={text_position} displayorder={media_position}>
           <LazyLottie
             options={{
               animationData: import(

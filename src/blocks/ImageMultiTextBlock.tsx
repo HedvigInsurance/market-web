@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
 import { DeferredImage } from '../components/DeferredImage'
 import { getStoryblokImage, Image as StoryblokImage } from '../utils/storyblok'
@@ -7,8 +7,8 @@ import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 const TABLET_BP_DOWN = '@media (max-width: 800px)'
 
-const Wrapper = styled('div')(
-  ({ imagePosition }: { imagePosition: 'left' | 'right' }) => ({
+const Wrapper = styled('div')<{ imagePosition: 'left' | 'right' }>(
+  ({ imagePosition }) => ({
     display: 'flex',
     flexDirection: imagePosition === 'left' ? 'row' : 'row-reverse',
     alignItems: 'center',
@@ -20,7 +20,7 @@ const Wrapper = styled('div')(
   }),
 )
 
-const Col = styled('div')(({ pad }: { pad: 'left' | 'right' }) => ({
+const Col = styled('div')<{ pad: 'left' | 'right' }>(({ pad }) => ({
   width: '50%',
   paddingLeft: pad === 'left' ? '1rem' : 0,
   paddingRight: pad === 'right' ? '1rem' : 0,
@@ -30,7 +30,7 @@ const Col = styled('div')(({ pad }: { pad: 'left' | 'right' }) => ({
   },
 }))
 
-const Image = styled(DeferredImage)(({ pull }: { pull: 'left' | 'right' }) => ({
+const Image = styled(DeferredImage)<{ pull: 'left' | 'right' }>(({ pull }) => ({
   display: 'block',
   marginLeft: pull === 'left' ? undefined : 'auto',
   marginRight: pull === 'right' ? undefined : 'auto',
@@ -55,9 +55,13 @@ export interface ImageMultiTextBlockProps extends BaseBlockProps {
   >
 }
 
-export const ImageMultiTextBlock: React.FunctionComponent<
-  ImageMultiTextBlockProps
-> = ({ color, image, image_position, text_items, size }) => (
+export const ImageMultiTextBlock: React.FunctionComponent<ImageMultiTextBlockProps> = ({
+  color,
+  image,
+  image_position,
+  text_items,
+  size,
+}) => (
   <SectionWrapper color={color && color.color} size={size}>
     <ContentWrapper>
       <Wrapper imagePosition={image_position}>

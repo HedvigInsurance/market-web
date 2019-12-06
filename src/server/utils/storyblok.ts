@@ -1,5 +1,5 @@
 import axios, { AxiosRequestConfig } from 'axios'
-import { Middleware } from 'koa'
+import { IMiddleware } from 'koa-router'
 import {
   BlogStory,
   BodyStory,
@@ -8,6 +8,7 @@ import {
 } from '../../storyblok/StoryContainer'
 import { config } from '../config'
 import { appLogger } from '../logging'
+import { State } from '../middlewares/states'
 import { redisClient } from './redis'
 
 const calculateCacheVersionTimestamp = (date: Date) =>
@@ -18,7 +19,7 @@ const apiClient = () =>
     baseURL: 'https://api.storyblok.com',
   })
 
-export const nukeCache: Middleware = async (ctx) => {
+export const nukeCache: IMiddleware<State> = async (ctx) => {
   const keys = await redisClient.keys('storyblok:*')
   ctx.status = 204
 
@@ -196,7 +197,7 @@ export interface Link {
   parent_id: number
   published: boolean
   position: number
-  uuid: string
+  _uid: string
   is_startpage: boolean
 }
 export interface LinkResult {
@@ -212,9 +213,7 @@ export const getAllStoryblokLinks = () =>
 
 export const getStoryblokEditorScript = (nonce: string) =>
   `<script
-      src="//app.storyblok.com/f/storyblok-latest.js?t=${
-        config.storyblokApiToken
-      }"
+      src="//app.storyblok.com/f/storyblok-latest.js?t=${config.storyblokApiToken}"
       type="text/javascript"></script>
     <script nonce="${nonce}">
       storyblok.on(['published', 'change'], function() {

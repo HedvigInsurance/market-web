@@ -6,7 +6,7 @@ import { BodyStory, StoryContainer } from '../storyblok/StoryContainer'
 import { getMeta } from '../utils/meta'
 
 const getBlocksOrDefault = (story: BodyStory) =>
-  (story && story.content && story.content.body) || []
+  (story && story.content && story.content.body) ?? []
 
 export const StoryPage: React.FunctionComponent<{ nonce?: string }> = ({
   nonce,

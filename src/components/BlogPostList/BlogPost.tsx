@@ -1,6 +1,6 @@
+import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { BlogStory } from '../../storyblok/StoryContainer'
 import { findAuthor } from '../../utils/author'
 import { getStoryblokImage } from '../../utils/storyblok'
@@ -8,7 +8,7 @@ import { Badge } from '../Badge'
 import { BlogPostAuthor } from '../BlogPostAuthor'
 import { UserContainer } from '../containers/UserContainer'
 
-const Wrapper = styled('div')(({ first }: { first: boolean }) => ({
+const Wrapper = styled('div')<{ first: boolean }>(({ first }) => ({
   padding: '3rem 0',
   borderTop: first ? undefined : `1px solid ${colors.LIGHT_GRAY}`,
 }))

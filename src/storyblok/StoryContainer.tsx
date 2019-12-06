@@ -103,9 +103,9 @@ export interface GlobalStoryContainerProps {
   children: (props: { globalStory: GlobalStory }) => React.ReactNode
 }
 
-export const GlobalStoryContainer: React.FunctionComponent<
-  GlobalStoryContainerProps
-> = ({ children }) => (
+export const GlobalStoryContainer: React.FunctionComponent<GlobalStoryContainerProps> = ({
+  children,
+}) => (
   <Container<{ story: GlobalStory | undefined }> context="globalStory">
     {({ story }) =>
       story ? (

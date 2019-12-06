@@ -1,8 +1,8 @@
+import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
 import Animated from 'animated'
 import { Container } from 'constate'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { Mount, Unmount } from 'react-lifecycle-components'
 import Measure from 'react-measure'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
@@ -50,7 +50,7 @@ const TableRow = styled('div')({
   },
 })
 
-const TableCellName = styled('div')(({ isLast }: { isLast: boolean }) => ({
+const TableCellName = styled('div')<{ isLast: boolean }>(({ isLast }) => ({
   display: 'table-cell',
   paddingRight: 25,
   paddingBottom: isLast ? 0 : 30,
@@ -125,7 +125,7 @@ const BarsContainer = styled('div')({
   width: '100%',
 })
 
-const Bar = styled(AnimatedDiv)((props: BarProps) => ({
+const Bar = styled(AnimatedDiv)<BarProps>((props) => ({
   backgroundColor: props.color,
   height: 12,
   display: 'inline-block',
@@ -301,7 +301,7 @@ export const SwitcherBlock: React.FunctionComponent<SwitcherBlockProps> = ({
                       }}
                     />
                   </HeadlineSection>
-                  <Table innerRef={measureRef}>
+                  <Table ref={measureRef}>
                     <BackgroundImage src="/assets-next/backgrounds/mesh@2x.png" />
                     <BarsContainer>
                       {COMPANIES.map((company, index) => (

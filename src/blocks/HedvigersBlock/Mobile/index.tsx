@@ -1,8 +1,8 @@
+import styled from '@emotion/styled'
 import { fonts } from '@hedviginsurance/brand'
 // @ts-ignore
 import SwipeableViews from '@hedviginsurance/react-swipeable-views'
 import * as React from 'react'
-import styled from 'react-emotion'
 import MediaQuery from 'react-responsive'
 import { User } from '../../../server/utils/teamtailor'
 

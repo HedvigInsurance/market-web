@@ -29,6 +29,6 @@ export const getStoryblokImage = (url?: Image) =>
 
 export type Image = string
 export interface NativeColor {
-  _uid: string
+  uuid: string
   color: string
 }

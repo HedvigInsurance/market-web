@@ -1,7 +1,7 @@
+import styled from '@emotion/styled'
 import { ActionMap, Container } from 'constate'
 import isIOS from 'is-ios'
 import * as React from 'react'
-import styled from 'react-emotion'
 
 import {
   CONTENT_GUTTER,
@@ -25,18 +25,13 @@ interface HeroVideoBlockProps extends BaseBlockProps {
   use_shadow: boolean
 }
 
-const Background = styled('div')(
-  ({
-    backgroundColor,
-    useTextDropShadow,
-  }: {
-    backgroundColor: string
-    useTextDropShadow: boolean
-  }) => ({
-    backgroundColor,
-    textShadow: useTextDropShadow ? '1px 1px 3px rgba(0, 0, 0, .5)' : undefined,
-  }),
-)
+const Background = styled('div')<{
+  backgroundColor: string
+  useTextDropShadow: boolean
+}>(({ backgroundColor, useTextDropShadow }) => ({
+  backgroundColor,
+  textShadow: useTextDropShadow ? '1px 1px 3px rgba(0, 0, 0, .5)' : undefined,
+}))
 
 const HeroContainer = styled('div')({
   width: '100%',
@@ -51,7 +46,7 @@ interface ShadowProps {
   hidden: boolean
 }
 
-const Shadow = styled('div')(
+const Shadow = styled('div')<ShadowProps>(
   {
     position: 'absolute',
     width: '100%',
@@ -68,7 +63,7 @@ const Shadow = styled('div')(
       padding: CONTENT_GUTTER_MOBILE,
     },
   },
-  ({ useShadow, hidden }: ShadowProps) => ({
+  ({ useShadow, hidden }) => ({
     opacity: hidden ? 0 : 1,
     pointerEvents: hidden ? 'none' : 'all',
     backgroundColor: useShadow ? 'rgba(0,0,0,0.7)' : undefined,
