@@ -3,6 +3,7 @@ import 'source-map-support/register'
 import { createKoaServer } from '@hedviginsurance/web-survival-kit'
 import * as Sentry from '@sentry/node'
 import { IHelmetConfiguration } from 'helmet'
+import { Middleware } from 'koa'
 import * as bodyParser from 'koa-bodyparser'
 import * as removeTrailingSlashes from 'koa-remove-trailing-slashes'
 import { Logger } from 'typescript-logging'
@@ -20,6 +21,7 @@ import {
   addBlogPostsToState,
   addTagBlogPostsToState,
   addTeamtailorUsersToState,
+  State,
 } from './middlewares/states'
 import { getPageMiddleware } from './page'
 import { sitemapXml } from './sitemap'
@@ -82,7 +84,7 @@ if (config.forceHost) {
   server.router.use('/*', forceHost({ host: config.forceHost }))
 }
 server.router.use('/*', savePartnershipCookie)
-server.router.use('/*', removeTrailingSlashes())
+server.router.use('/*', removeTrailingSlashes<State>())
 redirects.forEach(([source, target, code]) => {
   server.router.get(source, (ctx) => {
     ctx.status = code
@@ -93,7 +95,7 @@ server.router.use(
   '/*',
   bodyParser({
     extendTypes: { json: ['application/csp-report'] },
-  }),
+  }) as Middleware<State, any>,
 )
 
 server.app.use(inCaseOfEmergency)
@@ -107,7 +109,7 @@ server.router.get('/panic-room', async () => {
 
 server.router.post('/_report-csp-violation', (ctx) => {
   ;(ctx.state.getLogger('cspViolation') as Logger).error(
-    `CSP VIOLATION: ${JSON.stringify(ctx.request.body)}`,
+    `CSP VIOLATION: ${JSON.stringify((ctx.request as any).body)}`,
   )
   ctx.status = 204
 })

@@ -99,9 +99,11 @@ const onPlay = ({
   setFullScreen(true)
 }
 
-export const AboutUsHeroBlock: React.FunctionComponent<
-  AboutUsHeroBlockProps
-> = ({ headline, title, play_button_text }) => (
+export const AboutUsHeroBlock: React.FunctionComponent<AboutUsHeroBlockProps> = ({
+  headline,
+  title,
+  play_button_text,
+}) => (
   <Background>
     <Container
       actions={actions}

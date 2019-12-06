@@ -5,7 +5,7 @@ import ReactLottieComponent, { ReactLottieProps } from 'react-lottie'
 
 interface State {
   animationData: any | null
-  ReactLottie: (typeof ReactLottieComponent) | null
+  ReactLottie: typeof ReactLottieComponent | null
 }
 
 interface Actions {
@@ -13,9 +13,9 @@ interface Actions {
   setLoadedLottie: (ReactLottie: typeof ReactLottieComponent) => void
 }
 
-export const LazyLottie: React.SFC<
-  ReactLottieProps & { innerRef?: React.Ref<any> | null }
-> = (props) =>
+export const LazyLottie: React.SFC<ReactLottieProps & {
+  innerRef?: React.Ref<any> | null
+}> = (props) =>
   process.env.NODE_ENV === 'test' ? null : (
     <Container<State, Actions>
       initialState={{ animationData: null, ReactLottie: null }}

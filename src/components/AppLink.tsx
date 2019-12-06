@@ -53,9 +53,8 @@ const generateLink = (
   return link.replace(/&\s*$/, '')
 }
 
-const AppLinkComponent: React.FunctionComponent<
-  AppLinkProps & RouteComponentProps
-> = (props) => (
+const AppLinkComponent: React.FunctionComponent<AppLinkProps &
+  RouteComponentProps> = (props) => (
   <StoryContainer>
     {({ story }) =>
       props.children({
@@ -77,6 +76,7 @@ AppLinkComponent.defaultProps = {
   campaign: 'direct',
 }
 
-export const AppLink = withRouter<AppLinkProps & RouteComponentProps>(
-  AppLinkComponent,
-)
+export const AppLink = withRouter<
+  AppLinkProps & RouteComponentProps,
+  typeof AppLinkComponent
+>(AppLinkComponent)

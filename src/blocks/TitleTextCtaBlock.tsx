@@ -79,9 +79,7 @@ interface TitleTextCtaBlockProps extends BaseBlockProps {
   button_position_mobile?: 'above' | 'below'
 }
 
-export const TitleTextCtaBlock: React.FunctionComponent<
-  TitleTextCtaBlockProps
-> = ({
+export const TitleTextCtaBlock: React.FunctionComponent<TitleTextCtaBlockProps> = ({
   title_size,
   title,
   title_color,

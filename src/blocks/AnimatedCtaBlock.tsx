@@ -111,9 +111,11 @@ const animationMap: AnimationMapProps = {
     ),
 }
 
-export const AnimatedCtaBlock: React.FunctionComponent<
-  AnimatedCtaBlockProps
-> = ({ color, title, bullet_points }) => (
+export const AnimatedCtaBlock: React.FunctionComponent<AnimatedCtaBlockProps> = ({
+  color,
+  title,
+  bullet_points,
+}) => (
   <SectionWrapper color={color && color.color}>
     <ContentWrapper>
       <AnimatedCtaWrapper>

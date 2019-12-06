@@ -67,12 +67,15 @@ const blockComponents = {
 }
 
 export const getBlockComponent = <
-  TBlockType extends keyof typeof blockComponents
+  TBlockType extends keyof typeof blockComponents,
+  TBlockProps extends BaseBlockProps
 >(
   blockType: string | TBlockType,
 ):
-  | (typeof blockComponents)[TBlockType]
-  | React.ComponentType<BaseBlockProps>
+  | typeof blockComponents[TBlockType]
+  | React.ComponentType<TBlockProps>
   | undefined => {
-  return blockComponents[blockType as keyof typeof blockComponents]
+  return blockComponents[blockType as keyof typeof blockComponents] as
+    | typeof blockComponents[TBlockType]
+    | undefined
 }

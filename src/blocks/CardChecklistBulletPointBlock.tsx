@@ -145,9 +145,7 @@ interface BulletPointsBlockProps extends BaseBlockProps {
   >
 }
 
-export const CardChecklistBulletPointBlock: React.FunctionComponent<
-  BulletPointsBlockProps
-> = ({
+export const CardChecklistBulletPointBlock: React.FunctionComponent<BulletPointsBlockProps> = ({
   color,
   title,
   title_position,

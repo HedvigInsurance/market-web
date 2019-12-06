@@ -22,7 +22,7 @@ const getPageTitleFromStory = (story?: Story) => {
 export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
   <>
     {[
-      <script type="application/ld+json" nonce={nonce}>
+      <script type="application/ld+json" nonce={nonce} key="jsonld">
         {`
 [
   {

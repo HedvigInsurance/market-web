@@ -150,9 +150,9 @@ interface BackgroundVideoBlockProps extends BaseBlockProps {
   cta_style?: ButtonStyleType
 }
 
-export const BackgroundVideoBlock: React.FunctionComponent<
-  BackgroundVideoBlockProps
-> = (props) => (
+export const BackgroundVideoBlock: React.FunctionComponent<BackgroundVideoBlockProps> = (
+  props,
+) => (
   <Container<{ isMounted: boolean }, { mount: () => void }>
     initialState={{ isMounted: false }}
     actions={{ mount: () => () => ({ isMounted: true }) }}

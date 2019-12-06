@@ -7,9 +7,13 @@ import { BlogPostList } from '../components/BlogPostList'
 import { BlogPostsContainer } from '../components/containers/BlogPostsContainer'
 import { getMeta } from '../utils/meta'
 
-export const BlogPostsTagPageComponent: React.FunctionComponent<
-  { nonce?: string } & RouteComponentProps<{ tag: string }>
-> = ({ nonce, match, staticContext }) => (
+export const BlogPostsTagPageComponent: React.FunctionComponent<{
+  nonce?: string
+} & RouteComponentProps<{ tag: string }>> = ({
+  nonce,
+  match,
+  staticContext,
+}) => (
   <>
     <Helmet>
       {getMeta({
@@ -21,7 +25,7 @@ export const BlogPostsTagPageComponent: React.FunctionComponent<
     <HeaderBlock
       is_transparent={false}
       inverse_colors={false}
-      _uid={'header'}
+      _uid="header"
       component={'header'}
     />
 

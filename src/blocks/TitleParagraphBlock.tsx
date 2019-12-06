@@ -87,9 +87,13 @@ interface TitleParagraphBlockInterface extends BaseBlockProps {
   color: ColorComponent
 }
 
-export const TitleParagraphBlock: React.FunctionComponent<
-  TitleParagraphBlockInterface
-> = ({ title, text_position, paragraph, color, size }) => {
+export const TitleParagraphBlock: React.FunctionComponent<TitleParagraphBlockInterface> = ({
+  title,
+  text_position,
+  paragraph,
+  color,
+  size,
+}) => {
   return (
     <SectionWrapper color={color && color.color} size={size}>
       <AlignableContentWrapper textPosition={text_position}>

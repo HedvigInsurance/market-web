@@ -34,9 +34,7 @@ const Image = styled(DeferredImage)({
   marginLeft: 'auto',
   marginRight: 'auto',
   [GIANT_BP_UP]: {
-    maxWidth: `calc(${
-      CONTENT_MAX_WIDTH[GIANT_BP_UP].maxWidth
-    }px - ${CONTENT_GUTTER}*2)`,
+    maxWidth: `calc(${CONTENT_MAX_WIDTH[GIANT_BP_UP].maxWidth}px - ${CONTENT_GUTTER}*2)`,
   },
 })
 
@@ -72,9 +70,7 @@ const Shadow = styled('div')({
       'linear-gradient(transparent, transparent 60%, rgba(0,0,0,0.85))',
   },
   [GIANT_BP_UP]: {
-    maxWidth: `calc(${
-      CONTENT_MAX_WIDTH[GIANT_BP_UP].maxWidth
-    }px - ${CONTENT_GUTTER}*2)`,
+    maxWidth: `calc(${CONTENT_MAX_WIDTH[GIANT_BP_UP].maxWidth}px - ${CONTENT_GUTTER}*2)`,
   },
 })
 

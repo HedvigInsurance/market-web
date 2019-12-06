@@ -14,9 +14,10 @@
     "noImplicitReturns": true,
 
     "moduleResolution": "node",
+    "noEmit": true,
     "baseUrl": ".",
     "paths": {
-      "*": ["*", "node_modules/*", "src/*"]
+      "*": ["*", "src/*"]
     },
     "typeRoots": ["./src/types", "./node_modules/@types"],
     "types": ["jest"],

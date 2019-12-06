@@ -1,18 +1,23 @@
 import * as Sentry from '@sentry/node'
 import * as https from 'https'
-import { Context, Middleware } from 'koa'
-import { Logger } from 'typescript-logging'
+import { Middleware } from 'koa'
+import { IMiddleware, RouterContext } from 'koa-router'
+import { State } from './states'
 
-const handleSuperFatalError = (ctx: Context) => (superFatalError: Error) => {
-  ;(ctx.state.getLogger('emergency') as Logger).fatal(
-    'SUPER-FATAL ERROR! Uncaught error in request, but failed to get error page. Throwing error again to trigger super-fatal error page',
-    superFatalError,
-  )
+const handleSuperFatalError = (ctx: RouterContext<State>) => (
+  superFatalError: Error,
+) => {
+  ctx.state
+    .getLogger('emergency')
+    .fatal(
+      'SUPER-FATAL ERROR! Uncaught error in request, but failed to get error page. Throwing error again to trigger super-fatal error page',
+      superFatalError,
+    )
   Sentry.captureException(superFatalError)
   return superFatalError
 }
 
-export const inCaseOfEmergency: Middleware = async (ctx, next) => {
+export const inCaseOfEmergency: IMiddleware<State> = async (ctx, next) => {
   try {
     await nextWithSentry(ctx, next)
   } catch (e) {
@@ -21,10 +26,9 @@ export const inCaseOfEmergency: Middleware = async (ctx, next) => {
     }
     ctx.status = 500
     try {
-      ;(ctx.state.getLogger('emergency') as Logger).error(
-        'Uncaught error in request, requesting 500 page',
-        e,
-      )
+      ctx.state
+        .getLogger('emergency')
+        .error('Uncaught error in request, requesting 500 page', e)
       await new Promise((resolve, reject) => {
         https.get('https://cdn.hedvig.com/500.html', (errorPageResponse) => {
           ctx.set('content-type', 'text/html')
@@ -42,7 +46,7 @@ export const inCaseOfEmergency: Middleware = async (ctx, next) => {
   }
 }
 
-export const nextWithSentry: Middleware = async (ctx, next) => {
+export const nextWithSentry: IMiddleware<State> = async (ctx, next) => {
   const sentry = new Sentry.Hub(
     Sentry.getCurrentHub().getClient(),
     new Sentry.Scope(),
@@ -58,7 +62,10 @@ export const nextWithSentry: Middleware = async (ctx, next) => {
   }
 }
 
-export const savePartnershipCookie: Middleware = async (ctx, next) => {
+export const savePartnershipCookie: Middleware<any, any> = async (
+  ctx,
+  next,
+) => {
   if (ctx.query.partner) {
     ctx.cookies.set('_hvpartner', ctx.query.partner.toLowerCase(), {
       httpOnly: false,
