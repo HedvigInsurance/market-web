@@ -25,30 +25,31 @@ const ButtonLinkWithMargin = styled(ButtonLink)({
   marginTop: '1.7rem',
 })
 
-const AlignableContentWrapper = styled(ContentWrapper)<{
+interface WithTextPosition {
   textPosition: TextPosition
-}>(({ textPosition }) => ({
-  display: 'flex',
-  flexDirection: textPosition === 'right' ? 'row-reverse' : 'row',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-  [TABLET_BP_DOWN]: {
-    flexDirection: 'column',
-  },
-}))
-
-const TextWrapper = styled('div')<{ textPosition: TextPosition }>(
+}
+const AlignableContentWrapper = styled(ContentWrapper)<WithTextPosition>(
   ({ textPosition }) => ({
-    textAlign: textPosition === 'center' ? 'center' : 'left',
-    width: '100%',
-    paddingRight: textPosition === 'left' ? '7rem' : '0',
-    paddingLeft: textPosition === 'right' ? '7rem' : '0',
+    display: 'flex',
+    flexDirection: textPosition === 'right' ? 'row-reverse' : 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     [TABLET_BP_DOWN]: {
-      paddingRight: 0,
-      paddingLeft: 0,
+      flexDirection: 'column',
     },
   }),
 )
+
+const TextWrapper = styled('div')<WithTextPosition>(({ textPosition }) => ({
+  textAlign: textPosition === 'center' ? 'center' : 'left',
+  width: '100%',
+  paddingRight: textPosition === 'left' ? '7rem' : '0',
+  paddingLeft: textPosition === 'right' ? '7rem' : '0',
+  [TABLET_BP_DOWN]: {
+    paddingRight: 0,
+    paddingLeft: 0,
+  },
+}))
 
 const Title = styled('h2')<{ displayorder: 'top' | 'bottom' }>(
   ({ displayorder }) => ({
