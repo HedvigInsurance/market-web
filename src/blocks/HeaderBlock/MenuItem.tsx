@@ -1,8 +1,8 @@
+import styled from '@emotion/styled'
 import { colors, fonts } from '@hedviginsurance/brand'
 import { Container } from 'constate'
 import * as React from 'react'
 import AnimateHeight from 'react-animate-height'
-import styled from 'react-emotion'
 import { MenuItem as MenuItemType } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok'
 import { TABLET_BP_DOWN } from './mobile'
@@ -12,31 +12,31 @@ const MenuListItem = styled('li')({
   margin: 0,
   padding: 0,
 })
-const DropdownMenuItemList = styled('ul')(
-  ({ isClosing, isOpen }: { isClosing: boolean; isOpen: boolean }) => ({
-    display: isOpen ? 'flex' : 'none',
-    flexDirection: 'column',
-    position: 'absolute',
-    left: 0,
-    top: 'calc(100% + .75rem)',
-    listStyle: 'none',
-    margin: 0,
-    padding: '1.5rem 2rem .5rem 2rem',
-    background: colors.WHITE,
-    boxShadow:
-      '0px 1px 2px rgba(0, 0, 0, 0.1), 0px 2px 5px rgba(0, 0, 0, 0.1);',
-    opacity: isOpen && !isClosing ? 1 : 0,
-    transition: 'opacity 150ms',
-    overflowY: 'hidden',
-    color: colors.OFF_BLACK_DARK,
+const DropdownMenuItemList = styled('ul')<{
+  isClosing: boolean
+  isOpen: boolean
+}>(({ isClosing, isOpen }) => ({
+  display: isOpen ? 'flex' : 'none',
+  flexDirection: 'column',
+  position: 'absolute',
+  left: 0,
+  top: 'calc(100% + .75rem)',
+  listStyle: 'none',
+  margin: 0,
+  padding: '1.5rem 2rem .5rem 2rem',
+  background: colors.WHITE,
+  boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.1), 0px 2px 5px rgba(0, 0, 0, 0.1);',
+  opacity: isOpen && !isClosing ? 1 : 0,
+  transition: 'opacity 150ms',
+  overflowY: 'hidden',
+  color: colors.OFF_BLACK_DARK,
 
-    [TABLET_BP_DOWN]: {
-      position: 'static',
-      boxShadow: 'none',
-      padding: '.5rem 1rem',
-    },
-  }),
-)
+  [TABLET_BP_DOWN]: {
+    position: 'static',
+    boxShadow: 'none',
+    padding: '.5rem 1rem',
+  },
+}))
 const MenuLink = styled('a')({
   color: 'inherit',
   textDecoration: 'none',
@@ -67,7 +67,7 @@ const DropdownMenuLink = styled(MenuLink)({
   paddingBottom: '1rem',
 })
 
-const Toggler = styled('button')(({ isOpen }: { isOpen: boolean }) => ({
+const Toggler = styled('button')<{ isOpen: boolean }>(({ isOpen }) => ({
   appearance: 'none',
   background: 0,
   border: 0,

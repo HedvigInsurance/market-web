@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { ColorComponent } from '../blocks/BaseBlockProps'
@@ -9,14 +9,14 @@ import { ButtonLink, buttonSizes, ButtonWeight } from '../components/buttons'
 
 import { getStoryblokLinkUrl } from '../utils/storyblok'
 
-const ButtonLinkWithMargin = styled(ButtonLink)(
-  ({ mobilePosition }: { mobilePosition?: 'above' | 'below' }) => ({
-    marginTop: '1.7rem',
-    [TABLET_BP_DOWN]: {
-      order: mobilePosition === 'below' ? 100 : 'initial',
-    },
-  }),
-)
+const ButtonLinkWithMargin = styled(ButtonLink)<{
+  mobilePosition?: 'above' | 'below'
+}>(({ mobilePosition }) => ({
+  marginTop: '1.7rem',
+  [TABLET_BP_DOWN]: {
+    order: mobilePosition === 'below' ? 100 : 'initial',
+  },
+}))
 
 interface AlignedButtonProps {
   title: string

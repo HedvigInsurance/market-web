@@ -1,6 +1,6 @@
+import styled from '@emotion/styled'
 import { fonts } from '@hedviginsurance/brand'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
 import { DeferredImage } from '../components/DeferredImage'
 import { getStoryblokImage, Image } from '../utils/storyblok'

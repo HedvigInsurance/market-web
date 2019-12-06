@@ -1,14 +1,14 @@
+import styled from '@emotion/styled'
 import { fonts } from '@hedviginsurance/brand'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
 import { textFlexPositionMap, TextPosition } from '../utils/textPosition'
 import { BaseBlockProps } from './BaseBlockProps'
 
 const TABLET_BP_DOWN = '@media (max-width: 850px)'
 
-const Wrapper = styled('div')(
-  ({ textPosition }: { textPosition: TextPosition }) => ({
+const Wrapper = styled('div')<{ textPosition: TextPosition }>(
+  ({ textPosition }) => ({
     display: 'flex',
     width: '100%',
     justifyContent: textFlexPositionMap[textPosition],
@@ -28,8 +28,8 @@ const getQuoteWrapperWidth = ({ textPosition, wide }: QuoteWrapperProps) => {
   return wide ? '80%' : '50%'
 }
 
-const QuoteWrapper = styled('div')(
-  ({ textPosition, wide }: QuoteWrapperProps) => ({
+const QuoteWrapper = styled('div')<QuoteWrapperProps>(
+  ({ textPosition, wide }) => ({
     width: getQuoteWrapperWidth({ textPosition, wide }),
     textAlign: textPosition === 'center' ? 'center' : 'left',
 
@@ -39,7 +39,7 @@ const QuoteWrapper = styled('div')(
   }),
 )
 
-const Quote = styled('blockquote')(({ shrink }: { shrink: boolean }) => ({
+const Quote = styled('blockquote')<{ shrink: boolean }>(({ shrink }) => ({
   fontFamily: fonts.GEOMANIST,
   lineHeight: 1,
   fontKerning: 'none',

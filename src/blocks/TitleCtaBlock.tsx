@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { CenterLeftTextPosition } from 'src/utils/textPosition'
 import { AppLink } from '../components/AppLink'
@@ -37,18 +37,18 @@ const contentPositionSylingMap: { center: object; left: object } = {
   },
 }
 
-const FlexboxContentWrapperComponent = styled(ContentWrapper)(
-  ({ contentAlignment }: { contentAlignment: CenterLeftTextPosition }) => ({
-    display: 'flex',
-    width: '100%',
-    ...contentPositionSylingMap[contentAlignment],
-    [TABLET_BP_DOWN]: {
-      flexDirection: 'column',
-    },
-  }),
-)
+const FlexboxContentWrapperComponent = styled(ContentWrapper)<{
+  contentAlignment: CenterLeftTextPosition
+}>(({ contentAlignment }) => ({
+  display: 'flex',
+  width: '100%',
+  ...contentPositionSylingMap[contentAlignment],
+  [TABLET_BP_DOWN]: {
+    flexDirection: 'column',
+  },
+}))
 
-const TitleComponent = styled('h2')(({ alignment }: { alignment: string }) => ({
+const TitleComponent = styled('h2')<{ alignment: string }>(({ alignment }) => ({
   fontSize: '3rem',
   paddingRight: alignment === 'left' ? '7rem' : 0,
   margin: 0,

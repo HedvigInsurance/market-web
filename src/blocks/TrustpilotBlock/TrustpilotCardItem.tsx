@@ -1,11 +1,11 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 
 import { colors } from '@hedviginsurance/brand'
 import { TrustpilotCardItemProps } from '.'
 
-const PressItemWrapper = styled('div')(
-  ({ offWhite = false }: { offWhite?: boolean }) => ({
+const PressItemWrapper = styled('div')<{ offWhite?: boolean }>(
+  ({ offWhite = false }) => ({
     borderRadius: 8,
     padding: 24,
     margin: '0 5%',

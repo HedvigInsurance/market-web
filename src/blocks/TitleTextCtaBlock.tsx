@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
-import styled from 'react-emotion'
 import {
   ContentWrapper,
   getColorStyles,
@@ -37,8 +37,8 @@ const TextCtaWrapper = styled('div')({
   },
 })
 
-const Title = styled('h2')(
-  ({ size, color }: { size?: TitleSize; color: string }) => ({
+const Title = styled('h2')<{ size?: TitleSize; color: string }>(
+  ({ size, color }) => ({
     fontSize: size === 'lg' ? '4.5rem' : '2.5rem',
     width: '100%',
     color,

@@ -1,12 +1,12 @@
-import styled from 'react-emotion'
+import styled from '@emotion/styled'
 
 export interface SvgProps {
   fill?: string
   size?: number | string
 }
 
-export const Svg = styled('svg')(
-  ({ fill = 'currentColor', size = '1em' }: SvgProps) => ({
+export const Svg = styled('svg')<SvgProps>(
+  ({ fill = 'currentColor', size = '1em' }) => ({
     fill,
     width: size,
     height: size,

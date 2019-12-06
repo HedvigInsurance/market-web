@@ -1,6 +1,6 @@
+import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { RouteComponentProps, withRouter } from 'react-router'
 import { SectionSize } from 'src/utils/SectionSize'
 import { colorComponentColors } from '../blocks/BaseBlockProps'
@@ -114,16 +114,13 @@ export const backgroundImageStyles = (backgroundImage: string) => {
   )
 }
 
-export const SectionWrapper = styled('section')(
-  ({
-    color = 'standard',
-    size = 'lg',
-    backgroundImage = 'none',
-  }: {
-    color?: colorComponentColors
-    size?: SectionSize
-    backgroundImage?: string
-  }) => ({
+interface SectionProps {
+  color?: colorComponentColors
+  size?: SectionSize
+  backgroundImage?: string
+}
+export const SectionWrapper = styled('section')<SectionProps>(
+  ({ color = 'standard', size = 'lg', backgroundImage = 'none' }) => ({
     position: 'relative',
     ...getSectionSizeStyle(size),
     ...getColorStyles(color),
@@ -131,16 +128,8 @@ export const SectionWrapper = styled('section')(
   }),
 )
 
-export const MarginSectionWrapper = styled('section')(
-  ({
-    color = 'standard',
-    size = 'lg',
-    backgroundImage = 'none',
-  }: {
-    color?: colorComponentColors
-    size?: SectionSize
-    backgroundImage?: string
-  }) => ({
+export const MarginSectionWrapper = styled('section')<SectionProps>(
+  ({ color = 'standard', size = 'lg', backgroundImage = 'none' }) => ({
     ...getSectionSizeStyle(size),
     ...getColorStyles(color),
     ...backgroundImageStyles(backgroundImage),

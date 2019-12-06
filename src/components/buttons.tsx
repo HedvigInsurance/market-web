@@ -1,5 +1,5 @@
+import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
-import styled from 'react-emotion'
 import { colorComponentColors } from 'src/blocks/BaseBlockProps'
 
 export const buttonSizes = {
@@ -69,13 +69,13 @@ const getButtonTypeStyle = (
   }
 }
 
-export const Button = styled('button')(
+export const Button = styled('button')<ButtonProps>(
   ({
     size = 'md',
     weight = 'bold',
     styleType = 'filled',
     color = 'standard',
-  }: ButtonProps) => ({
+  }) => ({
     display: 'inline-block',
     padding: buttonSizes[size],
     borderRadius: 30,

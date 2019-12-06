@@ -1,6 +1,6 @@
+import styled from '@emotion/styled'
 import { Container } from 'constate'
 import * as React from 'react'
-import styled from 'react-emotion'
 import ReactLottie from 'react-lottie'
 import VisibilitySensor from 'react-visibility-sensor'
 import {

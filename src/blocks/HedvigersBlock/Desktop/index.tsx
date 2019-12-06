@@ -1,6 +1,6 @@
+import styled from '@emotion/styled'
 import { ActionMap, Container } from 'constate'
 import * as React from 'react'
-import styled from 'react-emotion'
 import { ContentWrapper } from '../../../components/blockHelpers'
 import { User } from '../../../server/utils/teamtailor'
 import { List } from './List'

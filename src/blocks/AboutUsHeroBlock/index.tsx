@@ -1,7 +1,7 @@
+import styled from '@emotion/styled'
 import { ActionMap, Container } from 'constate'
 import isIOS from 'is-ios'
 import * as React from 'react'
-import styled from 'react-emotion'
 
 import {
   CONTENT_GUTTER,
@@ -36,7 +36,7 @@ interface ShadowProps {
   hidden: boolean
 }
 
-const Shadow = styled('div')(
+const Shadow = styled('div')<ShadowProps>(
   {
     position: 'absolute',
     width: '100%',
@@ -54,7 +54,7 @@ const Shadow = styled('div')(
       padding: CONTENT_GUTTER_MOBILE,
     },
   },
-  ({ hidden }: ShadowProps) => ({
+  ({ hidden }) => ({
     opacity: hidden ? 0 : 1,
     pointerEvents: hidden ? 'none' : 'all',
   }),
