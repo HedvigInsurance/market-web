@@ -179,7 +179,7 @@ export const CardChecklistBulletPointBlock: React.FunctionComponent<BulletPoints
         {title && <Title position={title_position}>{title}</Title>}
         <ReactVisibilitySensor
           partialVisibility
-          offset={{ top: -100, bottom: -100 }}
+          offset={{ top: 100, bottom: 100 }}
           onChange={(visible) => {
             // if (visible) {
             setIsVisible(visible)

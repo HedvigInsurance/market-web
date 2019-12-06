@@ -4,8 +4,10 @@ import MediaQuery from 'react-responsive'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { SectionSize } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
+import { useCachedImage } from 'utils/useCachedImage'
 import { AlignedButton } from '../../components/AlignedButton'
 import {
+  BackgroundLoader,
   ContentWrapper,
   getColorStyles,
   SectionWrapper,
@@ -172,6 +174,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
   image_video_file_location?: string
   mobile_image_video_file_location?: string
   background_type: string
+  background_image_tiny?: string
   background_image: string
   background_video_file_location: string
   mobile_background_video_file_location: string
@@ -202,6 +205,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   image_video_file_location,
   mobile_image_video_file_location,
   background_type,
+  background_image_tiny,
   background_image,
   background_video_file_location,
   mobile_background_video_file_location,
@@ -213,14 +217,23 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   button_weight,
   button_position_mobile,
 }) => {
+  const backgroundImageUrl = useCachedImage(background_image)
   return (
     <SectionWrapper
-      color={color && color.color}
+      color={color?.color}
       size={size}
       backgroundImage={
-        background_type !== 'video' ? background_image : undefined
+        background_image_tiny ||
+        (background_type !== 'video' ? background_image : 'none')
       }
     >
+      {background_image_tiny && background_type !== 'video' && (
+        <BackgroundLoader
+          backgroundImage={backgroundImageUrl}
+          color={color?.color}
+          isBackgroundLoaded={Boolean(backgroundImageUrl)}
+        />
+      )}
       {background_type === 'video' &&
         background_video_file_location &&
         mobile_background_video_file_location && (
