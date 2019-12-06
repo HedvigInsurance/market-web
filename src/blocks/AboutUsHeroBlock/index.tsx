@@ -99,7 +99,7 @@ const onPlay = ({
   setFullScreen(true)
 }
 
-export const AboutUsHeroBlock: React.FunctionComponent<AboutUsHeroBlockProps> = ({
+export const AboutUsHeroBlock: React.FC<AboutUsHeroBlockProps> = ({
   headline,
   title,
   play_button_text,
