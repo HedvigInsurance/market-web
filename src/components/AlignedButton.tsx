@@ -18,7 +18,7 @@ const ButtonLinkWithMargin = styled(ButtonLink)<{
   },
 }))
 
-interface AlignedButtonProps {
+export interface AlignedButtonProps {
   title: string
   type: 'filled' | 'outlined'
   branchLink: boolean
@@ -28,6 +28,7 @@ interface AlignedButtonProps {
   size?: keyof typeof buttonSizes
   weight?: ButtonWeight
   positionMobile?: 'above' | 'below'
+  className?: string
 }
 
 export const AlignedButton: React.FunctionComponent<AlignedButtonProps> = ({
@@ -40,6 +41,7 @@ export const AlignedButton: React.FunctionComponent<AlignedButtonProps> = ({
   size,
   weight,
   positionMobile,
+  className,
 }) => {
   return (
     <>
@@ -55,6 +57,7 @@ export const AlignedButton: React.FunctionComponent<AlignedButtonProps> = ({
                 color={color && color.color}
                 weight={weight}
                 mobilePosition={positionMobile}
+                className={className}
               >
                 {title}
               </ButtonLinkWithMargin>
@@ -68,6 +71,7 @@ export const AlignedButton: React.FunctionComponent<AlignedButtonProps> = ({
             color={color && color.color}
             weight={weight}
             mobilePosition={positionMobile}
+            className={className}
           >
             {title}
           </ButtonLinkWithMargin>

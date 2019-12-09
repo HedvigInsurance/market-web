@@ -1721,6 +1721,12 @@
       "name": "image_text_block",
       "display_name": "",
       "schema": {
+        "animate": {
+          "type": "boolean",
+          "pos": 0,
+          "description": "Whether to animate the section on page load",
+          "display_name": ""
+        },
         "size": {
           "type": "option",
           "required": true,
@@ -1744,14 +1750,14 @@
             }
           ],
           "default_value": "lg",
-          "pos": 0
+          "pos": 1
         },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
           "options": [],
           "required": true,
-          "pos": 1
+          "pos": 2
         },
         "title_size": {
           "type": "option",
@@ -1767,26 +1773,26 @@
           ],
           "description": "",
           "default_value": "sm",
-          "pos": 2
+          "pos": 3
         },
         "title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 3,
+          "pos": 4,
           "translatable": true
         },
         "title_color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
           "options": [],
-          "pos": 4
+          "pos": 5
         },
         "paragraph": {
           "type": "custom",
           "required": true,
           "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
-          "pos": 5,
+          "pos": 6,
           "field_type": "markdown-html",
           "options": [],
           "translatable": true
@@ -1808,7 +1814,7 @@
             }
           ],
           "default_value": "left",
-          "pos": 6,
+          "pos": 7,
           "required": true
         },
         "text_position_mobile": {
@@ -1828,22 +1834,22 @@
             }
           ],
           "default_value": "left",
-          "pos": 7
+          "pos": 8
         },
         "image": {
           "type": "image",
           "required": false,
-          "pos": 8
+          "pos": 9
         },
         "use_image_link": {
           "type": "boolean",
-          "pos": 9,
+          "pos": 10,
           "translatable": true
         },
         "image_link": {
           "type": "multilink",
           "translatable": true,
-          "pos": 10
+          "pos": 11
         },
         "background_image": {
           "type": "image",

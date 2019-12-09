@@ -54,8 +54,8 @@ const fadeOut = keyframes({
 
 const BulletPoint = styled('div')<{
   isVisible: boolean
-  animationDelay: number
-}>(({ isVisible, animationDelay }) => ({
+  animate: boolean
+}>(({ isVisible, animate }) => ({
   display: 'flex',
   flexDirection: 'column',
   margin: GUTTER,
@@ -68,9 +68,11 @@ const BulletPoint = styled('div')<{
     margin: CONTENT_GUTTER_MOBILE,
     width: `calc(${100 / 3}% - ${CONTENT_GUTTER_MOBILE} * 2)`,
   },
-  opacity: 0,
-  animation: `${isVisible ? fadeUp : fadeOut} 500ms forwards`,
-  animationDelay: isVisible ? `${animationDelay + 200}ms` : undefined,
+  opacity: animate ? 0 : 1,
+  animation: animate
+    ? `${isVisible ? fadeUp : fadeOut} 500ms forwards`
+    : undefined,
+  animationDelay: isVisible ? '200ms' : undefined,
 
   [MOBILE_BP_DOWN]: {
     width: '100%',
@@ -161,6 +163,7 @@ interface Check {
 }
 
 interface BulletPointsBlockProps extends BaseBlockProps {
+  animate: boolean
   title?: string
   title_position: TextPosition
   bullet_points_position: TextPosition
@@ -175,6 +178,7 @@ interface BulletPointsBlockProps extends BaseBlockProps {
 }
 
 export const CardChecklistBulletPointBlock: React.FunctionComponent<BulletPointsBlockProps> = ({
+  animate,
   color,
   title,
   title_position,
@@ -192,17 +196,15 @@ export const CardChecklistBulletPointBlock: React.FunctionComponent<BulletPoints
           partialVisibility
           offset={{ top: 100, bottom: 100 }}
           onChange={(visible) => {
-            // if (visible) {
             setIsVisible(visible)
-            // }
           }}
         >
           <BulletPointsWrapper position={bullet_points_position}>
-            {bullet_points.map((bullet, index) => (
+            {bullet_points.map((bullet) => (
               <BulletPoint
                 key={bullet._uid}
-                animationDelay={(index + 1) * 150}
                 isVisible={isVisible}
+                animate={animate}
               >
                 <BulletPointHead>
                   <BulletPointImage src={getStoryblokImage(bullet.image)} />

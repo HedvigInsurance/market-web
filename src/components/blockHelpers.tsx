@@ -1,3 +1,4 @@
+import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
@@ -119,14 +120,41 @@ interface SectionProps {
   size?: SectionSize
   backgroundImage?: string
 }
-export const SectionWrapper = styled('section')<SectionProps>(
-  ({ color = 'standard', size = 'lg', backgroundImage = 'none' }) => ({
+export const SectionWrapperComponent = styled('section')<SectionProps>(
+  ({ color = 'standard', size = 'lg' }) => ({
     position: 'relative',
     transition: 'background 300ms',
     ...getSectionSizeStyle(size),
     ...getColorStyles(color),
-    ...backgroundImageStyles(backgroundImage),
   }),
+)
+const fadeIn = keyframes({
+  from: { opacity: 0 },
+  to: { opacity: 1 },
+})
+const SectionBackground = styled('div')<{ backgroundImage?: string }>(
+  ({ backgroundImage }) => ({
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    minHeight: '100%',
+    minWidth: '100%',
+    opacity: 0,
+    animation: fadeIn + ' 500ms forwards',
+    animationDelay: '1000ms',
+    ...backgroundImageStyles(backgroundImage || 'none'),
+  }),
+)
+
+export const SectionWrapper: React.FC<SectionProps> = ({
+  children,
+  backgroundImage,
+  ...props
+}) => (
+  <SectionWrapperComponent {...props}>
+    <SectionBackground backgroundImage={backgroundImage} />
+    {children}
+  </SectionWrapperComponent>
 )
 
 export const MarginSectionWrapper = styled('section')<SectionProps>(
