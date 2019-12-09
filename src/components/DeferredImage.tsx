@@ -1,3 +1,4 @@
+import styled from '@emotion/styled'
 import * as React from 'react'
 import VisibilitySensor from 'react-visibility-sensor'
 
@@ -5,7 +6,13 @@ interface State {
   width?: number
   height?: number
   ref: React.Ref<HTMLImageElement>
+  isLoaded?: boolean
 }
+
+const Img = styled('img')<{ isVisible: boolean }>(({ isVisible }) => ({
+  opacity: isVisible ? 1 : 0,
+  transition: 'opacity 300ms',
+}))
 
 const stateHasRef = (
   state: State,
@@ -23,12 +30,13 @@ export class DeferredImage extends React.PureComponent<
     width: undefined,
     height: undefined,
     ref: React.createRef(),
+    isLoaded: false,
   }
 
   public render() {
     return (
       <VisibilitySensor
-        offset={{ top: -300, bottom: -300 }}
+        offset={{ top: -200, bottom: -200 }}
         partialVisibility
         onChange={(isVisible) => {
           if (isVisible) {
@@ -42,12 +50,18 @@ export class DeferredImage extends React.PureComponent<
         }}
       >
         {({ isVisible }) => (
-          <img
+          <Img
             {...this.props}
             src={isVisible ? this.props.src : '/assets-next/empty.png'}
             ref={this.state.ref}
             width={isVisible ? undefined : this.state.width}
             height={isVisible ? undefined : this.state.height}
+            isVisible={(this.state.isLoaded && isVisible) ?? false}
+            onLoad={() => {
+              if (isVisible) {
+                this.setState({ isLoaded: true })
+              }
+            }}
           />
         )}
       </VisibilitySensor>

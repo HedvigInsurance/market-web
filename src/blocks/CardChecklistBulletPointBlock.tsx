@@ -1,7 +1,10 @@
+import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
+import ReactVisibilitySensor from 'react-visibility-sensor'
 import {
+  CONTENT_GUTTER_MOBILE,
   ContentWrapper,
   MOBILE_BP_DOWN,
   SectionWrapper,
@@ -39,7 +42,20 @@ const BulletPointsWrapper = styled('div')<{ position: TextPosition }>(
   }),
 )
 
-const BulletPoint = styled('div')({
+const fadeUp = keyframes({
+  from: { transform: 'translateY(5%)', opacity: 0 },
+  to: { transform: 'translateY(0)', opacity: 1 },
+})
+
+const fadeOut = keyframes({
+  from: { opacity: 1 },
+  to: { opacity: 0 },
+})
+
+const BulletPoint = styled('div')<{
+  isVisible: boolean
+  animate: boolean
+}>(({ isVisible, animate }) => ({
   display: 'flex',
   flexDirection: 'column',
   margin: GUTTER,
@@ -49,15 +65,21 @@ const BulletPoint = styled('div')({
   borderRadius: 8,
   overflow: 'hidden',
   [TABLET_BP_DOWN]: {
-    width: `calc(50% - ${GUTTER}*2)`,
+    margin: CONTENT_GUTTER_MOBILE,
+    width: `calc(${100 / 3}% - ${CONTENT_GUTTER_MOBILE} * 2)`,
   },
+  opacity: animate ? 0 : 1,
+  animation: animate
+    ? `${isVisible ? fadeUp : fadeOut} 500ms forwards`
+    : undefined,
+  animationDelay: isVisible ? '200ms' : undefined,
 
   [MOBILE_BP_DOWN]: {
     width: '100%',
     marginLeft: 0,
     marginRight: 0,
   },
-})
+}))
 
 const BulletPointHead = styled('div')({
   display: 'flex',
@@ -80,6 +102,7 @@ const BulletPointTitle = styled('h3')({
 
 const BulletPointParagraph = styled('div')()
 
+const MEDIA_MD = '@media (min-width: 415px) and (max-width: 1100px)'
 const BulletPointChecklist = styled('ul')({
   listStyle: 'none',
   padding: 0,
@@ -87,6 +110,10 @@ const BulletPointChecklist = styled('ul')({
   display: 'flex',
   flexDirection: 'row',
   flexWrap: 'wrap',
+
+  [MEDIA_MD]: {
+    flexDirection: 'column',
+  },
 })
 
 const BulletPointChecklistItem = styled('li')({
@@ -97,6 +124,10 @@ const BulletPointChecklistItem = styled('li')({
   alignItems: 'center',
   ':nth-child(odd)': {
     marginRight: '0.5rem',
+  },
+
+  [MEDIA_MD]: {
+    width: 'calc(100% - 0.25rem)',
   },
 })
 
@@ -132,6 +163,7 @@ interface Check {
 }
 
 interface BulletPointsBlockProps extends BaseBlockProps {
+  animate: boolean
   title?: string
   title_position: TextPosition
   bullet_points_position: TextPosition
@@ -146,47 +178,64 @@ interface BulletPointsBlockProps extends BaseBlockProps {
 }
 
 export const CardChecklistBulletPointBlock: React.FunctionComponent<BulletPointsBlockProps> = ({
+  animate,
   color,
   title,
   title_position,
   bullet_points_position,
   bullet_points,
   size,
-}) => (
-  <BulletPointSectionWrapper color={color && color.color} size={size}>
-    <ContentWrapper>
-      {title && <Title position={title_position}>{title}</Title>}
-      <BulletPointsWrapper position={bullet_points_position}>
-        {bullet_points.map((bullet) => (
-          <BulletPoint key={bullet._uid}>
-            <BulletPointHead>
-              <BulletPointImage src={getStoryblokImage(bullet.image)} />
-            </BulletPointHead>
-            <BulletPointBody>
-              <BulletPointTitle>{bullet.title}</BulletPointTitle>
-              <BulletPointParagraph
-                dangerouslySetInnerHTML={{
-                  __html: bullet.paragraph && bullet.paragraph.html,
-                }}
-              />
-              <div>
-                <BulletPointChecklist>
-                  {bullet.check_list.map((check) => {
-                    return (
-                      <BulletPointChecklistItem key={check._uid}>
-                        <CheckIcon>
-                          <CheckIconSvg />
-                        </CheckIcon>
-                        {check.title}
-                      </BulletPointChecklistItem>
-                    )
-                  })}
-                </BulletPointChecklist>
-              </div>
-            </BulletPointBody>
-          </BulletPoint>
-        ))}
-      </BulletPointsWrapper>
-    </ContentWrapper>
-  </BulletPointSectionWrapper>
-)
+}) => {
+  const [isVisible, setIsVisible] = React.useState(false)
+
+  return (
+    <BulletPointSectionWrapper color={color && color.color} size={size}>
+      <ContentWrapper>
+        {title && <Title position={title_position}>{title}</Title>}
+        <ReactVisibilitySensor
+          partialVisibility
+          offset={{ top: 100, bottom: 100 }}
+          onChange={(visible) => {
+            setIsVisible(visible)
+          }}
+        >
+          <BulletPointsWrapper position={bullet_points_position}>
+            {bullet_points.map((bullet) => (
+              <BulletPoint
+                key={bullet._uid}
+                isVisible={isVisible}
+                animate={animate}
+              >
+                <BulletPointHead>
+                  <BulletPointImage src={getStoryblokImage(bullet.image)} />
+                </BulletPointHead>
+                <BulletPointBody>
+                  <BulletPointTitle>{bullet.title}</BulletPointTitle>
+                  <BulletPointParagraph
+                    dangerouslySetInnerHTML={{
+                      __html: bullet.paragraph && bullet.paragraph.html,
+                    }}
+                  />
+                  <div>
+                    <BulletPointChecklist>
+                      {bullet.check_list.map((check) => {
+                        return (
+                          <BulletPointChecklistItem key={check._uid}>
+                            <CheckIcon>
+                              <CheckIconSvg />
+                            </CheckIcon>
+                            {check.title}
+                          </BulletPointChecklistItem>
+                        )
+                      })}
+                    </BulletPointChecklist>
+                  </div>
+                </BulletPointBody>
+              </BulletPoint>
+            ))}
+          </BulletPointsWrapper>
+        </ReactVisibilitySensor>
+      </ContentWrapper>
+    </BulletPointSectionWrapper>
+  )
+}

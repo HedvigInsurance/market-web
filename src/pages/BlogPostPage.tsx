@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { colors, fonts } from '@hedviginsurance/brand'
+import { DeferredImage } from 'components/DeferredImage'
 import * as React from 'react'
 import Helmet from 'react-helmet-async'
 import { FooterBlock } from '../blocks/FooterBlock'
@@ -32,7 +33,7 @@ const TopImageWrapper = styled('div')({
   maxHeight: '40vh',
   overflow: 'hidden',
 })
-const TopImage = styled('img')({
+const TopImage = styled(DeferredImage)({
   width: '100%',
 })
 
