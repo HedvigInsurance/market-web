@@ -55,4 +55,10 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
     'https://cdn.hedvig.com/identity/hedvig-press-assets.zip',
     301,
   ],
+  ['/hedvig-dreams', '/blog/hedvig-dreams', 301],
+  [
+    '/hur-tarar-gor-oss-starkare-som-bolag',
+    '/blog/hur-tarar-gor-oss-starkare-som-bolag',
+    301,
+  ],
 ]

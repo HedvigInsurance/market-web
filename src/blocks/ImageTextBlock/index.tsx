@@ -1,13 +1,18 @@
+import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import * as React from 'react'
 import MediaQuery from 'react-responsive'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { SectionSize } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
-import { AlignedButton } from '../../components/AlignedButton'
+import {
+  AlignedButton,
+  AlignedButtonProps,
+} from '../../components/AlignedButton'
 import {
   ContentWrapper,
   getColorStyles,
+  MOBILE_BP_DOWN,
   SectionWrapper,
   TABLET_BP_DOWN,
 } from '../../components/blockHelpers'
@@ -27,11 +32,15 @@ import {
 import { BackgroundVideo } from './BackgroundVideo'
 
 type TitleSize = 'sm' | 'lg'
+interface Animateable {
+  animate?: boolean
+}
 
 const AlignableContentWrapper = styled(ContentWrapper)<{
-  textPosition: string
+  textPosition: TextPosition
 }>(({ textPosition }) => ({
   display: 'flex',
+  position: 'relative',
   flexDirection:
     textPosition === 'right'
       ? 'row-reverse'
@@ -40,13 +49,25 @@ const AlignableContentWrapper = styled(ContentWrapper)<{
       : 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
-  [TABLET_BP_DOWN]: {
+  [MOBILE_BP_DOWN]: {
     flexDirection: 'column',
   },
 }))
 
+const fadeSlideIn = keyframes({
+  from: { opacity: 0, transform: 'translateY(15%)' },
+  to: { opacity: 1, transform: 'translateY(0)' },
+})
+const AnimatedAlignedButton = styled(AlignedButton)<
+  Animateable & AlignedButtonProps
+>(({ animate }) => ({
+  opacity: animate ? 0 : 1,
+  animation: animate ? fadeSlideIn + ' 1000ms ease-out forwards' : undefined,
+  animationDelay: '1000ms',
+}))
+
 const TextWrapper = styled('div')<{
-  textPosition: string
+  textPosition: TextPosition
   textPositionMobile: TextPosition
 }>(({ textPosition, textPositionMobile }) => ({
   position: 'relative',
@@ -55,39 +76,57 @@ const TextWrapper = styled('div')<{
   paddingRight: textPosition === 'left' ? '7rem' : '0',
   paddingLeft: textPosition === 'right' ? '7rem' : '0',
   [TABLET_BP_DOWN]: {
+    paddingRight: textPosition === 'left' ? '3rem' : '0',
+    paddingLeft: textPosition === 'right' ? '3rem' : '0',
+  },
+  [MOBILE_BP_DOWN]: {
     paddingRight: 0,
     paddingLeft: 0,
     textAlign: textPositionMobile,
   },
 }))
 
-const Title = styled('h2')<{
+type DisplayOrder = 'top' | 'bottom'
+
+interface TitleProps {
   size?: TitleSize
   alignment: string
-  displayorder: 'top' | 'bottom'
+  displayorder: DisplayOrder
   textPosition: TextPosition
   color: string
-}>(({ size, displayorder, textPosition, alignment, color }) => ({
-  margin: textPosition === 'center' ? 'auto' : undefined,
-  fontSize: size === 'lg' ? '4.5rem' : '3.5rem',
-  marginTop:
-    alignment === 'center' && displayorder === 'top' ? '3rem' : '1.414rem',
-  width: '100%',
-  color,
-  maxWidth: textPosition === 'center' ? '40rem' : '31rem',
-  [TABLET_BP_DOWN]: {
-    fontSize: size === 'lg' ? '2.75rem' : '2rem',
-    maxWidth: '100%',
-    marginTop: displayorder === 'top' ? '3rem' : '1.414rem',
-  },
-}))
+}
 
-const Paragraph = styled('div')<{ textPosition: TextPosition }>(
-  ({ textPosition }) => ({
+const Title = styled('h2')<TitleProps & Animateable>(
+  ({ size, displayorder, textPosition, alignment, color, animate }) => ({
+    margin: textPosition === 'center' ? 'auto' : undefined,
+    fontSize: size === 'lg' ? '4.5rem' : '3.5rem',
+    marginTop:
+      alignment === 'center' && displayorder === 'top' ? '3rem' : '1.414rem',
+    width: '100%',
+    color,
+    maxWidth: textPosition === 'center' ? '40rem' : '31rem',
+    opacity: animate ? 0 : 1,
+    animation: animate ? fadeSlideIn + ' 500ms forwards' : undefined,
+    animationDelay: '1000ms',
+
+    [TABLET_BP_DOWN]: {
+      fontSize: size === 'lg' ? '2.75rem' : '2rem',
+      maxWidth: '100%',
+      marginTop: displayorder === 'top' ? '3rem' : '1.414rem',
+    },
+  }),
+)
+
+const Paragraph = styled('div')<{ textPosition: TextPosition } & Animateable>(
+  ({ textPosition, animate }) => ({
     margin: textPosition === 'center' ? 'auto' : undefined,
     fontSize: '1.125rem',
     marginTop: '1.5rem',
     maxWidth: textPosition === 'center' ? '40rem' : '31rem',
+    opacity: animate ? 0 : 1,
+    animation: animate ? fadeSlideIn + ' 500ms forwards' : undefined,
+    animationDelay: '1250ms',
+
     [TABLET_BP_DOWN]: {
       maxWidth: '100%',
     },
@@ -96,13 +135,13 @@ const Paragraph = styled('div')<{ textPosition: TextPosition }>(
 
 const Image = styled(DeferredImage)<{
   alignment: string
-  displayorder: 'top' | 'bottom'
+  displayorder: DisplayOrder
   hasLink?: boolean
 }>(({ alignment, displayorder, hasLink }) => ({
   width: hasLink ? '100%' : '40%',
   display: 'block',
   order: alignment === 'center' && displayorder === 'top' ? -1 : 'initial',
-  [TABLET_BP_DOWN]: {
+  [MOBILE_BP_DOWN]: {
     maxWidth: '100%',
     width: 'auto',
     marginTop: displayorder === 'top' ? '0' : '3rem',
@@ -111,13 +150,13 @@ const Image = styled(DeferredImage)<{
   },
 }))
 
-const ImageLink = styled('a')<{ displayorder: 'top' | 'bottom' }>(
+const ImageLink = styled('a')<{ displayorder: DisplayOrder }>(
   ({ displayorder }) => ({
     display: 'inline-block',
     width: '40%',
     flexShrink: 0,
 
-    [TABLET_BP_DOWN]: {
+    [MOBILE_BP_DOWN]: {
       maxWidth: '100%',
       width: 'auto',
       marginTop: displayorder === 'top' ? '0' : '3rem',
@@ -129,14 +168,14 @@ const ImageLink = styled('a')<{ displayorder: 'top' | 'bottom' }>(
 
 const ImageVideoWrapper = styled('div')<{
   alignment: string
-  displayorder: 'top' | 'bottom'
+  displayorder: DisplayOrder
   hasLink?: boolean
 }>(({ alignment, displayorder, hasLink }) => ({
   width: hasLink ? '100%' : '40%',
   flexShrink: hasLink ? 1 : 0,
   display: 'block',
   order: alignment === 'center' && displayorder === 'top' ? -1 : 'initial',
-  [TABLET_BP_DOWN]: {
+  [MOBILE_BP_DOWN]: {
     maxWidth: '100%',
     width: 'auto',
     marginTop: displayorder === 'top' ? '0' : '3rem',
@@ -154,6 +193,7 @@ const ImageVideo = styled(DeferredVideo)({
 })
 
 interface ImageTextBlockProps extends BaseBlockProps {
+  animate?: boolean
   title_size?: TitleSize
   title: string
   title_color?: ColorComponent
@@ -176,7 +216,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
   background_video_file_location: string
   mobile_background_video_file_location: string
   size: SectionSize
-  media_position: 'top' | 'bottom'
+  media_position: DisplayOrder
   button_color?: ColorComponent
   button_size?: keyof typeof buttonSizes
   button_weight?: ButtonWeight
@@ -184,6 +224,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
 }
 
 export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
+  animate,
   title_size,
   title,
   title_color,
@@ -215,11 +256,9 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
 }) => {
   return (
     <SectionWrapper
-      color={color && color.color}
+      color={color?.color}
       size={size}
-      backgroundImage={
-        background_type !== 'video' ? background_image : undefined
-      }
+      backgroundImage={background_type !== 'video' ? background_image : 'none'}
     >
       {background_type === 'video' &&
         background_video_file_location &&
@@ -250,6 +289,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
                 : 'standard'
             }
             textPosition={text_position}
+            animate={animate}
           >
             {title}
           </Title>
@@ -258,9 +298,10 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
               __html: paragraph.html,
             }}
             textPosition={text_position}
+            animate={animate}
           />
           <MediaQuery query="(min-width: 801px)">
-            <AlignedButton
+            <AnimatedAlignedButton
               title={button_title}
               type={button_type}
               branchLink={button_branch_link}
@@ -270,11 +311,12 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
               size={button_size ? button_size : 'sm'}
               weight={button_weight}
               positionMobile={button_position_mobile}
+              animate={animate}
             />
           </MediaQuery>
         </TextWrapper>
         <MediaQuery query="(max-width: 800px)">
-          <AlignedButton
+          <AnimatedAlignedButton
             title={button_title}
             type={button_type}
             branchLink={button_branch_link}
@@ -284,6 +326,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
             size={button_size ? button_size : 'sm'}
             weight={button_weight}
             positionMobile={button_position_mobile}
+            animate={animate}
           />
         </MediaQuery>
         {image && image_type !== 'video' ? (

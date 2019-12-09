@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
+import { DeferredImage } from 'components/DeferredImage'
 import * as React from 'react'
 import { BlogStory } from '../../storyblok/StoryContainer'
 import { findAuthor } from '../../utils/author'
@@ -13,7 +14,7 @@ const Wrapper = styled('div')<{ first: boolean }>(({ first }) => ({
   borderTop: first ? undefined : `1px solid ${colors.LIGHT_GRAY}`,
 }))
 
-const Image = styled('img')({
+const Image = styled(DeferredImage)({
   maxWidth: '100%',
   borderRadius: 8,
   boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.3)',

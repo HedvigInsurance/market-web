@@ -119,7 +119,7 @@ const GhostCta = styled(Cta)({
   color: colors.WHITE,
   borderColor: colors.WHITE,
   marginLeft: '1rem',
-  transition: 'color 300ms, background: 300ms',
+  transition: 'color 300ms, background 300ms',
 
   '&:hover, &:focus': {
     color: colors.PURPLE,
