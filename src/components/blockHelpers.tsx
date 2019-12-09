@@ -125,26 +125,29 @@ export const SectionWrapperComponent = styled('section')<SectionProps>(
     position: 'relative',
     transition: 'background 300ms',
     ...getSectionSizeStyle(size),
-    ...getColorStyles(color),
+    color: getColorStyles(color).color,
   }),
 )
 const fadeIn = keyframes({
   from: { opacity: 0 },
   to: { opacity: 1 },
 })
-const SectionBackground = styled('div')<{ backgroundImage?: string }>(
-  ({ backgroundImage }) => ({
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    minHeight: '100%',
-    minWidth: '100%',
-    opacity: 0,
-    animation: fadeIn + ' 500ms forwards',
-    animationDelay: '1000ms',
-    ...backgroundImageStyles(backgroundImage || 'none'),
-  }),
-)
+const SectionBackground = styled('div')<{
+  backgroundImage?: string
+  color?: colorComponentColors
+}>(({ backgroundImage, color = 'standard' }) => ({
+  position: 'absolute',
+  top: 0,
+  bottom: 0,
+  minHeight: '100%',
+  minWidth: '100%',
+  opacity: 0,
+  animation: fadeIn + ' 500ms forwards',
+  animationDelay: '1000ms',
+  backgroundColor: getColorStyles(color).background,
+  ...backgroundImageStyles(backgroundImage || 'none'),
+  zIndex: -1,
+}))
 
 export const SectionWrapper: React.FC<SectionProps> = ({
   children,
@@ -152,7 +155,7 @@ export const SectionWrapper: React.FC<SectionProps> = ({
   ...props
 }) => (
   <SectionWrapperComponent {...props}>
-    <SectionBackground backgroundImage={backgroundImage} />
+    <SectionBackground backgroundImage={backgroundImage} color={props.color} />
     {children}
   </SectionWrapperComponent>
 )
