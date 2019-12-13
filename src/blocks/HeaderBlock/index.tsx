@@ -140,7 +140,7 @@ interface HeaderBlockProps extends BaseBlockProps {
 
 class Header extends React.PureComponent<
   { story: GlobalStory } & HeaderBlockProps
-  > {
+> {
   private backgroundFillerRef: null | HTMLDivElement = null
   private wrapperRef: null | HTMLDivElement = null
 
@@ -221,8 +221,9 @@ class Header extends React.PureComponent<
                     <>
                       {(() => {
                         if (
-                          this.props.override_cta_link &&
-                          this.props.override_cta_link.cached_url
+                          (this.props.override_cta_link &&
+                            this.props.override_cta_link.cached_url) ||
+                          this.props.override_mobile_header_cta_link
                         ) {
                           return (
                             <MobileHeaderLink
@@ -395,7 +396,7 @@ class Header extends React.PureComponent<
 export const HeaderBlock: React.FunctionComponent<HeaderBlockProps> = (
   headerBlockProps,
 ) => (
-    <GlobalStoryContainer>
-      {({ globalStory }) => <Header story={globalStory} {...headerBlockProps} />}
-    </GlobalStoryContainer>
-  )
+  <GlobalStoryContainer>
+    {({ globalStory }) => <Header story={globalStory} {...headerBlockProps} />}
+  </GlobalStoryContainer>
+)
