@@ -221,9 +221,8 @@ class Header extends React.PureComponent<
                     <>
                       {(() => {
                         if (
-                          (this.props.override_cta_link &&
-                            this.props.override_cta_link.cached_url) ||
-                          this.props.override_mobile_header_cta_link
+                          this.props.override_cta_link?.cached_url ||
+                          this.props.override_mobile_header_cta_link?.cached_url
                         ) {
                           return (
                             <MobileHeaderLink
