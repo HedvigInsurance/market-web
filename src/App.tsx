@@ -4,6 +4,7 @@ import * as React from 'react'
 import { hot } from 'react-hot-loader'
 import { Mount } from 'react-lifecycle-components'
 import { Route, Switch } from 'react-router-dom'
+import { CookieConsent } from './components/CookieConsent'
 import { globalStyles } from './components/GlobalStyles'
 import { routes } from './routes'
 
@@ -31,6 +32,7 @@ export const App: React.FunctionComponent<{ nonce?: string }> = ({ nonce }) => (
         />
       ))}
     </Switch>
+    <CookieConsent />
   </>
 )
 
