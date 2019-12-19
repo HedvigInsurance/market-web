@@ -8,7 +8,7 @@ cache:
   - node_modules
 
 install:
-- npm i -g yarn@1.16.0
+- npm i -g yarn@1.19.2
 - yarn install
 
 script:
