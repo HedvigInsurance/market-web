@@ -4,7 +4,10 @@ import { colors } from '@hedviginsurance/brand'
 import * as React from 'react'
 import { RouteComponentProps, withRouter } from 'react-router'
 import { SectionSize } from 'src/utils/SectionSize'
-import { colorComponentColors } from '../blocks/BaseBlockProps'
+import {
+  colorComponentColors,
+  colorDeviationColors,
+} from '../blocks/BaseBlockProps'
 
 export const CONTENT_GUTTER = '2rem'
 export const CONTENT_GUTTER_MOBILE = '1rem'
@@ -21,11 +24,23 @@ export const CONTENT_MAX_WIDTH = {
   },
 }
 
-const colorMap = {
-  standard: {
-    color: colors.OFF_BLACK_DARK,
-    background: 'transparent',
-  },
+export const colorDeviations = {
+  pinkDeviation100: '#efbca8',
+  pinkDeviation200: '#ee7476',
+  yellowDeviation100: '#fed802',
+  blueDeviation100: '#263067',
+  purpleDeviation100: '#693abe',
+}
+
+interface ColorSet {
+  color: string
+  background: string
+}
+
+const colorMap: Record<
+  colorComponentColors | colorDeviationColors,
+  ColorSet
+> = Object.entries({
   blue: {
     color: colors.WHITE,
     background: colors.BLACK_PURPLE,
@@ -74,7 +89,56 @@ const colorMap = {
     color: colors.WHITE,
     background: colors.DARK_YELLOW,
   },
-}
+  'pink-deviation-100': {
+    color: colors.BLACK,
+    background: colorDeviations.pinkDeviation100,
+  },
+  'pink-deviation-200-black': {
+    color: colors.BLACK,
+    background: colorDeviations.pinkDeviation200,
+  },
+  'pink-deviation-200-white': {
+    color: colors.WHITE,
+    background: colorDeviations.pinkDeviation200,
+  },
+  'yellow-deviation-100-white': {
+    color: colors.WHITE,
+    background: colorDeviations.yellowDeviation100,
+  },
+  'yellow-deviation-100-black': {
+    color: colors.BLACK,
+    background: colorDeviations.yellowDeviation100,
+  },
+  'blue-deviation-100': {
+    color: colors.WHITE,
+    background: colorDeviations.blueDeviation100,
+  },
+  'purple-deviation-100': {
+    color: colors.WHITE,
+    background: colorDeviations.purpleDeviation100,
+  },
+})
+  .map<
+    [
+      [colorComponentColors | colorDeviationColors, ColorSet],
+      [colorComponentColors | colorDeviationColors, ColorSet],
+    ]
+  >(([key, value]) => [
+    [key as colorComponentColors | colorDeviationColors, value],
+    [
+      (key + '-inverse') as colorComponentColors | colorDeviationColors,
+      { color: value.background, background: value.color },
+    ],
+  ])
+  .reduce<Record<colorComponentColors | colorDeviationColors, ColorSet>>(
+    (acc, [std, inverse]) => ({
+      ...acc,
+      [std[0]]: std[1],
+      [inverse[0]]: inverse[1],
+    }),
+    // tslint:disable-next-line no-object-literal-type-assertion
+    {} as Record<colorComponentColors | colorDeviationColors, ColorSet>,
+  )
 
 const sectionSizeStyles = {
   none: { padding: 0 },
@@ -98,7 +162,21 @@ const sectionSizeStyles = {
   },
 }
 
-export const getColorStyles = (color: colorComponentColors) => colorMap[color]
+export const getColorStyles = (
+  color: colorComponentColors | colorDeviationColors,
+  standardColor: string = 'transparent',
+  standardInverseColor: string = colors.OFF_BLACK_DARK,
+): ColorSet => {
+  if (color === 'standard') {
+    return { background: standardColor, color: standardInverseColor }
+  }
+
+  if (color === 'standard-inverse') {
+    return { background: standardInverseColor, color: standardColor }
+  }
+
+  return colorMap[color]
+}
 
 export const getSectionSizeStyle = (size: SectionSize) =>
   sectionSizeStyles[size]
