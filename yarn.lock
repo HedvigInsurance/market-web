@@ -921,10 +921,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.4.tgz#622a72bebd1e3f48d921563b4b60a762295a81fc"
   integrity sha512-6PYY5DVdAY1ifaQW6XYTnOMihmBVT27elqSjEoodchsGjzYlEsTQMcEhSud99kVawatyTZRTiVkJ/c6lwbQ7nA==
 
-"@hedviginsurance/brand@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@hedviginsurance/brand/-/brand-1.8.0.tgz#ce550faf55772b0ec20b3c634cb85ceecbb19a27"
-  integrity sha512-6878STUY8eHd5vwGenh9C58qgQHUrUFhlOg0PzHJvsx6gpAM+tyXy7HWQ27/Ka+NUS6ULd1PpEbTy5/+ivGtpw==
+"@hedviginsurance/brand@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@hedviginsurance/brand/-/brand-2.0.0.tgz#5549b8aa1a756925f3d05e0e350462be3c36cb02"
+  integrity sha512-6pA7JCIhVPCqTx8RESwvj+tmbiStbCwICbaUmXMCxgUNj+pLxFpJQb4SBtXXGB+A2ge96Fti0VrE+0Wdc0aHSQ==
 
 "@hedviginsurance/cli@^2.3.2":
   version "2.3.3"
