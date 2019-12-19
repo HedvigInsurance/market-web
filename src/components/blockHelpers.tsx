@@ -41,10 +41,6 @@ const colorMap: Record<
   colorComponentColors | colorDeviationColors,
   ColorSet
 > = Object.entries({
-  standard: {
-    color: colors.OFF_BLACK_DARK,
-    background: 'transparent',
-  },
   blue: {
     color: colors.WHITE,
     background: colors.BLACK_PURPLE,
@@ -168,7 +164,19 @@ const sectionSizeStyles = {
 
 export const getColorStyles = (
   color: colorComponentColors | colorDeviationColors,
-) => colorMap[color]
+  standardColor: string = 'transparent',
+  standardInverseColor: string = colors.OFF_BLACK_DARK,
+): ColorSet => {
+  if (color === 'standard') {
+    return { background: standardColor, color: standardInverseColor }
+  }
+
+  if (color === 'standard-inverse') {
+    return { background: standardInverseColor, color: standardColor }
+  }
+
+  return colorMap[color]
+}
 
 export const getSectionSizeStyle = (size: SectionSize) =>
   sectionSizeStyles[size]

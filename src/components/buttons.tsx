@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
+import { getColorStyles } from 'components/blockHelpers'
 import { colorComponentColors } from 'src/blocks/BaseBlockProps'
 
 export const buttonSizes = {
@@ -17,55 +18,28 @@ interface ButtonProps {
   weight?: ButtonWeight
 }
 
-type ColorMap = { [K in colorComponentColors]: string }
-
-const colorMap: ColorMap = {
-  standard: colors.PURPLE,
-  blue: colors.BLACK_PURPLE,
-  'blue-dark': colors.DARK_PURPLE,
-  'pink-light': colors.PINK_LIGHT,
-  'pink-dark': colors.PINK,
-  'off-white': colors.OFF_WHITE,
-  'off-black': colors.OFF_BLACK,
-  'off-black-dark': colors.OFF_BLACK_DARK,
-  green: colors.GREEN,
-  'green-dark': colors.DARK_GREEN,
-  purple: colors.PURPLE,
-  'yellow-light': colors.LIGHT_YELLOW,
-  'yellow-dark': colors.DARK_YELLOW,
-}
-
-const inverseColorMap = {
-  standard: colors.WHITE,
-  blue: colors.WHITE,
-  'blue-dark': colors.WHITE,
-  'pink-light': colors.OFF_BLACK,
-  'pink-dark': colors.OFF_BLACK,
-  'off-white': colors.OFF_BLACK,
-  'off-black': colors.WHITE,
-  'off-black-dark': colors.WHITE,
-  green: colors.WHITE,
-  'green-dark': colors.WHITE,
-  purple: colors.WHITE,
-  'yellow-light': colors.OFF_BLACK,
-  'yellow-dark': colors.OFF_BLACK,
-}
-
 const getButtonTypeStyle = (
   buttonType: ButtonStyleType,
   color: colorComponentColors,
 ) => {
   if (buttonType === 'filled') {
-    return { backgroundColor: colorMap[color], color: inverseColorMap[color] }
+    return {
+      backgroundColor: getColorStyles(color, colors.PURPLE).background,
+      color: getColorStyles(color, colors.PURPLE, colors.WHITE).color,
+    }
   }
   if (buttonType === 'outlined') {
-    return { backgroundColor: 'transparent', color: colorMap[color] }
+    return {
+      backgroundColor: 'transparent',
+      color: getColorStyles(color, colors.PURPLE, colors.WHITE).background,
+    }
   }
+
   return {
     border: 'none',
     padding: '0',
     backgroundColor: 'transparent',
-    color: colorMap[color],
+    color: getColorStyles(color, colors.PURPLE, colors.WHITE).background,
   }
 }
 
@@ -79,7 +53,9 @@ export const Button = styled('button')<ButtonProps>(
     display: 'inline-block',
     padding: buttonSizes[size],
     borderRadius: 30,
-    border: `2px solid ${colorMap[color]}`,
+    border: `2px solid ${
+      getColorStyles(color, colors.PURPLE, colors.WHITE).background
+    }`,
     textDecoration: 'none',
     fontWeight: weight,
     cursor: 'pointer',
