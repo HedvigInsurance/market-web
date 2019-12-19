@@ -8,12 +8,12 @@
   "types": "./types.d.ts",
   "engines": {
     "node": "10.14.1",
-    "yarn": "1.16.0"
+    "yarn": "1.19.2"
   },
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
-    "@hedviginsurance/brand": "^1.8.0",
+    "@hedviginsurance/brand": "^2.0.0",
     "@hedviginsurance/cli": "^2.3.2",
     "@hedviginsurance/react-swipeable-views": "^0.12.20",
     "@hedviginsurance/web-survival-kit": "^1.7.0",
