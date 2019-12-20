@@ -71,7 +71,6 @@ export const CookieConsent: React.FC = () => {
     return null
   }
 
-  console.log(location.pathname)
   return (
     <OuterWrapper visible={isVisible} closing={isClosing}>
       <InnerWrapper>
