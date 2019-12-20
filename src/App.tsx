@@ -17,13 +17,13 @@ export const App: React.FunctionComponent<{ nonce?: string }> = ({ nonce }) => {
       `font-size: 2rem; font-family: sans-serif; color: #fff; padding: 2rem; display: block; background-color: ${colors.PURPLE};`,
     )
 
-    if (location.search.includes('merry-christmas')) {
+    if (location.search.includes('xmas')) {
       // @ts-ignore
       import('magic-snowflakes')
         .then((m) => m.default)
         .then((Snowflakes) => Snowflakes())
     }
-  })
+  }, [])
 
   return (
     <>
