@@ -39,6 +39,35 @@
       "name": "accordion_block",
       "display_name": null,
       "schema": {
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 0,
+          "default_value": "",
+          "display_name": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
+        },
+        "title": {
+          "type": "text",
+          "required": true,
+          "pos": 1,
+          "translatable": true
+        },
+        "accordions": {
+          "type": "bloks",
+          "maximum": "",
+          "restrict_components": true,
+          "component_whitelist": ["accordion_item"],
+          "required": true,
+          "description": "",
+          "display_name": "",
+          "default_value": "",
+          "pos": 2
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 3
+        },
         "size": {
           "type": "option",
           "options": [
@@ -59,33 +88,16 @@
               "name": "XL"
             }
           ],
-          "pos": 1,
+          "pos": 4,
           "display_name": "",
           "description": "",
           "default_value": "lg"
         },
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 2
-        },
-        "title": {
-          "type": "text",
-          "required": true,
-          "pos": 3,
-          "translatable": true
-        },
-        "accordions": {
-          "type": "bloks",
-          "maximum": "",
-          "restrict_components": true,
-          "component_whitelist": ["accordion_item"],
-          "required": true,
-          "description": "",
-          "display_name": "",
-          "default_value": "",
-          "pos": 4
+        "tab-b8f2032f-e956-4f8f-b79b-0c963ed5ff31": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["size", "color", "extra_styling"],
+          "pos": 5
         }
       },
       "image": null,
@@ -135,11 +147,10 @@
       "name": "animated_cta_block",
       "display_name": "",
       "schema": {
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 0
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 0,
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         },
         "title": {
           "type": "text",
@@ -172,6 +183,18 @@
           "component_whitelist": ["animated_cta_item"],
           "required": true,
           "pos": 3
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 4
+        },
+        "tab-9323ac2d-8e38-45bb-aa3b-13fefdd84fe7": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["color", "extra_styling"],
+          "pos": 5
         }
       },
       "image": null,
@@ -239,50 +262,25 @@
       "name": "animated_phone_block",
       "display_name": "",
       "schema": {
-        "size": {
-          "type": "option",
-          "options": [
-            {
-              "value": "none",
-              "name": "Zero margins"
-            },
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "lg",
-              "name": "LG"
-            },
-            {
-              "value": "xl",
-              "name": "XL"
-            }
-          ],
-          "pos": 0,
-          "display_name": "",
-          "description": "",
-          "default_value": "lg"
-        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
           "options": [],
           "required": true,
-          "pos": 1
+          "pos": 0
         },
         "title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 2,
+          "pos": 1,
           "translatable": true
         },
         "paragraph": {
           "type": "custom",
           "required": true,
           "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
-          "pos": 3,
+          "pos": 2,
           "field_type": "markdown-html",
           "options": [],
           "translatable": true
@@ -304,14 +302,14 @@
             }
           ],
           "default_value": "left",
-          "pos": 4,
+          "pos": 3,
           "required": true
         },
         "button_title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 5,
+          "pos": 4,
           "translatable": true
         },
         "button_type": {
@@ -332,13 +330,13 @@
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 6
+          "pos": 5
         },
         "button_branch_link": {
           "type": "boolean",
           "required": false,
           "description": "Create a branch link instead of the link field",
-          "pos": 7,
+          "pos": 6,
           "translatable": true
         },
         "button_link": {
@@ -347,7 +345,7 @@
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 8,
+          "pos": 7,
           "translatable": true
         },
         "media_position": {
@@ -364,18 +362,19 @@
           ],
           "required": true,
           "default_value": "top",
-          "pos": 9
+          "pos": 8
         },
         "show_button": {
           "type": "boolean",
           "required": false,
           "default_value": "true",
-          "pos": 10
+          "pos": 9
         },
         "button_color": {
           "field_type": "hedvig-limited-color-picker",
           "options": [],
-          "type": "custom"
+          "type": "custom",
+          "pos": 10
         },
         "button_weight": {
           "type": "option",
@@ -389,7 +388,39 @@
               "value": "bold",
               "name": "Bold"
             }
-          ]
+          ],
+          "pos": 11
+        },
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": 12,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
+        "tab-26f1fa10-f81b-41d6-a115-bd3aecb4275c": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["size", "color"],
+          "pos": 13
         }
       },
       "image": null,
@@ -411,19 +442,19 @@
           "max_length": "",
           "regex": "^https:\\/\\/",
           "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4",
-          "pos": 0,
+          "pos": 1,
           "display_name": "",
           "default_value": ""
         },
         "use_text_drop_shadow": {
           "type": "boolean",
-          "pos": 1,
+          "pos": 2,
           "description": "",
           "display_name": ""
         },
         "background_gradient_start": {
           "type": "text",
-          "pos": 2,
+          "pos": 3,
           "max_length": "",
           "regex": "^rgba\\(\\d+,\\s*\\d+\\,\\s*\\d+,\\s*\\d*\\.?\\d*\\)$",
           "description": "The start of the gradient, i.e. rgba(123, 123, 123, 0) (should always end with 0)",
@@ -431,7 +462,7 @@
         },
         "background_color": {
           "type": "text",
-          "pos": 3,
+          "pos": 4,
           "options": [],
           "description": "As shown while loading the poster, in format rgb(123, 123, 123)",
           "regex": "^rgb\\(\\d+,\\s*\\d+\\,\\s*\\d+\\)$",
@@ -439,51 +470,51 @@
         },
         "title": {
           "type": "text",
-          "pos": 4,
+          "pos": 5,
           "translatable": true
         },
         "paragraph": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 5,
+          "pos": 6,
           "translatable": true
         },
         "cta_label": {
           "type": "text",
-          "pos": 6,
+          "pos": 7,
           "translatable": true
         },
         "cta_branch_link": {
           "type": "boolean",
-          "pos": 7,
+          "pos": 8,
           "translatable": true
         },
         "cta_target": {
           "type": "multilink",
-          "pos": 8,
+          "pos": 9,
           "translatable": true
         },
         "ghost_cta": {
           "type": "boolean",
           "translatable": true,
-          "pos": 9
+          "pos": 10
         },
         "ghost_cta_label": {
           "type": "text",
           "translatable": true,
-          "pos": 10
+          "pos": 11
         },
         "ghost_cta_target": {
           "type": "multilink",
           "translatable": true,
-          "pos": 11
+          "pos": 12
         },
         "cta_color": {
           "field_type": "hedvig-limited-color-picker",
           "options": [],
           "type": "custom",
-          "pos": 12
+          "pos": 13
         },
         "cta_weight": {
           "type": "option",
@@ -498,7 +529,7 @@
               "name": "Bold"
             }
           ],
-          "pos": 13
+          "pos": 14
         },
         "cta_style": {
           "type": "option",
@@ -516,7 +547,8 @@
               "value": "plain",
               "name": "Plain"
             }
-          ]
+          ],
+          "pos": 15
         }
       },
       "image": null,
@@ -651,36 +683,10 @@
       "name": "bullet_point_block",
       "display_name": "",
       "schema": {
-        "size": {
-          "type": "option",
-          "options": [
-            {
-              "value": "none",
-              "name": "Zero margins"
-            },
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "lg",
-              "name": "LG"
-            },
-            {
-              "value": "xl",
-              "name": "XL"
-            }
-          ],
-          "pos": -1,
-          "display_name": "",
-          "description": "",
-          "default_value": "sm"
-        },
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 0
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 0,
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         },
         "title_position": {
           "type": "option",
@@ -741,26 +747,12 @@
           "required": true,
           "pos": 5,
           "translatable": false
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "bullet_point_block",
-      "component_group_uuid": null
-    },
-    {
-      "name": "card_checklist_bullet_point_block",
-      "display_name": "",
-      "schema": {
-        "animate": {
-          "type": "boolean",
-          "pos": 0,
-          "description": ""
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 6
         },
         "size": {
           "type": "option",
@@ -782,25 +774,46 @@
               "name": "XL"
             }
           ],
-          "pos": 1,
+          "pos": 7,
           "display_name": "",
           "description": "",
-          "default_value": "lg"
+          "default_value": "sm"
         },
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 2
+        "tab-ebd6ef28-5e5a-4600-8c0b-5f6542654eab": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["size", "color", "extra_styling"],
+          "pos": 8
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "bullet_point_block",
+      "component_group_uuid": null
+    },
+    {
+      "name": "card_checklist_bullet_point_block",
+      "display_name": "",
+      "schema": {
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 0,
+          "display_name": "",
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         },
         "title": {
           "type": "text",
-          "pos": 3,
+          "pos": 1,
           "translatable": true
         },
         "title_position": {
           "type": "option",
-          "pos": 4,
+          "pos": 2,
           "use_uuid": true,
           "options": [
             {
@@ -835,7 +848,7 @@
             }
           ],
           "default_value": "left",
-          "pos": 5
+          "pos": 3
         },
         "bullet_points": {
           "type": "bloks",
@@ -843,8 +856,50 @@
           "restrict_components": true,
           "component_whitelist": ["card_checklist_bullet_point_item"],
           "required": true,
-          "pos": 6,
+          "pos": 4,
           "translatable": false
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 5
+        },
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": 6,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
+        "animate": {
+          "type": "boolean",
+          "pos": 7,
+          "description": ""
+        },
+        "tab-29f829cd-8b3c-47ad-9b60-3c4e34b40b77": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["animate", "size", "color", "extra_styling"],
+          "pos": 8
         }
       },
       "image": null,
@@ -979,34 +1034,34 @@
       "schema": {
         "title": {
           "type": "text",
-          "pos": 0,
+          "pos": 1,
           "translatable": true
         },
         "fact1_number": {
           "type": "text",
-          "pos": 1
+          "pos": 2
         },
         "fact1_explainer": {
           "type": "text",
-          "pos": 2,
+          "pos": 3,
           "translatable": true
         },
         "fact2_number": {
           "type": "text",
-          "pos": 3
+          "pos": 4
         },
         "fact2_explainer": {
           "type": "text",
-          "pos": 4,
+          "pos": 5,
           "translatable": true
         },
         "fact3_number": {
           "type": "text",
-          "pos": 5
+          "pos": 6
         },
         "fact3_explainer": {
           "type": "text",
-          "pos": 6,
+          "pos": 7,
           "translatable": true
         }
       },
@@ -1031,6 +1086,11 @@
           "default_value": "off-black-dark",
           "pos": 0,
           "display_name": ""
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 1,
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         }
       },
       "image": null,
@@ -1174,26 +1234,26 @@
         },
         "override_cta_label": {
           "type": "text",
-          "pos": 2
+          "pos": 3
         },
         "override_cta_link": {
           "type": "multilink",
-          "pos": 3
+          "pos": 4
         },
         "override_mobile_header_cta_label": {
           "type": "text",
           "translatable": false,
-          "pos": 4
+          "pos": 5
         },
         "override_mobile_header_cta_link": {
           "type": "multilink",
-          "pos": 5
+          "pos": 6
         },
         "cta_color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
           "options": [],
-          "pos": 6
+          "pos": 7
         },
         "cta_weight": {
           "type": "option",
@@ -1208,13 +1268,13 @@
               "name": "Bold"
             }
           ],
-          "pos": 7
+          "pos": 8
         },
         "mobile_header_cta_color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
           "options": [],
-          "pos": 8
+          "pos": 9
         },
         "mobile_header_cta_weight": {
           "type": "option",
@@ -1229,7 +1289,7 @@
               "name": "Bold"
             }
           ],
-          "pos": 9
+          "pos": 10
         },
         "cta_style": {
           "type": "option",
@@ -1249,7 +1309,7 @@
             }
           ],
           "description": "",
-          "pos": 10
+          "pos": 11
         },
         "mobile_header_cta_style": {
           "type": "option",
@@ -1268,7 +1328,7 @@
               "name": "Plain"
             }
           ],
-          "pos": 11
+          "pos": 12
         }
       },
       "image": null,
@@ -1365,48 +1425,48 @@
         "video_file_location": {
           "type": "text",
           "description": "Will be suffixed with \".<format>\" . Ie. https://cdn.hedvig.com/www/about-us-video/web. Formats that must be present are png (for the poster), m3u8, mp4 and webm",
-          "pos": -1
+          "pos": 1
         },
         "mobile_video_file_location": {
           "type": "text",
           "description": "Will be suffixed with \".<format>\" . Ie. https://cdn.hedvig.com/www/about-us-video/web. Formats that must be present are png (for the poster), m3u8, mp4 and webm",
-          "pos": 0
+          "pos": 2
         },
         "desktop_background_image": {
           "type": "image",
-          "pos": 2,
+          "pos": 3,
           "description": "Optional background"
         },
         "mobile_background_image": {
           "type": "image",
-          "pos": 2,
+          "pos": 4,
           "description": "Optional background"
         },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
           "options": [],
-          "pos": 0
+          "pos": 5
         },
         "title": {
           "type": "text",
-          "pos": 1,
+          "pos": 6,
           "translatable": true
         },
         "second_title": {
           "type": "text",
-          "pos": 2,
+          "pos": 7,
           "translatable": true
         },
         "title_color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
           "options": [],
-          "pos": 3
+          "pos": 8
         },
         "subtitle": {
           "type": "text",
-          "pos": 4,
+          "pos": 9,
           "translatable": true
         }
       },
@@ -1424,31 +1484,6 @@
       "name": "icon_bullet_point_block",
       "display_name": "",
       "schema": {
-        "size": {
-          "type": "option",
-          "options": [
-            {
-              "value": "none",
-              "name": "Zero margins"
-            },
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "lg",
-              "name": "LG"
-            },
-            {
-              "value": "xl",
-              "name": "XL"
-            }
-          ],
-          "pos": -1,
-          "display_name": "",
-          "description": "",
-          "default_value": "lg"
-        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
@@ -1486,6 +1521,41 @@
           "required": true,
           "pos": 3,
           "translatable": false
+        },
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": 4,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
+        "tab-723f24d9-a8f0-4406-a219-f62eb1ddcf9e": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["size", "color", "extra_styling"],
+          "pos": 5
+        },
+        "extra_styling": {
+          "type": "text",
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         }
       },
       "image": null,
@@ -1591,6 +1661,16 @@
         "caption_shadow": {
           "type": "boolean",
           "pos": 2
+        },
+        "tab-9266977a-879b-4499-9cef-2e7948d2ca8b": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["extra_styling"],
+          "pos": 0
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         }
       },
       "image": null,
@@ -1649,31 +1729,6 @@
       "name": "image_multi_text_block",
       "display_name": "",
       "schema": {
-        "size": {
-          "type": "option",
-          "options": [
-            {
-              "value": "none",
-              "name": "Zero margins"
-            },
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "lg",
-              "name": "LG"
-            },
-            {
-              "value": "xl",
-              "name": "XL"
-            }
-          ],
-          "pos": -1,
-          "display_name": "",
-          "description": "",
-          "default_value": "lg"
-        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
@@ -1710,6 +1765,42 @@
           "maximum": "3",
           "required": true,
           "pos": 3
+        },
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": 4,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
+        "tab-6cc65e03-8553-4f3c-9e33-635661065b3a": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["size", "color", "extra_styling"],
+          "pos": 5
+        },
+        "extra_styling": {
+          "type": "text",
+          "display_name": "",
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         }
       },
       "image": null,
@@ -1726,11 +1817,223 @@
       "name": "image_text_block",
       "display_name": "",
       "schema": {
-        "animate": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "required": true,
+          "pos": 0
+        },
+        "title_size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            }
+          ],
+          "description": "",
+          "default_value": "sm",
+          "pos": 1
+        },
+        "title": {
+          "type": "text",
+          "required": true,
+          "default_value": "Default Text",
+          "pos": 2,
+          "translatable": true
+        },
+        "title_color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 3
+        },
+        "paragraph": {
+          "type": "custom",
+          "required": true,
+          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
+          "pos": 4,
+          "field_type": "markdown-html",
+          "options": [],
+          "translatable": true
+        },
+        "text_position": {
+          "type": "option",
+          "options": [
+            {
+              "value": "right",
+              "name": "Right"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "left",
+              "name": "Left"
+            }
+          ],
+          "default_value": "left",
+          "pos": 5,
+          "required": true
+        },
+        "text_position_mobile": {
+          "type": "option",
+          "options": [
+            {
+              "value": "right",
+              "name": "Right"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "left",
+              "name": "Left"
+            }
+          ],
+          "default_value": "left",
+          "pos": 6
+        },
+        "image": {
+          "type": "image",
+          "required": false,
+          "pos": 7
+        },
+        "use_image_link": {
           "type": "boolean",
-          "pos": 0,
-          "description": "Whether to animate the section on page load",
-          "display_name": ""
+          "pos": 8,
+          "translatable": true
+        },
+        "image_link": {
+          "type": "multilink",
+          "translatable": true,
+          "pos": 9
+        },
+        "background_image": {
+          "type": "image",
+          "required": false,
+          "pos": 10
+        },
+        "button_title": {
+          "type": "text",
+          "required": true,
+          "default_value": "Default Text",
+          "pos": 11,
+          "translatable": true
+        },
+        "button_type": {
+          "type": "option",
+          "options": [
+            {
+              "value": "filled",
+              "name": "Filled"
+            },
+            {
+              "value": "outlined",
+              "name": "Outlined"
+            },
+            {
+              "value": "plain",
+              "name": "Plain"
+            }
+          ],
+          "required": true,
+          "default_value": "filled",
+          "pos": 12
+        },
+        "button_branch_link": {
+          "type": "boolean",
+          "description": "Create a branch link instead of the link field",
+          "pos": 13,
+          "translatable": true
+        },
+        "button_link": {
+          "type": "multilink",
+          "description": "",
+          "display_name": "",
+          "required": true,
+          "default_value": "",
+          "pos": 14,
+          "translatable": true
+        },
+        "media_position": {
+          "type": "option",
+          "options": [
+            {
+              "value": "top",
+              "name": "Top"
+            },
+            {
+              "value": "bottom",
+              "name": "Bottom"
+            }
+          ],
+          "required": true,
+          "default_value": "top",
+          "pos": 15
+        },
+        "show_button": {
+          "type": "boolean",
+          "required": false,
+          "default_value": "true",
+          "pos": 16
+        },
+        "button_color": {
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "type": "custom",
+          "pos": 17
+        },
+        "button_size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "md",
+              "name": "MD"
+            }
+          ],
+          "pos": 18
+        },
+        "button_weight": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "normal",
+              "name": "Normal"
+            },
+            {
+              "value": "bold",
+              "name": "Bold"
+            }
+          ],
+          "pos": 19
+        },
+        "button_position_mobile": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "above",
+              "name": "Above media"
+            },
+            {
+              "value": "below",
+              "name": "Below media"
+            }
+          ],
+          "pos": 20
         },
         "size": {
           "type": "option",
@@ -1755,225 +2058,25 @@
             }
           ],
           "default_value": "lg",
-          "pos": 1
-        },
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "required": true,
-          "pos": 2
-        },
-        "title_size": {
-          "type": "option",
-          "options": [
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "lg",
-              "name": "LG"
-            }
-          ],
-          "description": "",
-          "default_value": "sm",
-          "pos": 3
-        },
-        "title": {
-          "type": "text",
-          "required": true,
-          "default_value": "Default Text",
-          "pos": 4,
-          "translatable": true
-        },
-        "title_color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 5
-        },
-        "paragraph": {
-          "type": "custom",
-          "required": true,
-          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
-          "pos": 6,
-          "field_type": "markdown-html",
-          "options": [],
-          "translatable": true
-        },
-        "text_position": {
-          "type": "option",
-          "options": [
-            {
-              "value": "right",
-              "name": "Right"
-            },
-            {
-              "value": "center",
-              "name": "Center"
-            },
-            {
-              "value": "left",
-              "name": "Left"
-            }
-          ],
-          "default_value": "left",
-          "pos": 7,
-          "required": true
-        },
-        "text_position_mobile": {
-          "type": "option",
-          "options": [
-            {
-              "value": "right",
-              "name": "Right"
-            },
-            {
-              "value": "center",
-              "name": "Center"
-            },
-            {
-              "value": "left",
-              "name": "Left"
-            }
-          ],
-          "default_value": "left",
-          "pos": 8
-        },
-        "image": {
-          "type": "image",
-          "required": false,
-          "pos": 9
-        },
-        "use_image_link": {
-          "type": "boolean",
-          "pos": 10,
-          "translatable": true
-        },
-        "image_link": {
-          "type": "multilink",
-          "translatable": true,
-          "pos": 11
-        },
-        "background_image": {
-          "type": "image",
-          "required": false,
-          "pos": 12
-        },
-        "button_title": {
-          "type": "text",
-          "required": true,
-          "default_value": "Default Text",
-          "pos": 13,
-          "translatable": true
-        },
-        "button_type": {
-          "type": "option",
-          "options": [
-            {
-              "value": "filled",
-              "name": "Filled"
-            },
-            {
-              "value": "outlined",
-              "name": "Outlined"
-            },
-            {
-              "value": "plain",
-              "name": "Plain"
-            }
-          ],
-          "required": true,
-          "default_value": "filled",
-          "pos": 14
-        },
-        "button_branch_link": {
-          "type": "boolean",
-          "description": "Create a branch link instead of the link field",
-          "pos": 15,
-          "translatable": true
-        },
-        "button_link": {
-          "type": "multilink",
-          "description": "",
-          "display_name": "",
-          "required": true,
-          "default_value": "",
-          "pos": 16,
-          "translatable": true
-        },
-        "media_position": {
-          "type": "option",
-          "options": [
-            {
-              "value": "top",
-              "name": "Top"
-            },
-            {
-              "value": "bottom",
-              "name": "Bottom"
-            }
-          ],
-          "required": true,
-          "default_value": "top",
-          "pos": 17
-        },
-        "show_button": {
-          "type": "boolean",
-          "required": false,
-          "default_value": "true",
-          "pos": 18
-        },
-        "button_color": {
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "type": "custom",
-          "pos": 19
-        },
-        "button_size": {
-          "type": "option",
-          "options": [
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "md",
-              "name": "MD"
-            }
-          ],
-          "pos": 20
-        },
-        "button_weight": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "value": "normal",
-              "name": "Normal"
-            },
-            {
-              "value": "bold",
-              "name": "Bold"
-            }
-          ],
           "pos": 21
         },
-        "button_position_mobile": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "value": "above",
-              "name": "Above media"
-            },
-            {
-              "value": "below",
-              "name": "Below media"
-            }
-          ],
-          "pos": 22
+        "animate": {
+          "type": "boolean",
+          "pos": 22,
+          "description": "Whether to animate the section on page load",
+          "display_name": ""
+        },
+        "tab-0bf0bbf5-e344-409c-945f-862a2b060b08": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["animate", "size", "color", "extra_styling"],
+          "pos": 23
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "display_name": "",
+          "default_value": "",
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         }
       },
       "image": null,
@@ -2268,6 +2371,25 @@
       "name": "plain_text_block",
       "display_name": null,
       "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "title": {
+          "type": "text",
+          "pos": 1,
+          "translatable": true
+        },
+        "content": {
+          "type": "custom",
+          "required": true,
+          "field_type": "markdown-html",
+          "options": [],
+          "pos": 2,
+          "translatable": true
+        },
         "size": {
           "type": "option",
           "options": [
@@ -2288,29 +2410,20 @@
               "name": "XL"
             }
           ],
-          "pos": -1,
+          "pos": 3,
           "display_name": "",
           "description": "",
           "default_value": "lg"
         },
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 0
+        "tab-3248f38f-92e2-4fe4-8fa4-c4217afe36f8": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["size", "color", "extra_styling"],
+          "pos": 4
         },
-        "title": {
-          "type": "text",
-          "pos": 1,
-          "translatable": true
-        },
-        "content": {
-          "type": "custom",
-          "required": true,
-          "field_type": "markdown-html",
-          "options": [],
-          "pos": 2,
-          "translatable": true
+        "extra_styling": {
+          "type": "textarea",
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         }
       },
       "image": null,
@@ -2527,6 +2640,17 @@
           "type": "image",
           "required": false,
           "pos": 5
+        },
+        "tab-9f1f4705-acad-4e32-8ff8-e85793279442": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["color", "extra_styling"],
+          "pos": 6
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "regex": "",
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         }
       },
       "image": null,
@@ -2671,7 +2795,7 @@
               "name": "XL"
             }
           ],
-          "pos": -1,
+          "pos": 0,
           "display_name": "",
           "description": "",
           "default_value": "lg"
@@ -2681,11 +2805,11 @@
           "field_type": "hedvig-limited-color-picker",
           "options": [],
           "required": true,
-          "pos": 0
+          "pos": 1
         },
         "title": {
           "type": "text",
-          "pos": 1,
+          "pos": 2,
           "required": true,
           "default_value": "Default Text",
           "translatable": true
@@ -2704,14 +2828,14 @@
           ],
           "required": true,
           "default_value": "left",
-          "pos": 2
+          "pos": 3
         },
         "button_title": {
           "type": "text",
           "required": true,
           "regex": "",
           "default_value": "",
-          "pos": 3,
+          "pos": 4,
           "display_name": "",
           "translatable": true
         },
@@ -2733,12 +2857,12 @@
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 4
+          "pos": 5
         },
         "button_branch_link": {
           "type": "boolean",
           "description": "Create a branch link instead of the link field",
-          "pos": 5,
+          "pos": 6,
           "translatable": true
         },
         "button_link": {
@@ -2747,13 +2871,14 @@
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 6,
+          "pos": 7,
           "translatable": true
         },
         "button_color": {
           "field_type": "hedvig-limited-color-picker",
           "options": [],
-          "type": "custom"
+          "type": "custom",
+          "pos": 8
         },
         "button_weight": {
           "type": "option",
@@ -2767,7 +2892,18 @@
               "value": "bold",
               "name": "Bold"
             }
-          ]
+          ],
+          "pos": 9
+        },
+        "tab-83bb3ee4-2df8-432e-a7c0-ce386f556ae7": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["size", "color", "extra_styling"],
+          "pos": 10
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         }
       },
       "image": null,
@@ -2804,17 +2940,10 @@
               "name": "XL"
             }
           ],
-          "pos": -1,
+          "pos": 0,
           "display_name": "",
           "description": "",
           "default_value": "lg"
-        },
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "required": true,
-          "pos": 0
         },
         "title": {
           "type": "text",
@@ -2855,6 +2984,23 @@
           "required": true,
           "default_value": "center",
           "pos": 3
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "required": true,
+          "pos": 4
+        },
+        "tab-ea6c2992-875d-4817-8d29-8e0a15cf272a": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["color", "size", "extra_styling"],
+          "pos": 5
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         }
       },
       "image": null,
@@ -2926,13 +3072,6 @@
             }
           ],
           "default_value": "lg",
-          "pos": -1
-        },
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "required": true,
           "pos": 0
         },
         "title_size": {
@@ -2976,13 +3115,13 @@
         "background_image": {
           "type": "image",
           "required": false,
-          "pos": 10
+          "pos": 5
         },
         "button_title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 11,
+          "pos": 6,
           "translatable": true
         },
         "button_type": {
@@ -3003,12 +3142,12 @@
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 12
+          "pos": 7
         },
         "button_branch_link": {
           "type": "boolean",
           "description": "Create a branch link instead of the link field",
-          "pos": 13,
+          "pos": 8,
           "translatable": true
         },
         "button_link": {
@@ -3017,20 +3156,20 @@
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 14,
+          "pos": 9,
           "translatable": true
         },
         "show_button": {
           "type": "boolean",
           "required": false,
           "default_value": "true",
-          "pos": 16
+          "pos": 10
         },
         "button_color": {
           "field_type": "hedvig-limited-color-picker",
           "options": [],
           "type": "custom",
-          "pos": 17
+          "pos": 11
         },
         "button_size": {
           "type": "option",
@@ -3044,7 +3183,7 @@
               "name": "MD"
             }
           ],
-          "pos": 18
+          "pos": 12
         },
         "button_weight": {
           "type": "option",
@@ -3059,7 +3198,24 @@
               "name": "Bold"
             }
           ],
-          "pos": 19
+          "pos": 13
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "required": true,
+          "pos": 14
+        },
+        "tab-be5b90ba-5e07-4a33-91f7-c7d1a972894f": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["color", "size", "extra_styling"],
+          "pos": 15
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         }
       },
       "image": null,
@@ -3096,16 +3252,10 @@
               "name": "XL"
             }
           ],
-          "pos": -1,
+          "pos": 0,
           "display_name": "",
           "description": "",
           "default_value": "lg"
-        },
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 0
         },
         "title": {
           "type": "text",
@@ -3131,6 +3281,22 @@
           "pos": 4,
           "restrict_components": true,
           "component_whitelist": ["trustpilot_card_item"]
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-limited-color-picker",
+          "options": [],
+          "pos": 5
+        },
+        "tab-b3a939c0-1ab5-4380-bc11-2bb6c0278899": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["color", "size", "extra_styling"],
+          "pos": 6
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         }
       },
       "image": null,

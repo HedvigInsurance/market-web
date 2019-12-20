@@ -225,6 +225,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
 
 export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   animate,
+  extra_styling,
   title_size,
   title,
   title_color,
@@ -259,6 +260,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
       color={color?.color}
       size={size}
       backgroundImage={background_type !== 'video' ? background_image : 'none'}
+      extraStyling={extra_styling}
     >
       {background_type === 'video' &&
         background_video_file_location &&

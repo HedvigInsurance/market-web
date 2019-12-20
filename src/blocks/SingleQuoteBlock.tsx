@@ -63,12 +63,13 @@ export interface SingleQuoteBlockProps extends BaseBlockProps {
 
 export const SingleQuoteBlock: React.FunctionComponent<SingleQuoteBlockProps> = ({
   color,
+  extra_styling,
   quote,
   author,
   is_long_quote,
   text_position,
 }) => (
-  <SectionWrapper color={color && color.color}>
+  <SectionWrapper color={color && color.color} extraStyling={extra_styling}>
     <ContentWrapper>
       <Wrapper textPosition={text_position}>
         <QuoteWrapper textPosition={text_position} wide={is_long_quote}>
