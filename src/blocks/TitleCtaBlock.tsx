@@ -75,19 +75,24 @@ interface TitleCtaBlockInterface extends BaseBlockProps {
 }
 
 export const TitleCtaBlock: React.FunctionComponent<TitleCtaBlockInterface> = ({
+  color,
+  size,
+  extra_styling,
   title,
   text_position,
   button_title,
   button_type,
   button_branch_link,
   button_link,
-  color,
   button_color,
   button_weight,
-  size,
 }) => {
   return (
-    <SectionWrapper color={color && color.color} size={size}>
+    <SectionWrapper
+      color={color && color.color}
+      size={size}
+      extraStyling={extra_styling}
+    >
       <FlexboxContentWrapperComponent contentAlignment={text_position}>
         <TitleComponent alignment={text_position}>{title}</TitleComponent>
         {button_branch_link ? (

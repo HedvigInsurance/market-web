@@ -95,12 +95,16 @@ type FooterBlockProps = BaseBlockProps
 
 export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
   color,
+  extra_styling,
 }) => (
   <GlobalStoryContainer>
     {({ globalStory }) => (
       <ContextContainer>
         {(context) => (
-          <SectionWrapper color={color && color.color}>
+          <SectionWrapper
+            color={color && color.color}
+            extraStyling={extra_styling}
+          >
             <ContentWrapper>
               <FooterInnerWrapper>
                 <WordmarkFlagWrapper>
