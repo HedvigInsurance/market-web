@@ -5,6 +5,7 @@ import * as React from 'react'
 import MediaQuery from 'react-responsive'
 import {
   CONTENT_MAX_WIDTH,
+  ContentWrapper,
   getColorStyles,
   SectionWrapper,
 } from '../../components/blockHelpers'
@@ -14,7 +15,8 @@ import { TrustpilotRatingItem } from './TrustpilotRatingItem'
 
 const CardWrapper = styled('div')({
   ...CONTENT_MAX_WIDTH,
-  margin: '0 auto 2em auto',
+  margin: '0 auto',
+  paddingBottom: '2rem',
   width: '100vw',
   display: 'flex',
   justifyContent: 'center',
@@ -41,6 +43,7 @@ const TrustpilotWrapper = styled(SectionWrapper)({
 
 const Title = styled('h2')<{ color: string }>(({ color }) => ({
   color,
+  margin: 0,
 }))
 
 export interface TrustpilotRatingItemProps {
@@ -79,24 +82,26 @@ export const TrustpilotBlock: React.FunctionComponent<TrustpilotBlockProps> = ({
     size={size}
     extraStyling={extra_styling}
   >
-    <Title
-      color={
-        title_color && title_color.color !== 'standard'
-          ? getColorStyles(title_color.color).background
-          : color
-          ? getColorStyles(color.color).color
-          : 'standard'
-      }
-    >
-      {title}
-    </Title>
-    <RatingsWrapper>
-      {ratings.map((rating) => {
-        return Number(rating.rating) ? (
-          <TrustpilotRatingItem key={rating._uid} {...rating} />
-        ) : null
-      })}
-    </RatingsWrapper>
+    <ContentWrapper>
+      <Title
+        color={
+          title_color && title_color.color !== 'standard'
+            ? getColorStyles(title_color.color).background
+            : color
+            ? getColorStyles(color.color).color
+            : 'standard'
+        }
+      >
+        {title}
+      </Title>
+      <RatingsWrapper>
+        {ratings.map((rating) => {
+          return Number(rating.rating) ? (
+            <TrustpilotRatingItem key={rating._uid} {...rating} />
+          ) : null
+        })}
+      </RatingsWrapper>
+    </ContentWrapper>
     <CardWrapper id="trustpilot_cards">
       <MediaQuery query="(max-width: 700px)">
         <Swiper
