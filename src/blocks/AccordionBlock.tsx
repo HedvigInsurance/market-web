@@ -122,12 +122,17 @@ interface AccordionBlockProps extends BaseBlockProps {
 }
 
 export const AccordionBlock: React.FunctionComponent<AccordionBlockProps> = ({
-  title,
-  accordions,
+  extra_styling,
   color,
   size,
+  title,
+  accordions,
 }) => (
-  <SectionWrapper color={color && color.color} size={size}>
+  <SectionWrapper
+    color={color && color.color}
+    size={size}
+    extraStyling={extra_styling}
+  >
     <SplitContentWrapper>
       <Col>
         <h2>{title}</h2>

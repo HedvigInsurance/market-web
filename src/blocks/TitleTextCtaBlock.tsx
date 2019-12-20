@@ -80,6 +80,9 @@ interface TitleTextCtaBlockProps extends BaseBlockProps {
 }
 
 export const TitleTextCtaBlock: React.FunctionComponent<TitleTextCtaBlockProps> = ({
+  color,
+  size,
+  extra_styling,
   title_size,
   title,
   title_color,
@@ -90,8 +93,6 @@ export const TitleTextCtaBlock: React.FunctionComponent<TitleTextCtaBlockProps> 
   button_link,
   show_button,
   background_image,
-  color,
-  size,
   button_color,
   button_size,
   button_weight,
@@ -101,6 +102,7 @@ export const TitleTextCtaBlock: React.FunctionComponent<TitleTextCtaBlockProps> 
       color={color && color.color}
       size={size}
       backgroundImage={background_image}
+      extraStyling={extra_styling}
     >
       <AlignableContentWrapper>
         <Title
