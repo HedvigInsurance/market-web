@@ -66,14 +66,19 @@ interface TrustpilotBlockProps extends BaseBlockProps {
 }
 
 export const TrustpilotBlock: React.FunctionComponent<TrustpilotBlockProps> = ({
-  cards,
   color,
+  size,
+  extra_styling,
+  cards,
   ratings,
   title,
   title_color,
-  size,
 }) => (
-  <TrustpilotWrapper color={color && color.color} size={size}>
+  <TrustpilotWrapper
+    color={color && color.color}
+    size={size}
+    extraStyling={extra_styling}
+  >
     <Title
       color={
         title_color && title_color.color !== 'standard'

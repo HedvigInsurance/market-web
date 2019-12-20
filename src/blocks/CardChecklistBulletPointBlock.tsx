@@ -178,18 +178,23 @@ interface BulletPointsBlockProps extends BaseBlockProps {
 }
 
 export const CardChecklistBulletPointBlock: React.FunctionComponent<BulletPointsBlockProps> = ({
-  animate,
   color,
+  size,
+  extra_styling,
+  animate,
   title,
   title_position,
   bullet_points_position,
   bullet_points,
-  size,
 }) => {
   const [isVisible, setIsVisible] = React.useState(false)
 
   return (
-    <BulletPointSectionWrapper color={color && color.color} size={size}>
+    <BulletPointSectionWrapper
+      color={color && color.color}
+      size={size}
+      extraStyling={extra_styling}
+    >
       <ContentWrapper>
         {title && <Title position={title_position}>{title}</Title>}
         <ReactVisibilitySensor

@@ -27,11 +27,16 @@ export interface PlainTextBlockProps extends BaseBlockProps {
 
 export const PlainTextBlock: React.FunctionComponent<PlainTextBlockProps> = ({
   color,
+  size,
+  extra_styling,
   title,
   content,
-  size,
 }) => (
-  <PlainTextSectionWrapper color={color && color.color} size={size}>
+  <PlainTextSectionWrapper
+    color={color && color.color}
+    size={size}
+    extraStyling={extra_styling}
+  >
     <ContentWrapper>
       <TitleWrapper>
         <h1>{title}</h1>

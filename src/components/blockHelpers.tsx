@@ -197,8 +197,9 @@ interface SectionProps {
   color?: colorComponentColors
   size?: SectionSize
   backgroundImage?: string
+  extraStyling?: string
 }
-export const SectionWrapperComponent = styled('section')<SectionProps>(
+const SectionWrapperComponentUnstyled = styled('section')<SectionProps>(
   ({ color = 'standard', size = 'lg' }) => ({
     position: 'relative',
     transition: 'background 300ms',
@@ -206,6 +207,11 @@ export const SectionWrapperComponent = styled('section')<SectionProps>(
     color: getColorStyles(color).color,
   }),
 )
+export const SectionWrapperComponent = styled(SectionWrapperComponentUnstyled)<
+  SectionProps
+>`
+  ${({ extraStyling }) => String(extraStyling)}
+`
 const fadeIn = keyframes({
   from: { opacity: 0 },
   to: { opacity: 1 },

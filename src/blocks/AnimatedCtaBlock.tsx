@@ -112,11 +112,12 @@ const animationMap: AnimationMapProps = {
 }
 
 export const AnimatedCtaBlock: React.FunctionComponent<AnimatedCtaBlockProps> = ({
+  extra_styling,
   color,
   title,
   bullet_points,
 }) => (
-  <SectionWrapper color={color && color.color}>
+  <SectionWrapper color={color && color.color} extraStyling={extra_styling}>
     <ContentWrapper>
       <AnimatedCtaWrapper>
         <SectionTitle>{title}</SectionTitle>

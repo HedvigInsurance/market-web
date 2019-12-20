@@ -79,11 +79,11 @@ const actions: ActionMap<State, Actions> = {
 }
 
 export const HomeHeroBlock: React.FunctionComponent<HeroVideoBlockProps> = ({
+  color,
   title,
   second_title,
   title_color,
   subtitle,
-  color,
   video_file_location,
   mobile_video_file_location,
   desktop_background_image,

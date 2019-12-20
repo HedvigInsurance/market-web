@@ -55,6 +55,7 @@ export interface BaseBlockProps {
   component: string
   color?: ColorComponent
   size?: SectionSize
+  extra_styling?: string
 }
 
 export interface MarkdownHtmlComponent {
