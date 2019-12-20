@@ -33,17 +33,19 @@ export const globalStyles = () => css`
   h1 {
     margin-top: 0;
     font-size: 5rem;
-    font-weight: 900;
+    font-weight: 400;
   }
   h2 {
     font-size: 3.5rem;
-    font-weight: 600;
+    font-weight: 400;
   }
   h3 {
     font-size: 2.5rem;
+    font-weight: 400;
   }
   h4 {
     font-size: 1.25rem;
+    font-weight: 400;
   }
 
   @media (max-width: 800px) {
