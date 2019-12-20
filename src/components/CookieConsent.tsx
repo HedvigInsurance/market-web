@@ -43,6 +43,7 @@ const CloseButton = styled('button')({
   justifyContent: 'center',
   width: '3rem',
   height: '3rem',
+  padding: 0,
   paddingBottom: '0.4rem',
   fontSize: '2rem',
   background: 'transparent',
@@ -51,6 +52,7 @@ const CloseButton = styled('button')({
   cursor: 'pointer',
   borderRadius: '100%',
   flexShrink: 0,
+  flexGrow: 0,
   '&:hover, &:focus': {
     outline: 'none',
     boxShadow: 'none',
