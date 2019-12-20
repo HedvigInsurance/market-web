@@ -20,7 +20,7 @@ const OuterWrapper = styled('div')<{ visible: boolean; closing: boolean }>(
     transition: 'opacity 300ms, transform 300ms',
     borderTop: '1px solid ' + colorsV2.lightgray,
     boxShadow: '-5px 0 5px rgba(50, 50, 50, 0.2)',
-    zIndex: 999,
+    zIndex: 9999999999,
   }),
 )
 const InnerWrapper = styled('div')({
