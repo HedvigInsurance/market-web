@@ -92,7 +92,7 @@ const Menu = styled('ul')<{ open: boolean }>(({ open }) => ({
     transition: `right ${TOGGLE_TRANSITION_TIME}ms`,
     color: colors.OFF_BLACK_DARK,
     overflow: 'scroll',
-    '-webkit-overflow-scrolling': 'touch',
+    WebkitOverflowScrolling: 'touch',
   },
 }))
 

@@ -18,3 +18,16 @@ export const forceHost = ({
 
   await next()
 }
+
+export const redirectAcceptLanguage: Middleware = async (ctx, next) => {
+  if (ctx.path !== '/' || ctx.query['lang-redirect'] === 'disable') {
+    return next()
+  }
+
+  if (!ctx.acceptsLanguages('sv')) {
+    ctx.redirect('/en')
+    return
+  }
+
+  return next()
+}
