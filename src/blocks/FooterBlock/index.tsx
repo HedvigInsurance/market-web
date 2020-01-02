@@ -111,7 +111,7 @@ export const FooterBlock: React.FunctionComponent<FooterBlockProps> = ({
                   <HedvigWordmark height={30} />
 
                   <LangSwitchersContainer>
-                    <LangSwitcher href="/">
+                    <LangSwitcher href="/?lang-redirect=disable">
                       <SweFlag />
                     </LangSwitcher>
                     <LangSwitcher href="/en">
