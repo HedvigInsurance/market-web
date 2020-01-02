@@ -20,7 +20,12 @@ export const forceHost = ({
 }
 
 export const redirectAcceptLanguage: Middleware = async (ctx, next) => {
-  if (ctx.path !== '/' || ctx.query['lang-redirect'] === 'disable') {
+  if (ctx.query['lang-redirect'] === 'disable') {
+    ctx.cookies.set('_hvg_lang_redirect', 'disable', { path: '/' })
+    return next()
+  }
+
+  if (ctx.path !== '/' || ctx.cookies.get('_hvg_lang_redirect') === 'disable') {
     return next()
   }
 
