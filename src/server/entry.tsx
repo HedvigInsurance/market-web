@@ -16,7 +16,7 @@ import {
   inCaseOfEmergency,
   savePartnershipCookie,
 } from './middlewares/enhancers'
-import { forceHost, redirectAcceptLanguage } from './middlewares/redirects'
+import { forceHost } from './middlewares/redirects'
 import {
   addBlogPostsToState,
   addTagBlogPostsToState,
@@ -83,7 +83,6 @@ const server = createKoaServer({
 if (config.forceHost) {
   server.router.use('/*', forceHost({ host: config.forceHost }))
 }
-server.router.use('/', redirectAcceptLanguage)
 server.router.use('/*', savePartnershipCookie)
 server.router.use('/*', removeTrailingSlashes<State>())
 redirects.forEach(([source, target, code]) => {
