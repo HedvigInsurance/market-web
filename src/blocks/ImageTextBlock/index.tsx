@@ -1,7 +1,9 @@
 import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
+import { motion, Variants } from 'framer-motion'
 import * as React from 'react'
 import MediaQuery from 'react-responsive'
+import VisibilitySensor from 'react-visibility-sensor'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { SectionSize } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
@@ -30,8 +32,6 @@ import {
   MarkdownHtmlComponent,
 } from '../BaseBlockProps'
 import { BackgroundVideo } from './BackgroundVideo'
-import { motion, Variants } from 'framer-motion'
-import VisibilitySensor from 'react-visibility-sensor'
 
 type TitleSize = 'sm' | 'lg'
 interface Animateable {
@@ -57,7 +57,6 @@ const Animator: React.FC<{ animation?: AnimationType }> = ({
   animation,
   children,
 }) => {
-  console.log(React.Children.count(children))
   const [initialized, setInitialized] = React.useState(false)
 
   return animation ? (
@@ -112,6 +111,7 @@ const fadeSlideIn = keyframes({
   from: { opacity: 0, transform: 'translateY(15%)' },
   to: { opacity: 1, transform: 'translateY(0)' },
 })
+
 const AnimatedAlignedButton = styled(AlignedButton)<
   Animateable & AlignedButtonProps
 >(({ animate }) => ({
