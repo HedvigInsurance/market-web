@@ -30,10 +30,64 @@ import {
   MarkdownHtmlComponent,
 } from '../BaseBlockProps'
 import { BackgroundVideo } from './BackgroundVideo'
+import { motion, Variants } from 'framer-motion'
+import VisibilitySensor from 'react-visibility-sensor'
 
 type TitleSize = 'sm' | 'lg'
 interface Animateable {
   animate?: boolean
+}
+
+type AnimationType = 'fadeInUp'
+
+const animationVariants: Record<AnimationType, Variants> = {
+  fadeInUp: {
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+    hidden: {
+      opacity: 0,
+      y: 16,
+    },
+  },
+}
+
+const Animator: React.FC<{ animation?: AnimationType }> = ({
+  animation,
+  children,
+}) => {
+  console.log(React.Children.count(children))
+  const [initialized, setInitialized] = React.useState(false)
+
+  return animation ? (
+    <VisibilitySensor
+      offset={{ bottom: 60 }}
+      partialVisibility
+      onChange={(isVisible) => {
+        if (isVisible) {
+          setInitialized(true)
+        }
+      }}
+    >
+      {({ isVisible }) => (
+        <>
+          {React.Children.map(children, (child) => {
+            return React.cloneElement(child as React.ReactElement<any>, {
+              animate: isVisible || initialized ? 'visible' : 'hidden',
+              transition: {
+                duration: 0.85,
+                delay: 0.25,
+              },
+              variants: animationVariants[animation],
+            })
+          })}
+        </>
+      )}
+    </VisibilitySensor>
+  ) : (
+    <>{children}</>
+  )
 }
 
 const AlignableContentWrapper = styled(ContentWrapper)<{
@@ -96,8 +150,8 @@ interface TitleProps {
   color: string
 }
 
-const Title = styled('h2')<TitleProps & Animateable>(
-  ({ size, displayorder, textPosition, alignment, color, animate }) => ({
+const Title = styled(motion.h2)<TitleProps>(
+  ({ size, displayorder, textPosition, alignment, color }) => ({
     margin: textPosition === 'center' ? 'auto' : undefined,
     fontSize: size === 'lg' ? '4.5rem' : '3.5rem',
     marginTop:
@@ -105,9 +159,6 @@ const Title = styled('h2')<TitleProps & Animateable>(
     width: '100%',
     color,
     maxWidth: textPosition === 'center' ? '40rem' : '31rem',
-    opacity: animate ? 0 : 1,
-    animation: animate ? fadeSlideIn + ' 500ms forwards' : undefined,
-    animationDelay: '1000ms',
 
     [TABLET_BP_DOWN]: {
       fontSize: size === 'lg' ? '2.75rem' : '2rem',
@@ -117,15 +168,12 @@ const Title = styled('h2')<TitleProps & Animateable>(
   }),
 )
 
-const Paragraph = styled('div')<{ textPosition: TextPosition } & Animateable>(
-  ({ textPosition, animate }) => ({
+const Paragraph = styled(motion.div)<{ textPosition: TextPosition }>(
+  ({ textPosition }) => ({
     margin: textPosition === 'center' ? 'auto' : undefined,
     fontSize: '1.125rem',
     marginTop: '1.5rem',
     maxWidth: textPosition === 'center' ? '40rem' : '31rem',
-    opacity: animate ? 0 : 1,
-    animation: animate ? fadeSlideIn + ' 500ms forwards' : undefined,
-    animationDelay: '1250ms',
 
     [TABLET_BP_DOWN]: {
       maxWidth: '100%',
@@ -136,9 +184,8 @@ const Paragraph = styled('div')<{ textPosition: TextPosition } & Animateable>(
 const Image = styled(DeferredImage)<{
   alignment: string
   displayorder: DisplayOrder
-  hasLink?: boolean
-}>(({ alignment, displayorder, hasLink }) => ({
-  width: hasLink ? '100%' : '40%',
+}>(({ alignment, displayorder }) => ({
+  width: '100%',
   display: 'block',
   order: alignment === 'center' && displayorder === 'top' ? -1 : 'initial',
   [MOBILE_BP_DOWN]: {
@@ -150,7 +197,7 @@ const Image = styled(DeferredImage)<{
   },
 }))
 
-const ImageLink = styled('a')<{ displayorder: DisplayOrder }>(
+const ImageWrapper = styled(motion.div)<{ displayorder: DisplayOrder }>(
   ({ displayorder }) => ({
     display: 'inline-block',
     width: '40%',
@@ -165,8 +212,9 @@ const ImageLink = styled('a')<{ displayorder: DisplayOrder }>(
     },
   }),
 )
+const ImageLink = ImageWrapper.withComponent(motion.a)
 
-const ImageVideoWrapper = styled('div')<{
+const ImageVideoWrapper = styled(motion.div)<{
   alignment: string
   displayorder: DisplayOrder
   hasLink?: boolean
@@ -279,29 +327,33 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
           textPosition={text_position}
           textPositionMobile={text_position_mobile}
         >
-          <Title
-            size={title_size}
-            displayorder={media_position}
-            alignment={text_position}
-            color={
-              title_color && title_color.color !== 'standard'
-                ? getColorStyles(title_color.color).background
-                : color
-                ? getColorStyles(color.color).color
-                : 'standard'
-            }
-            textPosition={text_position}
-            animate={animate}
-          >
-            {title}
-          </Title>
-          <Paragraph
-            dangerouslySetInnerHTML={{
-              __html: paragraph.html,
-            }}
-            textPosition={text_position}
-            animate={animate}
-          />
+          <Animator animation="fadeInUp">
+            <Title
+              size={title_size}
+              displayorder={media_position}
+              alignment={text_position}
+              color={
+                title_color && title_color.color !== 'standard'
+                  ? getColorStyles(title_color.color).background
+                  : color
+                  ? getColorStyles(color.color).color
+                  : 'standard'
+              }
+              textPosition={text_position}
+            >
+              {title}
+            </Title>
+          </Animator>
+
+          <Animator animation="fadeInUp">
+            <Paragraph
+              dangerouslySetInnerHTML={{
+                __html: paragraph.html,
+              }}
+              textPosition={text_position}
+            />
+          </Animator>
+
           <MediaQuery query="(min-width: 801px)">
             <AnimatedAlignedButton
               title={button_title}
@@ -331,35 +383,59 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
             animate={animate}
           />
         </MediaQuery>
+
         {image && image_type !== 'video' ? (
           use_image_link ? (
-            <ImageLink
-              href={getStoryblokLinkUrl(image_link)}
-              displayorder={media_position}
-            >
-              <Image
-                alignment={text_position}
+            <Animator animation="fadeInUp">
+              <ImageLink
+                href={getStoryblokLinkUrl(image_link)}
                 displayorder={media_position}
-                src={getStoryblokImage(image)}
-                hasLink={use_image_link}
-              />
-            </ImageLink>
+              >
+                <Image
+                  alignment={text_position}
+                  displayorder={media_position}
+                  src={getStoryblokImage(image)}
+                />
+              </ImageLink>
+            </Animator>
           ) : (
-            <Image
-              alignment={text_position}
-              displayorder={media_position}
-              src={getStoryblokImage(image)}
-            />
+            <Animator animation="fadeInUp">
+              <ImageWrapper displayorder={media_position}>
+                <Image
+                  alignment={text_position}
+                  displayorder={media_position}
+                  src={getStoryblokImage(image)}
+                />
+              </ImageWrapper>
+            </Animator>
           )
         ) : (
           image_type === 'video' &&
           image_video_file_location &&
           mobile_image_video_file_location &&
           (use_image_link ? (
-            <ImageLink
-              href={getStoryblokLinkUrl(image_link)}
-              displayorder={media_position}
-            >
+            <Animator animation="fadeInUp">
+              <ImageLink
+                href={getStoryblokLinkUrl(image_link)}
+                displayorder={media_position}
+              >
+                <ImageVideoWrapper
+                  alignment={text_position}
+                  displayorder={media_position}
+                  hasLink={use_image_link}
+                >
+                  <MediaQuery query="(max-width: 700px)">
+                    <ImageVideo src={mobile_image_video_file_location} />
+                  </MediaQuery>
+
+                  <MediaQuery query="(min-width: 701px)">
+                    <ImageVideo src={image_video_file_location} />
+                  </MediaQuery>
+                </ImageVideoWrapper>
+              </ImageLink>
+            </Animator>
+          ) : (
+            <Animator animation="fadeInUp">
               <ImageVideoWrapper
                 alignment={text_position}
                 displayorder={media_position}
@@ -373,21 +449,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
                   <ImageVideo src={image_video_file_location} />
                 </MediaQuery>
               </ImageVideoWrapper>
-            </ImageLink>
-          ) : (
-            <ImageVideoWrapper
-              alignment={text_position}
-              displayorder={media_position}
-              hasLink={use_image_link}
-            >
-              <MediaQuery query="(max-width: 700px)">
-                <ImageVideo src={mobile_image_video_file_location} />
-              </MediaQuery>
-
-              <MediaQuery query="(min-width: 701px)">
-                <ImageVideo src={image_video_file_location} />
-              </MediaQuery>
-            </ImageVideoWrapper>
+            </Animator>
           ))
         )}
       </AlignableContentWrapper>

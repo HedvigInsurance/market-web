@@ -7,8 +7,8 @@
   "author": "Johan Palmfjord <johan.palmfjord@hedvig.com>",
   "types": "./types.d.ts",
   "engines": {
-    "node": "10.14.1",
-    "yarn": "1.19.2"
+    "node": "11.2.0",
+    "yarn": "1.12.3"
   },
   "dependencies": {
     "@emotion/core": "^10.0.22",
@@ -34,6 +34,7 @@
     "emotion": "^10.0.23",
     "emotion-server": "^10.0.17",
     "es6-promise": "^4.2.5",
+    "framer-motion": "^1.8.4",
     "ioredis": "^4.2.0",
     "is-ios": "^1.0.0",
     "js-cookie": "^2.2.0",
