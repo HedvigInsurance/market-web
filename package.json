@@ -7,8 +7,8 @@
   "author": "Johan Palmfjord <johan.palmfjord@hedvig.com>",
   "types": "./types.d.ts",
   "engines": {
-    "node": "10.14.1",
-    "yarn": "1.19.2"
+    "node": "10.19.0",
+    "yarn": "1.22.0"
   },
   "dependencies": {
     "@emotion/core": "^10.0.22",
