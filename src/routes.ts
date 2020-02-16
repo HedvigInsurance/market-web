@@ -61,4 +61,105 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
     '/blog/hur-tarar-gor-oss-starkare-som-bolag',
     301,
   ],
+
+  // Terms and conditions - hyresratt and bostadsratt
+  [
+    '/villkor/villkor/hyresratt.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-hyresratt-2019-01-v2.pdf',
+    302,
+  ],
+  [
+    '/en/terms/terms/tenants.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-tenants-2019-05.pdf',
+    302,
+  ],
+  [
+    '/villkor/villkor/bostadsratt.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-bostadsratt-2019-01-v2.pdf',
+    302,
+  ],
+  [
+    '/en/terms/terms/tenant-owners.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-tenant-owners-2019-05.pdf',
+    302,
+  ],
+  [
+    '/villkor/forkopsinformation/hyresratt.pdf',
+    'https://cdn.hedvig.com/info/forkopsinformation-hyresratt-2018-02.pdf',
+    302,
+  ],
+  [
+    '/villkor/forkopsinformation/bostadsratt.pdf',
+    'https://cdn.hedvig.com/info/forkopsinformation-bostadsratt-2018-02.pdf',
+    302,
+  ],
+  [
+    '/villkor/forkopsinformation-eu/hyresratt.pdf',
+    'https://cdn.hedvig.com/info/forkopsinformation-hyresratt-eustandard.pdf',
+    302,
+  ],
+  [
+    '/villkor/forkopsinformation-eu/bostadsratt.pdf',
+    'https://cdn.hedvig.com/info/forkopsinformation-bostadsratt-eustandard.pdf',
+    302,
+  ],
+
+  // Terms and conditions - students
+  [
+    '/villkor/villkor/hyresratt-student.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-student-hyresratt-2019-01-v2.pdf',
+    302,
+  ],
+  [
+    '/en/terms/terms/tenant-student.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-student-tenant-2019-05.pdf',
+    302,
+  ],
+  [
+    '/villkor/villkor/bostadsratt-student.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-student-bostadsratt-2019-01-v2.pdf',
+    302,
+  ],
+  [
+    '/en/terms/terms/tenant-owner-student.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-student-tenant-owners-2019-05.pdf',
+    302,
+  ],
+  [
+    '/villkor/forkopsinformation/hyresratt-student.pdf',
+    'https://cdn.hedvig.com/info/forkopsinformation-student-hyresratt-2018-08.pdf',
+    302,
+  ],
+  [
+    '/villkor/forkopsinformation/bostadsratt-student.pdf',
+    'https://cdn.hedvig.com/info/forkopsinformation-student-bostadsratt-2018-08.pdf',
+    302,
+  ],
+  [
+    '/villkor/forkopsinformation-eu/hyresratt-student.pdf',
+    'https://cdn.hedvig.com/info/forkopsinformation-student-hyresratt-eustandard.pdf',
+    302,
+  ],
+  [
+    '/villkor/forkopsinformation-eu/bostadsratt-student.pdf',
+    'https://cdn.hedvig.com/info/forkopsinformation-student-bostadsratt-2018-eustandard.pdf',
+    302,
+  ],
+
+  // Terms and conditions - house
+  [
+    '/villkor/villkor/hus-villa.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-villa-2019-10-v1.pdf',
+    302,
+  ],
+  [
+    '/villkor/forkopsinformation/hus-villa.pdf',
+    'https://cdn.hedvig.com/info/forkopsinformation-villa-2019-10.pdf',
+    302,
+  ],
+  [
+    '/villkor/forkopsinformation-eu/hus-villa.pdf',
+    'https://cdn.hedvig.com/info/forskopsinfo-villa-eustandard-2019-10-v1.pdf',
+    302,
+  ],
 ]
