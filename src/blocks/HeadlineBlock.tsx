@@ -50,7 +50,7 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
   element,
   font_size,
   indent,
-    index,
+  index,
 }) => {
   const Headline = createHeadline(element)
 
