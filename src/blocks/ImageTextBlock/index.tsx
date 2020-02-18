@@ -306,9 +306,8 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
             textPosition={text_position}
             animate={animate}
             useDisplayFont={title_use_display_font}
-          >
-            {title}
-          </Title>
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
           <Paragraph
             dangerouslySetInnerHTML={{
               __html: paragraph.html,
