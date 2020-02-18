@@ -31,19 +31,20 @@ export const PlainTextBlock: React.FunctionComponent<PlainTextBlockProps> = ({
   extra_styling,
   title,
   content,
+  index,
 }) => (
   <PlainTextSectionWrapper
     color={color && color.color}
     size={size}
     extraStyling={extra_styling}
   >
-    <ContentWrapper>
+    <ContentWrapper index={index}>
       <TitleWrapper>
         <h1>{title}</h1>
       </TitleWrapper>
     </ContentWrapper>
     <ContentColorWrapper>
-      <ContentWrapper>
+      <ContentWrapper index={index}>
         <InnerContent
           dangerouslySetInnerHTML={{ __html: content && content.html }}
         />

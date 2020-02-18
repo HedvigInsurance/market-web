@@ -68,9 +68,10 @@ export const SingleQuoteBlock: React.FunctionComponent<SingleQuoteBlockProps> = 
   author,
   is_long_quote,
   text_position,
+  index,
 }) => (
   <SectionWrapper color={color && color.color} extraStyling={extra_styling}>
-    <ContentWrapper>
+    <ContentWrapper index={index}>
       <Wrapper textPosition={text_position}>
         <QuoteWrapper textPosition={text_position} wide={is_long_quote}>
           <Quote shrink={is_long_quote}>{quote}</Quote>
