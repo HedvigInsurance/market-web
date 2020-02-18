@@ -49,7 +49,7 @@ const MenuLink = styled('a')({
   [TABLET_BP_DOWN]: {
     display: 'inline-block',
     padding: `1rem 2rem`,
-    fontFamily: fonts.GEOMANIST,
+    fontFamily: fonts.FAVORIT,
     fontSize: '1.5rem',
 
     '&:first-of-type': {

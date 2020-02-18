@@ -9,8 +9,8 @@ import {
 } from '../components/blockHelpers'
 import {
   BaseBlockProps,
-  ColorComponent,
   MarkdownHtmlComponent,
+  MinimalColorComponent,
 } from './BaseBlockProps'
 
 const AlignableContentWrapper = styled(ContentWrapper)<{
@@ -84,7 +84,7 @@ interface TitleParagraphBlockInterface extends BaseBlockProps {
   title: string
   text_position: AltTextPosition
   paragraph: MarkdownHtmlComponent
-  color: ColorComponent
+  color: MinimalColorComponent
 }
 
 export const TitleParagraphBlock: React.FunctionComponent<TitleParagraphBlockInterface> = ({

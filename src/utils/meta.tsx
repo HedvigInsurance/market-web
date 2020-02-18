@@ -1,3 +1,4 @@
+import { colorsV3 } from '@hedviginsurance/brand'
 import * as React from 'react'
 import { SeoContent, Story } from '../storyblok/StoryContainer'
 import { getPublicHost, getStoryblokImage } from './storyblok'
@@ -107,6 +108,10 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
     <meta name="twitter:site" content="@hedvigapp" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-    <meta name="theme-color" content="#651eff" />
+    <meta name="theme-color" content={colorsV3.black} />
+    <link
+      href="https://fonts.googleapis.com/css?family=EB+Garamond&display=swap"
+      rel="stylesheet"
+    />
   </>
 )

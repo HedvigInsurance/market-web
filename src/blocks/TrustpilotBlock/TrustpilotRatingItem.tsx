@@ -18,7 +18,7 @@ export const TrustpilotRatingItem: React.FunctionComponent<TrustpilotRatingItemP
     <Title>{title}</Title>
     <StarRatings
       rating={Number(rating)}
-      starRatedColor={getColorStyles(color && color.color).background}
+      starRatedColor={getColorStyles(color?.color ?? 'standard').color}
       starEmptyColor="rgba(255, 255, 255, 0.4)"
       starDimension="25px"
       starSpacing="4px"

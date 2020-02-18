@@ -40,7 +40,7 @@ const QuoteWrapper = styled('div')<QuoteWrapperProps>(
 )
 
 const Quote = styled('blockquote')<{ shrink: boolean }>(({ shrink }) => ({
-  fontFamily: fonts.GEOMANIST,
+  fontFamily: fonts.FAVORIT,
   lineHeight: 1,
   fontKerning: 'none',
   fontSize: shrink ? '2.5rem' : '3.5rem',

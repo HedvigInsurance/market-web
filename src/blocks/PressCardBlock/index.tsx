@@ -8,7 +8,7 @@ import {
   SectionWrapper,
 } from '../../components/blockHelpers'
 import { Image } from '../../utils/storyblok'
-import { BaseBlockProps, ColorComponent } from '../BaseBlockProps'
+import { BaseBlockProps, MinimalColorComponent } from '../BaseBlockProps'
 import { PressCardItem } from './PressCardItem'
 
 const Wrapper = styled('div')({
@@ -30,7 +30,7 @@ export interface PressCardItemProps {
   _uid: string
   quote: string
   logo: Image
-  blockColor?: ColorComponent
+  blockColor?: MinimalColorComponent
 }
 
 interface PressBlockProps extends BaseBlockProps {

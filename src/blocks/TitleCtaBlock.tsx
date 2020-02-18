@@ -15,7 +15,7 @@ import {
   ButtonWeight,
 } from '../components/buttons'
 import { getStoryblokLinkUrl } from '../utils/storyblok'
-import { BaseBlockProps, ColorComponent } from './BaseBlockProps'
+import { BaseBlockProps, MinimalColorComponent } from './BaseBlockProps'
 
 const ButtonLinkWithMargin = styled(ButtonLink)({
   marginTop: '1.7rem',
@@ -70,7 +70,7 @@ interface TitleCtaBlockInterface extends BaseBlockProps {
   button_branch_link: boolean
   button_link: LinkComponent
   show_button: boolean
-  button_color?: ColorComponent
+  button_color?: MinimalColorComponent
   button_weight?: ButtonWeight
 }
 

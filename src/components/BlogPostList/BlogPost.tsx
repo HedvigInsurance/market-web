@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
-import { colors } from '@hedviginsurance/brand'
+import { colors, colorsV3 } from '@hedviginsurance/brand'
+import { ButtonLink } from 'components/buttons'
 import { DeferredImage } from 'components/DeferredImage'
 import * as React from 'react'
 import { BlogStory } from '../../storyblok/StoryContainer'
@@ -27,9 +28,9 @@ const PlainLink = styled('a')({
 const ReadMoreWrapper = styled('div')({
   paddingTop: '3rem',
 })
-const ReadMoreLink = styled('a')({
+const ReadMoreLink = styled(ButtonLink)({
   textDecoration: 'none',
-  color: colors.PURPLE,
+  color: colorsV3.black,
 })
 
 export const TagList: React.FunctionComponent<{
@@ -74,7 +75,9 @@ export const BlogPost: React.FunctionComponent<{
     <TagList tagList={story.tag_list} />
 
     <ReadMoreWrapper>
-      <ReadMoreLink href={`/${story.full_slug}`}>Läs inlägget</ReadMoreLink>
+      <ReadMoreLink href={`/${story.full_slug}`} styleType="outlined">
+        Läs inlägget
+      </ReadMoreLink>
     </ReadMoreWrapper>
   </Wrapper>
 )

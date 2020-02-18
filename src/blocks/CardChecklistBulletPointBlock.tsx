@@ -1,6 +1,7 @@
 import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
+import { colorsV3 } from '@hedviginsurance/brand/dist/colors'
 import * as React from 'react'
 import ReactVisibilitySensor from 'react-visibility-sensor'
 import {
@@ -138,7 +139,7 @@ const CheckIcon = styled('div')({
   textAlign: 'center',
   verticalAlign: 'middle',
   borderRadius: '50%',
-  backgroundColor: colors.GREEN,
+  backgroundColor: colorsV3.black,
   marginRight: '0.5rem',
   boxSizing: 'border-box',
 })

@@ -63,7 +63,7 @@ const InvestorImage = styled(DeferredImage)({
 })
 
 const InvestorName = styled('span')({
-  fontFamily: fonts.GEOMANIST,
+  fontFamily: fonts.FAVORIT,
   fontSize: 18,
   lineHeight: '19px',
   marginTop: 15,

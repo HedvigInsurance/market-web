@@ -25,8 +25,8 @@ export const FourOhFourPage: React.ComponentType = withRouter(
           _uid="footer"
           color={{
             _uid: 'footer',
-            color: 'off-black-dark',
-            plugin: 'hedvig_limited_color_picker',
+            color: 'standard-inverse',
+            plugin: 'hedvig_minimal_color_picker' as 'hedvig_minimal_color_picker',
           }}
         />
       </>

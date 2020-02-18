@@ -58,8 +58,8 @@ export const BlogPostsPage: React.FunctionComponent<{ nonce?: string }> = ({
       _uid={'footer'}
       color={{
         _uid: 'footer',
-        plugin: 'hedvig_limited_color_picker',
-        color: 'off-black-dark',
+        plugin: 'hedvig_minimal_color_picker' as 'hedvig_minimal_color_picker',
+        color: 'standard-inverse',
       }}
     />
   </>

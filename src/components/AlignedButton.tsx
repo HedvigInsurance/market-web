@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import * as React from 'react'
 
 import { LinkComponent } from 'src/storyblok/StoryContainer'
-import { ColorComponent } from '../blocks/BaseBlockProps'
+import { MinimalColorComponent } from '../blocks/BaseBlockProps'
 import { AppLink } from '../components/AppLink'
 import { TABLET_BP_DOWN } from '../components/blockHelpers'
 import { ButtonLink, buttonSizes, ButtonWeight } from '../components/buttons'
@@ -24,7 +24,7 @@ export interface AlignedButtonProps {
   branchLink: boolean
   buttonLink: LinkComponent
   show: boolean
-  color?: ColorComponent
+  color?: MinimalColorComponent
   size?: keyof typeof buttonSizes
   weight?: ButtonWeight
   positionMobile?: 'above' | 'below'

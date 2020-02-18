@@ -7,7 +7,7 @@ import {
   getColorStyles,
   MOBILE_BP_DOWN,
 } from '../../components/blockHelpers'
-import { BaseBlockProps, ColorComponent } from '../BaseBlockProps'
+import { BaseBlockProps, MinimalColorComponent } from '../BaseBlockProps'
 import { Player } from './Player'
 
 interface HeroVideoBlockProps extends BaseBlockProps {
@@ -17,9 +17,9 @@ interface HeroVideoBlockProps extends BaseBlockProps {
   mobile_background_image: string
   title: string
   second_title?: string
-  title_color?: ColorComponent
+  title_color?: MinimalColorComponent
   subtitle: string
-  color?: ColorComponent
+  color?: MinimalColorComponent
 }
 
 const HeroContainer = styled('div')({

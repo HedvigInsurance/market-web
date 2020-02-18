@@ -9,7 +9,7 @@ export const globalStyles = () => css`
   }
 
   body {
-    font-family: ${fonts.CIRCULAR}, sans-serif;
+    font-family: ${fonts.FAVORIT}, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     margin: 0;
@@ -23,7 +23,7 @@ export const globalStyles = () => css`
   h4,
   h5,
   h6 {
-    font-family: ${fonts.GEOMANIST}, sans-serif;
+    font-family: ${fonts.FAVORIT}, sans-serif;
     font-kerning: none;
     margin: 1.414rem 0 0.5rem;
     font-weight: inherit;

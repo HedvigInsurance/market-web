@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
+import { colorsV3 } from '@hedviginsurance/brand/dist/colors'
 import * as React from 'react'
 import { BlogStory } from '../../storyblok/StoryContainer'
 import { getStoryblokImage } from '../../utils/storyblok'
@@ -87,7 +88,7 @@ const CardTitle = styled('h3')({
 })
 
 const ReadMoreLink = styled('span')({
-  color: colors.PURPLE,
+  color: colorsV3.black,
 })
 
 const PhonelessSpacing = styled('div')({

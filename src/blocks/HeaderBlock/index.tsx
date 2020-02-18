@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colors } from '@hedviginsurance/brand'
+import { colorsV3 } from '@hedviginsurance/brand'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import * as React from 'react'
 import { Mount, Unmount } from 'react-lifecycle-components'
@@ -18,7 +18,7 @@ import {
   LinkComponent,
 } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok'
-import { BaseBlockProps, ColorComponent } from '../BaseBlockProps'
+import { BaseBlockProps, MinimalColorComponent } from '../BaseBlockProps'
 import { MenuItem } from './MenuItem'
 import { Burger, TABLET_BP_DOWN, TABLET_BP_UP } from './mobile'
 
@@ -36,7 +36,7 @@ const Wrapper = styled('div')<{ inverse: boolean; open: boolean }>(
     left: 0,
     right: 0,
     zIndex: 100,
-    color: inverse && !isBelowScrollThreshold() ? colors.WHITE : 'inherit',
+    color: inverse && !isBelowScrollThreshold() ? colorsV3.white : 'inherit',
     transition: 'color 300ms',
 
     [TABLET_BP_DOWN]: {
@@ -55,7 +55,7 @@ const HeaderBackgroundFiller = styled('div')<{ transparent: boolean }>(
     right: 0,
     zIndex: -1,
     height: WRAPPER_HEIGHT,
-    backgroundColor: colors.WHITE,
+    backgroundColor: colorsV3.white,
     opacity: transparent && !isBelowScrollThreshold() ? 0 : 1,
     transition: 'opacity 300ms',
   }),
@@ -88,9 +88,9 @@ const Menu = styled('ul')<{ open: boolean }>(({ open }) => ({
     right: open ? '20%' : '100%',
     paddingTop: `calc(${WRAPPER_HEIGHT} + ${HEADER_VERTICAL_PADDING})`,
     fontSize: 18,
-    background: colors.WHITE,
+    background: colorsV3.white,
     transition: `right ${TOGGLE_TRANSITION_TIME}ms`,
-    color: colors.OFF_BLACK_DARK,
+    color: colorsV3.black,
     overflow: 'scroll',
     '-webkit-overflow-scrolling': 'touch',
   },
@@ -128,12 +128,12 @@ interface HeaderBlockProps extends BaseBlockProps {
   inverse_colors: boolean
   override_cta_link?: LinkComponent | null
   override_cta_label?: string | null
-  cta_color?: ColorComponent
+  cta_color?: MinimalColorComponent
   cta_weight?: ButtonWeight
   cta_style?: ButtonStyleType
   override_mobile_header_cta_label?: string | null
   override_mobile_header_cta_link?: LinkComponent | null
-  mobile_header_cta_color?: ColorComponent
+  mobile_header_cta_color?: MinimalColorComponent
   mobile_header_weight?: ButtonWeight
   mobile_header_cta_style?: ButtonStyleType
 }
@@ -142,7 +142,9 @@ class Header extends React.PureComponent<
   { story: GlobalStory } & HeaderBlockProps
 > {
   private backgroundFillerRef: null | HTMLDivElement = null
-  private wrapperRef: null | HTMLDivElement = null
+  private wrapperRef = React.createRef<HTMLDivElement>()
+  private mobileButtonRef = React.createRef<HTMLAnchorElement>()
+  private desktopButtonRef = React.createRef<HTMLAnchorElement>()
 
   public render() {
     const mobileHeaderCtaLabel =
@@ -184,9 +186,7 @@ class Header extends React.PureComponent<
             <Wrapper
               inverse={this.props.is_transparent && this.props.inverse_colors}
               open={isOpen || isClosing}
-              ref={(r) => {
-                this.wrapperRef = r
-              }}
+              ref={this.wrapperRef}
             >
               <HeaderBackgroundFiller
                 transparent={this.props.is_transparent}
@@ -234,6 +234,7 @@ class Header extends React.PureComponent<
                                 this.props.mobile_header_cta_color &&
                                 this.props.mobile_header_cta_color.color
                               }
+                              ref={this.mobileButtonRef}
                             >
                               {mobileHeaderCtaLabel}
                             </MobileHeaderLink>
@@ -257,6 +258,8 @@ class Header extends React.PureComponent<
                                   }
                                   onClick={handleClick}
                                   href={link}
+                                  ref={this.mobileButtonRef}
+                                  id="b"
                                 >
                                   {mobileHeaderCtaLabel}
                                 </MobileHeaderLink>
@@ -274,6 +277,8 @@ class Header extends React.PureComponent<
                               this.props.mobile_header_cta_color &&
                               this.props.mobile_header_cta_color.color
                             }
+                            ref={this.mobileButtonRef}
+                            id="3"
                           >
                             {mobileHeaderCtaLabel}
                           </MobileHeaderLink>
@@ -311,6 +316,7 @@ class Header extends React.PureComponent<
                               href={getStoryblokLinkUrl(
                                 this.props.override_cta_link,
                               )}
+                              ref={this.desktopButtonRef}
                             >
                               {ctaLabel}
                             </ButtonLink>
@@ -336,6 +342,7 @@ class Header extends React.PureComponent<
                                   }
                                   href={link}
                                   onClick={handleClick}
+                                  ref={this.desktopButtonRef}
                                 >
                                   {ctaLabel}
                                 </ButtonLink>
@@ -357,6 +364,7 @@ class Header extends React.PureComponent<
                             href={getStoryblokLinkUrl(
                               this.props.story.content.cta_link,
                             )}
+                            ref={this.desktopButtonRef}
                           >
                             {ctaLabel}
                           </ButtonLink>
@@ -374,20 +382,48 @@ class Header extends React.PureComponent<
   }
 
   private updateHeaderTransparency = () => {
-    if (!this.backgroundFillerRef || !this.wrapperRef) {
+    const wrapperRef = this.wrapperRef.current
+    const mobileButtonRef = this.mobileButtonRef.current
+    const desktopButtonRef = this.desktopButtonRef.current
+    if (
+      !this.backgroundFillerRef ||
+      !wrapperRef ||
+      (!mobileButtonRef && !desktopButtonRef)
+    ) {
       return
     }
 
     if (isBelowScrollThreshold()) {
       this.backgroundFillerRef.style.opacity = '1'
-      this.wrapperRef.style.color = 'inherit'
+      wrapperRef.style.color = 'inherit'
+      if (mobileButtonRef) {
+        if (this.props.mobile_header_cta_style === 'outlined') {
+          mobileButtonRef.style.color = colorsV3.black
+          mobileButtonRef.style.borderColor = colorsV3.black
+        }
+      }
+      if (desktopButtonRef) {
+        if (this.props.mobile_header_cta_style === 'outlined') {
+          desktopButtonRef.style.color = colorsV3.black
+          desktopButtonRef.style.borderColor = colorsV3.black
+        }
+      }
       return
+    } else {
+      if (mobileButtonRef) {
+        mobileButtonRef.style.color = null
+        mobileButtonRef.style.borderColor = null as any
+      }
+      if (desktopButtonRef) {
+        desktopButtonRef.style.color = null
+        desktopButtonRef.style.borderColor = null as any
+      }
     }
 
     this.backgroundFillerRef!.style.opacity = '0'
 
     if (this.props.inverse_colors) {
-      this.wrapperRef!.style.color = colors.WHITE
+      wrapperRef.style.color = colorsV3.white
     }
   }
 }

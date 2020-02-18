@@ -9,7 +9,7 @@ import {
   getColorStyles,
   SectionWrapper,
 } from '../../components/blockHelpers'
-import { BaseBlockProps, ColorComponent } from '../BaseBlockProps'
+import { BaseBlockProps, MinimalColorComponent } from '../BaseBlockProps'
 import { TrustpilotCardItem } from './TrustpilotCardItem'
 import { TrustpilotRatingItem } from './TrustpilotRatingItem'
 
@@ -48,7 +48,7 @@ const Title = styled('h2')<{ color: string }>(({ color }) => ({
 
 export interface TrustpilotRatingItemProps {
   _uid: string
-  color: ColorComponent
+  color: MinimalColorComponent
   title: string
   rating: string
 }
@@ -58,12 +58,12 @@ export interface TrustpilotCardItemProps {
   quote: string
   author: string
   link: string
-  blockColor?: ColorComponent
+  blockColor?: MinimalColorComponent
 }
 
 interface TrustpilotBlockProps extends BaseBlockProps {
   title: string
-  title_color?: ColorComponent
+  title_color?: MinimalColorComponent
   ratings: ReadonlyArray<TrustpilotRatingItemProps>
   cards: ReadonlyArray<TrustpilotCardItemProps>
 }
@@ -84,13 +84,7 @@ export const TrustpilotBlock: React.FunctionComponent<TrustpilotBlockProps> = ({
   >
     <ContentWrapper>
       <Title
-        color={
-          title_color && title_color.color !== 'standard'
-            ? getColorStyles(title_color.color).background
-            : color
-            ? getColorStyles(color.color).color
-            : 'standard'
-        }
+        color={getColorStyles(title_color?.color || 'standard').background}
       >
         {title}
       </Title>

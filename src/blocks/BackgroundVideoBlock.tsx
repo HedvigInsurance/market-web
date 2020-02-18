@@ -19,8 +19,8 @@ import { LinkComponent } from '../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../utils/storyblok'
 import {
   BaseBlockProps,
-  ColorComponent,
   MarkdownHtmlComponent,
+  MinimalColorComponent,
 } from './BaseBlockProps'
 
 const TABLET_BP_DOWN = '@media (max-width: 800px)'
@@ -140,7 +140,7 @@ interface BackgroundVideoBlockProps extends BaseBlockProps {
   ghost_cta: boolean
   ghost_cta_target: LinkComponent
   ghost_cta_label: string
-  cta_color?: ColorComponent
+  cta_color?: MinimalColorComponent
   cta_weight?: ButtonWeight
   cta_style?: ButtonStyleType
 }

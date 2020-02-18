@@ -8,8 +8,8 @@ import {
 } from '../components/blockHelpers'
 import {
   BaseBlockProps,
-  ColorComponent,
   MarkdownHtmlComponent,
+  MinimalColorComponent,
 } from './BaseBlockProps'
 
 import { LinkComponent } from 'src/storyblok/StoryContainer'
@@ -61,7 +61,7 @@ const Paragraph = styled('div')({
 interface TitleTextCtaBlockProps extends BaseBlockProps {
   title_size?: TitleSize
   title: string
-  title_color?: ColorComponent
+  title_color?: MinimalColorComponent
   paragraph: MarkdownHtmlComponent
   text_position: TextPosition
   text_position_mobile: TextPosition
@@ -73,7 +73,7 @@ interface TitleTextCtaBlockProps extends BaseBlockProps {
   background_image: string
   size: SectionSize
   media_position: 'top' | 'bottom'
-  button_color?: ColorComponent
+  button_color?: MinimalColorComponent
   button_size?: keyof typeof buttonSizes
   button_weight?: ButtonWeight
   button_position_mobile?: 'above' | 'below'

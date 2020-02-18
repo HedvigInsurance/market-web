@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { colors, fonts } from '@hedviginsurance/brand'
+import { colorsV2 } from '@hedviginsurance/brand/dist'
 import { DeferredImage } from 'components/DeferredImage'
 import * as React from 'react'
 import Helmet from 'react-helmet-async'
@@ -47,10 +48,10 @@ const ArticleWrapper = styled('article')({
   },
 
   '& blockquote': {
-    backgroundColor: colors.PINK_LIGHT,
+    backgroundColor: colorsV2.lightgray,
     borderRadius: 10,
     padding: '1.5rem',
-    fontFamily: fonts.GEOMANIST,
+    fontFamily: fonts.FAVORIT,
     fontSize: '2rem',
     lineHeight: 1.5,
     margin: '3rem 0',
@@ -165,13 +166,20 @@ export const BlogPostPage: React.FunctionComponent<{ nonce?: string }> = ({
                     {story.content.cta_branch_link ? (
                       <AppLink>
                         {({ link, handleClick }) => (
-                          <ButtonLink href={link} onClick={handleClick}>
+                          <ButtonLink
+                            href={link}
+                            onClick={handleClick}
+                            styleType="outlined"
+                          >
                             {story.content.cta_label}
                           </ButtonLink>
                         )}
                       </AppLink>
                     ) : (
-                      <ButtonLink href={story.content.cta_target}>
+                      <ButtonLink
+                        href={story.content.cta_target}
+                        styleType="outlined"
+                      >
                         {story.content.cta_label}
                       </ButtonLink>
                     )}
@@ -219,8 +227,8 @@ export const BlogPostPage: React.FunctionComponent<{ nonce?: string }> = ({
             _uid="footer"
             color={{
               _uid: 'footer',
-              color: 'off-black-dark',
-              plugin: 'hedvig_limited_color_picker',
+              color: 'standard-inverse',
+              plugin: 'hedvig_minimal_color_picker' as 'hedvig_minimal_color_picker',
             }}
           />
         </>

@@ -9,7 +9,7 @@ import {
   CONTENT_MAX_WIDTH,
   MOBILE_BP_DOWN,
 } from '../../components/blockHelpers'
-import { BaseBlockProps, ColorComponent } from '../BaseBlockProps'
+import { BaseBlockProps, MinimalColorComponent } from '../BaseBlockProps'
 import { CloseButton } from './CloseButton'
 import { Player } from './Player'
 import { Title } from './Title'
@@ -20,7 +20,7 @@ interface HeroVideoBlockProps extends BaseBlockProps {
   title: string
   play_button_text: string
   cta_text: string
-  background_color: ColorComponent
+  background_color: MinimalColorComponent
   use_text_drop_shadow: boolean
   use_shadow: boolean
 }

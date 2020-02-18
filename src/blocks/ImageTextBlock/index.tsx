@@ -26,8 +26,8 @@ import {
 } from '../../utils/storyblok'
 import {
   BaseBlockProps,
-  ColorComponent,
   MarkdownHtmlComponent,
+  MinimalColorComponent,
 } from '../BaseBlockProps'
 import { BackgroundVideo } from './BackgroundVideo'
 
@@ -196,7 +196,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
   animate?: boolean
   title_size?: TitleSize
   title: string
-  title_color?: ColorComponent
+  title_color?: MinimalColorComponent
   paragraph: MarkdownHtmlComponent
   text_position: TextPosition
   text_position_mobile: TextPosition
@@ -217,7 +217,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
   mobile_background_video_file_location: string
   size: SectionSize
   media_position: DisplayOrder
-  button_color?: ColorComponent
+  button_color?: MinimalColorComponent
   button_size?: keyof typeof buttonSizes
   button_weight?: ButtonWeight
   button_position_mobile?: 'above' | 'below'
