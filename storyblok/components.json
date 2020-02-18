@@ -1039,6 +1039,33 @@
           "options": [],
           "pos": 0
         },
+        "text": {
+          "type": "text",
+          "pos": 1
+        },
+        "text_position": {
+          "type": "option",
+          "regex": "",
+          "description": "",
+          "display_name": "",
+          "pos": 2,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "left",
+              "name": "Left"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "right",
+              "name": "Right"
+            }
+          ],
+          "default_value": "center"
+        },
         "element": {
           "type": "option",
           "pos": 3,
@@ -1097,32 +1124,9 @@
           "type": "textarea",
           "pos": 6
         },
-        "text": {
-          "type": "text",
-          "pos": 1
-        },
-        "text_position": {
-          "type": "option",
-          "regex": "",
-          "description": "",
-          "display_name": "",
-          "pos": 2,
-          "use_uuid": true,
-          "options": [
-            {
-              "value": "left",
-              "name": "Left"
-            },
-            {
-              "value": "center",
-              "name": "Center"
-            },
-            {
-              "value": "right",
-              "name": "Right"
-            }
-          ],
-          "default_value": "center"
+        "indent": {
+          "type": "boolean",
+          "max_length": ""
         }
       },
       "image": null,

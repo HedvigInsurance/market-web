@@ -11,6 +11,7 @@ interface HeadlineBlockProps extends BaseBlockProps {
   use_display_font: boolean
   font_size: 'xs' | 'sm' | 'md' | 'lg'
   element: 'h1' | 'h2' | 'h3' | 'h4'
+  indent: boolean
 }
 
 const sizeMap = {
@@ -42,6 +43,7 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
   extra_styling,
   element,
   font_size,
+  indent,
 }) => {
   const Headline = createHeadline(element)
 
@@ -51,7 +53,7 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
       extraStyling={extra_styling}
       size="none"
     >
-      <ContentWrapper>
+      <ContentWrapper indent={indent}>
         <Headline
           textPosition={text_position}
           dangerouslySetInnerHTML={{ __html: text }}
