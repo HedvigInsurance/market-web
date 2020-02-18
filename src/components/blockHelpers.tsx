@@ -176,7 +176,7 @@ export const ContentWrapper: React.FC<ContentWrapperProps> = ({
     partialVisibility
     offset={{
       top: -500,
-      bottom: typeof window !== 'undefined' ? window.innerHeight / 4 : 0,
+      bottom: typeof window !== 'undefined' ? window.innerHeight / 5 : 0,
     }}
   >
     {({ isVisible }) => (
