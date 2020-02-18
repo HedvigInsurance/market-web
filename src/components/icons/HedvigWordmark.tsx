@@ -68,7 +68,7 @@ export const HedvigWordmark: React.FunctionComponent<{ height: number }> = ({
             data-name="Group 10"
             transform="translate(69.674 4.854)"
           >
-            <g id="Group_10-2" data-name="Group 10" clip-path="url(#clip-path)">
+            <g id="Group_10-2" data-name="Group 10" clipPath="url(#clip-path)">
               <path
                 id="Fill_8"
                 data-name="Fill 8"
@@ -77,7 +77,7 @@ export const HedvigWordmark: React.FunctionComponent<{ height: number }> = ({
               />
             </g>
           </g>
-          <g clip-path="url(#clip-path-2)">
+          <g clipPath="url(#clip-path-2)">
             <path
               id="Fill_11"
               data-name="Fill 11"

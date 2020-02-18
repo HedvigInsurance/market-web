@@ -1,4 +1,3 @@
-import { LabelBlock } from 'blocks/LabelBlock'
 import * as React from 'react'
 import { AboutUsHeroBlock } from './AboutUsHeroBlock'
 import { AccordionBlock } from './AccordionBlock'
@@ -9,6 +8,7 @@ import { CardChecklistBulletPointBlock } from './CardChecklistBulletPointBlock'
 import { DownloadBlock } from './DownloadBlock'
 import { FooterBlock } from './FooterBlock'
 import { HeaderBlock } from './HeaderBlock'
+import { HeadlineBlock } from './HeadlineBlock'
 import { HeroVideoBlock } from './HeroVideoBlock'
 import { HomeHeroBlock } from './HomeHeroBlock'
 import { IconBulletPointBlock } from './IconBulletPointBlock'
@@ -34,7 +34,7 @@ const blockComponents = {
   download_block: DownloadBlock,
   image_multi_text_block: ImageMultiTextBlock,
   investors_block: InvestorsBlock,
-  label_block: LabelBlock,
+  headline_block: HeadlineBlock,
   hero_video_block: HeroVideoBlock,
   home_hero_block: HomeHeroBlock,
   single_quote_block: SingleQuoteBlock,
