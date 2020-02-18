@@ -1,5 +1,5 @@
 import { css } from '@emotion/core'
-import { colors, fonts, getCdnFontFaces } from '@hedviginsurance/brand'
+import { colorsV3, fonts, getCdnFontFaces } from '@hedviginsurance/brand'
 
 export const globalStyles = () => css`
   ${getCdnFontFaces()}
@@ -14,7 +14,7 @@ export const globalStyles = () => css`
     line-height: 1.5;
     margin: 0;
     padding: 0;
-    color: ${colors.OFF_BLACK};
+    color: ${colorsV3.black};
   }
 
   h1,

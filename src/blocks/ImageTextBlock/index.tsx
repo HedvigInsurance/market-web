@@ -1,5 +1,6 @@
 import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
+import { fonts } from '@hedviginsurance/brand'
 import * as React from 'react'
 import MediaQuery from 'react-responsive'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
@@ -94,10 +95,19 @@ interface TitleProps {
   displayorder: DisplayOrder
   textPosition: TextPosition
   color: string
+  useDisplayFont: boolean
 }
 
 const Title = styled('h2')<TitleProps & Animateable>(
-  ({ size, displayorder, textPosition, alignment, color, animate }) => ({
+  ({
+    size,
+    displayorder,
+    textPosition,
+    alignment,
+    color,
+    animate,
+    useDisplayFont,
+  }) => ({
     margin: textPosition === 'center' ? 'auto' : undefined,
     fontSize: size === 'lg' ? '4.5rem' : '3.5rem',
     marginTop:
@@ -108,6 +118,7 @@ const Title = styled('h2')<TitleProps & Animateable>(
     opacity: animate ? 0 : 1,
     animation: animate ? fadeSlideIn + ' 500ms forwards' : undefined,
     animationDelay: '1000ms',
+    fontFamily: useDisplayFont ? `${fonts.EB_GARAMOND}, serif` : undefined,
 
     [TABLET_BP_DOWN]: {
       fontSize: size === 'lg' ? '2.75rem' : '2rem',
@@ -197,6 +208,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
   title_size?: TitleSize
   title: string
   title_color?: MinimalColorComponent
+  title_use_display_font: boolean
   paragraph: MarkdownHtmlComponent
   text_position: TextPosition
   text_position_mobile: TextPosition
@@ -229,6 +241,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   title_size,
   title,
   title_color,
+  title_use_display_font,
   paragraph,
   text_position,
   text_position_mobile,
@@ -292,6 +305,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
             }
             textPosition={text_position}
             animate={animate}
+            useDisplayFont={title_use_display_font}
           >
             {title}
           </Title>

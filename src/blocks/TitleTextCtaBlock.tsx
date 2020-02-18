@@ -39,7 +39,7 @@ const TextCtaWrapper = styled('div')({
 
 const Title = styled('h2')<{ size?: TitleSize; color: string }>(
   ({ size, color }) => ({
-    fontSize: size === 'lg' ? '4.5rem' : '2.5rem',
+    fontSize: size === 'lg' ? '4.5rem' : '3rem',
     width: '100%',
     color,
     marginRight: '1em',
