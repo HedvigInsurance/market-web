@@ -28,6 +28,12 @@ interface ColorSet {
 
 const sectionSizeStyles = {
   none: { padding: 0 },
+  xs: {
+    padding: '0.5rem 0',
+    [TABLET_BP_DOWN]: {
+      padding: '0.25rem 0',
+    },
+  },
   sm: {
     padding: '3.5rem 0',
     [TABLET_BP_DOWN]: {

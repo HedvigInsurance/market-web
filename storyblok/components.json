@@ -695,6 +695,39 @@
       "component_group_uuid": null
     },
     {
+      "name": "column_text_block",
+      "display_name": null,
+      "schema": {
+        "color": {
+          "type": "custom",
+          "pos": 0,
+          "field_type": "hedvig-minimal-color-picker",
+          "options": []
+        },
+        "text_one": {
+          "type": "custom",
+          "field_type": "markdown-html",
+          "options": [],
+          "pos": 1
+        },
+        "text_two": {
+          "type": "custom",
+          "field_type": "markdown-html",
+          "options": [],
+          "pos": 2
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "column_text_block",
+      "component_group_uuid": null
+    },
+    {
       "name": "download_block",
       "display_name": null,
       "schema": {
@@ -2429,6 +2462,10 @@
             {
               "value": "none",
               "name": "None"
+            },
+            {
+              "value": "xs",
+              "name": "XS"
             },
             {
               "value": "sm",
