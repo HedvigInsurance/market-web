@@ -1,3 +1,4 @@
+import { ColumnTextBlock } from 'blocks/ColumnTextBlock'
 import * as React from 'react'
 import { AboutUsHeroBlock } from './AboutUsHeroBlock'
 import { AccordionBlock } from './AccordionBlock'
@@ -31,6 +32,7 @@ const blockComponents = {
   about_us_hero_block: AboutUsHeroBlock,
   accordion_block: AccordionBlock,
   bullet_point_block: BulletPointBlock,
+  column_text_block: ColumnTextBlock,
   download_block: DownloadBlock,
   image_multi_text_block: ImageMultiTextBlock,
   investors_block: InvestorsBlock,
