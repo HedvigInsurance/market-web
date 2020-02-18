@@ -62,13 +62,14 @@ export const ImageMultiTextBlock: React.FunctionComponent<ImageMultiTextBlockPro
   image,
   image_position,
   text_items,
+  index,
 }) => (
   <SectionWrapper
     color={color && color.color}
     size={size}
     extraStyling={extra_styling}
   >
-    <ContentWrapper>
+    <ContentWrapper index={index}>
       <Wrapper imagePosition={image_position}>
         <Col pad={image_position === 'left' ? 'right' : 'left'}>
           <Image pull={image_position} src={getStoryblokImage(image)} />
