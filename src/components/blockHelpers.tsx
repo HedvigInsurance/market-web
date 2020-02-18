@@ -3,6 +3,7 @@ import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
 import * as React from 'react'
 import { RouteComponentProps, withRouter } from 'react-router'
+import ReactVisibilitySensor from 'react-visibility-sensor'
 import { SectionSize } from 'src/utils/SectionSize'
 import { minimalColorComponentColors } from '../blocks/BaseBlockProps'
 
@@ -144,17 +145,47 @@ export const MarginSectionWrapper = styled('section')<SectionProps>(
   }),
 )
 
-export const ContentWrapper = styled('div')({
-  width: '100%',
-  padding: '0 ' + CONTENT_GUTTER,
-  margin: '0 auto',
+export const ContentWrapperStyled = styled('div')<{ visible: boolean }>(
+  ({ visible }) => ({
+    width: '100%',
+    padding: '0 ' + CONTENT_GUTTER,
+    margin: '0 auto',
 
-  [MOBILE_BP_DOWN]: {
-    padding: '0 ' + CONTENT_GUTTER_MOBILE,
-  },
+    [MOBILE_BP_DOWN]: {
+      padding: '0 ' + CONTENT_GUTTER_MOBILE,
+    },
 
-  ...CONTENT_MAX_WIDTH,
-})
+    ...CONTENT_MAX_WIDTH,
+
+    opacity: visible ? 1 : 0,
+    transform: visible ? 'translateY(0)' : 'translateY(5%)',
+    transition: 'opacity 800ms, transform 500ms',
+  }),
+)
+
+export interface ContentWrapperProps {
+  index?: number
+}
+
+export const ContentWrapper: React.FC<ContentWrapperProps> = ({
+  index = 0,
+  children,
+  ...props
+}) => (
+  <ReactVisibilitySensor
+    partialVisibility
+    offset={{
+      top: -500,
+      bottom: typeof window !== 'undefined' ? window.innerHeight / 4 : 0,
+    }}
+  >
+    {({ isVisible }) => (
+      <ContentWrapperStyled visible={index <= 1 || isVisible} {...props}>
+        {children}
+      </ContentWrapperStyled>
+    )}
+  </ReactVisibilitySensor>
+)
 
 const ErrorBlockWrapper = styled(SectionWrapper)({
   background: 'red',

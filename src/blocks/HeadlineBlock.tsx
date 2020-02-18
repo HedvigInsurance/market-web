@@ -50,6 +50,7 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
   element,
   font_size,
   indent,
+    index,
 }) => {
   const Headline = createHeadline(element)
 
@@ -59,7 +60,7 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
       extraStyling={extra_styling}
       size="none"
     >
-      <HeadlineContentWrapper indent={indent}>
+      <HeadlineContentWrapper indent={indent} index={index}>
         <Headline
           textPosition={text_position}
           dangerouslySetInnerHTML={{ __html: text }}

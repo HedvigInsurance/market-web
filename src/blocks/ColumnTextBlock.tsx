@@ -43,9 +43,10 @@ export const ColumnTextBlock: React.FC<ColumnTextBlockProps> = ({
   extra_styling,
   text_one,
   text_two,
+  index,
 }) => (
   <SectionWrapper color={color?.color} extraStyling={extra_styling} size="none">
-    <ColumnContentWrapper>
+    <ColumnContentWrapper index={index}>
       <Column dangerouslySetInnerHTML={{ __html: text_one?.html }} />
       <Column dangerouslySetInnerHTML={{ __html: text_two?.html }} />
     </ColumnContentWrapper>

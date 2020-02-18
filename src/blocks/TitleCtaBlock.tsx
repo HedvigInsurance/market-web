@@ -86,6 +86,7 @@ export const TitleCtaBlock: React.FunctionComponent<TitleCtaBlockInterface> = ({
   button_link,
   button_color,
   button_weight,
+  index,
 }) => {
   return (
     <SectionWrapper
@@ -93,7 +94,10 @@ export const TitleCtaBlock: React.FunctionComponent<TitleCtaBlockInterface> = ({
       size={size}
       extraStyling={extra_styling}
     >
-      <FlexboxContentWrapperComponent contentAlignment={text_position}>
+      <FlexboxContentWrapperComponent
+        contentAlignment={text_position}
+        index={index}
+      >
         <TitleComponent alignment={text_position}>{title}</TitleComponent>
         {button_branch_link ? (
           <AppLink>
