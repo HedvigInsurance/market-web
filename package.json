@@ -23,6 +23,7 @@
     "animated": "^0.2.2",
     "axios": "^0.18.0",
     "babel-loader": "^8.0.2",
+    "babel-plugin-emotion": "^10.0.27",
     "chalk": "^2.4.1",
     "constate": "^0.9.0",
     "copy-webpack-plugin": "^4.5.2",
