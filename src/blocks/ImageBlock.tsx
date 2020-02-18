@@ -25,17 +25,17 @@ const Wrapper = styled('div')({
   alignItems: 'center',
   justifyContent: 'center',
   width: '100%',
-  maxHeight: '30rem',
   overflow: 'hidden',
 })
 
 const ImageWrapper = styled('div')<{ rounded: boolean }>(({ rounded }) => ({
-  display: 'inline-block',
-  position: 'relative',
+  display: 'inline-flex',
+  alignItems: 'center',
   marginLeft: 'auto',
   marginRight: 'auto',
   borderRadius: rounded ? 8 : 0,
   overflow: 'hidden',
+  maxHeight: '30rem',
 
   maxWidth: `calc(${CONTENT_MAX_WIDTH.maxWidth}px - ${CONTENT_GUTTER}*2)`,
   width: '100%',
@@ -45,10 +45,7 @@ const ImageWrapper = styled('div')<{ rounded: boolean }>(({ rounded }) => ({
 }))
 
 const Image = styled(DeferredImage)({
-  position: 'relative',
-  top: '50%',
   width: '100%',
-  transform: 'translateY(-50%)',
 })
 
 const Caption = styled('div')({
