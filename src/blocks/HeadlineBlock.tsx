@@ -23,7 +23,7 @@ const sizeMap = {
 
 const HeadlineContentWrapper = styled(ContentWrapper)<{ indent: boolean }>(
   ({ indent }) => ({
-    maxWidth: indent ? '60rem !important' : 0,
+    maxWidth: indent ? '60rem !important' : undefined,
   }),
 )
 
