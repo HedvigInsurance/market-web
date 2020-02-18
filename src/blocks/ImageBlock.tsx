@@ -14,6 +14,7 @@ import { BaseBlockProps } from './BaseBlockProps'
 
 interface ImageBlockProps extends BaseBlockProps {
   image: ImageType
+  use_rounded_corners: boolean
   caption?: string
   caption_shadow: boolean
 }
@@ -28,14 +29,26 @@ const Wrapper = styled('div')({
   overflow: 'hidden',
 })
 
-const Image = styled(DeferredImage)({
-  maxWidth: `calc(${CONTENT_MAX_WIDTH.maxWidth}px - ${CONTENT_GUTTER}*2)`,
-  width: '100%',
+const ImageWrapper = styled('div')<{ rounded: boolean }>(({ rounded }) => ({
+  display: 'inline-block',
+  position: 'relative',
   marginLeft: 'auto',
   marginRight: 'auto',
+  borderRadius: rounded ? 8 : 0,
+  overflow: 'hidden',
+
+  maxWidth: `calc(${CONTENT_MAX_WIDTH.maxWidth}px - ${CONTENT_GUTTER}*2)`,
+  width: '100%',
   [GIANT_BP_UP]: {
     maxWidth: `calc(${CONTENT_MAX_WIDTH[GIANT_BP_UP].maxWidth}px - ${CONTENT_GUTTER}*2)`,
   },
+}))
+
+const Image = styled(DeferredImage)({
+  position: 'relative',
+  top: '50%',
+  width: '100%',
+  transform: 'translateY(-50%)',
 })
 
 const Caption = styled('div')({
@@ -76,11 +89,14 @@ const Shadow = styled('div')({
 
 export const ImageBlock: React.FunctionComponent<ImageBlockProps> = ({
   image,
+  use_rounded_corners,
   caption,
   caption_shadow,
 }) => (
   <Wrapper>
-    <Image src={getStoryblokImage(image)} />
+    <ImageWrapper rounded={use_rounded_corners}>
+      <Image src={getStoryblokImage(image)} />
+    </ImageWrapper>
     {caption_shadow && <Shadow />}
     {caption && <Caption>{caption}</Caption>}
   </Wrapper>
