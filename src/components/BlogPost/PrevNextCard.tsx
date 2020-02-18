@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
-import { colors } from '@hedviginsurance/brand'
-import { colorsV3 } from '@hedviginsurance/brand/dist/colors'
+import { colors, colorsV3 } from '@hedviginsurance/brand'
 import * as React from 'react'
 import { BlogStory } from '../../storyblok/StoryContainer'
 import { getStoryblokImage } from '../../utils/storyblok'

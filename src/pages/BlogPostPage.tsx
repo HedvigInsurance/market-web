@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
-import { colors, fonts } from '@hedviginsurance/brand'
-import { colorsV2 } from '@hedviginsurance/brand/dist'
+import { colors, colorsV2, fonts } from '@hedviginsurance/brand'
 import { DeferredImage } from 'components/DeferredImage'
 import * as React from 'react'
 import Helmet from 'react-helmet-async'
