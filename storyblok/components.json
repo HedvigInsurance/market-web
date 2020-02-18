@@ -1837,6 +1837,58 @@
       "component_group_uuid": null
     },
     {
+      "name": "label_block",
+      "display_name": null,
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "label": {
+          "type": "text",
+          "pos": 1
+        },
+        "label_position": {
+          "type": "option",
+          "regex": "",
+          "description": "",
+          "display_name": "",
+          "pos": 2,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "left",
+              "name": "Left"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "right",
+              "name": "Right"
+            }
+          ],
+          "default_value": "center"
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 3
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "label_block",
+      "component_group_uuid": null
+    },
+    {
       "name": "logotype_item",
       "display_name": "",
       "schema": {
