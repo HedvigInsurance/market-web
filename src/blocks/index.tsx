@@ -1,3 +1,4 @@
+import { LabelBlock } from 'blocks/LabelBlock'
 import * as React from 'react'
 import { AboutUsHeroBlock } from './AboutUsHeroBlock'
 import { AccordionBlock } from './AccordionBlock'
@@ -33,6 +34,7 @@ const blockComponents = {
   download_block: DownloadBlock,
   image_multi_text_block: ImageMultiTextBlock,
   investors_block: InvestorsBlock,
+  label_block: LabelBlock,
   hero_video_block: HeroVideoBlock,
   home_hero_block: HomeHeroBlock,
   single_quote_block: SingleQuoteBlock,
