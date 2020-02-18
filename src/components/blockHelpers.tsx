@@ -144,21 +144,17 @@ export const MarginSectionWrapper = styled('section')<SectionProps>(
   }),
 )
 
-export const ContentWrapper = styled('div')<{ indent: boolean }>(
-  ({ indent }) => ({
-    width: '100%',
-    padding: '0 ' + CONTENT_GUTTER,
-    margin: '0 auto',
+export const ContentWrapper = styled('div')({
+  width: '100%',
+  padding: '0 ' + CONTENT_GUTTER,
+  margin: '0 auto',
 
-    [MOBILE_BP_DOWN]: {
-      padding: '0 ' + CONTENT_GUTTER_MOBILE,
-    },
+  [MOBILE_BP_DOWN]: {
+    padding: '0 ' + CONTENT_GUTTER_MOBILE,
+  },
 
-    ...CONTENT_MAX_WIDTH,
-
-    ...(indent ? { maxWidth: '60rem' } : {}),
-  }),
-)
+  ...CONTENT_MAX_WIDTH,
+})
 
 const ErrorBlockWrapper = styled(SectionWrapper)({
   background: 'red',

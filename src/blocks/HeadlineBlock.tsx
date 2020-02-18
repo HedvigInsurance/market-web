@@ -21,6 +21,12 @@ const sizeMap = {
   lg: '6rem',
 }
 
+const HeadlineContentWrapper = styled(ContentWrapper)<{ indent: boolean }>(
+  ({ indent }) => ({
+    maxWidth: indent ? '60rem !important' : 0,
+  }),
+)
+
 const createHeadline = (element: 'h1' | 'h2' | 'h3' | 'h4') =>
   styled(element)<{
     textPosition: TextPosition
@@ -53,14 +59,14 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
       extraStyling={extra_styling}
       size="none"
     >
-      <ContentWrapper indent={indent}>
+      <HeadlineContentWrapper indent={indent}>
         <Headline
           textPosition={text_position}
           dangerouslySetInnerHTML={{ __html: text }}
           size={font_size}
           useDisplayFont={use_display_font}
         />
-      </ContentWrapper>
+      </HeadlineContentWrapper>
     </SectionWrapper>
   )
 }

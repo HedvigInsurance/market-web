@@ -10,7 +10,7 @@ import * as React from 'react'
 const ColumnContentWrapper = styled(ContentWrapper)({
   display: 'flex',
   flexWrap: 'wrap',
-  maxWidth: '60rem',
+  maxWidth: '60rem !important',
 })
 
 const Column = styled('div')({
