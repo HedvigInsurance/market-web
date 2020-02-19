@@ -101,6 +101,7 @@ export const IconBulletPointBlock: React.FunctionComponent<BulletPointBlockProps
   title,
   title_position,
   bullet_points,
+  index,
 }) => {
   return (
     <SectionWrapper
@@ -108,7 +109,7 @@ export const IconBulletPointBlock: React.FunctionComponent<BulletPointBlockProps
       size={size}
       extraStyling={extra_styling}
     >
-      <AlignableContent titlePosition={title_position}>
+      <AlignableContent titlePosition={title_position} index={index}>
         <MainTitle>{title}</MainTitle>
         <BulletPointList>
           {bullet_points.map(

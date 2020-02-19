@@ -186,6 +186,7 @@ export const CardChecklistBulletPointBlock: React.FunctionComponent<BulletPoints
   title_position,
   bullet_points_position,
   bullet_points,
+  index,
 }) => {
   const [isVisible, setIsVisible] = React.useState(false)
 
@@ -195,7 +196,7 @@ export const CardChecklistBulletPointBlock: React.FunctionComponent<BulletPoints
       size={size}
       extraStyling={extra_styling}
     >
-      <ContentWrapper>
+      <ContentWrapper index={index}>
         {title && <Title position={title_position}>{title}</Title>}
         <ReactVisibilitySensor
           partialVisibility

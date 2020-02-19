@@ -96,6 +96,7 @@ export const TitleTextCtaBlock: React.FunctionComponent<TitleTextCtaBlockProps> 
   button_color,
   button_size,
   button_weight,
+  index,
 }) => {
   return (
     <MarginSectionWrapper
@@ -104,7 +105,7 @@ export const TitleTextCtaBlock: React.FunctionComponent<TitleTextCtaBlockProps> 
       backgroundImage={background_image}
       extraStyling={extra_styling}
     >
-      <AlignableContentWrapper>
+      <AlignableContentWrapper index={index}>
         <Title
           size={title_size}
           color={
