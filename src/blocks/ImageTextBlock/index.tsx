@@ -254,6 +254,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
   button_size,
   button_weight,
   button_position_mobile,
+  index,
 }) => {
   return (
     <SectionWrapper
@@ -274,7 +275,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
           />
         )}
 
-      <AlignableContentWrapper textPosition={text_position}>
+      <AlignableContentWrapper textPosition={text_position} index={index}>
         <TextWrapper
           textPosition={text_position}
           textPositionMobile={text_position_mobile}

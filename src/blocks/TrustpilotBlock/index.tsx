@@ -76,13 +76,14 @@ export const TrustpilotBlock: React.FunctionComponent<TrustpilotBlockProps> = ({
   ratings,
   title,
   title_color,
+  index,
 }) => (
   <TrustpilotWrapper
     color={color && color.color}
     size={size}
     extraStyling={extra_styling}
   >
-    <ContentWrapper>
+    <ContentWrapper index={index}>
       <Title
         color={
           title_color && title_color.color !== 'standard'
