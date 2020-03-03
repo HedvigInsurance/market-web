@@ -91,7 +91,7 @@ export const SpacerBlock: React.FunctionComponent<SpacerBlockProps> = ({
 }) => (
   <Spacer
     size={size}
-    color={color && color.color}
+    colorComponent={color}
     overlap={overlap}
     direction={blob_direction}
   >

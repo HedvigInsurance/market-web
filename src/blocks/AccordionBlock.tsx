@@ -130,7 +130,7 @@ export const AccordionBlock: React.FunctionComponent<AccordionBlockProps> = ({
   index,
 }) => (
   <SectionWrapper
-    color={color && color.color}
+    colorComponent={color}
     size={size}
     extraStyling={extra_styling}
   >

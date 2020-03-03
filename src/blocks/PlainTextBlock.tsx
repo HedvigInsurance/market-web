@@ -34,7 +34,7 @@ export const PlainTextBlock: React.FunctionComponent<PlainTextBlockProps> = ({
   index,
 }) => (
   <PlainTextSectionWrapper
-    color={color && color.color}
+    colorComponent={color}
     size={size}
     extraStyling={extra_styling}
   >

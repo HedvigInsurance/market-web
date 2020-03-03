@@ -47,7 +47,7 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
 
   return (
     <SectionWrapper
-      color={color?.color}
+      colorComponent={color}
       extraStyling={extra_styling}
       size="none"
     >

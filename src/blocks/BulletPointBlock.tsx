@@ -102,7 +102,7 @@ export const BulletPointBlock: React.FunctionComponent<BulletPointsBlockProps> =
   bullet_points,
 }) => (
   <BulletPointSectionWrapper
-    color={color && color.color}
+    colorComponent={color}
     size={size}
     extraStyling={extra_styling}
   >

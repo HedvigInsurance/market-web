@@ -258,7 +258,7 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
 }) => {
   return (
     <SectionWrapper
-      color={color?.color}
+      colorComponent={color}
       size={size}
       backgroundImage={background_type !== 'video' ? background_image : 'none'}
       extraStyling={extra_styling}
