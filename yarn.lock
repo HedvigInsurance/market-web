@@ -9055,7 +9055,7 @@ react-animate-height@^2.0.7:
     classnames "^2.2.5"
     prop-types "^15.6.1"
 
-react-dom@>=15.3.2, react-dom@^16.12.0:
+react-dom@^16.12.0:
   version "16.13.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.0.tgz#cdde54b48eb9e8a0ca1b3dc9943d9bb409b81866"
   integrity sha512-y09d2c4cG220DzdlFkPTnVvGTszVvNpC73v+AaLGLHbkpy3SSgvYq8x0rNwPJ/Rk/CicTNgk0hbHNw1gMEZAXg==
@@ -9255,7 +9255,7 @@ react-visibility-sensor@^4.1.3:
     create-react-class "^15.6.3"
     prop-types "^15.6.2"
 
-react@>=15.3.2, react@^16.1.0, react@^16.12.0:
+react@^16.1.0, react@^16.12.0:
   version "16.13.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.0.tgz#d046eabcdf64e457bbeed1e792e235e1b9934cf7"
   integrity sha512-TSavZz2iSLkq5/oiE7gnFzmURKZMltmi193rm5HEoUDAXpzT9Kzw6oNZnGoai/4+fUnm7FqS5dwgUL34TujcWQ==
@@ -10234,14 +10234,6 @@ stealthy-require@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/stealthy-require/-/stealthy-require-1.1.1.tgz#35b09875b4ff49f26a777e509b3090a3226bf24b"
   integrity sha1-NbCYdbT/SfJqd35QmzCQoyJr8ks=
-
-storyblok-react@^0.0.10:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/storyblok-react/-/storyblok-react-0.0.10.tgz#2c8df2fb0d5117cb67f157abd18b9270d79a4580"
-  integrity sha512-pVwxl1Ug0S4HGjcJ1+zXLpfQ7ucGYlI1OfOR7gfSNcfY75sSpcc/e/Pf9sa8t0nTar4HWemK3d0zBf2df4Slqg==
-  dependencies:
-    react ">=15.3.2"
-    react-dom ">=15.3.2"
 
 stream-browserify@^2.0.1:
   version "2.0.2"
