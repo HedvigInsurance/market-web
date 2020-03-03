@@ -79,7 +79,7 @@ export const TrustpilotBlock: React.FunctionComponent<TrustpilotBlockProps> = ({
   index,
 }) => (
   <TrustpilotWrapper
-    color={color && color.color}
+    colorComponent={color}
     size={size}
     extraStyling={extra_styling}
   >

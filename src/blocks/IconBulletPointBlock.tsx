@@ -105,7 +105,7 @@ export const IconBulletPointBlock: React.FunctionComponent<BulletPointBlockProps
 }) => {
   return (
     <SectionWrapper
-      color={color && color.color}
+      colorComponent={color}
       size={size}
       extraStyling={extra_styling}
     >

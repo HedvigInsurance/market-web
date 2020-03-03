@@ -100,7 +100,7 @@ export const TitleTextCtaBlock: React.FunctionComponent<TitleTextCtaBlockProps> 
 }) => {
   return (
     <MarginSectionWrapper
-      color={color && color.color}
+      colorComponent={color}
       size={size}
       backgroundImage={background_image}
       extraStyling={extra_styling}
@@ -109,8 +109,8 @@ export const TitleTextCtaBlock: React.FunctionComponent<TitleTextCtaBlockProps> 
         <Title
           size={title_size}
           color={
-            title_color && title_color.color !== 'standard'
-              ? getColorStyles(title_color.color).background
+            title_color?.color !== 'standard'
+              ? getColorStyles(title_color?.color ?? 'standard').background
               : color
               ? getColorStyles(color.color).color
               : 'standard'

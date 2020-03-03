@@ -1,5 +1,7 @@
 import { SectionSize } from '../utils/SectionSize'
 
+export type minimalColorComponentColors = 'standard' | 'standard-inverse'
+
 export type colorComponentColors =
   | 'standard'
   | 'standard-inverse'
@@ -48,6 +50,11 @@ export interface ColorComponent {
   _uid: string
   plugin: 'hedvig_limited_color_picker'
   color: colorComponentColors
+}
+export interface MinimalColorComponent {
+  _uid: string
+  plugin: 'hedvig_minimal_color_picker'
+  color: minimalColorComponentColors
 }
 
 export interface BaseBlockProps {

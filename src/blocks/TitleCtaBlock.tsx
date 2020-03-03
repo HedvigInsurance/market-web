@@ -90,7 +90,7 @@ export const TitleCtaBlock: React.FunctionComponent<TitleCtaBlockInterface> = ({
 }) => {
   return (
     <SectionWrapper
-      color={color && color.color}
+      colorComponent={color}
       size={size}
       extraStyling={extra_styling}
     >
@@ -108,7 +108,7 @@ export const TitleCtaBlock: React.FunctionComponent<TitleCtaBlockInterface> = ({
                 styleType={button_type}
                 size="sm"
                 weight={button_weight}
-                color={button_color && button_color.color}
+                color={button_color?.color}
               >
                 {button_title}
               </ButtonLinkWithMargin>
