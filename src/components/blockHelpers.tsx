@@ -1,6 +1,6 @@
 import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
-import { colors, colorsV3 } from '@hedviginsurance/brand'
+import { colors, colorsV3, fonts } from '@hedviginsurance/brand'
 import { match } from 'matchly'
 import * as React from 'react'
 import { RouteComponentProps, withRouter } from 'react-router'
@@ -223,11 +223,13 @@ interface SectionProps {
   size?: SectionSize
   backgroundImage?: string
   extraStyling?: string
+  brandPivot?: boolean
 }
 const SectionWrapperComponentUnstyled = styled('section')<SectionProps>(
-  ({ colorComponent, size = 'lg' }) => ({
+  ({ colorComponent, size = 'lg', brandPivot }) => ({
     position: 'relative',
     transition: 'background 300ms',
+    fontFamily: brandPivot ? `${fonts.FAVORIT}, sans-serif` : undefined,
     ...getSectionSizeStyle(size),
     color:
       colorComponent?.plugin === 'hedvig_minimal_color_picker'
