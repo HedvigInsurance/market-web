@@ -1,3 +1,4 @@
+import SbEditable from 'patched/storyblok-react'
 import * as React from 'react'
 import Helmet from 'react-helmet-async'
 import { getBlockComponent } from '../blocks'
@@ -22,6 +23,14 @@ export const StoryPage: React.FunctionComponent<{ nonce?: string }> = ({
             | undefined = getBlockComponent(block.component)
           if (!BlockComponent) {
             return null
+          }
+
+          if (block._editable) {
+            return (
+              <SbEditable content={block} key={block._uid}>
+                <BlockComponent index={index} {...block} />
+              </SbEditable>
+            )
           }
 
           return <BlockComponent key={block._uid} index={index} {...block} />

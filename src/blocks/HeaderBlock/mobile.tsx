@@ -109,7 +109,7 @@ const Overlay = styled('div')<{ closing: boolean }>(({ closing }) => ({
   backgroundColor: closing ? 'transparent' : 'rgba(0,0,0, .5)',
   transition: `background-color ${TOGGLE_TRANSITION_TIME}ms`,
   animation: `${fadeIn} ${TOGGLE_TRANSITION_TIME}ms`,
-  '-webkit-tap-highlight-color': 'rgba(0,0,0,0)',
+  WebkitTapHighlightColor: 'rgba(0,0,0,0)',
 
   [TABLET_BP_UP]: {
     display: 'none',

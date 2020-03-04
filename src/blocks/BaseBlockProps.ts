@@ -52,6 +52,7 @@ export interface ColorComponent {
 
 export interface BaseBlockProps {
   _uid: string
+  _editable?: string
   component: string
   color?: ColorComponent
   size?: SectionSize
