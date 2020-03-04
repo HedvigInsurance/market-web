@@ -8,6 +8,7 @@ import { BulletPointBlock } from './BulletPointBlock'
 import { CardChecklistBulletPointBlock } from './CardChecklistBulletPointBlock'
 import { DownloadBlock } from './DownloadBlock'
 import { FooterBlock } from './FooterBlock'
+import { FooterBlockBrandPivot } from './FooterBlockBrandPivot'
 import { HeaderBlock } from './HeaderBlock'
 import { HeadlineBlock } from './HeadlineBlock'
 import { HeroVideoBlock } from './HeroVideoBlock'
@@ -52,6 +53,7 @@ const blockComponents = {
   trustpilot_block: TrustpilotBlock,
   spacer_block: SpacerBlock,
   footer_block: FooterBlock,
+  footer_block_brand_pivot: FooterBlockBrandPivot,
   card_checklist_bullet_point_block: CardChecklistBulletPointBlock,
   press_card_block: PressCardBlock,
 }
