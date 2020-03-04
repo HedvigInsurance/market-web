@@ -5,6 +5,7 @@ import * as Sentry from '@sentry/node'
 import { IHelmetConfiguration } from 'helmet'
 import { Middleware } from 'koa'
 import * as bodyParser from 'koa-bodyparser'
+import * as proxy from 'koa-proxy'
 import * as removeTrailingSlashes from 'koa-remove-trailing-slashes'
 import { Logger } from 'typescript-logging'
 import { redirects, routes } from '../routes'
@@ -91,6 +92,12 @@ redirects.forEach(([source, target, code]) => {
     ctx.redirect(target)
   })
 })
+server.router.use(
+  proxy({
+    host: 'https://a.storyblok.com',
+    match: /^\/f\//,
+  }),
+)
 server.router.use(
   '/*',
   bodyParser({
