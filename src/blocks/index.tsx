@@ -1,4 +1,5 @@
 import { ColumnTextBlock } from 'blocks/ColumnTextBlock'
+import { ImageTextBlockBrandPivot } from 'blocks/ImageTextBlockBrandPivot'
 import * as React from 'react'
 import { AboutUsHeroBlock } from './AboutUsHeroBlock'
 import { AccordionBlock } from './AccordionBlock'
@@ -36,12 +37,13 @@ const blockComponents = {
   column_text_block: ColumnTextBlock,
   download_block: DownloadBlock,
   image_multi_text_block: ImageMultiTextBlock,
+  image_text_block: ImageTextBlock,
+  image_text_block_brand_pivot: ImageTextBlockBrandPivot,
   investors_block: InvestorsBlock,
   headline_block: HeadlineBlock,
   hero_video_block: HeroVideoBlock,
   home_hero_block: HomeHeroBlock,
   single_quote_block: SingleQuoteBlock,
-  image_text_block: ImageTextBlock,
   title_text_cta_block: TitleTextCtaBlock,
   image_block: ImageBlock,
   icon_bullet_point_block: IconBulletPointBlock,

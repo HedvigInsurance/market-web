@@ -11,7 +11,7 @@ import {
 } from '../../components/AlignedButton'
 import {
   ContentWrapper,
-  getColorStyles,
+  getMinimalColorStyles,
   MOBILE_BP_DOWN,
   SectionWrapper,
   TABLET_BP_DOWN,
@@ -25,9 +25,9 @@ import {
   Image as StoryblokImage,
 } from '../../utils/storyblok'
 import {
-  BaseBlockProps,
-  ColorComponent,
+  BrandPivotBaseBlockProps,
   MarkdownHtmlComponent,
+  MinimalColorComponent,
 } from '../BaseBlockProps'
 import { BackgroundVideo } from './BackgroundVideo'
 
@@ -59,7 +59,7 @@ const fadeSlideIn = keyframes({
   to: { opacity: 1, transform: 'translateY(0)' },
 })
 const AnimatedAlignedButton = styled(AlignedButton)<
-  Animateable & AlignedButtonProps<ColorComponent>
+  Animateable & AlignedButtonProps<MinimalColorComponent>
 >(({ animate }) => ({
   opacity: animate ? 0 : 1,
   animation: animate ? fadeSlideIn + ' 1000ms ease-out forwards' : undefined,
@@ -192,11 +192,11 @@ const ImageVideo = styled(DeferredVideo)({
   borderRadius: 0.01,
 })
 
-interface ImageTextBlockProps extends BaseBlockProps {
+interface ImageTextBlockProps extends BrandPivotBaseBlockProps {
   animate?: boolean
   title_size?: TitleSize
   title: string
-  title_color?: ColorComponent
+  title_color?: MinimalColorComponent
   paragraph: MarkdownHtmlComponent
   text_position: TextPosition
   text_position_mobile: TextPosition
@@ -217,13 +217,13 @@ interface ImageTextBlockProps extends BaseBlockProps {
   mobile_background_video_file_location: string
   size: SectionSize
   media_position: DisplayOrder
-  button_color?: ColorComponent
+  button_color?: MinimalColorComponent
   button_size?: keyof typeof buttonSizes
   button_weight?: ButtonWeight
   button_position_mobile?: 'above' | 'below'
 }
 
-export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
+export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockProps> = ({
   animate,
   extra_styling,
   title_size,
@@ -286,9 +286,9 @@ export const ImageTextBlock: React.FunctionComponent<ImageTextBlockProps> = ({
             alignment={text_position}
             color={
               title_color && title_color.color !== 'standard'
-                ? getColorStyles(title_color.color).background
+                ? getMinimalColorStyles(title_color.color).background
                 : color
-                ? getColorStyles(color.color).color
+                ? getMinimalColorStyles(color.color).color
                 : 'standard'
             }
             textPosition={text_position}
