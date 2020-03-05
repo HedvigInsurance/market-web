@@ -22,6 +22,13 @@ export const TABLET_BP_DOWN = '@media (max-width: 840px)'
 export const TABLET_BP_UP = '@media (min-width: 801px)'
 export const GIANT_BP_UP = '@media (min-width: 1700px)'
 
+export const SITE_MAX_WIDTH = {
+  maxWidth: 1384,
+  [GIANT_BP_UP]: {
+    maxWidth: 1500, // TODO: Update this value when we have design for large screens
+  },
+}
+
 export const CONTENT_MAX_WIDTH = {
   maxWidth: 1200,
   [GIANT_BP_UP]: {
