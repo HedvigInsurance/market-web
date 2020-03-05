@@ -180,11 +180,19 @@ const sectionSizeStyles = {
   },
 }
 
-export const getColorStyles = (
-  color: colorComponentColors | colorDeviationColors,
-  standardColor: string = 'transparent',
-  standardInverseColor: string = colors.OFF_BLACK_DARK,
-): ColorSet => {
+export type ColorSetGetter<TColors> = (
+  colors: TColors,
+  standardColor?: string,
+  standardInverseColor?: string,
+) => ColorSet
+
+export const getColorStyles: ColorSetGetter<
+  colorComponentColors | colorDeviationColors
+> = (
+  color,
+  standardColor = 'transparent',
+  standardInverseColor = colors.OFF_BLACK_DARK,
+) => {
   if (color === 'standard') {
     return { background: standardColor, color: standardInverseColor }
   }
@@ -196,10 +204,10 @@ export const getColorStyles = (
   return colorMap[color]
 }
 
-export const getMinimalColorStyles = (
-  color: minimalColorComponentColors,
-  standardColor: string = colorsV3.white,
-  standardInverseColor: string = colorsV3.gray900,
+export const getMinimalColorStyles: ColorSetGetter<minimalColorComponentColors> = (
+  color,
+  standardColor = colorsV3.white,
+  standardInverseColor = colorsV3.gray900,
 ) =>
   match([
     ['standard', { background: standardColor, color: standardInverseColor }],
@@ -225,6 +233,12 @@ export const backgroundImageStyles = (backgroundImage: string) => {
   )
 }
 
+export const STANDARD_COLOR_COMPONENT: ColorComponent = {
+  plugin: 'hedvig_limited_color_picker',
+  color: 'standard',
+  _uid: 'fake',
+}
+
 interface SectionProps {
   colorComponent?: ColorComponent | MinimalColorComponent
   size?: SectionSize
@@ -233,7 +247,7 @@ interface SectionProps {
   brandPivot?: boolean
 }
 const SectionWrapperComponentUnstyled = styled('section')<SectionProps>(
-  ({ colorComponent, size = 'lg', brandPivot }) => ({
+  ({ colorComponent = STANDARD_COLOR_COMPONENT, size = 'lg', brandPivot }) => ({
     position: 'relative',
     transition: 'background 300ms',
     fontFamily: brandPivot ? `${fonts.FAVORIT}, sans-serif` : undefined,

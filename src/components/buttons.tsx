@@ -1,7 +1,10 @@
 import styled from '@emotion/styled'
-import { colors } from '@hedviginsurance/brand'
-import { getColorStyles } from 'components/blockHelpers'
-import { colorComponentColors } from 'src/blocks/BaseBlockProps'
+import { colors, colorsV3 } from '@hedviginsurance/brand'
+import { getColorStyles, getMinimalColorStyles } from 'components/blockHelpers'
+import {
+  colorComponentColors,
+  minimalColorComponentColors,
+} from 'src/blocks/BaseBlockProps'
 
 export const buttonSizes = {
   sm: '.75rem 1.5rem',
@@ -11,10 +14,10 @@ export const buttonSizes = {
 export type ButtonStyleType = 'filled' | 'outlined' | 'plain'
 export type ButtonWeight = 'normal' | 'bold'
 
-interface ButtonProps {
+export interface ButtonProps<TColor = colorComponentColors> {
   size?: keyof typeof buttonSizes
   styleType?: ButtonStyleType
-  color?: colorComponentColors
+  color?: TColor
   weight?: ButtonWeight
 }
 
@@ -43,6 +46,38 @@ const getButtonTypeStyle = (
   }
 }
 
+const getMinimalButtonTypeStyle = (
+  buttonType: ButtonStyleType,
+  color: minimalColorComponentColors,
+) => {
+  if (buttonType === 'filled') {
+    return {
+      backgroundColor: getMinimalColorStyles(
+        color,
+        colorsV3.black,
+        colorsV3.white,
+      ).background,
+      color: getMinimalColorStyles(color, colorsV3.black, colorsV3.white).color,
+    }
+  }
+  if (buttonType === 'plain') {
+    return {
+      border: 'none',
+      padding: '0',
+      backgroundColor: 'transparent',
+      color: getMinimalColorStyles(color, colorsV3.black, colorsV3.white)
+        .background,
+    }
+  } else {
+    // Outlined or nothing
+    return {
+      backgroundColor: 'transparent',
+      color: getMinimalColorStyles(color, colorsV3.black, colorsV3.white)
+        .background,
+    }
+  }
+}
+
 export const Button = styled('button')<ButtonProps>(
   ({
     size = 'md',
@@ -68,16 +103,45 @@ export const Button = styled('button')<ButtonProps>(
   }),
 )
 
-export const FilledButtonComponent = styled(Button)({
-  backgroundColor: colors.GREEN,
-  color: colors.WHITE,
-  border: `2px solid ${colors.GREEN}`,
-})
-
-export const OutlinedButtonComponent = styled(Button)({
-  color: colors.GREEN,
-  backgroundColor: 'transparent',
-  border: `2px solid ${colors.GREEN}`,
-})
-
 export const ButtonLink = Button.withComponent('a')
+
+export const BrandPivotButton = styled('button')<
+  ButtonProps<minimalColorComponentColors>
+>(
+  ({
+    size = 'md',
+    weight = 'bold',
+    styleType = 'filled',
+    color = 'standard',
+  }) => {
+    const colorStyles = getMinimalColorStyles(
+      color,
+      colorsV3.black,
+      colorsV3.white,
+    )
+    return {
+      display: 'inline-block',
+      padding: buttonSizes[size],
+      borderRadius: 8,
+      border: `1px solid ${colorStyles.background}`,
+      textDecoration: 'none',
+      fontWeight: weight,
+      cursor: 'pointer',
+      lineHeight: '1rem',
+      transition: 'background 150ms, color 150ms',
+      ...getMinimalButtonTypeStyle(styleType, color),
+
+      '&:hover': {
+        ...getMinimalButtonTypeStyle(styleType, color),
+        ...(styleType === 'outlined'
+          ? {
+              background: colorStyles.background,
+              color: colorStyles.color,
+            }
+          : {}),
+      },
+    }
+  },
+)
+
+export const BrandPivotButtonLink = BrandPivotButton.withComponent('a')
