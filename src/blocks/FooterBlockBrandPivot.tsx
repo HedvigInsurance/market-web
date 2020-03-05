@@ -1,21 +1,21 @@
 import styled from '@emotion/styled'
+import { colorsV3 } from '@hedviginsurance/brand'
 import * as React from 'react'
 import {
-  ContentWrapper,
-  SectionWrapper,
-  TABLET_BP_DOWN,
-  TABLET_BP_UP,
-  SITE_MAX_WIDTH,
   CONTENT_GUTTER,
   CONTENT_GUTTER_MOBILE,
+  ContentWrapper,
   MOBILE_BP_UP,
+  SectionWrapper,
+  SITE_MAX_WIDTH,
+  TABLET_BP_DOWN,
+  TABLET_BP_UP,
 } from '../components/blockHelpers'
 import { ContextContainer } from '../components/containers/ContextContainer'
+import { HedvigH } from '../components/icons/HedvigH'
 import { GlobalStoryContainer } from '../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../utils/storyblok'
 import { BaseBlockProps } from './BaseBlockProps'
-import { colorsV3 } from '@hedviginsurance/brand'
-import { HedvigH } from '../components/icons/HedvigH'
 
 const BP_DOWN = '@media (max-width: 600px)'
 
