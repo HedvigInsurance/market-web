@@ -695,6 +695,39 @@
       "component_group_uuid": null
     },
     {
+      "name": "column_text_block",
+      "display_name": null,
+      "schema": {
+        "color": {
+          "type": "custom",
+          "pos": 0,
+          "field_type": "hedvig-minimal-color-picker",
+          "options": []
+        },
+        "text_one": {
+          "type": "custom",
+          "field_type": "markdown-html",
+          "options": [],
+          "pos": 1
+        },
+        "text_two": {
+          "type": "custom",
+          "field_type": "markdown-html",
+          "options": [],
+          "pos": 2
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "column_text_block",
+      "component_group_uuid": null
+    },
+    {
       "name": "download_block",
       "display_name": null,
       "schema": {
@@ -1002,6 +1035,112 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "header_block",
+      "component_group_uuid": null
+    },
+    {
+      "name": "headline_block",
+      "display_name": null,
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "element": {
+          "type": "option",
+          "pos": 3,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "h1",
+              "name": "H1"
+            },
+            {
+              "value": "h2",
+              "name": "H2"
+            },
+            {
+              "value": "h3",
+              "name": "H3"
+            },
+            {
+              "value": "h4",
+              "name": "H4"
+            }
+          ],
+          "default_value": "h3"
+        },
+        "font_size": {
+          "type": "option",
+          "pos": 4,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "xs",
+              "name": "XS"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "md",
+              "name": "MD"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            }
+          ],
+          "description": "",
+          "display_name": "",
+          "default_value": "sm"
+        },
+        "use_display_font": {
+          "type": "boolean",
+          "pos": 5
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 6
+        },
+        "text": {
+          "type": "text",
+          "pos": 1
+        },
+        "text_position": {
+          "type": "option",
+          "regex": "",
+          "description": "",
+          "display_name": "",
+          "pos": 2,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "left",
+              "name": "Left"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "right",
+              "name": "Right"
+            }
+          ],
+          "default_value": "center"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "headline_block",
       "component_group_uuid": null
     },
     {
@@ -2319,6 +2458,10 @@
             {
               "value": "none",
               "name": "None"
+            },
+            {
+              "value": "xs",
+              "name": "XS"
             },
             {
               "value": "sm",

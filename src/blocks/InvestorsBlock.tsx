@@ -82,7 +82,7 @@ export const InvestorsBlock: React.FunctionComponent<InvestorsBlockProps> = ({
   size,
   index,
 }) => (
-  <SectionWrapper color={color && color.color} size={size}>
+  <SectionWrapper colorComponent={color} size={size}>
     <ContentWrapper index={index}>
       <InnerWrapper>
         <Title>{title}</Title>

@@ -70,7 +70,7 @@ export const SingleQuoteBlock: React.FunctionComponent<SingleQuoteBlockProps> = 
   text_position,
   index,
 }) => (
-  <SectionWrapper color={color && color.color} extraStyling={extra_styling}>
+  <SectionWrapper colorComponent={color} extraStyling={extra_styling}>
     <ContentWrapper index={index}>
       <Wrapper textPosition={text_position}>
         <QuoteWrapper textPosition={text_position} wide={is_long_quote}>

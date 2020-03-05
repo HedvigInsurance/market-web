@@ -96,7 +96,7 @@ export const TitleParagraphBlock: React.FunctionComponent<TitleParagraphBlockInt
   index,
 }) => {
   return (
-    <SectionWrapper color={color && color.color} size={size}>
+    <SectionWrapper colorComponent={color} size={size}>
       <AlignableContentWrapper textPosition={text_position} index={index}>
         <Title textPosition={text_position}>{title}</Title>
         <Paragraph

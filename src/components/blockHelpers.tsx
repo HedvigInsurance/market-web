@@ -1,13 +1,17 @@
 import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
-import { colors } from '@hedviginsurance/brand'
+import { colors, colorsV3 } from '@hedviginsurance/brand'
+import { match } from 'matchly'
 import * as React from 'react'
 import { RouteComponentProps, withRouter } from 'react-router'
 import ReactVisibilitySensor from 'react-visibility-sensor'
 import { SectionSize } from 'src/utils/SectionSize'
 import {
+  ColorComponent,
   colorComponentColors,
   colorDeviationColors,
+  MinimalColorComponent,
+  minimalColorComponentColors,
 } from '../blocks/BaseBlockProps'
 
 export const CONTENT_GUTTER = '2rem'
@@ -143,6 +147,12 @@ const colorMap: Record<
 
 const sectionSizeStyles = {
   none: { padding: 0 },
+  xs: {
+    padding: '0.5rem 0',
+    [TABLET_BP_DOWN]: {
+      padding: '0.25rem 0',
+    },
+  },
   sm: {
     padding: '3.5rem 0',
     [TABLET_BP_DOWN]: {
@@ -179,6 +189,20 @@ export const getColorStyles = (
   return colorMap[color]
 }
 
+export const getMinimalColorStyles = (
+  color: minimalColorComponentColors,
+  standardColor: string = colorsV3.white,
+  standardInverseColor: string = colorsV3.black,
+) =>
+  match([
+    ['standard', { background: standardColor, color: standardInverseColor }],
+    [
+      'standard-inverse',
+      { background: standardInverseColor, color: standardColor },
+    ],
+    [match.any(), { background: standardColor, color: standardInverseColor }],
+  ])(color)!
+
 export const getSectionSizeStyle = (size: SectionSize) =>
   sectionSizeStyles[size]
 
@@ -195,17 +219,20 @@ export const backgroundImageStyles = (backgroundImage: string) => {
 }
 
 interface SectionProps {
-  color?: colorComponentColors
+  colorComponent?: ColorComponent | MinimalColorComponent
   size?: SectionSize
   backgroundImage?: string
   extraStyling?: string
 }
 const SectionWrapperComponentUnstyled = styled('section')<SectionProps>(
-  ({ color = 'standard', size = 'lg' }) => ({
+  ({ colorComponent, size = 'lg' }) => ({
     position: 'relative',
     transition: 'background 300ms',
     ...getSectionSizeStyle(size),
-    color: getColorStyles(color).color,
+    color:
+      colorComponent?.plugin === 'hedvig_minimal_color_picker'
+        ? getMinimalColorStyles(colorComponent?.color ?? 'standard').color
+        : getColorStyles(colorComponent?.color ?? 'standard').color,
   }),
 )
 export const SectionWrapperComponent = styled(SectionWrapperComponentUnstyled)<
@@ -219,8 +246,8 @@ const fadeIn = keyframes({
 })
 const SectionBackground = styled('div')<{
   backgroundImage?: string
-  color?: colorComponentColors
-}>(({ backgroundImage, color = 'standard' }) => ({
+  colorComponent?: ColorComponent | MinimalColorComponent
+}>(({ backgroundImage, colorComponent }) => ({
   position: 'absolute',
   top: 0,
   bottom: 0,
@@ -229,7 +256,10 @@ const SectionBackground = styled('div')<{
   opacity: 0,
   animation: fadeIn + ' 500ms forwards',
   animationDelay: '1000ms',
-  backgroundColor: getColorStyles(color).background,
+  backgroundColor:
+    colorComponent?.plugin === 'hedvig_minimal_color_picker'
+      ? getMinimalColorStyles(colorComponent.color ?? 'standard').background
+      : getColorStyles(colorComponent?.color ?? 'standard').background,
   ...backgroundImageStyles(backgroundImage || 'none'),
   zIndex: -1,
 }))
@@ -238,17 +268,24 @@ export const SectionWrapper: React.FC<SectionProps> = ({
   children,
   backgroundImage,
   ...props
-}) => (
-  <SectionWrapperComponent {...props}>
-    <SectionBackground backgroundImage={backgroundImage} color={props.color} />
-    {children}
-  </SectionWrapperComponent>
-)
+}) => {
+  return (
+    <SectionWrapperComponent {...props}>
+      <SectionBackground
+        backgroundImage={backgroundImage}
+        colorComponent={props.colorComponent}
+      />
+      {children}
+    </SectionWrapperComponent>
+  )
+}
 
 export const MarginSectionWrapper = styled('section')<SectionProps>(
-  ({ color = 'standard', size = 'lg', backgroundImage = 'none' }) => ({
+  ({ colorComponent, size = 'lg', backgroundImage = 'none' }) => ({
     ...getSectionSizeStyle(size),
-    ...getColorStyles(color),
+    ...(colorComponent?.plugin === 'hedvig_minimal_color_picker'
+      ? getMinimalColorStyles(colorComponent?.color ?? 'standard')
+      : getColorStyles(colorComponent?.color ?? 'standard')),
     ...backgroundImageStyles(backgroundImage),
   }),
 )

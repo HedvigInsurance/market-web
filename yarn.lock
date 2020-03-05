@@ -7580,6 +7580,11 @@ map-visit@^1.0.0:
   dependencies:
     object-visit "^1.0.0"
 
+matchly@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/matchly/-/matchly-1.0.1.tgz#c43ff28e22b0efe62753e05cc17e7da9f460b7ac"
+  integrity sha512-9SX0aHTYemCTXJ8QTO2UV+IXbeLIFAggTRe8c3GWVywvaNtoiock8DSVYZMmMLY1m6HUNR147MP1DzWjZHBiCQ==
+
 matchmediaquery@^0.3.0:
   version "0.3.1"
   resolved "https://registry.yarnpkg.com/matchmediaquery/-/matchmediaquery-0.3.1.tgz#8247edc47e499ebb7c58f62a9ff9ccf5b815c6d7"

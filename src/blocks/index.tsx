@@ -1,3 +1,4 @@
+import { ColumnTextBlock } from 'blocks/ColumnTextBlock'
 import * as React from 'react'
 import { AboutUsHeroBlock } from './AboutUsHeroBlock'
 import { AccordionBlock } from './AccordionBlock'
@@ -8,6 +9,7 @@ import { CardChecklistBulletPointBlock } from './CardChecklistBulletPointBlock'
 import { DownloadBlock } from './DownloadBlock'
 import { FooterBlock } from './FooterBlock'
 import { HeaderBlock } from './HeaderBlock'
+import { HeadlineBlock } from './HeadlineBlock'
 import { HeroVideoBlock } from './HeroVideoBlock'
 import { HomeHeroBlock } from './HomeHeroBlock'
 import { IconBulletPointBlock } from './IconBulletPointBlock'
@@ -30,9 +32,11 @@ const blockComponents = {
   about_us_hero_block: AboutUsHeroBlock,
   accordion_block: AccordionBlock,
   bullet_point_block: BulletPointBlock,
+  column_text_block: ColumnTextBlock,
   download_block: DownloadBlock,
   image_multi_text_block: ImageMultiTextBlock,
   investors_block: InvestorsBlock,
+  headline_block: HeadlineBlock,
   hero_video_block: HeroVideoBlock,
   home_hero_block: HomeHeroBlock,
   single_quote_block: SingleQuoteBlock,

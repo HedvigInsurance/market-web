@@ -192,7 +192,7 @@ export const CardChecklistBulletPointBlock: React.FunctionComponent<BulletPoints
 
   return (
     <BulletPointSectionWrapper
-      color={color && color.color}
+      colorComponent={color}
       size={size}
       extraStyling={extra_styling}
     >
