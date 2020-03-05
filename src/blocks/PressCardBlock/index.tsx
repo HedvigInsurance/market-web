@@ -41,7 +41,7 @@ export const PressCardBlock: React.FunctionComponent<PressBlockProps> = ({
   cards,
   color,
 }) => (
-  <SectionWrapper color={color && color.color} size="sm">
+  <SectionWrapper colorComponent={color} size="sm">
     <Wrapper id="press_card">
       <MediaQuery query="(max-width: 700px)">
         <Swiper resistance enableMouseEvents slideStyle={{ display: 'flex' }}>

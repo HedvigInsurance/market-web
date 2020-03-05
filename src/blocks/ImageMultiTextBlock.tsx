@@ -65,7 +65,7 @@ export const ImageMultiTextBlock: React.FunctionComponent<ImageMultiTextBlockPro
   index,
 }) => (
   <SectionWrapper
-    color={color && color.color}
+    colorComponent={color}
     size={size}
     extraStyling={extra_styling}
   >
