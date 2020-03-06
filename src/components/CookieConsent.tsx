@@ -84,6 +84,13 @@ export const CookieConsent: React.FC = () => {
               members. If you don’t want us to use cookies, you can easily turn
               it off through your browser. <a href="/en/legal">Read more</a>
             </>
+          ) : /^\/no(\/|$)/.test(location.pathname) ? (
+            <>
+              We use <a href="/en/legal">cookies</a> to manage logins, to
+              strengthen security and to improve the overall service for our
+              members. If you don’t want us to use cookies, you can easily turn
+              it off through your browser. <a href="/en/legal">Read more</a>
+            </>
           ) : (
             <>
               Vi använder <a href="/legal">cookies</a>, en liten datafil som

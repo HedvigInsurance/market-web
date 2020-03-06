@@ -24,6 +24,9 @@ export const FourOhFourBlock: React.FunctionComponent = () => (
                 case 'en':
                   return "Oops! There's nothing here."
 
+                case 'no':
+                  return 'Ups! Her finnes ikke noe.'
+
                 default:
                   return 'Oj! Här fanns inget.'
               }
