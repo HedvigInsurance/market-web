@@ -36,6 +36,7 @@ const createHeadline = (element: 'h1' | 'h2' | 'h3' | 'h4') =>
 
 export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
   color,
+  index,
   text,
   text_position,
   use_display_font,
@@ -50,8 +51,9 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
       colorComponent={color}
       extraStyling={extra_styling}
       size="none"
+      brandPivot
     >
-      <ContentWrapper>
+      <ContentWrapper index={index}>
         <Headline
           textPosition={text_position}
           dangerouslySetInnerHTML={{ __html: text }}

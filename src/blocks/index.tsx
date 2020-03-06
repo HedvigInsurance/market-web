@@ -1,5 +1,6 @@
 import { ColumnTextBlock } from 'blocks/ColumnTextBlock'
 import { ImageTextBlockBrandPivot } from 'blocks/ImageTextBlockBrandPivot'
+import { SpacerBlockBrandPivot } from 'blocks/SpacerBlockBrandPivot'
 import * as React from 'react'
 import { AboutUsHeroBlock } from './AboutUsHeroBlock'
 import { AccordionBlock } from './AccordionBlock'
@@ -54,6 +55,7 @@ const blockComponents = {
   press_block: PressBlock,
   trustpilot_block: TrustpilotBlock,
   spacer_block: SpacerBlock,
+  spacer_block_brand_pivot: SpacerBlockBrandPivot,
   footer_block: FooterBlock,
   footer_block_brand_pivot: FooterBlockBrandPivot,
   card_checklist_bullet_point_block: CardChecklistBulletPointBlock,
