@@ -800,6 +800,34 @@
       "component_group_uuid": null
     },
     {
+      "name": "footer_block_brand_pivot",
+      "display_name": "",
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "default_value": "off-black-dark",
+          "pos": 0,
+          "display_name": ""
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 1,
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "footer_block_brand_pivot",
+      "component_group_uuid": null
+    },
+    {
       "name": "global",
       "display_name": null,
       "schema": {
