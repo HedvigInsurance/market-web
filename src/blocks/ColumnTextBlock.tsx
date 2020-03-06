@@ -41,6 +41,7 @@ interface ColumnTextBlockProps extends BaseBlockProps {
 export const ColumnTextBlock: React.FC<ColumnTextBlockProps> = ({
   color,
   extra_styling,
+  index,
   text_one,
   text_two,
 }) => (
@@ -48,8 +49,9 @@ export const ColumnTextBlock: React.FC<ColumnTextBlockProps> = ({
     colorComponent={color}
     extraStyling={extra_styling}
     size="none"
+    brandPivot
   >
-    <ColumnContentWrapper>
+    <ColumnContentWrapper index={index}>
       <Column dangerouslySetInnerHTML={{ __html: text_one?.html }} />
       <Column dangerouslySetInnerHTML={{ __html: text_two?.html }} />
     </ColumnContentWrapper>

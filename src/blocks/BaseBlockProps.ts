@@ -1,6 +1,9 @@
 import { SectionSize } from '../utils/SectionSize'
 
-export type minimalColorComponentColors = 'standard' | 'standard-inverse'
+export type minimalColorComponentColors =
+  | 'standard'
+  | 'standard-inverse'
+  | 'gray500-inverse'
 
 export type colorComponentColors =
   | 'standard'
@@ -57,14 +60,21 @@ export interface MinimalColorComponent {
   color: minimalColorComponentColors
 }
 
-export interface BaseBlockProps {
+export interface BrandAgnosticBaseBlockProps {
   _uid: string
   _editable?: string
   component: string
-  color?: ColorComponent
   size?: SectionSize
   extra_styling?: string
   index?: number
+}
+
+export interface BaseBlockProps extends BrandAgnosticBaseBlockProps {
+  color?: ColorComponent
+}
+
+export interface BrandPivotBaseBlockProps extends BrandAgnosticBaseBlockProps {
+  color?: MinimalColorComponent
 }
 
 export interface MarkdownHtmlComponent {
