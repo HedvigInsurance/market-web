@@ -73,7 +73,7 @@ const LinksColumnsWrapper = styled('nav')({
 const ColumnHeader = styled('div')({
   paddingBottom: '1.5rem',
   fontSize: '1.125rem',
-  color: colorsV3.white, // TODO: Change to new color
+  color: colorsV3.gray500,
   [TABLET_BP_UP]: {
     paddingBottom: '2rem',
     fontSize: '1.5rem',

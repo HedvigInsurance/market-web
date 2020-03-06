@@ -199,7 +199,7 @@ export const getColorStyles = (
 export const getMinimalColorStyles = (
   color: minimalColorComponentColors,
   standardColor: string = colorsV3.white,
-  standardInverseColor: string = colorsV3.black,
+  standardInverseColor: string = colorsV3.gray900,
 ) =>
   match([
     ['standard', { background: standardColor, color: standardInverseColor }],
