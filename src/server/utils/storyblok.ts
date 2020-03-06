@@ -99,6 +99,8 @@ export const getLangFromPath = (path: string) => {
   switch (true) {
     case /^\/en($|\/.*)/.test(path):
       return 'en'
+    case /^\/no($|\/.*)/.test(path):
+      return 'no'
     case /^\/sv\/.*/.test(path):
       return 'sv'
     default:
