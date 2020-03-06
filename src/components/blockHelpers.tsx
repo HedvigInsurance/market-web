@@ -215,6 +215,10 @@ export const getMinimalColorStyles: ColorSetGetter<minimalColorComponentColors> 
       'standard-inverse',
       { background: standardInverseColor, color: standardColor },
     ],
+    [
+      'gray500-inverse',
+      { background: colorsV3.gray900, color: colorsV3.gray500 },
+    ],
     [match.any(), { background: standardColor, color: standardInverseColor }],
   ])(color)!
 
@@ -256,6 +260,13 @@ const SectionWrapperComponentUnstyled = styled('section')<SectionProps>(
       colorComponent?.plugin === 'hedvig_minimal_color_picker'
         ? getMinimalColorStyles(colorComponent?.color ?? 'standard').color
         : getColorStyles(colorComponent?.color ?? 'standard').color,
+
+    'h1, h2, h3, h4': brandPivot
+      ? {
+          fontFamily: `${fonts.FAVORIT}, sans-serif`,
+          fontWeight: 400,
+        }
+      : {},
   }),
 )
 export const SectionWrapperComponent = styled(SectionWrapperComponentUnstyled)<
@@ -282,7 +293,9 @@ const SectionBackground = styled('div')<{
   backgroundColor:
     colorComponent?.plugin === 'hedvig_minimal_color_picker'
       ? getMinimalColorStyles(colorComponent.color ?? 'standard').background
-      : getColorStyles(colorComponent?.color ?? 'standard').background,
+      : getColorStyles(
+          (colorComponent as ColorComponent | undefined)?.color ?? 'standard',
+        ).background,
   ...backgroundImageStyles(backgroundImage || 'none'),
   zIndex: -1,
 }))
@@ -308,7 +321,9 @@ export const MarginSectionWrapper = styled('section')<SectionProps>(
     ...getSectionSizeStyle(size),
     ...(colorComponent?.plugin === 'hedvig_minimal_color_picker'
       ? getMinimalColorStyles(colorComponent?.color ?? 'standard')
-      : getColorStyles(colorComponent?.color ?? 'standard')),
+      : getColorStyles(
+          (colorComponent as ColorComponent | undefined)?.color ?? 'standard',
+        )),
     ...backgroundImageStyles(backgroundImage),
   }),
 )
