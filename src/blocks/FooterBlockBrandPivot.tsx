@@ -136,14 +136,10 @@ export const FooterBlockBrandPivot: React.FunctionComponent<FooterBlockProps> = 
               <ContentWrapper>
                 <FooterInnerWrapper>
                   <LinkTextWrapper>
-                    {globalStory.content.get_started &&
-                    globalStory.content.get_started.length &&
-                    globalStory.content.company &&
-                    globalStory.content.company.length &&
-                    globalStory.content.legal &&
-                    globalStory.content.legal.length &&
-                    globalStory.content.social &&
-                    globalStory.content.social.length ? (
+                    {globalStory.content.get_started?.length &&
+                    globalStory.content.company?.length &&
+                    globalStory.content.legal?.length &&
+                    globalStory.content.social?.length ? (
                       <LinksColumnsWrapper>
                         <LinkColumn>
                           <ColumnHeader>
@@ -229,9 +225,7 @@ export const FooterBlockBrandPivot: React.FunctionComponent<FooterBlockProps> = 
 
                     <FooterFooter
                       dangerouslySetInnerHTML={{
-                        __html:
-                          globalStory.content.footer_paragraph &&
-                          globalStory.content.footer_paragraph.html,
+                        __html: globalStory.content.footer_paragraph?.html,
                       }}
                     />
                   </LinkTextWrapper>
