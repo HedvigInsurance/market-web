@@ -1,4 +1,6 @@
 import { ColumnTextBlock } from 'blocks/ColumnTextBlock'
+import { ImageTextBlockBrandPivot } from 'blocks/ImageTextBlockBrandPivot'
+import { SpacerBlockBrandPivot } from 'blocks/SpacerBlockBrandPivot'
 import * as React from 'react'
 import { AboutUsHeroBlock } from './AboutUsHeroBlock'
 import { AccordionBlock } from './AccordionBlock'
@@ -36,12 +38,13 @@ const blockComponents = {
   column_text_block: ColumnTextBlock,
   download_block: DownloadBlock,
   image_multi_text_block: ImageMultiTextBlock,
+  image_text_block: ImageTextBlock,
+  image_text_block_brand_pivot: ImageTextBlockBrandPivot,
   investors_block: InvestorsBlock,
   headline_block: HeadlineBlock,
   hero_video_block: HeroVideoBlock,
   home_hero_block: HomeHeroBlock,
   single_quote_block: SingleQuoteBlock,
-  image_text_block: ImageTextBlock,
   title_text_cta_block: TitleTextCtaBlock,
   image_block: ImageBlock,
   icon_bullet_point_block: IconBulletPointBlock,
@@ -52,6 +55,7 @@ const blockComponents = {
   press_block: PressBlock,
   trustpilot_block: TrustpilotBlock,
   spacer_block: SpacerBlock,
+  spacer_block_brand_pivot: SpacerBlockBrandPivot,
   footer_block: FooterBlock,
   footer_block_brand_pivot: FooterBlockBrandPivot,
   card_checklist_bullet_point_block: CardChecklistBulletPointBlock,
