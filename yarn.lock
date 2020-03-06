@@ -944,10 +944,10 @@
   resolved "https://registry.yarnpkg.com/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
-"@hedviginsurance/brand@^3.0.1":
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/@hedviginsurance/brand/-/brand-3.0.1.tgz#25a5ec3d77a2d7306e9ec11cf87cf2c74dfa570e"
-  integrity sha512-PP3UaW9dQ7QpNa4B5tCR09zUIwCQwnJcvrmV8Sn6gjImQN1k2UZQhhjYSL8OE7TdBupj+NCuH1wR8Zyf1/sN3Q==
+"@hedviginsurance/brand@^3.0.3":
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/@hedviginsurance/brand/-/brand-3.0.3.tgz#1792eb48f2e0f723b0088f4a0852342c2ef8c818"
+  integrity sha512-efAV2Tuuy+948dkPAt4md0sd9rtWtXkWjydQ8cG0V0jCNZbJrEtrUXAOSHBm8qKm7omhb5dBQ1QfRa8BOeb5eg==
 
 "@hedviginsurance/cli@^2.3.2":
   version "2.3.3"

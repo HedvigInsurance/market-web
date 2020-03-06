@@ -1,6 +1,6 @@
 import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
-import { colors, colorsV3 } from '@hedviginsurance/brand'
+import { colors, colorsV3, fonts } from '@hedviginsurance/brand'
 import { match } from 'matchly'
 import * as React from 'react'
 import { RouteComponentProps, withRouter } from 'react-router'
@@ -21,6 +21,13 @@ export const MOBILE_BP_DOWN = '@media (max-width: 480px)'
 export const TABLET_BP_DOWN = '@media (max-width: 840px)'
 export const TABLET_BP_UP = '@media (min-width: 801px)'
 export const GIANT_BP_UP = '@media (min-width: 1700px)'
+
+export const SITE_MAX_WIDTH = {
+  maxWidth: 1384,
+  [GIANT_BP_UP]: {
+    maxWidth: 1500, // TODO: Update this value when we have design for large screens
+  },
+}
 
 export const CONTENT_MAX_WIDTH = {
   maxWidth: 1200,
@@ -192,7 +199,7 @@ export const getColorStyles = (
 export const getMinimalColorStyles = (
   color: minimalColorComponentColors,
   standardColor: string = colorsV3.white,
-  standardInverseColor: string = colorsV3.black,
+  standardInverseColor: string = colorsV3.gray900,
 ) =>
   match([
     ['standard', { background: standardColor, color: standardInverseColor }],
@@ -223,11 +230,13 @@ interface SectionProps {
   size?: SectionSize
   backgroundImage?: string
   extraStyling?: string
+  brandPivot?: boolean
 }
 const SectionWrapperComponentUnstyled = styled('section')<SectionProps>(
-  ({ colorComponent, size = 'lg' }) => ({
+  ({ colorComponent, size = 'lg', brandPivot }) => ({
     position: 'relative',
     transition: 'background 300ms',
+    fontFamily: brandPivot ? `${fonts.FAVORIT}, sans-serif` : undefined,
     ...getSectionSizeStyle(size),
     color:
       colorComponent?.plugin === 'hedvig_minimal_color_picker'
