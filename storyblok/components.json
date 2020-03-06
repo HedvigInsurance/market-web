@@ -2019,16 +2019,6 @@
           "required": false,
           "pos": 7
         },
-        "use_image_link": {
-          "type": "boolean",
-          "pos": 8,
-          "translatable": true
-        },
-        "image_link": {
-          "type": "multilink",
-          "translatable": true,
-          "pos": 9
-        },
         "image_video_file_location": {
           "type": "text",
           "required": false,
@@ -2143,35 +2133,6 @@
           "options": [],
           "type": "custom",
           "pos": 22
-        },
-        "button_size": {
-          "type": "option",
-          "options": [
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "md",
-              "name": "MD"
-            }
-          ],
-          "pos": 23
-        },
-        "button_weight": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "value": "normal",
-              "name": "Normal"
-            },
-            {
-              "value": "bold",
-              "name": "Bold"
-            }
-          ],
-          "pos": 24
         },
         "button_position_mobile": {
           "type": "option",
@@ -2883,6 +2844,56 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "spacer_block",
+      "component_group_uuid": null
+    },
+    {
+      "name": "spacer_block_brand_pivot",
+      "display_name": "",
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "None"
+            },
+            {
+              "value": "xs",
+              "name": "XS"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": 1,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "spacer_block_brand_pivot",
       "component_group_uuid": null
     },
     {
