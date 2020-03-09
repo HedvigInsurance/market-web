@@ -20,6 +20,7 @@ export const MOBILE_BP_UP = '@media (min-width: 481px)'
 export const MOBILE_BP_DOWN = '@media (max-width: 480px)'
 export const TABLET_BP_DOWN = '@media (max-width: 840px)'
 export const TABLET_BP_UP = '@media (min-width: 801px)'
+export const LAPTOP_BP_UP = '@media (min-width: 1024px)'
 export const GIANT_BP_UP = '@media (min-width: 1700px)'
 
 export const SITE_MAX_WIDTH = {
