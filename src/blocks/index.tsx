@@ -7,6 +7,7 @@ import { AccordionBlock } from './AccordionBlock'
 import { BackgroundVideoBlock } from './BackgroundVideoBlock'
 import { BaseBlockProps } from './BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock'
+import { BulletPointBlockBrandPivot } from './BulletPointBlockBrandPivot'
 import { CardChecklistBulletPointBlock } from './CardChecklistBulletPointBlock'
 import { DownloadBlock } from './DownloadBlock'
 import { FooterBlock } from './FooterBlock'
@@ -35,6 +36,7 @@ const blockComponents = {
   about_us_hero_block: AboutUsHeroBlock,
   accordion_block: AccordionBlock,
   bullet_point_block: BulletPointBlock,
+  bullet_point_block_brand_pivot: BulletPointBlockBrandPivot,
   column_text_block: ColumnTextBlock,
   download_block: DownloadBlock,
   image_multi_text_block: ImageMultiTextBlock,
