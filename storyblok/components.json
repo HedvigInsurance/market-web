@@ -507,6 +507,134 @@
       "component_group_uuid": null
     },
     {
+      "name": "bullet_point_block_brand_pivot",
+      "display_name": "",
+      "schema": {
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 0,
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 1
+        },
+        "color_body": {
+          "type": "custom",
+          "pos": 2,
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "description": "Set the color on the paragraph text"
+        },
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": 3,
+          "display_name": "",
+          "description": "",
+          "default_value": "sm"
+        },
+        "bullet_points": {
+          "type": "bloks",
+          "maximum": "6",
+          "restrict_components": true,
+          "component_whitelist": [
+            "bullet_point_item_brand_pivot"
+          ],
+          "required": true,
+          "pos": 6,
+          "translatable": false
+        },
+        "tab-ebd6ef28-5e5a-4600-8c0b-5f6542654eab": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": [
+            "size",
+            "color",
+            "extra_styling",
+            "body_color",
+            "color_body"
+          ],
+          "pos": 7
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "bullet_point_block_brand_pivot",
+      "component_group_uuid": null
+    },
+    {
+      "name": "bullet_point_item_brand_pivot",
+      "display_name": "",
+      "schema": {
+        "image": {
+          "type": "image",
+          "pos": 0,
+          "required": true,
+          "display_name": "",
+          "regex": "",
+          "image_crop": false,
+          "image_width": "375",
+          "image_height": "240",
+          "translatable": true
+        },
+        "icon_layout": {
+          "type": "boolean",
+          "pos": 1,
+          "description": "Tick this box to get the icon layout"
+        },
+        "title": {
+          "type": "text",
+          "required": true,
+          "default_value": "",
+          "pos": 2,
+          "translatable": true
+        },
+        "paragraph": {
+          "type": "custom",
+          "default_value": "",
+          "required": true,
+          "pos": 3,
+          "field_type": "markdown-html",
+          "options": [],
+          "translatable": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "bullet_point_item_brand_pivot",
+      "component_group_uuid": null
+    },
+    {
       "name": "card_checklist_bullet_point_block",
       "display_name": "",
       "schema": {
