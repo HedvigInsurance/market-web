@@ -216,6 +216,7 @@ export const getMinimalColorStyles: ColorSetGetter<minimalColorComponentColors> 
       'standard-inverse',
       { background: standardInverseColor, color: standardColor },
     ],
+    ['gray700', { background: colorsV3.gray900, color: colorsV3.gray700 }],
     [
       'gray500-inverse',
       { background: colorsV3.gray900, color: colorsV3.gray500 },
