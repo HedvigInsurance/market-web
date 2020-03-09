@@ -3,6 +3,7 @@ import { SectionSize } from '../utils/SectionSize'
 export type minimalColorComponentColors =
   | 'standard'
   | 'standard-inverse'
+  | 'gray700'
   | 'gray500-inverse'
 
 export type colorComponentColors =

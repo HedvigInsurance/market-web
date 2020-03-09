@@ -2,16 +2,20 @@ import styled from '@emotion/styled'
 import * as React from 'react'
 import {
   ContentWrapper,
+  getMinimalColorStyles,
+  LAPTOP_BP_UP,
   MOBILE_BP_DOWN,
   MOBILE_BP_UP,
-  TABLET_BP_UP,
-  LAPTOP_BP_UP,
   SectionWrapper,
+  TABLET_BP_UP,
 } from '../components/blockHelpers'
 import { DeferredImage } from '../components/DeferredImage'
 import { getStoryblokImage, Image } from '../utils/storyblok'
-import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
-import { colorsV3 } from '@hedviginsurance/brand'
+import {
+  BaseBlockProps,
+  MarkdownHtmlComponent,
+  MinimalColorComponent,
+} from './BaseBlockProps'
 
 const BulletPointSectionWrapper = styled(SectionWrapper)({
   overflowX: 'hidden',
@@ -105,14 +109,14 @@ const BulletPointTitle = styled('h3')({
   },
 })
 
-const BulletPointBody = styled('div')({
-  [LAPTOP_BP_UP]: {
-    fontSize: '1.125rem',
-    color: colorsV3.gray700,
-  },
-})
+const BulletPointBody = styled('div')<{
+  colorComponent: MinimalColorComponent
+}>(({ colorComponent }) => ({
+  color: getMinimalColorStyles(colorComponent?.color ?? 'standard').color,
+}))
 
 interface BulletPointsBlockProps extends BaseBlockProps {
+  color_body: MinimalColorComponent
   bullet_points: ReadonlyArray<
     BaseBlockProps & {
       image: Image
@@ -126,6 +130,7 @@ interface BulletPointsBlockProps extends BaseBlockProps {
 export const BulletPointBlockBrandPivot: React.FunctionComponent<BulletPointsBlockProps> = ({
   extra_styling,
   color,
+  color_body,
   size,
   bullet_points,
 }) => (
@@ -148,6 +153,7 @@ export const BulletPointBlockBrandPivot: React.FunctionComponent<BulletPointsBlo
             <div>
               <BulletPointTitle>{bullet.title}</BulletPointTitle>
               <BulletPointBody
+                colorComponent={color_body}
                 dangerouslySetInnerHTML={{
                   __html: bullet.paragraph?.html,
                 }}
