@@ -1,11 +1,14 @@
 import styled from '@emotion/styled'
-import { BaseBlockProps, MarkdownHtmlComponent } from 'blocks/BaseBlockProps'
+import * as React from 'react'
+import {
+  BaseBlockProps,
+  MarkdownHtmlComponent,
+} from 'src/blocks/BaseBlockProps'
 import {
   ContentWrapper,
   MOBILE_BP_UP,
   SectionWrapper,
-} from 'components/blockHelpers'
-import * as React from 'react'
+} from '../../components/blockHelpers'
 
 const ColumnContentWrapper = styled(ContentWrapper)({
   display: 'flex',
