@@ -148,7 +148,9 @@
     "test": "NODE_ENV=test jest",
     "typecheck": "tsc --noEmit",
     "lint": "tslint \"src/**/*.{ts,tsx}\"",
-    "heroku-postbuild": "yarn build"
+    "heroku-postbuild": "yarn build",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "husky": {
     "hooks": {
