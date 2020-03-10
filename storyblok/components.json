@@ -1331,6 +1331,91 @@
       "component_group_uuid": null
     },
     {
+      "name": "hero_image_block_brand_pivot",
+      "display_name": null,
+      "schema": {
+        "image": {
+          "type": "image",
+          "pos": 0,
+          "image_crop": false,
+          "keep_image_size": true,
+          "image_width": "2000",
+          "image_height": "1420"
+        },
+        "image_mobile": {
+          "type": "image",
+          "pos": 1
+        },
+        "headline": {
+          "type": "text",
+          "pos": 2
+        },
+        "show_hedvig_wordmark": {
+          "type": "boolean",
+          "pos": 3
+        },
+        "indented_text": {
+          "type": "custom",
+          "field_type": "markdown-html",
+          "options": [],
+          "pos": 4
+        },
+        "tab-e69e2291-e9ec-4a70-92ec-2a64959f84de": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["color", "extra_styling", "animate", "size"],
+          "pos": 5
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 6
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 7
+        },
+        "animate": {
+          "type": "boolean",
+          "pos": 8
+        },
+        "size": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "none",
+              "name": "None"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "display_name": "",
+          "default_value": "none"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "hero_image_block_brand_pivot",
+      "component_group_uuid": null
+    },
+    {
       "name": "hero_video_block",
       "display_name": null,
       "schema": {
