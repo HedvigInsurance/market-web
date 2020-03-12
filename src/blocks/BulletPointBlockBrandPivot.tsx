@@ -125,7 +125,7 @@ export const BulletPointBlockBrandPivot: React.FunctionComponent<BulletPointsBlo
     size={size}
     extraStyling={extra_styling}
   >
-    <ContentWrapper>
+    <ContentWrapper brandPivot>
       <InnerWrapper>
         {bullet_points.map((bullet) => (
           <BulletPoint key={bullet._uid}>
