@@ -5,6 +5,7 @@ import * as React from 'react'
 import { AboutUsHeroBlock } from './AboutUsHeroBlock'
 import { AccordionBlock } from './AccordionBlock'
 import { BackgroundVideoBlock } from './BackgroundVideoBlock'
+import { BannerBlock } from './BannerBlock/BannerBlock'
 import { BaseBlockProps } from './BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock'
 import { BulletPointBlockBrandPivot } from './BulletPointBlockBrandPivot'
@@ -35,6 +36,7 @@ const blockComponents = {
   header_block: HeaderBlock,
   about_us_hero_block: AboutUsHeroBlock,
   accordion_block: AccordionBlock,
+  banner_block: BannerBlock,
   bullet_point_block: BulletPointBlock,
   bullet_point_block_brand_pivot: BulletPointBlockBrandPivot,
   column_text_block: ColumnTextBlock,
