@@ -1,10 +1,7 @@
 import styled from '@emotion/styled'
-import { colors, colorsV3 } from '@hedviginsurance/brand'
-import { getColorStyles, getMinimalColorStyles } from 'components/blockHelpers'
-import {
-  colorComponentColors,
-  minimalColorComponentColors,
-} from 'src/blocks/BaseBlockProps'
+import { colors } from '@hedviginsurance/brand'
+import { getColorStyles } from 'components/blockHelpers'
+import { colorComponentColors } from 'src/blocks/BaseBlockProps'
 
 export const buttonSizes = {
   sm: '.75rem 1.5rem',
@@ -46,38 +43,6 @@ const getButtonTypeStyle = (
   }
 }
 
-const getMinimalButtonTypeStyle = (
-  buttonType: ButtonStyleType,
-  color: minimalColorComponentColors,
-) => {
-  if (buttonType === 'filled') {
-    return {
-      backgroundColor: getMinimalColorStyles(
-        color,
-        colorsV3.black,
-        colorsV3.white,
-      ).background,
-      color: getMinimalColorStyles(color, colorsV3.black, colorsV3.white).color,
-    }
-  }
-  if (buttonType === 'plain') {
-    return {
-      border: 'none',
-      padding: '0',
-      backgroundColor: 'transparent',
-      color: getMinimalColorStyles(color, colorsV3.black, colorsV3.white)
-        .background,
-    }
-  } else {
-    // Outlined or nothing
-    return {
-      backgroundColor: 'transparent',
-      color: getMinimalColorStyles(color, colorsV3.black, colorsV3.white)
-        .background,
-    }
-  }
-}
-
 export const Button = styled('button')<ButtonProps>(
   ({
     size = 'md',
@@ -104,37 +69,3 @@ export const Button = styled('button')<ButtonProps>(
 )
 
 export const ButtonLink = Button.withComponent('a')
-
-export const BrandPivotButton = styled('button')<
-  ButtonProps<minimalColorComponentColors>
->(({ styleType = 'filled', color = 'standard' }) => {
-  const colorStyles = getMinimalColorStyles(
-    color,
-    colorsV3.black,
-    colorsV3.white,
-  )
-  return {
-    display: 'inline-block',
-    padding: buttonSizes.md,
-    borderRadius: 8,
-    border: `1px solid ${colorStyles.background}`,
-    textDecoration: 'none',
-    fontWeight: 'normal',
-    cursor: 'pointer',
-    lineHeight: '1rem',
-    transition: 'background 150ms, color 150ms',
-    ...getMinimalButtonTypeStyle(styleType, color),
-
-    '&:hover': {
-      ...getMinimalButtonTypeStyle(styleType, color),
-      ...(styleType === 'outlined'
-        ? {
-            background: colorStyles.background,
-            color: colorStyles.color,
-          }
-        : {}),
-    },
-  }
-})
-
-export const BrandPivotButtonLink = BrandPivotButton.withComponent('a')
