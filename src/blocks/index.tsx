@@ -1,4 +1,4 @@
-import { ColumnTextBlock } from 'blocks/ColumnTextBlock'
+import { ColumnTextBlock } from 'blocks/ColumnTextBlock/ColumnTextBlock'
 import { ImageTextBlockBrandPivot } from 'blocks/ImageTextBlockBrandPivot'
 import { SpacerBlockBrandPivot } from 'blocks/SpacerBlockBrandPivot'
 import * as React from 'react'
