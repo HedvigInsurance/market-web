@@ -40,18 +40,15 @@ const InnerWrapper = styled('div')({
   },
 })
 
-const BulletPoint = styled('div')<{
-  iconLayout: boolean
-}>(({ iconLayout }) => ({
+const BulletPoint = styled('div')({
   display: 'flex',
-  flexDirection: iconLayout ? 'row' : 'column',
+  flexDirection: 'column',
   alignItems: 'flex-start',
   width: `calc(100% - 40px)`,
   marginTop: '1.25rem',
   marginBottom: '1.25rem',
 
   [MOBILE_BP_UP]: {
-    flexDirection: 'column',
     width: `calc(50% - 40px)`,
     marginLeft: '40px',
   },
@@ -64,25 +61,13 @@ const BulletPoint = styled('div')<{
     width: `calc(${(1 / 3) * 100}% - 80px)`,
     marginLeft: '80px',
   },
-}))
+})
 
-const BulletPointHead = styled('div')<{
-  iconLayout: boolean
-}>(({ iconLayout }) => ({
+const BulletPointHead = styled('div')({
   display: 'flex',
   alignItems: 'center',
   flexShrink: 0,
-
-  ...(iconLayout
-    ? {
-        justifyContent: 'flex-start',
-        maxWidth: '32px',
-        maxHeight: '32px',
-        marginRight: '24px',
-      }
-    : {
-        marginBottom: '24px',
-      }),
+  marginBottom: '24px',
 
   [MOBILE_BP_UP]: {
     maxWidth: 'none',
@@ -91,7 +76,7 @@ const BulletPointHead = styled('div')<{
     marginRight: 0,
     marginBottom: '24px',
   },
-}))
+})
 
 const BulletPointImage = styled(DeferredImage)<{
   iconLayout: boolean
@@ -105,7 +90,7 @@ const BulletPointTitle = styled('h3')({
 
   [LAPTOP_BP_UP]: {
     fontSize: '2rem',
-    marginBottom: '32px',
+    marginBottom: '2rem',
   },
 })
 
@@ -143,8 +128,8 @@ export const BulletPointBlockBrandPivot: React.FunctionComponent<BulletPointsBlo
     <ContentWrapper>
       <InnerWrapper>
         {bullet_points.map((bullet) => (
-          <BulletPoint key={bullet._uid} iconLayout={bullet.icon_layout}>
-            <BulletPointHead iconLayout={bullet.icon_layout}>
+          <BulletPoint key={bullet._uid}>
+            <BulletPointHead>
               <BulletPointImage
                 src={getStoryblokImage(bullet.image)}
                 iconLayout={bullet.icon_layout}
