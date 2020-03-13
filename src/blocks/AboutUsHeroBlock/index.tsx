@@ -6,7 +6,7 @@ import * as React from 'react'
 import {
   CONTENT_GUTTER,
   CONTENT_GUTTER_MOBILE,
-  CONTENT_MAX_WIDTH,
+  CONTENT_MAX_WIDTH_DEPRECATED,
   MOBILE_BP_DOWN,
 } from '../../components/blockHelpers'
 import { BaseBlockProps } from '../BaseBlockProps'
@@ -29,7 +29,7 @@ const HeroContainer = styled('div')({
   position: 'relative',
   overflow: 'hidden',
   margin: '0 auto',
-  ...CONTENT_MAX_WIDTH,
+  ...CONTENT_MAX_WIDTH_DEPRECATED,
 })
 
 interface ShadowProps {
