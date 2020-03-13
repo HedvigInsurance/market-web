@@ -4,7 +4,7 @@ import * as React from 'react'
 
 import MediaQuery from 'react-responsive'
 import {
-  CONTENT_MAX_WIDTH,
+  CONTENT_MAX_WIDTH_DEPRECATED,
   SectionWrapper,
 } from '../../components/blockHelpers'
 import { Image } from '../../utils/storyblok'
@@ -12,7 +12,7 @@ import { BaseBlockProps, ColorComponent } from '../BaseBlockProps'
 import { PressCardItem } from './PressCardItem'
 
 const Wrapper = styled('div')({
-  ...CONTENT_MAX_WIDTH,
+  ...CONTENT_MAX_WIDTH_DEPRECATED,
   margin: '0 auto',
   display: 'flex',
   justifyContent: 'center',
