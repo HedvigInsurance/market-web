@@ -1,6 +1,9 @@
 import styled from '@emotion/styled'
 import { colorsV2 } from '@hedviginsurance/brand'
-import { CONTENT_GUTTER, CONTENT_MAX_WIDTH } from 'components/blockHelpers'
+import {
+  CONTENT_GUTTER,
+  CONTENT_MAX_WIDTH_DEPRECATED,
+} from 'components/blockHelpers'
 import * as Cookies from 'js-cookie'
 import * as React from 'react'
 import { useLocation } from 'react-router'
@@ -30,7 +33,7 @@ const InnerWrapper = styled('div')({
   width: '100%',
   padding: CONTENT_GUTTER,
 
-  ...CONTENT_MAX_WIDTH,
+  ...CONTENT_MAX_WIDTH_DEPRECATED,
 })
 const ContentWrapper = styled('div')({
   fontSize: '0.8rem',

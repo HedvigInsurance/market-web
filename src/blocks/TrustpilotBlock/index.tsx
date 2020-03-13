@@ -4,7 +4,7 @@ import * as React from 'react'
 
 import MediaQuery from 'react-responsive'
 import {
-  CONTENT_MAX_WIDTH,
+  CONTENT_MAX_WIDTH_DEPRECATED,
   ContentWrapper,
   getColorStyles,
   SectionWrapper,
@@ -14,7 +14,7 @@ import { TrustpilotCardItem } from './TrustpilotCardItem'
 import { TrustpilotRatingItem } from './TrustpilotRatingItem'
 
 const CardWrapper = styled('div')({
-  ...CONTENT_MAX_WIDTH,
+  ...CONTENT_MAX_WIDTH_DEPRECATED,
   margin: '0 auto',
   paddingBottom: '2rem',
   width: '100vw',
