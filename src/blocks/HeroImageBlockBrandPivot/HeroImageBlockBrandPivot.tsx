@@ -10,7 +10,7 @@ import {
   getMinimalColorStyles,
   getSectionSizeStyle,
   MOBILE_BP_UP,
-} from 'components/blockHelpers'
+} from '../../components/blockHelpers'
 import * as React from 'react'
 import { SectionSize } from 'utils/SectionSize'
 import { getStoryblokImage, Image } from 'utils/storyblok'
@@ -19,6 +19,10 @@ import { keyframes } from '@emotion/core'
 interface Animatable {
   animate?: boolean
 }
+
+type HeadlineProps = {
+  useDisplayFont: boolean
+} & Animatable
 
 interface WrapperProps {
   colorComponent?: MinimalColorComponent
@@ -36,7 +40,7 @@ const Wrapper = styled('div')<WrapperProps>(
   }) => ({
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
     minHeight: '100vh',
     fontFamily: `${fonts.FAVORIT}, sans-serif`,
     color: getMinimalColorStyles(colorComponent?.color ?? 'standard').color,
@@ -62,38 +66,43 @@ const fadeSlideIn = keyframes({
   to: { opacity: 1, transform: 'translateY(0%)' },
 })
 
-const HeroHeadline = styled('h1')<Animatable>(({ animate }) => ({
-  animation: animate ? `${fadeSlideIn} 1000ms forwards` : 'none',
-  opacity: animate ? 0 : 1,
-  animationDelay: '400ms',
+const HeroHeadline = styled('h1')<HeadlineProps>(
+  ({ animate, useDisplayFont }) => ({
+    animation: animate ? `${fadeSlideIn} 1000ms forwards` : 'none',
+    opacity: animate ? 0 : 1,
+    animationDelay: '400ms',
+    marginBottom: '3rem',
+    textAlign: 'center',
 
-  fontSize: '4rem',
+    fontSize: '4rem',
 
-  [MOBILE_BP_UP]: {
-    fontSize: '7.5rem',
-  },
+    [MOBILE_BP_UP]: {
+      fontSize: '7.5rem',
+    },
 
-  '&&': {
-    fontFamily: `${fonts.EB_GARAMOND}, serif`,
-  },
-}))
+    '&&': {
+      fontFamily: useDisplayFont ? `${fonts.EB_GARAMOND}, serif` : undefined,
+    },
+  }),
+)
 
-const IndentedText = styled('div')<Animatable>(({ animate }) => ({
+const Text = styled('div')<Animatable>(({ animate }) => ({
   animation: animate ? `${fadeSlideIn} 1000ms forwards` : 'none',
   opacity: animate ? 0 : 1,
   animationDelay: '700ms',
-
-  [MOBILE_BP_UP]: {
-    paddingLeft: '7rem',
-  },
+  textAlign: 'center',
+  maxWidth: '40rem',
+  margin: '0 auto',
 }))
 
-interface HeroImageBlockBrandPivotProps extends BrandPivotBaseBlockProps {
+export interface HeroImageBlockBrandPivotProps
+  extends BrandPivotBaseBlockProps {
   headline: string
   indented_text: MarkdownHtmlComponent
   image: Image
   image_mobile: Image
   animate?: boolean
+  useDisplayFont?: boolean
 }
 
 export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> = ({
@@ -106,6 +115,7 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
   image,
   index,
   image_mobile,
+  useDisplayFont = false,
 }) => {
   return (
     <WrapperWithExtraStyling
@@ -116,8 +126,10 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
       size={size}
     >
       <ContentWrapper index={index}>
-        <HeroHeadline animate={animate}>{headline}</HeroHeadline>
-        <IndentedText
+        <HeroHeadline animate={animate} useDisplayFont={useDisplayFont}>
+          {headline}
+        </HeroHeadline>
+        <Text
           dangerouslySetInnerHTML={{ __html: indented_text?.html }}
           animate={animate}
         />
