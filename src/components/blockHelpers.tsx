@@ -31,15 +31,14 @@ export const SITE_MAX_WIDTH = {
 }
 
 export const CONTENT_MAX_WIDTH = {
+  maxWidth: 1160,
+}
+
+export const CONTENT_MAX_WIDTH_DEPRECATED = {
   maxWidth: 1200,
   [GIANT_BP_UP]: {
     maxWidth: 1500,
   },
-}
-
-// New content max width
-export const CONTENT_MAX_WIDTH_BRAND_PIVOT = {
-  maxWidth: 1160,
 }
 
 export const colorDeviations = {
@@ -347,7 +346,7 @@ export const ContentWrapperStyled = styled('div')<{
     padding: '0 ' + CONTENT_GUTTER_MOBILE,
   },
 
-  ...(brandPivot ? CONTENT_MAX_WIDTH_BRAND_PIVOT : CONTENT_MAX_WIDTH),
+  ...(brandPivot ? CONTENT_MAX_WIDTH : CONTENT_MAX_WIDTH_DEPRECATED),
 
   opacity: visible ? 1 : 0,
   transform: visible ? 'translateY(0)' : 'translateY(5%)',

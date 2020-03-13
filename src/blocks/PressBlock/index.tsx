@@ -5,7 +5,7 @@ import * as React from 'react'
 import {
   CONTENT_GUTTER,
   CONTENT_GUTTER_MOBILE,
-  CONTENT_MAX_WIDTH,
+  CONTENT_MAX_WIDTH_DEPRECATED,
   GIANT_BP_UP,
   MOBILE_BP_DOWN,
   SectionWrapper,
@@ -15,7 +15,7 @@ import { BaseBlockProps, MarkdownHtmlComponent } from '../BaseBlockProps'
 import { PressItem } from './PressItem'
 
 const Wrapper = styled('div')({
-  ...CONTENT_MAX_WIDTH,
+  ...CONTENT_MAX_WIDTH_DEPRECATED,
   maxWidth: 700,
   margin: '0 auto',
   padding: `0 ${CONTENT_GUTTER}`,
