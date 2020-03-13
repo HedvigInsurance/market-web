@@ -13,7 +13,6 @@ import {
 const ColumnContentWrapper = styled(ContentWrapper)({
   display: 'flex',
   flexWrap: 'wrap',
-  maxWidth: '60rem',
 })
 
 const Column = styled('div')({

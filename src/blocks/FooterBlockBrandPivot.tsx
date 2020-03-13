@@ -133,7 +133,7 @@ export const FooterBlockBrandPivot: React.FunctionComponent<FooterBlockProps> = 
               <IconWrapper>
                 <HedvigH size={48} />
               </IconWrapper>
-              <ContentWrapper>
+              <ContentWrapper brandPivot>
                 <FooterInnerWrapper>
                   <LinkTextWrapper>
                     {globalStory.content.get_started?.length &&

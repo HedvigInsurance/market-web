@@ -4,7 +4,7 @@ import * as React from 'react'
 import {
   CONTENT_GUTTER,
   CONTENT_GUTTER_MOBILE,
-  CONTENT_MAX_WIDTH,
+  CONTENT_MAX_WIDTH_DEPRECATED,
   GIANT_BP_UP,
   MOBILE_BP_DOWN,
 } from '../components/blockHelpers'
@@ -29,12 +29,12 @@ const Wrapper = styled('div')({
 })
 
 const Image = styled(DeferredImage)({
-  maxWidth: `calc(${CONTENT_MAX_WIDTH.maxWidth}px - ${CONTENT_GUTTER}*2)`,
+  maxWidth: `calc(${CONTENT_MAX_WIDTH_DEPRECATED.maxWidth}px - ${CONTENT_GUTTER}*2)`,
   width: '100%',
   marginLeft: 'auto',
   marginRight: 'auto',
   [GIANT_BP_UP]: {
-    maxWidth: `calc(${CONTENT_MAX_WIDTH[GIANT_BP_UP].maxWidth}px - ${CONTENT_GUTTER}*2)`,
+    maxWidth: `calc(${CONTENT_MAX_WIDTH_DEPRECATED[GIANT_BP_UP].maxWidth}px - ${CONTENT_GUTTER}*2)`,
   },
 })
 
@@ -44,7 +44,7 @@ const Caption = styled('div')({
   padding: `0 ${CONTENT_GUTTER} ${CONTENT_GUTTER} ${CONTENT_GUTTER}`,
   color: colors.WHITE,
   textAlign: 'center',
-  ...CONTENT_MAX_WIDTH,
+  ...CONTENT_MAX_WIDTH_DEPRECATED,
 
   [MOBILE_BP_DOWN]: {
     padding: `0 ${CONTENT_GUTTER_MOBILE} ${CONTENT_GUTTER_MOBILE} ${CONTENT_GUTTER_MOBILE}`,
@@ -59,7 +59,7 @@ const Shadow = styled('div')({
   left: '50%',
   height: '100%',
   width: '100%',
-  maxWidth: `calc(${CONTENT_MAX_WIDTH.maxWidth}px - ${CONTENT_GUTTER}*2)`,
+  maxWidth: `calc(${CONTENT_MAX_WIDTH_DEPRECATED.maxWidth}px - ${CONTENT_GUTTER}*2)`,
   transform: 'translateX(-50%)',
   backgroundImage:
     'linear-gradient(transparent, transparent 20%, rgba(0,0,0,0.85))',
@@ -70,7 +70,7 @@ const Shadow = styled('div')({
       'linear-gradient(transparent, transparent 60%, rgba(0,0,0,0.85))',
   },
   [GIANT_BP_UP]: {
-    maxWidth: `calc(${CONTENT_MAX_WIDTH[GIANT_BP_UP].maxWidth}px - ${CONTENT_GUTTER}*2)`,
+    maxWidth: `calc(${CONTENT_MAX_WIDTH_DEPRECATED[GIANT_BP_UP].maxWidth}px - ${CONTENT_GUTTER}*2)`,
   },
 })
 
