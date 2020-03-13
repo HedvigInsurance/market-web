@@ -162,4 +162,9 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
     'https://cdn.hedvig.com/info/forskopsinfo-villa-eustandard-2019-10-v1.pdf',
     302,
   ],
+  [
+    '/en/terms/terms/house-owners.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-house-owners-2019-10.pdf',
+    302,
+  ],
 ]
