@@ -31,6 +31,10 @@ export const SITE_MAX_WIDTH = {
 }
 
 export const CONTENT_MAX_WIDTH = {
+  maxWidth: 1160,
+}
+
+export const CONTENT_MAX_WIDTH_DEPRECATED = {
   maxWidth: 1200,
   [GIANT_BP_UP]: {
     maxWidth: 1500,
@@ -330,30 +334,33 @@ export const MarginSectionWrapper = styled('section')<SectionProps>(
   }),
 )
 
-export const ContentWrapperStyled = styled('div')<{ visible: boolean }>(
-  ({ visible }) => ({
-    width: '100%',
-    padding: '0 ' + CONTENT_GUTTER,
-    margin: '0 auto',
+export const ContentWrapperStyled = styled('div')<{
+  visible: boolean
+  brandPivot: boolean
+}>(({ visible, brandPivot }) => ({
+  width: '100%',
+  padding: '0 ' + CONTENT_GUTTER,
+  margin: '0 auto',
 
-    [MOBILE_BP_DOWN]: {
-      padding: '0 ' + CONTENT_GUTTER_MOBILE,
-    },
+  [MOBILE_BP_DOWN]: {
+    padding: '0 ' + CONTENT_GUTTER_MOBILE,
+  },
 
-    ...CONTENT_MAX_WIDTH,
+  ...(brandPivot ? CONTENT_MAX_WIDTH : CONTENT_MAX_WIDTH_DEPRECATED),
 
-    opacity: visible ? 1 : 0,
-    transform: visible ? 'translateY(0)' : 'translateY(5%)',
-    transition: 'opacity 800ms, transform 500ms',
-  }),
-)
+  opacity: visible ? 1 : 0,
+  transform: visible ? 'translateY(0)' : 'translateY(5%)',
+  transition: 'opacity 800ms, transform 500ms',
+}))
 
 export interface ContentWrapperProps {
   index?: number
+  brandPivot?: boolean
 }
 
 export const ContentWrapper: React.FC<ContentWrapperProps> = ({
   index = 0,
+  brandPivot = false,
   children,
   ...props
 }) => (
@@ -365,7 +372,11 @@ export const ContentWrapper: React.FC<ContentWrapperProps> = ({
     }}
   >
     {({ isVisible }) => (
-      <ContentWrapperStyled visible={index <= 1 || isVisible} {...props}>
+      <ContentWrapperStyled
+        visible={index <= 1 || isVisible}
+        brandPivot={brandPivot}
+        {...props}
+      >
         {children}
       </ContentWrapperStyled>
     )}

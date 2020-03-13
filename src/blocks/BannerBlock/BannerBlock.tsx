@@ -5,7 +5,7 @@ import {
   MarkdownHtmlComponent,
 } from 'src/blocks/BaseBlockProps'
 import {
-  CONTENT_MAX_WIDTH,
+  CONTENT_MAX_WIDTH_DEPRECATED,
   SectionWrapper,
   TABLET_BP_UP,
 } from '../../components/blockHelpers'
@@ -15,7 +15,7 @@ const BannerContent = styled('div')({
   marginRight: 'auto',
   padding: '1rem',
   textAlign: 'center',
-  ...CONTENT_MAX_WIDTH,
+  ...CONTENT_MAX_WIDTH_DEPRECATED,
 
   [TABLET_BP_UP]: {
     padding: '1.25rem',
