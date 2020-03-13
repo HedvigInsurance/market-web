@@ -361,7 +361,7 @@ export interface ContentWrapperProps {
 
 export const ContentWrapper: React.FC<ContentWrapperProps> = ({
   index = 0,
-  brandPivot,
+  brandPivot = false,
   children,
   ...props
 }) => (
@@ -375,7 +375,7 @@ export const ContentWrapper: React.FC<ContentWrapperProps> = ({
     {({ isVisible }) => (
       <ContentWrapperStyled
         visible={index <= 1 || isVisible}
-        brandPivot
+        brandPivot={brandPivot}
         {...props}
       >
         {children}
