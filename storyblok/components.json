@@ -1616,6 +1616,49 @@
       "component_group_uuid": null
     },
     {
+      "name": "image_block_brand_pivot",
+      "display_name": null,
+      "schema": {
+        "image": {
+          "type": "image",
+          "display_name": "",
+          "description": "Around 1200x500 px",
+          "pos": 0,
+          "translatable": true
+        },
+        "caption": {
+          "type": "text",
+          "pos": 1,
+          "translatable": true
+        },
+        "caption_shadow": {
+          "type": "boolean",
+          "pos": 2
+        },
+        "tab-9266977a-879b-4499-9cef-2e7948d2ca8b": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": [
+            "extra_styling"
+          ],
+          "pos": 0
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "image_block_brand_pivot",
+      "component_group_uuid": null
+    },
+    {
       "name": "image_bullet_point_item",
       "display_name": "",
       "schema": {
