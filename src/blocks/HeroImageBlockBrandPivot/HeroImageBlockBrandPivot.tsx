@@ -6,7 +6,9 @@ import {
   MarkdownHtmlComponent,
   MinimalColorComponent,
 } from 'blocks/BaseBlockProps'
+import { HedvigH } from 'components/icons/HedvigH'
 import * as React from 'react'
+import { useMediaQuery } from 'react-responsive'
 import { SectionSize } from 'utils/SectionSize'
 import { getStoryblokImage, Image } from 'utils/storyblok'
 import {
@@ -73,6 +75,7 @@ const fadeSlideIn = keyframes({
 
 const HeroHeadline = styled('h1')<HeadlineProps>(
   ({ animate, useDisplayFont }) => ({
+    position: 'relative',
     animation: animate ? `${fadeSlideIn} 1000ms forwards` : 'none',
     opacity: animate ? 0 : 1,
     animationDelay: '400ms',
@@ -108,6 +111,17 @@ const Text = styled('div')<TextProps>(({ animate, colorComponent }) => ({
   },
 }))
 
+const Wordmark = styled('div')({
+  display: 'inline-flex',
+  position: 'absolute',
+  marginTop: '0.625rem',
+  marginLeft: '0.5rem',
+
+  [TABLET_BP_UP]: {
+    marginTop: '1rem',
+  },
+})
+
 export interface HeroImageBlockBrandPivotProps
   extends BrandPivotBaseBlockProps {
   headline: string
@@ -116,7 +130,8 @@ export interface HeroImageBlockBrandPivotProps
   image: Image
   image_mobile: Image
   animate?: boolean
-  useDisplayFont?: boolean
+  show_hedvig_wordmark?: boolean
+  use_display_font?: boolean
 }
 
 export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> = ({
@@ -130,8 +145,11 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
   image,
   index,
   image_mobile,
-  useDisplayFont = false,
+  use_display_font = false,
+  show_hedvig_wordmark,
 }) => {
+  const isTablet = useMediaQuery({ maxWidth: 801 })
+
   return (
     <WrapperWithExtraStyling
       colorComponent={color}
@@ -141,8 +159,13 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
       size={size}
     >
       <ContentWrapper index={index}>
-        <HeroHeadline animate={animate} useDisplayFont={useDisplayFont}>
+        <HeroHeadline animate={animate} useDisplayFont={use_display_font}>
           {headline}
+          {show_hedvig_wordmark && (
+            <Wordmark>
+              <HedvigH size={isTablet ? 20 : 32} />
+            </Wordmark>
+          )}
         </HeroHeadline>
         <Text
           dangerouslySetInnerHTML={{ __html: text?.html }}
