@@ -1,3 +1,4 @@
+import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import { fonts } from '@hedviginsurance/brand'
 import {
@@ -5,16 +6,16 @@ import {
   MarkdownHtmlComponent,
   MinimalColorComponent,
 } from 'blocks/BaseBlockProps'
+import * as React from 'react'
+import { SectionSize } from 'utils/SectionSize'
+import { getStoryblokImage, Image } from 'utils/storyblok'
 import {
   ContentWrapper,
   getMinimalColorStyles,
   getSectionSizeStyle,
   MOBILE_BP_UP,
+  TABLET_BP_UP,
 } from '../../components/blockHelpers'
-import * as React from 'react'
-import { SectionSize } from 'utils/SectionSize'
-import { getStoryblokImage, Image } from 'utils/storyblok'
-import { keyframes } from '@emotion/core'
 
 interface Animatable {
   animate?: boolean
@@ -22,6 +23,10 @@ interface Animatable {
 
 type HeadlineProps = {
   useDisplayFont: boolean
+} & Animatable
+
+type TextProps = {
+  colorComponent?: MinimalColorComponent
 } & Animatable
 
 interface WrapperProps {
@@ -74,31 +79,40 @@ const HeroHeadline = styled('h1')<HeadlineProps>(
     marginBottom: '3rem',
     textAlign: 'center',
 
-    fontSize: '4rem',
+    fontSize: '3.5rem',
 
-    [MOBILE_BP_UP]: {
-      fontSize: '7.5rem',
+    [TABLET_BP_UP]: {
+      fontSize: '6rem',
     },
 
     '&&': {
-      fontFamily: useDisplayFont ? `${fonts.EB_GARAMOND}, serif` : undefined,
+      fontFamily: useDisplayFont
+        ? `${fonts.EB_GARAMOND}, serif`
+        : `${fonts.FAVORIT}, sans-serif`,
     },
   }),
 )
 
-const Text = styled('div')<Animatable>(({ animate }) => ({
+const Text = styled('div')<TextProps>(({ animate, colorComponent }) => ({
   animation: animate ? `${fadeSlideIn} 1000ms forwards` : 'none',
   opacity: animate ? 0 : 1,
   animationDelay: '700ms',
   textAlign: 'center',
   maxWidth: '40rem',
   margin: '0 auto',
+  color: getMinimalColorStyles(colorComponent?.color ?? 'standard').color,
+  fontSize: '1.25rem',
+
+  [TABLET_BP_UP]: {
+    fontSize: '1.5rem',
+  },
 }))
 
 export interface HeroImageBlockBrandPivotProps
   extends BrandPivotBaseBlockProps {
   headline: string
-  indented_text: MarkdownHtmlComponent
+  text: MarkdownHtmlComponent
+  text_color?: MinimalColorComponent
   image: Image
   image_mobile: Image
   animate?: boolean
@@ -111,7 +125,8 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
   extra_styling,
   animate,
   headline,
-  indented_text,
+  text,
+  text_color,
   image,
   index,
   image_mobile,
@@ -130,8 +145,9 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
           {headline}
         </HeroHeadline>
         <Text
-          dangerouslySetInnerHTML={{ __html: indented_text?.html }}
+          dangerouslySetInnerHTML={{ __html: text?.html }}
           animate={animate}
+          colorComponent={text_color}
         />
       </ContentWrapper>
     </WrapperWithExtraStyling>
