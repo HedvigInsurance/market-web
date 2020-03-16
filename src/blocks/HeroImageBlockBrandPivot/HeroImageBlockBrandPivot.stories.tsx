@@ -1,6 +1,6 @@
 import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 import * as React from 'react'
-import { MarkdownHtmlComponent, MinimalColorComponent } from '../BaseBlockProps'
+import { MarkdownHtmlComponent } from '../BaseBlockProps'
 import {
   HeroImageBlockBrandPivot,
   HeroImageBlockBrandPivotProps,
@@ -21,19 +21,17 @@ const heroText: MarkdownHtmlComponent = {
   plugin: 'markdown-html',
 }
 
-const standardInverse: MinimalColorComponent = {
-  _uid: '6ecde11d-ba0a-48fb-9b7b-e6dbf31415d9',
-  color: 'standard-inverse',
-  plugin: 'hedvig_minimal_color_picker',
-}
-
 const colors = {
   standard: {
     _uid: '6ecde11d-ba0a-48fb-9b7b-e6dbf31415d9',
     color: 'standard',
     plugin: 'hedvig_minimal_color_picker',
   },
-  standardInverse,
+  standardInverse: {
+    _uid: '6ecde11d-ba0a-48fb-9b7b-e6dbf31415d9',
+    color: 'standard-inverse',
+    plugin: 'hedvig_minimal_color_picker',
+  },
   gray700: {
     _uid: '6ecde11d-ba0a-48fb-9b7b-e6dbf31415d9',
     color: 'gray700',
@@ -62,7 +60,8 @@ export const Default = () => (
     {...heroProps}
     color={select('color', colors, colors.standardInverse)}
     text_color={select('Text color', colors, colors.standardInverse)}
-    useDisplayFont={boolean('Use display font', false)}
+    show_hedvig_wordmark={boolean('Show Hedvig wordmark', false)}
+    use_display_font={boolean('Use display font', false)}
   />
 )
 export const WithImage = () => (
@@ -72,6 +71,7 @@ export const WithImage = () => (
     image_mobile={image}
     color={select('color', colors, colors.standardInverse)}
     text_color={select('Text color', colors, colors.standardInverse)}
-    useDisplayFont={boolean('Use display font', false)}
+    show_hedvig_wordmark={boolean('Show Hedvig wordmark', false)}
+    use_display_font={boolean('Use display font', false)}
   />
 )
