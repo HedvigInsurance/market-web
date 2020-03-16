@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colors, fonts } from '@hedviginsurance/brand'
+import { colorsV3, fonts } from '@hedviginsurance/brand'
 import { Container } from 'constate'
 import * as React from 'react'
 import AnimateHeight from 'react-animate-height'
@@ -24,12 +24,12 @@ const DropdownMenuItemList = styled('ul')<{
   listStyle: 'none',
   margin: 0,
   padding: '1.5rem 2rem .5rem 2rem',
-  background: colors.WHITE,
+  background: colorsV3.white,
   boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.1), 0px 2px 5px rgba(0, 0, 0, 0.1);',
   opacity: isOpen && !isClosing ? 1 : 0,
   transition: 'opacity 150ms',
   overflowY: 'hidden',
-  color: colors.OFF_BLACK_DARK,
+  color: colorsV3.gray900,
 
   [TABLET_BP_DOWN]: {
     position: 'static',

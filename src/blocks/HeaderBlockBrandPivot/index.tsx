@@ -2,7 +2,6 @@ import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import * as React from 'react'
-import { Mount, Unmount } from 'react-lifecycle-components'
 import { AppLink } from '../../components/AppLink'
 import { ContentWrapper } from '../../components/blockHelpers'
 import {
@@ -17,11 +16,15 @@ import {
   LinkComponent,
 } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok'
-import { BaseBlockProps, MinimalColorComponent } from '../BaseBlockProps'
+import {
+  BaseBlockProps,
+  MinimalColorComponent,
+  minimalColorComponentColors,
+} from '../BaseBlockProps'
 import { MenuItem } from './MenuItem'
 import { Burger, TABLET_BP_DOWN, TABLET_BP_UP } from './mobile'
 
-export const WRAPPER_HEIGHT = '4rem'
+export const WRAPPER_HEIGHT = '6rem'
 export const HEADER_VERTICAL_PADDING = '1.2rem'
 export const TOGGLE_TRANSITION_TIME = 250
 
@@ -35,7 +38,7 @@ const Wrapper = styled('div')<{ inverse: boolean; open: boolean }>(
     left: 0,
     right: 0,
     zIndex: 100,
-    color: inverse && !isBelowScrollThreshold() ? colorsV3.white : 'inherit',
+    color: inverse ? colorsV3.white : colorsV3.gray900,
     transition: 'color 300ms',
 
     [TABLET_BP_DOWN]: {
@@ -55,7 +58,7 @@ const HeaderBackgroundFiller = styled('div')<{ transparent: boolean }>(
     zIndex: -1,
     height: WRAPPER_HEIGHT,
     backgroundColor: colorsV3.white,
-    opacity: transparent && !isBelowScrollThreshold() ? 0 : 1,
+    opacity: transparent ? 0 : 1,
     transition: 'opacity 300ms',
   }),
 )
@@ -97,7 +100,6 @@ const Menu = styled('ul')<{ open: boolean }>(({ open }) => ({
 
 const LogoLink = styled('a')({
   display: 'inline-flex',
-  paddingTop: 3, // fix to push down logo a little or it looks unbalanced
   color: 'inherit',
   marginLeft: '1rem',
 })
@@ -135,232 +137,224 @@ interface HeaderBlockProps extends BaseBlockProps {
   mobile_header_cta_style?: ButtonStyleType
 }
 
-class Header extends React.PureComponent<
-  { story: GlobalStory } & HeaderBlockProps
-> {
-  private backgroundFillerRef: null | HTMLDivElement = null
-  private wrapperRef: null | HTMLDivElement = null
+enum InverseColors {
+  DEFAULT = 'standard-inverse',
+  INVERSE = 'standard',
+}
 
-  public render() {
-    const mobileHeaderCtaLabel =
-      this.props.override_mobile_header_cta_label ||
-      this.props.story.content.cta_label
+export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
+  props,
+) => {
+  const [isBelowThreshold, setIsBelowThreshold] = React.useState<boolean>(
+    isBelowScrollThreshold(),
+  )
+  const [buttonColor, setButtonColor] = React.useState<
+    minimalColorComponentColors | undefined
+  >(props.cta_color?.color)
 
-    const mobileHeaderCtaLinkSrc =
-      this.props.override_cta_link && this.props.override_cta_link.cached_url
-        ? this.props.override_cta_link
-        : this.props.story.content.cta_link
-    const mobileHeaderCtaLink = getStoryblokLinkUrl(mobileHeaderCtaLinkSrc)
-    return (
-      <>
-        <Mount
-          on={() => {
-            if (!this.props.is_transparent) {
-              return
+  React.useEffect(() => {
+    if (!props.is_transparent) {
+      return
+    }
+
+    setTimeout(() => {
+      updateHeader() // update the scroll animation after mount because the server doesn't know scroll position
+    }, 1)
+
+    window.addEventListener('scroll', updateHeader)
+
+    return () => {
+      if (!props.is_transparent) {
+        return
+      }
+
+      window.removeEventListener('scroll', updateHeader)
+    }
+  }, [])
+
+  const updateHeader = () => {
+    if (isBelowScrollThreshold()) {
+      setIsBelowThreshold(true)
+      if (props.inverse_colors) {
+        setButtonColor(InverseColors.INVERSE)
+      }
+      return
+    }
+
+    setIsBelowThreshold(false)
+    if (props.inverse_colors) {
+      setButtonColor(InverseColors.DEFAULT)
+    }
+  }
+
+  const mobileHeaderCtaLabel =
+    props.override_mobile_header_cta_label || props.story.content.cta_label
+
+  const mobileHeaderCtaLinkSrc =
+    props.override_cta_link && props.override_cta_link.cached_url
+      ? props.override_cta_link
+      : props.story.content.cta_link
+  const mobileHeaderCtaLink = getStoryblokLinkUrl(mobileHeaderCtaLinkSrc)
+
+  return (
+    <>
+      {!props.is_transparent && <Filler />}
+
+      <Togglable>
+        {({ isOpen, isClosing, toggleOpen }) => (
+          <Wrapper
+            inverse={
+              props.is_transparent && props.inverse_colors && !isBelowThreshold
             }
+            open={isOpen || isClosing}
+          >
+            <HeaderBackgroundFiller
+              transparent={props.is_transparent && !isBelowThreshold}
+            />
+            <ContentWrapper>
+              <InnerHeaderWrapper>
+                <RightContainer>
+                  <Burger
+                    isOpen={isOpen}
+                    isClosing={isClosing}
+                    onClick={toggleOpen}
+                    preventInverse={props.inverse_colors && isOpen}
+                  />
 
-            setTimeout(() => {
-              this.updateHeaderTransparency() // update the scroll animation after mount because the server doesn't know scroll position
-            }, 1)
-            window.addEventListener('scroll', this.updateHeaderTransparency)
-          }}
-        />
-        <Unmount
-          on={() => {
-            if (!this.props.is_transparent) {
-              return
-            }
+                  <ContextContainer>
+                    {(context) => (
+                      <LogoLink
+                        href={'/' + (context.lang === 'sv' ? '' : context.lang)}
+                      >
+                        <HedvigLogotype width={98} />
+                      </LogoLink>
+                    )}
+                  </ContextContainer>
+                </RightContainer>
 
-            window.removeEventListener('scroll', this.updateHeaderTransparency)
-          }}
-        />
-        {!this.props.is_transparent && <Filler />}
-
-        <Togglable>
-          {({ isOpen, isClosing, toggleOpen }) => (
-            <Wrapper
-              inverse={this.props.is_transparent && this.props.inverse_colors}
-              open={isOpen || isClosing}
-              ref={(r) => {
-                this.wrapperRef = r
-              }}
-            >
-              <HeaderBackgroundFiller
-                transparent={this.props.is_transparent}
-                ref={(r) => {
-                  this.backgroundFillerRef = r
-                }}
-              />
-              <ContentWrapper>
-                <InnerHeaderWrapper>
-                  <RightContainer>
-                    <Burger
-                      isOpen={isOpen}
-                      isClosing={isClosing}
-                      onClick={toggleOpen}
-                      preventInverse={this.props.inverse_colors && isOpen}
-                    />
-
-                    <ContextContainer>
-                      {(context) => (
-                        <LogoLink
-                          href={
-                            '/' + (context.lang === 'sv' ? '' : context.lang)
-                          }
-                        >
-                          <HedvigLogotype width={98} />
-                        </LogoLink>
-                      )}
-                    </ContextContainer>
-                  </RightContainer>
-
-                  {!isOpen && (
-                    <>
-                      {(() => {
-                        if (
-                          this.props.override_cta_link?.cached_url ||
-                          this.props.override_mobile_header_cta_link?.cached_url
-                        ) {
-                          return (
-                            <MobileHeaderLink
-                              size="sm"
-                              styleType={this.props.mobile_header_cta_style}
-                              href={mobileHeaderCtaLink}
-                              color={this.props.mobile_header_cta_color?.color}
-                            >
-                              {mobileHeaderCtaLabel}
-                            </MobileHeaderLink>
-                          )
-                        }
-
-                        if (
-                          this.props.story.content.show_cta &&
-                          this.props.story.content.cta_branch_link
-                        ) {
-                          return (
-                            <AppLink>
-                              {({ link, handleClick }) => (
-                                <MobileHeaderLink
-                                  size="sm"
-                                  styleType={this.props.mobile_header_cta_style}
-                                  color={
-                                    this.props.mobile_header_cta_color?.color
-                                  }
-                                  onClick={handleClick}
-                                  href={link}
-                                >
-                                  {mobileHeaderCtaLabel}
-                                </MobileHeaderLink>
-                              )}
-                            </AppLink>
-                          )
-                        }
+                {!isOpen && (
+                  <>
+                    {(() => {
+                      if (
+                        props.override_cta_link?.cached_url ||
+                        props.override_mobile_header_cta_link?.cached_url
+                      ) {
                         return (
                           <MobileHeaderLink
                             size="sm"
-                            styleType={this.props.mobile_header_cta_style}
+                            styleType={props.mobile_header_cta_style}
                             href={mobileHeaderCtaLink}
-                            color={this.props.mobile_header_cta_color?.color}
+                            color={props.mobile_header_cta_color?.color}
                           >
                             {mobileHeaderCtaLabel}
                           </MobileHeaderLink>
                         )
-                      })()}
-                    </>
-                  )}
-
-                  <Menu open={isOpen}>
-                    {(this.props.story.content.header_menu_items ?? []).map(
-                      (menuItem) => (
-                        <MenuItem menuItem={menuItem} key={menuItem._uid} />
-                      ),
-                    )}
-
-                    {(() => {
-                      const ctaLabel =
-                        this.props.override_cta_label ||
-                        this.props.story.content.cta_label
-
-                      if (this.props.override_cta_link?.cached_url) {
-                        return (
-                          <ButtonWrapper>
-                            <ButtonLinkBrandPivot
-                              styleType={this.props.cta_style}
-                              color={this.props.cta_color?.color}
-                              href={getStoryblokLinkUrl(
-                                this.props.override_cta_link,
-                              )}
-                            >
-                              {ctaLabel}
-                            </ButtonLinkBrandPivot>
-                          </ButtonWrapper>
-                        )
                       }
 
                       if (
-                        this.props.story.content.show_cta &&
-                        this.props.story.content.cta_branch_link
+                        props.story.content.show_cta &&
+                        props.story.content.cta_branch_link
                       ) {
                         return (
                           <AppLink>
                             {({ link, handleClick }) => (
-                              <ButtonWrapper>
-                                <ButtonLinkBrandPivot
-                                  styleType={this.props.cta_style}
-                                  color={this.props.cta_color?.color}
-                                  href={link}
-                                  onClick={handleClick}
-                                >
-                                  {ctaLabel}
-                                </ButtonLinkBrandPivot>
-                              </ButtonWrapper>
+                              <MobileHeaderLink
+                                size="sm"
+                                styleType={props.mobile_header_cta_style}
+                                color={props.mobile_header_cta_color?.color}
+                                onClick={handleClick}
+                                href={link}
+                              >
+                                {mobileHeaderCtaLabel}
+                              </MobileHeaderLink>
                             )}
                           </AppLink>
                         )
                       }
+                      return (
+                        <MobileHeaderLink
+                          size="sm"
+                          styleType={props.mobile_header_cta_style}
+                          href={mobileHeaderCtaLink}
+                          color={props.mobile_header_cta_color?.color}
+                        >
+                          {mobileHeaderCtaLabel}
+                        </MobileHeaderLink>
+                      )
+                    })()}
+                  </>
+                )}
 
+                <Menu open={isOpen}>
+                  {(props.story.content.header_menu_items ?? []).map(
+                    (menuItem) => (
+                      <MenuItem menuItem={menuItem} key={menuItem._uid} />
+                    ),
+                  )}
+
+                  {(() => {
+                    const ctaLabel =
+                      props.override_cta_label || props.story.content.cta_label
+
+                    if (props.override_cta_link?.cached_url) {
                       return (
                         <ButtonWrapper>
                           <ButtonLinkBrandPivot
-                            size="sm"
-                            styleType={this.props.cta_style}
-                            color={this.props.cta_color?.color}
-                            href={getStoryblokLinkUrl(
-                              this.props.story.content.cta_link,
-                            )}
+                            styleType={props.cta_style}
+                            color={buttonColor}
+                            href={getStoryblokLinkUrl(props.override_cta_link)}
                           >
                             {ctaLabel}
                           </ButtonLinkBrandPivot>
                         </ButtonWrapper>
                       )
-                    })()}
-                  </Menu>
-                </InnerHeaderWrapper>
-              </ContentWrapper>
-            </Wrapper>
-          )}
-        </Togglable>
-      </>
-    )
-  }
+                    }
 
-  private updateHeaderTransparency = () => {
-    if (!this.backgroundFillerRef || !this.wrapperRef) {
-      return
-    }
+                    if (
+                      props.story.content.show_cta &&
+                      props.story.content.cta_branch_link
+                    ) {
+                      return (
+                        <AppLink>
+                          {({ link, handleClick }) => (
+                            <ButtonWrapper>
+                              <ButtonLinkBrandPivot
+                                styleType={props.cta_style}
+                                color={props.cta_color?.color}
+                                href={link}
+                                onClick={handleClick}
+                              >
+                                {ctaLabel}
+                              </ButtonLinkBrandPivot>
+                            </ButtonWrapper>
+                          )}
+                        </AppLink>
+                      )
+                    }
 
-    if (isBelowScrollThreshold()) {
-      this.backgroundFillerRef.style.opacity = '1'
-      this.wrapperRef.style.color = 'inherit'
-      return
-    }
-
-    this.backgroundFillerRef!.style.opacity = '0'
-
-    if (this.props.inverse_colors) {
-      this.wrapperRef!.style.color = colorsV3.white
-    }
-  }
+                    return (
+                      <ButtonWrapper>
+                        <ButtonLinkBrandPivot
+                          size="sm"
+                          styleType={props.cta_style}
+                          color={props.cta_color?.color}
+                          href={getStoryblokLinkUrl(
+                            props.story.content.cta_link,
+                          )}
+                        >
+                          {ctaLabel}
+                        </ButtonLinkBrandPivot>
+                      </ButtonWrapper>
+                    )
+                  })()}
+                </Menu>
+              </InnerHeaderWrapper>
+            </ContentWrapper>
+          </Wrapper>
+        )}
+      </Togglable>
+    </>
+  )
 }
 
 export const HeaderBlockBrandPivot: React.FunctionComponent<HeaderBlockProps> = (

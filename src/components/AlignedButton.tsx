@@ -5,13 +5,13 @@ import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { ColorComponent, MinimalColorComponent } from '../blocks/BaseBlockProps'
 import { AppLink } from '../components/AppLink'
 import { TABLET_BP_DOWN } from '../components/blockHelpers'
+import { ButtonLinkBrandPivot } from '../components/ButtonBrandPivot/Button'
 import {
   ButtonLink,
   ButtonProps,
   buttonSizes,
   ButtonWeight,
 } from '../components/buttons'
-import { ButtonLinkBrandPivot } from '../components/ButtonBrandPivot/Button'
 
 import { getStoryblokLinkUrl } from '../utils/storyblok'
 
