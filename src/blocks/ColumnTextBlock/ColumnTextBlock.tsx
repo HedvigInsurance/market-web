@@ -53,7 +53,7 @@ export const ColumnTextBlock: React.FC<ColumnTextBlockProps> = ({
     size="none"
     brandPivot
   >
-    <ColumnContentWrapper index={index}>
+    <ColumnContentWrapper brandPivot index={index}>
       <Column dangerouslySetInnerHTML={{ __html: text_one?.html }} />
       <Column dangerouslySetInnerHTML={{ __html: text_two?.html }} />
     </ColumnContentWrapper>
