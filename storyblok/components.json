@@ -1334,9 +1334,14 @@
       "name": "hero_image_block_brand_pivot",
       "display_name": null,
       "schema": {
+        "background_image": {
+          "type": "section",
+          "keys": ["image", "image_mobile"],
+          "pos": 0
+        },
         "image": {
           "type": "image",
-          "pos": 0,
+          "pos": 1,
           "image_crop": false,
           "keep_image_size": true,
           "image_width": "2000",
@@ -1344,41 +1349,64 @@
         },
         "image_mobile": {
           "type": "image",
-          "pos": 1
+          "pos": 2
+        },
+        "headline_group": {
+          "type": "section",
+          "keys": ["headline", "use_display_font", "show_hedvig_wordmark"],
+          "pos": 3,
+          "display_name": "Headline"
         },
         "headline": {
           "type": "text",
-          "pos": 2
+          "pos": 4
+        },
+        "use_display_font": {
+          "type": "boolean",
+          "pos": 5,
+          "keys": ["headline", "show_hedvig_wordmark"],
+          "description": ""
         },
         "show_hedvig_wordmark": {
           "type": "boolean",
-          "pos": 3
+          "pos": 6
         },
-        "indented_text": {
+        "body": {
+          "type": "section",
+          "pos": 7,
+          "keys": ["text", "text_color"]
+        },
+        "text": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 4
+          "pos": 8
+        },
+        "text_color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 9
         },
         "tab-e69e2291-e9ec-4a70-92ec-2a64959f84de": {
           "type": "tab",
           "display_name": "Styling",
           "keys": ["color", "extra_styling", "animate", "size"],
-          "pos": 5
+          "pos": 10
         },
         "color": {
           "type": "custom",
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
-          "pos": 6
+          "pos": 11
         },
         "extra_styling": {
           "type": "textarea",
-          "pos": 7
+          "pos": 12
         },
         "animate": {
           "type": "boolean",
-          "pos": 8
+          "pos": 13
         },
         "size": {
           "type": "option",
@@ -1402,7 +1430,8 @@
             }
           ],
           "display_name": "",
-          "default_value": "none"
+          "default_value": "none",
+          "pos": 14
         }
       },
       "image": null,
