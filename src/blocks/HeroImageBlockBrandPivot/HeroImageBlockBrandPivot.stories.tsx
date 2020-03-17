@@ -1,10 +1,7 @@
 import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 import * as React from 'react'
-import {
-  MarkdownHtmlComponent,
-  minimalColorComponentColors,
-  MinimalColorComponent,
-} from '../BaseBlockProps'
+import { minimalColorMap } from 'utils/storybook'
+import { MarkdownHtmlComponent } from '../BaseBlockProps'
 import {
   HeroImageBlockBrandPivot,
   HeroImageBlockBrandPivotProps,
@@ -25,29 +22,6 @@ const heroText: MarkdownHtmlComponent = {
   plugin: 'markdown-html',
 }
 
-const colors: Record<string, MinimalColorComponent> = {
-  standard: {
-    _uid: '6ecde11d-ba0a-48fb-9b7b-e6dbf31415d9',
-    color: 'standard',
-    plugin: 'hedvig_minimal_color_picker',
-  },
-  'standard-inverse': {
-    _uid: '6ecde11d-ba0a-48fb-9b7b-e6dbf31415d9',
-    color: 'standard-inverse',
-    plugin: 'hedvig_minimal_color_picker',
-  },
-  gray700: {
-    _uid: '6ecde11d-ba0a-48fb-9b7b-e6dbf31415d9',
-    color: 'gray700',
-    plugin: 'hedvig_minimal_color_picker',
-  },
-  'gray500-inverse': {
-    _uid: '6ecde11d-ba0a-48fb-9b7b-e6dbf31415d9',
-    color: 'gray500-inverse',
-    plugin: 'hedvig_minimal_color_picker',
-  },
-}
-
 const heroProps: HeroImageBlockBrandPivotProps = {
   _uid: '5678',
   component: 'hero_block',
@@ -62,9 +36,15 @@ const image = 'https://cdn.hedvig.com/www/referrals/referrals-clean.png'
 export const Default = () => (
   <HeroImageBlockBrandPivot
     {...heroProps}
-    color={colors[select('color', Object.keys(colors), 'standard-inverse')]}
+    color={
+      minimalColorMap[
+        select('color', Object.keys(minimalColorMap), 'standard-inverse')
+      ]
+    }
     text_color={
-      colors[select('Text color', Object.keys(colors), 'standard-inverse')]
+      minimalColorMap[
+        select('Text color', Object.keys(minimalColorMap), 'standard-inverse')
+      ]
     }
     show_hedvig_wordmark={boolean('Show Hedvig wordmark', false)}
     use_display_font={boolean('Use display font', false)}
@@ -81,7 +61,9 @@ export const WithImage = () => (
       ]
     }
     text_color={
-      colors[select('Text color', Object.keys(colors), 'standard-inverse')]
+      minimalColorMap[
+        select('Text color', Object.keys(minimalColorMap), 'standard-inverse')
+      ]
     }
     show_hedvig_wordmark={boolean('Show Hedvig wordmark', false)}
     use_display_font={boolean('Use display font', false)}
