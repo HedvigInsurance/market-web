@@ -19,6 +19,7 @@ import { HeroVideoBlock } from './HeroVideoBlock'
 import { HomeHeroBlock } from './HomeHeroBlock'
 import { IconBulletPointBlock } from './IconBulletPointBlock'
 import { ImageBlock } from './ImageBlock'
+import { ImageBlockBrandPivot } from './ImageBlockBrandPivot/ImageBlockBrandPivot'
 import { ImageMultiTextBlock } from './ImageMultiTextBlock'
 import { ImageTextBlock } from './ImageTextBlock'
 import { InvestorsBlock } from './InvestorsBlock'
@@ -51,6 +52,7 @@ const blockComponents = {
   single_quote_block: SingleQuoteBlock,
   title_text_cta_block: TitleTextCtaBlock,
   image_block: ImageBlock,
+  image_block_brand_pivot: ImageBlockBrandPivot,
   icon_bullet_point_block: IconBulletPointBlock,
   title_paragraph_block: TitleParagraphBlock,
   title_cta_block: TitleCtaBlock,
