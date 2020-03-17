@@ -8,7 +8,6 @@ import {
 } from 'blocks/BaseBlockProps'
 import { HedvigH } from 'components/icons/HedvigH'
 import * as React from 'react'
-import { useMediaQuery } from 'react-responsive'
 import { SectionSize } from 'utils/SectionSize'
 import { getStoryblokImage, Image } from 'utils/storyblok'
 import {
@@ -117,8 +116,17 @@ const Wordmark = styled('div')({
   marginTop: '0.625rem',
   marginLeft: '0.5rem',
 
+  ['svg']: {
+    width: '1.25rem',
+    height: '1.25rem',
+  },
+
   [TABLET_BP_UP]: {
     marginTop: '1rem',
+    ['svg']: {
+      width: '2rem',
+      height: '2rem',
+    },
   },
 })
 
@@ -148,8 +156,6 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
   use_display_font = false,
   show_hedvig_wordmark,
 }) => {
-  const isTablet = useMediaQuery({ maxWidth: 801 })
-
   return (
     <WrapperWithExtraStyling
       colorComponent={color}
@@ -163,7 +169,7 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
           {headline}
           {show_hedvig_wordmark && (
             <Wordmark>
-              <HedvigH size={isTablet ? 20 : 32} />
+              <HedvigH />
             </Wordmark>
           )}
         </HeroHeadline>
