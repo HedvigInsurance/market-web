@@ -53,7 +53,7 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
       size="none"
       brandPivot
     >
-      <ContentWrapper index={index}>
+      <ContentWrapper brandPivot index={index}>
         <Headline
           textPosition={text_position}
           dangerouslySetInnerHTML={{ __html: text }}
