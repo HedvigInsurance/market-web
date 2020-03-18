@@ -244,7 +244,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                             size="sm"
                             styleType={props.mobile_header_cta_style}
                             href={mobileHeaderCtaLink}
-                            color={props.mobile_header_cta_color?.color}
+                            color={buttonColor}
                           >
                             {mobileHeaderCtaLabel}
                           </MobileHeaderLink>
@@ -320,7 +320,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                             <ButtonWrapper>
                               <ButtonLinkBrandPivot
                                 styleType={props.cta_style}
-                                color={props.cta_color?.color}
+                                color={buttonColor}
                                 href={link}
                                 onClick={handleClick}
                               >
@@ -335,9 +335,8 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                     return (
                       <ButtonWrapper>
                         <ButtonLinkBrandPivot
-                          size="sm"
                           styleType={props.cta_style}
-                          color={props.cta_color?.color}
+                          color={buttonColor}
                           href={getStoryblokLinkUrl(
                             props.story.content.cta_link,
                           )}
