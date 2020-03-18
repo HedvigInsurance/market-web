@@ -5,8 +5,8 @@ const Svg = styled('svg')({
   fill: 'currentColor',
 })
 
-export const HedvigH: React.FunctionComponent<{ size: number }> = ({
-  size,
+export const HedvigH: React.FunctionComponent<{ size?: number }> = ({
+  size = 32,
 }) => (
   <Svg width={String(size)} height={String(size)} viewBox="0 0 300 300">
     <g fill-rule="nonzero">

@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
   stories: ['../src/**/*.stories.tsx'],
   addons: [
@@ -8,6 +10,7 @@ module.exports = {
     'storybook-addon-paddings',
   ],
   webpackFinal: async (config) => {
+    config.resolve.modules.push(path.resolve(__dirname, '../src'))
     config.module.rules.push({
       test: /\.tsx?$/,
       use: [
