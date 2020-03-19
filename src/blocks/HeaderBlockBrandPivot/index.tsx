@@ -178,7 +178,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
       }
       window.removeEventListener('scroll', updateHeader)
     }
-  }, [])
+  }, [updateHeader])
 
   const mobileHeaderCtaLabel =
     props.override_mobile_header_cta_label || props.story.content.cta_label
