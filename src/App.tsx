@@ -1,6 +1,6 @@
 import { Global } from '@emotion/core'
 import { colors } from '@hedviginsurance/brand'
-import * as React from 'react'
+import React from 'react'
 import { hot } from 'react-hot-loader'
 import { Route, Switch, useLocation } from 'react-router-dom'
 import { CookieConsent } from './components/CookieConsent'
