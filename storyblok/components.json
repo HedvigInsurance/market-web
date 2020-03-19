@@ -1225,6 +1225,112 @@
       "component_group_uuid": null
     },
     {
+      "name": "header_block_brand_pivot",
+      "display_name": null,
+      "schema": {
+        "is_transparent": {
+          "type": "boolean",
+          "pos": 0
+        },
+        "inverse_colors": {
+          "type": "boolean",
+          "pos": 1,
+          "display_name": "Inverse Colors (transparent header only)"
+        },
+        "cta_group": {
+          "type": "section",
+          "pos": 2,
+          "keys": [
+            "override_cta_label",
+            "override_cta_link",
+            "cta_color",
+            "cta_style"
+          ],
+          "display_name": "CTA"
+        },
+        "override_cta_label": {
+          "type": "text",
+          "pos": 3
+        },
+        "override_cta_link": {
+          "type": "multilink",
+          "pos": 4
+        },
+        "cta_color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 5
+        },
+        "cta_style": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "filled",
+              "name": "Filled"
+            },
+            {
+              "value": "outlined",
+              "name": "Outlined"
+            }
+          ],
+          "description": "",
+          "pos": 6
+        },
+        "cta_mobile": {
+          "type": "section",
+          "keys": [
+            "override_mobile_header_cta_label",
+            "override_mobile_header_cta_link",
+            "mobile_header_cta_color",
+            "mobile_header_cta_style"
+          ],
+          "display_name": "CTA mobile",
+          "pos": 7
+        },
+        "override_mobile_header_cta_label": {
+          "type": "text",
+          "translatable": false,
+          "pos": 8
+        },
+        "override_mobile_header_cta_link": {
+          "type": "multilink",
+          "pos": 9
+        },
+        "mobile_header_cta_color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 10
+        },
+        "mobile_header_cta_style": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "filled",
+              "name": "Filled"
+            },
+            {
+              "value": "outlined",
+              "name": "Outlined"
+            }
+          ],
+          "pos": 11
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "header_block_brand_pivot",
+      "component_group_uuid": null
+    },
+    {
       "name": "headline_block",
       "display_name": null,
       "schema": {
