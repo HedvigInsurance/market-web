@@ -145,32 +145,10 @@ enum InverseColors {
 export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
   props,
 ) => {
-  const [isBelowThreshold, setIsBelowThreshold] = React.useState<boolean>(
-    isBelowScrollThreshold(),
-  )
+  const [isBelowThreshold, setIsBelowThreshold] = React.useState<boolean>(false)
   const [buttonColor, setButtonColor] = React.useState<
     minimalColorComponentColors | undefined
   >(props.cta_color?.color)
-
-  React.useEffect(() => {
-    if (!props.is_transparent) {
-      return
-    }
-
-    setTimeout(() => {
-      updateHeader() // update the scroll animation after mount because the server doesn't know scroll position
-    }, 1)
-
-    window.addEventListener('scroll', updateHeader)
-
-    return () => {
-      if (!props.is_transparent) {
-        return
-      }
-
-      window.removeEventListener('scroll', updateHeader)
-    }
-  }, [])
 
   const updateHeader = () => {
     if (isBelowScrollThreshold()) {
@@ -186,6 +164,21 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
       setButtonColor(InverseColors.DEFAULT)
     }
   }
+
+  React.useEffect(() => {
+    if (!props.is_transparent) {
+      return
+    }
+    updateHeader()
+    window.addEventListener('scroll', updateHeader)
+
+    return () => {
+      if (!props.is_transparent) {
+        return
+      }
+      window.removeEventListener('scroll', updateHeader)
+    }
+  }, [])
 
   const mobileHeaderCtaLabel =
     props.override_mobile_header_cta_label || props.story.content.cta_label
