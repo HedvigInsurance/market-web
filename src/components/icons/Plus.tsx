@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Svg, SvgProps } from './Svg'
 
 export const Plus: React.FunctionComponent<SvgProps> = ({

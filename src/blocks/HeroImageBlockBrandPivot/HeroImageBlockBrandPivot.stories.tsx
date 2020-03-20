@@ -1,5 +1,5 @@
 import { boolean, select, withKnobs } from '@storybook/addon-knobs'
-import * as React from 'react'
+import React from 'react'
 import { minimalColorMap } from 'utils/storybook'
 import { MarkdownHtmlComponent } from '../BaseBlockProps'
 import {

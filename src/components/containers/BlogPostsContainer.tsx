@@ -1,5 +1,5 @@
 import { Container } from 'constate'
-import * as React from 'react'
+import React from 'react'
 import { BlogStory } from '../../storyblok/StoryContainer'
 
 interface State {

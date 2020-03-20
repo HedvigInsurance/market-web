@@ -1,5 +1,5 @@
 declare module 'react-lottie' {
-  import * as React from 'react'
+  import React from 'react'
 
   export interface ReactLottieProps {
     eventListeners?: object[] // TODO improve typing

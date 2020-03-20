@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
 import { ContextContainer } from 'components/containers/ContextContainer'
-import * as React from 'react'
+import React from 'react'
 import { AppLink } from '../../components/AppLink'
 import { ContentWrapper } from '../../components/blockHelpers'
 import {

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
-import * as React from 'react'
+import React from 'react'
 import { BlogStory } from '../../storyblok/StoryContainer'
 import { getStoryblokImage } from '../../utils/storyblok'
 import { truncate } from '../../utils/truncate'

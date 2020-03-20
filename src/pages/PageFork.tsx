@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Story, StoryContainer } from '../storyblok/StoryContainer'
 import { BlogPostPage } from './BlogPostPage'
 import { FourOhFourPage } from './FourOhFour'

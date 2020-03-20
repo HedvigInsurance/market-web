@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { ColorComponent, MarkdownHtmlComponent } from '../BaseBlockProps'
 import { BannerBlock } from './BannerBlock'
 

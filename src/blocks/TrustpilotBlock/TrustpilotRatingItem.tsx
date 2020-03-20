@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import * as React from 'react'
+import React from 'react'
 import StarRatings from 'react-star-ratings'
 
 import { TrustpilotRatingItemProps } from '.'

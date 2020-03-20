@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { BlogPostsPage } from './pages/BlogPostsPage'
 import { BlogPostsTagPage } from './pages/BlogPostsTagPage'
 import { PageFork } from './pages/PageFork'

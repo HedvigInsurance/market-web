@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { fonts } from '@hedviginsurance/brand'
 import { BaseBlockProps } from 'blocks/BaseBlockProps'
 import { ContentWrapper, SectionWrapper } from 'components/blockHelpers'
-import * as React from 'react'
+import React from 'react'
 import { textFlexPositionMap, TextPosition } from 'utils/textPosition'
 
 interface HeadlineBlockProps extends BaseBlockProps {
