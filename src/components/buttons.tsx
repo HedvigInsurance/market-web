@@ -6,6 +6,7 @@ import { colorComponentColors } from 'src/blocks/BaseBlockProps'
 export const buttonSizes = {
   sm: '.75rem 1.5rem',
   md: '1rem 2rem',
+  lg: '1rem 3rem',
 }
 
 export type ButtonStyleType = 'filled' | 'outlined' | 'plain'

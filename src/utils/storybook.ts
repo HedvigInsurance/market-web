@@ -31,7 +31,7 @@ export const minimalColorMap: Record<string, MinimalColorComponent> = {
   },
 }
 
-const link: LinkComponent = {
+export const link: LinkComponent = {
   id: '2',
   url: '/',
   linktype: 'url',
