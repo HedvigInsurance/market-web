@@ -4,11 +4,12 @@ import {
   colorComponentColors,
   minimalColorComponentColors,
 } from 'src/blocks/BaseBlockProps'
-import { getMinimalColorStyles } from '../blockHelpers'
+import { getMinimalColorStyles, MOBILE_BP_UP } from '../blockHelpers'
 
 export const buttonSizes = {
   sm: '.75rem 1.5rem',
-  md: '1rem 2rem',
+  md: '1.125rem 2rem',
+  lg: '1.125rem 3rem',
 }
 
 export type ButtonStyleType = 'filled' | 'outlined' | 'plain'
@@ -18,6 +19,7 @@ export interface ButtonProps<TColor = colorComponentColors> {
   size?: keyof typeof buttonSizes
   styleType?: ButtonStyleType
   color?: TColor
+  fullWidth?: boolean
 }
 
 const getMinimalButtonTypeStyle = (
@@ -55,34 +57,47 @@ const getMinimalButtonTypeStyle = (
 
 export const ButtonBrandPivot = styled('button')<
   ButtonProps<minimalColorComponentColors>
->(({ styleType = 'filled', color = 'standard', size = 'md' }) => {
-  const colorStyles = getMinimalColorStyles(
-    color,
-    colorsV3.gray900,
-    colorsV3.white,
-  )
-  return {
-    display: 'inline-block',
-    padding: buttonSizes[size],
-    borderRadius: 8,
-    border: `1px solid ${colorStyles.background}`,
-    textDecoration: 'none',
-    fontWeight: 'normal',
-    cursor: 'pointer',
-    lineHeight: '1rem',
-    transition: 'background 150ms, color 150ms',
-    ...getMinimalButtonTypeStyle(styleType, color),
-
-    '&:hover': {
+>(
+  ({
+    styleType = 'filled',
+    color = 'standard',
+    size = 'md',
+    fullWidth = false,
+  }) => {
+    const colorStyles = getMinimalColorStyles(
+      color,
+      colorsV3.gray900,
+      colorsV3.white,
+    )
+    return {
+      display: 'inline-block',
+      width: fullWidth ? '100%' : 'auto',
+      padding: buttonSizes[size],
+      borderRadius: 8,
+      border: `1px solid ${colorStyles.background}`,
+      textDecoration: 'none',
+      textAlign: 'center',
+      fontWeight: 'normal',
+      cursor: 'pointer',
+      lineHeight: '1rem',
+      transition: 'background 150ms, color 150ms',
       ...getMinimalButtonTypeStyle(styleType, color),
-      ...(styleType === 'outlined'
-        ? {
-            background: colorStyles.background,
-            color: colorStyles.color,
-          }
-        : {}),
-    },
-  }
-})
+
+      '&:hover': {
+        ...getMinimalButtonTypeStyle(styleType, color),
+        ...(styleType === 'outlined'
+          ? {
+              background: colorStyles.background,
+              color: colorStyles.color,
+            }
+          : {}),
+      },
+
+      [MOBILE_BP_UP]: {
+        width: 'auto',
+      },
+    }
+  },
+)
 
 export const ButtonLinkBrandPivot = ButtonBrandPivot.withComponent('a')
