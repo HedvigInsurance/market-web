@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import * as React from 'react'
+import React from 'react'
 import { getColorStyles, SectionWrapper } from '../components/blockHelpers'
 import {
   BaseBlobProps,

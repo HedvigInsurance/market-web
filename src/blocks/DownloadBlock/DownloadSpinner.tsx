@@ -1,7 +1,7 @@
 import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
-import * as React from 'react'
+import React from 'react'
 const SpinnerContainer = styled('div')({
   display: 'inline-block',
   height: 64,

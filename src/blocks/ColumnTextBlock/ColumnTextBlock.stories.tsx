@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { MarkdownHtmlComponent } from '../BaseBlockProps'
 import { ColumnTextBlock } from './ColumnTextBlock'
 

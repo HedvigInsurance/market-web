@@ -4,8 +4,8 @@ import {
   CONTENT_GUTTER,
   CONTENT_MAX_WIDTH_DEPRECATED,
 } from 'components/blockHelpers'
-import * as Cookies from 'js-cookie'
-import * as React from 'react'
+import Cookies from 'js-cookie'
+import React from 'react'
 import { useLocation } from 'react-router'
 
 const OuterWrapper = styled('div')<{ visible: boolean; closing: boolean }>(

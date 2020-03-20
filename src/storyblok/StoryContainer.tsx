@@ -1,5 +1,5 @@
 import { Container } from 'constate'
-import * as React from 'react'
+import React from 'react'
 import { BaseBlockProps, MarkdownHtmlComponent } from '../blocks/BaseBlockProps'
 import { ErrorBlock } from '../components/blockHelpers'
 import { Image } from '../utils/storyblok'

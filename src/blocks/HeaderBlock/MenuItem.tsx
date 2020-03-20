@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { colors, fonts } from '@hedviginsurance/brand'
 import { Container } from 'constate'
-import * as React from 'react'
+import React from 'react'
 import AnimateHeight from 'react-animate-height'
 import { MenuItem as MenuItemType } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok'

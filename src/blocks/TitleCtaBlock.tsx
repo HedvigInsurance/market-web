@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import * as React from 'react'
+import React from 'react'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { CenterLeftTextPosition } from 'src/utils/textPosition'
 import { AppLink } from '../components/AppLink'
