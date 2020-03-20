@@ -887,6 +887,87 @@
       "component_group_uuid": null
     },
     {
+      "name": "cta_block",
+      "display_name": "",
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "size": {
+          "type": "option",
+          "pos": 1,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "none",
+              "name": "none"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ]
+        },
+        "cta_label": {
+          "type": "text",
+          "required": true,
+          "pos": 2
+        },
+        "cta_link": {
+          "type": "multilink",
+          "pos": 3
+        },
+        "cta_color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 4
+        },
+        "cta_style": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "outlined",
+              "name": "Outlined"
+            },
+            {
+              "value": "filled",
+              "name": "Filled"
+            }
+          ],
+          "default_value": "outlined",
+          "pos": 5
+        },
+        "tab-83de5495-dd87-43c7-a386-ccce4328076a": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["color", "size"],
+          "pos": 6
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "cta_block",
+      "component_group_uuid": null
+    },
+    {
       "name": "download_block",
       "display_name": null,
       "schema": {
