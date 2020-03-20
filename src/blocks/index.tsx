@@ -11,6 +11,7 @@ import { BaseBlockProps } from './BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock'
 import { BulletPointBlockBrandPivot } from './BulletPointBlockBrandPivot'
 import { CardChecklistBulletPointBlock } from './CardChecklistBulletPointBlock'
+import { CtaBlock } from './CtaBlock/CtaBlock'
 import { DownloadBlock } from './DownloadBlock'
 import { FooterBlock } from './FooterBlock'
 import { FooterBlockBrandPivot } from './FooterBlockBrandPivot'
@@ -44,6 +45,7 @@ const blockComponents = {
   bullet_point_block: BulletPointBlock,
   bullet_point_block_brand_pivot: BulletPointBlockBrandPivot,
   column_text_block: ColumnTextBlock,
+  cta_block: CtaBlock,
   download_block: DownloadBlock,
   image_multi_text_block: ImageMultiTextBlock,
   image_text_block: ImageTextBlock,
