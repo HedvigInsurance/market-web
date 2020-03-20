@@ -40,11 +40,7 @@ const DropdownMenuItemList = styled('ul')<{
 const MenuLink = styled('a')({
   color: 'inherit',
   textDecoration: 'none',
-  padding: '0 1rem',
-
-  '&:last-of-type': {
-    paddingRight: 0,
-  },
+  paddingLeft: '3rem',
 
   [TABLET_BP_DOWN]: {
     display: 'inline-block',

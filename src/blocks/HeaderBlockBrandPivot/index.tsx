@@ -106,7 +106,7 @@ const LogoLink = styled('a')({
 })
 
 const ButtonWrapper = styled('div')({
-  paddingLeft: '2rem',
+  paddingLeft: '3rem',
 
   [TABLET_BP_DOWN]: {
     paddingTop: '1.5rem',
