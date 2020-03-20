@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colorsV3 } from '@hedviginsurance/brand'
+import { colorsV3, fonts } from '@hedviginsurance/brand'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import * as React from 'react'
 import { AppLink } from '../../components/AppLink'
@@ -39,6 +39,7 @@ const Wrapper = styled('div')<{ inverse: boolean; open: boolean }>(
     right: 0,
     zIndex: 100,
     color: inverse ? colorsV3.white : colorsV3.gray900,
+    fontFamily: fonts.FAVORIT,
     transition: 'color 300ms',
 
     [TABLET_BP_DOWN]: {
