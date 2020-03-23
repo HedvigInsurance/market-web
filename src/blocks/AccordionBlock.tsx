@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { Container } from 'constate'
-import * as React from 'react'
+import React from 'react'
 import AnimateHeight from 'react-animate-height'
 import {
   ContentWrapper,

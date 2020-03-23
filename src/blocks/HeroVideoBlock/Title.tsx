@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
-import * as React from 'react'
+import React from 'react'
 import { animated, config, Spring } from 'react-spring'
 import { AppLink } from '../../components/AppLink'
 import { MOBILE_BP_DOWN } from '../../components/blockHelpers'

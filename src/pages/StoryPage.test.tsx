@@ -1,8 +1,8 @@
 import { Provider } from 'constate'
 import { mount } from 'enzyme'
-import * as React from 'react'
+import React from 'react'
 import { HelmetProvider } from 'react-helmet-async'
-import * as uuid from 'uuid'
+import uuid from 'uuid'
 import { StoryPage } from './StoryPage'
 
 test('renders without 💥', () => {

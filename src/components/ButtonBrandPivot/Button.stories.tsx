@@ -1,5 +1,5 @@
 import { colorsV3 } from '@hedviginsurance/brand'
-import * as React from 'react'
+import React from 'react'
 import { ButtonBrandPivot } from './Button'
 
 export default {

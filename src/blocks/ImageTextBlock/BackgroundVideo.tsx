@@ -1,6 +1,6 @@
 import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
-import * as React from 'react'
+import React from 'react'
 import MediaQuery from 'react-responsive'
 import { backgroundImageStyles } from '../../components/blockHelpers'
 import { DeferredVideo } from '../../components/DeferredVideo'

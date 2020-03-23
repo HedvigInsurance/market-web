@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Image as ImageType } from '../../utils/storyblok'
 import { ImageBlockBrandPivot } from './ImageBlockBrandPivot'
 

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
 import { ContextContainer } from 'components/containers/ContextContainer'
-import * as React from 'react'
+import React from 'react'
 import { Mount, Unmount } from 'react-lifecycle-components'
 import { AppLink } from '../../components/AppLink'
 import { ContentWrapper } from '../../components/blockHelpers'

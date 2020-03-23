@@ -1,7 +1,7 @@
 import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
-import * as React from 'react'
+import React from 'react'
 import {
   CONTENT_GUTTER,
   CONTENT_GUTTER_MOBILE,

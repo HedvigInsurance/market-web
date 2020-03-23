@@ -1,5 +1,5 @@
 declare module 'react-animate-height' {
-  import * as React from 'react'
+  import React from 'react'
   const ReactAnimateHeight: React.ComponentType<{
     height: string | number
     duration?: number

@@ -7,7 +7,7 @@ import {
   MinimalColorComponent,
 } from 'blocks/BaseBlockProps'
 import { HedvigH } from 'components/icons/HedvigH'
-import * as React from 'react'
+import React from 'react'
 import { SectionSize } from 'utils/SectionSize'
 import { getStoryblokImage, Image } from 'utils/storyblok'
 import {

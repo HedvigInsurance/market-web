@@ -1,5 +1,5 @@
 // @ts-ignore
-import * as kebabCase from 'just-kebab-case'
+import kebabCase from 'just-kebab-case'
 
 export const kebabCaseTag = (tag: string) =>
   kebabCase(tag)

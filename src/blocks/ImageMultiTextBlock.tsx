@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import * as React from 'react'
+import React from 'react'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
 import { DeferredImage } from '../components/DeferredImage'
 import { getStoryblokImage, Image as StoryblokImage } from '../utils/storyblok'

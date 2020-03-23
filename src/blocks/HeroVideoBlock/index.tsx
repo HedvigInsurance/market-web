@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { ActionMap, Container } from 'constate'
 import isIOS from 'is-ios'
-import * as React from 'react'
+import React from 'react'
 
 import {
   CONTENT_GUTTER,

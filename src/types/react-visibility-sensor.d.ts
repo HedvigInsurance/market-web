@@ -1,5 +1,5 @@
 declare module 'react-visibility-sensor' {
-  import * as React from 'react'
+  import React from 'react'
 
   interface Shape {
     top?: number

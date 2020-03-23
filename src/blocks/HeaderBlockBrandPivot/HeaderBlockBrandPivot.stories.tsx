@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
 import { boolean, select, withKnobs } from '@storybook/addon-knobs'
-import * as React from 'react'
+import React from 'react'
 import { globalStoryMock, minimalColorMap } from 'utils/storybook'
 import { Header } from '.'
 

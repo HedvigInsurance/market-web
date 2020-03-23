@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import SwipeableViews from '@hedviginsurance/react-swipeable-views'
-import * as React from 'react'
+import React from 'react'
 
 import MediaQuery from 'react-responsive'
 import {
