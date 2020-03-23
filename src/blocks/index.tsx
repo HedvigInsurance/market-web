@@ -11,10 +11,12 @@ import { BaseBlockProps } from './BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock'
 import { BulletPointBlockBrandPivot } from './BulletPointBlockBrandPivot'
 import { CardChecklistBulletPointBlock } from './CardChecklistBulletPointBlock'
+import { CtaBlock } from './CtaBlock/CtaBlock'
 import { DownloadBlock } from './DownloadBlock'
 import { FooterBlock } from './FooterBlock'
 import { FooterBlockBrandPivot } from './FooterBlockBrandPivot'
 import { HeaderBlock } from './HeaderBlock'
+import { HeaderBlockBrandPivot } from './HeaderBlockBrandPivot'
 import { HeadlineBlock } from './HeadlineBlock'
 import { HeroVideoBlock } from './HeroVideoBlock'
 import { HomeHeroBlock } from './HomeHeroBlock'
@@ -36,12 +38,14 @@ import { TrustpilotBlock } from './TrustpilotBlock'
 
 const blockComponents = {
   header_block: HeaderBlock,
+  header_block_brand_pivot: HeaderBlockBrandPivot,
   about_us_hero_block: AboutUsHeroBlock,
   accordion_block: AccordionBlock,
   banner_block: BannerBlock,
   bullet_point_block: BulletPointBlock,
   bullet_point_block_brand_pivot: BulletPointBlockBrandPivot,
   column_text_block: ColumnTextBlock,
+  cta_block: CtaBlock,
   download_block: DownloadBlock,
   image_multi_text_block: ImageMultiTextBlock,
   image_text_block: ImageTextBlock,
