@@ -164,7 +164,7 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
       backgroundImageMobile={getStoryblokImage(image_mobile)}
       size={size}
     >
-      <ContentWrapper index={index}>
+      <ContentWrapper index={index} brandPivot>
         <HeroHeadline animate={animate} useDisplayFont={use_display_font}>
           {headline}
           {show_hedvig_wordmark && (
