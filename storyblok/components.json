@@ -1505,6 +1505,12 @@
             }
           ],
           "default_value": "center"
+        },
+        "capitalize": {
+          "type": "boolean"
+        },
+        "show_hedvig_wordmark": {
+          "type": "boolean"
         }
       },
       "image": null,
