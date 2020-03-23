@@ -20,7 +20,7 @@ interface HeadlineBlockProps extends BrandPivotBaseBlockProps {
 }
 
 const sizeMap = {
-  xs: '1.5rem',
+  xs: '1rem',
   sm: '2rem',
   md: '3rem',
   lg: '6rem',
