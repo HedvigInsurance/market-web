@@ -29,6 +29,7 @@ import { InvestorsBlock } from './InvestorsBlock'
 import { PlainTextBlock } from './PlainTextBlock'
 import { PressBlock } from './PressBlock'
 import { PressCardBlock } from './PressCardBlock'
+import { QuoteBlockBrandPivot } from './QuoteBlockBrandPivot/QuoteBlockBrandPivot'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
 import { TitleCtaBlock } from './TitleCtaBlock'
@@ -55,6 +56,7 @@ const blockComponents = {
   hero_video_block: HeroVideoBlock,
   hero_image_block_brand_pivot: HeroImageBlockBrandPivot,
   home_hero_block: HomeHeroBlock,
+  quote_block: QuoteBlockBrandPivot,
   single_quote_block: SingleQuoteBlock,
   title_text_cta_block: TitleTextCtaBlock,
   image_block: ImageBlock,
