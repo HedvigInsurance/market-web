@@ -1,5 +1,5 @@
-import * as Cookies from 'js-cookie'
-import * as React from 'react'
+import Cookies from 'js-cookie'
+import React from 'react'
 
 import { RouteComponentProps, withRouter } from 'react-router'
 import { Story, StoryContainer } from '../storyblok/StoryContainer'

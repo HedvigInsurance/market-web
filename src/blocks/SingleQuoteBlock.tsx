@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { fonts } from '@hedviginsurance/brand'
-import * as React from 'react'
+import React from 'react'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
 import { textFlexPositionMap, TextPosition } from '../utils/textPosition'
 import { BaseBlockProps } from './BaseBlockProps'

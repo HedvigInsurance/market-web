@@ -1,5 +1,5 @@
 import * as Sentry from '@sentry/node'
-import * as https from 'https'
+import https from 'https'
 import { Middleware } from 'koa'
 import { IMiddleware, RouterContext } from 'koa-router'
 import { State } from './states'

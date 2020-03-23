@@ -1,6 +1,6 @@
 import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
-import * as React from 'react'
+import React from 'react'
 
 import { Update } from 'react-lifecycle-components'
 

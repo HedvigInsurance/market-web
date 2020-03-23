@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { ActionMap, Container } from 'constate'
-import * as React from 'react'
+import React from 'react'
 
 import {
   CONTENT_GUTTER,

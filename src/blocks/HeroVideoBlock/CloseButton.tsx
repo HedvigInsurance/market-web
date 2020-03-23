@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import * as React from 'react'
+import React from 'react'
 import { Spring } from 'react-spring'
 import { CONTENT_GUTTER } from '../../components/blockHelpers'
 

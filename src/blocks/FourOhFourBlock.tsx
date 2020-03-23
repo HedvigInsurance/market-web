@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { ContextContainer } from 'components/containers/ContextContainer'
-import * as React from 'react'
+import React from 'react'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
 import { LazyLottie } from '../components/LazyLottie'
 

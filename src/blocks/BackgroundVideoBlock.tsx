@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
 import { Container } from 'constate'
-import * as React from 'react'
+import React from 'react'
 import { Mount } from 'react-lifecycle-components'
 import MediaQuery from 'react-responsive'
 import { AppLink } from '../components/AppLink'

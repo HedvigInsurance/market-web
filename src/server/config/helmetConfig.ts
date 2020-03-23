@@ -1,5 +1,5 @@
 import { IHelmetConfiguration } from 'helmet'
-import * as uuid from 'uuid'
+import uuid from 'uuid'
 
 const defaultSrc = [
   "'self'",
