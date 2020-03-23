@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colorsV3 } from '@hedviginsurance/brand'
+import { colorsV3, fonts } from '@hedviginsurance/brand'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import React from 'react'
 import { AppLink } from '../../components/AppLink'
@@ -39,6 +39,7 @@ const Wrapper = styled('div')<{ inverse: boolean; open: boolean }>(
     right: 0,
     zIndex: 100,
     color: inverse ? colorsV3.white : colorsV3.gray900,
+    fontFamily: fonts.FAVORIT,
     transition: 'color 300ms',
 
     [TABLET_BP_DOWN]: {
@@ -105,7 +106,7 @@ const LogoLink = styled('a')({
 })
 
 const ButtonWrapper = styled('div')({
-  paddingLeft: '2rem',
+  paddingLeft: '3rem',
 
   [TABLET_BP_DOWN]: {
     paddingTop: '1.5rem',
