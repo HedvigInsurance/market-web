@@ -19,28 +19,28 @@ const heroText: MarkdownHtmlComponent = {
   plugin: 'markdown-html',
 }
 
-const heroProps = {
+const quoteProps = {
   _uid: '5678',
-  component: 'hero_block',
-  headline: 'Säg hej till Hedvig',
-  text: heroText,
-  image: '',
-  image_mobile: '',
+  component: 'quote_block',
 }
 
 export const Default = () => (
   <QuoteBlockBrandPivot
-    {...heroProps}
+    {...quoteProps}
     color={
       minimalColorMap[
         select('color', Object.keys(minimalColorMap), 'standard-inverse')
       ]
     }
-    quote={text(
-      'Quote',
-      '”My boyfriend got sick while I was on vacation, Hedvig flew me home and also kept in touch with the hospital. I’m overwhelmed.”',
-    )}
-    author={text('Author', 'Cecilia Jansson')}
-    large_quote={boolean('Large quote', false)}
+    quotes={[
+      {
+        quote: text(
+          'Quote',
+          '”My boyfriend got sick while I was on vacation, Hedvig flew me home and also kept in touch with the hospital. I’m overwhelmed.”',
+        ),
+        author: text('Author', 'Cecilia Jansson'),
+        large_quote: boolean('Large quote', false),
+      },
+    ]}
   />
 )

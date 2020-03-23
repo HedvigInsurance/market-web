@@ -12,14 +12,16 @@ import {
 import React from 'react'
 
 export interface QuoteBlockProps extends BrandPivotBaseBlockProps {
-  quote: string
-  author: string
-  large_quote: boolean
+  quotes: ReadonlyArray<{
+    quote: string
+    author: string
+    large_quote?: boolean
+  }>
 }
 
 const TABLET_BP_UP = '@media (min-width: 850px)'
 
-const QuoteWrapper = styled('div')<{ largeQuote: boolean }>(
+const QuoteWrapper = styled('div')<{ largeQuote?: boolean }>(
   ({ largeQuote }) => ({
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -31,7 +33,7 @@ const QuoteWrapper = styled('div')<{ largeQuote: boolean }>(
   }),
 )
 
-const Quote = styled('blockquote')<{ largeQuote: boolean }>(
+const Quote = styled('blockquote')<{ largeQuote?: boolean }>(
   ({ largeQuote }) => ({
     fontFamily: fonts.EB_GARAMOND,
     lineHeight: 1.16,
@@ -56,25 +58,20 @@ const Cite = styled('cite')<{
 
 export const QuoteBlockBrandPivot: React.FunctionComponent<QuoteBlockProps> = ({
   color,
-  extra_styling,
-  quote,
-  author,
-  large_quote,
+  quotes,
   index,
 }) => (
-  <SectionWrapper
-    brandPivot
-    colorComponent={color}
-    extraStyling={extra_styling}
-  >
+  <SectionWrapper brandPivot colorComponent={color}>
     <ContentWrapper brandPivot index={index}>
-      <QuoteWrapper largeQuote={large_quote}>
-        <Quote largeQuote={large_quote}>{quote}</Quote>
-        <Cite colorComponent={color}>
-          {'– '}
-          {author}
-        </Cite>
-      </QuoteWrapper>
+      {quotes.map((quote) => (
+        <QuoteWrapper largeQuote={quote.large_quote}>
+          <Quote largeQuote={quote.large_quote}>{quote.quote}</Quote>
+          <Cite colorComponent={color}>
+            {'– '}
+            {quote.author}
+          </Cite>
+        </QuoteWrapper>
+      ))}
     </ContentWrapper>
   </SectionWrapper>
 )
