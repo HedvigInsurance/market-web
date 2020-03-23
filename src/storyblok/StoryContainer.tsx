@@ -13,6 +13,12 @@ export interface SeoContent {
   seo_meta_og_image: Image
 }
 
+export interface HrefLang {
+  hreflang_sv?: LinkComponent
+  hreflang_en?: LinkComponent
+  hreflang_no?: LinkComponent
+}
+
 export interface Story {
   name: string
   created_at: string
@@ -33,13 +39,14 @@ export interface Story {
 }
 
 export interface BodyStory extends Story {
-  content: SeoContent & {
-    _uid: string
-    page_title: string
-    public: boolean
-    component: 'page'
-    body: ReadonlyArray<BaseBlockProps>
-  }
+  content: SeoContent &
+    HrefLang & {
+      _uid: string
+      page_title: string
+      public: boolean
+      component: 'page'
+      body: ReadonlyArray<BaseBlockProps>
+    }
 }
 
 export interface WithStory<TStoryType extends Story> {

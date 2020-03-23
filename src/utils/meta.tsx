@@ -1,9 +1,18 @@
 import React from 'react'
-import { SeoContent, Story } from '../storyblok/StoryContainer'
-import { getPublicHost, getStoryblokImage } from './storyblok'
+import {
+  HrefLang,
+  LinkComponent,
+  SeoContent,
+  Story,
+} from '../storyblok/StoryContainer'
+import {
+  getPublicHost,
+  getStoryblokImage,
+  getStoryblokLinkUrl,
+} from './storyblok'
 
 interface Meta {
-  story?: Story & { content: SeoContent }
+  story?: Story & { content: SeoContent & HrefLang }
   nonce?: string
   fullSlug?: string
   title?: string
@@ -17,6 +26,11 @@ const getPageTitleFromStory = (story?: Story) => {
     return ''
   }
   return story.content.page_title || story.name
+}
+
+const getHreflangUrl = (link: LinkComponent) => {
+  const hreflang = getStoryblokLinkUrl(link)
+  return `${link.linktype === 'story' ? getPublicHost() : ''}${hreflang}`
 }
 
 export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
@@ -61,6 +75,27 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
       rel="canonical"
       href={`${getPublicHost()}${fullSlug || getFullSlugFromStory(story)}`}
     />
+    {story && story.content.hreflang_sv && (
+      <link
+        rel="alternate"
+        hrefLang="sv"
+        href={getHreflangUrl(story.content.hreflang_sv)}
+      />
+    )}
+    {story && story.content.hreflang_en && (
+      <link
+        rel="alternate"
+        hrefLang="en"
+        href={getHreflangUrl(story.content.hreflang_en)}
+      />
+    )}
+    {story && story.content.hreflang_no && (
+      <link
+        rel="alternate"
+        hrefLang="no"
+        href={getHreflangUrl(story.content.hreflang_no)}
+      />
+    )}
     {story && story.content.robots && (
       <meta
         name="robots"
