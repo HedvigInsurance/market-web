@@ -13,6 +13,7 @@ import { TextPosition } from 'utils/textPosition'
 interface HeadlineBlockProps extends BrandPivotBaseBlockProps {
   text: string
   text_position: TextPosition
+  capitalize?: boolean
   use_display_font: boolean
   show_hedvig_wordmark?: boolean
   font_size: 'xs' | 'sm' | 'md' | 'lg'
@@ -31,10 +32,12 @@ const createHeadline = (element: 'h1' | 'h2' | 'h3' | 'h4') =>
     textPosition: TextPosition
     size: 'xs' | 'sm' | 'md' | 'lg'
     useDisplayFont: boolean
-  }>(({ textPosition, size, useDisplayFont }) => ({
+    capitalize: boolean
+  }>(({ textPosition, size, useDisplayFont, capitalize }) => ({
     position: 'relative',
     textAlign: textPosition,
     fontSize: sizeMap[size],
+    textTransform: capitalize ? 'uppercase' : undefined,
     margin: 0,
     fontFamily: useDisplayFont ? `${fonts.EB_GARAMOND}, serif` : undefined,
     lineHeight: 1.5,
@@ -64,6 +67,7 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
   color,
   index,
   text,
+  capitalize = false,
   text_position,
   use_display_font,
   show_hedvig_wordmark,
@@ -85,6 +89,7 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
           textPosition={text_position}
           size={font_size}
           useDisplayFont={use_display_font}
+          capitalize={capitalize}
         >
           {text}
           {show_hedvig_wordmark && (

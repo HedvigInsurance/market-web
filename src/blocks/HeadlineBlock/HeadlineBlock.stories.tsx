@@ -22,6 +22,7 @@ export const Default = () => (
         select('CTA color', Object.keys(minimalColorMap), 'standard-inverse')
       ]
     }
+    capitalize={boolean('Capialize', false)}
     element={select('Element', ['h1', 'h2', 'h3', 'h4'], 'h1')}
     show_hedvig_wordmark={boolean('Show wordmark', false)}
     text={text('Text', 'Hej då, pappersarbete!')}
