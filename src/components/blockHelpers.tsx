@@ -52,6 +52,7 @@ export const colorDeviations = {
 interface ColorSet {
   color: string
   background: string
+  secondaryColor?: string
 }
 
 const colorMap: Record<
@@ -215,10 +216,21 @@ export const getMinimalColorStyles: ColorSetGetter<minimalColorComponentColors> 
   standardInverseColor = colorsV3.gray900,
 ) =>
   match([
-    ['standard', { background: standardColor, color: standardInverseColor }],
+    [
+      'standard',
+      {
+        background: standardColor,
+        color: standardInverseColor,
+        secondaryColor: colorsV3.gray700,
+      },
+    ],
     [
       'standard-inverse',
-      { background: standardInverseColor, color: standardColor },
+      {
+        background: standardInverseColor,
+        color: standardColor,
+        secondaryColor: colorsV3.gray500,
+      },
     ],
     ['gray700', { background: colorsV3.gray900, color: colorsV3.gray700 }],
     [
