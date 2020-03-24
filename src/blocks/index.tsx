@@ -5,6 +5,7 @@ import { SpacerBlockBrandPivot } from 'blocks/SpacerBlockBrandPivot'
 import React from 'react'
 import { AboutUsHeroBlock } from './AboutUsHeroBlock'
 import { AccordionBlock } from './AccordionBlock'
+import { AccordionBlockBrandPivot } from './AccordionBlockBandPivot/AccordionBlockBandPivot'
 import { BackgroundVideoBlock } from './BackgroundVideoBlock'
 import { BannerBlock } from './BannerBlock/BannerBlock'
 import { BaseBlockProps } from './BaseBlockProps'
@@ -42,6 +43,7 @@ const blockComponents = {
   header_block_brand_pivot: HeaderBlockBrandPivot,
   about_us_hero_block: AboutUsHeroBlock,
   accordion_block: AccordionBlock,
+  accordion_block_brand_pivot: AccordionBlockBrandPivot,
   banner_block: BannerBlock,
   bullet_point_block: BulletPointBlock,
   bullet_point_block_brand_pivot: BulletPointBlockBrandPivot,
