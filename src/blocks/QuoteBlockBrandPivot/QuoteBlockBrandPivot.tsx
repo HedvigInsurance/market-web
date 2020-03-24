@@ -66,10 +66,7 @@ export const QuoteBlockBrandPivot: React.FunctionComponent<QuoteBlockProps> = ({
       {quotes.map((quote) => (
         <QuoteWrapper largeQuote={quote.large_quote}>
           <Quote largeQuote={quote.large_quote}>{quote.quote}</Quote>
-          <Cite colorComponent={color}>
-            {'– '}
-            {quote.author}
-          </Cite>
+          <Cite colorComponent={color}>{quote.author}</Cite>
         </QuoteWrapper>
       ))}
     </ContentWrapper>
