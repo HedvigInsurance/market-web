@@ -3187,6 +3187,61 @@
       "component_group_uuid": null
     },
     {
+      "name": "quote_block",
+      "display_name": null,
+      "schema": {
+        "color": {
+          "type": "custom",
+          "pos": 0,
+          "field_type": "hedvig-minimal-color-picker",
+          "options": []
+        },
+        "quotes": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": ["quote_item"],
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "quote_block",
+      "component_group_uuid": null
+    },
+    {
+      "name": "quote_item",
+      "display_name": null,
+      "schema": {
+        "quote": {
+          "type": "text",
+          "required": true
+        },
+        "author": {
+          "type": "text",
+          "regex": "",
+          "required": true
+        },
+        "large_quote": {
+          "type": "boolean",
+          "description": ""
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "quote_item",
+      "component_group_uuid": null
+    },
+    {
       "name": "single_quote_block",
       "display_name": null,
       "schema": {
