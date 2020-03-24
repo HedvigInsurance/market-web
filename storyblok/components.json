@@ -111,8 +111,85 @@
       "component_group_uuid": null
     },
     {
+      "name": "accordion_block_brand_pivot",
+      "display_name": null,
+      "updated_at": "2020-03-24T13:19:38.865Z",
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": 1,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 2,
+          "default_value": "",
+          "display_name": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
+        },
+        "title": {
+          "type": "text",
+          "required": true,
+          "pos": 3,
+          "translatable": true
+        },
+        "accordions": {
+          "type": "bloks",
+          "maximum": "",
+          "restrict_components": true,
+          "component_whitelist": ["accordion_item_brand_pivot"],
+          "required": true,
+          "description": "",
+          "display_name": "",
+          "default_value": "",
+          "pos": 4
+        },
+        "tab-b8f2032f-e956-4f8f-b79b-0c963ed5ff31": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["size", "color", "extra_styling"],
+          "pos": 5
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "accordion_block_brand_pivot",
+      "component_group_uuid": null
+    },
+    {
       "name": "accordion_item",
       "display_name": "",
+      "updated_at": "2020-03-03T14:17:01.360Z",
       "schema": {
         "title": {
           "type": "text",
@@ -141,6 +218,40 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "accordion_item",
+      "component_group_uuid": null
+    },
+    {
+      "name": "accordion_item_brand_pivot",
+      "display_name": "",
+      "updated_at": "2020-03-24T12:41:40.134Z",
+      "schema": {
+        "title": {
+          "type": "text",
+          "required": true,
+          "default_value": "",
+          "pos": 0,
+          "display_name": "",
+          "translatable": true
+        },
+        "paragraph": {
+          "type": "custom",
+          "required": true,
+          "default_value": "",
+          "pos": 1,
+          "field_type": "markdown-html",
+          "options": [],
+          "display_name": "",
+          "translatable": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "accordion_item_brand_pivot",
       "component_group_uuid": null
     },
     {
