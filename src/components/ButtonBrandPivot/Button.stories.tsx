@@ -46,8 +46,27 @@ export const StandardInverse = () => (
   </>
 )
 
-StandardInverse.story = {
+export const Purple = () => (
+  <>
+    <ButtonBrandPivot color="purple500">Some text</ButtonBrandPivot>
+    <br />
+    <br />
+    <ButtonBrandPivot color="purple500" styleType="outlined">
+      Some text
+    </ButtonBrandPivot>
+    <br />
+    <br />
+    <ButtonBrandPivot color="purple500" styleType="plain">
+      Some text
+    </ButtonBrandPivot>
+  </>
+)
+
+const darkBackground = {
   parameters: {
     backgrounds: [{ name: 'gray900', value: colorsV3.gray900, default: true }],
   },
 }
+
+StandardInverse.story = darkBackground
+Purple.story = darkBackground
