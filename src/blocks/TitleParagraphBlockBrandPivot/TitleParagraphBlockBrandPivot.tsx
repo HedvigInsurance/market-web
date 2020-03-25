@@ -4,11 +4,11 @@ import {
   ContentWrapper,
   MOBILE_BP_DOWN,
   SectionWrapper,
-} from '../components/blockHelpers'
+} from '../../components/blockHelpers'
 import {
   BrandPivotBaseBlockProps,
   MarkdownHtmlComponent,
-} from './BaseBlockProps'
+} from '../BaseBlockProps'
 
 const Headline = styled('h4')({
   textTransform: 'uppercase',
@@ -20,21 +20,17 @@ const Headline = styled('h4')({
 })
 
 const Paragraph = styled('div')({
-  display: 'block',
-  maxWidth: '100%',
-  width: '100%',
   fontSize: '2rem',
-  lineHeight: '125%',
+  lineHeight: 1.25,
 
   [MOBILE_BP_DOWN]: {
-    maxWidth: '100%',
     display: 'block',
     fontSize: '1.25rem',
     textAlign: 'center',
   },
 
   '> :first-child': {
-    marginTop: '1rem',
+    marginTop: '1.5rem',
   },
 
   '> p:last-child': {
@@ -42,12 +38,16 @@ const Paragraph = styled('div')({
   },
 })
 
-interface TitleParagraphBlockInterface extends BrandPivotBaseBlockProps {
+const TitleParagraphContentWrapper = styled(ContentWrapper)({
+  maxWidth: '930px',
+})
+
+export interface TitleParagraphBlockProps extends BrandPivotBaseBlockProps {
   title: string
   paragraph: MarkdownHtmlComponent
 }
 
-export const TitleParagraphBlockBrandPivot: React.FunctionComponent<TitleParagraphBlockInterface> = ({
+export const TitleParagraphBlockBrandPivot: React.FunctionComponent<TitleParagraphBlockProps> = ({
   title,
   paragraph,
   color,
@@ -56,14 +56,14 @@ export const TitleParagraphBlockBrandPivot: React.FunctionComponent<TitleParagra
 }) => {
   return (
     <SectionWrapper brandPivot colorComponent={color} size={size}>
-      <ContentWrapper brandPivot index={index}>
+      <TitleParagraphContentWrapper brandPivot index={index}>
         <Headline>{title}</Headline>
         <Paragraph
           dangerouslySetInnerHTML={{
-            __html: paragraph.html,
+            __html: paragraph?.html,
           }}
         />
-      </ContentWrapper>
+      </TitleParagraphContentWrapper>
     </SectionWrapper>
   )
 }

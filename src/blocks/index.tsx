@@ -35,7 +35,7 @@ import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
 import { TitleCtaBlock } from './TitleCtaBlock'
 import { TitleParagraphBlock } from './TitleParagraphBlock'
-import { TitleParagraphBlockBrandPivot } from './TitleParagraphBlockBrandPivot'
+import { TitleParagraphBlockBrandPivot } from './TitleParagraphBlockBrandPivot/TitleParagraphBlockBrandPivot'
 import { TitleTextCtaBlock } from './TitleTextCtaBlock'
 import { TrustpilotBlock } from './TrustpilotBlock'
 
