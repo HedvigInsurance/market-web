@@ -311,7 +311,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             textPosition={text_position}
             animate={animate}
           />
-          <MediaQuery query="(min-width: 801px)">
+          <MediaQuery query="(min-width: 481px)">
             <AnimatedAlignedButton
               title={button_title}
               type={button_type}
@@ -324,7 +324,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             />
           </MediaQuery>
         </TextWrapper>
-        <MediaQuery query="(max-width: 800px)">
+        <MediaQuery query="(max-width: 480px)">
           <AnimatedAlignedButton
             title={button_title}
             type={button_type}
