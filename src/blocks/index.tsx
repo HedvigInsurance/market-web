@@ -35,6 +35,7 @@ import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
 import { TitleCtaBlock } from './TitleCtaBlock'
 import { TitleParagraphBlock } from './TitleParagraphBlock'
+import { TitleParagraphBlockBrandPivot } from './TitleParagraphBlockBrandPivot'
 import { TitleTextCtaBlock } from './TitleTextCtaBlock'
 import { TrustpilotBlock } from './TrustpilotBlock'
 
@@ -65,6 +66,7 @@ const blockComponents = {
   image_block_brand_pivot: ImageBlockBrandPivot,
   icon_bullet_point_block: IconBulletPointBlock,
   title_paragraph_block: TitleParagraphBlock,
+  title_paragraph_block_brand_pivot: TitleParagraphBlockBrandPivot,
   title_cta_block: TitleCtaBlock,
   background_video_block: BackgroundVideoBlock,
   plain_text_block: PlainTextBlock,
