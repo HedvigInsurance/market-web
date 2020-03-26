@@ -348,15 +348,30 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
           />
         </MediaQuery>
         {image && image_type !== 'video' ? (
-          <Image
-            alignment={text_position}
-            displayorder={media_position}
-            src={
-              useMediaQuery({ query: '(max-width: 480px' }) && mobile_image
-                ? getStoryblokImage(mobile_image)
-                : getStoryblokImage(image)
-            }
-          />
+          mobile_image ? (
+            <>
+              <MediaQuery query="(max-width: 480px)">
+                <Image
+                  alignment={text_position}
+                  displayorder={media_position}
+                  src={getStoryblokImage(mobile_image)}
+                />
+              </MediaQuery>
+              <MediaQuery query="(min-width: 481px)">
+                <Image
+                  alignment={text_position}
+                  displayorder={media_position}
+                  src={getStoryblokImage(image)}
+                />
+              </MediaQuery>
+            </>
+          ) : (
+            <Image
+              alignment={text_position}
+              displayorder={media_position}
+              src={getStoryblokImage(image)}
+            />
+          )
         ) : (
           image_type === 'video' &&
           image_video_file_location &&
