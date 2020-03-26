@@ -2,7 +2,7 @@ import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
-import MediaQuery from 'react-responsive'
+import MediaQuery, { useMediaQuery } from 'react-responsive'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { SectionSize } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
@@ -14,10 +14,10 @@ import {
   ContentWrapper,
   getMinimalColorStyles,
   MOBILE_BP_DOWN,
+  MOBILE_BP_UP,
   SectionWrapper,
   TABLET_BP_DOWN,
   TABLET_BP_UP,
-  MOBILE_BP_UP,
 } from '../../components/blockHelpers'
 import { DeferredImage } from '../../components/DeferredImage'
 import { DeferredVideo } from '../../components/DeferredVideo'
@@ -221,6 +221,7 @@ interface ImageTextBlockProps extends BrandPivotBaseBlockProps {
   show_button: boolean
   image_type: 'image' | 'video'
   image?: StoryblokImage
+  mobile_image?: StoryblokImage
   use_image_link: boolean
   image_link: LinkComponent
   image_video_file_location?: string
@@ -251,6 +252,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
   show_button,
   image_type,
   image,
+  mobile_image,
   image_video_file_location,
   mobile_image_video_file_location,
   background_type,
@@ -349,7 +351,11 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
           <Image
             alignment={text_position}
             displayorder={media_position}
-            src={getStoryblokImage(image)}
+            src={
+              useMediaQuery({ query: '(max-width: 480px' }) && mobile_image
+                ? getStoryblokImage(mobile_image)
+                : getStoryblokImage(image)
+            }
           />
         ) : (
           image_type === 'video' &&
