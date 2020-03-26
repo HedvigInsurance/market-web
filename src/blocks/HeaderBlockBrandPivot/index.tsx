@@ -9,7 +9,9 @@ import {
   ButtonStyleType,
 } from '../../components/ButtonBrandPivot/Button'
 import { Togglable } from '../../components/containers/Togglable'
+import MediaQuery from 'react-responsive'
 import { HedvigLogotype } from '../../components/icons/HedvigLogotype'
+import { HedvigH } from 'components/icons/HedvigH'
 import {
   GlobalStory,
   GlobalStoryContainer,
@@ -25,6 +27,7 @@ import { MenuItem } from './MenuItem'
 import { Burger, TABLET_BP_DOWN, TABLET_BP_UP } from './mobile'
 
 export const WRAPPER_HEIGHT = '6rem'
+export const MOBILE_WRAPPER_HEIGHT = '4.5rem'
 export const HEADER_VERTICAL_PADDING = '1.2rem'
 export const TOGGLE_TRANSITION_TIME = 250
 
@@ -48,7 +51,10 @@ const Wrapper = styled('div')<{ inverse: boolean; open: boolean }>(
   }),
 )
 const Filler = styled('div')({
-  height: WRAPPER_HEIGHT,
+  height: MOBILE_WRAPPER_HEIGHT,
+  [TABLET_BP_UP]: {
+    height: WRAPPER_HEIGHT,
+  },
 })
 const HeaderBackgroundFiller = styled('div')<{ transparent: boolean }>(
   ({ transparent }) => ({
@@ -57,7 +63,10 @@ const HeaderBackgroundFiller = styled('div')<{ transparent: boolean }>(
     left: 0,
     right: 0,
     zIndex: -1,
-    height: WRAPPER_HEIGHT,
+    height: MOBILE_WRAPPER_HEIGHT,
+    [TABLET_BP_UP]: {
+      height: WRAPPER_HEIGHT,
+    },
     backgroundColor: colorsV3.white,
     opacity: transparent ? 0 : 1,
     transition: 'opacity 300ms',
@@ -69,7 +78,10 @@ const InnerHeaderWrapper = styled('div')({
   justifyContent: 'space-between',
   alignItems: 'center',
   width: '100%',
-  height: WRAPPER_HEIGHT,
+  height: MOBILE_WRAPPER_HEIGHT,
+  [TABLET_BP_UP]: {
+    height: WRAPPER_HEIGHT,
+  },
   padding: HEADER_VERTICAL_PADDING + ' 0',
 })
 const Menu = styled('ul')<{ open: boolean }>(({ open }) => ({
@@ -89,7 +101,7 @@ const Menu = styled('ul')<{ open: boolean }>(({ open }) => ({
     top: 0,
     bottom: 0,
     right: open ? '20%' : '100%',
-    paddingTop: `calc(${WRAPPER_HEIGHT} + ${HEADER_VERTICAL_PADDING})`,
+    paddingTop: `calc(${MOBILE_WRAPPER_HEIGHT} + ${HEADER_VERTICAL_PADDING})`,
     fontSize: 18,
     background: colorsV3.white,
     transition: `right ${TOGGLE_TRANSITION_TIME}ms`,
@@ -123,6 +135,11 @@ const MobileHeaderLink = styled(ButtonLinkBrandPivot)({
   [TABLET_BP_UP]: {
     display: 'none',
   },
+})
+
+const Wordmark = styled('div')({
+  width: '2rem',
+  height: '2rem'
 })
 
 interface HeaderBlockProps extends BaseBlockProps {
@@ -215,6 +232,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                     preventInverse={props.inverse_colors && isOpen}
                   />
 
+                  <MediaQuery query="(min-width: 1001px)">
                   <ContextContainer>
                     {(context) => (
                       <LogoLink
@@ -224,60 +242,69 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                       </LogoLink>
                     )}
                   </ContextContainer>
+                  </MediaQuery>
                 </RightContainer>
 
-                {!isOpen && (
-                  <>
-                    {(() => {
-                      if (
-                        props.override_cta_link?.cached_url ||
-                        props.override_mobile_header_cta_link?.cached_url
-                      ) {
+                <MediaQuery query="(max-width: 1000px)">
+                  <Wordmark>
+                    <HedvigH />
+                  </Wordmark>
+                </MediaQuery>
+
+                <MediaQuery query="(min-width: 1001px)">
+                  {!isOpen && (
+                    <>
+                      {(() => {
+                        if (
+                          props.override_cta_link?.cached_url ||
+                          props.override_mobile_header_cta_link?.cached_url
+                        ) {
+                          return (
+                            <MobileHeaderLink
+                              size="sm"
+                              styleType={props.mobile_header_cta_style}
+                              href={mobileHeaderCtaLink}
+                              color={buttonColor}
+                            >
+                              {mobileHeaderCtaLabel}
+                            </MobileHeaderLink>
+                          )
+                        }
+
+                        if (
+                          props.story.content.show_cta &&
+                          props.story.content.cta_branch_link
+                        ) {
+                          return (
+                            <AppLink>
+                              {({ link, handleClick }) => (
+                                <MobileHeaderLink
+                                  size="sm"
+                                  styleType={props.mobile_header_cta_style}
+                                  color={props.mobile_header_cta_color?.color}
+                                  onClick={handleClick}
+                                  href={link}
+                                >
+                                  {mobileHeaderCtaLabel}
+                                </MobileHeaderLink>
+                              )}
+                            </AppLink>
+                          )
+                        }
                         return (
                           <MobileHeaderLink
                             size="sm"
                             styleType={props.mobile_header_cta_style}
                             href={mobileHeaderCtaLink}
-                            color={buttonColor}
+                            color={props.mobile_header_cta_color?.color}
                           >
                             {mobileHeaderCtaLabel}
                           </MobileHeaderLink>
                         )
-                      }
-
-                      if (
-                        props.story.content.show_cta &&
-                        props.story.content.cta_branch_link
-                      ) {
-                        return (
-                          <AppLink>
-                            {({ link, handleClick }) => (
-                              <MobileHeaderLink
-                                size="sm"
-                                styleType={props.mobile_header_cta_style}
-                                color={props.mobile_header_cta_color?.color}
-                                onClick={handleClick}
-                                href={link}
-                              >
-                                {mobileHeaderCtaLabel}
-                              </MobileHeaderLink>
-                            )}
-                          </AppLink>
-                        )
-                      }
-                      return (
-                        <MobileHeaderLink
-                          size="sm"
-                          styleType={props.mobile_header_cta_style}
-                          href={mobileHeaderCtaLink}
-                          color={props.mobile_header_cta_color?.color}
-                        >
-                          {mobileHeaderCtaLabel}
-                        </MobileHeaderLink>
-                      )
-                    })()}
-                  </>
-                )}
+                      })()}
+                    </>
+                  )}
+                </MediaQuery>
 
                 <Menu open={isOpen}>
                   {(props.story.content.header_menu_items ?? []).map(
