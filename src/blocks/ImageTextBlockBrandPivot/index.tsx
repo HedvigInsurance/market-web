@@ -17,6 +17,7 @@ import {
   SectionWrapper,
   TABLET_BP_DOWN,
   TABLET_BP_UP,
+  MOBILE_BP_UP,
 } from '../../components/blockHelpers'
 import { DeferredImage } from '../../components/DeferredImage'
 import { DeferredVideo } from '../../components/DeferredVideo'
@@ -64,6 +65,10 @@ const AnimatedAlignedButton = styled(AlignedButton)<
   opacity: animate ? 0 : 1,
   animation: animate ? fadeSlideIn + ' 1000ms ease-out forwards' : undefined,
   animationDelay: '1000ms',
+  width: '100%',
+  [MOBILE_BP_UP]: {
+    maxWidth: 'auto',
+  },
 }))
 
 const TextWrapper = styled('div')<{
@@ -183,12 +188,12 @@ const ImageVideo = styled(DeferredVideo)({
 const Wordmark = styled('div')({
   display: 'inline-flex',
   position: 'absolute',
-  marginTop: '0.2rem',
+  marginTop: 0,
   marginLeft: '0.2rem',
 
   ['svg']: {
-    width: '1.25rem',
-    height: '1.25rem',
+    width: '1.1rem',
+    height: '1.1rem',
   },
 
   [TABLET_BP_UP]: {
@@ -321,6 +326,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
               buttonLink={button_link}
               show={show_button}
               color={button_color}
+              size={'md'}
               positionMobile={button_position_mobile}
               animate={animate}
             />
@@ -334,6 +340,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             buttonLink={button_link}
             show={show_button}
             color={button_color}
+            size={'md'}
             positionMobile={button_position_mobile}
             animate={animate}
           />
