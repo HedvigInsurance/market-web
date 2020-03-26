@@ -20,6 +20,13 @@ interface HeadlineBlockProps extends BrandPivotBaseBlockProps {
   element: 'h1' | 'h2' | 'h3' | 'h4'
 }
 
+const sizeMapMobile = {
+  xs: '1rem',
+  sm: '1.25rem',
+  md: '1.5rem',
+  lg: '2.5rem',
+}
+
 const sizeMap = {
   xs: '1rem',
   sm: '2rem',
@@ -36,11 +43,15 @@ const createHeadline = (element: 'h1' | 'h2' | 'h3' | 'h4') =>
   }>(({ textPosition, size, useDisplayFont, capitalize }) => ({
     position: 'relative',
     textAlign: textPosition,
-    fontSize: sizeMap[size],
+    fontSize: sizeMapMobile[size],
     textTransform: capitalize ? 'uppercase' : undefined,
     margin: 0,
     fontFamily: useDisplayFont ? `${fonts.EB_GARAMOND}, serif` : undefined,
-    lineHeight: 1.5,
+    lineHeight: 1.2,
+
+    [TABLET_BP_UP]: {
+      fontSize: sizeMap[size],
+    },
   }))
 
 const Wordmark = styled('div')({
