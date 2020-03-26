@@ -2631,6 +2631,11 @@
           "required": false,
           "pos": 7
         },
+        "mobile_image": {
+          "type": "image",
+          "required": false,
+          "pos": 8
+        },
         "image_video_file_location": {
           "type": "text",
           "required": false,
