@@ -8,7 +8,6 @@ import {
 } from 'blocks/BaseBlockProps'
 import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
-import { SectionSize } from 'utils/SectionSize'
 import { getStoryblokImage, Image } from 'utils/storyblok'
 import {
   ContentWrapper,
@@ -38,12 +37,7 @@ interface WrapperProps {
 }
 
 const Wrapper = styled('div')<WrapperProps>(
-  ({
-    colorComponent,
-    backgroundImageMobile,
-    backgroundImage,
-    fullScreen,
-  }) => ({
+  ({ colorComponent, backgroundImageMobile, backgroundImage, fullScreen }) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
