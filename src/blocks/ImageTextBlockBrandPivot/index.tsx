@@ -14,6 +14,7 @@ import {
   ContentWrapper,
   getMinimalColorStyles,
   MOBILE_BP_DOWN,
+  MOBILE_BP_UP,
   SectionWrapper,
   TABLET_BP_DOWN,
   TABLET_BP_UP,
@@ -64,6 +65,10 @@ const AnimatedAlignedButton = styled(AlignedButton)<
   opacity: animate ? 0 : 1,
   animation: animate ? fadeSlideIn + ' 1000ms ease-out forwards' : undefined,
   animationDelay: '1000ms',
+  width: '100%',
+  [MOBILE_BP_UP]: {
+    maxWidth: 'auto',
+  },
 }))
 
 const TextWrapper = styled('div')<{
@@ -183,12 +188,12 @@ const ImageVideo = styled(DeferredVideo)({
 const Wordmark = styled('div')({
   display: 'inline-flex',
   position: 'absolute',
-  marginTop: '0.2rem',
+  marginTop: 0,
   marginLeft: '0.2rem',
 
   ['svg']: {
-    width: '1.25rem',
-    height: '1.25rem',
+    width: '1.1rem',
+    height: '1.1rem',
   },
 
   [TABLET_BP_UP]: {
@@ -216,6 +221,7 @@ interface ImageTextBlockProps extends BrandPivotBaseBlockProps {
   show_button: boolean
   image_type: 'image' | 'video'
   image?: StoryblokImage
+  mobile_image?: StoryblokImage
   use_image_link: boolean
   image_link: LinkComponent
   image_video_file_location?: string
@@ -246,6 +252,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
   show_button,
   image_type,
   image,
+  mobile_image,
   image_video_file_location,
   mobile_image_video_file_location,
   background_type,
@@ -321,6 +328,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
               buttonLink={button_link}
               show={show_button}
               color={button_color}
+              size={'md'}
               positionMobile={button_position_mobile}
               animate={animate}
             />
@@ -334,16 +342,36 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             buttonLink={button_link}
             show={show_button}
             color={button_color}
+            size={'md'}
             positionMobile={button_position_mobile}
             animate={animate}
           />
         </MediaQuery>
         {image && image_type !== 'video' ? (
-          <Image
-            alignment={text_position}
-            displayorder={media_position}
-            src={getStoryblokImage(image)}
-          />
+          mobile_image ? (
+            <>
+              <MediaQuery query="(max-width: 480px)">
+                <Image
+                  alignment={text_position}
+                  displayorder={media_position}
+                  src={getStoryblokImage(mobile_image)}
+                />
+              </MediaQuery>
+              <MediaQuery query="(min-width: 481px)">
+                <Image
+                  alignment={text_position}
+                  displayorder={media_position}
+                  src={getStoryblokImage(image)}
+                />
+              </MediaQuery>
+            </>
+          ) : (
+            <Image
+              alignment={text_position}
+              displayorder={media_position}
+              src={getStoryblokImage(image)}
+            />
+          )
         ) : (
           image_type === 'video' &&
           image_video_file_location &&
