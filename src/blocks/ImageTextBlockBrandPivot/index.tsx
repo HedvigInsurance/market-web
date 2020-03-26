@@ -16,7 +16,7 @@ import {
   MOBILE_BP_DOWN,
   SectionWrapper,
   TABLET_BP_DOWN,
-  TABLET_BP_UP
+  TABLET_BP_UP,
 } from '../../components/blockHelpers'
 import { DeferredImage } from '../../components/DeferredImage'
 import { DeferredVideo } from '../../components/DeferredVideo'
