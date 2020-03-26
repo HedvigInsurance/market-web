@@ -1,5 +1,6 @@
 import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
+import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
 import MediaQuery from 'react-responsive'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
@@ -15,6 +16,7 @@ import {
   MOBILE_BP_DOWN,
   SectionWrapper,
   TABLET_BP_DOWN,
+  TABLET_BP_UP,
 } from '../../components/blockHelpers'
 import { DeferredImage } from '../../components/DeferredImage'
 import { DeferredVideo } from '../../components/DeferredVideo'
@@ -178,11 +180,32 @@ const ImageVideo = styled(DeferredVideo)({
   borderRadius: 0.01,
 })
 
+const Wordmark = styled('div')({
+  display: 'inline-flex',
+  position: 'absolute',
+  marginTop: '0.2rem',
+  marginLeft: '0.2rem',
+
+  ['svg']: {
+    width: '1.25rem',
+    height: '1.25rem',
+  },
+
+  [TABLET_BP_UP]: {
+    marginLeft: '0.5rem',
+    ['svg']: {
+      width: '2rem',
+      height: '2rem',
+    },
+  },
+})
+
 interface ImageTextBlockProps extends BrandPivotBaseBlockProps {
   animate?: boolean
   title_size?: TitleSize
   title: string
   title_color?: MinimalColorComponent
+  show_hedvig_wordmark?: boolean
   paragraph: MarkdownHtmlComponent
   text_position: TextPosition
   text_position_mobile: TextPosition
@@ -235,6 +258,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
   button_color,
   button_position_mobile,
   index,
+  show_hedvig_wordmark,
 }) => {
   return (
     <SectionWrapper
@@ -276,6 +300,11 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             animate={animate}
           >
             {title}
+            {show_hedvig_wordmark && (
+              <Wordmark>
+                <HedvigH />
+              </Wordmark>
+            )}
           </Title>
           <Paragraph
             dangerouslySetInnerHTML={{
@@ -284,7 +313,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             textPosition={text_position}
             animate={animate}
           />
-          <MediaQuery query="(min-width: 801px)">
+          <MediaQuery query="(min-width: 481px)">
             <AnimatedAlignedButton
               title={button_title}
               type={button_type}
@@ -297,7 +326,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             />
           </MediaQuery>
         </TextWrapper>
-        <MediaQuery query="(max-width: 800px)">
+        <MediaQuery query="(max-width: 480px)">
           <AnimatedAlignedButton
             title={button_title}
             type={button_type}

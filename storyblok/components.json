@@ -2553,6 +2553,10 @@
           "pos": 1,
           "translatable": true
         },
+        "show_hedvig_wordmark": {
+          "type": "boolean",
+          "pos": 2
+        },
         "title_color": {
           "type": "custom",
           "field_type": "hedvig-minimal-color-picker",
