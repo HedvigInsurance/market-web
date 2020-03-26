@@ -16,6 +16,7 @@ import {
   MOBILE_BP_DOWN,
   SectionWrapper,
   TABLET_BP_DOWN,
+  TABLET_BP_UP
 } from '../../components/blockHelpers'
 import { DeferredImage } from '../../components/DeferredImage'
 import { DeferredVideo } from '../../components/DeferredVideo'
@@ -183,17 +184,18 @@ const Wordmark = styled('div')({
   display: 'inline-flex',
   position: 'absolute',
   marginTop: '0.2rem',
-  marginLeft: '0.5rem',
+  marginLeft: '0.2rem',
 
   ['svg']: {
-    width: '2rem',
-    height: '2rem',
+    width: '1.25rem',
+    height: '1.25rem',
   },
 
-  [TABLET_BP_DOWN]: {
+  [TABLET_BP_UP]: {
+    marginLeft: '0.5rem',
     ['svg']: {
-      width: '1.25rem',
-      height: '1.25rem',
+      width: '2rem',
+      height: '2rem',
     },
   },
 })
