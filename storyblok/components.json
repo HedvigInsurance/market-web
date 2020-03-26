@@ -1695,7 +1695,7 @@
         "tab-e69e2291-e9ec-4a70-92ec-2a64959f84de": {
           "type": "tab",
           "display_name": "Styling",
-          "keys": ["color", "extra_styling", "animate", "size"],
+          "keys": ["color", "extra_styling", "animate", "full_screen"],
           "pos": 10
         },
         "color": {
@@ -1712,29 +1712,9 @@
           "type": "boolean",
           "pos": 13
         },
-        "size": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "value": "none",
-              "name": "None"
-            },
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "lg",
-              "name": "LG"
-            },
-            {
-              "value": "xl",
-              "name": "XL"
-            }
-          ],
-          "display_name": "",
-          "default_value": "none",
+        "full_screen": {
+          "type": "boolean",
+          "default_value": "true",
           "pos": 14
         }
       },
