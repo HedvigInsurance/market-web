@@ -8,7 +8,6 @@ import {
 } from 'blocks/BaseBlockProps'
 import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
-import { SectionSize } from 'utils/SectionSize'
 import { getStoryblokImage, Image } from 'utils/storyblok'
 import {
   ContentWrapper,
@@ -34,20 +33,15 @@ interface WrapperProps {
   colorComponent?: MinimalColorComponent
   backgroundImageMobile?: Image
   backgroundImage?: Image
-  size?: SectionSize
+  fullScreen: boolean
 }
 
 const Wrapper = styled('div')<WrapperProps>(
-  ({
-    colorComponent,
-    backgroundImageMobile,
-    backgroundImage,
-    size = 'none',
-  }) => ({
+  ({ colorComponent, backgroundImageMobile, backgroundImage, fullScreen }) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    minHeight: '100vh',
+    minHeight: fullScreen ? '100vh' : '50vh',
     fontFamily: `${fonts.FAVORIT}, sans-serif`,
     color: getMinimalColorStyles(colorComponent?.color ?? 'standard').color,
     backgroundColor: getMinimalColorStyles(colorComponent?.color ?? 'standard')
@@ -55,7 +49,7 @@ const Wrapper = styled('div')<WrapperProps>(
     backgroundImage: `url(${backgroundImageMobile})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    ...getSectionSizeStyle(size),
+    ...getSectionSizeStyle('lg'),
 
     [MOBILE_BP_UP]: {
       backgroundImage: `url(${backgroundImage})`,
@@ -78,7 +72,7 @@ const HeroHeadline = styled('h1')<HeadlineProps>(
     animation: animate ? `${fadeSlideIn} 1000ms forwards` : 'none',
     opacity: animate ? 0 : 1,
     animationDelay: '400ms',
-    marginBottom: '3rem',
+    marginBottom: '5rem',
     textAlign: 'center',
 
     fontSize: '3.5rem',
@@ -140,11 +134,11 @@ export interface HeroImageBlockBrandPivotProps
   animate?: boolean
   show_hedvig_wordmark?: boolean
   use_display_font?: boolean
+  full_screen?: boolean
 }
 
 export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> = ({
   color,
-  size,
   extra_styling,
   animate,
   headline,
@@ -155,6 +149,7 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
   image_mobile,
   use_display_font = false,
   show_hedvig_wordmark,
+  full_screen = true,
 }) => {
   return (
     <WrapperWithExtraStyling
@@ -162,7 +157,7 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
       extraStyling={extra_styling}
       backgroundImage={getStoryblokImage(image)}
       backgroundImageMobile={getStoryblokImage(image_mobile)}
-      size={size}
+      fullScreen={full_screen}
     >
       <ContentWrapper index={index} brandPivot>
         <HeroHeadline animate={animate} useDisplayFont={use_display_font}>
