@@ -4,7 +4,7 @@ import { globalStyles } from '../../src/components/GlobalStyles'
 
 export const themeDecorator = (story) => (
   <>
-    <Global styles={globalStyles} />
+    <Global styles={globalStyles(true)} />
     {story()}
   </>
 )
