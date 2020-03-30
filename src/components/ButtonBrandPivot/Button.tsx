@@ -75,7 +75,7 @@ export const ButtonBrandPivot = styled('button')<
       padding: buttonSizes[size],
       borderRadius: 8,
       border: `1px solid ${colorStyles.background}`,
-      fontFamily: fonts.FAVORIT,
+      fontFamily: 'inherit',
       textDecoration: 'none',
       textAlign: 'center',
       fontWeight: 'normal',
