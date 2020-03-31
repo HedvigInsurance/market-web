@@ -1,4 +1,3 @@
-import styled from '@emotion/styled'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { PerilCollection } from './PerilCollection/PerilCollection'
@@ -10,8 +9,6 @@ interface Props {
 
 export const Perils: React.FC<Props> = ({ insuranceType }) => {
   const [perils, setPerils] = useState<[] | Peril[]>([])
-  const [isShowingPeril, setIsShowingPeril] = React.useState(false)
-  const [currentPeril, setCurrentPeril] = React.useState(0)
 
   useEffect(() => {
     const fetchPerils = async () => {
@@ -37,11 +34,7 @@ export const Perils: React.FC<Props> = ({ insuranceType }) => {
 
   return (
     <>
-      <PerilCollection
-        perils={perils}
-        setCurrentPeril={setCurrentPeril}
-        setIsShowingPeril={setIsShowingPeril}
-      />
+      <PerilCollection perils={perils} />
       {/* TODO Add Peril modal */}
     </>
   )

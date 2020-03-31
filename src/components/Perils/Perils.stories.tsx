@@ -1,7 +1,7 @@
 import { select, withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
-import { TypeOfContract } from 'types'
 import { Perils } from './'
+import { TypeOfContract } from './types'
 
 export default {
   title: 'Components/Perils/Perils',

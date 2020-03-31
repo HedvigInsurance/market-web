@@ -13,7 +13,6 @@ interface PerilItemProps {
   title: React.ReactNode
   description: string
   icon: PerilIcon
-  onClick: () => void
 }
 
 const OuterContainer = styled.div`
@@ -129,7 +128,6 @@ export const PerilItem: React.FC<PerilItemProps> = ({
   title,
   description,
   icon,
-  onClick,
 }) => {
   const [iconString, seticonString] = useState<string | null>(null)
   const iconUrl: string = icon.variants.light.svgUrl
@@ -151,7 +149,7 @@ export const PerilItem: React.FC<PerilItemProps> = ({
 
   return (
     <OuterContainer>
-      <Container onClick={onClick}>
+      <Container>
         {iconString && (
           <IconWrapper dangerouslySetInnerHTML={{ __html: iconString }} />
         )}
