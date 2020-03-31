@@ -1,6 +1,11 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
-import { MOBILE_BP_UP, TABLET_BP_UP } from 'components/blockHelpers'
+import axios from 'axios'
+import {
+  LAPTOP_BP_UP,
+  MOBILE_BP_UP,
+  TABLET_BP_UP,
+} from 'components/blockHelpers'
 import { PerilIcon } from 'components/Perils/types'
 import React, { useEffect, useState } from 'react'
 
@@ -24,9 +29,10 @@ const Container = styled.button`
   min-height: 3.75rem;
   padding: 0.5rem 1rem 0.5rem 0.375rem;
   color: inherit;
+  font-family: inherit;
   border-radius: 0.375rem;
   border: 0;
-  background-color: ${colorsV3.gray200};
+  background-color: ${colorsV3.gray100};
   cursor: pointer;
   transition: all 150ms ease-in-out;
   -webkit-appearance: none;
@@ -97,6 +103,10 @@ const Title = styled('h4')`
 
   ${TABLET_BP_UP} {
     margin-bottom: 1rem;
+    font-size: 1.25rem;
+  }
+
+  ${LAPTOP_BP_UP} {
     font-size: 1.5rem;
   }
 `
@@ -123,16 +133,17 @@ export const PerilItem: React.FC<PerilItemProps> = ({
 }) => {
   const [iconString, seticonString] = useState<string | null>(null)
   const iconUrl: string = icon.variants.light.svgUrl
+
   useEffect(() => {
     const fetchIcon = async () => {
+      if (!iconUrl) {
+        return
+      }
       const url = `https://graphql.dev.hedvigit.com${iconUrl}`
-      await fetch(url, {
-        credentials: 'omit',
-        method: 'GET',
-        mode: 'cors',
+      const iconResponse = await axios.get(url, {
+        withCredentials: false,
       })
-        .then((res) => res.text())
-        .then((svgString) => seticonString(svgString))
+      seticonString(iconResponse.data)
     }
 
     fetchIcon()
