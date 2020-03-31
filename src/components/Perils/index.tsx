@@ -1,16 +1,12 @@
 import styled from '@emotion/styled'
+import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { PerilCollection } from './PerilCollection/PerilCollection'
 import { Peril, TypeOfContract } from './types'
-// import { PerilModal } from './PerilModal'
 
 interface Props {
   insuranceType: TypeOfContract
 }
-
-const Wrapper = styled.div`
-  display: flex;
-`
 
 export const Perils: React.FC<Props> = ({ insuranceType }) => {
   const [perils, setPerils] = useState<[] | Peril[]>([])
@@ -20,31 +16,33 @@ export const Perils: React.FC<Props> = ({ insuranceType }) => {
   useEffect(() => {
     const fetchPerils = async () => {
       const url = `https://graphql.dev.hedvigit.com/graphql`
-      await fetch(url, {
-        credentials: 'omit',
-        headers: {
-          Accept: '*/*',
-          'content-type': 'application/json',
-        },
-        referrer: 'https://graphql.dev.hedvigit.com/graphql',
-        body: `{"operationName":"Perils","variables":{"typeOfContract":"${insuranceType}","locale":"sv_SE"},"query":"query Perils($typeOfContract: TypeOfContract!, $locale: Locale!) {\\n perils(contractType: $typeOfContract, locale: $locale) {\\n title\\n description\\n covered\\n icon {\\n variants {\\n light {\\n svgUrl\\n }\\n }\\n }\\n }\\n}\\n"}`,
-        method: 'POST',
-        mode: 'cors',
-      })
-        .then((res) => res.json())
-        .then((perilsData) => setPerils(perilsData.data.perils))
+      const data = `{"operationName":"Perils","variables":{"typeOfContract":"${insuranceType}","locale":"sv_SE"},"query":"query Perils($typeOfContract: TypeOfContract!, $locale: Locale!) {\\n perils(contractType: $typeOfContract, locale: $locale) {\\n title\\n description\\n covered\\n icon {\\n variants {\\n light {\\n svgUrl\\n }\\n }\\n }\\n }\\n}\\n"}`
+      try {
+        const perilsRequest = await axios.post(url, data, {
+          withCredentials: false,
+          headers: {
+            Accept: '*/*',
+            'content-type': 'application/json',
+          },
+        })
+        const perilsData = await perilsRequest.data.data.perils
+        setPerils(perilsData)
+      } catch (e) {
+        throw e
+      }
     }
 
     fetchPerils()
   }, [insuranceType])
 
   return (
-    <Wrapper>
+    <>
       <PerilCollection
         perils={perils}
         setCurrentPeril={setCurrentPeril}
         setIsShowingPeril={setIsShowingPeril}
       />
-    </Wrapper>
+      {/* TODO Add Peril modal */}
+    </>
   )
 }
