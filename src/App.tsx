@@ -26,7 +26,7 @@ export const App: React.FunctionComponent<{ nonce?: string }> = ({ nonce }) => {
 
   return (
     <>
-      <Global styles={globalStyles(false)} />
+      <Global styles={globalStyles} />
       <Switch>
         {routes.map(({ Component, exact, path }) => (
           <Route
