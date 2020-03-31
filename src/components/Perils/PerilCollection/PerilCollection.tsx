@@ -21,7 +21,7 @@ const Wrapper = styled.div`
   margin-left: -0.5rem;
 
   ${TABLET_BP_UP} {
-    margin-left: 1rem;
+    margin-left: -1rem;
   }
 
   & > * {
