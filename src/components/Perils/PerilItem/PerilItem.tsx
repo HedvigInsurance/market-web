@@ -34,34 +34,25 @@ const Container = styled.button`
   background-color: ${colorsV3.gray100};
   cursor: pointer;
   transition: all 150ms ease-in-out;
-  -webkit-appearance: none;
-
-  :focus {
-    outline: none;
-  }
-
-  &:focus {
-    box-shadow: none;
-    outline: none;
-  }
+  appearance: none;
 
   ${TABLET_BP_UP} {
     flex-direction: column;
     align-items: flex-start;
-    padding: 0.5rem;
+    padding: 1.25rem;
+    border-radius: 0.5rem;
 
-    :hover {
+    &:hover {
       box-shadow: 0 0 16px rgba(0, 0, 0, 0.08);
       transform: translateY(-2px);
     }
   }
 
-  ${TABLET_BP_UP} {
-    padding: 1.25rem;
-    border-radius: 0.5rem;
+  &:focus {
+    outline: none;
   }
 
-  :active {
+  &:active {
     background-color: ${colorsV3.gray300};
     box-shadow: none;
   }
@@ -116,7 +107,6 @@ export const Description = styled.p`
   ${TABLET_BP_UP} {
     display: block;
     margin-top: 0;
-    flex: 1;
     font-size: 0.875rem;
     text-align: left;
     line-height: 1.45;
@@ -145,7 +135,7 @@ export const PerilItem: React.FC<PerilItemProps> = ({
     }
 
     fetchIcon()
-  }, [icon])
+  }, [iconUrl])
 
   return (
     <OuterContainer>
