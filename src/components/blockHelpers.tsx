@@ -353,6 +353,16 @@ export const MarginSectionWrapper = styled('section')<SectionProps>(
   }),
 )
 
+const getContentMaxWidth = (brandPivot: boolean, fullWidth: boolean) => {
+  if (fullWidth) {
+    return SITE_MAX_WIDTH
+  }
+  if (brandPivot) {
+    return CONTENT_MAX_WIDTH
+  }
+  return CONTENT_MAX_WIDTH_DEPRECATED
+}
+
 export const ContentWrapperStyled = styled('div')<{
   visible: boolean
   brandPivot: boolean
@@ -366,11 +376,7 @@ export const ContentWrapperStyled = styled('div')<{
     padding: '0 ' + CONTENT_GUTTER_MOBILE,
   },
 
-  ...(brandPivot
-    ? fullWidth
-      ? SITE_MAX_WIDTH
-      : CONTENT_MAX_WIDTH
-    : CONTENT_MAX_WIDTH_DEPRECATED),
+  ...getContentMaxWidth(brandPivot, fullWidth),
 
   opacity: visible ? 1 : 0,
   transform: visible ? 'translateY(0)' : 'translateY(5%)',
