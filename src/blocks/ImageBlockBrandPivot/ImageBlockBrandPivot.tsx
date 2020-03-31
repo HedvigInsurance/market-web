@@ -16,17 +16,18 @@ interface ImageBlockProps extends BaseBlockProps {
   image: ImageType
   caption?: string
   caption_shadow?: boolean
+  full_width?: boolean
 }
 
-const ImageWrapper = styled('div')({
+const ImageWrapper = styled('div')<{ fullWidth: boolean }>(({ fullWidth }) => ({
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  maxHeight: '34rem',
+  maxHeight: fullWidth ? '45rem' : '34rem',
   overflow: 'hidden',
   borderRadius: '0.5rem',
-})
+}))
 
 const Image = styled(DeferredImage)({
   width: '100%',
@@ -69,9 +70,11 @@ export const ImageBlockBrandPivot: React.FunctionComponent<ImageBlockProps> = ({
   image,
   caption,
   caption_shadow = false,
+  full_width = false,
+  index,
 }) => (
-  <ContentWrapper brandPivot>
-    <ImageWrapper>
+  <ContentWrapper brandPivot fullWidth={full_width} index={index}>
+    <ImageWrapper fullWidth={full_width}>
       <Image src={getStoryblokImage(image)} />
       {caption_shadow && <Shadow />}
       {caption && <Caption>{caption}</Caption>}
