@@ -13,7 +13,29 @@ export const Perils: React.FC<Props> = ({ insuranceType }) => {
   useEffect(() => {
     const fetchPerils = async () => {
       const url = `https://graphql.dev.hedvigit.com/graphql`
-      const data = `{"operationName":"Perils","variables":{"typeOfContract":"${insuranceType}","locale":"sv_SE"},"query":"query Perils($typeOfContract: TypeOfContract!, $locale: Locale!) {\\n perils(contractType: $typeOfContract, locale: $locale) {\\n title\\n description\\n covered\\n icon {\\n variants {\\n light {\\n svgUrl\\n }\\n }\\n }\\n }\\n}\\n"}`
+      const data = {
+        operationName: 'Perils',
+        variables: {
+          typeOfContract: insuranceType,
+          locale: 'sv_SE',
+        },
+        query: `
+            query Perils($typeOfContract: TypeOfContract!, $locale: Locale!) {
+              perils(contractType: $typeOfContract, locale: $locale) {
+                title
+                description
+                covered
+                icon {
+                  variants {
+                    light {
+                      svgUrl
+                    }
+                  }
+                }
+              }
+            }
+          `,
+      }
       try {
         const perilsRequest = await axios.post(url, data, {
           withCredentials: false,

@@ -60,24 +60,25 @@ const Container = styled.button`
 
 const IconWrapper = styled.div`
   display: flex;
+  width: 2rem;
+  height: 2rem;
   margin-right: 0.375rem;
 
+  ${MOBILE_BP_UP} {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
   ${TABLET_BP_UP} {
+    width: 3rem;
+    height: 3rem;
     margin-bottom: 0.625rem;
   }
 
   svg {
-    width: 2rem;
-    height: 2rem;
-
-    ${MOBILE_BP_UP} {
-      width: 2.5rem;
-      height: 2.5rem;
-    }
-
+    width: 100%;
+    height: 100%;
     ${TABLET_BP_UP} {
-      width: 3rem;
-      height: 3rem;
       transform: translateX(-0.625rem);
     }
 
@@ -119,7 +120,7 @@ export const PerilItem: React.FC<PerilItemProps> = ({
   description,
   icon,
 }) => {
-  const [iconString, seticonString] = useState<string | null>(null)
+  const [iconString, seticonString] = useState<string>('')
   const iconUrl: string = icon.variants.light.svgUrl
 
   useEffect(() => {
@@ -140,9 +141,7 @@ export const PerilItem: React.FC<PerilItemProps> = ({
   return (
     <OuterContainer>
       <Container>
-        {iconString && (
-          <IconWrapper dangerouslySetInnerHTML={{ __html: iconString }} />
-        )}
+        <IconWrapper dangerouslySetInnerHTML={{ __html: iconString }} />
         <Title>{title}</Title>
         <Description>{description}</Description>
       </Container>
