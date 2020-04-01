@@ -85,3 +85,9 @@ export interface MarkdownHtmlComponent {
   original: string
   plugin: 'markdown-html'
 }
+
+export interface TextField {
+  _uid: string
+  text: string
+  component: string
+}
