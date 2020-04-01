@@ -20,6 +20,7 @@ export const Default = () => (
     <PerilItem
       title={perilProps.title}
       description={perilProps.description}
+      color="standard"
       icon={perilProps.icon}
     />
   </div>

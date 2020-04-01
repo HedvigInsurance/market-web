@@ -17,7 +17,9 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
   return (
     <SectionWrapper colorComponent={color} size={size} brandPivot>
       <ContentWrapper brandPivot index={index} fullWidth={true}>
-        {insurance_type && <Perils insuranceType={insurance_type} />}
+        {insurance_type && (
+          <Perils color={color?.color} insuranceType={insurance_type} />
+        )}
       </ContentWrapper>
     </SectionWrapper>
   )
