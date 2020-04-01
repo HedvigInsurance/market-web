@@ -46,6 +46,7 @@ const Wrapper = styled('div')<{ inverse: boolean; open: boolean }>(
     transition: 'color 300ms',
 
     [TABLET_BP_DOWN]: {
+      color: colorsV3.white,
       bottom: open ? 0 : undefined,
     },
   }),
@@ -56,8 +57,8 @@ const Filler = styled('div')({
     height: WRAPPER_HEIGHT,
   },
 })
-const HeaderBackgroundFiller = styled('div')<{ transparent: boolean }>(
-  ({ transparent }) => ({
+const HeaderBackgroundFiller = styled('div')<{ transparent: boolean, open: boolean }>(
+  ({ transparent, open }) => ({
     position: 'absolute',
     top: 0,
     left: 0,
@@ -66,10 +67,13 @@ const HeaderBackgroundFiller = styled('div')<{ transparent: boolean }>(
     height: MOBILE_WRAPPER_HEIGHT,
     [TABLET_BP_UP]: {
       height: WRAPPER_HEIGHT,
+      backgroundColor: colorsV3.white,
+      opacity: transparent ? 0 : 1,
     },
-    backgroundColor: colorsV3.white,
-    opacity: transparent ? 0 : 1,
-    transition: 'opacity 300ms',
+    opacity: 1,
+    backgroundColor: open ? colorsV3.black : colorsV3.gray800,
+    transitionDuration: '300ms',
+    transitionProperty: 'opacity, background-color',
   }),
 )
 
@@ -96,16 +100,18 @@ const Menu = styled('ul')<{ open: boolean }>(({ open }) => ({
     position: 'absolute',
     display: 'block',
     zIndex: 101,
-    width: '80%',
-    height: '100vh',
-    top: 0,
+    width: '100%',
+
+    height: open ? `calc(100vh - ${MOBILE_WRAPPER_HEIGHT})` : 0,
+    top: MOBILE_WRAPPER_HEIGHT,
     bottom: 0,
-    right: open ? '20%' : '100%',
-    paddingTop: `calc(${MOBILE_WRAPPER_HEIGHT} + ${HEADER_VERTICAL_PADDING})`,
+    right: 0,
+    paddingTop: open ? HEADER_VERTICAL_PADDING : 0,
     fontSize: 18,
-    background: colorsV3.white,
-    transition: `right ${TOGGLE_TRANSITION_TIME}ms`,
-    color: colorsV3.gray900,
+    background: open ? colorsV3.black : colorsV3.gray900,
+    transitionDuration: `${TOGGLE_TRANSITION_TIME}ms`,
+    transitionProperty: 'background-color, height, padding-top, color',
+    color: open ? colorsV3.white : 'transparent',
     overflow: 'scroll',
     WebkitOverflowScrolling: 'touch',
   },
@@ -139,7 +145,8 @@ const MobileHeaderLink = styled(ButtonLinkBrandPivot)({
 
 const Wordmark = styled('div')({
   width: '2rem',
-  height: '2rem'
+  height: '2rem',
+  zIndex: 102,
 })
 
 interface HeaderBlockProps extends BaseBlockProps {
@@ -221,6 +228,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
           >
             <HeaderBackgroundFiller
               transparent={props.is_transparent && !isBelowThreshold}
+              open={isOpen}
             />
             <ContentWrapper>
               <InnerHeaderWrapper>
