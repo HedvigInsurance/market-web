@@ -128,7 +128,7 @@ export const PerilItem: React.FC<PerilItemProps> = ({
       if (!iconUrl) {
         return
       }
-      const url = `https://graphql.dev.hedvigit.com${iconUrl}`
+      const url = `https://giraffe.hedvig.com${iconUrl}`
       const iconResponse = await axios.get(url, {
         withCredentials: false,
       })
