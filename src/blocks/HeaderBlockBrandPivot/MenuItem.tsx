@@ -35,6 +35,9 @@ const DropdownMenuItemList = styled('ul')<{
     position: 'static',
     boxShadow: 'none',
     padding: '.5rem 1rem',
+    background: 'inherit',
+    color: 'inherit',
+    fontSize: '1.5rem',
   },
 }))
 const MenuLink = styled('a')({
@@ -44,9 +47,9 @@ const MenuLink = styled('a')({
 
   [TABLET_BP_DOWN]: {
     display: 'inline-block',
-    padding: `1rem 2rem`,
-    fontFamily: fonts.GEOMANIST,
-    fontSize: '1.5rem',
+    padding: `1.25rem 2rem`,
+    fontFamily: fonts.FAVORIT,
+    fontSize: '2.5rem',
 
     '&:first-of-type': {
       paddingTop: 0,
@@ -80,6 +83,8 @@ const Toggler = styled('button')<{ isOpen: boolean }>(({ isOpen }) => ({
     borderColor: 'currentColor transparent transparent transparent',
     borderStyle: 'solid',
     [TABLET_BP_DOWN]: {
+      top: -8,
+      left: -10,
       transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
       transition: 'transform 250ms',
     },
