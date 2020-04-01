@@ -14,4 +14,6 @@ export default {
     ],
   },
 }
-export const Default = () => <PerilCollection perils={brfPerils} />
+export const Default = () => (
+  <PerilCollection color="standard" perils={brfPerils} />
+)

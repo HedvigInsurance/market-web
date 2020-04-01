@@ -6,9 +6,11 @@ import {
 } from 'components/blockHelpers'
 import { PerilItem } from 'components/Perils/PerilItem/PerilItem'
 import React from 'react'
+import { minimalColorComponentColors } from 'src/blocks/BaseBlockProps'
 import { Peril } from '../types'
 
 interface Props {
+  color: minimalColorComponentColors
   perils: ReadonlyArray<Peril>
 }
 
@@ -44,11 +46,12 @@ const Wrapper = styled.div`
   }
 `
 
-export const PerilCollection: React.FC<Props> = ({ perils }) => (
+export const PerilCollection: React.FC<Props> = ({ color, perils }) => (
   <Wrapper>
     {perils.map((peril) => (
       <PerilItem
         key={peril.title?.toString()}
+        color={color}
         title={peril.title}
         description={peril.description}
         icon={peril.icon}

@@ -8,9 +8,11 @@ import {
 } from 'components/blockHelpers'
 import { PerilIcon } from 'components/Perils/types'
 import React, { useEffect, useState } from 'react'
+import { minimalColorComponentColors } from 'src/blocks/BaseBlockProps'
 
 interface PerilItemProps {
   title: React.ReactNode
+  color: minimalColorComponentColors
   description: string
   icon: PerilIcon
 }
@@ -19,7 +21,7 @@ const OuterContainer = styled.div`
   color: ${colorsV3.gray900};
 `
 
-const Container = styled.button`
+const Container = styled.button<{ color: minimalColorComponentColors }>`
   display: flex;
   width: 100%;
   align-items: center;
@@ -31,7 +33,8 @@ const Container = styled.button`
   font-family: inherit;
   border-radius: 0.375rem;
   border: 0;
-  background-color: ${colorsV3.gray100};
+  background-color: ${({ color }) =>
+    color === 'standard-inverse' ? colorsV3.white : colorsV3.gray200};
   cursor: pointer;
   transition: all 150ms ease-in-out;
   appearance: none;
@@ -117,6 +120,7 @@ export const Description = styled.p`
 
 export const PerilItem: React.FC<PerilItemProps> = ({
   title,
+  color,
   description,
   icon,
 }) => {
@@ -137,10 +141,9 @@ export const PerilItem: React.FC<PerilItemProps> = ({
 
     fetchIcon()
   }, [iconUrl])
-
   return (
     <OuterContainer>
-      <Container>
+      <Container color={color}>
         <IconWrapper dangerouslySetInnerHTML={{ __html: iconString }} />
         <Title>{title}</Title>
         <Description>{description}</Description>
