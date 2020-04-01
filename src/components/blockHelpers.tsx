@@ -232,7 +232,7 @@ export const getMinimalColorStyles: ColorSetGetter<minimalColorComponentColors> 
         secondaryColor: colorsV3.gray500,
       },
     ],
-    ['gray700', { background: colorsV3.gray900, color: colorsV3.gray700 }],
+    ['gray700', { background: standardColor, color: colorsV3.gray700 }],
     [
       'gray500-inverse',
       { background: colorsV3.gray900, color: colorsV3.gray500 },
