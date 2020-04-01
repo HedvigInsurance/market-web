@@ -2016,6 +2016,7 @@
     {
       "name": "image_block_brand_pivot",
       "display_name": null,
+      "updated_at": "2020-03-31T12:46:30.639Z",
       "schema": {
         "image": {
           "type": "image",
@@ -2032,6 +2033,9 @@
         "caption_shadow": {
           "type": "boolean",
           "pos": 2
+        },
+        "full_width": {
+          "type": "boolean"
         }
       },
       "image": null,
