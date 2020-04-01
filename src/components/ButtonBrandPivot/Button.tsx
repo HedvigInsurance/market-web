@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colorsV3, fonts } from '@hedviginsurance/brand'
+import { colorsV3 } from '@hedviginsurance/brand'
 import {
   colorComponentColors,
   minimalColorComponentColors,
@@ -75,7 +75,7 @@ export const ButtonBrandPivot = styled('button')<
       padding: buttonSizes[size],
       borderRadius: 8,
       border: `1px solid ${colorStyles.background}`,
-      fontFamily: fonts.FAVORIT,
+      fontFamily: 'inherit',
       textDecoration: 'none',
       textAlign: 'center',
       fontWeight: 'normal',
