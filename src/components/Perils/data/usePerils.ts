@@ -6,7 +6,7 @@ export const usePerils = (insuranceType: TypeOfContract) => {
   const [perils, setPerils] = useState<[] | Peril[]>([])
 
   const fetchPerils = async () => {
-    const url = `https://graphql.dev.hedvigit.com/graphql`
+    const url = `https://giraffe.hedvig.com/graphql`
 
     const data = {
       operationName: 'Perils',
