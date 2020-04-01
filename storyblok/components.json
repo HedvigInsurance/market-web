@@ -3065,6 +3065,104 @@
       "component_group_uuid": null
     },
     {
+      "name": "perils_block",
+      "display_name": null,
+      "updated_at": "2020-03-31T12:10:52.484Z",
+      "schema": {
+        "color": {
+          "type": "custom",
+          "pos": 0,
+          "field_type": "hedvig-minimal-color-picker",
+          "options": []
+        },
+        "size": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "none",
+              "name": "None"
+            },
+            {
+              "value": "xs",
+              "name": "XS"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "default_value": "lg",
+          "pos": 1
+        },
+        "insurance_type": {
+          "type": "option",
+          "pos": 2,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "SE_HOUSE",
+              "name": "SE_HOUSE"
+            },
+            {
+              "value": "SE_APARTMENT_BRF",
+              "name": "SE_APARTMENT_BRF"
+            },
+            {
+              "value": "SE_APARTMENT_RENT",
+              "name": "SE_APARTMENT_RENT"
+            },
+            {
+              "value": "SE_APARTMENT_STUDENT_BRF",
+              "name": "SE_APARTMENT_STUDENT_BRF"
+            },
+            {
+              "value": "SE_APARTMENT_STUDENT_RENT",
+              "name": "SE_APARTMENT_STUDENT_RENT"
+            },
+            {
+              "value": "NO_HOME_CONTENT_RENT",
+              "name": "NO_HOME_CONTENT_OWN"
+            },
+            {
+              "value": "NO_HOME_CONTENT_YOUTH_OWN",
+              "name": "NO_HOME_CONTENT_YOUTH_OWN"
+            },
+            {
+              "value": "NO_HOME_CONTENT_YOUTH_RENT",
+              "name": "NO_HOME_CONTENT_YOUTH_RENT"
+            },
+            {
+              "value": "NO_TRAVEL",
+              "name": "NO_TRAVEL"
+            },
+            {
+              "value": "NO_TRAVEL_YOUTH",
+              "name": "NO_TRAVEL_YOUTH"
+            }
+          ],
+          "required": true
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "perils_block",
+      "component_group_uuid": null
+    },
+    {
       "name": "plain_text_block",
       "display_name": null,
       "schema": {
