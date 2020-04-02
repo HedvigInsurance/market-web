@@ -944,6 +944,66 @@
       "component_group_uuid": null
     },
     {
+      "name": "chat_block",
+      "display_name": null,
+      "updated_at": "2020-04-01T22:34:10.401Z",
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": 1,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
+        "tab-b8f2032f-e956-4f8f-b79b-0c963ed5ff31": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["size", "color", "extra_styling"],
+          "pos": 5
+        },
+        "messages": {
+          "type": "bloks",
+          "maximum": "",
+          "restrict_components": true,
+          "component_whitelist": ["text_field"],
+          "options": []
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "chat_block",
+      "component_group_uuid": null
+    },
+    {
       "name": "checklist_bullet_point_item_check_item",
       "display_name": "",
       "schema": {
@@ -3648,6 +3708,25 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "spacer_block_brand_pivot",
+      "component_group_uuid": null
+    },
+    {
+      "name": "text_field",
+      "display_name": null,
+      "updated_at": "2020-04-01T22:25:46.684Z",
+      "schema": {
+        "text": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "text_field",
       "component_group_uuid": null
     },
     {
