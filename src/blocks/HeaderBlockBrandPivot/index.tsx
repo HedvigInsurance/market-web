@@ -138,12 +138,6 @@ const LeftContainer = styled('div')({
   display: 'flex',
 })
 
-const MobileHeaderLink = styled(ButtonLinkBrandPivot)({
-  [TABLET_BP_UP]: {
-    display: 'none',
-  },
-})
-
 const Wordmark = styled('a')({
   width: '2rem',
   height: '2rem',
@@ -157,10 +151,6 @@ interface HeaderBlockProps extends BaseBlockProps {
   override_cta_label?: string | null
   cta_color?: MinimalColorComponent
   cta_style?: ButtonStyleType
-  override_mobile_header_cta_label?: string | null
-  override_mobile_header_cta_link?: LinkComponent | null
-  mobile_header_cta_color?: MinimalColorComponent
-  mobile_header_cta_style?: ButtonStyleType
 }
 
 enum InverseColors {
@@ -205,15 +195,6 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
       window.removeEventListener('scroll', updateHeader)
     }
   }, [updateHeader])
-
-  const mobileHeaderCtaLabel =
-    props.override_mobile_header_cta_label || props.story.content.cta_label
-
-  const mobileHeaderCtaLinkSrc =
-    props.override_cta_link && props.override_cta_link.cached_url
-      ? props.override_cta_link
-      : props.story.content.cta_link
-  const mobileHeaderCtaLink = getStoryblokLinkUrl(mobileHeaderCtaLinkSrc)
 
   return (
     <>
@@ -267,61 +248,6 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                   </ContextContainer>
                 </MediaQuery>
 
-                <MediaQuery query="(min-width: 1001px)">
-                  {!isOpen && (
-                    <>
-                      {(() => {
-                        if (
-                          props.override_cta_link?.cached_url ||
-                          props.override_mobile_header_cta_link?.cached_url
-                        ) {
-                          return (
-                            <MobileHeaderLink
-                              size="sm"
-                              styleType={props.mobile_header_cta_style}
-                              href={mobileHeaderCtaLink}
-                              color={buttonColor}
-                            >
-                              {mobileHeaderCtaLabel}
-                            </MobileHeaderLink>
-                          )
-                        }
-
-                        if (
-                          props.story.content.show_cta &&
-                          props.story.content.cta_branch_link
-                        ) {
-                          return (
-                            <AppLink>
-                              {({ link, handleClick }) => (
-                                <MobileHeaderLink
-                                  size="sm"
-                                  styleType={props.mobile_header_cta_style}
-                                  color={props.mobile_header_cta_color?.color}
-                                  onClick={handleClick}
-                                  href={link}
-                                >
-                                  {mobileHeaderCtaLabel}
-                                </MobileHeaderLink>
-                              )}
-                            </AppLink>
-                          )
-                        }
-                        return (
-                          <MobileHeaderLink
-                            size="sm"
-                            styleType={props.mobile_header_cta_style}
-                            href={mobileHeaderCtaLink}
-                            color={props.mobile_header_cta_color?.color}
-                          >
-                            {mobileHeaderCtaLabel}
-                          </MobileHeaderLink>
-                        )
-                      })()}
-                    </>
-                  )}
-                </MediaQuery>
-
                 <Menu open={isOpen}>
                   {(props.story.content.header_menu_items ?? []).map(
                     (menuItem) => (
@@ -338,7 +264,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                         <ButtonWrapper>
                           <ButtonLinkBrandPivot
                             styleType={props.cta_style}
-                            color={buttonColor}
+                            color={isOpen ? 'standard-inverse' : buttonColor}
                             fullWidth={true}
                             href={getStoryblokLinkUrl(props.override_cta_link)}
                           >
@@ -358,7 +284,9 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                             <ButtonWrapper>
                               <ButtonLinkBrandPivot
                                 styleType={props.cta_style}
-                                color={buttonColor}
+                                color={
+                                  isOpen ? 'standard-inverse' : buttonColor
+                                }
                                 href={link}
                                 fullWidth={true}
                                 onClick={handleClick}
@@ -375,7 +303,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                       <ButtonWrapper>
                         <ButtonLinkBrandPivot
                           styleType={props.cta_style}
-                          color={buttonColor}
+                          color={isOpen ? 'standard-inverse' : buttonColor}
                           fullWidth={true}
                           href={getStoryblokLinkUrl(
                             props.story.content.cta_link,

@@ -1469,47 +1469,6 @@
           ],
           "description": "",
           "pos": 6
-        },
-        "cta_mobile": {
-          "type": "section",
-          "keys": [
-            "override_mobile_header_cta_label",
-            "override_mobile_header_cta_link",
-            "mobile_header_cta_color",
-            "mobile_header_cta_style"
-          ],
-          "display_name": "CTA mobile",
-          "pos": 7
-        },
-        "override_mobile_header_cta_label": {
-          "type": "text",
-          "translatable": false,
-          "pos": 8
-        },
-        "override_mobile_header_cta_link": {
-          "type": "multilink",
-          "pos": 9
-        },
-        "mobile_header_cta_color": {
-          "type": "custom",
-          "field_type": "hedvig-minimal-color-picker",
-          "options": [],
-          "pos": 10
-        },
-        "mobile_header_cta_style": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "value": "filled",
-              "name": "Filled"
-            },
-            {
-              "value": "outlined",
-              "name": "Outlined"
-            }
-          ],
-          "pos": 11
         }
       },
       "image": null,
