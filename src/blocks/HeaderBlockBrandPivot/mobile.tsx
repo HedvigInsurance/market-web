@@ -1,6 +1,5 @@
 import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
-import { colors } from '@hedviginsurance/brand'
 import React from 'react'
 import {
   CONTENT_GUTTER,
@@ -96,7 +95,7 @@ const fadeIn = keyframes({
   from: { opacity: 0 },
   to: { opacity: 1 },
 })
-const Overlay = styled('div')<{ closing: boolean }>(({ closing }) => ({
+const Overlay = styled('div')({
   position: 'fixed',
   top: 0,
   right: 0,
@@ -110,7 +109,7 @@ const Overlay = styled('div')<{ closing: boolean }>(({ closing }) => ({
   [TABLET_BP_UP]: {
     display: 'none',
   },
-}))
+})
 
 export const Burger: React.FunctionComponent<TogglableState &
   React.HTMLAttributes<HTMLButtonElement> & { preventInverse: boolean }> = ({
@@ -130,7 +129,6 @@ export const Burger: React.FunctionComponent<TogglableState &
             React.MouseEvent<HTMLDivElement>
           >
         }
-        closing={isClosing}
       />
     )}
   </>
