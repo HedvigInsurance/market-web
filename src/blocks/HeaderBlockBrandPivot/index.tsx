@@ -134,7 +134,7 @@ const ButtonWrapper = styled('div')({
   },
 })
 
-const RightContainer = styled('div')({
+const LeftContainer = styled('div')({
   display: 'flex',
 })
 
@@ -232,7 +232,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
             />
             <ContentWrapper>
               <InnerHeaderWrapper>
-                <RightContainer>
+                <LeftContainer>
                   <Burger
                     isOpen={isOpen}
                     isClosing={isClosing}
@@ -253,7 +253,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                       )}
                     </ContextContainer>
                   </MediaQuery>
-                </RightContainer>
+                </LeftContainer>
 
                 <MediaQuery query="(max-width: 1000px)">
                   <ContextContainer>
