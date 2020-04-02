@@ -118,7 +118,7 @@ export const Burger: React.FunctionComponent<TogglableState &
   ...rest
 }) => (
   <>
-    <NavToggle>
+    <NavToggle {...rest}>
       <CrossBurger isOpen={isOpen} isClosing={isClosing} />
       <MiddleBurger isOpen={isOpen} isClosing={isClosing} />
     </NavToggle>
