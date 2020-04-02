@@ -1,7 +1,9 @@
 import styled from '@emotion/styled'
 import { colorsV3, fonts } from '@hedviginsurance/brand'
 import { ContextContainer } from 'components/containers/ContextContainer'
+import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
+import MediaQuery from 'react-responsive'
 import { AppLink } from '../../components/AppLink'
 import { ContentWrapper } from '../../components/blockHelpers'
 import {
@@ -9,9 +11,7 @@ import {
   ButtonStyleType,
 } from '../../components/ButtonBrandPivot/Button'
 import { Togglable } from '../../components/containers/Togglable'
-import MediaQuery from 'react-responsive'
 import { HedvigLogotype } from '../../components/icons/HedvigLogotype'
-import { HedvigH } from 'components/icons/HedvigH'
 import {
   GlobalStory,
   GlobalStoryContainer,
@@ -57,8 +57,8 @@ const Filler = styled('div')({
     height: WRAPPER_HEIGHT,
   },
 })
-const HeaderBackgroundFiller = styled('div')<{ transparent: boolean, open: boolean }>(
-  ({ transparent, open }) => ({
+const HeaderBackgroundFiller = styled('div')<{ transparent: boolean }>(
+  ({ transparent }) => ({
     position: 'absolute',
     top: 0,
     left: 0,
@@ -71,7 +71,7 @@ const HeaderBackgroundFiller = styled('div')<{ transparent: boolean, open: boole
       opacity: transparent ? 0 : 1,
     },
     opacity: 1,
-    backgroundColor: open ? colorsV3.black : colorsV3.gray800,
+    backgroundColor: colorsV3.gray900,
     transitionDuration: '300ms',
     transitionProperty: 'opacity, background-color',
   }),
@@ -108,7 +108,7 @@ const Menu = styled('ul')<{ open: boolean }>(({ open }) => ({
     right: 0,
     paddingTop: open ? HEADER_VERTICAL_PADDING : 0,
     fontSize: 18,
-    background: open ? colorsV3.black : colorsV3.gray900,
+    background: colorsV3.gray900,
     transitionDuration: `${TOGGLE_TRANSITION_TIME}ms`,
     transitionProperty: 'background-color, height, padding-top, color',
     color: open ? colorsV3.white : 'transparent',
@@ -129,6 +129,7 @@ const ButtonWrapper = styled('div')({
   [TABLET_BP_DOWN]: {
     paddingTop: '1.5rem',
     paddingLeft: '1rem',
+    paddingRight: '1rem',
     paddingBottom: HEADER_VERTICAL_PADDING,
   },
 })
@@ -143,7 +144,7 @@ const MobileHeaderLink = styled(ButtonLinkBrandPivot)({
   },
 })
 
-const Wordmark = styled('div')({
+const Wordmark = styled('a')({
   width: '2rem',
   height: '2rem',
   zIndex: 102,
@@ -228,7 +229,6 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
           >
             <HeaderBackgroundFiller
               transparent={props.is_transparent && !isBelowThreshold}
-              open={isOpen}
             />
             <ContentWrapper>
               <InnerHeaderWrapper>
@@ -241,22 +241,30 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                   />
 
                   <MediaQuery query="(min-width: 1001px)">
-                  <ContextContainer>
-                    {(context) => (
-                      <LogoLink
-                        href={'/' + (context.lang === 'sv' ? '' : context.lang)}
-                      >
-                        <HedvigLogotype width={98} />
-                      </LogoLink>
-                    )}
-                  </ContextContainer>
+                    <ContextContainer>
+                      {(context) => (
+                        <LogoLink
+                          href={
+                            '/' + (context.lang === 'sv' ? '' : context.lang)
+                          }
+                        >
+                          <HedvigLogotype width={98} />
+                        </LogoLink>
+                      )}
+                    </ContextContainer>
                   </MediaQuery>
                 </RightContainer>
 
                 <MediaQuery query="(max-width: 1000px)">
-                  <Wordmark>
-                    <HedvigH />
-                  </Wordmark>
+                  <ContextContainer>
+                    {(context) => (
+                      <Wordmark
+                        href={'/' + (context.lang === 'sv' ? '' : context.lang)}
+                      >
+                        <HedvigH />
+                      </Wordmark>
+                    )}
+                  </ContextContainer>
                 </MediaQuery>
 
                 <MediaQuery query="(min-width: 1001px)">
@@ -331,6 +339,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                           <ButtonLinkBrandPivot
                             styleType={props.cta_style}
                             color={buttonColor}
+                            fullWidth={true}
                             href={getStoryblokLinkUrl(props.override_cta_link)}
                           >
                             {ctaLabel}
@@ -351,6 +360,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                                 styleType={props.cta_style}
                                 color={buttonColor}
                                 href={link}
+                                fullWidth={true}
                                 onClick={handleClick}
                               >
                                 {ctaLabel}
@@ -366,6 +376,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                         <ButtonLinkBrandPivot
                           styleType={props.cta_style}
                           color={buttonColor}
+                          fullWidth={true}
                           href={getStoryblokLinkUrl(
                             props.story.content.cta_link,
                           )}

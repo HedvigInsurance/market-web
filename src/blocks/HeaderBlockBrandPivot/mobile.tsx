@@ -66,34 +66,31 @@ const MiddleBurger = styled('div')<TogglableState>(({ isOpen, isClosing }) => ({
   transform: 'translateY(-1px)',
 }))
 
-export const NavToggle = styled('button')<{ preventInverse: boolean }>(
-  ({ preventInverse }) => ({
-    display: 'block',
-    right: CONTENT_GUTTER,
-    top: HEADER_VERTICAL_PADDING,
-    appearance: 'none',
-    background: 'transparent',
-    border: '0',
-    width: BURGER_LINE_WIDTH,
-    padding: 0,
-    zIndex: 102,
-    color: preventInverse ? colors.OFF_BLACK_DARK : 'inherit',
-    transition: `color ${TOGGLE_TRANSITION_TIME}ms`,
+export const NavToggle = styled('button')({
+  display: 'block',
+  right: CONTENT_GUTTER,
+  top: HEADER_VERTICAL_PADDING,
+  appearance: 'none',
+  background: 'transparent',
+  border: '0',
+  width: BURGER_LINE_WIDTH,
+  padding: 0,
+  zIndex: 102,
+  color: 'inherit',
 
-    [TABLET_BP_UP]: {
-      display: 'none',
-    },
+  [TABLET_BP_UP]: {
+    display: 'none',
+  },
 
-    '&:focus': {
-      outline: 'none',
-      boxShadow: 'none',
-    },
+  '&:focus': {
+    outline: 'none',
+    boxShadow: 'none',
+  },
 
-    [MOBILE_BP_DOWN]: {
-      right: CONTENT_GUTTER_MOBILE,
-    },
-  }),
-)
+  [MOBILE_BP_DOWN]: {
+    right: CONTENT_GUTTER_MOBILE,
+  },
+})
 
 const fadeIn = keyframes({
   from: { opacity: 0 },
@@ -106,7 +103,6 @@ const Overlay = styled('div')<{ closing: boolean }>(({ closing }) => ({
   bottom: 0,
   left: 0,
   zIndex: 99,
-  backgroundColor: closing ? 'transparent' : 'rgba(0,0,0, .5)',
   transition: `background-color ${TOGGLE_TRANSITION_TIME}ms`,
   animation: `${fadeIn} ${TOGGLE_TRANSITION_TIME}ms`,
   WebkitTapHighlightColor: 'rgba(0,0,0,0)',
@@ -123,7 +119,7 @@ export const Burger: React.FunctionComponent<TogglableState &
   ...rest
 }) => (
   <>
-    <NavToggle {...rest}>
+    <NavToggle>
       <CrossBurger isOpen={isOpen} isClosing={isClosing} />
       <MiddleBurger isOpen={isOpen} isClosing={isClosing} />
     </NavToggle>
