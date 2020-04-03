@@ -123,21 +123,26 @@ const Title = styled('h2')<TitleProps & Animateable>(
   }),
 )
 
-const Paragraph = styled('div')<{ textPosition: TextPosition } & Animateable>(
-  ({ textPosition, animate }) => ({
-    margin: textPosition === 'center' ? 'auto' : undefined,
-    fontSize: '1.125rem',
-    marginTop: '1.5rem',
-    maxWidth: textPosition === 'center' ? '40rem' : '31rem',
-    opacity: animate ? 0 : 1,
-    animation: animate ? fadeSlideIn + ' 500ms forwards' : undefined,
-    animationDelay: '1250ms',
+const Paragraph = styled('div')<
+  {
+    textPosition: TextPosition
+    colorComponent?: MinimalColorComponent
+  } & Animateable
+>(({ textPosition, colorComponent, animate }) => ({
+  margin: textPosition === 'center' ? 'auto' : undefined,
+  fontSize: '1.125rem',
+  marginTop: '1.5rem',
+  maxWidth: textPosition === 'center' ? '40rem' : '31rem',
+  opacity: animate ? 0 : 1,
+  animation: animate ? fadeSlideIn + ' 500ms forwards' : undefined,
+  animationDelay: '1250ms',
+  color: getMinimalColorStyles(colorComponent?.color ?? 'standard')
+    .secondaryColor,
 
-    [TABLET_BP_DOWN]: {
-      maxWidth: '100%',
-    },
-  }),
-)
+  [TABLET_BP_DOWN]: {
+    maxWidth: '100%',
+  },
+}))
 
 const Image = styled(DeferredImage)<{
   alignment: string
@@ -325,8 +330,9 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             dangerouslySetInnerHTML={{
               __html: paragraph.html,
             }}
-            textPosition={text_position}
             animate={animate}
+            colorComponent={color}
+            textPosition={text_position}
           />
           <MediaQuery query="(min-width: 481px)">
             <AnimatedAlignedButton
