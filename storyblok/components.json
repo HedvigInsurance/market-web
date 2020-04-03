@@ -2573,7 +2573,7 @@
     {
       "name": "image_text_block_brand_pivot",
       "display_name": "",
-      "updated_at": "2020-04-03T09:23:31.718Z",
+      "updated_at": "2020-04-03T10:01:07.314Z",
       "schema": {
         "text": {
           "type": "section",
@@ -2581,6 +2581,7 @@
             "title_size",
             "title",
             "title_color",
+            "show_hedvig_wordmark",
             "paragraph",
             "text_position",
             "text_position_mobile"
@@ -2617,11 +2618,15 @@
           "options": [],
           "pos": 3
         },
+        "show_hedvig_wordmark": {
+          "type": "boolean",
+          "pos": 4
+        },
         "paragraph": {
           "type": "custom",
           "required": true,
           "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
-          "pos": 4,
+          "pos": 5,
           "field_type": "markdown-html",
           "options": [],
           "translatable": true
@@ -2671,6 +2676,7 @@
           "keys": [
             "image_type",
             "image",
+            "mobile_image",
             "image_video_file_location",
             "mobile_image_video_file_location",
             "background_type",
@@ -2702,16 +2708,20 @@
           "required": false,
           "pos": 10
         },
+        "mobile_image": {
+          "type": "image",
+          "pos": 11
+        },
         "image_video_file_location": {
           "type": "text",
           "required": false,
-          "pos": 11,
+          "pos": 12,
           "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
         },
         "mobile_image_video_file_location": {
           "type": "text",
           "required": false,
-          "pos": 12,
+          "pos": 13,
           "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
         },
         "background_type": {
@@ -2728,23 +2738,23 @@
           ],
           "required": false,
           "default_value": "image",
-          "pos": 13
+          "pos": 14
         },
         "background_image": {
           "type": "image",
           "required": false,
-          "pos": 14
+          "pos": 15
         },
         "background_video_file_location": {
           "type": "text",
           "required": false,
-          "pos": 15,
+          "pos": 16,
           "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
         },
         "mobile_background_video_file_location": {
           "type": "text",
           "required": false,
-          "pos": 16,
+          "pos": 17,
           "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
         },
         "media_position": {
@@ -2761,12 +2771,12 @@
           ],
           "required": true,
           "default_value": "top",
-          "pos": 17
+          "pos": 18
         },
         "media_size_small": {
           "type": "boolean",
           "display_name": "Small image",
-          "pos": 18,
+          "pos": 19,
           "description": "Makes the image 1/3 in larger viewports"
         },
         "button": {
@@ -2780,13 +2790,13 @@
             "button_color",
             "button_position_mobile"
           ],
-          "pos": 19
+          "pos": 20
         },
         "button_title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 20,
+          "pos": 21,
           "translatable": true
         },
         "button_type": {
@@ -2807,12 +2817,12 @@
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 21
+          "pos": 22
         },
         "button_branch_link": {
           "type": "boolean",
           "description": "Create a branch link instead of the link field",
-          "pos": 22,
+          "pos": 23,
           "translatable": true
         },
         "button_link": {
@@ -2821,20 +2831,20 @@
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 23,
+          "pos": 24,
           "translatable": true
         },
         "show_button": {
           "type": "boolean",
           "required": false,
           "default_value": "true",
-          "pos": 24
+          "pos": 25
         },
         "button_color": {
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
           "type": "custom",
-          "pos": 25
+          "pos": 26
         },
         "button_position_mobile": {
           "type": "option",
@@ -2849,14 +2859,14 @@
               "name": "Below media"
             }
           ],
-          "pos": 26
+          "pos": 27
         },
         "color": {
           "type": "custom",
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
           "required": true,
-          "pos": 27
+          "pos": 28
         },
         "size": {
           "type": "option",
@@ -2881,11 +2891,11 @@
             }
           ],
           "default_value": "lg",
-          "pos": 28
+          "pos": 29
         },
         "animate": {
           "type": "boolean",
-          "pos": 29,
+          "pos": 30,
           "description": "Whether to animate the section on page load",
           "display_name": ""
         },
@@ -2893,14 +2903,14 @@
           "type": "tab",
           "display_name": "Styling",
           "keys": ["animate", "size", "color", "extra_styling"],
-          "pos": 30
+          "pos": 31
         },
         "extra_styling": {
           "type": "textarea",
           "display_name": "",
           "default_value": "",
           "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break.",
-          "pos": 31
+          "pos": 32
         }
       },
       "image": null,
