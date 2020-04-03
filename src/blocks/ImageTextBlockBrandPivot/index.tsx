@@ -142,8 +142,9 @@ const Paragraph = styled('div')<{ textPosition: TextPosition } & Animateable>(
 const Image = styled(DeferredImage)<{
   alignment: string
   displayorder: DisplayOrder
-}>(({ alignment, displayorder }) => ({
-  width: 'calc(50% - .75rem)',
+  smallImage: boolean
+}>(({ alignment, displayorder, smallImage }) => ({
+  width: `calc(${smallImage ? '(100% / 3)' : '50%'} - 0.75rem)`,
   display: 'block',
   flexShrink: 0,
   order: alignment === 'center' && displayorder === 'top' ? -1 : 'initial',
@@ -161,8 +162,9 @@ const Image = styled(DeferredImage)<{
 const ImageVideoWrapper = styled('div')<{
   alignment: string
   displayorder: DisplayOrder
-}>(({ alignment, displayorder }) => ({
-  width: 'calc(50% - 0.75rem)',
+  smallImage: boolean
+}>(({ alignment, displayorder, smallImage }) => ({
+  width: `calc(${smallImage ? '(100% / 3)' : '50%'} - 0.75rem)`,
   flexShrink: 0,
   display: 'block',
   order: alignment === 'center' && displayorder === 'top' ? -1 : 'initial',
@@ -232,6 +234,7 @@ interface ImageTextBlockProps extends BrandPivotBaseBlockProps {
   mobile_background_video_file_location: string
   size: SectionSize
   media_position: DisplayOrder
+  media_size_small: boolean
   button_color?: MinimalColorComponent
   button_position_mobile?: 'above' | 'below'
 }
@@ -262,6 +265,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
   color,
   size,
   media_position,
+  media_size_small,
   button_color,
   button_position_mobile,
   index,
@@ -287,7 +291,11 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
           />
         )}
 
-      <AlignableContentWrapper textPosition={text_position} index={index}>
+      <AlignableContentWrapper
+        textPosition={text_position}
+        index={index}
+        brandPivot
+      >
         <TextWrapper
           textPosition={text_position}
           textPositionMobile={text_position_mobile}
@@ -354,6 +362,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
                 <Image
                   alignment={text_position}
                   displayorder={media_position}
+                  smallImage={media_size_small}
                   src={getStoryblokImage(mobile_image)}
                 />
               </MediaQuery>
@@ -361,6 +370,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
                 <Image
                   alignment={text_position}
                   displayorder={media_position}
+                  smallImage={media_size_small}
                   src={getStoryblokImage(image)}
                 />
               </MediaQuery>
@@ -369,6 +379,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             <Image
               alignment={text_position}
               displayorder={media_position}
+              smallImage={media_size_small}
               src={getStoryblokImage(image)}
             />
           )
@@ -379,6 +390,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             <ImageVideoWrapper
               alignment={text_position}
               displayorder={media_position}
+              smallImage={media_size_small}
             >
               <MediaQuery query="(max-width: 700px)">
                 <ImageVideo src={mobile_image_video_file_location} />
