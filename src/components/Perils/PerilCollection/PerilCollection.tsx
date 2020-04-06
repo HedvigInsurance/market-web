@@ -12,9 +12,12 @@ import { Peril } from '../types'
 interface Props {
   color: minimalColorComponentColors
   perils: ReadonlyArray<Peril>
+  setCurrentPeril: (index: number) => void
+  setIsShowingPeril: (isShowingPeril: boolean) => void
 }
 
 const Wrapper = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -46,15 +49,24 @@ const Wrapper = styled.div`
   }
 `
 
-export const PerilCollection: React.FC<Props> = ({ color, perils }) => (
+export const PerilCollection: React.FC<Props> = ({
+  color,
+  perils,
+  setCurrentPeril,
+  setIsShowingPeril,
+}) => (
   <Wrapper>
-    {perils.map((peril) => (
+    {perils.map((peril, perilIndex) => (
       <PerilItem
         key={peril.title?.toString()}
         color={color}
         title={peril.title}
         description={peril.description}
         icon={peril.icon}
+        onClick={() => {
+          setCurrentPeril(perilIndex)
+          setIsShowingPeril(true)
+        }}
       />
     ))}
   </Wrapper>
