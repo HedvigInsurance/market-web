@@ -2924,6 +2924,80 @@
       "component_group_uuid": null
     },
     {
+      "name": "insurance_type",
+      "display_name": null,
+      "updated_at": "2020-04-06T14:55:51.963Z",
+      "schema": {
+        "value": {
+          "type": "option",
+          "pos": 2,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "SE_HOUSE",
+              "name": "SE_HOUSE"
+            },
+            {
+              "value": "SE_APARTMENT_BRF",
+              "name": "SE_APARTMENT_BRF"
+            },
+            {
+              "value": "SE_APARTMENT_RENT",
+              "name": "SE_APARTMENT_RENT"
+            },
+            {
+              "value": "SE_APARTMENT_STUDENT_BRF",
+              "name": "SE_APARTMENT_STUDENT_BRF"
+            },
+            {
+              "value": "SE_APARTMENT_STUDENT_RENT",
+              "name": "SE_APARTMENT_STUDENT_RENT"
+            },
+            {
+              "value": "NO_HOME_CONTENT_OWN",
+              "name": "NO_HOME_CONTENT_OWN"
+            },
+            {
+              "value": "NO_HOME_CONTENT_RENT",
+              "name": "NO_HOME_CONTENT_RENT"
+            },
+            {
+              "value": "NO_HOME_CONTENT_YOUTH_OWN",
+              "name": "NO_HOME_CONTENT_YOUTH_OWN"
+            },
+            {
+              "value": "NO_HOME_CONTENT_YOUTH_RENT",
+              "name": "NO_HOME_CONTENT_YOUTH_RENT"
+            },
+            {
+              "value": "NO_TRAVEL",
+              "name": "NO_TRAVEL"
+            },
+            {
+              "value": "NO_TRAVEL_YOUTH",
+              "name": "NO_TRAVEL_YOUTH"
+            }
+          ],
+          "required": true,
+          "display_name": "Type of insurance"
+        },
+        "label": {
+          "type": "text",
+          "display_name": "",
+          "description": "Label is displayed in dropdown"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "insurance_type",
+      "component_group_uuid": null
+    },
+    {
       "name": "investor_item",
       "display_name": null,
       "schema": {
@@ -3182,7 +3256,7 @@
     {
       "name": "perils_block",
       "display_name": null,
-      "updated_at": "2020-03-31T12:10:52.484Z",
+      "updated_at": "2020-04-06T14:43:37.677Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -3218,8 +3292,8 @@
           "default_value": "lg",
           "pos": 1
         },
-        "insurance_type": {
-          "type": "option",
+        "insurance_types": {
+          "type": "bloks",
           "pos": 2,
           "use_uuid": true,
           "options": [
@@ -3264,7 +3338,9 @@
               "name": "NO_TRAVEL_YOUTH"
             }
           ],
-          "required": true
+          "required": true,
+          "restrict_components": true,
+          "component_whitelist": ["insurance_type"]
         }
       },
       "image": null,
