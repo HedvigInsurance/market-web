@@ -168,7 +168,7 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
     302,
   ],
 
-//  Terms and conditions - norway - Home Content
+  // Terms and conditions - norway - Home Content
   [
     '/no/villkar/villkar/innbo.pdf',
     'https://cdn.hedvig.com/info/innbo-vilkar.pdf',
@@ -184,7 +184,7 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
     'https://cdn.hedvig.com/info/forsikringsbevis-innbo.pdf',
     302,
   ],
-  //  Awaiting english terms - so default to norwegian
+  // Awaiting english terms - so default to norwegian
   [
     '/no-en/terms/terms/home-content.pdf',
     'https://cdn.hedvig.com/info/innbo-vilkar.pdf',
@@ -201,7 +201,7 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
     302,
   ],
 
-//    Travel
+  // Travel
   [
     '/no/villkar/villkar/reise.pdf',
     'https://cdn.hedvig.com/info/reise-vilkar.pdf',
@@ -217,7 +217,7 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
     'https://cdn.hedvig.com/info/forsikringsbevis-reise.pdf',
     302,
   ],
-  //  Awaiting english terms - so default to norwegian
+  // Awaiting english terms - so default to norwegian
   [
     '/no-en/terms/terms/travel.pdf',
     'https://cdn.hedvig.com/info/reise-vilkar.pdf',
