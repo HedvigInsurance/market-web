@@ -1,8 +1,7 @@
 import { select, withKnobs } from '@storybook/addon-knobs'
-import { TypeOfContract } from 'components/Perils/types'
 import React from 'react'
 import { minimalColorMap } from 'utils/storybook'
-import { PerilsBlock } from './PerilsBlock'
+import { ContractOption, PerilsBlock } from './PerilsBlock'
 
 export default {
   title: 'Blocks/PerilsBlock',
@@ -16,25 +15,18 @@ export default {
   },
 }
 
-const types: TypeOfContract[] = [
-  'SE_HOUSE',
-  'SE_APARTMENT_BRF',
-  'SE_APARTMENT_RENT',
-  'SE_APARTMENT_STUDENT_BRF',
-  'SE_APARTMENT_STUDENT_RENT',
-  'NO_HOME_CONTENT_OWN',
-  'NO_HOME_CONTENT_RENT',
-  'NO_HOME_CONTENT_YOUTH_OWN',
-  'NO_HOME_CONTENT_YOUTH_RENT',
-  'NO_TRAVEL',
-  'NO_TRAVEL_YOUTH',
+const options: ContractOption[] = [
+  { value: 'SE_APARTMENT_BRF', label: 'Bostadsrätt' },
+  { value: 'SE_APARTMENT_RENT', label: 'Hyresrätt' },
+  { value: 'SE_HOUSE', label: 'Hus & Villa' },
+  { value: 'SE_APARTMENT_STUDENT_BRF', label: 'Student' },
 ]
 
 export const Default = () => (
   <PerilsBlock
     _uid="1234"
     component="perils_block"
-    insurance_type={select('Type of insurance', types, 'SE_HOUSE')}
+    insurance_types={options}
     color={
       minimalColorMap[
         select('Color', Object.keys(minimalColorMap), 'standard-inverse')
