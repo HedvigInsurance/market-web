@@ -7,6 +7,7 @@ import { Cross } from 'components/icons/Cross'
 import { Minus } from 'components/icons/Minus'
 import { Modal, ModalProps } from 'components/Modal/Modal'
 import React from 'react'
+import { GlobalStory } from 'storyblok/StoryContainer'
 import { Peril } from '../types'
 
 const TRANSITION_MS = 250
@@ -15,6 +16,7 @@ interface PerilModalProps {
   perils: ReadonlyArray<Peril>
   currentPerilIndex: number
   setCurrentPeril: (perilIndex: number) => void
+  story?: GlobalStory
 }
 
 const ModalWrapper = styled('div')`
@@ -180,7 +182,6 @@ const CoverageListItem = styled.div`
 
 export const PerilModal: React.FC<PerilModalProps & ModalProps> = (props) => {
   const [actionsAllowed, setActionsAllowed] = React.useState(true)
-
   React.useEffect(() => {
     const isBelowBoundary = props.currentPerilIndex < props.perils.length
     const isAboveBoundary = props.currentPerilIndex > props.perils.length * 2
@@ -232,7 +233,9 @@ export const PerilModal: React.FC<PerilModalProps & ModalProps> = (props) => {
             <Description>{currentPeril.description}</Description>
             {currentPeril.info && (
               <InfoBox>
-                <InfoBoxTitle>{'PLACEHOLDER'}</InfoBoxTitle>
+                <InfoBoxTitle>
+                  {props.story?.content.peril_modal_info_title ?? 'Info'}
+                </InfoBoxTitle>
                 <InfoBoxBody>{currentPeril.info}</InfoBoxBody>
               </InfoBox>
             )}
@@ -240,7 +243,10 @@ export const PerilModal: React.FC<PerilModalProps & ModalProps> = (props) => {
           <Column>
             <CoverageWrapper>
               <CoverageList>
-                <CoverageListTitle>{'PLACEHOLDER'}</CoverageListTitle>
+                <CoverageListTitle>
+                  {props.story?.content.peril_modal_coverage_title ??
+                    'Coverage'}
+                </CoverageListTitle>
                 {currentPeril.covered.map((text) => (
                   <CoverageListItem key={text}>
                     <Cross size="0.75rem" />
@@ -251,7 +257,10 @@ export const PerilModal: React.FC<PerilModalProps & ModalProps> = (props) => {
 
               {currentPeril.exceptions.length > 0 && (
                 <CoverageList>
-                  <CoverageListTitle>{'PLACEHOLDER'}</CoverageListTitle>
+                  <CoverageListTitle>
+                    {props.story?.content.peril_modal_exceptions_title ??
+                      'Exceptions'}
+                  </CoverageListTitle>
                   {currentPeril.exceptions.map((text) => (
                     <CoverageListItem key={text}>
                       <Minus size="0.75rem" />
