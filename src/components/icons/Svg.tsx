@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import { match } from 'matchly'
 
 type Direction = 'up' | 'down' | 'left' | 'right'
 export interface SvgProps {
@@ -7,22 +8,17 @@ export interface SvgProps {
   direction?: Direction
 }
 
-const getDirection = (direction: Direction) => {
-  return `
-  ${
-    direction === 'right'
-      ? 'rotate(-90deg)'
-      : direction === 'left'
-      ? 'rotate(90deg)'
-      : direction === 'up'
-      ? 'scaleY(-1)'
-      : direction === 'down' && 'scaleY(1)'
-  };
-`
-}
+const getDirection = (direction?: Direction) =>
+  match([
+    ['right', 'rotate(-90deg)'],
+    ['left', 'rotate(90deg)'],
+    ['up', 'scaleY(-1)'],
+    ['down', 'scaleY(1)'],
+    [match.any(), undefined],
+  ])(direction)!
 
 export const Svg = styled('svg')<SvgProps>(
-  ({ fill = 'currentColor', size = '1em', direction = 'down' }) => ({
+  ({ fill = 'currentColor', size = '1em', direction }) => ({
     fill,
     width: size,
     height: size,
