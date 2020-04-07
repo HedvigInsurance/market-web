@@ -167,4 +167,70 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
     'https://cdn.hedvig.com/info/insurance-terms-house-owners-2019-10.pdf',
     302,
   ],
+
+  // Terms and conditions - norway - Home Content
+  [
+    '/no/villkar/villkar/innbo.pdf',
+    'https://cdn.hedvig.com/info/innbo-vilkar.pdf',
+    302,
+  ],
+  [
+    '/no/villkar/generelle-villkar/innbo.pdf',
+    'https://cdn.hedvig.com/info/generelle-vilkar.pdf',
+    302,
+  ],
+  [
+    '/no/villkar/forsikringsbrev/innbo.pdf',
+    'https://cdn.hedvig.com/info/forsikringsbevis-innbo.pdf',
+    302,
+  ],
+  // Awaiting english terms - so default to norwegian
+  [
+    '/no-en/terms/terms/home-content.pdf',
+    'https://cdn.hedvig.com/info/innbo-vilkar.pdf',
+    302,
+  ],
+  [
+    '/no-en/terms/general-terms/home-content.pdf',
+    'https://cdn.hedvig.com/info/generelle-vilkar.pdf',
+    302,
+  ],
+  [
+    '/no-en/terms/insurance-letter/home-content.pdf',
+    'https://cdn.hedvig.com/info/forsikringsbevis-innbo.pdf',
+    302,
+  ],
+
+  // Travel
+  [
+    '/no/villkar/villkar/reise.pdf',
+    'https://cdn.hedvig.com/info/reise-vilkar.pdf',
+    302,
+  ],
+  [
+    '/no/villkar/generelle-villkar/reise.pdf',
+    'https://cdn.hedvig.com/info/generelle-vilkar.pdf',
+    302,
+  ],
+  [
+    '/no/villkar/forsikringsbrev/reise.pdf',
+    'https://cdn.hedvig.com/info/forsikringsbevis-reise.pdf',
+    302,
+  ],
+  // Awaiting english terms - so default to norwegian
+  [
+    '/no-en/terms/terms/travel.pdf',
+    'https://cdn.hedvig.com/info/reise-vilkar.pdf',
+    302,
+  ],
+  [
+    '/no-en/terms/general-terms/travel.pdf',
+    'https://cdn.hedvig.com/info/generelle-vilkar.pdf',
+    302,
+  ],
+  [
+    '/no-en/terms/insurance-letter/travel.pdf',
+    'https://cdn.hedvig.com/info/forsikringsbevis-reise.pdf',
+    302,
+  ],
 ]
