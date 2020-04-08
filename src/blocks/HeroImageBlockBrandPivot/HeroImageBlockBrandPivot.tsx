@@ -6,9 +6,10 @@ import {
   MarkdownHtmlComponent,
   MinimalColorComponent,
 } from 'blocks/BaseBlockProps'
-import { Heading } from 'components/Heading/Heading'
+import { FontSizes, Heading } from 'components/Heading/Heading'
 import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
+import { TextPosition } from 'src/utils/textPosition'
 import { getStoryblokImage, Image } from 'utils/storyblok'
 import {
   ContentWrapper,
@@ -24,6 +25,7 @@ interface Animatable {
 
 type TextProps = {
   colorComponent?: MinimalColorComponent
+  textPosition?: TextPosition
 } & Animatable
 
 interface WrapperProps {
@@ -68,24 +70,27 @@ const HeroHeadline = styled(Heading)<Animatable>(({ animate }) => ({
   animation: animate ? `${fadeSlideIn} 1000ms forwards` : 'none',
   opacity: animate ? 0 : 1,
   animationDelay: '400ms',
-  marginBottom: '5rem',
+  marginBottom: '3.5rem',
   fontFamily: fonts.FAVORIT,
 }))
 
-const Text = styled('div')<TextProps>(({ animate, colorComponent }) => ({
-  animation: animate ? `${fadeSlideIn} 1000ms forwards` : 'none',
-  opacity: animate ? 0 : 1,
-  animationDelay: '700ms',
-  textAlign: 'center',
-  maxWidth: '40rem',
-  margin: '0 auto',
-  color: getMinimalColorStyles(colorComponent?.color ?? 'standard').color,
-  fontSize: '1.25rem',
+const Text = styled('div')<TextProps>(
+  ({ animate, colorComponent, textPosition }) => ({
+    animation: animate ? `${fadeSlideIn} 1000ms forwards` : 'none',
+    opacity: animate ? 0 : 1,
+    animationDelay: '700ms',
+    maxWidth: '40rem',
+    marginLeft: textPosition === 'left' ? '0' : 'auto',
+    marginRight: textPosition === 'right' ? '0' : 'auto',
+    color: getMinimalColorStyles(colorComponent?.color ?? 'standard').color,
+    fontSize: '1.25rem',
+    textAlign: textPosition ?? 'center',
 
-  [TABLET_BP_UP]: {
-    fontSize: '1.5rem',
-  },
-}))
+    [TABLET_BP_UP]: {
+      fontSize: '1.5rem',
+    },
+  }),
+)
 
 const Wordmark = styled('div')({
   display: 'inline-flex',
@@ -110,8 +115,11 @@ const Wordmark = styled('div')({
 export interface HeroImageBlockBrandPivotProps
   extends BrandPivotBaseBlockProps {
   headline: string
+  headline_font_size: FontSizes
+  headline_font_size_mobile?: FontSizes
   text: MarkdownHtmlComponent
   text_color?: MinimalColorComponent
+  text_position?: TextPosition
   image: Image
   image_mobile: Image
   animate?: boolean
@@ -127,12 +135,15 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
   headline,
   text,
   text_color,
+  headline_font_size,
+  headline_font_size_mobile,
   image,
   index,
   image_mobile,
   use_display_font = false,
   show_hedvig_wordmark,
   full_screen = true,
+  text_position = 'center',
 }) => {
   return (
     <WrapperWithExtraStyling
@@ -146,8 +157,9 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
         <HeroHeadline
           as="h1"
           animate={animate}
-          size="xl"
-          textPosition="center"
+          size={headline_font_size}
+          mobileSize={headline_font_size_mobile}
+          textPosition={text_position}
           useDisplayFont={use_display_font}
         >
           {headline}
@@ -161,6 +173,7 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
           dangerouslySetInnerHTML={{ __html: text?.html }}
           animate={animate}
           colorComponent={text_color}
+          textPosition={text_position}
         />
       </ContentWrapper>
     </WrapperWithExtraStyling>

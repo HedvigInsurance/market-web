@@ -5,7 +5,7 @@ import {
   SectionWrapper,
   TABLET_BP_UP,
 } from 'components/blockHelpers'
-import { Heading } from 'components/Heading/Heading'
+import { FontSizes, Heading } from 'components/Heading/Heading'
 import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
 import { TextPosition } from 'utils/textPosition'
@@ -16,7 +16,8 @@ interface HeadlineBlockProps extends BrandPivotBaseBlockProps {
   capitalize?: boolean
   use_display_font: boolean
   show_hedvig_wordmark?: boolean
-  font_size: 'xs' | 'sm' | 'md' | 'lg'
+  font_size: FontSizes
+  font_size_mobile?: FontSizes
   element: 'h1' | 'h2' | 'h3' | 'h4'
 }
 
@@ -51,6 +52,7 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
   extra_styling,
   element,
   font_size,
+  font_size_mobile,
 }) => {
   return (
     <SectionWrapper
@@ -64,6 +66,7 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
           as={element}
           textPosition={text_position}
           size={font_size}
+          mobileSize={font_size_mobile}
           useDisplayFont={use_display_font}
           capitalize={capitalize}
         >

@@ -1,6 +1,7 @@
 import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
-import { FontSizes, Heading } from './Heading'
+import { fontSizes } from 'utils/storybook'
+import { Heading } from './Heading'
 
 export default {
   title: 'Components/Heading',
@@ -13,8 +14,6 @@ export default {
     ],
   },
 }
-
-const sizes: FontSizes[] = ['xxs', 'xs', 'sm', 'md', 'lg', 'xl']
 
 export const Default = () => (
   <>
@@ -43,8 +42,8 @@ export const Withknobs = () => (
   <>
     <Heading
       as="h2"
-      size={select('Font size', sizes, 'lg')}
-      mobileSize={select('Font size mobile', sizes, 'sm')}
+      size={select('Font size', fontSizes, 'lg')}
+      mobileSize={select('Font size mobile', fontSizes, 'sm')}
       textPosition={select(
         'Text position',
         ['left', 'center', 'right'],
