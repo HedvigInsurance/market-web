@@ -6,6 +6,7 @@ import {
   MarkdownHtmlComponent,
   MinimalColorComponent,
 } from 'blocks/BaseBlockProps'
+import { Heading } from 'components/Heading/Heading'
 import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
 import { getStoryblokImage, Image } from 'utils/storyblok'
@@ -20,10 +21,6 @@ import {
 interface Animatable {
   animate?: boolean
 }
-
-type HeadlineProps = {
-  useDisplayFont: boolean
-} & Animatable
 
 type TextProps = {
   colorComponent?: MinimalColorComponent
@@ -66,28 +63,14 @@ const fadeSlideIn = keyframes({
   to: { opacity: 1, transform: 'translateY(0%)' },
 })
 
-const HeroHeadline = styled('h1')<HeadlineProps>(
-  ({ animate, useDisplayFont }) => ({
-    position: 'relative',
-    animation: animate ? `${fadeSlideIn} 1000ms forwards` : 'none',
-    opacity: animate ? 0 : 1,
-    animationDelay: '400ms',
-    marginBottom: '5rem',
-    textAlign: 'center',
-
-    fontSize: '3.5rem',
-
-    [TABLET_BP_UP]: {
-      fontSize: '6rem',
-    },
-
-    '&&': {
-      fontFamily: useDisplayFont
-        ? `${fonts.EB_GARAMOND}, serif`
-        : `${fonts.FAVORIT}, sans-serif`,
-    },
-  }),
-)
+const HeroHeadline = styled(Heading)<Animatable>(({ animate }) => ({
+  position: 'relative',
+  animation: animate ? `${fadeSlideIn} 1000ms forwards` : 'none',
+  opacity: animate ? 0 : 1,
+  animationDelay: '400ms',
+  marginBottom: '5rem',
+  fontFamily: fonts.FAVORIT,
+}))
 
 const Text = styled('div')<TextProps>(({ animate, colorComponent }) => ({
   animation: animate ? `${fadeSlideIn} 1000ms forwards` : 'none',
@@ -160,7 +143,13 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
       fullScreen={full_screen}
     >
       <ContentWrapper index={index} brandPivot>
-        <HeroHeadline animate={animate} useDisplayFont={use_display_font}>
+        <HeroHeadline
+          as="h1"
+          animate={animate}
+          size="xl"
+          textPosition="center"
+          useDisplayFont={use_display_font}
+        >
           {headline}
           {show_hedvig_wordmark && (
             <Wordmark>
