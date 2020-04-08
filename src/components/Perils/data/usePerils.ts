@@ -1,8 +1,9 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { Locale } from 'utils/CurrentLocale'
 import { Peril, TypeOfContract } from '../types'
 
-export const usePerils = (insuranceType: TypeOfContract) => {
+export const usePerils = (insuranceType: TypeOfContract, locale: Locale) => {
   const [perils, setPerils] = useState<[] | Peril[]>([])
 
   const fetchPerils = async () => {
@@ -12,7 +13,7 @@ export const usePerils = (insuranceType: TypeOfContract) => {
       operationName: 'Perils',
       variables: {
         typeOfContract: insuranceType,
-        locale: 'sv_SE',
+        locale,
       },
       query: `
           query Perils($typeOfContract: TypeOfContract!, $locale: Locale!) {
