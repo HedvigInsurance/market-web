@@ -1,11 +1,11 @@
 import styled from '@emotion/styled'
-import { fonts } from '@hedviginsurance/brand'
 import { BrandPivotBaseBlockProps } from 'blocks/BaseBlockProps'
 import {
   ContentWrapper,
   SectionWrapper,
   TABLET_BP_UP,
 } from 'components/blockHelpers'
+import { Heading } from 'components/Heading/Heading'
 import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
 import { TextPosition } from 'utils/textPosition'
@@ -19,40 +19,6 @@ interface HeadlineBlockProps extends BrandPivotBaseBlockProps {
   font_size: 'xs' | 'sm' | 'md' | 'lg'
   element: 'h1' | 'h2' | 'h3' | 'h4'
 }
-
-const sizeMapMobile = {
-  xs: '1rem',
-  sm: '1.25rem',
-  md: '1.5rem',
-  lg: '2.5rem',
-}
-
-const sizeMap = {
-  xs: '1rem',
-  sm: '2rem',
-  md: '3rem',
-  lg: '6rem',
-}
-
-const createHeadline = (element: 'h1' | 'h2' | 'h3' | 'h4') =>
-  styled(element)<{
-    textPosition: TextPosition
-    size: 'xs' | 'sm' | 'md' | 'lg'
-    useDisplayFont: boolean
-    capitalize: boolean
-  }>(({ textPosition, size, useDisplayFont, capitalize }) => ({
-    position: 'relative',
-    textAlign: textPosition,
-    fontSize: sizeMapMobile[size],
-    textTransform: capitalize ? 'uppercase' : undefined,
-    margin: 0,
-    fontFamily: useDisplayFont ? `${fonts.EB_GARAMOND}, serif` : undefined,
-    lineHeight: 1.2,
-
-    [TABLET_BP_UP]: {
-      fontSize: sizeMap[size],
-    },
-  }))
 
 const Wordmark = styled('div')({
   display: 'inline-flex',
@@ -86,8 +52,6 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
   element,
   font_size,
 }) => {
-  const Headline = createHeadline(element)
-
   return (
     <SectionWrapper
       colorComponent={color}
@@ -96,7 +60,8 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
       brandPivot
     >
       <ContentWrapper brandPivot index={index}>
-        <Headline
+        <Heading
+          as={element}
           textPosition={text_position}
           size={font_size}
           useDisplayFont={use_display_font}
@@ -108,7 +73,7 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
               <HedvigH />
             </Wordmark>
           )}
-        </Headline>
+        </Heading>
       </ContentWrapper>
     </SectionWrapper>
   )
