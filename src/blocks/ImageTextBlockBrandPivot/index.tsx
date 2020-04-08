@@ -208,6 +208,7 @@ const Wordmark = styled('div')({
 interface ImageTextBlockProps extends BrandPivotBaseBlockProps {
   animate?: boolean
   title_size?: FontSizes
+  title_size_mobile?: FontSizes
   title: string
   title_color?: MinimalColorComponent
   show_hedvig_wordmark?: boolean
@@ -241,6 +242,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
   animate,
   extra_styling,
   title_size = 'sm',
+  title_size_mobile,
   title,
   title_color,
   paragraph,
@@ -305,6 +307,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             color={title_color?.color}
             displayorder={media_position}
             size={title_size}
+            mobileSize={title_size_mobile}
           >
             {title}
             {show_hedvig_wordmark && (
