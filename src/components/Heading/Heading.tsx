@@ -42,7 +42,9 @@ export const Heading = styled.h1<HeadingProps>`
   text-align: ${(props) => props.textPosition};
   text-transform: ${(props) => (props.capitalize ? 'uppercase' : undefined)};
   font-family: ${(props) =>
-    props.useDisplayFont ? `${fonts.EB_GARAMOND}, serif` : undefined};
+    props.useDisplayFont
+      ? `${fonts.EB_GARAMOND}, serif !important`
+      : undefined};
   line-height: 1.2;
 
   ${TABLET_BP_UP} {
