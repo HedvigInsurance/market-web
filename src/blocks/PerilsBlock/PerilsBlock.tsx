@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { BrandPivotBaseBlockProps } from 'blocks/BaseBlockProps'
 import { ContentWrapper, SectionWrapper } from 'components/blockHelpers'
+import { ContextContainer } from 'components/containers/ContextContainer'
 import { Perils } from 'components/Perils'
 import { TypeOfContract } from 'components/Perils/types'
 import { Select } from 'components/Select/Select'
@@ -38,25 +39,30 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
   return (
     <GlobalStoryContainer>
       {({ globalStory }) => (
-        <SectionWrapper colorComponent={color} size={size} brandPivot>
-          <ContentWrapper brandPivot index={index} fullWidth={true}>
-            {insurance_types.length > 1 && (
-              <SelectInsurance
-                defaultValue={insurance_types[0]}
-                options={insurance_types}
-                color={color?.color}
-                onChange={onChangeHandler}
-              />
-            )}
-            {currentInsurance && (
-              <Perils
-                color={color?.color}
-                insuranceType={currentInsurance}
-                story={globalStory}
-              />
-            )}
-          </ContentWrapper>
-        </SectionWrapper>
+        <ContextContainer>
+          {(context) => (
+            <SectionWrapper colorComponent={color} size={size} brandPivot>
+              <ContentWrapper brandPivot index={index} fullWidth={true}>
+                {insurance_types.length > 1 && (
+                  <SelectInsurance
+                    defaultValue={insurance_types[0]}
+                    options={insurance_types}
+                    color={color?.color}
+                    onChange={onChangeHandler}
+                  />
+                )}
+                {currentInsurance && (
+                  <Perils
+                    color={color?.color}
+                    insuranceType={currentInsurance}
+                    currentLocale={context.lang}
+                    story={globalStory}
+                  />
+                )}
+              </ContentWrapper>
+            </SectionWrapper>
+          )}
+        </ContextContainer>
       )}
     </GlobalStoryContainer>
   )
