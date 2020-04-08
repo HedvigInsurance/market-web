@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { colorsV3, fonts } from '@hedviginsurance/brand'
+import { HeaderTop } from 'blocks/HeaderBlockBrandPivot/HeaderTop'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
@@ -26,37 +27,57 @@ import {
 import { MenuItem } from './MenuItem'
 import { Burger, TABLET_BP_DOWN, TABLET_BP_UP } from './mobile'
 
-export const WRAPPER_HEIGHT = '6rem'
+export const HEADER_TOP_HEIGHT = '2.5rem'
+export const HEADER_MAIN_HEIGHT = '6rem'
+export const WRAPPER_HEIGHT = '8.5rem'
 export const MOBILE_WRAPPER_HEIGHT = '4.5rem'
 export const HEADER_VERTICAL_PADDING = '1.2rem'
 export const TOGGLE_TRANSITION_TIME = 250
 
 const isBelowScrollThreshold = () =>
-  typeof window !== 'undefined' && window.scrollY > 20
+  typeof window !== 'undefined' && window.scrollY > 41
 
-const Wrapper = styled('div')<{ inverse: boolean; open: boolean }>(
-  ({ inverse, open }) => ({
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    right: 0,
-    zIndex: 100,
-    color: inverse ? colorsV3.gray100 : colorsV3.gray900,
-    fontFamily: fonts.FAVORIT,
-    transition: 'color 300ms',
+const HeaderWrapper = styled('header')<{
+  inverse: boolean
+}>(({ inverse }) => ({
+  position: 'relative',
+  zIndex: 100,
+  color: inverse ? colorsV3.gray100 : colorsV3.gray900,
+  transition: 'color 300ms',
 
-    [TABLET_BP_DOWN]: {
-      color: colorsV3.gray100,
-      bottom: open ? 0 : undefined,
-    },
-  }),
-)
+  [TABLET_BP_DOWN]: {
+    color: colorsV3.gray100,
+  },
+}))
+
+const HeaderMain = styled('div')<{
+  inverse: boolean
+  open: boolean
+  sticky: boolean
+}>(({ inverse, open, sticky }) => ({
+  position: sticky ? 'fixed' : 'absolute',
+  top: sticky ? 0 : HEADER_TOP_HEIGHT,
+  left: 0,
+  width: '100%',
+  height: HEADER_MAIN_HEIGHT,
+  zIndex: 100,
+  color: inverse ? colorsV3.gray100 : colorsV3.gray900,
+  fontFamily: fonts.FAVORIT,
+  transition: 'color 300ms',
+
+  [TABLET_BP_DOWN]: {
+    color: colorsV3.gray100,
+    bottom: open ? 0 : undefined,
+  },
+}))
+
 const Filler = styled('div')({
   height: MOBILE_WRAPPER_HEIGHT,
   [TABLET_BP_UP]: {
     height: WRAPPER_HEIGHT,
   },
 })
+
 const HeaderBackgroundFiller = styled('div')<{ transparent: boolean }>(
   ({ transparent }) => ({
     position: 'absolute',
@@ -66,7 +87,7 @@ const HeaderBackgroundFiller = styled('div')<{ transparent: boolean }>(
     zIndex: -1,
     height: MOBILE_WRAPPER_HEIGHT,
     [TABLET_BP_UP]: {
-      height: WRAPPER_HEIGHT,
+      height: HEADER_MAIN_HEIGHT,
       backgroundColor: colorsV3.gray100,
       opacity: transparent ? 0 : 1,
     },
@@ -84,7 +105,7 @@ const InnerHeaderWrapper = styled('div')({
   width: '100%',
   height: MOBILE_WRAPPER_HEIGHT,
   [TABLET_BP_UP]: {
-    height: WRAPPER_HEIGHT,
+    height: HEADER_MAIN_HEIGHT,
   },
   padding: HEADER_VERTICAL_PADDING + ' 0',
 })
@@ -216,86 +237,163 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
   }, [updateHeader])
 
   return (
-    <>
+    <HeaderWrapper
+      inverse={
+        props.is_transparent && props.inverse_colors && !isBelowThreshold
+      }
+    >
+      <HeaderTop transparent={props.is_transparent} />
+
       {!props.is_transparent && <Filler />}
 
       <Togglable>
         {({ isOpen, isClosing, toggleOpen }) => (
-          <Wrapper
-            inverse={
-              props.is_transparent && props.inverse_colors && !isBelowThreshold
-            }
-            open={isOpen || isClosing}
-          >
-            <HeaderBackgroundFiller
-              transparent={props.is_transparent && !isBelowThreshold}
-            />
-            <ContentWrapper>
-              <InnerHeaderWrapper>
-                <LeftContainer>
-                  <Burger
-                    isOpen={isOpen}
-                    isClosing={isClosing}
-                    onClick={toggleOpen}
-                    preventInverse={props.inverse_colors && isOpen}
-                  />
+          <div>
+            <HeaderMain
+              inverse={
+                props.is_transparent &&
+                props.inverse_colors &&
+                !isBelowThreshold
+              }
+              open={isOpen || isClosing}
+              sticky={isBelowThreshold}
+            >
+              <HeaderBackgroundFiller
+                transparent={props.is_transparent && !isBelowThreshold}
+              />
+              <ContentWrapper brandPivot fullWidth>
+                <InnerHeaderWrapper>
+                  <LeftContainer>
+                    <Burger
+                      isOpen={isOpen}
+                      isClosing={isClosing}
+                      onClick={toggleOpen}
+                      preventInverse={props.inverse_colors && isOpen}
+                    />
 
-                  <MediaQuery query="(min-width: 1001px)">
+                    <MediaQuery query="(min-width: 1001px)">
+                      <ContextContainer>
+                        {(context) => (
+                          <LogoLink
+                            href={
+                              '/' + (context.lang === 'sv' ? '' : context.lang)
+                            }
+                          >
+                            <HedvigLogotype width={98} />
+                          </LogoLink>
+                        )}
+                      </ContextContainer>
+                    </MediaQuery>
+                  </LeftContainer>
+
+                  <MediaQuery query="(max-width: 1000px)">
                     <ContextContainer>
                       {(context) => (
-                        <LogoLink
+                        <Wordmark
                           href={
                             '/' + (context.lang === 'sv' ? '' : context.lang)
                           }
                         >
-                          <HedvigLogotype width={98} />
-                        </LogoLink>
+                          <HedvigH />
+                        </Wordmark>
                       )}
                     </ContextContainer>
                   </MediaQuery>
-                </LeftContainer>
 
-                <MediaQuery query="(max-width: 1000px)">
-                  <ContextContainer>
-                    {(context) => (
-                      <Wordmark
-                        href={'/' + (context.lang === 'sv' ? '' : context.lang)}
-                      >
-                        <HedvigH />
-                      </Wordmark>
+                  <Menu open={isOpen}>
+                    {(props.story.content.header_menu_items ?? []).map(
+                      (menuItem) => (
+                        <MenuItem menuItem={menuItem} key={menuItem._uid} />
+                      ),
                     )}
-                  </ContextContainer>
-                </MediaQuery>
 
-                <Menu open={isOpen}>
-                  {(props.story.content.header_menu_items ?? []).map(
-                    (menuItem) => (
-                      <MenuItem menuItem={menuItem} key={menuItem._uid} />
-                    ),
-                  )}
+                    <MobileButtonWrapper>
+                      <>
+                        {(() => {
+                          const mobileCtaLabel =
+                            props.override_mobile_header_cta_label ||
+                            props.story.content.cta_label
+                          const mobileCtaColor =
+                            props.mobile_header_cta_color?.color ||
+                            'standard-inverse'
 
-                  <MobileButtonWrapper>
-                    <>
-                      {(() => {
-                        const mobileCtaLabel =
-                          props.override_mobile_header_cta_label ||
-                          props.story.content.cta_label
-                        const mobileCtaColor =
-                          props.mobile_header_cta_color?.color ||
-                          'standard-inverse'
+                          if (
+                            props.override_mobile_header_cta_link?.cached_url
+                          ) {
+                            return (
+                              <ButtonWrapper>
+                                <ButtonLinkBrandPivot
+                                  styleType={props.mobile_header_cta_style}
+                                  fullWidth={true}
+                                  href={getStoryblokLinkUrl(
+                                    props.override_mobile_header_cta_link,
+                                  )}
+                                  color={mobileCtaColor}
+                                >
+                                  {mobileCtaLabel}
+                                </ButtonLinkBrandPivot>
+                              </ButtonWrapper>
+                            )
+                          }
 
-                        if (props.override_mobile_header_cta_link?.cached_url) {
+                          if (
+                            props.story.content.show_cta &&
+                            props.story.content.cta_branch_link
+                          ) {
+                            return (
+                              <AppLink>
+                                {({ link, handleClick }) => (
+                                  <ButtonWrapper>
+                                    <ButtonLinkBrandPivot
+                                      styleType={props.mobile_header_cta_style}
+                                      fullWidth={true}
+                                      color={mobileCtaColor}
+                                      onClick={handleClick}
+                                      href={link}
+                                    >
+                                      {mobileCtaLabel}
+                                    </ButtonLinkBrandPivot>
+                                  </ButtonWrapper>
+                                )}
+                              </AppLink>
+                            )
+                          }
                           return (
                             <ButtonWrapper>
                               <ButtonLinkBrandPivot
                                 styleType={props.mobile_header_cta_style}
                                 fullWidth={true}
                                 href={getStoryblokLinkUrl(
-                                  props.override_mobile_header_cta_link,
+                                  props.story.content.cta_link,
                                 )}
                                 color={mobileCtaColor}
                               >
                                 {mobileCtaLabel}
+                              </ButtonLinkBrandPivot>
+                            </ButtonWrapper>
+                          )
+                        })()}
+                      </>
+                    </MobileButtonWrapper>
+
+                    <DesktopButtonWrapper>
+                      {(() => {
+                        const ctaLabel =
+                          props.override_cta_label ||
+                          props.story.content.cta_label
+
+                        if (props.override_cta_link?.cached_url) {
+                          return (
+                            <ButtonWrapper>
+                              <ButtonLinkBrandPivot
+                                styleType={props.cta_style}
+                                color={buttonColor}
+                                fullWidth={true}
+                                href={getStoryblokLinkUrl(
+                                  props.override_cta_link,
+                                )}
+                              >
+                                {ctaLabel}
                               </ButtonLinkBrandPivot>
                             </ButtonWrapper>
                           )
@@ -310,105 +408,43 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                               {({ link, handleClick }) => (
                                 <ButtonWrapper>
                                   <ButtonLinkBrandPivot
-                                    styleType={props.mobile_header_cta_style}
-                                    fullWidth={true}
-                                    color={mobileCtaColor}
-                                    onClick={handleClick}
+                                    styleType={props.cta_style}
+                                    color={buttonColor}
                                     href={link}
+                                    fullWidth={true}
+                                    onClick={handleClick}
                                   >
-                                    {mobileCtaLabel}
+                                    {ctaLabel}
                                   </ButtonLinkBrandPivot>
                                 </ButtonWrapper>
                               )}
                             </AppLink>
                           )
                         }
-                        return (
-                          <ButtonWrapper>
-                            <ButtonLinkBrandPivot
-                              styleType={props.mobile_header_cta_style}
-                              fullWidth={true}
-                              href={getStoryblokLinkUrl(
-                                props.story.content.cta_link,
-                              )}
-                              color={mobileCtaColor}
-                            >
-                              {mobileCtaLabel}
-                            </ButtonLinkBrandPivot>
-                          </ButtonWrapper>
-                        )
-                      })()}
-                    </>
-                  </MobileButtonWrapper>
 
-                  <DesktopButtonWrapper>
-                    {(() => {
-                      const ctaLabel =
-                        props.override_cta_label ||
-                        props.story.content.cta_label
-
-                      if (props.override_cta_link?.cached_url) {
                         return (
                           <ButtonWrapper>
                             <ButtonLinkBrandPivot
                               styleType={props.cta_style}
                               color={buttonColor}
-                              fullWidth={true}
                               href={getStoryblokLinkUrl(
-                                props.override_cta_link,
+                                props.story.content.cta_link,
                               )}
                             >
                               {ctaLabel}
                             </ButtonLinkBrandPivot>
                           </ButtonWrapper>
                         )
-                      }
-
-                      if (
-                        props.story.content.show_cta &&
-                        props.story.content.cta_branch_link
-                      ) {
-                        return (
-                          <AppLink>
-                            {({ link, handleClick }) => (
-                              <ButtonWrapper>
-                                <ButtonLinkBrandPivot
-                                  styleType={props.cta_style}
-                                  color={buttonColor}
-                                  href={link}
-                                  fullWidth={true}
-                                  onClick={handleClick}
-                                >
-                                  {ctaLabel}
-                                </ButtonLinkBrandPivot>
-                              </ButtonWrapper>
-                            )}
-                          </AppLink>
-                        )
-                      }
-
-                      return (
-                        <ButtonWrapper>
-                          <ButtonLinkBrandPivot
-                            styleType={props.cta_style}
-                            color={buttonColor}
-                            href={getStoryblokLinkUrl(
-                              props.story.content.cta_link,
-                            )}
-                          >
-                            {ctaLabel}
-                          </ButtonLinkBrandPivot>
-                        </ButtonWrapper>
-                      )
-                    })()}
-                  </DesktopButtonWrapper>
-                </Menu>
-              </InnerHeaderWrapper>
-            </ContentWrapper>
-          </Wrapper>
+                      })()}
+                    </DesktopButtonWrapper>
+                  </Menu>
+                </InnerHeaderWrapper>
+              </ContentWrapper>
+            </HeaderMain>
+          </div>
         )}
       </Togglable>
-    </>
+    </HeaderWrapper>
   )
 }
 
