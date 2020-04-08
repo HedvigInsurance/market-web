@@ -1241,6 +1241,7 @@
     {
       "name": "global",
       "display_name": null,
+      "updated_at": "2020-04-07T14:44:56.056Z",
       "schema": {
         "header_menu_items": {
           "type": "bloks",
@@ -1342,6 +1343,25 @@
           "options": [],
           "pos": 13,
           "translatable": true
+        },
+        "perils": {
+          "type": "section",
+          "keys": [
+            "peril_modal_info_title",
+            "peril_modal_coverage_title",
+            "peril_modal_exceptions_title"
+          ],
+          "restrict_components": true,
+          "component_whitelist": ["peril_labels"]
+        },
+        "peril_modal_info_title": {
+          "type": "text"
+        },
+        "peril_modal_coverage_title": {
+          "type": "text"
+        },
+        "peril_modal_exceptions_title": {
+          "type": "text"
         }
       },
       "image": null,

@@ -14,6 +14,12 @@ export default {
     ],
   },
 }
+
 export const Default = () => (
-  <PerilCollection color="standard" perils={brfPerils} />
+  <PerilCollection
+    color="standard"
+    perils={brfPerils}
+    setCurrentPeril={() => 1}
+    setIsShowingPeril={() => true}
+  />
 )

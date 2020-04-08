@@ -1,20 +1,21 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
-import axios from 'axios'
 import {
   LAPTOP_BP_UP,
   MOBILE_BP_UP,
   TABLET_BP_UP,
 } from 'components/blockHelpers'
 import { PerilIcon } from 'components/Perils/types'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { minimalColorComponentColors } from 'src/blocks/BaseBlockProps'
+import { useIcon } from '../data/useIcon'
 
 interface PerilItemProps {
   title: React.ReactNode
   color: minimalColorComponentColors
   description: string
   icon: PerilIcon
+  onClick: () => void
 }
 
 const OuterContainer = styled.div`
@@ -123,27 +124,14 @@ export const PerilItem: React.FC<PerilItemProps> = ({
   color,
   description,
   icon,
+  onClick,
 }) => {
-  const [iconString, seticonString] = useState<string>('')
   const iconUrl: string = icon.variants.light.svgUrl
+  const iconString = useIcon(iconUrl)
 
-  useEffect(() => {
-    const fetchIcon = async () => {
-      if (!iconUrl) {
-        return
-      }
-      const url = `https://giraffe.hedvig.com${iconUrl}`
-      const iconResponse = await axios.get(url, {
-        withCredentials: false,
-      })
-      seticonString(iconResponse.data)
-    }
-
-    fetchIcon()
-  }, [iconUrl])
   return (
     <OuterContainer>
-      <Container color={color}>
+      <Container color={color} onClick={onClick}>
         <IconWrapper dangerouslySetInnerHTML={{ __html: iconString }} />
         <Title>{title}</Title>
         <Description>{description}</Description>

@@ -5,6 +5,7 @@ import { Perils } from 'components/Perils'
 import { TypeOfContract } from 'components/Perils/types'
 import { Select } from 'components/Select/Select'
 import React, { useState } from 'react'
+import { GlobalStoryContainer } from 'storyblok/StoryContainer'
 
 export interface ContractOption {
   label: string
@@ -35,20 +36,28 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
   }
 
   return (
-    <SectionWrapper colorComponent={color} size={size} brandPivot>
-      <ContentWrapper brandPivot index={index} fullWidth={true}>
-        {insurance_types.length > 1 && (
-          <SelectInsurance
-            defaultValue={insurance_types[0]}
-            options={insurance_types}
-            color={color?.color}
-            onChange={onChangeHandler}
-          />
-        )}
-        {currentInsurance && (
-          <Perils color={color?.color} insuranceType={currentInsurance} />
-        )}
-      </ContentWrapper>
-    </SectionWrapper>
+    <GlobalStoryContainer>
+      {({ globalStory }) => (
+        <SectionWrapper colorComponent={color} size={size} brandPivot>
+          <ContentWrapper brandPivot index={index} fullWidth={true}>
+            {insurance_types.length > 1 && (
+              <SelectInsurance
+                defaultValue={insurance_types[0]}
+                options={insurance_types}
+                color={color?.color}
+                onChange={onChangeHandler}
+              />
+            )}
+            {currentInsurance && (
+              <Perils
+                color={color?.color}
+                insuranceType={currentInsurance}
+                story={globalStory}
+              />
+            )}
+          </ContentWrapper>
+        </SectionWrapper>
+      )}
+    </GlobalStoryContainer>
   )
 }
