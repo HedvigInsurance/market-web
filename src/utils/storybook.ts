@@ -87,5 +87,8 @@ export const globalStoryMock: GlobalStory = {
     cta_label: 'Beräkna ditt pris',
     cta_link: link,
     footer_paragraph: footerText,
+    peril_modal_info_title: 'Att tänka på',
+    peril_modal_coverage_title: 'Det här täcks',
+    peril_modal_exceptions_title: 'Undantag',
   },
 }

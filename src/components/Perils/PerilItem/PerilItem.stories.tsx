@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions'
 import React from 'react'
 import { brfPerils } from '../perilMockData/brf'
 import { PerilItem } from './PerilItem'
@@ -22,6 +23,7 @@ export const Default = () => (
       description={perilProps.description}
       color="standard"
       icon={perilProps.icon}
+      onClick={action('click')}
     />
   </div>
 )

@@ -78,6 +78,7 @@ const template = ({
       window.PUBLIC_HOST = ${JSON.stringify(process.env.PUBLIC_HOST || '')};
       </script>
     <script src="${scriptLocation}"></script>
+    <div id="modal></div>
   </body>
   </html>
 `

@@ -13,6 +13,8 @@ export const brfPerils: Peril[] = [
       'Frätande gas som bildats vid oavsiktlig upphettning av plast',
       'Sanering av sot orsakad av öppen låga',
     ],
+    info:
+      'Se till att kranar är täta och stängda när de inte används. Lägg underlägg under kyl/frys/ diskmaskin som samlar upp vatten. Se till att ledningssystem och anslutna anordningar inte fryser sönder. Och lämnar du huset i mer än 7 dagar så måste vattnet stängas av helt.',
     exceptions: ['Sprängningsarbete, sot eller levande ljus'],
     icon: {
       variants: {

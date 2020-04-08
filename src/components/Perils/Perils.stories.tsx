@@ -1,5 +1,6 @@
 import { select, withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
+import { globalStoryMock } from 'utils/storybook'
 import { Perils } from './'
 import { TypeOfContract } from './types'
 
@@ -30,5 +31,8 @@ const types: TypeOfContract[] = [
 ]
 
 export const Default = () => (
-  <Perils insuranceType={select('Type of insurance', types, 'SE_HOUSE')} />
+  <Perils
+    insuranceType={select('Type of insurance', types, 'SE_HOUSE')}
+    story={globalStoryMock}
+  />
 )
