@@ -31,9 +31,9 @@ const getMinimalButtonTypeStyle = (
       backgroundColor: getMinimalColorStyles(
         color,
         colorsV3.gray900,
-        colorsV3.white,
+        colorsV3.gray100,
       ).background,
-      color: getMinimalColorStyles(color, colorsV3.gray900, colorsV3.white)
+      color: getMinimalColorStyles(color, colorsV3.gray900, colorsV3.gray100)
         .color,
     }
   }
@@ -42,14 +42,14 @@ const getMinimalButtonTypeStyle = (
       border: 'none',
       padding: '0',
       backgroundColor: 'transparent',
-      color: getMinimalColorStyles(color, colorsV3.gray900, colorsV3.white)
+      color: getMinimalColorStyles(color, colorsV3.gray900, colorsV3.gray100)
         .background,
     }
   } else {
     // Outlined or nothing
     return {
       backgroundColor: 'transparent',
-      color: getMinimalColorStyles(color, colorsV3.gray900, colorsV3.white)
+      color: getMinimalColorStyles(color, colorsV3.gray900, colorsV3.gray100)
         .background,
     }
   }
@@ -67,7 +67,7 @@ export const ButtonBrandPivot = styled('button')<
     const colorStyles = getMinimalColorStyles(
       color,
       colorsV3.gray900,
-      colorsV3.white,
+      colorsV3.gray100,
     )
     return {
       display: 'inline-block',

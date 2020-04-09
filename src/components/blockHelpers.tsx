@@ -212,7 +212,7 @@ export const getColorStyles: ColorSetGetter<
 
 export const getMinimalColorStyles: ColorSetGetter<minimalColorComponentColors> = (
   color,
-  standardColor = colorsV3.white,
+  standardColor = colorsV3.gray100,
   standardInverseColor = colorsV3.gray900,
 ) =>
   match([
