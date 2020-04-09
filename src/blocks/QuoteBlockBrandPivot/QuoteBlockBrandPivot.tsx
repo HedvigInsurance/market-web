@@ -29,7 +29,7 @@ const QuoteWrapper = styled('div')<{ largeQuote?: boolean }>(
 
     [TABLET_BP_UP]: {
       width: largeQuote ? '100%' : '80%',
-      maxWidth: largeQuote ? 'auto' : '47.5rem',
+      maxWidth: largeQuote ? 'none' : '47.5rem',
     },
   }),
 )
