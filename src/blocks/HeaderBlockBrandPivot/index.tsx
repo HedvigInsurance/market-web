@@ -138,6 +138,21 @@ const LeftContainer = styled('div')({
   display: 'flex',
 })
 
+const MobileButtonWrapper = styled('div')({
+  display: 'inline-block',
+  width: '100%',
+  [TABLET_BP_UP]: {
+    display: 'none',
+  },
+})
+
+const DesktopButtonWrapper = styled('div')({
+  display: 'none',
+  [TABLET_BP_UP]: {
+    display: 'inline-block',
+  },
+})
+
 const Wordmark = styled('a')({
   width: '2rem',
   height: '2rem',
@@ -259,7 +274,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                     ),
                   )}
 
-                  <MediaQuery query="(max-width: 1000px)">
+                  <MobileButtonWrapper>
                     <>
                       {(() => {
                         const mobileCtaLabel =
@@ -324,9 +339,9 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                         )
                       })()}
                     </>
-                  </MediaQuery>
+                  </MobileButtonWrapper>
 
-                  <MediaQuery query="(min-width: 1001px)">
+                  <DesktopButtonWrapper>
                     {(() => {
                       const ctaLabel =
                         props.override_cta_label ||
@@ -386,7 +401,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                         </ButtonWrapper>
                       )
                     })()}
-                  </MediaQuery>
+                  </DesktopButtonWrapper>
                 </Menu>
               </InnerHeaderWrapper>
             </ContentWrapper>
