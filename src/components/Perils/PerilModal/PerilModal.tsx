@@ -58,7 +58,7 @@ const Title = styled.div`
   }
 
   ${TABLET_BP_UP} {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 `
 

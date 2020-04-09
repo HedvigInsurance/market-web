@@ -1,10 +1,6 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
-import {
-  LAPTOP_BP_UP,
-  MOBILE_BP_UP,
-  TABLET_BP_UP,
-} from 'components/blockHelpers'
+import { MOBILE_BP_UP, TABLET_BP_UP } from 'components/blockHelpers'
 import { PerilIcon } from 'components/Perils/types'
 import React from 'react'
 import { minimalColorComponentColors } from 'src/blocks/BaseBlockProps'
@@ -76,7 +72,7 @@ const IconWrapper = styled.div`
   ${TABLET_BP_UP} {
     width: 3rem;
     height: 3rem;
-    margin-bottom: 0.625rem;
+    margin-bottom: 1.5rem;
   }
 
   svg {
@@ -97,12 +93,8 @@ const Title = styled('h4')`
   font-size: 0.875rem;
 
   ${TABLET_BP_UP} {
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-  }
-
-  ${LAPTOP_BP_UP} {
-    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
   }
 `
 
