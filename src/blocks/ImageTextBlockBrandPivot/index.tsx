@@ -1,5 +1,6 @@
 import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
+import { FontSizes, Heading } from 'components/Heading/Heading'
 import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
 import MediaQuery from 'react-responsive'
@@ -32,7 +33,6 @@ import {
 } from '../BaseBlockProps'
 import { BackgroundVideo } from './BackgroundVideo'
 
-type TitleSize = 'sm' | 'lg'
 interface Animateable {
   animate?: boolean
 }
@@ -95,30 +95,23 @@ const TextWrapper = styled('div')<{
 type DisplayOrder = 'top' | 'bottom'
 
 interface TitleProps {
-  size?: TitleSize
-  alignment: string
   displayorder: DisplayOrder
-  textPosition: TextPosition
-  color: string
+  alignment: TextPosition
 }
 
-const Title = styled('h2')<TitleProps & Animateable>(
-  ({ size, displayorder, textPosition, alignment, color, animate }) => ({
-    margin: textPosition === 'center' ? 'auto' : undefined,
-    fontSize: size === 'lg' ? '4.5rem' : '3.5rem',
-    marginTop:
-      alignment === 'center' && displayorder === 'top' ? '3rem' : '1.414rem',
+const Title = styled(Heading)<TitleProps & Animateable>(
+  ({ displayorder, alignment, animate }) => ({
     width: '100%',
-    color,
-    maxWidth: textPosition === 'center' ? '40rem' : '31rem',
+    maxWidth: alignment === 'center' ? '40rem' : '31rem',
+    margin: alignment === 'center' ? 'auto' : undefined,
+    marginTop: displayorder === 'top' ? '3rem' : '1.414rem',
     opacity: animate ? 0 : 1,
     animation: animate ? fadeSlideIn + ' 500ms forwards' : undefined,
     animationDelay: '1000ms',
 
-    [TABLET_BP_DOWN]: {
-      fontSize: size === 'lg' ? '2.75rem' : '2rem',
-      maxWidth: '100%',
-      marginTop: displayorder === 'top' ? '3rem' : '1.414rem',
+    [TABLET_BP_UP]: {
+      marginTop:
+        alignment === 'center' && displayorder === 'top' ? '3rem' : '1.414rem',
     },
   }),
 )
@@ -214,7 +207,8 @@ const Wordmark = styled('div')({
 
 interface ImageTextBlockProps extends BrandPivotBaseBlockProps {
   animate?: boolean
-  title_size?: TitleSize
+  title_size?: FontSizes
+  title_size_mobile?: FontSizes
   title: string
   title_color?: MinimalColorComponent
   show_hedvig_wordmark?: boolean
@@ -247,7 +241,8 @@ interface ImageTextBlockProps extends BrandPivotBaseBlockProps {
 export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockProps> = ({
   animate,
   extra_styling,
-  title_size,
+  title_size = 'sm',
+  title_size_mobile,
   title,
   title_color,
   paragraph,
@@ -306,18 +301,13 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
           textPositionMobile={text_position_mobile}
         >
           <Title
-            size={title_size}
-            displayorder={media_position}
+            as="h2"
             alignment={text_position}
-            color={
-              title_color && title_color.color !== 'standard'
-                ? getMinimalColorStyles(title_color.color).background
-                : color
-                ? getMinimalColorStyles(color.color).color
-                : 'standard'
-            }
-            textPosition={text_position}
             animate={animate}
+            color={title_color?.color}
+            displayorder={media_position}
+            size={title_size}
+            mobileSize={title_size_mobile}
           >
             {title}
             {show_hedvig_wordmark && (

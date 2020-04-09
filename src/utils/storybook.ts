@@ -1,3 +1,4 @@
+import { FontSizes } from 'components/Heading/Heading'
 import {
   MarkdownHtmlComponent,
   MinimalColorComponent,
@@ -30,6 +31,8 @@ export const minimalColorMap: Record<string, MinimalColorComponent> = {
     plugin: 'hedvig_minimal_color_picker',
   },
 }
+
+export const fontSizes: FontSizes[] = ['xxs', 'xs', 'sm', 'md', 'lg', 'xl']
 
 export const link: LinkComponent = {
   id: '2',

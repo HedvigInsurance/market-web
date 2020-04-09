@@ -1,11 +1,8 @@
 import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
-import { minimalColorMap } from 'utils/storybook'
+import { fontSizes, minimalColorMap } from 'utils/storybook'
 import { MarkdownHtmlComponent } from '../BaseBlockProps'
-import {
-  HeroImageBlockBrandPivot,
-  HeroImageBlockBrandPivotProps,
-} from './HeroImageBlockBrandPivot'
+import { HeroImageBlockBrandPivot } from './HeroImageBlockBrandPivot'
 
 export default {
   title: 'Blocks/HeroBlock',
@@ -22,7 +19,7 @@ const heroText: MarkdownHtmlComponent = {
   plugin: 'markdown-html',
 }
 
-const heroProps: HeroImageBlockBrandPivotProps = {
+const heroProps = {
   _uid: '5678',
   component: 'hero_block',
   headline: 'Säg hej till Hedvig',
@@ -36,6 +33,7 @@ const image = 'https://cdn.hedvig.com/www/referrals/referrals-clean.png'
 export const Default = () => (
   <HeroImageBlockBrandPivot
     {...heroProps}
+    headline_font_size={select('Font size', fontSizes, 'lg')}
     color={
       minimalColorMap[
         select('color', Object.keys(minimalColorMap), 'standard-inverse')
@@ -55,6 +53,7 @@ export const WithImage = () => (
     {...heroProps}
     image={image}
     image_mobile={image}
+    headline_font_size={select('Font size', fontSizes, 'lg')}
     color={
       minimalColorMap[
         select('color', Object.keys(minimalColorMap), 'standard-inverse')
