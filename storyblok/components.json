@@ -2744,13 +2744,14 @@
     {
       "name": "image_text_block_brand_pivot",
       "display_name": "",
-      "updated_at": "2020-04-08T13:12:06.800Z",
+      "updated_at": "2020-04-09T11:58:34.964Z",
       "schema": {
         "text": {
           "type": "section",
           "keys": [
-            "title_size",
             "title",
+            "title_size",
+            "title_size_mobile",
             "title_color",
             "show_hedvig_wordmark",
             "paragraph",
@@ -2816,7 +2817,7 @@
               "name": "MD"
             },
             {
-              "value": "LG",
+              "value": "lg",
               "name": "LG"
             }
           ],
