@@ -30,8 +30,11 @@ const types: TypeOfContract[] = [
   'NO_TRAVEL_YOUTH',
 ]
 
+const locales = ['sv_SE', 'en_SE', 'nb_NO', 'en_NO']
+
 export const Default = () => (
   <Perils
+    currentLocale={select('Language', locales, 'sv_SE')}
     insuranceType={select('Type of insurance', types, 'SE_HOUSE')}
     story={globalStoryMock}
   />
