@@ -21,7 +21,6 @@ export const usePerils = (insuranceType: TypeOfContract, locale: Locale) => {
               title
               description
               covered
-              exceptions
               info
               icon {
                 variants {

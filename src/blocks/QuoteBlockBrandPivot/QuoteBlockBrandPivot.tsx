@@ -29,6 +29,7 @@ const QuoteWrapper = styled('div')<{ largeQuote?: boolean }>(
 
     [TABLET_BP_UP]: {
       width: largeQuote ? '100%' : '80%',
+      maxWidth: largeQuote ? 'none' : '47.5rem',
     },
   }),
 )
@@ -38,7 +39,7 @@ const Quote = styled('blockquote')<{ largeQuote?: boolean }>(
     fontFamily: fonts.EB_GARAMOND,
     lineHeight: 1.16,
     fontKerning: 'none',
-    fontSize: largeQuote ? '4rem' : '2rem',
+    fontSize: largeQuote ? '3rem' : '2rem',
     margin: '0 0 2.5rem 0',
 
     [TABLET_BP_UP]: {

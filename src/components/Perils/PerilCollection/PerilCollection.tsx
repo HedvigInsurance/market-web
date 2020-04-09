@@ -1,9 +1,5 @@
 import styled from '@emotion/styled'
-import {
-  LAPTOP_BP_UP,
-  MOBILE_BP_UP,
-  TABLET_BP_UP,
-} from 'components/blockHelpers'
+import { LAPTOP_BP_UP, TABLET_BP_UP } from 'components/blockHelpers'
 import { PerilItem } from 'components/Perils/PerilItem/PerilItem'
 import React from 'react'
 import { minimalColorComponentColors } from 'src/blocks/BaseBlockProps'
@@ -33,18 +29,14 @@ const Wrapper = styled.div`
     margin-left: 0.5rem;
     margin-bottom: 0.5rem;
 
-    ${MOBILE_BP_UP} {
-      width: calc(100% / 3 - 0.5rem);
-    }
-
     ${TABLET_BP_UP} {
-      width: calc(25% - 1rem);
+      width: calc(100% / 3 - 1rem);
       margin-left: 1rem;
       margin-bottom: 1rem;
     }
 
     ${LAPTOP_BP_UP} {
-      width: calc(20% - 1rem);
+      width: calc(25% - 1rem);
     }
   }
 `
