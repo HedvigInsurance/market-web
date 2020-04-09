@@ -37,7 +37,7 @@ const Caption = styled('div')({
   position: 'absolute',
   bottom: 0,
   padding: `0 ${CONTENT_GUTTER_MOBILE} ${CONTENT_GUTTER_MOBILE} ${CONTENT_GUTTER_MOBILE}`,
-  color: colorsV3.white,
+  color: colorsV3.gray100,
   textAlign: 'center',
   ...CONTENT_MAX_WIDTH,
 
@@ -58,7 +58,7 @@ const Shadow = styled('div')({
   transform: 'translateX(-50%)',
   backgroundImage:
     'linear-gradient(transparent, transparent 20%, rgba(0,0,0,0.85))',
-  color: colorsV3.white,
+  color: colorsV3.gray100,
   paddingBottom: 20,
   '@media(min-width: 900px)': {
     backgroundImage:

@@ -41,12 +41,12 @@ const Wrapper = styled('div')<{ inverse: boolean; open: boolean }>(
     left: 0,
     right: 0,
     zIndex: 100,
-    color: inverse ? colorsV3.white : colorsV3.gray900,
+    color: inverse ? colorsV3.gray100 : colorsV3.gray900,
     fontFamily: fonts.FAVORIT,
     transition: 'color 300ms',
 
     [TABLET_BP_DOWN]: {
-      color: colorsV3.white,
+      color: colorsV3.gray100,
       bottom: open ? 0 : undefined,
     },
   }),
@@ -67,7 +67,7 @@ const HeaderBackgroundFiller = styled('div')<{ transparent: boolean }>(
     height: MOBILE_WRAPPER_HEIGHT,
     [TABLET_BP_UP]: {
       height: WRAPPER_HEIGHT,
-      backgroundColor: colorsV3.white,
+      backgroundColor: colorsV3.gray100,
       opacity: transparent ? 0 : 1,
     },
     opacity: 1,
@@ -111,7 +111,7 @@ const Menu = styled('ul')<{ open: boolean }>(({ open }) => ({
     background: colorsV3.gray900,
     transitionDuration: `${TOGGLE_TRANSITION_TIME}ms`,
     transitionProperty: 'background-color, height, padding-top, color',
-    color: open ? colorsV3.white : 'transparent',
+    color: open ? colorsV3.gray100 : 'transparent',
     overflow: 'scroll',
     WebkitOverflowScrolling: 'touch',
   },
