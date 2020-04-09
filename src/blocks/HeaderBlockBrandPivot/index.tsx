@@ -144,6 +144,12 @@ const Wordmark = styled('a')({
   zIndex: 102,
 })
 
+const MobileHeaderLink = styled(ButtonLinkBrandPivot)({
+  [TABLET_BP_UP]: {
+    display: 'inline-block',
+  },
+})
+
 interface HeaderBlockProps extends BaseBlockProps {
   is_transparent: boolean
   inverse_colors: boolean
@@ -151,6 +157,10 @@ interface HeaderBlockProps extends BaseBlockProps {
   override_cta_label?: string | null
   cta_color?: MinimalColorComponent
   cta_style?: ButtonStyleType
+  override_mobile_header_cta_label?: string | null
+  override_mobile_header_cta_link?: LinkComponent | null
+  mobile_header_cta_color?: MinimalColorComponent
+  mobile_header_cta_style?: ButtonStyleType
 }
 
 enum InverseColors {
@@ -255,65 +265,134 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                     ),
                   )}
 
-                  {(() => {
-                    const ctaLabel =
-                      props.override_cta_label || props.story.content.cta_label
+                  <MediaQuery query="(max-width: 1000px)">
+                    <>
+                      {(() => {
+                        const mobileCtaLabel =
+                          props.override_mobile_header_cta_label ||
+                          props.story.content.cta_label
+                        const mobileCtaColor =
+                          props.mobile_header_cta_color?.color ||
+                          'standard-inverse'
 
-                    if (props.override_cta_link?.cached_url) {
+                        if (props.override_mobile_header_cta_link?.cached_url) {
+                          return (
+                            <ButtonWrapper>
+                              <MobileHeaderLink
+                                styleType={props.mobile_header_cta_style}
+                                fullWidth={true}
+                                href={getStoryblokLinkUrl(
+                                  props.override_mobile_header_cta_link,
+                                )}
+                                color={mobileCtaColor}
+                              >
+                                {mobileCtaLabel}
+                              </MobileHeaderLink>
+                            </ButtonWrapper>
+                          )
+                        }
+
+                        if (
+                          props.story.content.show_cta &&
+                          props.story.content.cta_branch_link
+                        ) {
+                          return (
+                            <AppLink>
+                              {({ link, handleClick }) => (
+                                <ButtonWrapper>
+                                  <MobileHeaderLink
+                                    styleType={props.mobile_header_cta_style}
+                                    fullWidth={true}
+                                    color={mobileCtaColor}
+                                    onClick={handleClick}
+                                    href={link}
+                                  >
+                                    {mobileCtaLabel}
+                                  </MobileHeaderLink>
+                                </ButtonWrapper>
+                              )}
+                            </AppLink>
+                          )
+                        }
+                        return (
+                          <ButtonWrapper>
+                            <MobileHeaderLink
+                              styleType={props.mobile_header_cta_style}
+                              fullWidth={true}
+                              href={getStoryblokLinkUrl(
+                                props.story.content.cta_link,
+                              )}
+                              color={mobileCtaColor}
+                            >
+                              {mobileCtaLabel}
+                            </MobileHeaderLink>
+                          </ButtonWrapper>
+                        )
+                      })()}
+                    </>
+                  </MediaQuery>
+
+                  <MediaQuery query="(min-width: 1001px)">
+                    {(() => {
+                      const ctaLabel =
+                        props.override_cta_label ||
+                        props.story.content.cta_label
+
+                      if (props.override_cta_link?.cached_url) {
+                        return (
+                          <ButtonWrapper>
+                            <ButtonLinkBrandPivot
+                              styleType={props.cta_style}
+                              color={buttonColor}
+                              fullWidth={true}
+                              href={getStoryblokLinkUrl(
+                                props.override_cta_link,
+                              )}
+                            >
+                              {ctaLabel}
+                            </ButtonLinkBrandPivot>
+                          </ButtonWrapper>
+                        )
+                      }
+
+                      if (
+                        props.story.content.show_cta &&
+                        props.story.content.cta_branch_link
+                      ) {
+                        return (
+                          <AppLink>
+                            {({ link, handleClick }) => (
+                              <ButtonWrapper>
+                                <ButtonLinkBrandPivot
+                                  styleType={props.cta_style}
+                                  color={buttonColor}
+                                  href={link}
+                                  fullWidth={true}
+                                  onClick={handleClick}
+                                >
+                                  {ctaLabel}
+                                </ButtonLinkBrandPivot>
+                              </ButtonWrapper>
+                            )}
+                          </AppLink>
+                        )
+                      }
+
                       return (
                         <ButtonWrapper>
                           <ButtonLinkBrandPivot
                             styleType={props.cta_style}
-                            color={isOpen ? 'standard-inverse' : buttonColor}
-                            fullWidth={true}
-                            href={getStoryblokLinkUrl(props.override_cta_link)}
+                            color={buttonColor}
+                            href={getStoryblokLinkUrl(
+                              props.story.content.cta_link,
+                            )}
                           >
                             {ctaLabel}
                           </ButtonLinkBrandPivot>
                         </ButtonWrapper>
                       )
-                    }
-
-                    if (
-                      props.story.content.show_cta &&
-                      props.story.content.cta_branch_link
-                    ) {
-                      return (
-                        <AppLink>
-                          {({ link, handleClick }) => (
-                            <ButtonWrapper>
-                              <ButtonLinkBrandPivot
-                                styleType={props.cta_style}
-                                color={
-                                  isOpen ? 'standard-inverse' : buttonColor
-                                }
-                                href={link}
-                                fullWidth={true}
-                                onClick={handleClick}
-                              >
-                                {ctaLabel}
-                              </ButtonLinkBrandPivot>
-                            </ButtonWrapper>
-                          )}
-                        </AppLink>
-                      )
-                    }
-
-                    return (
-                      <ButtonWrapper>
-                        <ButtonLinkBrandPivot
-                          styleType={props.cta_style}
-                          color={isOpen ? 'standard-inverse' : buttonColor}
-                          fullWidth={true}
-                          href={getStoryblokLinkUrl(
-                            props.story.content.cta_link,
-                          )}
-                        >
-                          {ctaLabel}
-                        </ButtonLinkBrandPivot>
-                      </ButtonWrapper>
-                    )
-                  })()}
+                    })()}
+                  </MediaQuery>
                 </Menu>
               </InnerHeaderWrapper>
             </ContentWrapper>
