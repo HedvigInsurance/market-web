@@ -4,7 +4,6 @@ import { colorsV3, fonts } from '@hedviginsurance/brand'
 import { LAPTOP_BP_UP, TABLET_BP_UP } from 'components/blockHelpers'
 import { Chevron } from 'components/icons/Chevron'
 import { Cross } from 'components/icons/Cross'
-import { Minus } from 'components/icons/Minus'
 import { Modal, ModalProps } from 'components/Modal/Modal'
 import React from 'react'
 import { GlobalStory } from 'storyblok/StoryContainer'
@@ -254,21 +253,6 @@ export const PerilModal: React.FC<PerilModalProps & ModalProps> = (props) => {
                   </CoverageListItem>
                 ))}
               </CoverageList>
-
-              {currentPeril.exceptions.length > 0 && (
-                <CoverageList>
-                  <CoverageListTitle>
-                    {props.story?.content.peril_modal_exceptions_title ??
-                      'Exceptions'}
-                  </CoverageListTitle>
-                  {currentPeril.exceptions.map((text) => (
-                    <CoverageListItem key={text}>
-                      <Minus size="0.75rem" />
-                      {text}
-                    </CoverageListItem>
-                  ))}
-                </CoverageList>
-              )}
             </CoverageWrapper>
           </Column>
         </Content>
