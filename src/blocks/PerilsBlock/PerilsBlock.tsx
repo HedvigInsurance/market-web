@@ -42,7 +42,7 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
         <ContextContainer>
           {(context) => (
             <SectionWrapper colorComponent={color} size={size} brandPivot>
-              <ContentWrapper brandPivot index={index} fullWidth={true}>
+              <ContentWrapper brandPivot index={index}>
                 {insurance_types.length > 1 && (
                   <SelectInsurance
                     defaultValue={insurance_types[0]}
