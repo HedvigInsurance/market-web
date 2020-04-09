@@ -47,7 +47,7 @@ Default.story = {
     backgrounds: [
       { name: 'gray500', value: colorsV3.gray500, default: true },
       { name: 'gray900', value: colorsV3.gray900 },
-      { name: 'white', value: colorsV3.white },
+      { name: 'white', value: colorsV3.gray100 },
     ],
   },
 }
