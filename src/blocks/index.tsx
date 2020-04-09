@@ -12,6 +12,7 @@ import { BaseBlockProps } from './BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock'
 import { BulletPointBlockBrandPivot } from './BulletPointBlockBrandPivot'
 import { CardChecklistBulletPointBlock } from './CardChecklistBulletPointBlock'
+import { ChatBlock } from './ChatBlock/ChatBlock'
 import { CtaBlock } from './CtaBlock/CtaBlock'
 import { DownloadBlock } from './DownloadBlock'
 import { FooterBlock } from './FooterBlock'
@@ -27,6 +28,7 @@ import { ImageBlockBrandPivot } from './ImageBlockBrandPivot/ImageBlockBrandPivo
 import { ImageMultiTextBlock } from './ImageMultiTextBlock'
 import { ImageTextBlock } from './ImageTextBlock'
 import { InvestorsBlock } from './InvestorsBlock'
+import { PerilsBlock } from './PerilsBlock/PerilsBlock'
 import { PlainTextBlock } from './PlainTextBlock'
 import { PressBlock } from './PressBlock'
 import { PressCardBlock } from './PressCardBlock'
@@ -49,6 +51,7 @@ const blockComponents = {
   bullet_point_block: BulletPointBlock,
   bullet_point_block_brand_pivot: BulletPointBlockBrandPivot,
   column_text_block: ColumnTextBlock,
+  chat_block: ChatBlock,
   cta_block: CtaBlock,
   download_block: DownloadBlock,
   image_multi_text_block: ImageMultiTextBlock,
@@ -70,6 +73,7 @@ const blockComponents = {
   title_cta_block: TitleCtaBlock,
   background_video_block: BackgroundVideoBlock,
   plain_text_block: PlainTextBlock,
+  perils_block: PerilsBlock,
   press_block: PressBlock,
   trustpilot_block: TrustpilotBlock,
   spacer_block: SpacerBlock,
