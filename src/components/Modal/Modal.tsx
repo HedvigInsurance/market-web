@@ -50,7 +50,7 @@ const ModalContainer = styled('div')<ModalContainerProps>`
   height: 100%;
   min-height: 25rem;
   max-height: 50rem;`}
-  background: ${colorsV3.white};
+  background: ${colorsV3.gray100};
   border-radius: 1rem;
   position: absolute;
   left: 50%;

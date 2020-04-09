@@ -24,7 +24,7 @@ const DropdownMenuItemList = styled('ul')<{
   listStyle: 'none',
   margin: 0,
   padding: '1.5rem 2rem .5rem 2rem',
-  background: colorsV3.white,
+  background: colorsV3.gray100,
   boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.1), 0px 2px 5px rgba(0, 0, 0, 0.1);',
   opacity: isOpen && !isClosing ? 1 : 0,
   transition: 'opacity 150ms',
