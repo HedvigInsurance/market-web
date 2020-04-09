@@ -144,12 +144,6 @@ const Wordmark = styled('a')({
   zIndex: 102,
 })
 
-const MobileHeaderLink = styled(ButtonLinkBrandPivot)({
-  [TABLET_BP_UP]: {
-    display: 'inline-block',
-  },
-})
-
 interface HeaderBlockProps extends BaseBlockProps {
   is_transparent: boolean
   inverse_colors: boolean
@@ -278,7 +272,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                         if (props.override_mobile_header_cta_link?.cached_url) {
                           return (
                             <ButtonWrapper>
-                              <MobileHeaderLink
+                              <ButtonLinkBrandPivot
                                 styleType={props.mobile_header_cta_style}
                                 fullWidth={true}
                                 href={getStoryblokLinkUrl(
@@ -287,7 +281,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                                 color={mobileCtaColor}
                               >
                                 {mobileCtaLabel}
-                              </MobileHeaderLink>
+                              </ButtonLinkBrandPivot>
                             </ButtonWrapper>
                           )
                         }
@@ -300,7 +294,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                             <AppLink>
                               {({ link, handleClick }) => (
                                 <ButtonWrapper>
-                                  <MobileHeaderLink
+                                  <ButtonLinkBrandPivot
                                     styleType={props.mobile_header_cta_style}
                                     fullWidth={true}
                                     color={mobileCtaColor}
@@ -308,7 +302,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                                     href={link}
                                   >
                                     {mobileCtaLabel}
-                                  </MobileHeaderLink>
+                                  </ButtonLinkBrandPivot>
                                 </ButtonWrapper>
                               )}
                             </AppLink>
@@ -316,7 +310,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                         }
                         return (
                           <ButtonWrapper>
-                            <MobileHeaderLink
+                            <ButtonLinkBrandPivot
                               styleType={props.mobile_header_cta_style}
                               fullWidth={true}
                               href={getStoryblokLinkUrl(
@@ -325,7 +319,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                               color={mobileCtaColor}
                             >
                               {mobileCtaLabel}
-                            </MobileHeaderLink>
+                            </ButtonLinkBrandPivot>
                           </ButtonWrapper>
                         )
                       })()}
