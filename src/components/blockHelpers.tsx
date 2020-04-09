@@ -31,7 +31,7 @@ export const SITE_MAX_WIDTH = {
 }
 
 export const CONTENT_MAX_WIDTH = {
-  maxWidth: 1160,
+  maxWidth: 1000,
 }
 
 export const CONTENT_MAX_WIDTH_DEPRECATED = {
