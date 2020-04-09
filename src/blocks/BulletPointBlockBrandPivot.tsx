@@ -32,51 +32,67 @@ const InnerWrapper = styled('div')({
   },
 
   [MOBILE_BP_UP]: {
-    marginLeft: '-40px',
+    marginLeft: '-1.5rem',
   },
 
   [LAPTOP_BP_UP]: {
-    marginLeft: '-80px',
+    marginLeft: '-3.5rem',
   },
 })
 
-const BulletPoint = styled('div')({
+const BulletPoint = styled('div')<{
+  iconLayout: boolean
+}>(({ iconLayout }) => ({
   display: 'flex',
-  flexDirection: 'column',
+  flexDirection: iconLayout ? 'row' : 'column',
   alignItems: 'flex-start',
-  width: `calc(100% - 40px)`,
+  width: `calc(100% - 1.5rem)`,
   marginTop: '1.25rem',
   marginBottom: '1.25rem',
 
   [MOBILE_BP_UP]: {
-    width: `calc(50% - 40px)`,
-    marginLeft: '40px',
+    flexDirection: 'column',
+    width: `calc(50% - 1.5rem)`,
+    marginLeft: '1.5rem',
   },
 
   [TABLET_BP_UP]: {
-    width: `calc(${(1 / 3) * 100}% - 40px)`,
+    width: `calc(${(1 / 3) * 100}% - 1.5rem)`,
   },
 
   [LAPTOP_BP_UP]: {
-    width: `calc(${(1 / 3) * 100}% - 80px)`,
-    marginLeft: '80px',
+    width: `calc(${(1 / 3) * 100}% - 3.5rem)`,
+    marginLeft: '3.5rem',
   },
-})
+}))
 
-const BulletPointHead = styled('div')({
+const BulletPointHead = styled('div')<{
+  iconLayout: boolean
+}>(({ iconLayout }) => ({
   display: 'flex',
   alignItems: 'center',
   flexShrink: 0,
-  marginBottom: '24px',
+  marginBottom: '1.5rem',
+
+  ...(iconLayout
+    ? {
+        justifyContent: 'flex-start',
+        maxWidth: '2rem',
+        maxHeight: '2rem',
+        marginRight: '1.5rem',
+      }
+    : {
+        marginBottom: '1.5rem',
+      }),
 
   [MOBILE_BP_UP]: {
     maxWidth: 'none',
     maxHeight: 'none',
     width: 'auto',
     marginRight: 0,
-    marginBottom: '24px',
+    marginBottom: '1.5rem',
   },
-})
+}))
 
 const BulletPointImage = styled(DeferredImage)<{
   iconLayout: boolean
@@ -98,6 +114,9 @@ const BulletPointBody = styled('div')<{
   colorComponent: MinimalColorComponent
 }>(({ colorComponent }) => ({
   color: getMinimalColorStyles(colorComponent?.color ?? 'standard').color,
+  [LAPTOP_BP_UP]: {
+    fontSize: '1.125rem',
+  },
 }))
 
 interface BulletPointsBlockProps extends BaseBlockProps {
@@ -128,8 +147,8 @@ export const BulletPointBlockBrandPivot: React.FunctionComponent<BulletPointsBlo
     <ContentWrapper brandPivot>
       <InnerWrapper>
         {bullet_points.map((bullet) => (
-          <BulletPoint key={bullet._uid}>
-            <BulletPointHead>
+          <BulletPoint key={bullet._uid} iconLayout={bullet.icon_layout}>
+            <BulletPointHead iconLayout={bullet.icon_layout}>
               <BulletPointImage
                 src={getStoryblokImage(bullet.image)}
                 iconLayout={bullet.icon_layout}

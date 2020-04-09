@@ -1,3 +1,4 @@
+import { FontSizes } from 'components/Heading/Heading'
 import {
   MarkdownHtmlComponent,
   MinimalColorComponent,
@@ -30,6 +31,8 @@ export const minimalColorMap: Record<string, MinimalColorComponent> = {
     plugin: 'hedvig_minimal_color_picker',
   },
 }
+
+export const fontSizes: FontSizes[] = ['xxs', 'xs', 'sm', 'md', 'lg', 'xl']
 
 export const link: LinkComponent = {
   id: '2',
@@ -87,5 +90,8 @@ export const globalStoryMock: GlobalStory = {
     cta_label: 'Beräkna ditt pris',
     cta_link: link,
     footer_paragraph: footerText,
+    peril_modal_info_title: 'Att tänka på',
+    peril_modal_coverage_title: 'Det här täcks',
+    peril_modal_exceptions_title: 'Undantag',
   },
 }

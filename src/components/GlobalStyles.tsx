@@ -1,7 +1,12 @@
 import { css } from '@emotion/core'
-import { colors, fonts, getCdnFontFaces } from '@hedviginsurance/brand'
+import {
+  colors,
+  colorsV3,
+  fonts,
+  getCdnFontFaces,
+} from '@hedviginsurance/brand'
 
-export const globalStyles = () => css`
+export const globalStyles = css`
   ${getCdnFontFaces()}
 
   * {
@@ -81,5 +86,23 @@ export const globalStyles = () => css`
   input,
   button {
     font-size: inherit;
+  }
+`
+
+export const globalStylesBrandPivot = css`
+  ${globalStyles}
+
+  body {
+    font-family: ${fonts.FAVORIT}, sans-serif;
+    color: ${colorsV3.gray900};
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: ${fonts.FAVORIT}, sans-serif;
   }
 `

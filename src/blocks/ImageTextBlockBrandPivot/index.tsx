@@ -1,5 +1,6 @@
 import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
+import { FontSizes, Heading } from 'components/Heading/Heading'
 import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
 import MediaQuery from 'react-responsive'
@@ -32,7 +33,6 @@ import {
 } from '../BaseBlockProps'
 import { BackgroundVideo } from './BackgroundVideo'
 
-type TitleSize = 'sm' | 'lg'
 interface Animateable {
   animate?: boolean
 }
@@ -95,55 +95,54 @@ const TextWrapper = styled('div')<{
 type DisplayOrder = 'top' | 'bottom'
 
 interface TitleProps {
-  size?: TitleSize
-  alignment: string
   displayorder: DisplayOrder
-  textPosition: TextPosition
-  color: string
+  alignment: TextPosition
 }
 
-const Title = styled('h2')<TitleProps & Animateable>(
-  ({ size, displayorder, textPosition, alignment, color, animate }) => ({
-    margin: textPosition === 'center' ? 'auto' : undefined,
-    fontSize: size === 'lg' ? '4.5rem' : '3.5rem',
-    marginTop:
-      alignment === 'center' && displayorder === 'top' ? '3rem' : '1.414rem',
+const Title = styled(Heading)<TitleProps & Animateable>(
+  ({ displayorder, alignment, animate }) => ({
     width: '100%',
-    color,
-    maxWidth: textPosition === 'center' ? '40rem' : '31rem',
+    maxWidth: alignment === 'center' ? '40rem' : '31rem',
+    margin: alignment === 'center' ? 'auto' : undefined,
+    marginTop: displayorder === 'top' ? '3rem' : '1.414rem',
     opacity: animate ? 0 : 1,
     animation: animate ? fadeSlideIn + ' 500ms forwards' : undefined,
     animationDelay: '1000ms',
 
-    [TABLET_BP_DOWN]: {
-      fontSize: size === 'lg' ? '2.75rem' : '2rem',
-      maxWidth: '100%',
-      marginTop: displayorder === 'top' ? '3rem' : '1.414rem',
+    [TABLET_BP_UP]: {
+      marginTop:
+        alignment === 'center' && displayorder === 'top' ? '3rem' : '1.414rem',
     },
   }),
 )
 
-const Paragraph = styled('div')<{ textPosition: TextPosition } & Animateable>(
-  ({ textPosition, animate }) => ({
-    margin: textPosition === 'center' ? 'auto' : undefined,
-    fontSize: '1.125rem',
-    marginTop: '1.5rem',
-    maxWidth: textPosition === 'center' ? '40rem' : '31rem',
-    opacity: animate ? 0 : 1,
-    animation: animate ? fadeSlideIn + ' 500ms forwards' : undefined,
-    animationDelay: '1250ms',
+const Paragraph = styled('div')<
+  {
+    textPosition: TextPosition
+    colorComponent?: MinimalColorComponent
+  } & Animateable
+>(({ textPosition, colorComponent, animate }) => ({
+  margin: textPosition === 'center' ? 'auto' : undefined,
+  fontSize: '1.125rem',
+  marginTop: '1.5rem',
+  maxWidth: textPosition === 'center' ? '40rem' : '31rem',
+  opacity: animate ? 0 : 1,
+  animation: animate ? fadeSlideIn + ' 500ms forwards' : undefined,
+  animationDelay: '1250ms',
+  color: getMinimalColorStyles(colorComponent?.color ?? 'standard')
+    .secondaryColor,
 
-    [TABLET_BP_DOWN]: {
-      maxWidth: '100%',
-    },
-  }),
-)
+  [TABLET_BP_DOWN]: {
+    maxWidth: '100%',
+  },
+}))
 
 const Image = styled(DeferredImage)<{
   alignment: string
   displayorder: DisplayOrder
-}>(({ alignment, displayorder }) => ({
-  width: 'calc(50% - .75rem)',
+  smallImage: boolean
+}>(({ alignment, displayorder, smallImage }) => ({
+  width: `calc(${smallImage ? '(100% / 3)' : '50%'} - 0.75rem)`,
   display: 'block',
   flexShrink: 0,
   order: alignment === 'center' && displayorder === 'top' ? -1 : 'initial',
@@ -161,8 +160,9 @@ const Image = styled(DeferredImage)<{
 const ImageVideoWrapper = styled('div')<{
   alignment: string
   displayorder: DisplayOrder
-}>(({ alignment, displayorder }) => ({
-  width: 'calc(50% - 0.75rem)',
+  smallImage: boolean
+}>(({ alignment, displayorder, smallImage }) => ({
+  width: `calc(${smallImage ? '(100% / 3)' : '50%'} - 0.75rem)`,
   flexShrink: 0,
   display: 'block',
   order: alignment === 'center' && displayorder === 'top' ? -1 : 'initial',
@@ -207,7 +207,8 @@ const Wordmark = styled('div')({
 
 interface ImageTextBlockProps extends BrandPivotBaseBlockProps {
   animate?: boolean
-  title_size?: TitleSize
+  title_size?: FontSizes
+  title_size_mobile?: FontSizes
   title: string
   title_color?: MinimalColorComponent
   show_hedvig_wordmark?: boolean
@@ -232,6 +233,7 @@ interface ImageTextBlockProps extends BrandPivotBaseBlockProps {
   mobile_background_video_file_location: string
   size: SectionSize
   media_position: DisplayOrder
+  media_size_small: boolean
   button_color?: MinimalColorComponent
   button_position_mobile?: 'above' | 'below'
 }
@@ -239,7 +241,8 @@ interface ImageTextBlockProps extends BrandPivotBaseBlockProps {
 export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockProps> = ({
   animate,
   extra_styling,
-  title_size,
+  title_size = 'sm',
+  title_size_mobile,
   title,
   title_color,
   paragraph,
@@ -262,6 +265,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
   color,
   size,
   media_position,
+  media_size_small,
   button_color,
   button_position_mobile,
   index,
@@ -287,24 +291,23 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
           />
         )}
 
-      <AlignableContentWrapper textPosition={text_position} index={index}>
+      <AlignableContentWrapper
+        textPosition={text_position}
+        index={index}
+        brandPivot
+      >
         <TextWrapper
           textPosition={text_position}
           textPositionMobile={text_position_mobile}
         >
           <Title
-            size={title_size}
-            displayorder={media_position}
+            as="h2"
             alignment={text_position}
-            color={
-              title_color && title_color.color !== 'standard'
-                ? getMinimalColorStyles(title_color.color).background
-                : color
-                ? getMinimalColorStyles(color.color).color
-                : 'standard'
-            }
-            textPosition={text_position}
             animate={animate}
+            color={title_color?.color}
+            displayorder={media_position}
+            size={title_size}
+            mobileSize={title_size_mobile}
           >
             {title}
             {show_hedvig_wordmark && (
@@ -317,8 +320,9 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             dangerouslySetInnerHTML={{
               __html: paragraph.html,
             }}
-            textPosition={text_position}
             animate={animate}
+            colorComponent={color}
+            textPosition={text_position}
           />
           <MediaQuery query="(min-width: 481px)">
             <AnimatedAlignedButton
@@ -354,6 +358,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
                 <Image
                   alignment={text_position}
                   displayorder={media_position}
+                  smallImage={media_size_small}
                   src={getStoryblokImage(mobile_image)}
                 />
               </MediaQuery>
@@ -361,6 +366,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
                 <Image
                   alignment={text_position}
                   displayorder={media_position}
+                  smallImage={media_size_small}
                   src={getStoryblokImage(image)}
                 />
               </MediaQuery>
@@ -369,6 +375,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             <Image
               alignment={text_position}
               displayorder={media_position}
+              smallImage={media_size_small}
               src={getStoryblokImage(image)}
             />
           )
@@ -379,6 +386,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             <ImageVideoWrapper
               alignment={text_position}
               displayorder={media_position}
+              smallImage={media_size_small}
             >
               <MediaQuery query="(max-width: 700px)">
                 <ImageVideo src={mobile_image_video_file_location} />

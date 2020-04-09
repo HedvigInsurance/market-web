@@ -944,6 +944,66 @@
       "component_group_uuid": null
     },
     {
+      "name": "chat_block",
+      "display_name": null,
+      "updated_at": "2020-04-01T22:34:10.401Z",
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "size": {
+          "type": "option",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "pos": 1,
+          "display_name": "",
+          "description": "",
+          "default_value": "lg"
+        },
+        "tab-b8f2032f-e956-4f8f-b79b-0c963ed5ff31": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["size", "color", "extra_styling"],
+          "pos": 5
+        },
+        "messages": {
+          "type": "bloks",
+          "maximum": "",
+          "restrict_components": true,
+          "component_whitelist": ["text_field"],
+          "options": []
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "chat_block",
+      "component_group_uuid": null
+    },
+    {
       "name": "checklist_bullet_point_item_check_item",
       "display_name": "",
       "schema": {
@@ -1181,6 +1241,7 @@
     {
       "name": "global",
       "display_name": null,
+      "updated_at": "2020-04-07T14:44:56.056Z",
       "schema": {
         "header_menu_items": {
           "type": "bloks",
@@ -1282,6 +1343,25 @@
           "options": [],
           "pos": 13,
           "translatable": true
+        },
+        "perils": {
+          "type": "section",
+          "keys": [
+            "peril_modal_info_title",
+            "peril_modal_coverage_title",
+            "peril_modal_exceptions_title"
+          ],
+          "restrict_components": true,
+          "component_whitelist": ["peril_labels"]
+        },
+        "peril_modal_info_title": {
+          "type": "text"
+        },
+        "peril_modal_coverage_title": {
+          "type": "text"
+        },
+        "peril_modal_exceptions_title": {
+          "type": "text"
         }
       },
       "image": null,
@@ -2016,6 +2096,7 @@
     {
       "name": "image_block_brand_pivot",
       "display_name": null,
+      "updated_at": "2020-03-31T12:46:30.639Z",
       "schema": {
         "image": {
           "type": "image",
@@ -2032,6 +2113,9 @@
         "caption_shadow": {
           "type": "boolean",
           "pos": 2
+        },
+        "full_width": {
+          "type": "boolean"
         }
       },
       "image": null,
@@ -2509,7 +2593,22 @@
     {
       "name": "image_text_block_brand_pivot",
       "display_name": "",
+      "updated_at": "2020-04-03T10:01:07.314Z",
       "schema": {
+        "text": {
+          "type": "section",
+          "keys": [
+            "title_size",
+            "title",
+            "title_color",
+            "show_hedvig_wordmark",
+            "paragraph",
+            "text_position",
+            "text_position_mobile"
+          ],
+          "display_name": "",
+          "pos": 0
+        },
         "title_size": {
           "type": "option",
           "options": [
@@ -2524,30 +2623,30 @@
           ],
           "description": "",
           "default_value": "sm",
-          "pos": 0
+          "pos": 1
         },
         "title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 1,
+          "pos": 2,
           "translatable": true
-        },
-        "show_hedvig_wordmark": {
-          "type": "boolean",
-          "pos": 2
         },
         "title_color": {
           "type": "custom",
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
-          "pos": 2
+          "pos": 3
+        },
+        "show_hedvig_wordmark": {
+          "type": "boolean",
+          "pos": 4
         },
         "paragraph": {
           "type": "custom",
           "required": true,
           "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
-          "pos": 3,
+          "pos": 5,
           "field_type": "markdown-html",
           "options": [],
           "translatable": true
@@ -2569,7 +2668,7 @@
             }
           ],
           "default_value": "left",
-          "pos": 4,
+          "pos": 6,
           "required": true
         },
         "text_position_mobile": {
@@ -2589,7 +2688,25 @@
             }
           ],
           "default_value": "left",
-          "pos": 5
+          "pos": 7
+        },
+        "image_video": {
+          "type": "section",
+          "display_name": "Image/Video",
+          "keys": [
+            "image_type",
+            "image",
+            "mobile_image",
+            "image_video_file_location",
+            "mobile_image_video_file_location",
+            "background_type",
+            "background_image",
+            "background_video_file_location",
+            "mobile_background_video_file_location",
+            "media_position",
+            "media_size_small"
+          ],
+          "pos": 8
         },
         "image_type": {
           "type": "option",
@@ -2604,28 +2721,27 @@
             }
           ],
           "default_value": "image",
-          "pos": 6
+          "pos": 9
         },
         "image": {
           "type": "image",
           "required": false,
-          "pos": 7
+          "pos": 10
         },
         "mobile_image": {
           "type": "image",
-          "required": false,
-          "pos": 8
+          "pos": 11
         },
         "image_video_file_location": {
           "type": "text",
           "required": false,
-          "pos": 10,
+          "pos": 12,
           "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
         },
         "mobile_image_video_file_location": {
           "type": "text",
           "required": false,
-          "pos": 11,
+          "pos": 13,
           "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
         },
         "background_type": {
@@ -2642,30 +2758,65 @@
           ],
           "required": false,
           "default_value": "image",
-          "pos": 12
+          "pos": 14
         },
         "background_image": {
           "type": "image",
           "required": false,
-          "pos": 13
+          "pos": 15
         },
         "background_video_file_location": {
           "type": "text",
           "required": false,
-          "pos": 14,
+          "pos": 16,
           "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
         },
         "mobile_background_video_file_location": {
           "type": "text",
           "required": false,
-          "pos": 15,
+          "pos": 17,
           "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
+        },
+        "media_position": {
+          "type": "option",
+          "options": [
+            {
+              "value": "top",
+              "name": "Top"
+            },
+            {
+              "value": "bottom",
+              "name": "Bottom"
+            }
+          ],
+          "required": true,
+          "default_value": "top",
+          "pos": 18
+        },
+        "media_size_small": {
+          "type": "boolean",
+          "display_name": "Small image",
+          "pos": 19,
+          "description": "Makes the image 1/3 in larger viewports"
+        },
+        "button": {
+          "type": "section",
+          "keys": [
+            "button_title",
+            "button_type",
+            "button_branch_link",
+            "button_link",
+            "show_button",
+            "button_color",
+            "button_position_mobile"
+          ],
+          "pos": 20
         },
         "button_title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 16,
+          "pos": 21,
           "translatable": true
         },
         "button_type": {
@@ -2686,12 +2837,12 @@
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 17
+          "pos": 22
         },
         "button_branch_link": {
           "type": "boolean",
           "description": "Create a branch link instead of the link field",
-          "pos": 18,
+          "pos": 23,
           "translatable": true
         },
         "button_link": {
@@ -2700,36 +2851,20 @@
           "display_name": "",
           "required": true,
           "default_value": "",
-          "pos": 19,
+          "pos": 24,
           "translatable": true
-        },
-        "media_position": {
-          "type": "option",
-          "options": [
-            {
-              "value": "top",
-              "name": "Top"
-            },
-            {
-              "value": "bottom",
-              "name": "Bottom"
-            }
-          ],
-          "required": true,
-          "default_value": "top",
-          "pos": 20
         },
         "show_button": {
           "type": "boolean",
           "required": false,
           "default_value": "true",
-          "pos": 21
+          "pos": 25
         },
         "button_color": {
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
           "type": "custom",
-          "pos": 22
+          "pos": 26
         },
         "button_position_mobile": {
           "type": "option",
@@ -2744,14 +2879,14 @@
               "name": "Below media"
             }
           ],
-          "pos": 25
+          "pos": 27
         },
         "color": {
           "type": "custom",
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
           "required": true,
-          "pos": 26
+          "pos": 28
         },
         "size": {
           "type": "option",
@@ -2776,11 +2911,11 @@
             }
           ],
           "default_value": "lg",
-          "pos": 27
+          "pos": 29
         },
         "animate": {
           "type": "boolean",
-          "pos": 28,
+          "pos": 30,
           "description": "Whether to animate the section on page load",
           "display_name": ""
         },
@@ -2788,14 +2923,14 @@
           "type": "tab",
           "display_name": "Styling",
           "keys": ["animate", "size", "color", "extra_styling"],
-          "pos": 29
+          "pos": 31
         },
         "extra_styling": {
           "type": "textarea",
           "display_name": "",
           "default_value": "",
           "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break.",
-          "pos": 30
+          "pos": 32
         }
       },
       "image": null,
@@ -2806,6 +2941,80 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "image_text_block_brand_pivot",
+      "component_group_uuid": null
+    },
+    {
+      "name": "insurance_type",
+      "display_name": null,
+      "updated_at": "2020-04-06T14:55:51.963Z",
+      "schema": {
+        "value": {
+          "type": "option",
+          "pos": 2,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "SE_HOUSE",
+              "name": "SE_HOUSE"
+            },
+            {
+              "value": "SE_APARTMENT_BRF",
+              "name": "SE_APARTMENT_BRF"
+            },
+            {
+              "value": "SE_APARTMENT_RENT",
+              "name": "SE_APARTMENT_RENT"
+            },
+            {
+              "value": "SE_APARTMENT_STUDENT_BRF",
+              "name": "SE_APARTMENT_STUDENT_BRF"
+            },
+            {
+              "value": "SE_APARTMENT_STUDENT_RENT",
+              "name": "SE_APARTMENT_STUDENT_RENT"
+            },
+            {
+              "value": "NO_HOME_CONTENT_OWN",
+              "name": "NO_HOME_CONTENT_OWN"
+            },
+            {
+              "value": "NO_HOME_CONTENT_RENT",
+              "name": "NO_HOME_CONTENT_RENT"
+            },
+            {
+              "value": "NO_HOME_CONTENT_YOUTH_OWN",
+              "name": "NO_HOME_CONTENT_YOUTH_OWN"
+            },
+            {
+              "value": "NO_HOME_CONTENT_YOUTH_RENT",
+              "name": "NO_HOME_CONTENT_YOUTH_RENT"
+            },
+            {
+              "value": "NO_TRAVEL",
+              "name": "NO_TRAVEL"
+            },
+            {
+              "value": "NO_TRAVEL_YOUTH",
+              "name": "NO_TRAVEL_YOUTH"
+            }
+          ],
+          "required": true,
+          "display_name": "Type of insurance"
+        },
+        "label": {
+          "type": "text",
+          "display_name": "",
+          "description": "Label is displayed in dropdown"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "insurance_type",
       "component_group_uuid": null
     },
     {
@@ -3062,6 +3271,106 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "page",
+      "component_group_uuid": null
+    },
+    {
+      "name": "perils_block",
+      "display_name": null,
+      "updated_at": "2020-04-06T14:43:37.677Z",
+      "schema": {
+        "color": {
+          "type": "custom",
+          "pos": 0,
+          "field_type": "hedvig-minimal-color-picker",
+          "options": []
+        },
+        "size": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "none",
+              "name": "None"
+            },
+            {
+              "value": "xs",
+              "name": "XS"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "default_value": "lg",
+          "pos": 1
+        },
+        "insurance_types": {
+          "type": "bloks",
+          "pos": 2,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "SE_HOUSE",
+              "name": "SE_HOUSE"
+            },
+            {
+              "value": "SE_APARTMENT_BRF",
+              "name": "SE_APARTMENT_BRF"
+            },
+            {
+              "value": "SE_APARTMENT_RENT",
+              "name": "SE_APARTMENT_RENT"
+            },
+            {
+              "value": "SE_APARTMENT_STUDENT_BRF",
+              "name": "SE_APARTMENT_STUDENT_BRF"
+            },
+            {
+              "value": "SE_APARTMENT_STUDENT_RENT",
+              "name": "SE_APARTMENT_STUDENT_RENT"
+            },
+            {
+              "value": "NO_HOME_CONTENT_RENT",
+              "name": "NO_HOME_CONTENT_OWN"
+            },
+            {
+              "value": "NO_HOME_CONTENT_YOUTH_OWN",
+              "name": "NO_HOME_CONTENT_YOUTH_OWN"
+            },
+            {
+              "value": "NO_HOME_CONTENT_YOUTH_RENT",
+              "name": "NO_HOME_CONTENT_YOUTH_RENT"
+            },
+            {
+              "value": "NO_TRAVEL",
+              "name": "NO_TRAVEL"
+            },
+            {
+              "value": "NO_TRAVEL_YOUTH",
+              "name": "NO_TRAVEL_YOUTH"
+            }
+          ],
+          "required": true,
+          "restrict_components": true,
+          "component_whitelist": ["insurance_type"]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "perils_block",
       "component_group_uuid": null
     },
     {
@@ -3546,6 +3855,25 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "spacer_block_brand_pivot",
+      "component_group_uuid": null
+    },
+    {
+      "name": "text_field",
+      "display_name": null,
+      "updated_at": "2020-04-01T22:25:46.684Z",
+      "schema": {
+        "text": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "text_field",
       "component_group_uuid": null
     },
     {

@@ -232,7 +232,7 @@ export const getMinimalColorStyles: ColorSetGetter<minimalColorComponentColors> 
         secondaryColor: colorsV3.gray500,
       },
     ],
-    ['gray700', { background: colorsV3.gray900, color: colorsV3.gray700 }],
+    ['gray700', { background: standardColor, color: colorsV3.gray700 }],
     [
       'gray500-inverse',
       { background: colorsV3.gray900, color: colorsV3.gray500 },
@@ -353,10 +353,21 @@ export const MarginSectionWrapper = styled('section')<SectionProps>(
   }),
 )
 
+const getContentMaxWidth = (brandPivot: boolean, fullWidth: boolean) => {
+  if (fullWidth) {
+    return SITE_MAX_WIDTH
+  }
+  if (brandPivot) {
+    return CONTENT_MAX_WIDTH
+  }
+  return CONTENT_MAX_WIDTH_DEPRECATED
+}
+
 export const ContentWrapperStyled = styled('div')<{
   visible: boolean
   brandPivot: boolean
-}>(({ visible, brandPivot }) => ({
+  fullWidth: boolean
+}>(({ visible, brandPivot, fullWidth }) => ({
   width: '100%',
   padding: '0 ' + CONTENT_GUTTER,
   margin: '0 auto',
@@ -365,7 +376,7 @@ export const ContentWrapperStyled = styled('div')<{
     padding: '0 ' + CONTENT_GUTTER_MOBILE,
   },
 
-  ...(brandPivot ? CONTENT_MAX_WIDTH : CONTENT_MAX_WIDTH_DEPRECATED),
+  ...getContentMaxWidth(brandPivot, fullWidth),
 
   opacity: visible ? 1 : 0,
   transform: visible ? 'translateY(0)' : 'translateY(5%)',
@@ -375,12 +386,14 @@ export const ContentWrapperStyled = styled('div')<{
 export interface ContentWrapperProps {
   index?: number
   brandPivot?: boolean
+  fullWidth?: boolean
 }
 
 export const ContentWrapper: React.FC<ContentWrapperProps> = ({
   index = 0,
   brandPivot = false,
   children,
+  fullWidth = false,
   ...props
 }) => (
   <ReactVisibilitySensor
@@ -394,6 +407,7 @@ export const ContentWrapper: React.FC<ContentWrapperProps> = ({
       <ContentWrapperStyled
         visible={index <= 1 || isVisible}
         brandPivot={brandPivot}
+        fullWidth={fullWidth}
         {...props}
       >
         {children}
