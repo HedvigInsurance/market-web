@@ -55,10 +55,6 @@ const Title = styled.div`
   @media (min-width: 400px) {
     font-size: 2rem;
   }
-
-  ${TABLET_BP_UP} {
-    font-size: 2.5rem;
-  }
 `
 
 const DirectionButton = styled('button')`
