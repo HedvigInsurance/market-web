@@ -1,6 +1,6 @@
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
-import { minimalColorMap } from 'utils/storybook'
+import { fontSizes, minimalColorMap } from 'utils/storybook'
 import { HeadlineBlock } from './HeadlineBlock'
 
 export default {
@@ -31,7 +31,7 @@ export const Default = () => (
       ['left', 'right', 'center'],
       'center',
     )}
-    font_size={select('Font size', ['xs', 'sm', 'md', 'lg'], 'lg')}
+    font_size={select('Font size', fontSizes, 'lg')}
     use_display_font={boolean('Use display font', false)}
   />
 )
