@@ -209,22 +209,19 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
   const updateHeader = () => {
     if (isBelowScrollThreshold()) {
       setIsBelowThreshold(true)
-      if (props.inverse_colors) {
+      if (props.inverse_colors && props.is_transparent) {
         setButtonColor(InverseColors.INVERSE)
       }
       return
     }
 
     setIsBelowThreshold(false)
-    if (props.inverse_colors) {
+    if (props.inverse_colors && props.is_transparent) {
       setButtonColor(InverseColors.DEFAULT)
     }
   }
 
   React.useEffect(() => {
-    if (!props.is_transparent) {
-      return
-    }
     updateHeader()
     window.addEventListener('scroll', updateHeader)
 
@@ -243,9 +240,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
       }
     >
       <HeaderTop transparent={props.is_transparent} />
-
       {!props.is_transparent && <Filler />}
-
       <Togglable>
         {({ isOpen, isClosing, toggleOpen }) => (
           <div>
