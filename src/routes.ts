@@ -180,8 +180,8 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
     302,
   ],
   [
-    '/no/villkar/forsikringsbrev/innbo.pdf',
-    'https://cdn.hedvig.com/info/forsikringsbevis-innbo.pdf',
+    '/no/villkar/informasjon-for-kjopet-eu/innbo.pdf',
+    'https://cdn.hedvig.com/info/informasjon-for-kjopet-eu-innbo.pdf',
     302,
   ],
   // Awaiting english terms - so default to norwegian
@@ -196,8 +196,8 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
     302,
   ],
   [
-    '/no-en/terms/insurance-letter/home-content.pdf',
-    'https://cdn.hedvig.com/info/forsikringsbevis-innbo.pdf',
+    '/no-en/terms/presale-info-eu/home-content.pdf',
+    'https://cdn.hedvig.com/info/informasjon-for-kjopet-eu-innbo.pdf',
     302,
   ],
 
@@ -213,8 +213,8 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
     302,
   ],
   [
-    '/no/villkar/forsikringsbrev/reise.pdf',
-    'https://cdn.hedvig.com/info/forsikringsbevis-reise.pdf',
+    '/no/villkar/informasjon-for-kjopet-eu/reise.pdf',
+    'https://cdn.hedvig.com/info/informasjon-for-kjopet-eu-reise.pdf',
     302,
   ],
   // Awaiting english terms - so default to norwegian
@@ -229,8 +229,8 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
     302,
   ],
   [
-    '/no-en/terms/insurance-letter/travel.pdf',
-    'https://cdn.hedvig.com/info/forsikringsbevis-reise.pdf',
+    '/no-en/terms/presale-info-eu/travel.pdf',
+    'https://cdn.hedvig.com/info/informasjon-for-kjopet-eu-reise.pdf',
     302,
   ],
 ]
