@@ -7,7 +7,7 @@ export enum Locale {
 
 export const getLocaleIsoCode = (locale: string): Locale => {
   switch (locale) {
-    case 'en':
+    case 'se-en':
       return Locale.EnSe
     case 'no':
       return Locale.NbNo
