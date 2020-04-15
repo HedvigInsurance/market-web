@@ -1,10 +1,14 @@
 import styled from '@emotion/styled'
-import { colorsV3 } from '@hedviginsurance/brand'
+import { colorsV3, fonts } from '@hedviginsurance/brand'
 import { MOBILE_BP_UP, SITE_MAX_WIDTH } from 'components/blockHelpers'
 import { Chat } from 'components/icons/Chat'
 import { Globe } from 'components/icons/Globe'
-import React from 'react'
+import React, { useState } from 'react'
 import { TABLET_BP_UP } from './mobile'
+import { Sweden } from 'components/icons/flags/Sweden'
+import { Norway } from 'components/icons/flags/Norway'
+import { ContextContainer } from 'components/containers/ContextContainer'
+import { getMarketLocale } from 'utils/CurrentLocale'
 
 interface HeaderTopProps {
   transparent: boolean
@@ -16,6 +20,7 @@ const Wrapper = styled.div<{ transparent: boolean }>`
   height: 2.5rem;
   padding-top: 1px;
   font-size: 0.875rem;
+  font-family: ${fonts.FAVORIT};
   color: ${(props) => (props.transparent ? 'inherit' : colorsV3.gray100)};
   background-color: ${(props) =>
     props.transparent ? 'transparent' : colorsV3.gray900};
@@ -57,26 +62,163 @@ const ContactLink = styled.a`
 `
 
 const MarketPicker = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
+`
+
+const MarketPickerToggle = styled.button`
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: inherit;
+  background: transparent;
+
+  &:after {
+    display: inline-block;
+    content: '';
+    margin-top: 1px;
+    margin-left: 0.5rem;
+    border-width: 6px 6px 0 6px;
+    border-color: currentColor transparent transparent transparent;
+    border-style: solid;
+  }
 
   svg {
     margin-right: 0.5rem;
   }
 `
 
+const MarketPickerWrapper = styled.div`
+  position: absolute;
+  top: 2.5rem;
+  left: 0;
+  width: calc(100vw - 48px);
+  max-width: 330px;
+  z-index: 103;
+  background-color: ${colorsV3.gray100};
+  border-radius: 0.5rem;
+
+  ${TABLET_BP_UP} {
+    left: auto;
+    right: 0;
+  }
+`
+
+const MarketList = styled.ul`
+  display: block;
+  margin: 0;
+  padding: 2.5rem 1.5rem;
+`
+
+const MarketItem = styled.li`
+  display: block;
+  margin-bottom: 2rem;
+  color: ${colorsV3.gray900};
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+`
+
+const MarketPrimaryLink = styled.a`
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  text-decoration: none;
+
+  &:hover {
+    color: ${colorsV3.gray700};
+  }
+`
+
+const MarketTitle = styled.span`
+  display: block;
+  margin-left: 1rem;
+  font-size: 1.25rem;
+`
+
+const MarketLocales = styled.ul`
+  display: flex;
+  margin: 0 0 0 2.5rem;
+  padding: 0;
+`
+
+const MarketLocale = styled.li`
+  display: flex;
+`
+
+const MarketLink = styled.a`
+  padding: 0 1rem;
+  color: ${colorsV3.gray700};
+  text-decoration: none;
+`
+
+const Divider = styled.span`
+  display: block;
+  content: '';
+  width: 1px;
+  height: 1.5rem;
+  background-color: ${colorsV3.gray700};
+`
+
 export const HeaderTop: React.FC<HeaderTopProps> = ({ transparent }) => {
+  // const [currentLocale, setCurrentLocale] = useState()
   return (
-    <Wrapper transparent={transparent}>
-      <Content>
-        <MarketPicker>
-          <Globe size="1.5rem" /> <span>Sv/Se</span>
-        </MarketPicker>
-        <ContactLink>
-          <Chat size="1.5rem" />
-          Kontakt
-        </ContactLink>
-      </Content>
-    </Wrapper>
+    <ContextContainer>
+      {(context) => (
+        <Wrapper transparent={transparent}>
+          <Content>
+            <MarketPicker>
+              <MarketPickerToggle>
+                <Globe size="1.5rem" />
+                <span>{getMarketLocale(context.lang)}</span>
+              </MarketPickerToggle>
+              <MarketPickerWrapper>
+                <MarketList>
+                  <MarketItem>
+                    <MarketPrimaryLink href="/se">
+                      <Sweden />
+                      <MarketTitle>Sverige</MarketTitle>
+                    </MarketPrimaryLink>
+                    <MarketLocales>
+                      <MarketLocale>
+                        <MarketLink href="/se">Svenska</MarketLink>
+                      </MarketLocale>
+                      <Divider />
+                      <MarketLocale>
+                        <MarketLink href="/en-se">English</MarketLink>
+                      </MarketLocale>
+                    </MarketLocales>
+                  </MarketItem>
+
+                  <MarketItem>
+                    <MarketPrimaryLink href="/no">
+                      <Norway />
+                      <MarketTitle>Norge</MarketTitle>
+                    </MarketPrimaryLink>
+                    <MarketLocales>
+                      <MarketLocale>
+                        <MarketLink href="/no">Norsk</MarketLink>
+                      </MarketLocale>
+                      <Divider />
+                      <MarketLocale>
+                        <MarketLink href="/en-no">English</MarketLink>
+                      </MarketLocale>
+                    </MarketLocales>
+                  </MarketItem>
+                </MarketList>
+              </MarketPickerWrapper>
+            </MarketPicker>
+            <ContactLink>
+              <Chat size="1.5rem" />
+              Kontakt
+            </ContactLink>
+          </Content>
+        </Wrapper>
+      )}
+    </ContextContainer>
   )
 }
