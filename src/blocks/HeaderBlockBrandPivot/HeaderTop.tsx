@@ -212,7 +212,7 @@ export const HeaderTop: React.FC<HeaderTopProps> = ({ transparent }) => {
                 </MarketList>
               </MarketPickerWrapper>
             </MarketPicker>
-            <ContactLink>
+            <ContactLink href={`/${context.lang}/contact`}>
               <Chat size="1.5rem" />
               Kontakt
             </ContactLink>
