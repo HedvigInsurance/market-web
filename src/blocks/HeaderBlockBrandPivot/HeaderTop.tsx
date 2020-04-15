@@ -140,16 +140,16 @@ const MarketPrimaryLink = styled.a`
   align-items: center;
   margin-bottom: 1rem;
   text-decoration: none;
-
-  &:hover {
-    /* color: ${colorsV3.gray700}; */
-  }
 `
 
 const MarketTitle = styled.span`
   display: block;
   margin-left: 1rem;
   font-size: 1.25rem;
+
+  :hover {
+    opacity: 0.7;
+  }
 `
 
 const MarketLocales = styled.ul`
@@ -166,6 +166,10 @@ const MarketLink = styled.a`
   padding: 0 1rem;
   color: inherit;
   text-decoration: none;
+
+  :hover {
+    opacity: 0.7;
+  }
 `
 
 const Divider = styled.span`
