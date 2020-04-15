@@ -20,7 +20,7 @@ export const Default = () => (
   <div style={{ maxWidth: '290px' }}>
     <PerilItem
       title={perilProps.title}
-      description={perilProps.description}
+      shortDescription={perilProps.shortDescription}
       color="standard"
       icon={perilProps.icon}
       onClick={action('click')}

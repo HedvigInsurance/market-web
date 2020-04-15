@@ -9,7 +9,7 @@ import { useIcon } from '../data/useIcon'
 interface PerilItemProps {
   title: React.ReactNode
   color: minimalColorComponentColors
-  description: string
+  shortDescription?: string
   icon: PerilIcon
   onClick: () => void
 }
@@ -114,7 +114,7 @@ export const Description = styled.p`
 export const PerilItem: React.FC<PerilItemProps> = ({
   title,
   color,
-  description,
+  shortDescription,
   icon,
   onClick,
 }) => {
@@ -126,7 +126,7 @@ export const PerilItem: React.FC<PerilItemProps> = ({
       <Container color={color} onClick={onClick}>
         <IconWrapper dangerouslySetInnerHTML={{ __html: iconString }} />
         <Title>{title}</Title>
-        <Description>{description}</Description>
+        <Description>{shortDescription}</Description>
       </Container>
     </OuterContainer>
   )
