@@ -3,6 +3,7 @@ import { colorsV3, fonts } from '@hedviginsurance/brand'
 import { MOBILE_BP_UP, SITE_MAX_WIDTH } from 'components/blockHelpers'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import { Chat } from 'components/icons/Chat'
+import { Cross } from 'components/icons/Cross'
 import { Norway } from 'components/icons/flags/Norway'
 import { Sweden } from 'components/icons/flags/Sweden'
 import { Globe } from 'components/icons/Globe'
@@ -175,6 +176,35 @@ const Divider = styled.span`
   background-color: currentColor;
 `
 
+const CloseButton = styled('button')`
+  position: absolute;
+  top: 1rem;
+  right: 0.75rem;
+  display: flex;
+  width: 1.25rem;
+  height: 1.25rem;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: currentColor;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  :focus {
+    outline: none;
+  }
+
+  :hover {
+    opacity: 0.8;
+  }
+
+  svg {
+    transform: rotate(45deg);
+  }
+`
+
 export const HeaderTop: React.FC<HeaderTopProps> = ({
   transparent,
   inverse,
@@ -227,6 +257,9 @@ export const HeaderTop: React.FC<HeaderTopProps> = ({
                     </MarketLocales>
                   </MarketItem>
                 </MarketList>
+                <CloseButton onClick={toggleHandler}>
+                  <Cross size="1rem" />
+                </CloseButton>
               </MarketPickerWrapper>
             </MarketPicker>
             <ContactLink href={`/${context.lang}/contact`}>
