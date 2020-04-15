@@ -53,7 +53,7 @@ export const PerilCollection: React.FC<Props> = ({
         key={peril.title?.toString()}
         color={color}
         title={peril.title}
-        description={peril.description}
+        shortDescription={peril.shortDescription}
         icon={peril.icon}
         onClick={() => {
           setCurrentPeril(perilIndex)

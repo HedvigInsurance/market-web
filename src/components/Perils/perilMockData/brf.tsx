@@ -3,8 +3,9 @@ import { Peril } from '../types'
 export const brfPerils: Peril[] = [
   {
     title: 'Eldsvåda',
-    description:
-      'En överhettad mobilladdare eller ett misslyckat försök att fritera pommes frites, bränder uppstår på de mest vardagliga vis. Om det börjar brinna i din lägenhet får du ersättning för brand- och rökskador.',
+    shortDescription:
+      'Om det skulle brinna så ersätter Hedvig både skador på din bostad och saker som blir förstörda.',
+    info: 'Var försiktig med levande ljus eller eld.',
     covered: [
       'Eld som har brunnit med öppen låga (inte enbart glöd- eller svedskada)',
       'Explosion',
@@ -13,8 +14,6 @@ export const brfPerils: Peril[] = [
       'Frätande gas som bildats vid oavsiktlig upphettning av plast',
       'Sanering av sot orsakad av öppen låga',
     ],
-    info:
-      'Se till att kranar är täta och stängda när de inte används. Lägg underlägg under kyl/frys/ diskmaskin som samlar upp vatten. Se till att ledningssystem och anslutna anordningar inte fryser sönder. Och lämnar du huset i mer än 7 dagar så måste vattnet stängas av helt.',
     exceptions: ['Sprängningsarbete, sot eller levande ljus'],
     icon: {
       variants: {
@@ -29,8 +28,10 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Vattenläcka',
-    description:
-      'Skyddet kan ge ersättning vid olika typer av vattenskador t.ex. om en tvättmaskin läckt okontrollerat eller ett badrum svämmat över. Du kan få ersättning både för att åtgärda skadorna på lägenheten samt för andra merkostnader under reparationen.',
+    shortDescription:
+      'Ersättning vid olika typer av vattenskador som till exempel översvämning.',
+    info:
+      'Se till att kranar är täta och stängda när de inte används. Lägg underlägg under kyl/frys/ diskmaskin som samlar upp vatten. Se till att ledningssystem och anslutna anordningar inte fryser sönder. Och lämnar du lägenheten i mer än 7 dagar så måste vattnet stängas av helt.',
     covered: [
       'Oberäknat vatten/ånga från vattenledningssytem',
       'Oberäknat vatten/ånga från badrum, kök eller tvättstuga',
@@ -58,8 +59,10 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Inbrott',
-    description:
-      'Skyddet gäller när någon utan lov gjort inbrott eller förstört din bostadsrätt. Skyddet gäller självklart också för vinden och källaren.',
+    shortDescription:
+      'Skydd när någon utan lov gjort inbrott eller förstört din lägenhet. ',
+    info:
+      'Lås ytterdörrar och regla fönster när ingen är hemma. Och märk inte dina nycklar så att folk förstår vart du bor eller vart de går.',
     covered: [
       'Allt du äger i din lägenhet till ett värde upp till 1 miljon kronor',
       'Inbrott och skadegörelse i din bostadsrätt inklusive. vind/källare',
@@ -80,8 +83,10 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Stöld',
-    description:
-      'Vid stöld och skadegörelse av dina saker så täcks dem och ersätts av oss. Oavsett om du är hemma eller på flygande fot kan du alltid känna dig trygg med oss.',
+    shortDescription:
+      'Vid stöld av dina saker så täcks dem och ersätts av oss.',
+    info:
+      'Ha alltid uppsikt över dina saker. Lämna inte värdesaker på t.ex. ett bord på ett café. Lås alltid bilen om du förvarar saker där och stöldbegärlig egendom (smycke, dator) ska alltid döljas. Och lås alltid din cykel.',
     covered: [
       'Stöld och skadegörelse i ditt hem',
       'Stöld ur gemensamhetsutrymme, t.ex. cykel- eller barnvagnsförråd',
@@ -106,8 +111,10 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Skadegörelse',
-    description:
-      'Skyddet gäller när någon utan lov gjort inbrott eller förstört din bostadsrätt. Skyddet gäller självklart också för vinden och källaren.',
+    shortDescription:
+      'Vid skadegörelse av dina saker så täcks dem och ersätts av oss.',
+    info:
+      'Lås ytterdörrar och regla fönster när ingen är hemma. Och märk inte dina nycklar så att folk förstår vart du bor eller vart de går.',
     covered: [
       'Sakerna i din lägenhet till ett värde upp till 1 miljon kronor',
       'Inbrott och skadegörelse i t.ex. vind/källare',
@@ -128,8 +135,10 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Ansvarsskydd',
-    description:
-      'Vårt ansvarsskydd gäller när någon kräver dig på skadestånd för att ha skadat honom eller henne eller dennes ägodelar. Vi hjälper dig med utredning och förhandling och vi betalar både rättegångskostnader och skadestånd om du vållat skadan.',
+    shortDescription:
+      'Vi hjälper dig med utredning och förhandling och vi betalar både rättegångskostnader och skadestånd.',
+    info:
+      'Kontakta Hedvig direkt när någon kräver dig på skadestånd. Medge aldrig någon skyldighet utan ta ett djupt andetag och låt oss hjälpa dig istället.',
     covered: [
       'T.ex. om ditt handfat gått sönder i en lägenhet',
       'T.ex. vattenskada från din lägenhet som drabbar grannarna',
@@ -156,8 +165,10 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Rättsskydd',
-    description:
-      'Vårt rättsskydd kan ge dig ersättning för att t.ex. anlita advokat/ombud om du hamnar i en rättslig tvist. Skyddet gäller i tvister som prövas i tingsrätt, hovrätt eller Högsta domstolen.',
+    shortDescription:
+      'Vårt rättsskydd ger dig ersättning för att t.ex. anlita advokat/ombud om du hamnar i en rättslig tvist.',
+    info:
+      'Du måste välja vem som ska representera dig och personen måste vara medlem i Svenska advokatsamfundet. Sen måste ombudet skicka in en ansökan till oss innan du kan få besked om rättsskyddet täcker tvisten.',
     covered: [
       'Vårdnadstvist',
       'Arvstvist',
@@ -184,8 +195,10 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Resetrubbel',
-    description:
-      'Du kan få ersättning om ditt bagage blir försenat på utresa. Och är du i ett land där det utbryter krig eller det sker en naturkatastrof, ja då flyger vi hem dig till Sverige och ersätter dig för de nödvändiga och skäliga kostnaderna.',
+    shortDescription:
+      'Det mesta kan hända när du är ute och reser. Som tur är skyddar Hedvig dig.',
+    info:
+      'Anmäl försenat bagage direkt till flygbolaget och se alltid till att få en så kallad PIR-rapport, som kvitto på att ditt bagage är försenat/försvunnet.',
     covered: [
       'Reseskydd i 45 dagar, kan förlängas till max 90 dagar',
       'Evakuering vid krig',
@@ -211,8 +224,10 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Överfall',
-    description:
-      'Vårt överfallsskydd kan ge dig ersättning om du blir utsatt för brott, t.ex. misshandel, rån, ofredande eller våldtäkt. Skyddet kan också ge dig ersättning om du skulle bli utsatt för försök till brott.',
+    shortDescription:
+      'Om någon skulle utsätta dig för ett våldsbrott, rån eller våldtäkt, ersätts du med ett fast belopp.',
+    info:
+      'Hur du själv agerar i olika situationer kan påverka hur stor din ersättning blir. Om du är påverkad av alkohol eller droger, är provocerande eller aggressiv eller medvetet går in i konflikter kan din ersättning minskas eller helt utebli.',
     covered: [
       'Misshandel (som inte är ringa) eller rån',
       'Grov misshandel med livshotande skada',
@@ -238,8 +253,10 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Sjuk på resa',
-    description:
-      'Vårt reseskydd gäller de första 45 dagarna på din resa och ersätter kostnader om du blir akut sjuk, skadar dig eller får akuta tandskador. Vi flyger även hem dig till Sverige för vidare vård om det bedöms nödvändigt.',
+    shortDescription:
+      'Vårt reseskydd ersätter kostnader om du blir akut sjuk eller skadar dig.',
+    info:
+      'Kontakta alltid oss direkt via appen eller ring Hedvig Global Assistance på +45 38 48 94 61 som har öppet dygnet runt.',
     covered: [
       'Olycksfall, akut sjukdom, akuta tandbesvär',
       'Avbruten resa p.g.a att närstående person avlidit/allvarligt sjuk/skadad',
@@ -264,8 +281,9 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Vitvaror',
-    description:
-      'Du kan få ersättning om tvättmaskinen säckar ihop eller om annan elektrisk maskin eller apparat går sönder p.g.a. kortslutning, överslag eller överspänning. Och går frysen sönder kan du få ersättning för eventuellt skadat innehåll.',
+    shortDescription:
+      'Om dina vitvaror plötsligt går sönder ersätter Hedvig dig för att reparera eller ersätta dem.',
+    info: 'Det finns inget speciellt att tänka på.',
     covered: [
       'Vitvaror/hushållsmaskiner p.g.a kortslutning, överslag eller överspänning',
       'Installation för värme, vatten, avlopp, ventilation, gas, el',
@@ -292,8 +310,10 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Drulle',
-    description:
-      'Vår drulleförsäkring gäller när du har sönder saker som du äger genom en plötslig och oförutsedd händelse. Vi hjälper dig t.e.x när du spiller kaffe på datorn, tappar mobilen i marken eller sätter dig på glasögonen. Drulle ingår alltid utan extra kostnad.',
+    shortDescription:
+      'Om du har otur och dina saker går sönder ersätter Hedvig dig.',
+    info:
+      'Ta med mobilen (stöldbegärlig egendom) när du lämnar bilen. Lämna inte värdefulla ägodelar i källaren (biyta) och checka inte in smycken eller klockor när du reser.',
     covered: [
       'Plötslig och oförutsedd skada',
       'Plötslig och oförutsedd händelse',
@@ -319,9 +339,10 @@ export const brfPerils: Peril[] = [
     },
   },
   {
-    title: 'Bostadsrättstillägg',
-    description:
-      'Om man äger sin lägenhet är det skönt att ha en försäkring som täcker själva lägenheten också, inte bara prylarna som finns däri. På försäkringsspråk kallas det för bostadsrättstillägg. Hedvig ersätter kostnaden för att reparera skador på din lägenhet utan beloppsbegränsning - oavsett om du bor i studentlya eller paradvåning. Skönt!',
+    title: 'Bostadsrätts­tillägg',
+    shortDescription:
+      'Hedvig ersätter kostnaden för att reparera skador på din lägenhets fasta inredning och ytskikt.',
+    info: 'Inget särskilt.',
     covered: [
       'skador på fast inredning (typ ditt nya kök',
       'skador på ytskikt (typ dina nyfixade golv, tak eller väggar)',
