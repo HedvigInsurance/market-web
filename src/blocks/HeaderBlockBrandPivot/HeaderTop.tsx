@@ -105,8 +105,8 @@ const MarketPickerWrapper = styled.div<{ isOpen: boolean; inverse: boolean }>`
   position: absolute;
   top: 2.5rem;
   left: 0;
-  width: calc(100vw - 48px);
-  max-width: 330px;
+  width: 100vw;
+  max-width: 270px;
   z-index: 103;
   background-color: ${(props) =>
     props.inverse ? colorsV3.gray100 : colorsV3.gray700};
@@ -116,6 +116,7 @@ const MarketPickerWrapper = styled.div<{ isOpen: boolean; inverse: boolean }>`
   ${TABLET_BP_UP} {
     left: auto;
     right: 0;
+    max-width: 300px;
   }
 `
 
