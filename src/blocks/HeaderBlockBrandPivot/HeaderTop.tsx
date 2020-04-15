@@ -1,14 +1,14 @@
 import styled from '@emotion/styled'
 import { colorsV3, fonts } from '@hedviginsurance/brand'
 import { MOBILE_BP_UP, SITE_MAX_WIDTH } from 'components/blockHelpers'
+import { ContextContainer } from 'components/containers/ContextContainer'
 import { Chat } from 'components/icons/Chat'
+import { Norway } from 'components/icons/flags/Norway'
+import { Sweden } from 'components/icons/flags/Sweden'
 import { Globe } from 'components/icons/Globe'
 import React, { useState } from 'react'
-import { TABLET_BP_UP } from './mobile'
-import { Sweden } from 'components/icons/flags/Sweden'
-import { Norway } from 'components/icons/flags/Norway'
-import { ContextContainer } from 'components/containers/ContextContainer'
 import { getMarketLocale } from 'utils/CurrentLocale'
+import { TABLET_BP_UP } from './mobile'
 
 interface HeaderTopProps {
   transparent: boolean
