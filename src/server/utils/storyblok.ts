@@ -97,10 +97,16 @@ export const getGlobalStory = async (
 
 export const getLangFromPath = (path: string) => {
   switch (true) {
-    case /^\/en($|\/.*)/.test(path):
-      return 'en'
+    case /^\/se($|\/.*)/.test(path):
+      return 'se'
+    case /^\/se-en($|\/.*)/.test(path):
+      return 'se-en'
     case /^\/no($|\/.*)/.test(path):
       return 'no'
+    case /^\/no-en($|\/.*)/.test(path):
+      return 'no-en'
+    case /^\/en($|\/.*)/.test(path):
+      return 'en'
     case /^\/sv\/.*/.test(path):
       return 'sv'
     default:
