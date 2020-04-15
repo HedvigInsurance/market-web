@@ -19,6 +19,10 @@ interface ImageBlockProps extends BaseBlockProps {
   full_width?: boolean
 }
 
+const Background = styled.div`
+  background-color: ${colorsV3.gray100};
+`
+
 const ImageWrapper = styled('div')<{ fullWidth: boolean }>(({ fullWidth }) => ({
   position: 'relative',
   display: 'flex',
@@ -73,11 +77,13 @@ export const ImageBlockBrandPivot: React.FunctionComponent<ImageBlockProps> = ({
   full_width = false,
   index,
 }) => (
-  <ContentWrapper brandPivot fullWidth={full_width} index={index}>
-    <ImageWrapper fullWidth={full_width}>
-      <Image src={getStoryblokImage(image)} />
-      {caption_shadow && <Shadow />}
-      {caption && <Caption>{caption}</Caption>}
-    </ImageWrapper>
-  </ContentWrapper>
+  <Background>
+    <ContentWrapper brandPivot fullWidth={full_width} index={index}>
+      <ImageWrapper fullWidth={full_width}>
+        <Image src={getStoryblokImage(image)} />
+        {caption_shadow && <Shadow />}
+        {caption && <Caption>{caption}</Caption>}
+      </ImageWrapper>
+    </ContentWrapper>
+  </Background>
 )
