@@ -51,6 +51,7 @@ const Content = styled.div`
 const ContactLink = styled.a`
   display: flex;
   align-items: center;
+  text-decoration: none;
 
   ${TABLET_BP_UP} {
     margin-right: 4rem;
@@ -75,6 +76,12 @@ const MarketPickerToggle = styled.button`
   border: none;
   color: inherit;
   background: transparent;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+
+  &:focus {
+    outline: 0;
+  }
 
   &:after {
     display: inline-block;
@@ -91,7 +98,8 @@ const MarketPickerToggle = styled.button`
   }
 `
 
-const MarketPickerWrapper = styled.div`
+const MarketPickerWrapper = styled.div<{ isOpen: boolean }>`
+  display: ${(props) => (props.isOpen ? 'block' : 'none')};
   position: absolute;
   top: 2.5rem;
   left: 0;
@@ -160,23 +168,26 @@ const Divider = styled.span`
   display: block;
   content: '';
   width: 1px;
-  height: 1.5rem;
+  height: 1.25rem;
   background-color: ${colorsV3.gray700};
 `
 
 export const HeaderTop: React.FC<HeaderTopProps> = ({ transparent }) => {
-  // const [currentLocale, setCurrentLocale] = useState()
+  const [openMarketPicker, toggleMarketPicker] = useState<boolean>(false)
+
+  const toggleHandler = () => toggleMarketPicker(!openMarketPicker)
+
   return (
     <ContextContainer>
       {(context) => (
         <Wrapper transparent={transparent}>
           <Content>
             <MarketPicker>
-              <MarketPickerToggle>
+              <MarketPickerToggle onClick={toggleHandler}>
                 <Globe size="1.5rem" />
                 <span>{getMarketLocale(context.lang)}</span>
               </MarketPickerToggle>
-              <MarketPickerWrapper>
+              <MarketPickerWrapper isOpen={openMarketPicker}>
                 <MarketList>
                   <MarketItem>
                     <MarketPrimaryLink href="/se">
@@ -189,7 +200,7 @@ export const HeaderTop: React.FC<HeaderTopProps> = ({ transparent }) => {
                       </MarketLocale>
                       <Divider />
                       <MarketLocale>
-                        <MarketLink href="/en-se">English</MarketLink>
+                        <MarketLink href="/se-en">English</MarketLink>
                       </MarketLocale>
                     </MarketLocales>
                   </MarketItem>
@@ -205,7 +216,7 @@ export const HeaderTop: React.FC<HeaderTopProps> = ({ transparent }) => {
                       </MarketLocale>
                       <Divider />
                       <MarketLocale>
-                        <MarketLink href="/en-no">English</MarketLink>
+                        <MarketLink href="/no-en">English</MarketLink>
                       </MarketLocale>
                     </MarketLocales>
                   </MarketItem>
