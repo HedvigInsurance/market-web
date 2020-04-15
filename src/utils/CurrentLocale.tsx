@@ -20,7 +20,7 @@ export const getLocaleIsoCode = (locale: string): Locale => {
 
 export const getMarketLocale = (locale: string) => {
   switch (locale) {
-    case 'en':
+    case 'se-en':
       return 'SE/En'
     case 'no':
       return 'NO/No'
