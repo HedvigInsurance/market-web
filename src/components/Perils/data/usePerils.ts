@@ -20,6 +20,7 @@ export const usePerils = (insuranceType: TypeOfContract, locale: Locale) => {
             perils(contractType: $typeOfContract, locale: $locale) {
               title
               description
+              shortDescription
               covered
               info
               icon {
