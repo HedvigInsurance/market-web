@@ -239,7 +239,10 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
         props.is_transparent && props.inverse_colors && !isBelowThreshold
       }
     >
-      <HeaderTop transparent={props.is_transparent} />
+      <HeaderTop
+        transparent={props.is_transparent}
+        inverse={props.inverse_colors}
+      />
       {!props.is_transparent && <Filler />}
       <Togglable>
         {({ isOpen, isClosing, toggleOpen }) => (

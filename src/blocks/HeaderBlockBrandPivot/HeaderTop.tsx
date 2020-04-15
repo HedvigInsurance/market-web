@@ -12,6 +12,7 @@ import { getMarketLocale } from 'utils/CurrentLocale'
 
 interface HeaderTopProps {
   transparent: boolean
+  inverse: boolean
 }
 
 const Wrapper = styled.div<{ transparent: boolean }>`
@@ -98,7 +99,7 @@ const MarketPickerToggle = styled.button`
   }
 `
 
-const MarketPickerWrapper = styled.div<{ isOpen: boolean }>`
+const MarketPickerWrapper = styled.div<{ isOpen: boolean; inverse: boolean }>`
   display: ${(props) => (props.isOpen ? 'block' : 'none')};
   position: absolute;
   top: 2.5rem;
@@ -106,7 +107,9 @@ const MarketPickerWrapper = styled.div<{ isOpen: boolean }>`
   width: calc(100vw - 48px);
   max-width: 330px;
   z-index: 103;
-  background-color: ${colorsV3.gray100};
+  background-color: ${(props) =>
+    props.inverse ? colorsV3.gray100 : colorsV3.gray700};
+  color: ${(props) => (props.inverse ? colorsV3.gray900 : colorsV3.gray100)};
   border-radius: 0.5rem;
 
   ${TABLET_BP_UP} {
@@ -124,7 +127,7 @@ const MarketList = styled.ul`
 const MarketItem = styled.li`
   display: block;
   margin-bottom: 2rem;
-  color: ${colorsV3.gray900};
+  color: inherit;
 
   &:last-of-type {
     margin-bottom: 0;
@@ -138,7 +141,7 @@ const MarketPrimaryLink = styled.a`
   text-decoration: none;
 
   &:hover {
-    color: ${colorsV3.gray700};
+    /* color: ${colorsV3.gray700}; */
   }
 `
 
@@ -160,7 +163,7 @@ const MarketLocale = styled.li`
 
 const MarketLink = styled.a`
   padding: 0 1rem;
-  color: ${colorsV3.gray700};
+  color: inherit;
   text-decoration: none;
 `
 
@@ -169,10 +172,13 @@ const Divider = styled.span`
   content: '';
   width: 1px;
   height: 1.25rem;
-  background-color: ${colorsV3.gray700};
+  background-color: currentColor;
 `
 
-export const HeaderTop: React.FC<HeaderTopProps> = ({ transparent }) => {
+export const HeaderTop: React.FC<HeaderTopProps> = ({
+  transparent,
+  inverse,
+}) => {
   const [openMarketPicker, toggleMarketPicker] = useState<boolean>(false)
 
   const toggleHandler = () => toggleMarketPicker(!openMarketPicker)
@@ -187,7 +193,7 @@ export const HeaderTop: React.FC<HeaderTopProps> = ({ transparent }) => {
                 <Globe size="1.5rem" />
                 <span>{getMarketLocale(context.lang)}</span>
               </MarketPickerToggle>
-              <MarketPickerWrapper isOpen={openMarketPicker}>
+              <MarketPickerWrapper isOpen={openMarketPicker} inverse={inverse}>
                 <MarketList>
                   <MarketItem>
                     <MarketPrimaryLink href="/se">
