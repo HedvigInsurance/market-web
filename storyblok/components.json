@@ -1761,16 +1761,63 @@
     {
       "name": "hero_image_block_brand_pivot",
       "display_name": null,
-      "updated_at": "2020-04-08T13:41:29.782Z",
+      "updated_at": "2020-04-16T12:09:49.151Z",
       "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 1
+        },
+        "animate": {
+          "type": "boolean",
+          "pos": 2
+        },
+        "dynamic_height": {
+          "type": "boolean",
+          "pos": 3,
+          "description": "For size option to have any effect you need to tick this box"
+        },
+        "size": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "none",
+              "name": "None"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "display_name": "",
+          "default_value": "none",
+          "pos": 4
+        },
         "background_image": {
           "type": "section",
-          "keys": ["image", "image_mobile"],
-          "pos": 0
+          "keys": [
+            "image",
+            "image_mobile"
+          ],
+          "pos": 5
         },
         "image": {
           "type": "image",
-          "pos": 1,
+          "pos": 6,
           "image_crop": false,
           "keep_image_size": true,
           "image_width": "2000",
@@ -1778,7 +1825,7 @@
         },
         "image_mobile": {
           "type": "image",
-          "pos": 2
+          "pos": 7
         },
         "text_position": {
           "type": "option",
@@ -1798,7 +1845,7 @@
             }
           ],
           "default_value": "center",
-          "pos": 3,
+          "pos": 8,
           "display_name": "",
           "description": "Text alignment for headline and body"
         },
@@ -1811,16 +1858,16 @@
             "use_display_font",
             "show_hedvig_wordmark"
           ],
-          "pos": 4,
+          "pos": 9,
           "display_name": "Headline"
         },
         "headline": {
           "type": "text",
-          "pos": 5
+          "pos": 10
         },
         "headline_font_size": {
           "type": "option",
-          "pos": 6,
+          "pos": 11,
           "use_uuid": true,
           "options": [
             {
@@ -1849,7 +1896,7 @@
         },
         "headline_font_size_mobile": {
           "type": "option",
-          "pos": 7,
+          "pos": 12,
           "use_uuid": true,
           "options": [
             {
@@ -1878,75 +1925,49 @@
         },
         "use_display_font": {
           "type": "boolean",
-          "pos": 8,
-          "keys": ["headline", "show_hedvig_wordmark"],
+          "pos": 13,
+          "keys": [
+            "headline",
+            "show_hedvig_wordmark"
+          ],
           "description": ""
         },
         "show_hedvig_wordmark": {
           "type": "boolean",
-          "pos": 9
+          "pos": 14
         },
         "body": {
           "type": "section",
-          "pos": 10,
-          "keys": ["text", "text_color"]
+          "pos": 15,
+          "keys": [
+            "text",
+            "text_color"
+          ]
         },
         "text": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 11
+          "pos": 16
         },
         "text_color": {
           "type": "custom",
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
-          "pos": 12
+          "pos": 17
         },
         "tab-e69e2291-e9ec-4a70-92ec-2a64959f84de": {
           "type": "tab",
           "display_name": "Styling",
-          "keys": ["color", "extra_styling", "animate", "size"],
-          "pos": 13
-        },
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-minimal-color-picker",
-          "options": [],
-          "pos": 14
-        },
-        "extra_styling": {
-          "type": "textarea",
-          "pos": 15
-        },
-        "animate": {
-          "type": "boolean",
-          "pos": 16
-        },
-        "size": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "value": "none",
-              "name": "None"
-            },
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "lg",
-              "name": "LG"
-            },
-            {
-              "value": "xl",
-              "name": "XL"
-            }
+          "keys": [
+            "color",
+            "extra_styling",
+            "animate",
+            "size",
+            "full_screen",
+            "dynamic_height"
           ],
-          "display_name": "",
-          "default_value": "none",
-          "pos": 17
+          "pos": 18
         }
       },
       "image": null,
