@@ -3,6 +3,7 @@
     {
       "name": "about_us_hero_block",
       "display_name": null,
+      "updated_at": "2020-03-03T14:17:05.222Z",
       "schema": {
         "video_file_location": {
           "type": "text",
@@ -38,6 +39,7 @@
     {
       "name": "accordion_block",
       "display_name": null,
+      "updated_at": "2020-03-24T13:19:46.029Z",
       "schema": {
         "extra_styling": {
           "type": "textarea",
@@ -45,28 +47,11 @@
           "default_value": "",
           "display_name": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         },
-        "title": {
-          "type": "text",
-          "required": true,
-          "pos": 1,
-          "translatable": true
-        },
-        "accordions": {
-          "type": "bloks",
-          "maximum": "",
-          "restrict_components": true,
-          "component_whitelist": ["accordion_item"],
-          "required": true,
-          "description": "",
-          "display_name": "",
-          "default_value": "",
-          "pos": 2
-        },
         "color": {
           "type": "custom",
           "field_type": "hedvig-limited-color-picker",
           "options": [],
-          "pos": 3
+          "pos": 1
         },
         "size": {
           "type": "option",
@@ -88,10 +73,27 @@
               "name": "XL"
             }
           ],
-          "pos": 4,
+          "pos": 2,
           "display_name": "",
           "description": "",
           "default_value": "lg"
+        },
+        "title": {
+          "type": "text",
+          "required": true,
+          "pos": 3,
+          "translatable": true
+        },
+        "accordions": {
+          "type": "bloks",
+          "maximum": "",
+          "restrict_components": true,
+          "component_whitelist": ["accordion_item"],
+          "required": true,
+          "description": "",
+          "display_name": "",
+          "default_value": "",
+          "pos": 4
         },
         "tab-b8f2032f-e956-4f8f-b79b-0c963ed5ff31": {
           "type": "tab",
@@ -257,6 +259,7 @@
     {
       "name": "background_video_block",
       "display_name": "",
+      "updated_at": "2020-03-03T14:16:57.988Z",
       "schema": {
         "video_file_location": {
           "type": "text",
@@ -385,6 +388,7 @@
     {
       "name": "banner_block",
       "display_name": null,
+      "updated_at": "2020-03-12T12:32:02.418Z",
       "schema": {
         "text": {
           "type": "custom",
@@ -416,6 +420,7 @@
     {
       "name": "blog",
       "display_name": null,
+      "updated_at": "2020-03-03T14:17:04.567Z",
       "schema": {
         "page_title": {
           "type": "text",
@@ -534,6 +539,7 @@
     {
       "name": "bullet_point_block",
       "display_name": "",
+      "updated_at": "2020-03-13T10:41:02.816Z",
       "schema": {
         "extra_styling": {
           "type": "textarea",
@@ -651,6 +657,7 @@
     {
       "name": "bullet_point_block_brand_pivot",
       "display_name": "",
+      "updated_at": "2020-03-09T16:35:49.774Z",
       "schema": {
         "extra_styling": {
           "type": "textarea",
@@ -699,9 +706,7 @@
           "type": "bloks",
           "maximum": "6",
           "restrict_components": true,
-          "component_whitelist": [
-            "bullet_point_item_brand_pivot"
-          ],
+          "component_whitelist": ["bullet_point_item_brand_pivot"],
           "required": true,
           "pos": 6,
           "translatable": false
@@ -732,6 +737,7 @@
     {
       "name": "bullet_point_item_brand_pivot",
       "display_name": "",
+      "updated_at": "2020-03-09T11:07:29.813Z",
       "schema": {
         "image": {
           "type": "image",
@@ -779,6 +785,7 @@
     {
       "name": "card_checklist_bullet_point_block",
       "display_name": "",
+      "updated_at": "2020-03-03T14:16:58.533Z",
       "schema": {
         "extra_styling": {
           "type": "textarea",
@@ -895,6 +902,7 @@
     {
       "name": "card_checklist_bullet_point_item",
       "display_name": "",
+      "updated_at": "2020-03-03T14:17:04.161Z",
       "schema": {
         "image": {
           "type": "image",
@@ -1006,6 +1014,7 @@
     {
       "name": "checklist_bullet_point_item_check_item",
       "display_name": "",
+      "updated_at": "2020-03-03T14:17:03.960Z",
       "schema": {
         "title": {
           "type": "text",
@@ -1027,6 +1036,7 @@
     {
       "name": "column_text_block",
       "display_name": null,
+      "updated_at": "2020-03-05T09:24:31.441Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -1060,6 +1070,7 @@
     {
       "name": "cta_block",
       "display_name": "",
+      "updated_at": "2020-03-20T10:51:40.119Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -1126,6 +1137,25 @@
           "display_name": "Styling",
           "keys": ["color", "size"],
           "pos": 6
+        },
+        "cta_size": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "md",
+              "name": "MD"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            }
+          ],
+          "default_value": "lg"
         }
       },
       "image": null,
@@ -1141,6 +1171,7 @@
     {
       "name": "download_block",
       "display_name": null,
+      "updated_at": "2020-03-03T14:17:03.415Z",
       "schema": {
         "title": {
           "type": "text",
@@ -1185,6 +1216,7 @@
     {
       "name": "footer_block",
       "display_name": null,
+      "updated_at": "2020-03-03T14:17:02.136Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -1213,6 +1245,7 @@
     {
       "name": "footer_block_brand_pivot",
       "display_name": "",
+      "updated_at": "2020-03-04T15:00:59.771Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -1377,6 +1410,7 @@
     {
       "name": "header_block",
       "display_name": null,
+      "updated_at": "2020-03-03T14:16:57.388Z",
       "schema": {
         "is_transparent": {
           "type": "boolean",
@@ -1499,6 +1533,7 @@
     {
       "name": "header_block_brand_pivot",
       "display_name": null,
+      "updated_at": "2020-03-17T17:28:42.329Z",
       "schema": {
         "is_transparent": {
           "type": "boolean",
@@ -1549,47 +1584,47 @@
           ],
           "description": "",
           "pos": 6
-        },	
-        "cta_mobile": {	
-          "type": "section",	
-          "keys": [	
-            "override_mobile_header_cta_label",	
-            "override_mobile_header_cta_link",	
-            "mobile_header_cta_color",	
-            "mobile_header_cta_style"	
-          ],	
-          "display_name": "CTA mobile",	
-          "pos": 7	
-        },	
-        "override_mobile_header_cta_label": {	
-          "type": "text",	
-          "translatable": false,	
-          "pos": 8	
-        },	
-        "override_mobile_header_cta_link": {	
-          "type": "multilink",	
-          "pos": 9	
-        },	
-        "mobile_header_cta_color": {	
-          "type": "custom",	
-          "field_type": "hedvig-minimal-color-picker",	
-          "options": [],	
-          "pos": 10	
-        },	
-        "mobile_header_cta_style": {	
-          "type": "option",	
-          "use_uuid": true,	
-          "options": [	
-            {	
-              "value": "filled",	
-              "name": "Filled"	
-            },	
-            {	
-              "value": "outlined",	
-              "name": "Outlined"	
-            }	
-          ],	
-          "pos": 11	
+        },
+        "cta_mobile": {
+          "type": "section",
+          "keys": [
+            "override_mobile_header_cta_label",
+            "override_mobile_header_cta_link",
+            "mobile_header_cta_color",
+            "mobile_header_cta_style"
+          ],
+          "display_name": "CTA mobile",
+          "pos": 7
+        },
+        "override_mobile_header_cta_label": {
+          "type": "text",
+          "translatable": false,
+          "pos": 8
+        },
+        "override_mobile_header_cta_link": {
+          "type": "multilink",
+          "pos": 9
+        },
+        "mobile_header_cta_color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 10
+        },
+        "mobile_header_cta_style": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "filled",
+              "name": "Filled"
+            },
+            {
+              "value": "outlined",
+              "name": "Outlined"
+            }
+          ],
+          "pos": 11
         }
       },
       "image": null,
@@ -1761,16 +1796,63 @@
     {
       "name": "hero_image_block_brand_pivot",
       "display_name": null,
-      "updated_at": "2020-04-08T13:41:29.782Z",
+      "updated_at": "2020-04-16T12:09:49.151Z",
       "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 1
+        },
+        "animate": {
+          "type": "boolean",
+          "pos": 2
+        },
+        "dynamic_height": {
+          "type": "boolean",
+          "pos": 3,
+          "description": "For size option to have any effect you need to tick this box"
+        },
+        "size": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "none",
+              "name": "None"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "display_name": "",
+          "default_value": "none",
+          "pos": 4
+        },
         "background_image": {
           "type": "section",
-          "keys": ["image", "image_mobile"],
-          "pos": 0
+          "keys": [
+            "image",
+            "image_mobile"
+          ],
+          "pos": 5
         },
         "image": {
           "type": "image",
-          "pos": 1,
+          "pos": 6,
           "image_crop": false,
           "keep_image_size": true,
           "image_width": "2000",
@@ -1778,7 +1860,7 @@
         },
         "image_mobile": {
           "type": "image",
-          "pos": 2
+          "pos": 7
         },
         "text_position": {
           "type": "option",
@@ -1798,7 +1880,7 @@
             }
           ],
           "default_value": "center",
-          "pos": 3,
+          "pos": 8,
           "display_name": "",
           "description": "Text alignment for headline and body"
         },
@@ -1811,16 +1893,16 @@
             "use_display_font",
             "show_hedvig_wordmark"
           ],
-          "pos": 4,
+          "pos": 9,
           "display_name": "Headline"
         },
         "headline": {
           "type": "text",
-          "pos": 5
+          "pos": 10
         },
         "headline_font_size": {
           "type": "option",
-          "pos": 6,
+          "pos": 11,
           "use_uuid": true,
           "options": [
             {
@@ -1849,7 +1931,7 @@
         },
         "headline_font_size_mobile": {
           "type": "option",
-          "pos": 7,
+          "pos": 12,
           "use_uuid": true,
           "options": [
             {
@@ -1878,75 +1960,49 @@
         },
         "use_display_font": {
           "type": "boolean",
-          "pos": 8,
-          "keys": ["headline", "show_hedvig_wordmark"],
+          "pos": 13,
+          "keys": [
+            "headline",
+            "show_hedvig_wordmark"
+          ],
           "description": ""
         },
         "show_hedvig_wordmark": {
           "type": "boolean",
-          "pos": 9
+          "pos": 14
         },
         "body": {
           "type": "section",
-          "pos": 10,
-          "keys": ["text", "text_color"]
+          "pos": 15,
+          "keys": [
+            "text",
+            "text_color"
+          ]
         },
         "text": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 11
+          "pos": 16
         },
         "text_color": {
           "type": "custom",
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
-          "pos": 12
+          "pos": 17
         },
         "tab-e69e2291-e9ec-4a70-92ec-2a64959f84de": {
           "type": "tab",
           "display_name": "Styling",
-          "keys": ["color", "extra_styling", "animate", "size"],
-          "pos": 13
-        },
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-minimal-color-picker",
-          "options": [],
-          "pos": 14
-        },
-        "extra_styling": {
-          "type": "textarea",
-          "pos": 15
-        },
-        "animate": {
-          "type": "boolean",
-          "pos": 16
-        },
-        "size": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "value": "none",
-              "name": "None"
-            },
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "lg",
-              "name": "LG"
-            },
-            {
-              "value": "xl",
-              "name": "XL"
-            }
+          "keys": [
+            "color",
+            "extra_styling",
+            "animate",
+            "size",
+            "full_screen",
+            "dynamic_height"
           ],
-          "display_name": "",
-          "default_value": "none",
-          "pos": 17
+          "pos": 18
         }
       },
       "image": null,
@@ -1962,6 +2018,7 @@
     {
       "name": "hero_video_block",
       "display_name": null,
+      "updated_at": "2020-03-03T14:17:05.028Z",
       "schema": {
         "video_file_location": {
           "type": "text",
@@ -2019,6 +2076,7 @@
     {
       "name": "home_hero_block",
       "display_name": null,
+      "updated_at": "2020-03-03T14:16:58.712Z",
       "schema": {
         "video_file_location": {
           "type": "text",
@@ -2081,6 +2139,7 @@
     {
       "name": "icon_bullet_point_block",
       "display_name": "",
+      "updated_at": "2020-03-03T14:16:57.212Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -2169,6 +2228,7 @@
     {
       "name": "icon_bullet_point_item",
       "display_name": "",
+      "updated_at": "2020-03-03T14:17:01.549Z",
       "schema": {
         "icon": {
           "type": "image",
@@ -2206,6 +2266,7 @@
     {
       "name": "image_block",
       "display_name": null,
+      "updated_at": "2020-03-03T14:16:57.025Z",
       "schema": {
         "image": {
           "type": "image",
@@ -2282,6 +2343,7 @@
     {
       "name": "image_bullet_point_item",
       "display_name": "",
+      "updated_at": "2020-03-03T14:17:01.755Z",
       "schema": {
         "image": {
           "type": "image",
@@ -2324,6 +2386,7 @@
     {
       "name": "image_multi_text_block",
       "display_name": "",
+      "updated_at": "2020-03-03T14:16:56.821Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -2412,6 +2475,7 @@
     {
       "name": "image_text_block",
       "display_name": "",
+      "updated_at": "2020-03-03T14:17:00.368Z",
       "schema": {
         "title_size": {
           "type": "option",
@@ -3212,6 +3276,7 @@
     {
       "name": "investor_item",
       "display_name": null,
+      "updated_at": "2020-03-03T14:17:02.311Z",
       "schema": {
         "name": {
           "type": "text",
@@ -3240,6 +3305,7 @@
     {
       "name": "investors_block",
       "display_name": null,
+      "updated_at": "2020-03-03T14:17:02.840Z",
       "schema": {
         "size": {
           "type": "option",
@@ -3297,6 +3363,7 @@
     {
       "name": "logotype_item",
       "display_name": "",
+      "updated_at": "2020-03-03T14:17:01.172Z",
       "schema": {
         "image": {
           "type": "image",
@@ -3318,6 +3385,7 @@
     {
       "name": "menu_item",
       "display_name": null,
+      "updated_at": "2020-03-03T14:17:00.737Z",
       "schema": {
         "label": {
           "type": "text",
@@ -3355,6 +3423,7 @@
     {
       "name": "multi_logotype_block",
       "display_name": "",
+      "updated_at": "2020-03-03T14:17:00.557Z",
       "schema": {
         "logotypes": {
           "type": "bloks",
@@ -3379,6 +3448,7 @@
     {
       "name": "page",
       "display_name": "",
+      "updated_at": "2020-03-23T11:23:04.078Z",
       "schema": {
         "page_title": {
           "type": "text",
@@ -3453,6 +3523,22 @@
           "type": "image",
           "pos": 9,
           "display_name": "SEO Meta og:image"
+        },
+        "hreflang_en": {
+          "type": "multilink",
+          "link_scope": "en/"
+        },
+        "hreflang_sv": {
+          "type": "multilink",
+          "link_scope": "sv/"
+        },
+        "hreflang_no": {
+          "type": "multilink",
+          "link_scope": "no/"
+        },
+        "Hreflang": {
+          "type": "section",
+          "keys": ["hreflang_en", "hreflang_sv", "hreflang_no"]
         }
       },
       "image": null,
@@ -3568,6 +3654,7 @@
     {
       "name": "plain_text_block",
       "display_name": null,
+      "updated_at": "2020-03-03T14:16:56.645Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -3637,6 +3724,7 @@
     {
       "name": "press_block",
       "display_name": null,
+      "updated_at": "2020-03-03T14:17:03.047Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -3677,6 +3765,7 @@
     {
       "name": "press_card_block",
       "display_name": "Press Card Block",
+      "updated_at": "2020-03-03T14:16:59.420Z",
       "schema": {
         "size": {
           "type": "option",
@@ -3730,6 +3819,7 @@
     {
       "name": "press_card_item",
       "display_name": null,
+      "updated_at": "2020-03-03T14:16:59.244Z",
       "schema": {
         "quote": {
           "type": "text",
@@ -3755,6 +3845,7 @@
     {
       "name": "press_item",
       "display_name": null,
+      "updated_at": "2020-03-03T14:17:02.490Z",
       "schema": {
         "title": {
           "type": "text",
@@ -3790,6 +3881,7 @@
     {
       "name": "quote_block",
       "display_name": null,
+      "updated_at": "2020-03-23T17:14:51.038Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -3817,6 +3909,7 @@
     {
       "name": "quote_item",
       "display_name": null,
+      "updated_at": "2020-03-23T17:14:59.928Z",
       "schema": {
         "quote": {
           "type": "text",
@@ -3845,6 +3938,7 @@
     {
       "name": "single_quote_block",
       "display_name": null,
+      "updated_at": "2020-03-03T14:16:56.456Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -3919,6 +4013,7 @@
     {
       "name": "spacer_block",
       "display_name": "",
+      "updated_at": "2020-03-05T09:24:32.039Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -4002,6 +4097,7 @@
     {
       "name": "spacer_block_brand_pivot",
       "display_name": "",
+      "updated_at": "2020-03-13T10:41:02.516Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -4071,6 +4167,7 @@
     {
       "name": "title_cta_block",
       "display_name": "",
+      "updated_at": "2020-03-03T14:16:56.267Z",
       "schema": {
         "size": {
           "type": "option",
@@ -4216,6 +4313,7 @@
     {
       "name": "title_paragraph_block",
       "display_name": null,
+      "updated_at": "2020-03-03T14:16:56.085Z",
       "schema": {
         "size": {
           "type": "option",
@@ -4311,81 +4409,9 @@
       "component_group_uuid": null
     },
     {
-      "name": "title_paragraph_block_brand_pivot",
-      "display_name": null,
-      "schema": {
-        "size": {
-          "type": "option",
-          "options": [
-            {
-              "value": "none",
-              "name": "Zero margins"
-            },
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "lg",
-              "name": "LG"
-            },
-            {
-              "value": "xl",
-              "name": "XL"
-            }
-          ],
-          "pos": 0,
-          "display_name": "",
-          "description": "",
-          "default_value": "lg"
-        },
-        "title": {
-          "type": "text",
-          "pos": 1,
-          "required": true,
-          "default_value": "Default Text",
-          "translatable": true
-        },
-        "paragraph": {
-          "type": "custom",
-          "required": false,
-          "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
-          "pos": 2,
-          "field_type": "markdown-html",
-          "options": [],
-          "translatable": true
-        },
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-minimal-color-picker",
-          "options": [],
-          "required": true,
-          "pos": 4
-        },
-        "tab-ea6c2992-875d-4817-8d29-8e0a15cf272a": {
-          "type": "tab",
-          "display_name": "Styling",
-          "keys": ["color", "size", "extra_styling"],
-          "pos": 5
-        },
-        "extra_styling": {
-          "type": "textarea",
-          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "title_paragraph_block_brand_pivot",
-      "component_group_uuid": null
-    },
-    {
       "name": "title_paragraph_item",
       "display_name": null,
+      "updated_at": "2020-03-03T14:17:01.943Z",
       "schema": {
         "title": {
           "type": "text",
@@ -4418,6 +4444,7 @@
     {
       "name": "title_text_cta_block",
       "display_name": "",
+      "updated_at": "2020-03-03T14:17:00.184Z",
       "schema": {
         "size": {
           "type": "option",
@@ -4601,6 +4628,7 @@
     {
       "name": "trustpilot_block",
       "display_name": null,
+      "updated_at": "2020-03-03T14:16:59.953Z",
       "schema": {
         "size": {
           "type": "option",
@@ -4682,6 +4710,7 @@
     {
       "name": "trustpilot_card_item",
       "display_name": null,
+      "updated_at": "2020-03-03T14:16:59.607Z",
       "schema": {
         "quote": {
           "type": "text",
@@ -4712,6 +4741,7 @@
     {
       "name": "trustpilot_rating_item",
       "display_name": null,
+      "updated_at": "2020-03-03T14:16:59.774Z",
       "schema": {
         "color": {
           "type": "custom",
