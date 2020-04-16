@@ -1,11 +1,6 @@
 import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import React from 'react'
-import {
-  CONTENT_GUTTER,
-  CONTENT_GUTTER_MOBILE,
-  MOBILE_BP_DOWN,
-} from '../../components/blockHelpers'
 import { TogglableState } from '../../components/containers/Togglable'
 import { HEADER_VERTICAL_PADDING, TOGGLE_TRANSITION_TIME } from './index'
 
@@ -67,12 +62,12 @@ const MiddleBurger = styled('div')<TogglableState>(({ isOpen, isClosing }) => ({
 
 export const NavToggle = styled('button')({
   display: 'block',
-  right: CONTENT_GUTTER,
   top: HEADER_VERTICAL_PADDING,
   appearance: 'none',
   background: 'transparent',
   border: '0',
   width: BURGER_LINE_WIDTH,
+  height: '2rem',
   padding: 0,
   zIndex: 102,
   color: 'inherit',
@@ -84,10 +79,6 @@ export const NavToggle = styled('button')({
   '&:focus': {
     outline: 'none',
     boxShadow: 'none',
-  },
-
-  [MOBILE_BP_DOWN]: {
-    right: CONTENT_GUTTER_MOBILE,
   },
 })
 
