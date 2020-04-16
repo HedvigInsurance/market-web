@@ -42,7 +42,6 @@ const Header = styled('div')`
   margin-bottom: 2rem;
 
   ${TABLET_BP_UP} {
-    width: 46%;
     margin-bottom: 4rem;
   }
 `
@@ -80,19 +79,7 @@ const DirectionButton = styled('button')`
 `
 
 const Content = styled('div')`
-  ${TABLET_BP_UP} {
-    display: flex;
-    justify-content: space-between;
-  }
-`
-const Column = styled('div')`
-  ${TABLET_BP_UP} {
-    width: 46%;
-
-    &:last-of-type {
-      width: 48%;
-    }
-  }
+  display: block;
 `
 
 const Description = styled.div`
@@ -104,27 +91,6 @@ const Description = styled.div`
   @media (max-width: 600px) {
     font-size: 1.125rem;
   }
-`
-const InfoBox = styled.div`
-  margin-bottom: 2.5rem;
-  padding: 3rem 2.5rem;
-  color: ${colorsV3.gray100};
-  border-radius: 8px;
-  background-color: ${colorsV3.gray900};
-
-  ${TABLET_BP_UP} {
-    margin-bottom: 0;
-  }
-`
-
-const InfoBoxTitle = styled.div`
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-`
-
-const InfoBoxBody = styled.div`
-  font-size: 0.875rem;
-  line-height: 1.45;
 `
 
 const CoverageWrapper = styled.div`
@@ -142,14 +108,6 @@ const CoverageWrapper = styled.div`
 const CoverageList = styled.div`
   width: 100%;
   margin-bottom: 2rem;
-
-  @media (min-width: 600px) {
-    width: 50%;
-  }
-
-  ${TABLET_BP_UP} {
-    width: 100%;
-  }
 `
 
 const CoverageListTitle = styled.div`
@@ -224,33 +182,20 @@ export const PerilModal: React.FC<PerilModalProps & ModalProps> = (props) => {
           </DirectionButton>
         </Header>
         <Content>
-          <Column>
-            <Description>{currentPeril.description}</Description>
-            {currentPeril.info && (
-              <InfoBox>
-                <InfoBoxTitle>
-                  {props.story?.content.peril_modal_info_title ?? 'Info'}
-                </InfoBoxTitle>
-                <InfoBoxBody>{currentPeril.info}</InfoBoxBody>
-              </InfoBox>
-            )}
-          </Column>
-          <Column>
-            <CoverageWrapper>
-              <CoverageList>
-                <CoverageListTitle>
-                  {props.story?.content.peril_modal_coverage_title ??
-                    'Coverage'}
-                </CoverageListTitle>
-                {currentPeril.covered.map((text) => (
-                  <CoverageListItem key={text}>
-                    <Cross size="0.75rem" />
-                    {text}
-                  </CoverageListItem>
-                ))}
-              </CoverageList>
-            </CoverageWrapper>
-          </Column>
+          <Description>{currentPeril.description}</Description>
+          <CoverageWrapper>
+            <CoverageList>
+              <CoverageListTitle>
+                {props.story?.content.peril_modal_coverage_title ?? 'Coverage'}
+              </CoverageListTitle>
+              {currentPeril.covered.map((text) => (
+                <CoverageListItem key={text}>
+                  <Cross size="0.75rem" />
+                  {text}
+                </CoverageListItem>
+              ))}
+            </CoverageList>
+          </CoverageWrapper>
         </Content>
       </ModalWrapper>
     </Modal>

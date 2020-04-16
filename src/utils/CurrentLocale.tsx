@@ -7,7 +7,7 @@ export enum Locale {
 
 export const getLocaleIsoCode = (locale: string): Locale => {
   switch (locale) {
-    case 'en':
+    case 'se-en':
       return Locale.EnSe
     case 'no':
       return Locale.NbNo
@@ -15,5 +15,18 @@ export const getLocaleIsoCode = (locale: string): Locale => {
       return Locale.EnNo
     default:
       return Locale.SvSe
+  }
+}
+
+export const getMarketLocale = (locale: string) => {
+  switch (locale) {
+    case 'se-en':
+      return 'SE/En'
+    case 'no':
+      return 'NO/No'
+    case 'no-en':
+      return 'NO/En'
+    default:
+      return 'SE/Sv'
   }
 }
