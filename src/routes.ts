@@ -115,7 +115,7 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   ],
   [
     '/en/terms/terms/tenant-student.pdf',
-    'https://cdn.hedvig.com/info/insurance-terms-student-tenant-2020-04.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-student-tenant-2020-04-v1.pdf',
     302,
   ],
   [
