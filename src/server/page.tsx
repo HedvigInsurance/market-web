@@ -119,7 +119,8 @@ export const getPageMiddleware = (
   const routerContext: StaticRouterContext & { statusCode?: number } = {}
   const helmetContext = {}
 
-  const lang = getLangFromPath(ctx.path) || 'se'
+  const langFromPath = getLangFromPath(ctx.path)
+  const lang = langFromPath || 'se'
 
   const [story, globalStory] = await Promise.all([
     getStoryblokResponseFromContext(ctx),
@@ -132,14 +133,20 @@ export const getPageMiddleware = (
     ),
   ])
 
+  // Redirect /* to /se/*
+  if (!langFromPath && !ctx.query._storyblok) {
+    ctx.redirect(`/se${ctx.originalUrl}`)
+    return
+  }
+
   // Redirect /sv/* to /se/*
-  if (getLangFromPath(ctx.path) === 'sv' && !ctx.query._storyblok) {
+  if (langFromPath === 'sv' && !ctx.query._storyblok) {
     ctx.redirect(ctx.originalUrl.replace(/^\/sv/, '/se'))
     return
   }
 
   // Redirect /en/* to /se-en/*
-  if (getLangFromPath(ctx.path) === 'en' && !ctx.query._storyblok) {
+  if (langFromPath === 'en' && !ctx.query._storyblok) {
     ctx.redirect(ctx.originalUrl.replace(/^\/en/, '/se-en'))
     return
   }
@@ -150,7 +157,7 @@ export const getPageMiddleware = (
   }
 
   // TODO: Remove after we go live
-  if (getLangFromPath(ctx.path) === 'sv' && !ctx.query._storyblok) {
+  if (langFromPath === 'sv' && !ctx.query._storyblok) {
     ctx.redirect(ctx.originalUrl.replace(/^\/sv/, ''))
     return
   }
