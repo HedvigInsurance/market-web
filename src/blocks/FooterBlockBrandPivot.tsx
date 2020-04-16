@@ -143,8 +143,10 @@ export const FooterBlockBrandPivot: React.FunctionComponent<FooterBlockProps> = 
                       <LinksColumnsWrapper>
                         <LinkColumn>
                           <ColumnHeader>
-                            {context.lang === 'sv'
+                            {context.lang === 'se'
                               ? 'Hemförsäkring'
+                              : context.lang === 'no'
+                              ? 'Forsikringar'
                               : 'Home insurance'}
                           </ColumnHeader>
                           {(globalStory.content.get_started ?? []).map(
@@ -159,9 +161,7 @@ export const FooterBlockBrandPivot: React.FunctionComponent<FooterBlockProps> = 
                           )}
                         </LinkColumn>
                         <LinkColumn>
-                          <ColumnHeader>
-                            {context.lang === 'sv' ? 'Hedvig' : 'Company'}
-                          </ColumnHeader>
+                          <ColumnHeader>{'Hedvig'}</ColumnHeader>
                           {(globalStory.content.company ?? []).map((link) => (
                             <Link
                               key={link._uid}
