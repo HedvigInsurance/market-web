@@ -42,8 +42,8 @@ interface ModalContainerProps {
 const ModalContainer = styled('div')<ModalContainerProps>`
   position: relative;
   width: 100%;
-  max-width: 62rem;
-  max-height: 100vh;
+  max-width: 33rem;
+  max-height: calc(100vh - 6rem);
   ${(props) =>
     !props.dynamicHeight &&
     `

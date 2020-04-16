@@ -13,7 +13,8 @@ export interface PerilIcon {
 
 export interface Peril {
   title: React.ReactNode
-  description: string
+  description?: string
+  shortDescription?: string
   covered: string[]
   exceptions: string[]
   info?: string
