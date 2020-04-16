@@ -4,7 +4,6 @@ import { HeaderTop } from 'blocks/HeaderBlockBrandPivot/HeaderTop'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
-import MediaQuery from 'react-responsive'
 import { AppLink } from '../../components/AppLink'
 import { ContentWrapper } from '../../components/blockHelpers'
 import {
@@ -138,6 +137,19 @@ const Menu = styled('ul')<{ open: boolean }>(({ open }) => ({
   },
 }))
 
+const DesktopLogo = styled('div')({
+  display: 'none',
+  [TABLET_BP_UP]: {
+    display: 'block',
+  },
+})
+
+const MobileLogo = styled('div')({
+  [TABLET_BP_UP]: {
+    display: 'none',
+  },
+})
+
 const LogoLink = styled('a')({
   display: 'inline-flex',
   color: 'inherit',
@@ -269,7 +281,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                       preventInverse={props.inverse_colors && isOpen}
                     />
 
-                    <MediaQuery query="(min-width: 1001px)">
+                    <DesktopLogo>
                       <ContextContainer>
                         {(context) => (
                           <LogoLink
@@ -281,10 +293,10 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                           </LogoLink>
                         )}
                       </ContextContainer>
-                    </MediaQuery>
+                    </DesktopLogo>
                   </LeftContainer>
 
-                  <MediaQuery query="(max-width: 1000px)">
+                  <MobileLogo>
                     <ContextContainer>
                       {(context) => (
                         <Wordmark
@@ -296,7 +308,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                         </Wordmark>
                       )}
                     </ContextContainer>
-                  </MediaQuery>
+                  </MobileLogo>
 
                   <Menu open={isOpen}>
                     {(props.story.content.header_menu_items ?? []).map(
