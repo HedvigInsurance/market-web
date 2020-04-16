@@ -107,7 +107,6 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Terms and conditions - students
   [
     '/villkor/villkor/hyresratt-student.pdf',
-    //  TODO: this doesn't exist yet
     'https://cdn.hedvig.com/info/forsakringsvillkor-student-hyresratt-2020-04.pdf',
     302,
   ],
@@ -118,7 +117,6 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   ],
   [
     '/villkor/villkor/bostadsratt-student.pdf',
-    //  TODO: this doesn't exist yet
     'https://cdn.hedvig.com/info/forsakringsvillkor-student-bostadsratt-2020-04.pdf',
     302,
   ],
@@ -166,7 +164,7 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   ],
   [
     '/en/terms/terms/house-owners.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-villa-2020-04.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-house-owners-2019-10.pdf',
     302,
   ],
 
