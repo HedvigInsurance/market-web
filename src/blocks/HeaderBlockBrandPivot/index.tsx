@@ -472,6 +472,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
             return (
               <ButtonLinkBrandPivot
                 styleType="filled"
+                size="sm"
                 fullWidth={true}
                 href={getStoryblokLinkUrl(
                   props.override_mobile_header_cta_link,
@@ -492,6 +493,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                 {({ link, handleClick }) => (
                   <ButtonLinkBrandPivot
                     styleType="filled"
+                    size="sm"
                     fullWidth={true}
                     color={stickyCtaColor}
                     onClick={handleClick}
@@ -506,6 +508,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
           return (
             <ButtonLinkBrandPivot
               styleType="filled"
+              size="sm"
               fullWidth={true}
               href={getStoryblokLinkUrl(props.story.content.cta_link)}
               color={stickyCtaColor}
