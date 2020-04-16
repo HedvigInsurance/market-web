@@ -278,7 +278,6 @@ interface SectionProps {
 const SectionWrapperComponentUnstyled = styled('section')<SectionProps>(
   ({ colorComponent = STANDARD_COLOR_COMPONENT, size = 'lg', brandPivot }) => ({
     position: 'relative',
-    overflowX: 'hidden',
     transition: 'background 300ms',
     fontFamily: brandPivot ? `${fonts.FAVORIT}, sans-serif` : undefined,
     ...getSectionSizeStyle(size),
