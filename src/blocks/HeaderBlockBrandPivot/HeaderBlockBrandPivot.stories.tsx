@@ -45,9 +45,9 @@ export const Default = () => (
 Default.story = {
   parameters: {
     backgrounds: [
-      { name: 'gray500', value: colorsV3.gray500, default: true },
-      { name: 'gray900', value: colorsV3.gray900 },
-      { name: 'white', value: colorsV3.gray100 },
+      { name: 'gray500', value: colorsV3.gray500 },
+      { name: 'gray900', value: colorsV3.gray900, default: true },
+      { name: 'white', value: colorsV3.white },
     ],
   },
 }
