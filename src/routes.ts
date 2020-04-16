@@ -65,22 +65,22 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Terms and conditions - hyresratt and bostadsratt
   [
     '/villkor/villkor/hyresratt.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-hyresratt-2019-01-v2.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-hyresratt-2020-04.pdf',
     302,
   ],
   [
     '/en/terms/terms/tenants.pdf',
-    'https://cdn.hedvig.com/info/insurance-terms-tenants-2019-05.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-tenants-2020-04.pdf',
     302,
   ],
   [
     '/villkor/villkor/bostadsratt.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-bostadsratt-2019-01-v2.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-bostadsratt-2020-04.pdf',
     302,
   ],
   [
     '/en/terms/terms/tenant-owners.pdf',
-    'https://cdn.hedvig.com/info/insurance-terms-tenant-owners-2019-05.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-tenant-owners-2020-04.pdf',
     302,
   ],
   [
@@ -95,34 +95,36 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   ],
   [
     '/villkor/forkopsinformation-eu/hyresratt.pdf',
-    'https://cdn.hedvig.com/info/forkopsinformation-hyresratt-eustandard.pdf',
+    'https://cdn.hedvig.com/info/forkopsinformation-hyresratt-eustandard-2020-04.pdf',
     302,
   ],
   [
     '/villkor/forkopsinformation-eu/bostadsratt.pdf',
-    'https://cdn.hedvig.com/info/forkopsinformation-bostadsratt-eustandard.pdf',
+    'https://cdn.hedvig.com/info/forkopsinformation-bostadsratt-eustandard-2020-04.pdf',
     302,
   ],
 
   // Terms and conditions - students
   [
     '/villkor/villkor/hyresratt-student.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-student-hyresratt-2019-01-v2.pdf',
+    //  TODO: this doesn't exist yet
+    'https://cdn.hedvig.com/info/forsakringsvillkor-student-hyresratt-2020-04.pdf',
     302,
   ],
   [
     '/en/terms/terms/tenant-student.pdf',
-    'https://cdn.hedvig.com/info/insurance-terms-student-tenant-2019-05.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-student-tenant-2020-04.pdf',
     302,
   ],
   [
     '/villkor/villkor/bostadsratt-student.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-student-bostadsratt-2019-01-v2.pdf',
+    //  TODO: this doesn't exist yet
+    'https://cdn.hedvig.com/info/forsakringsvillkor-student-bostadsratt-2020-04.pdf',
     302,
   ],
   [
     '/en/terms/terms/tenant-owner-student.pdf',
-    'https://cdn.hedvig.com/info/insurance-terms-student-tenant-owners-2019-05.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-student-tenant-owners-2020-04.pdf',
     302,
   ],
   [
@@ -137,19 +139,19 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   ],
   [
     '/villkor/forkopsinformation-eu/hyresratt-student.pdf',
-    'https://cdn.hedvig.com/info/forkopsinformation-student-hyresratt-eustandard.pdf',
+    'https://cdn.hedvig.com/info/forkopsinformation-student-hyresratt-eustandard-2020-04.pdf',
     302,
   ],
   [
     '/villkor/forkopsinformation-eu/bostadsratt-student.pdf',
-    'https://cdn.hedvig.com/info/forkopsinformation-student-bostadsratt-2018-eustandard.pdf',
+    'https://cdn.hedvig.com/info/forkopsinformation-student-bostadsratt-eustandard-2020-04.pdf',
     302,
   ],
 
   // Terms and conditions - house
   [
     '/villkor/villkor/hus-villa.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-villa-2019-10-v1.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-villa-2020-04.pdf',
     302,
   ],
   [
@@ -159,24 +161,24 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   ],
   [
     '/villkor/forkopsinformation-eu/hus-villa.pdf',
-    'https://cdn.hedvig.com/info/forskopsinfo-villa-eustandard-2019-10-v1.pdf',
+    'https://cdn.hedvig.com/info/forkopsinformation-villa-eustandard-2020-04.pdf',
     302,
   ],
   [
     '/en/terms/terms/house-owners.pdf',
-    'https://cdn.hedvig.com/info/insurance-terms-house-owners-2019-10.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-villa-2020-04.pdf',
     302,
   ],
 
   // Terms and conditions - norway - Home Content
   [
     '/no/villkar/villkar/innbo.pdf',
-    'https://cdn.hedvig.com/info/innbo-vilkar.pdf',
+    'https://cdn.hedvig.com/info/innbo-vilkar-2020-04.pdf',
     302,
   ],
   [
     '/no/villkar/generelle-villkar/innbo.pdf',
-    'https://cdn.hedvig.com/info/generelle-vilkar.pdf',
+    'https://cdn.hedvig.com/info/generelle-vilkar-2020-04.pdf',
     302,
   ],
   [
@@ -187,12 +189,12 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Awaiting english terms - so default to norwegian
   [
     '/no-en/terms/terms/home-content.pdf',
-    'https://cdn.hedvig.com/info/innbo-vilkar.pdf',
+    'https://cdn.hedvig.com/info/innbo-vilkar-2020-04.pdf',
     302,
   ],
   [
     '/no-en/terms/general-terms/home-content.pdf',
-    'https://cdn.hedvig.com/info/generelle-vilkar.pdf',
+    'https://cdn.hedvig.com/info/generelle-vilkar-2020-04.pdf',
     302,
   ],
   [
@@ -204,12 +206,12 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Travel
   [
     '/no/villkar/villkar/reise.pdf',
-    'https://cdn.hedvig.com/info/reise-vilkar.pdf',
+    'https://cdn.hedvig.com/info/reise-vilkar-2020-04.pdf',
     302,
   ],
   [
     '/no/villkar/generelle-villkar/reise.pdf',
-    'https://cdn.hedvig.com/info/generelle-vilkar.pdf',
+    'https://cdn.hedvig.com/info/generelle-vilkar-2020-04.pdf',
     302,
   ],
   [
@@ -220,12 +222,12 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Awaiting english terms - so default to norwegian
   [
     '/no-en/terms/terms/travel.pdf',
-    'https://cdn.hedvig.com/info/reise-vilkar.pdf',
+    'https://cdn.hedvig.com/info/reise-vilkar-2020-04.pdf',
     302,
   ],
   [
     '/no-en/terms/general-terms/travel.pdf',
-    'https://cdn.hedvig.com/info/generelle-vilkar.pdf',
+    'https://cdn.hedvig.com/info/generelle-vilkar-2020-04.pdf',
     302,
   ],
   [
