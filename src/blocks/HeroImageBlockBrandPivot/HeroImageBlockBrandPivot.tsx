@@ -14,8 +14,8 @@ import { getStoryblokImage, Image } from 'utils/storyblok'
 import {
   ContentWrapper,
   getMinimalColorStyles,
-  getSectionSizeStyle,
   MOBILE_BP_UP,
+  SectionWrapper,
   TABLET_BP_UP,
 } from '../../components/blockHelpers'
 
@@ -32,23 +32,25 @@ interface WrapperProps {
   colorComponent?: MinimalColorComponent
   backgroundImageMobile?: Image
   backgroundImage?: Image
-  fullScreen: boolean
+  dynamicHeight: boolean
 }
 
-const Wrapper = styled('div')<WrapperProps>(
-  ({ colorComponent, backgroundImageMobile, backgroundImage, fullScreen }) => ({
+const Wrapper = styled(SectionWrapper)<WrapperProps>(
+  ({
+    colorComponent,
+    backgroundImageMobile,
+    backgroundImage,
+    dynamicHeight,
+  }) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    minHeight: fullScreen ? '100vh' : '50vh',
+    minHeight: dynamicHeight ? '50vh' : '100vh',
     fontFamily: `${fonts.FAVORIT}, sans-serif`,
     color: getMinimalColorStyles(colorComponent?.color ?? 'standard').color,
-    backgroundColor: getMinimalColorStyles(colorComponent?.color ?? 'standard')
-      .background,
     backgroundImage: `url(${backgroundImageMobile})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    ...getSectionSizeStyle('lg'),
 
     [MOBILE_BP_UP]: {
       backgroundImage: `url(${backgroundImage})`,
@@ -125,7 +127,7 @@ export interface HeroImageBlockBrandPivotProps
   animate?: boolean
   show_hedvig_wordmark?: boolean
   use_display_font?: boolean
-  full_screen?: boolean
+  dynamic_height?: boolean
 }
 
 export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> = ({
@@ -142,8 +144,9 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
   image_mobile,
   use_display_font = false,
   show_hedvig_wordmark,
-  full_screen = true,
+  dynamic_height = false,
   text_position = 'center',
+  size,
 }) => {
   return (
     <WrapperWithExtraStyling
@@ -151,7 +154,8 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
       extraStyling={extra_styling}
       backgroundImage={getStoryblokImage(image)}
       backgroundImageMobile={getStoryblokImage(image_mobile)}
-      fullScreen={full_screen}
+      size={size}
+      dynamicHeight={dynamic_height}
     >
       <ContentWrapper index={index} brandPivot>
         <HeroHeadline
