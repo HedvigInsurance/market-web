@@ -33,6 +33,9 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   ['/en/student', '/en/hemforsakring/student', 301],
   ['/press', '/about-us', 301],
   ['/terms', '/villkor', 301],
+  ['/villkor', '/se/terms', 301],
+  ['/zero', '/se/forever', 301],
+  ['/en/zero', '/se-en/forever', 301],
   ['/student', '/hemforsakring/student', 301],
   [
     '/uploads/press-2018-09-19.pdf',
