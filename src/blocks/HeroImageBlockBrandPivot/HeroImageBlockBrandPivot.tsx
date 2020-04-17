@@ -6,11 +6,16 @@ import {
   MarkdownHtmlComponent,
   MinimalColorComponent,
 } from 'blocks/BaseBlockProps'
+import {
+  ButtonLinkBrandPivot,
+  ButtonStyleType,
+} from 'components/ButtonBrandPivot/Button'
 import { FontSizes, Heading } from 'components/Heading/Heading'
 import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
 import { TextPosition } from 'src/utils/textPosition'
-import { getStoryblokImage, Image } from 'utils/storyblok'
+import { GlobalStoryContainer } from 'storyblok/StoryContainer'
+import { getStoryblokImage, getStoryblokLinkUrl, Image } from 'utils/storyblok'
 import {
   ContentWrapper,
   getMinimalColorStyles,
@@ -114,6 +119,16 @@ const Wordmark = styled('div')({
   },
 })
 
+const ButtonWrapper = styled('div')({
+  display: 'flex',
+  justifyContent: 'center',
+  marginTop: '3rem',
+
+  ['@media (min-width: 1001px)']: {
+    display: 'none',
+  },
+})
+
 export interface HeroImageBlockBrandPivotProps
   extends BrandPivotBaseBlockProps {
   headline: string
@@ -128,6 +143,9 @@ export interface HeroImageBlockBrandPivotProps
   show_hedvig_wordmark?: boolean
   use_display_font?: boolean
   dynamic_height?: boolean
+  show_cta_mobile?: boolean
+  cta_mobile_color?: MinimalColorComponent
+  cta_mobile_style?: ButtonStyleType
 }
 
 export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> = ({
@@ -147,39 +165,57 @@ export const HeroImageBlockBrandPivot: React.FC<HeroImageBlockBrandPivotProps> =
   dynamic_height = false,
   text_position = 'center',
   size,
+  show_cta_mobile,
+  cta_mobile_color,
+  cta_mobile_style,
 }) => {
   return (
-    <WrapperWithExtraStyling
-      colorComponent={color}
-      extraStyling={extra_styling}
-      backgroundImage={getStoryblokImage(image)}
-      backgroundImageMobile={getStoryblokImage(image_mobile)}
-      size={size}
-      dynamicHeight={dynamic_height}
-    >
-      <ContentWrapper index={index} brandPivot>
-        <HeroHeadline
-          as="h1"
-          animate={animate}
-          size={headline_font_size}
-          mobileSize={headline_font_size_mobile}
-          textPosition={text_position}
-          useDisplayFont={use_display_font}
+    <GlobalStoryContainer>
+      {({ globalStory }) => (
+        <WrapperWithExtraStyling
+          colorComponent={color}
+          extraStyling={extra_styling}
+          backgroundImage={getStoryblokImage(image)}
+          backgroundImageMobile={getStoryblokImage(image_mobile)}
+          size={size}
+          dynamicHeight={dynamic_height}
         >
-          {headline}
-          {show_hedvig_wordmark && (
-            <Wordmark>
-              <HedvigH />
-            </Wordmark>
-          )}
-        </HeroHeadline>
-        <Text
-          dangerouslySetInnerHTML={{ __html: text?.html }}
-          animate={animate}
-          colorComponent={text_color}
-          textPosition={text_position}
-        />
-      </ContentWrapper>
-    </WrapperWithExtraStyling>
+          <ContentWrapper index={index} brandPivot>
+            <HeroHeadline
+              as="h1"
+              animate={animate}
+              size={headline_font_size}
+              mobileSize={headline_font_size_mobile}
+              textPosition={text_position}
+              useDisplayFont={use_display_font}
+            >
+              {headline}
+              {show_hedvig_wordmark && (
+                <Wordmark>
+                  <HedvigH />
+                </Wordmark>
+              )}
+            </HeroHeadline>
+            <Text
+              dangerouslySetInnerHTML={{ __html: text?.html }}
+              animate={animate}
+              colorComponent={text_color}
+              textPosition={text_position}
+            />
+            {show_cta_mobile && (
+              <ButtonWrapper>
+                <ButtonLinkBrandPivot
+                  color={cta_mobile_color?.color}
+                  styleType={cta_mobile_style}
+                  href={getStoryblokLinkUrl(globalStory.content.cta_link)}
+                >
+                  {globalStory.content.cta_label}
+                </ButtonLinkBrandPivot>
+              </ButtonWrapper>
+            )}
+          </ContentWrapper>
+        </WrapperWithExtraStyling>
+      )}
+    </GlobalStoryContainer>
   )
 }
