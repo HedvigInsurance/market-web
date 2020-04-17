@@ -146,7 +146,7 @@ export const FooterBlockBrandPivot: React.FunctionComponent<FooterBlockProps> = 
                             {context.lang === 'se'
                               ? 'Hemförsäkring'
                               : context.lang === 'no'
-                              ? 'Forsikringar'
+                              ? 'Forsikringer'
                               : 'Home insurance'}
                           </ColumnHeader>
                           {(globalStory.content.get_started ?? []).map(
