@@ -1761,63 +1761,16 @@
     {
       "name": "hero_image_block_brand_pivot",
       "display_name": null,
-      "updated_at": "2020-04-16T12:09:49.151Z",
+      "updated_at": "2020-04-17T10:04:53.730Z",
       "schema": {
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-minimal-color-picker",
-          "options": [],
-          "pos": 0
-        },
-        "extra_styling": {
-          "type": "textarea",
-          "pos": 1
-        },
-        "animate": {
-          "type": "boolean",
-          "pos": 2
-        },
-        "dynamic_height": {
-          "type": "boolean",
-          "pos": 3,
-          "description": "For size option to have any effect you need to tick this box"
-        },
-        "size": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "value": "none",
-              "name": "None"
-            },
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "lg",
-              "name": "LG"
-            },
-            {
-              "value": "xl",
-              "name": "XL"
-            }
-          ],
-          "display_name": "",
-          "default_value": "none",
-          "pos": 4
-        },
         "background_image": {
           "type": "section",
-          "keys": [
-            "image",
-            "image_mobile"
-          ],
-          "pos": 5
+          "keys": ["image", "image_mobile"],
+          "pos": 0
         },
         "image": {
           "type": "image",
-          "pos": 6,
+          "pos": 1,
           "image_crop": false,
           "keep_image_size": true,
           "image_width": "2000",
@@ -1825,7 +1778,7 @@
         },
         "image_mobile": {
           "type": "image",
-          "pos": 7
+          "pos": 2
         },
         "text_position": {
           "type": "option",
@@ -1845,7 +1798,7 @@
             }
           ],
           "default_value": "center",
-          "pos": 8,
+          "pos": 3,
           "display_name": "",
           "description": "Text alignment for headline and body"
         },
@@ -1858,16 +1811,16 @@
             "use_display_font",
             "show_hedvig_wordmark"
           ],
-          "pos": 9,
+          "pos": 4,
           "display_name": "Headline"
         },
         "headline": {
           "type": "text",
-          "pos": 10
+          "pos": 5
         },
         "headline_font_size": {
           "type": "option",
-          "pos": 11,
+          "pos": 6,
           "use_uuid": true,
           "options": [
             {
@@ -1896,7 +1849,7 @@
         },
         "headline_font_size_mobile": {
           "type": "option",
-          "pos": 12,
+          "pos": 7,
           "use_uuid": true,
           "options": [
             {
@@ -1925,36 +1878,110 @@
         },
         "use_display_font": {
           "type": "boolean",
-          "pos": 13,
-          "keys": [
-            "headline",
-            "show_hedvig_wordmark"
-          ],
+          "pos": 8,
+          "keys": ["headline", "show_hedvig_wordmark"],
           "description": ""
         },
         "show_hedvig_wordmark": {
           "type": "boolean",
-          "pos": 14
+          "pos": 9
         },
         "body": {
           "type": "section",
-          "pos": 15,
-          "keys": [
-            "text",
-            "text_color"
-          ]
+          "pos": 10,
+          "keys": ["text", "text_color"]
         },
         "text": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 16
+          "pos": 11
         },
         "text_color": {
           "type": "custom",
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
+          "pos": 12
+        },
+        "cta": {
+          "type": "section",
+          "pos": 13,
+          "keys": ["show_cta_mobile", "cta_mobile_color", "cta_mobile_style"]
+        },
+        "show_cta_mobile": {
+          "type": "boolean",
+          "pos": 14
+        },
+        "cta_mobile_color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 15
+        },
+        "cta_mobile_style": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "filled",
+              "name": "Filled"
+            },
+            {
+              "value": "outlined",
+              "name": "Outlined"
+            },
+            {
+              "value": "plain",
+              "name": "Plain"
+            }
+          ],
+          "pos": 16,
+          "description": "",
+          "default_value": "outlined"
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
           "pos": 17
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 18
+        },
+        "animate": {
+          "type": "boolean",
+          "pos": 19
+        },
+        "dynamic_height": {
+          "type": "boolean",
+          "pos": 20,
+          "description": "For size option to have any effect you need to tick this box"
+        },
+        "size": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "none",
+              "name": "None"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "display_name": "",
+          "default_value": "none",
+          "pos": 21
         },
         "tab-e69e2291-e9ec-4a70-92ec-2a64959f84de": {
           "type": "tab",
@@ -1967,7 +1994,7 @@
             "full_screen",
             "dynamic_height"
           ],
-          "pos": 18
+          "pos": 22
         }
       },
       "image": null,
