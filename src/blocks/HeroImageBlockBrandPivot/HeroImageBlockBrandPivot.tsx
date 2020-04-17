@@ -48,12 +48,12 @@ const Wrapper = styled(SectionWrapper)<WrapperProps>(
     minHeight: dynamicHeight ? '50vh' : '100vh',
     fontFamily: `${fonts.FAVORIT}, sans-serif`,
     color: getMinimalColorStyles(colorComponent?.color ?? 'standard').color,
-    backgroundImage: `url(${backgroundImageMobile})`,
+    backgroundImage: backgroundImage ? `url(${backgroundImageMobile})` : '',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
 
     [MOBILE_BP_UP]: {
-      backgroundImage: `url(${backgroundImage})`,
+      backgroundImage: backgroundImage ? `url(${backgroundImageMobile})` : '',
     },
   }),
 )
