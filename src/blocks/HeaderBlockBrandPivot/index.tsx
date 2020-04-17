@@ -25,7 +25,6 @@ import {
 } from '../BaseBlockProps'
 import { MenuItem } from './MenuItem'
 import { Burger, TABLET_BP_DOWN, TABLET_BP_UP } from './mobile'
-import { StickyBottomCta } from './StickyBottomCta'
 
 export const HEADER_TOP_HEIGHT = '2.5rem'
 export const HEADER_MAIN_HEIGHT = '6rem'
@@ -460,64 +459,6 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
           )}
         </Togglable>
       </HeaderWrapper>
-
-      <StickyBottomCta isVisible>
-        {(() => {
-          const mobileCtaLabel =
-            props.override_mobile_header_cta_label ||
-            props.story.content.cta_label
-          const stickyCtaColor = 'standard'
-
-          if (props.override_mobile_header_cta_link?.cached_url) {
-            return (
-              <ButtonLinkBrandPivot
-                styleType="filled"
-                size="sm"
-                fullWidth={true}
-                href={getStoryblokLinkUrl(
-                  props.override_mobile_header_cta_link,
-                )}
-                color={stickyCtaColor}
-              >
-                {mobileCtaLabel}
-              </ButtonLinkBrandPivot>
-            )
-          }
-
-          if (
-            props.story.content.show_cta &&
-            props.story.content.cta_branch_link
-          ) {
-            return (
-              <AppLink>
-                {({ link, handleClick }) => (
-                  <ButtonLinkBrandPivot
-                    styleType="filled"
-                    size="sm"
-                    fullWidth={true}
-                    color={stickyCtaColor}
-                    onClick={handleClick}
-                    href={link}
-                  >
-                    {mobileCtaLabel}
-                  </ButtonLinkBrandPivot>
-                )}
-              </AppLink>
-            )
-          }
-          return (
-            <ButtonLinkBrandPivot
-              styleType="filled"
-              size="sm"
-              fullWidth={true}
-              href={getStoryblokLinkUrl(props.story.content.cta_link)}
-              color={stickyCtaColor}
-            >
-              {mobileCtaLabel}
-            </ButtonLinkBrandPivot>
-          )
-        })()}
-      </StickyBottomCta>
     </>
   )
 }
