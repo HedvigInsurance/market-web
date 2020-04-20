@@ -14,9 +14,10 @@ export interface SeoContent {
 }
 
 export interface HrefLang {
-  hreflang_sv?: LinkComponent
-  hreflang_en?: LinkComponent
-  hreflang_no?: LinkComponent
+  hreflang_sv_se?: LinkComponent
+  hreflang_en_se?: LinkComponent
+  hreflang_no_no?: LinkComponent
+  hreflang_en_no?: LinkComponent
 }
 
 export interface Story {
