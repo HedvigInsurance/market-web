@@ -29,8 +29,8 @@ const getPageTitleFromStory = (story?: Story) => {
 }
 
 const getHreflangUrl = (link: LinkComponent) => {
-  const hreflang = getStoryblokLinkUrl(link)
-  return `${link.linktype === 'story' ? getPublicHost() : ''}${hreflang}`
+  const hreflangUrl = getStoryblokLinkUrl(link)
+  return `${link.linktype === 'story' ? getPublicHost() : ''}${hreflangUrl}`
 }
 
 export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
@@ -75,25 +75,33 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
       rel="canonical"
       href={`${getPublicHost()}${fullSlug || getFullSlugFromStory(story)}`}
     />
-    {story && story.content.hreflang_sv && (
+    {story && story.content.hreflang_sv_se?.cached_url && (
       <link
         rel="alternate"
-        hrefLang="sv"
-        href={getHreflangUrl(story.content.hreflang_sv)}
+        hrefLang="sv-se"
+        href={getHreflangUrl(story.content.hreflang_sv_se)}
       />
     )}
-    {story && story.content.hreflang_en && (
+    {story && story.content.hreflang_en_se?.cached_url && (
       <link
         rel="alternate"
-        hrefLang="en"
-        href={getHreflangUrl(story.content.hreflang_en)}
+        hrefLang="en-se"
+        href={getHreflangUrl(story.content.hreflang_en_se)}
       />
     )}
-    {story && story.content.hreflang_no && (
+    {story && story.content.hreflang_no_no?.cached_url && (
       <link
         rel="alternate"
-        hrefLang="no"
-        href={getHreflangUrl(story.content.hreflang_no)}
+        hrefLang="no-no"
+        href={getHreflangUrl(story.content.hreflang_no_no)}
+      />
+    )}
+
+    {story && story.content.hreflang_en_no?.cached_url && (
+      <link
+        rel="alternate"
+        hrefLang="en-no"
+        href={getHreflangUrl(story.content.hreflang_en_no)}
       />
     )}
     {story && story.content.robots && (
