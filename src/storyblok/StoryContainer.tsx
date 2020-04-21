@@ -20,6 +20,16 @@ export interface HrefLang {
   hreflang_en_no?: LinkComponent
 }
 
+export interface Alternate {
+  full_slug: string
+  id: string
+  is_folder: boolean
+  name: string
+  parent_id: string
+  published: boolean
+  slug: string
+}
+
 export interface Story {
   name: string
   created_at: string
@@ -31,6 +41,7 @@ export interface Story {
   full_slug: string
   tag_list?: ReadonlyArray<string>
   lang?: string
+  alternates?: ReadonlyArray<Alternate>
 
   content: {
     _uid: string

@@ -1,15 +1,7 @@
 import React from 'react'
-import {
-  HrefLang,
-  LinkComponent,
-  SeoContent,
-  Story,
-} from '../storyblok/StoryContainer'
-import {
-  getPublicHost,
-  getStoryblokImage,
-  getStoryblokLinkUrl,
-} from './storyblok'
+import { HrefLang, SeoContent, Story } from '../storyblok/StoryContainer'
+import { getHreflangIsoCode } from './CurrentLocale'
+import { getPublicHost, getStoryblokImage } from './storyblok'
 
 interface Meta {
   story?: Story & { content: SeoContent & HrefLang }
@@ -28,9 +20,9 @@ const getPageTitleFromStory = (story?: Story) => {
   return story.content.page_title || story.name
 }
 
-const getHreflangUrl = (link: LinkComponent) => {
-  const hreflangUrl = getStoryblokLinkUrl(link)
-  return `${link.linktype === 'story' ? getPublicHost() : ''}${hreflangUrl}`
+const getAlternateLang = (fullSlug: string) => {
+  const lang = fullSlug.substring(0, fullSlug.indexOf('/'))
+  return getHreflangIsoCode(lang)
 }
 
 export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
@@ -75,35 +67,25 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
       rel="canonical"
       href={`${getPublicHost()}/${fullSlug || getFullSlugFromStory(story)}`}
     />
-    {story && story.content.hreflang_sv_se?.cached_url && (
-      <link
-        rel="alternate"
-        hrefLang="sv-se"
-        href={getHreflangUrl(story.content.hreflang_sv_se)}
-      />
-    )}
-    {story && story.content.hreflang_en_se?.cached_url && (
-      <link
-        rel="alternate"
-        hrefLang="en-se"
-        href={getHreflangUrl(story.content.hreflang_en_se)}
-      />
-    )}
-    {story && story.content.hreflang_no_no?.cached_url && (
-      <link
-        rel="alternate"
-        hrefLang="no-no"
-        href={getHreflangUrl(story.content.hreflang_no_no)}
-      />
-    )}
 
-    {story && story.content.hreflang_en_no?.cached_url && (
+    {story && story.alternates?.length && (
       <link
         rel="alternate"
-        hrefLang="en-no"
-        href={getHreflangUrl(story.content.hreflang_en_no)}
+        hrefLang={getAlternateLang(story.full_slug)}
+        href={`${getPublicHost()}/${fullSlug || getFullSlugFromStory(story)}`}
       />
     )}
+    {story &&
+      story.alternates?.map(
+        (alternate) =>
+          alternate.published && (
+            <link
+              rel="alternate"
+              hrefLang={getAlternateLang(alternate.full_slug)}
+              href={`${getPublicHost()}/${alternate.full_slug}`}
+            />
+          ),
+      )}
     {story && story.content.robots && (
       <meta
         name="robots"
