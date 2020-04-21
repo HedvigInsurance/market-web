@@ -73,7 +73,7 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
     <title>{title ? title : getPageTitleFromStory(story)}</title>
     <link
       rel="canonical"
-      href={`${getPublicHost()}${fullSlug || getFullSlugFromStory(story)}`}
+      href={`${getPublicHost()}/${fullSlug || getFullSlugFromStory(story)}`}
     />
     {story && story.content.hreflang_sv_se?.cached_url && (
       <link
