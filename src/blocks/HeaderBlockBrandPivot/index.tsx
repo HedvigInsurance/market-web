@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colorsV3, fonts } from '@hedviginsurance/brand'
+import { colorsV3 } from '@hedviginsurance/brand'
 import { HeaderTop } from 'blocks/HeaderBlockBrandPivot/HeaderTop'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import { HedvigH } from 'components/icons/HedvigH'
@@ -61,7 +61,6 @@ const HeaderMain = styled('div')<{
   height: HEADER_MAIN_HEIGHT,
   zIndex: 100,
   color: inverse ? colorsV3.gray100 : colorsV3.gray900,
-  fontFamily: fonts.FAVORIT,
   transition: 'color 300ms',
 
   [TABLET_BP_DOWN]: {
