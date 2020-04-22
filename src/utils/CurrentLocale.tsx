@@ -5,6 +5,13 @@ export enum Locale {
   EnNo = 'en_NO',
 }
 
+export enum HreflangLocale {
+  SvSe = 'sv-se',
+  EnSe = 'en-se',
+  NoNo = 'no-no',
+  EnNo = 'en-no',
+}
+
 export const getLocaleIsoCode = (locale: string): Locale => {
   switch (locale) {
     case 'se-en':
@@ -28,5 +35,18 @@ export const getMarketLocale = (locale: string) => {
       return 'NO/En'
     default:
       return 'SE/Sv'
+  }
+}
+
+export const getHreflangIsoCode = (locale: string) => {
+  switch (locale) {
+    case 'se-en':
+      return HreflangLocale.EnSe
+    case 'no':
+      return HreflangLocale.NoNo
+    case 'no-en':
+      return HreflangLocale.EnNo
+    default:
+      return HreflangLocale.SvSe
   }
 }

@@ -13,6 +13,23 @@ export interface SeoContent {
   seo_meta_og_image: Image
 }
 
+export interface HrefLang {
+  hreflang_sv_se?: LinkComponent
+  hreflang_en_se?: LinkComponent
+  hreflang_no_no?: LinkComponent
+  hreflang_en_no?: LinkComponent
+}
+
+export interface Alternate {
+  full_slug: string
+  id: string
+  is_folder: boolean
+  name: string
+  parent_id: string
+  published: boolean
+  slug: string
+}
+
 export interface Story {
   name: string
   created_at: string
@@ -24,6 +41,7 @@ export interface Story {
   full_slug: string
   tag_list?: ReadonlyArray<string>
   lang?: string
+  alternates?: ReadonlyArray<Alternate>
 
   content: {
     _uid: string
@@ -33,13 +51,14 @@ export interface Story {
 }
 
 export interface BodyStory extends Story {
-  content: SeoContent & {
-    _uid: string
-    page_title: string
-    public: boolean
-    component: 'page'
-    body: ReadonlyArray<BaseBlockProps>
-  }
+  content: SeoContent &
+    HrefLang & {
+      _uid: string
+      page_title: string
+      public: boolean
+      component: 'page'
+      body: ReadonlyArray<BaseBlockProps>
+    }
 }
 
 export interface WithStory<TStoryType extends Story> {
