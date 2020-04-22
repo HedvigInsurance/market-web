@@ -72,7 +72,7 @@ export const CookieConsent: React.FC = () => {
     }
   }, [Cookies.get()?._hvcookie])
 
-  if (!isVisible && !isClosing) {
+  if (!isVisible) {
     return null
   }
 
