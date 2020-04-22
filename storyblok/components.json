@@ -3427,6 +3427,7 @@
     {
       "name": "page",
       "display_name": "",
+      "updated_at": "2020-04-22T07:22:26.992Z",
       "schema": {
         "page_title": {
           "type": "text",
@@ -3501,22 +3502,6 @@
           "type": "image",
           "pos": 9,
           "display_name": "SEO Meta og:image"
-        },
-        "hreflang_en": {
-          "type": "multilink",
-          "link_scope": "en/"
-        },
-        "hreflang_sv": {
-          "type": "multilink",
-          "link_scope": "sv/"
-        },
-        "hreflang_no": {
-          "type": "multilink",
-          "link_scope": "no/"
-        },
-        "Hreflang": {
-          "type": "section",
-          "keys": ["hreflang_en", "hreflang_sv", "hreflang_no"]
         }
       },
       "image": null,
