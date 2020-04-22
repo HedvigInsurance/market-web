@@ -1,6 +1,3 @@
-import { min as createMinifiedSegmentSnippet } from '@segment/snippet'
-import { config } from '../config'
-
 const snap = `
  (function(win, doc, sdk_url){
     if(win.snaptr) return;
@@ -18,17 +15,43 @@ const snap = `
     snaptr('init','2615a7c0-d8e9-4ae6-9914-814a1017010d')
     snaptr('track','PAGE_VIEW')
 `
-const branch = `
-(function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent logEvent disableTracking".split(" "), 0);
-branch.init(${JSON.stringify(config.branchApiKey)});
+
+export const allTracking = (nonce: string) => `
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113416531-1"></script>
+<script nonce="${nonce}">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-113416531-1');
+</script>
+
+<!-- Hotjar Tracking Code for https://www.hedvig.com/new-member -->
+<script nonce="${nonce}">
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:1068935,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        .nonce='${nonce}'
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+<script nonce="${nonce}">
+${[snap].join(';\n')}
+</script>
+
+
+<script nonce="${nonce}">
+  window.intercomSettings = {
+    app_id: "ziqa7goa"
+  };
+</script>
+<script nonce="${nonce}">
+window.setTimeout(() => {
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/ziqa7goa';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+}, 10000);
+</script>
 `
-
-const segmentSnippet = config.segmentApiKey
-  ? createMinifiedSegmentSnippet({
-      apiKey: config.segmentApiKey,
-      page: true,
-      load: true,
-    })
-  : ''
-
-export const allTracking = [snap, branch, segmentSnippet].join(';\n')
