@@ -3427,6 +3427,7 @@
     {
       "name": "page",
       "display_name": "",
+      "updated_at": "2020-04-22T07:22:26.992Z",
       "schema": {
         "page_title": {
           "type": "text",
