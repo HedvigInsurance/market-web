@@ -1,6 +1,5 @@
 import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
-import { fonts } from '@hedviginsurance/brand'
 import {
   BrandPivotBaseBlockProps,
   MarkdownHtmlComponent,
@@ -51,7 +50,6 @@ const Wrapper = styled(SectionWrapper)<WrapperProps>(
     flexDirection: 'column',
     justifyContent: 'center',
     minHeight: dynamicHeight ? '50vh' : '100vh',
-    fontFamily: `${fonts.FAVORIT}, sans-serif`,
     color: getMinimalColorStyles(colorComponent?.color ?? 'standard').color,
     backgroundImage: backgroundImage ? `url(${backgroundImageMobile})` : '',
     backgroundSize: 'cover',
@@ -78,7 +76,6 @@ const HeroHeadline = styled(Heading)<Animatable>(({ animate }) => ({
   opacity: animate ? 0 : 1,
   animationDelay: '400ms',
   marginBottom: '3.5rem',
-  fontFamily: fonts.FAVORIT,
 }))
 
 const Text = styled('div')<TextProps>(
