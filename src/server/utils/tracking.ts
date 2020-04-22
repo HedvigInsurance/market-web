@@ -20,12 +20,12 @@ const snap = `
 `
 
 const segmentSnippet = config.segmentApiKey
-    ? createMinifiedSegmentSnippet({
-        apiKey: config.segmentApiKey,
-        page: true,
-        load: true,
+  ? createMinifiedSegmentSnippet({
+      apiKey: config.segmentApiKey,
+      page: true,
+      load: true,
     })
-    : ''
+  : ''
 
 export const allTracking = (nonce: string) => `
 <!-- Global site tag (gtag.js) - Google Analytics -->
