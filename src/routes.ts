@@ -78,7 +78,7 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   ],
   [
     '/villkor/villkor/bostadsratt.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-bostadsratt-2020-04.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-bostadsratt-2020-04-v1.pdf',
     302,
   ],
   [
@@ -120,7 +120,7 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   ],
   [
     '/villkor/villkor/bostadsratt-student.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-student-bostadsratt-2020-04-v1.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-student-bostadsratt-2020-04.pdf',
     302,
   ],
   [
