@@ -42,20 +42,20 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
     "@context": "http://schema.org",
     "@type": "Organization",
     "url": "https://www.hedvig.com",
-    "logo": "https://www.hedvig.com/assets/identity/hedvig-wordmark-color@2x.png",
+    "logo": "https://www.hedvig.com/assets-next/favicons-bp/apple-icon.png",
     "name": "Hedvig",
-    "description": "Hedvig är en ny typ av försäkring. Byggd på smart teknik, omtanke och sunt förnuft. Så att du kan få hjälp på sekunder, och ersättning på minuter.",
+    "description": "Med Hedvig Hemförsäkring får du allt du förväntar dig av en försäkring, men inget du förväntar dig av ett försäkringsbolag",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Artillerigatan 10",
+      "streetAddress": "Valhallavägen 117",
       "addressLocality": "Stockholm",
-      "postalCode": "11451",
+      "postalCode": "115 31",
       "addressCountry": "SE"
     },
     "sameAs": [
       "https://www.fb.me/hedvigapp/",
       "https://twitter.com/hedvigapp",
-      "https://www.instagram.com/hedvig.app/",
+      "https://www.instagram.com/hedvig/",
       "https://www.linkedin.com/company/hedvig/"
     ]
   }
