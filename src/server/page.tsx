@@ -57,7 +57,8 @@ const template = ({
     ${helmet.meta}
     ${helmet.style}
     ${helmet.script}
-    <script nonce="${nonce}">${allTracking}</script>
+    
+    ${allTracking(nonce)}
     ${favicons}
     <script src="https://browser.sentry-cdn.com/4.2.3/bundle.min.js" crossorigin="anonymous"></script>
     <script nonce="${nonce}">
