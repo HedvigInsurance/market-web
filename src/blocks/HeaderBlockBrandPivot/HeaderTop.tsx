@@ -2,7 +2,6 @@ import styled from '@emotion/styled'
 import { colorsV3, fonts } from '@hedviginsurance/brand'
 import { MOBILE_BP_UP, SITE_MAX_WIDTH } from 'components/blockHelpers'
 import { ContextContainer } from 'components/containers/ContextContainer'
-import { Chat } from 'components/icons/Chat'
 import { Cross } from 'components/icons/Cross'
 import { Norway } from 'components/icons/flags/Norway'
 import { Sweden } from 'components/icons/flags/Sweden'
@@ -47,20 +46,6 @@ const Content = styled.div`
   ${TABLET_BP_UP} {
     flex-direction: row-reverse;
     justify-content: flex-start;
-  }
-`
-
-const ContactLink = styled.a`
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-
-  ${TABLET_BP_UP} {
-    margin-right: 4rem;
-  }
-
-  svg {
-    margin-right: 0.5rem;
   }
 `
 
@@ -267,10 +252,6 @@ export const HeaderTop: React.FC<HeaderTopProps> = ({
                 </CloseButton>
               </MarketPickerWrapper>
             </MarketPicker>
-            <ContactLink href={`/${context.lang}/contact`}>
-              <Chat size="1.5rem" />
-              Kontakt
-            </ContactLink>
           </Content>
         </Wrapper>
       )}
