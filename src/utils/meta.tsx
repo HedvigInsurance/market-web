@@ -1,9 +1,10 @@
 import React from 'react'
-import { SeoContent, Story } from '../storyblok/StoryContainer'
+import { HrefLang, SeoContent, Story } from '../storyblok/StoryContainer'
+import { getHreflangIsoCode } from './CurrentLocale'
 import { getPublicHost, getStoryblokImage } from './storyblok'
 
 interface Meta {
-  story?: Story & { content: SeoContent }
+  story?: Story & { content: SeoContent & HrefLang }
   nonce?: string
   fullSlug?: string
   title?: string
@@ -17,6 +18,11 @@ const getPageTitleFromStory = (story?: Story) => {
     return ''
   }
   return story.content.page_title || story.name
+}
+
+const getAlternateLang = (fullSlug: string) => {
+  const lang = fullSlug.substring(0, fullSlug.indexOf('/'))
+  return getHreflangIsoCode(lang)
 }
 
 export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
@@ -59,8 +65,27 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
     <title>{title ? title : getPageTitleFromStory(story)}</title>
     <link
       rel="canonical"
-      href={`${getPublicHost()}${fullSlug || getFullSlugFromStory(story)}`}
+      href={`${getPublicHost()}/${fullSlug || getFullSlugFromStory(story)}`}
     />
+
+    {story && story.alternates?.length && (
+      <link
+        rel="alternate"
+        hrefLang={getAlternateLang(story.full_slug)}
+        href={`${getPublicHost()}/${fullSlug || getFullSlugFromStory(story)}`}
+      />
+    )}
+    {story &&
+      story.alternates?.map(
+        (alternate) =>
+          alternate.published && (
+            <link
+              rel="alternate"
+              hrefLang={getAlternateLang(alternate.full_slug)}
+              href={`${getPublicHost()}/${alternate.full_slug}`}
+            />
+          ),
+      )}
     {story && story.content.robots && (
       <meta
         name="robots"
