@@ -16,6 +16,8 @@ export const globalStyles = css`
     padding: 0;
     color: ${colorsV3.gray900};
     background-color: ${colorsV3.gray100};
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1,
