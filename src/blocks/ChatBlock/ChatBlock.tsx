@@ -46,11 +46,11 @@ const ChatItem = styled.div<{ visible: boolean }>`
   }
 
   ${MOBILE_BP_UP} {
-    max-width: 60%;
+    font-size: 1.25rem;
   }
 
   ${TABLET_BP_UP} {
-    max-width: 49%;
+    max-width: 70%;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
     padding: 1.5rem;
@@ -72,7 +72,7 @@ const ChatItem = styled.div<{ visible: boolean }>`
     margin-top: 2rem;
     margin-bottom: 2rem;
     padding: 2.25rem;
-    font-size: 2.25rem;
+    font-size: 2rem;
     line-height: 1.25;
     border-radius: 1.5rem;
   }
@@ -85,7 +85,7 @@ export const ChatBlock: React.FC<ChatBlockProps> = ({
 }) => {
   return (
     <SectionWrapper brandPivot colorComponent={color} size={size}>
-      <ContentWrapper brandPivot fullWidth>
+      <ContentWrapper brandPivot>
         <ChatItems>
           {messages.map((message) => (
             <ReactVisibilitySensor
