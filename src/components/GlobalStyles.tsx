@@ -15,6 +15,7 @@ export const globalStyles = css`
     margin: 0;
     padding: 0;
     color: ${colorsV3.gray900};
+    background-color: ${colorsV3.gray100};
   }
 
   h1,
