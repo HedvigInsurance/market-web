@@ -72,7 +72,7 @@ const fadeSlideIn = keyframes({
 
 const HeroHeadline = styled(Heading)<Animatable>(({ animate }) => ({
   position: 'relative',
-  animation: animate ? `${fadeSlideIn} 1000ms forwards` : 'none',
+  animation: animate ? `${fadeSlideIn} 800ms forwards` : 'none',
   opacity: animate ? 0 : 1,
   animationDelay: '400ms',
   marginBottom: '3.5rem',
@@ -80,9 +80,9 @@ const HeroHeadline = styled(Heading)<Animatable>(({ animate }) => ({
 
 const Text = styled('div')<TextProps>(
   ({ animate, colorComponent, textPosition }) => ({
-    animation: animate ? `${fadeSlideIn} 1000ms forwards` : 'none',
+    animation: animate ? `${fadeSlideIn} 800ms forwards` : 'none',
     opacity: animate ? 0 : 1,
-    animationDelay: '700ms',
+    animationDelay: '600ms',
     maxWidth: '40rem',
     marginLeft: textPosition === 'left' ? '0' : 'auto',
     marginRight: textPosition === 'right' ? '0' : 'auto',
