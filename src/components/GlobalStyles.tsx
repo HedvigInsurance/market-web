@@ -1,10 +1,5 @@
 import { css } from '@emotion/core'
-import {
-  colors,
-  colorsV3,
-  fonts,
-  getCdnFontFaces,
-} from '@hedviginsurance/brand'
+import { colorsV3, fonts, getCdnFontFaces } from '@hedviginsurance/brand'
 
 export const globalStyles = css`
   ${getCdnFontFaces()}
@@ -14,12 +9,15 @@ export const globalStyles = css`
   }
 
   body {
-    font-family: ${fonts.CIRCULAR}, sans-serif;
+    font-family: ${fonts.FAVORIT}, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     margin: 0;
     padding: 0;
-    color: ${colors.OFF_BLACK};
+    color: ${colorsV3.gray900};
+    background-color: ${colorsV3.gray100};
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1,
@@ -28,7 +26,6 @@ export const globalStyles = css`
   h4,
   h5,
   h6 {
-    font-family: ${fonts.GEOMANIST}, sans-serif;
     font-kerning: none;
     margin: 1.414rem 0 0.5rem;
     font-weight: inherit;
@@ -86,23 +83,5 @@ export const globalStyles = css`
   input,
   button {
     font-size: inherit;
-  }
-`
-
-export const globalStylesBrandPivot = css`
-  ${globalStyles}
-
-  body {
-    font-family: ${fonts.FAVORIT}, sans-serif;
-    color: ${colorsV3.gray900};
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: ${fonts.FAVORIT}, sans-serif;
   }
 `

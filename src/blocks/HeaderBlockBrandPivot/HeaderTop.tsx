@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colorsV3, fonts } from '@hedviginsurance/brand'
+import { colorsV3 } from '@hedviginsurance/brand'
 import { MOBILE_BP_UP, SITE_MAX_WIDTH } from 'components/blockHelpers'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import { Cross } from 'components/icons/Cross'
@@ -21,7 +21,6 @@ const Wrapper = styled.div<{ transparent: boolean }>`
   height: 2.5rem;
   padding-top: 1px;
   font-size: 0.875rem;
-  font-family: ${fonts.FAVORIT};
   color: ${(props) => (props.transparent ? 'inherit' : colorsV3.gray100)};
   background-color: ${(props) =>
     props.transparent ? 'transparent' : colorsV3.gray900};
