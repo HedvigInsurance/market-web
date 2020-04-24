@@ -23,6 +23,7 @@ const ChatItems = styled.div`
 `
 
 const ChatItem = styled.div<{ visible: boolean }>`
+  position: relative;
   display: inline-flex;
   max-width: calc(100% - 5rem);
   margin-top: 0.75rem;
@@ -33,16 +34,36 @@ const ChatItem = styled.div<{ visible: boolean }>`
   transition: opacity 800ms, transform 500ms;
 
   &:nth-of-type(odd) {
-    background-color: ${colorsV3.gray800};
     transform: ${(props) =>
       props.visible ? 'translateX(0)' : 'translateX(-10%)'};
   }
 
   &:nth-of-type(even) {
     align-self: flex-end;
-    background-color: ${colorsV3.gray700};
     transform: ${(props) =>
       props.visible ? 'translateX(0)' : 'translateX(10%)'};
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    z-index: -1;
+    opacity: ${(props) => (props.visible ? 1 : 0)};
+    transition: opacity 800ms;
+  }
+
+  &:nth-of-type(odd):after {
+    background-color: ${colorsV3.gray800};
+  }
+
+  &:nth-of-type(even):after {
+    background-color: ${colorsV3.gray700};
   }
 
   ${MOBILE_BP_UP} {
@@ -55,7 +76,10 @@ const ChatItem = styled.div<{ visible: boolean }>`
     margin-bottom: 1.5rem;
     padding: 1.5rem;
     font-size: 1.5rem;
-    border-radius: 1rem;
+
+    &::after {
+      border-radius: 1rem;
+    }
 
     &:nth-of-type(odd) {
       transform: ${(props) =>
@@ -74,7 +98,10 @@ const ChatItem = styled.div<{ visible: boolean }>`
     padding: 2.25rem;
     font-size: 2rem;
     line-height: 1.25;
-    border-radius: 1.5rem;
+
+    &::after {
+      border-radius: 1.5rem;
+    }
   }
 `
 
