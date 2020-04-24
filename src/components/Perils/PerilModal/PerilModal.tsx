@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colorsV3, fonts } from '@hedviginsurance/brand'
+import { colorsV3 } from '@hedviginsurance/brand'
 
 import { LAPTOP_BP_UP, TABLET_BP_UP } from 'components/blockHelpers'
 import { Chevron } from 'components/icons/Chevron'
@@ -19,7 +19,6 @@ interface PerilModalProps {
 }
 
 const ModalWrapper = styled('div')`
-  font-family: ${fonts.FAVORIT};
   padding: 5rem 1rem 3rem;
 
   @media (min-width: 400px) {
