@@ -12,6 +12,12 @@ export enum HreflangLocale {
   EnNo = 'en-no',
 }
 
+export enum HtmlLang {
+  Sv = 'sv',
+  En = 'en',
+  No = 'no',
+}
+
 export const getLocaleIsoCode = (locale: string): Locale => {
   switch (locale) {
     case 'se-en':
@@ -48,5 +54,16 @@ export const getHreflangIsoCode = (locale: string) => {
       return HreflangLocale.EnNo
     default:
       return HreflangLocale.SvSe
+  }
+}
+
+export const getHtmlLang = (locale: string) => {
+  switch (locale) {
+    case 'se':
+      return HtmlLang.Sv
+    case 'no':
+      return HtmlLang.No
+    default:
+      return HtmlLang.En
   }
 }

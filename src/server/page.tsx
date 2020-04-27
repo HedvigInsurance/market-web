@@ -11,6 +11,7 @@ import { StaticRouter, StaticRouterContext } from 'react-router'
 import { State } from 'server/middlewares/states'
 import { getLangFromPath } from 'server/utils/storyblok'
 import { Logger } from 'typescript-logging'
+import { getHtmlLang } from 'utils/CurrentLocale'
 import { App } from '../App'
 import { sentryConfig } from './config/sentry'
 import { favicons } from './utils/favicons'
@@ -45,7 +46,7 @@ const template = ({
   lang,
 }: Template) => `
   <!doctype html>
-  <html lang="${lang}">
+  <html lang="${getHtmlLang(lang)}">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
