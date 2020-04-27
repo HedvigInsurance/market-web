@@ -11,7 +11,7 @@ interface Meta {
 }
 
 const getFullSlugFromStory = (story?: Story) =>
-  story && story.full_slug.replace(/\/?home$/, '').replace(/\/sv($|\/)/, '')
+  story && story.full_slug.replace(/\/?home$/, '').replace(/\/+$/, '')
 
 const getPageTitleFromStory = (story?: Story) => {
   if (!story) {
