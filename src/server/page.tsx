@@ -136,7 +136,8 @@ export const getPageMiddleware = (
 
   // Redirect /* to /se/*
   if (!langFromPath && !ctx.query._storyblok) {
-    ctx.redirect(`/se${ctx.originalUrl}`)
+    const url = ctx.originalUrl === '/' ? '' : ctx.originalUrl
+    ctx.redirect(`/se${url}`)
     return
   }
 
