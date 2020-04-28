@@ -3,7 +3,6 @@ import { colorsV3 } from '@hedviginsurance/brand'
 import React from 'react'
 import {
   CONTENT_GUTTER,
-  CONTENT_GUTTER_MOBILE,
   ContentWrapper,
   MOBILE_BP_UP,
   SectionWrapper,
@@ -15,9 +14,10 @@ import { ContextContainer } from '../components/containers/ContextContainer'
 import { HedvigH } from '../components/icons/HedvigH'
 import { GlobalStoryContainer } from '../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../utils/storyblok'
-import { BaseBlockProps } from './BaseBlockProps'
+import { BrandPivotBaseBlockProps } from './BaseBlockProps'
 
 const BP_DOWN = '@media (max-width: 600px)'
+const MOBILE_MENU_HIDDEN = '@media (max-width: 1001px)'
 
 const FooterWrapper = styled('div')({
   padding: `5rem 0`,
@@ -28,17 +28,15 @@ const FooterWrapper = styled('div')({
 })
 
 const IconWrapper = styled('div')({
-  display: 'flex',
-  justifyContent: 'flex-end',
-  margin: '0 auto 3.125rem',
-  paddingLeft: CONTENT_GUTTER_MOBILE,
-  paddingRight: CONTENT_GUTTER_MOBILE,
+  display: 'none',
 
-  [MOBILE_BP_UP]: {
+  [MOBILE_MENU_HIDDEN]: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    margin: '0 auto 3.125rem',
     paddingLeft: CONTENT_GUTTER,
     paddingRight: CONTENT_GUTTER,
   },
-
   ...SITE_MAX_WIDTH,
 })
 
@@ -113,7 +111,7 @@ const FooterFooter = styled('div')({
   marginTop: '2rem',
 })
 
-type FooterBlockProps = BaseBlockProps
+type FooterBlockProps = BrandPivotBaseBlockProps
 
 export const FooterBlockBrandPivot: React.FunctionComponent<FooterBlockProps> = ({
   color,
