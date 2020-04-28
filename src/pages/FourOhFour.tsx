@@ -1,8 +1,8 @@
+import { FooterBlockBrandPivot } from 'blocks/FooterBlockBrandPivot'
+import { HeaderBlockBrandPivot } from 'blocks/HeaderBlockBrandPivot'
 import React from 'react'
 import { withRouter } from 'react-router'
-import { FooterBlock } from '../blocks/FooterBlock'
 import { FourOhFourBlock } from '../blocks/FourOhFourBlock'
-import { HeaderBlock } from '../blocks/HeaderBlock'
 
 export const FourOhFourPage: React.ComponentType = withRouter(
   ({ staticContext }) => {
@@ -11,22 +11,22 @@ export const FourOhFourPage: React.ComponentType = withRouter(
     }
     return (
       <>
-        <HeaderBlock
-          is_transparent={false}
-          inverse_colors={false}
+        <HeaderBlockBrandPivot
+          is_transparent={true}
+          inverse_colors={true}
           _uid="header"
           component="blog"
         />
 
         <FourOhFourBlock />
 
-        <FooterBlock
+        <FooterBlockBrandPivot
           component="blog"
           _uid="footer"
           color={{
             _uid: 'footer',
-            color: 'off-black-dark',
-            plugin: 'hedvig_limited_color_picker',
+            color: 'standard-inverse',
+            plugin: 'hedvig_minimal_color_picker',
           }}
         />
       </>
