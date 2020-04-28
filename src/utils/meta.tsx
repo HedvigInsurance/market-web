@@ -10,8 +10,10 @@ interface Meta {
   title?: string
 }
 
+const removeTrailingSlash = (text: string) => text.replace(/\/+$/, '')
+
 const getFullSlugFromStory = (story?: Story) =>
-  story && story.full_slug.replace(/\/?home$/, '').replace(/\/+$/, '')
+  story && removeTrailingSlash(story.full_slug)
 
 const getPageTitleFromStory = (story?: Story) => {
   if (!story) {
@@ -82,7 +84,9 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
             <link
               rel="alternate"
               hrefLang={getAlternateLang(alternate.full_slug)}
-              href={`${getPublicHost()}/${alternate.full_slug}`}
+              href={`${getPublicHost()}/${removeTrailingSlash(
+                alternate.full_slug,
+              )}`}
             />
           ),
       )}
