@@ -4,7 +4,6 @@ import React from 'react'
 import {
   CONTENT_GUTTER,
   ContentWrapper,
-  MOBILE_BP_UP,
   SectionWrapper,
   SITE_MAX_WIDTH,
   TABLET_BP_DOWN,
@@ -17,13 +16,17 @@ import { getStoryblokLinkUrl } from '../utils/storyblok'
 import { BrandPivotBaseBlockProps } from './BaseBlockProps'
 
 const BP_DOWN = '@media (max-width: 600px)'
-const MOBILE_MENU_HIDDEN = '@media (max-width: 1001px)'
+const MOBILE_MENU_HIDDEN = '@media (min-width: 1001px)'
 
 const FooterWrapper = styled('div')({
-  padding: `5rem 0`,
+  padding: `5rem 0 7.5rem`,
 
-  [MOBILE_BP_UP]: {
-    padding: `4.25rem 0 12rem`,
+  [TABLET_BP_UP]: {
+    padding: `6.5rem 0 12rem`,
+  },
+
+  [MOBILE_MENU_HIDDEN]: {
+    paddingTop: `4.25rem`,
   },
 })
 
@@ -57,7 +60,6 @@ const LinkTextWrapper = styled('div')({
 const LinksColumnsWrapper = styled('nav')({
   display: 'flex',
   flexDirection: 'row',
-  marginTop: '2rem',
   [TABLET_BP_UP]: {
     marginTop: '0',
     marginBottom: '5rem',
