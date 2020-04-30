@@ -68,22 +68,22 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Terms and conditions - hyresratt and bostadsratt
   [
     '/villkor/villkor/hyresratt.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-hyresratt-2020-04.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-hyresratt-2020-05.pdf',
     302,
   ],
   [
     '/en/terms/terms/tenants.pdf',
-    'https://cdn.hedvig.com/info/insurance-terms-tenants-2020-04.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-tenants-2020-05.pdf',
     302,
   ],
   [
     '/villkor/villkor/bostadsratt.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-bostadsratt-2020-04-v1.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-bostadsratt-2020-05.pdf',
     302,
   ],
   [
     '/en/terms/terms/tenant-owners.pdf',
-    'https://cdn.hedvig.com/info/insurance-terms-tenant-owners-2020-04.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-tenant-owners-2020-05.pdf',
     302,
   ],
   [
@@ -110,22 +110,22 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Terms and conditions - students
   [
     '/villkor/villkor/hyresratt-student.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-student-hyresratt-2020-04.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-student-hyresratt-2020-05.pdf',
     302,
   ],
   [
     '/en/terms/terms/tenant-student.pdf',
-    'https://cdn.hedvig.com/info/insurance-terms-student-tenant-2020-04-v1.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-student-tenant-2020-05.pdf',
     302,
   ],
   [
     '/villkor/villkor/bostadsratt-student.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-student-bostadsratt-2020-04.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-student-bostadsratt-2020-05.pdf',
     302,
   ],
   [
     '/en/terms/terms/tenant-owner-student.pdf',
-    'https://cdn.hedvig.com/info/insurance-terms-student-tenant-owners-2020-04.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-student-tenant-owners-2020-05.pdf',
     302,
   ],
   [
@@ -152,7 +152,7 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Terms and conditions - house
   [
     '/villkor/villkor/hus-villa.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-villa-2020-04.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-villa-2020-05.pdf',
     302,
   ],
   [
