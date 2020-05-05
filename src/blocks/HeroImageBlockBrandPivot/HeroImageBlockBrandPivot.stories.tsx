@@ -1,13 +1,14 @@
 import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
-import { fontSizes, minimalColorMap } from 'utils/storybook'
+import StoryRouter from 'storybook-react-router'
+import { fontSizes, globalStoryMock, minimalColorMap } from 'utils/storybook'
 import { MarkdownHtmlComponent } from '../BaseBlockProps'
-import { HeroImageBlockBrandPivot } from './HeroImageBlockBrandPivot'
+import { Hero } from './HeroImageBlockBrandPivot'
 
 export default {
   title: 'Blocks/HeroBlock',
-  component: HeroImageBlockBrandPivot,
-  decorators: [withKnobs],
+  component: Hero,
+  decorators: [withKnobs, StoryRouter()],
 }
 
 const heroText: MarkdownHtmlComponent = {
@@ -26,12 +27,14 @@ const heroProps = {
   text: heroText,
   image: '',
   image_mobile: '',
+  story: globalStoryMock,
 }
 
-const image = 'https://cdn.hedvig.com/www/referrals/referrals-clean.png'
+const image =
+  'https://source.unsplash.com/user/heytowner/?orientation=landscape'
 
 export const Default = () => (
-  <HeroImageBlockBrandPivot
+  <Hero
     {...heroProps}
     headline_font_size={select('Font size', fontSizes, 'lg')}
     color={
@@ -49,10 +52,8 @@ export const Default = () => (
   />
 )
 export const WithImage = () => (
-  <HeroImageBlockBrandPivot
+  <Hero
     {...heroProps}
-    image={image}
-    image_mobile={image}
     headline_font_size={select('Font size', fontSizes, 'lg')}
     color={
       minimalColorMap[
@@ -64,6 +65,7 @@ export const WithImage = () => (
         select('Text color', Object.keys(minimalColorMap), 'standard-inverse')
       ]
     }
+    image={image}
     show_hedvig_wordmark={boolean('Show Hedvig wordmark', false)}
     use_display_font={boolean('Use display font', false)}
   />
