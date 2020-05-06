@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { colorsV3, fonts } from '@hedviginsurance/brand'
+import { Chevron } from 'components/icons/Chevron'
 import { Container } from 'constate'
 import React from 'react'
 import AnimateHeight from 'react-animate-height'
@@ -13,6 +14,7 @@ const MenuListItem = styled('li')({
   padding: 0,
 
   [TABLET_BP_UP]: {
+    display: 'flex',
     paddingLeft: '1.5rem',
     paddingRight: '1.5rem',
   },
@@ -55,13 +57,9 @@ const MenuLink = styled('a')({
 
   [TABLET_BP_DOWN]: {
     display: 'inline-block',
-    padding: `1.25rem 1rem 1.25rem 2rem`,
+    padding: `0.625rem 0.5rem 0.625rem 1.5rem`,
     fontFamily: fonts.FAVORIT,
     fontSize: '2.5rem',
-
-    '&:first-of-type': {
-      paddingTop: 0,
-    },
   },
 })
 const MenuFakeLink = styled(MenuLink)({ cursor: 'default' }).withComponent(
@@ -79,25 +77,28 @@ const DropdownMenuLink = styled(MenuLink)({
 })
 
 const Toggler = styled('button')<{ isOpen: boolean }>(({ isOpen }) => ({
+  position: 'relative',
+  top: -2,
   appearance: 'none',
   background: 0,
   border: 0,
+  padding: '1rem 0.5rem',
+  fontSize: '1rem',
   color: 'inherit',
 
-  '&:before': {
-    position: 'relative',
-    display: 'inline-block',
-    content: '" "',
-    width: 0,
-    height: 0,
-    top: -1.5,
-    borderWidth: '6px 5px 0 5px',
-    borderColor: 'currentColor transparent transparent transparent',
-    borderStyle: 'solid',
-    [TABLET_BP_DOWN]: {
-      top: -8,
-      transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-      transition: 'transform 250ms',
+  svg: {
+    fontSize: '1.125rem',
+    transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+    transition: 'transform 250ms',
+  },
+
+  [TABLET_BP_UP]: {
+    top: 1,
+    paddingTop: 0,
+    paddingBottom: 0,
+    svg: {
+      fontSize: '0.75rem',
+      transform: 'none',
     },
   },
 }))
@@ -186,10 +187,9 @@ export const MenuItem: React.FunctionComponent<{ menuItem: MenuItemType }> = ({
         )}
 
         {menuItem.menu_items && menuItem.menu_items.length > 0 && (
-          <Toggler
-            onClick={isOpen ? closeWithoutDelay : open}
-            isOpen={isOpen}
-          />
+          <Toggler onClick={isOpen ? closeWithoutDelay : open} isOpen={isOpen}>
+            <Chevron />
+          </Toggler>
         )}
 
         {menuItem.menu_items && menuItem.menu_items.length > 0 && (

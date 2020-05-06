@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
 import { MOBILE_BP_UP, SITE_MAX_WIDTH } from 'components/blockHelpers'
 import { ContextContainer } from 'components/containers/ContextContainer'
+import { Chevron } from 'components/icons/Chevron'
 import { Cross } from 'components/icons/Cross'
 import { Norway } from 'components/icons/flags/Norway'
 import { Sweden } from 'components/icons/flags/Sweden'
@@ -69,18 +70,17 @@ const MarketPickerToggle = styled.button`
     outline: 0;
   }
 
-  &:after {
-    display: inline-block;
-    content: '';
-    margin-top: 1px;
-    margin-left: 0.5rem;
-    border-width: 6px 6px 0 6px;
-    border-color: currentColor transparent transparent transparent;
-    border-style: solid;
+  svg:first-of-type {
+    margin-right: 0.375rem;
   }
 
-  svg {
-    margin-right: 0.5rem;
+  svg:last-of-type {
+    margin-left: 0.375rem;
+    font-size: 0.75rem;
+  }
+
+  span {
+    line-height: 1;
   }
 `
 
@@ -211,6 +211,7 @@ export const HeaderTop: React.FC<HeaderTopProps> = ({
               <MarketPickerToggle onClick={toggleHandler}>
                 <Globe size="1.5rem" />
                 <span>{getMarketLocale(context.lang)}</span>
+                <Chevron />
               </MarketPickerToggle>
               <MarketPickerWrapper isOpen={openMarketPicker} inverse={inverse}>
                 <MarketList>
