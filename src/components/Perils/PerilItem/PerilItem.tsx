@@ -31,7 +31,7 @@ const Container = styled.button<{ color: minimalColorComponentColors }>`
   border-radius: 0.375rem;
   border: 0;
   background-color: ${({ color }) =>
-    color === 'standard-inverse' ? colorsV3.gray100 : colorsV3.gray200};
+    color === 'standard-inverse' ? colorsV3.gray100 : colorsV3.white};
   cursor: pointer;
   transition: all 150ms ease-in-out;
   appearance: none;
