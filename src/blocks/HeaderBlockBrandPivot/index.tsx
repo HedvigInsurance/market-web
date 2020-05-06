@@ -5,7 +5,7 @@ import { ContextContainer } from 'components/containers/ContextContainer'
 import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
 import { AppLink } from '../../components/AppLink'
-import { ContentWrapper } from '../../components/blockHelpers'
+import { ContentWrapper, MOBILE_BP_DOWN } from '../../components/blockHelpers'
 import {
   ButtonLinkBrandPivot,
   ButtonStyleType,
@@ -73,6 +73,12 @@ const Filler = styled('div')({
   height: MOBILE_WRAPPER_HEIGHT,
   [TABLET_BP_UP]: {
     height: WRAPPER_HEIGHT,
+  },
+})
+
+const HeaderContentWrapper = styled(ContentWrapper)({
+  [MOBILE_BP_DOWN]: {
+    padding: '0 1.5rem',
   },
 })
 
@@ -271,7 +277,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                 <HeaderBackgroundFiller
                   transparent={props.is_transparent && !isBelowThreshold}
                 />
-                <ContentWrapper brandPivot fullWidth>
+                <HeaderContentWrapper brandPivot fullWidth>
                   <InnerHeaderWrapper>
                     <LeftContainer>
                       <Burger
@@ -452,7 +458,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                       </DesktopButtonWrapper>
                     </Menu>
                   </InnerHeaderWrapper>
-                </ContentWrapper>
+                </HeaderContentWrapper>
               </HeaderMain>
             </div>
           )}

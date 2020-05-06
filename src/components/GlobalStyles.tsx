@@ -85,3 +85,9 @@ export const globalStyles = css`
     font-size: inherit;
   }
 `
+export const globalStylesStorybook = css`
+  ${globalStyles}
+  body {
+    background-color: transparent;
+  }
+`

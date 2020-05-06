@@ -1,16 +1,23 @@
 import styled from '@emotion/styled'
 import { colorsV3, fonts } from '@hedviginsurance/brand'
+import { Chevron } from 'components/icons/Chevron'
 import { Container } from 'constate'
 import React from 'react'
 import AnimateHeight from 'react-animate-height'
 import { MenuItem as MenuItemType } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok'
-import { TABLET_BP_DOWN } from './mobile'
+import { TABLET_BP_DOWN, TABLET_BP_UP } from './mobile'
 
 const MenuListItem = styled('li')({
   position: 'relative',
   margin: 0,
   padding: 0,
+
+  [TABLET_BP_UP]: {
+    display: 'flex',
+    paddingLeft: '1.5rem',
+    paddingRight: '1.5rem',
+  },
 })
 const DropdownMenuItemList = styled('ul')<{
   isClosing: boolean
@@ -19,44 +26,43 @@ const DropdownMenuItemList = styled('ul')<{
   display: isOpen ? 'flex' : 'none',
   flexDirection: 'column',
   position: 'absolute',
-  left: 0,
+  left: '50%',
   top: 'calc(100% + .75rem)',
   listStyle: 'none',
   margin: 0,
-  padding: '1.5rem 2rem .5rem 2rem',
+  padding: '1.5rem 0 .5rem',
   background: colorsV3.gray100,
   boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.1), 0px 2px 5px rgba(0, 0, 0, 0.1);',
+  borderRadius: '0.5rem',
   opacity: isOpen && !isClosing ? 1 : 0,
   transition: 'opacity 150ms',
+  transform: 'translateX(-50%)',
   overflowY: 'hidden',
   color: colorsV3.gray900,
 
   [TABLET_BP_DOWN]: {
     position: 'static',
     boxShadow: 'none',
+    left: 0,
     padding: '.5rem 1rem',
     background: 'inherit',
     color: 'inherit',
     fontSize: '1.5rem',
+    transform: 'translateX(0)',
   },
 }))
 const MenuLink = styled('a')({
   color: 'inherit',
   textDecoration: 'none',
-  paddingLeft: '3rem',
 
   [TABLET_BP_DOWN]: {
     display: 'inline-block',
-    padding: `1.25rem 1rem 1.25rem 2rem`,
+    padding: `0.625rem 0.5rem 0.625rem 1.5rem`,
     fontFamily: fonts.FAVORIT,
     fontSize: '2.5rem',
-
-    '&:first-of-type': {
-      paddingTop: 0,
-    },
   },
 })
-const MenuFakeLink = styled(MenuLink)({ cursor: 'normal' }).withComponent(
+const MenuFakeLink = styled(MenuLink)({ cursor: 'default' }).withComponent(
   'span',
 )
 const DropdownMenuLink = styled(MenuLink)({
@@ -71,25 +77,28 @@ const DropdownMenuLink = styled(MenuLink)({
 })
 
 const Toggler = styled('button')<{ isOpen: boolean }>(({ isOpen }) => ({
+  position: 'relative',
+  top: -2,
   appearance: 'none',
   background: 0,
   border: 0,
+  padding: '1rem 0.5rem',
+  fontSize: '1rem',
   color: 'inherit',
 
-  '&:before': {
-    position: 'relative',
-    display: 'inline-block',
-    content: '" "',
-    width: 0,
-    height: 0,
-    top: -1.5,
-    borderWidth: '6px 5px 0 5px',
-    borderColor: 'currentColor transparent transparent transparent',
-    borderStyle: 'solid',
-    [TABLET_BP_DOWN]: {
-      top: -8,
-      transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
-      transition: 'transform 250ms',
+  svg: {
+    fontSize: '1.125rem',
+    transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+    transition: 'transform 250ms',
+  },
+
+  [TABLET_BP_UP]: {
+    top: 1,
+    paddingTop: 0,
+    paddingBottom: 0,
+    svg: {
+      fontSize: '0.75rem',
+      transform: 'none',
     },
   },
 }))
@@ -178,10 +187,9 @@ export const MenuItem: React.FunctionComponent<{ menuItem: MenuItemType }> = ({
         )}
 
         {menuItem.menu_items && menuItem.menu_items.length > 0 && (
-          <Toggler
-            onClick={isOpen ? closeWithoutDelay : open}
-            isOpen={isOpen}
-          />
+          <Toggler onClick={isOpen ? closeWithoutDelay : open} isOpen={isOpen}>
+            <Chevron />
+          </Toggler>
         )}
 
         {menuItem.menu_items && menuItem.menu_items.length > 0 && (

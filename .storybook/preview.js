@@ -2,6 +2,7 @@ import { addDecorator } from '@storybook/react'
 import { addParameters } from '@storybook/react'
 import { withPaddings } from 'storybook-addon-paddings'
 import { themeDecorator } from './decorators/themeDecorator'
+import { colorsV3 } from '@hedviginsurance/brand'
 
 // Add global decorators (added to all stories)
 addDecorator(withPaddings)
@@ -62,4 +63,11 @@ addParameters({
       ...customViewports,
     },
   },
+})
+
+addParameters({
+  backgrounds: [
+    { name: 'gray900', value: colorsV3.gray900 },
+    { name: 'gray100', value: colorsV3.gray100, default: true },
+  ],
 })
