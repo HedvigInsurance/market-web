@@ -5,12 +5,17 @@ import React from 'react'
 import AnimateHeight from 'react-animate-height'
 import { MenuItem as MenuItemType } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok'
-import { TABLET_BP_DOWN } from './mobile'
+import { TABLET_BP_DOWN, TABLET_BP_UP } from './mobile'
 
 const MenuListItem = styled('li')({
   position: 'relative',
   margin: 0,
   padding: 0,
+
+  [TABLET_BP_UP]: {
+    paddingLeft: '1.5rem',
+    paddingRight: '1.5rem',
+  },
 })
 const DropdownMenuItemList = styled('ul')<{
   isClosing: boolean
@@ -19,31 +24,34 @@ const DropdownMenuItemList = styled('ul')<{
   display: isOpen ? 'flex' : 'none',
   flexDirection: 'column',
   position: 'absolute',
-  left: 0,
+  left: '50%',
   top: 'calc(100% + .75rem)',
   listStyle: 'none',
   margin: 0,
-  padding: '1.5rem 2rem .5rem 2rem',
+  padding: '1.5rem 0 .5rem',
   background: colorsV3.gray100,
   boxShadow: '0px 1px 2px rgba(0, 0, 0, 0.1), 0px 2px 5px rgba(0, 0, 0, 0.1);',
+  borderRadius: '0.5rem',
   opacity: isOpen && !isClosing ? 1 : 0,
   transition: 'opacity 150ms',
+  transform: 'translateX(-50%)',
   overflowY: 'hidden',
   color: colorsV3.gray900,
 
   [TABLET_BP_DOWN]: {
     position: 'static',
     boxShadow: 'none',
+    left: 0,
     padding: '.5rem 1rem',
     background: 'inherit',
     color: 'inherit',
     fontSize: '1.5rem',
+    transform: 'translateX(0)',
   },
 }))
 const MenuLink = styled('a')({
   color: 'inherit',
   textDecoration: 'none',
-  paddingLeft: '3rem',
 
   [TABLET_BP_DOWN]: {
     display: 'inline-block',
@@ -56,7 +64,7 @@ const MenuLink = styled('a')({
     },
   },
 })
-const MenuFakeLink = styled(MenuLink)({ cursor: 'normal' }).withComponent(
+const MenuFakeLink = styled(MenuLink)({ cursor: 'default' }).withComponent(
   'span',
 )
 const DropdownMenuLink = styled(MenuLink)({
