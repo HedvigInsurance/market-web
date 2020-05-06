@@ -1,12 +1,13 @@
 import { select, withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
+import StoryRouter from 'storybook-react-router'
 import { minimalColorMap } from 'utils/storybook'
 import { ContractOption, PerilsBlock } from './PerilsBlock'
 
 export default {
   title: 'Blocks/PerilsBlock',
   component: PerilsBlock,
-  decorators: [withKnobs],
+  decorators: [withKnobs, StoryRouter()],
   parameters: {
     paddings: [
       { name: 'Medium', value: '16px', default: true },

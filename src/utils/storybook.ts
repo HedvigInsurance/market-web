@@ -44,19 +44,51 @@ export const link: LinkComponent = {
 const headerMenuItems: MenuItem[] = [
   {
     _uid: '1',
-    label: 'Hemförsäkring',
+    label: 'Vår service',
     link,
     component: 'menu_item',
   },
   {
     _uid: '2',
-    label: 'Service',
+    label: 'Vårt skydd',
     link,
     component: 'menu_item',
   },
   {
     _uid: '3',
-    label: 'Om oss',
+    label: 'Hemförsäkring',
+    link,
+    component: 'menu_item',
+    menu_items: [
+      {
+        _uid: '11',
+        label: 'Hyresrätt & Andrahand',
+        link,
+        component: 'menu_item',
+      },
+      {
+        _uid: '12',
+        label: 'Bostadsrätt',
+        link,
+        component: 'menu_item',
+      },
+      {
+        _uid: '13',
+        label: 'Student',
+        link,
+        component: 'menu_item',
+      },
+      {
+        _uid: '14',
+        label: 'Villa',
+        link,
+        component: 'menu_item',
+      },
+    ],
+  },
+  {
+    _uid: '4',
+    label: 'Om Hedvig',
     link,
     component: 'menu_item',
   },
