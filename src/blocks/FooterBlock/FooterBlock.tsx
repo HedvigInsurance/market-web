@@ -16,86 +16,92 @@ import { BrandPivotBaseBlockProps } from '../BaseBlockProps'
 const BP_DOWN = '@media (max-width: 600px)'
 const MOBILE_MENU_HIDDEN = '@media (min-width: 1001px)'
 
-const FooterWrapper = styled('div')({
-  padding: `5rem 0 7.5rem`,
+const FooterWrapper = styled.div`
+  padding: 5rem 0 7.5rem;
 
-  [TABLET_BP_UP]: {
-    padding: `6.5rem 0 12rem`,
-  },
+  ${TABLET_BP_UP} {
+    padding: 6.5rem 0 12rem;
+  }
 
-  [MOBILE_MENU_HIDDEN]: {
-    paddingTop: `4.25rem`,
-  },
-})
+  ${MOBILE_MENU_HIDDEN} {
+    padding-top: 4.25rem;
+  }
+`
 
-const IconWrapper = styled('div')({
-  display: 'none',
+const IconWrapper = styled.div`
+  display: none;
 
-  [MOBILE_MENU_HIDDEN]: {
-    display: 'flex',
-    justifyContent: 'flex-end',
-    margin: '0 auto 3.125rem',
-    paddingLeft: CONTENT_GUTTER,
-    paddingRight: CONTENT_GUTTER,
-  },
-  ...SITE_MAX_WIDTH,
-})
+  ${MOBILE_MENU_HIDDEN} {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 auto 3.125rem;
+    padding-left: ${CONTENT_GUTTER};
+    padding-right: ${CONTENT_GUTTER};
+  }
+  ${SITE_MAX_WIDTH}
+`
 
-const LinksColumnsWrapper = styled('nav')({
-  display: 'flex',
-  flexDirection: 'row',
-  [TABLET_BP_UP]: {
-    marginTop: '0',
-    marginBottom: '5rem',
-    justifyContent: 'center',
-  },
-  [BP_DOWN]: {
-    flexWrap: 'wrap',
-  },
-})
+const LinksColumnsWrapper = styled.nav`
+  display: flex;
+  flex-direction: row;
 
-const ColumnHeader = styled('div')({
-  paddingBottom: '1.5rem',
-  fontSize: '1.125rem',
-  color: colorsV3.gray500,
-  [TABLET_BP_UP]: {
-    paddingBottom: '2rem',
-    fontSize: '1.5rem',
-  },
-})
+  ${TABLET_BP_UP} {
+    margin-top: 0;
+    margin-bottom: 5rem;
+    justify-content: center;
+  }
 
-const LinkColumn = styled('div')({
-  '&:not(:last-of-type)': {
-    paddingRight: '7rem',
-    paddingBottom: '.5rem',
-    '@media(max-width:1100px)': {
-      paddingRight: '4rem',
-    },
-    [BP_DOWN]: {
-      width: '50%',
-      paddingRight: 0,
-      paddingBottom: '2rem',
-    },
-  },
-  '&:last-of-type': {
-    [BP_DOWN]: {
-      paddingBottom: '2rem',
-    },
-  },
-})
-const Link = styled('a')({
-  display: 'block',
-  color: colorsV3.gray100,
-  fontSize: '0.875rem',
-  textDecoration: 'none',
-  marginBottom: '14px',
-})
+  ${BP_DOWN} {
+    flex-wrap: wrap;
+  }
+`
 
-const FooterFooter = styled('div')({
-  opacity: 0.28,
-  fontSize: '0.9rem',
-  marginTop: '2rem',
-})
+const ColumnHeader = styled.div`
+  padding-bottom: 1.5rem;
+  font-size: 1.125rem;
+  color: ${colorsV3.gray500};
+
+  ${TABLET_BP_UP} {
+    padding-bottom: 2rem;
+    font-size: 1.5rem;
+  }
+`
+
+const LinkColumn = styled.div`
+  &:not(:last-of-type) {
+    padding-right: 7rem;
+    padding-bottom: 0.5rem;
+
+    @media (max-width: 1100px) {
+      padding-right: 4rem;
+    }
+
+    ${BP_DOWN} {
+      width: 50%;
+      padding-right: 0;
+      padding-bottom: 2rem;
+    }
+  }
+
+  &:last-of-type {
+    ${BP_DOWN} {
+      padding-bottom: 2rem;
+    }
+  }
+`
+const Link = styled.a`
+  display: block;
+  color: ${colorsV3.gray100};
+  font-size: 0.875rem;
+  text-decoration: none;
+  margin-bottom: 14px;
+`
+
+const FooterFooter = styled.div`
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  color: ${colorsV3.gray500};
+`
 
 type FooterBlockProps = BrandPivotBaseBlockProps
 
