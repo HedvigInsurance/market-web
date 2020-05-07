@@ -114,6 +114,7 @@ export interface GlobalStory extends Story {
     company?: ReadonlyArray<MenuItem>
     legal?: ReadonlyArray<MenuItem>
     social?: ReadonlyArray<MenuItem>
+    footer_menu_items: ReadonlyArray<MenuItem>
     footer_paragraph: MarkdownHtmlComponent
     peril_modal_info_title?: string
     peril_modal_coverage_title?: string

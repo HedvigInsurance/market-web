@@ -3,7 +3,7 @@ import { colors, fonts } from '@hedviginsurance/brand'
 import { DeferredImage } from 'components/DeferredImage'
 import React from 'react'
 import Helmet from 'react-helmet-async'
-import { FooterBlock } from '../blocks/FooterBlock'
+import { FooterBlock } from '../blocks/FooterBlock/FooterBlock'
 import { HeaderBlock } from '../blocks/HeaderBlock'
 import { AppLink } from '../components/AppLink'
 import {
@@ -219,8 +219,8 @@ export const BlogPostPage: React.FunctionComponent<{ nonce?: string }> = ({
             _uid="footer"
             color={{
               _uid: 'footer',
-              color: 'off-black-dark',
-              plugin: 'hedvig_limited_color_picker',
+              color: 'standard-inverse',
+              plugin: 'hedvig_minimal_color_picker',
             }}
           />
         </>
