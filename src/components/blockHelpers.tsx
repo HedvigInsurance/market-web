@@ -269,6 +269,7 @@ export const STANDARD_COLOR_COMPONENT: ColorComponent = {
 }
 
 interface SectionProps {
+  as?: React.ElementType
   colorComponent?: ColorComponent | MinimalColorComponent
   size?: SectionSize
   backgroundImage?: string
