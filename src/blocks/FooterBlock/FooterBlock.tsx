@@ -13,11 +13,12 @@ import { GlobalStory, GlobalStoryContainer } from 'storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from 'utils/storyblok'
 import { BrandPivotBaseBlockProps } from '../BaseBlockProps'
 
-const BP_DOWN = '@media (max-width: 600px)'
+const BP_UP = '@media (min-width: 601px)'
 const MOBILE_MENU_HIDDEN = '@media (min-width: 1001px)'
 
-const FooterWrapper = styled.div`
-  padding: 5rem 0 7.5rem;
+const FooterWrapper = styled(SectionWrapper)`
+  padding: 4rem 0 5.5rem;
+  box-shadow: 0px -1px 0px rgba(250, 250, 250, 0.15);
 
   ${TABLET_BP_UP} {
     padding: 6.5rem 0 12rem;
@@ -42,65 +43,76 @@ const IconWrapper = styled.div`
 `
 
 const LinksColumnsWrapper = styled.nav`
-  display: flex;
-  flex-direction: row;
+  ${BP_UP} {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 
   ${TABLET_BP_UP} {
     margin-top: 0;
     margin-bottom: 5rem;
-    justify-content: center;
-  }
-
-  ${BP_DOWN} {
-    flex-wrap: wrap;
+    justify-content: space-between;
   }
 `
 
-const ColumnHeader = styled.div`
-  padding-bottom: 1.5rem;
-  font-size: 1.125rem;
+const ColumnHeader = styled.h5`
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
   color: ${colorsV3.gray500};
 
   ${TABLET_BP_UP} {
-    padding-bottom: 2rem;
-    font-size: 1.5rem;
+    margin-bottom: 2rem;
   }
 `
 
 const LinkColumn = styled.div`
-  &:not(:last-of-type) {
+  padding-bottom: 3.5rem;
+
+  ${BP_UP} {
+    width: 50%;
     padding-right: 7rem;
-    padding-bottom: 0.5rem;
-
-    @media (max-width: 1100px) {
-      padding-right: 4rem;
-    }
-
-    ${BP_DOWN} {
-      width: 50%;
-      padding-right: 0;
-      padding-bottom: 2rem;
-    }
   }
 
-  &:last-of-type {
-    ${BP_DOWN} {
-      padding-bottom: 2rem;
-    }
+  ${MOBILE_MENU_HIDDEN} {
+    padding-right: 4rem;
   }
 `
+
+const MenuList = styled.ul`
+  list-style: none;
+  padding: 0;
+  margin: 0;
+`
+
 const Link = styled.a`
   display: block;
   color: ${colorsV3.gray100};
-  font-size: 0.875rem;
+  font-size: 1rem;
+  line-height: 2;
   text-decoration: none;
-  margin-bottom: 14px;
 `
 
 const FooterFooter = styled.div`
   margin-top: 2rem;
   font-size: 0.75rem;
+  line-height: 1.6;
   color: ${colorsV3.gray500};
+
+  & > div {
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  ${TABLET_BP_UP} {
+    display: flex;
+    justify-content: space-between;
+    & > div {
+      width: calc(50% - 2.375rem);
+      text-align: left;
+    }
+  }
 `
 
 type FooterBlockProps = BrandPivotBaseBlockProps
@@ -110,38 +122,41 @@ export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
   extra_styling,
   story,
 }) => (
-  <SectionWrapper
+  <FooterWrapper
+    as="footer"
     brandPivot
     colorComponent={color}
     size="none"
     extraStyling={extra_styling}
   >
-    <FooterWrapper>
-      <IconWrapper>
-        <HedvigH size={48} />
-      </IconWrapper>
-      <ContentWrapper brandPivot>
-        <LinksColumnsWrapper>
-          {(story.content.footer_menu_items ?? []).map((menuItem) => (
-            <LinkColumn>
-              <ColumnHeader key={menuItem._uid}>{menuItem.label}</ColumnHeader>
+    <IconWrapper>
+      <HedvigH size={48} />
+    </IconWrapper>
+    <ContentWrapper brandPivot>
+      <LinksColumnsWrapper>
+        {(story.content.footer_menu_items ?? []).map((menuItem) => (
+          <LinkColumn>
+            <ColumnHeader key={menuItem._uid}>{menuItem.label}</ColumnHeader>
+            <MenuList>
               {(menuItem.menu_items ?? []).map((link) => (
-                <Link key={link._uid} href={getStoryblokLinkUrl(link.link)}>
-                  {link.label}
-                </Link>
+                <li key={link._uid}>
+                  <Link href={getStoryblokLinkUrl(link.link)}>
+                    {link.label}
+                  </Link>
+                </li>
               ))}
-            </LinkColumn>
-          ))}
-        </LinksColumnsWrapper>
+            </MenuList>
+          </LinkColumn>
+        ))}
+      </LinksColumnsWrapper>
 
-        <FooterFooter
-          dangerouslySetInnerHTML={{
-            __html: story.content.footer_paragraph?.html,
-          }}
-        />
-      </ContentWrapper>
-    </FooterWrapper>
-  </SectionWrapper>
+      <FooterFooter
+        dangerouslySetInnerHTML={{
+          __html: story.content.footer_paragraph?.html,
+        }}
+      />
+    </ContentWrapper>
+  </FooterWrapper>
 )
 
 export const FooterBlock: React.FunctionComponent<FooterBlockProps> = (
