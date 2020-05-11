@@ -1,27 +1,29 @@
-import React from 'react'
 import styled from '@emotion/styled'
+import React from 'react'
 import { ButtonLinkBrandPivot } from '../ButtonBrandPivot/Button'
 import { AppStore } from './svg/AppStore'
 import { PlayStore } from './svg/PlayStore'
-import { TABLET_BP_UP } from '../blockHelpers'
+
+const BP_UP = '@media (min-width: 375px)'
 
 const ButtonsWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-
-  ${TABLET_BP_UP} {
-    flex-direction: row;
-  }
 `
 
 const AppButton = styled(ButtonLinkBrandPivot)`
   display: inline-flex;
-  padding: 0.625rem 1.625rem;
+  justify-content: center;
+  width: calc(50% - 0.5rem);
+  padding: 0.625rem 1rem;
 
   &:first-of-type {
-    margin-bottom: 1rem;
+    margin-right: 0.5rem;
+  }
+
+  &:last-of-type {
+    margin-left: 0.5rem;
   }
 
   & > svg {
@@ -29,15 +31,8 @@ const AppButton = styled(ButtonLinkBrandPivot)`
     height: 26px;
   }
 
-  ${TABLET_BP_UP} {
-    &:first-of-type {
-      margin-bottom: 0;
-      margin-right: 0.5rem;
-    }
-
-    &:last-of-type {
-      margin-left: 0.5rem;
-    }
+  ${BP_UP} {
+    padding: 0.625rem 1.625rem;
 
     & > svg {
       width: 99px;
@@ -45,7 +40,7 @@ const AppButton = styled(ButtonLinkBrandPivot)`
     }
   }
 `
-type AppButtonsProps = {
+interface AppButtonsProps {
   color?: 'standard' | 'standard-inverse'
 }
 
