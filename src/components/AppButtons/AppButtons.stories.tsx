@@ -1,6 +1,6 @@
+import { colorsV3 } from '@hedviginsurance/brand'
 import React from 'react'
 import { AppButtons } from './AppButtons'
-import { colorsV3 } from '@hedviginsurance/brand'
 
 export default {
   title: 'Components/AppButtons',

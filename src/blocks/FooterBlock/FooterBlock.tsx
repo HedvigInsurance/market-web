@@ -1,8 +1,10 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
+import { AppButtons } from 'components/AppButtons/AppButtons'
 import {
   CONTENT_GUTTER,
   ContentWrapper,
+  LAPTOP_BP_UP,
   SectionWrapper,
   SITE_MAX_WIDTH,
   TABLET_BP_UP,
@@ -61,10 +63,6 @@ const ColumnHeader = styled.h5`
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
   color: ${colorsV3.gray500};
-
-  ${TABLET_BP_UP} {
-    margin-bottom: 2rem;
-  }
 `
 
 const LinkColumn = styled.div`
@@ -72,11 +70,12 @@ const LinkColumn = styled.div`
 
   ${BP_UP} {
     width: 50%;
-    padding-right: 7rem;
+    padding-right: 4rem;
   }
 
-  ${MOBILE_MENU_HIDDEN} {
-    padding-right: 4rem;
+  ${LAPTOP_BP_UP} {
+    width: auto;
+    padding-right: 7rem;
   }
 `
 
@@ -149,6 +148,12 @@ export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
           </LinkColumn>
         ))}
       </LinksColumnsWrapper>
+      {story.content.footer_download_title && (
+        <>
+          <ColumnHeader>{story.content.footer_download_title}</ColumnHeader>
+          <AppButtons />
+        </>
+      )}
 
       <FooterFooter
         dangerouslySetInnerHTML={{

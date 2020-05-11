@@ -265,6 +265,7 @@ export const globalStoryMock: GlobalStory = {
     cta_label: 'Beräkna ditt pris',
     cta_link: link,
     footer_menu_items: footerMenuItems,
+    footer_download_title: 'Ladda ner',
     footer_paragraph: footerText,
     peril_modal_info_title: 'Att tänka på',
     peril_modal_coverage_title: 'Det här täcks',
