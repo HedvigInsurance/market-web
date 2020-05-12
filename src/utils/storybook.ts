@@ -246,6 +246,13 @@ const footerText: MarkdownHtmlComponent = {
   plugin: 'markdown-html',
 }
 
+const ratingText: MarkdownHtmlComponent = {
+  _uid: '5',
+  html: '<p>4,5 av 5 på <a href="#">Trustpilot</a></p>',
+  original: '<p>4,5 av 5 på <a href="#">Trustpilot</a></p>',
+  plugin: 'markdown-html',
+}
+
 export const globalStoryMock: GlobalStory = {
   name: 'storybook mock',
   created_at: '',
@@ -270,6 +277,7 @@ export const globalStoryMock: GlobalStory = {
     footer_safety_body:
       'Hedvig backas av HDI med över 200 års erfarenhet och 600 miljarder kr på kontot – du är i trygga händer. Hedvig står under Finansinspektionens tillsyn.',
     footer_rating_title: 'Betyg',
+    footer_rating_paragraph: ratingText,
     footer_paragraph: footerText,
     peril_modal_info_title: 'Att tänka på',
     peril_modal_coverage_title: 'Det här täcks',
