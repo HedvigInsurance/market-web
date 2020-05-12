@@ -158,6 +158,17 @@ const Rating = styled.div`
   }
 `
 
+const RatingParagraph = styled.div`
+  a {
+    color: ${colorsV3.purple500};
+    text-decoration: none;
+  }
+
+  a:hover {
+    opacity: 0.8;
+  }
+`
+
 const FooterFooter = styled(DoubleColumn)`
   margin-top: 2rem;
   font-size: 0.75rem;
@@ -224,7 +235,13 @@ export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
             <Rating>
               <StarRating />
             </Rating>
-            <p>{story.content.footer_rating_paragraph}</p>
+            {story.content.footer_rating_paragraph && (
+              <RatingParagraph
+                dangerouslySetInnerHTML={{
+                  __html: story.content.footer_rating_paragraph.html,
+                }}
+              />
+            )}
           </div>
         )}
 
