@@ -253,6 +253,15 @@ const ratingText: MarkdownHtmlComponent = {
   plugin: 'markdown-html',
 }
 
+const safetyText: MarkdownHtmlComponent = {
+  _uid: '5',
+  html:
+    '<p>Hedvig backas av HDI med över 200 års erfarenhet och 600 miljarder kr på kontot – du är i trygga händer. Hedvig står under Finansinspektionens tillsyn.</p>',
+  original:
+    '<p>Hedvig backas av HDI med över 200 års erfarenhet och 600 miljarder kr på kontot – du är i trygga händer. Hedvig står under Finansinspektionens tillsyn.</p>',
+  plugin: 'markdown-html',
+}
+
 export const globalStoryMock: GlobalStory = {
   name: 'storybook mock',
   created_at: '',
@@ -274,8 +283,7 @@ export const globalStoryMock: GlobalStory = {
     footer_menu_items: footerMenuItems,
     footer_download_title: 'Ladda ner',
     footer_safety_title: 'Trygghet',
-    footer_safety_body:
-      'Hedvig backas av HDI med över 200 års erfarenhet och 600 miljarder kr på kontot – du är i trygga händer. Hedvig står under Finansinspektionens tillsyn.',
+    footer_safety_body: safetyText,
     footer_rating_title: 'Betyg',
     footer_rating_paragraph: ratingText,
     footer_paragraph: footerText,
