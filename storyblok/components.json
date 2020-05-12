@@ -1185,14 +1185,13 @@
     {
       "name": "footer_block",
       "display_name": null,
+      "updated_at": "2020-04-20T12:25:55.319Z",
       "schema": {
         "color": {
           "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
+          "field_type": "hedvig-minimal-color-picker",
           "options": [],
-          "default_value": "off-black-dark",
-          "pos": 0,
-          "display_name": ""
+          "pos": 0
         },
         "extra_styling": {
           "type": "textarea",
@@ -1241,7 +1240,7 @@
     {
       "name": "global",
       "display_name": null,
-      "updated_at": "2020-04-07T14:44:56.056Z",
+      "updated_at": "2020-05-12T09:46:36.687Z",
       "schema": {
         "header_menu_items": {
           "type": "bloks",
@@ -1279,12 +1278,18 @@
         "footer": {
           "type": "section",
           "keys": [
+            "footer_menu_items_1",
+            "footer_menu_items_2",
             "get_started",
             "company",
             "legal",
             "social",
-            "footer_menu_items_1",
-            "footer_menu_items_2",
+            "footer_menu_items",
+            "footer_download_title",
+            "footer_safety_title",
+            "footer_safety_body",
+            "footer_rating_title",
+            "footer_rating_paragraph",
             "footer_paragraph"
           ],
           "pos": 6
@@ -1337,11 +1342,42 @@
           "pos": 12,
           "translatable": true
         },
+        "footer_menu_items": {
+          "type": "bloks",
+          "pos": 13,
+          "maximum": "4",
+          "restrict_components": true,
+          "component_whitelist": ["menu_item"]
+        },
+        "footer_download_title": {
+          "type": "text",
+          "pos": 14
+        },
+        "footer_safety_title": {
+          "type": "text",
+          "pos": 15
+        },
+        "footer_safety_body": {
+          "type": "custom",
+          "pos": 16,
+          "field_type": "markdown-html",
+          "options": []
+        },
+        "footer_rating_title": {
+          "type": "text",
+          "pos": 17
+        },
+        "footer_rating_paragraph": {
+          "type": "custom",
+          "pos": 18,
+          "field_type": "markdown-html",
+          "options": []
+        },
         "footer_paragraph": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 13,
+          "pos": 19,
           "translatable": true
         },
         "perils": {
@@ -1352,16 +1388,20 @@
             "peril_modal_exceptions_title"
           ],
           "restrict_components": true,
-          "component_whitelist": ["peril_labels"]
+          "component_whitelist": ["peril_labels"],
+          "pos": 20
         },
         "peril_modal_info_title": {
-          "type": "text"
+          "type": "text",
+          "pos": 21
         },
         "peril_modal_coverage_title": {
-          "type": "text"
+          "type": "text",
+          "pos": 22
         },
         "peril_modal_exceptions_title": {
-          "type": "text"
+          "type": "text",
+          "pos": 23
         }
       },
       "image": null,
