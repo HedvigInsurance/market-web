@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet-async'
 import { RouteComponentProps, withRouter } from 'react-router'
-import { FooterBlock } from '../blocks/FooterBlock'
+import { FooterBlock } from '../blocks/FooterBlock/FooterBlock'
 import { HeaderBlock } from '../blocks/HeaderBlock'
 import { BlogPostList } from '../components/BlogPostList'
 import { BlogPostsContainer } from '../components/containers/BlogPostsContainer'
@@ -43,8 +43,8 @@ export const BlogPostsTagPageComponent: React.FunctionComponent<{
       _uid={'footer'}
       color={{
         _uid: 'footer',
-        plugin: 'hedvig_limited_color_picker',
-        color: 'off-black-dark',
+        color: 'standard-inverse',
+        plugin: 'hedvig_minimal_color_picker',
       }}
     />
   </>
