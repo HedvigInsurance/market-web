@@ -4,12 +4,13 @@ import { AppButtons } from 'components/AppButtons/AppButtons'
 import {
   CONTENT_GUTTER,
   ContentWrapper,
-  LAPTOP_BP_UP,
+  MOBILE_BP_UP,
   SectionWrapper,
   SITE_MAX_WIDTH,
   TABLET_BP_UP,
 } from 'components/blockHelpers'
 import { HedvigH } from 'components/icons/HedvigH'
+import { StarRating } from 'components/icons/StarRating'
 import React from 'react'
 import { GlobalStory, GlobalStoryContainer } from 'storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from 'utils/storyblok'
@@ -55,6 +56,11 @@ const LinksColumnsWrapper = styled.nav`
     margin-top: 0;
     margin-bottom: 5rem;
     justify-content: space-between;
+
+    @supports (display: grid) {
+      display: grid;
+      grid-template-columns: 30% 20% 5rem 25% 1fr;
+    }
   }
 `
 
@@ -73,9 +79,21 @@ const LinkColumn = styled.div`
     padding-right: 4rem;
   }
 
-  ${LAPTOP_BP_UP} {
-    width: auto;
+  ${TABLET_BP_UP} {
+    width: 25%;
     padding-right: 7rem;
+
+    @supports (display: grid) {
+      width: auto;
+
+      &:nth-of-type(3) {
+        grid-column-start: 4;
+      }
+
+      &:nth-of-type(4) {
+        grid-column-start: 5;
+      }
+    }
   }
 `
 
@@ -93,10 +111,57 @@ const Link = styled.a`
   text-decoration: none;
 `
 
-const FooterFooter = styled.div`
+const DoubleColumn = styled.div`
+  & > div {
+    margin-bottom: 4rem;
+  }
+
+  ${TABLET_BP_UP} {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > div {
+      width: 50%;
+    }
+
+    & > div:first-of-type {
+      padding-right: 4.5rem;
+    }
+
+    @supports (display: grid) {
+      display: grid;
+      grid-template-columns: 50% calc(50% - 5rem);
+      grid-gap: 0 5rem;
+
+      & > div {
+        width: auto;
+      }
+    }
+  }
+`
+
+const Rating = styled.div`
+  position: relative;
+  height: 0;
+  padding-top: calc(42 / 238 * 100%);
+
+  ${MOBILE_BP_UP} {
+    width: 15rem;
+    height: 2.625rem;
+    padding-top: 0;
+  }
+
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+`
+
+const FooterFooter = styled(DoubleColumn)`
   margin-top: 2rem;
   font-size: 0.75rem;
-  line-height: 1.6;
+  line-height: 1.7;
   color: ${colorsV3.gray500};
 
   & > div {
@@ -105,10 +170,7 @@ const FooterFooter = styled.div`
   }
 
   ${TABLET_BP_UP} {
-    display: flex;
-    justify-content: space-between;
     & > div {
-      width: calc(50% - 2.375rem);
       text-align: left;
     }
   }
@@ -148,12 +210,31 @@ export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
           </LinkColumn>
         ))}
       </LinksColumnsWrapper>
-      {story.content.footer_download_title && (
-        <>
-          <ColumnHeader>{story.content.footer_download_title}</ColumnHeader>
-          <AppButtons />
-        </>
-      )}
+      <DoubleColumn>
+        {story.content.footer_safety_title && (
+          <div>
+            <ColumnHeader>{story.content.footer_safety_title}</ColumnHeader>
+            <p>{story.content.footer_safety_body}</p>
+          </div>
+        )}
+
+        {story.content.footer_rating_title && (
+          <div>
+            <ColumnHeader>{story.content.footer_rating_title}</ColumnHeader>
+            <Rating>
+              <StarRating />
+            </Rating>
+            <p>{story.content.footer_rating_paragraph}</p>
+          </div>
+        )}
+
+        {story.content.footer_download_title && (
+          <div>
+            <ColumnHeader>{story.content.footer_download_title}</ColumnHeader>
+            <AppButtons />
+          </div>
+        )}
+      </DoubleColumn>
 
       <FooterFooter
         dangerouslySetInnerHTML={{

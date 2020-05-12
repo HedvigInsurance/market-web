@@ -240,9 +240,9 @@ const footerMenuItems: MenuItem[] = [
 const footerText: MarkdownHtmlComponent = {
   _uid: '5',
   html:
-    '<div><p>© Hedvig AB. Huvudkontor: Valhallavägen 117, 115 31, Stockholm. Org. nr. 559093-0334.</p></div><div><p>Exklusiv försäkringsgivare för Hedvigs försäkringar är HDI Global Specialty SE, Sverige Filial, org. nr. 516402-6345. Hedvig står under Finansinspektionens tillsyn.</p></div>',
+    '<div><p>© Hedvig AB 2020</p></div><div><p>Hedvig HQ, Valhallavägen 117 K, SE–115 31, Stockholm, SWE Org. nr. 559093-0334</p></div>',
   original:
-    '<div><p>© Hedvig AB. Huvudkontor: Valhallavägen 117, 115 31, Stockholm. Org. nr. 559093-0334.</p></div><div><p>Exklusiv försäkringsgivare för Hedvigs försäkringar är HDI Global Specialty SE, Sverige Filial, org. nr. 516402-6345. Hedvig står under Finansinspektionens tillsyn.</p></div>',
+    '<div><p>© Hedvig AB 2020</p></div><div><p>Hedvig HQ, Valhallavägen 117 K, SE–115 31, Stockholm, SWE Org. nr. 559093-0334</p></div>',
   plugin: 'markdown-html',
 }
 
@@ -266,6 +266,10 @@ export const globalStoryMock: GlobalStory = {
     cta_link: link,
     footer_menu_items: footerMenuItems,
     footer_download_title: 'Ladda ner',
+    footer_safety_title: 'Trygghet',
+    footer_safety_body:
+      'Hedvig backas av HDI med över 200 års erfarenhet och 600 miljarder kr på kontot – du är i trygga händer. Hedvig står under Finansinspektionens tillsyn.',
+    footer_rating_title: 'Betyg',
     footer_paragraph: footerText,
     peril_modal_info_title: 'Att tänka på',
     peril_modal_coverage_title: 'Det här täcks',
