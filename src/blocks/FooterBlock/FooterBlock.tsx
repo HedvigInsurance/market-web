@@ -225,7 +225,11 @@ export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
         {story.content.footer_safety_title && (
           <div>
             <ColumnHeader>{story.content.footer_safety_title}</ColumnHeader>
-            <p>{story.content.footer_safety_body}</p>
+            <div
+              dangerouslySetInnerHTML={{
+                __html: story.content.footer_safety_body?.html,
+              }}
+            />
           </div>
         )}
 
@@ -235,13 +239,11 @@ export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
             <Rating>
               <StarRating />
             </Rating>
-            {story.content.footer_rating_paragraph && (
-              <RatingParagraph
-                dangerouslySetInnerHTML={{
-                  __html: story.content.footer_rating_paragraph.html,
-                }}
-              />
-            )}
+            <RatingParagraph
+              dangerouslySetInnerHTML={{
+                __html: story.content.footer_rating_paragraph?.html,
+              }}
+            />
           </div>
         )}
 
