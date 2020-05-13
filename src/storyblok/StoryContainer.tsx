@@ -117,9 +117,9 @@ export interface GlobalStory extends Story {
     footer_menu_items: ReadonlyArray<MenuItem>
     footer_download_title?: string
     footer_safety_title?: string
-    footer_safety_body?: string
+    footer_safety_body: MarkdownHtmlComponent
     footer_rating_title?: string
-    footer_rating_paragraph?: MarkdownHtmlComponent
+    footer_rating_paragraph: MarkdownHtmlComponent
     footer_paragraph: MarkdownHtmlComponent
     peril_modal_info_title?: string
     peril_modal_coverage_title?: string
