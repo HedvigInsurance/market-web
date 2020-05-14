@@ -9,7 +9,6 @@ import { useIcon } from '../data/useIcon'
 interface PerilItemProps {
   title: React.ReactNode
   color: minimalColorComponentColors
-  shortDescription?: string
   icon: PerilIcon
   onClick: () => void
 }
@@ -72,7 +71,7 @@ const IconWrapper = styled.div`
   ${TABLET_BP_UP} {
     width: 3rem;
     height: 3rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 4.75rem;
   }
 
   svg {
@@ -93,7 +92,6 @@ const Title = styled('h4')`
   font-size: 0.875rem;
 
   ${TABLET_BP_UP} {
-    margin-bottom: 1.5rem;
     font-size: 1rem;
   }
 `
@@ -114,7 +112,6 @@ export const Description = styled.p`
 export const PerilItem: React.FC<PerilItemProps> = ({
   title,
   color,
-  shortDescription,
   icon,
   onClick,
 }) => {
@@ -126,7 +123,6 @@ export const PerilItem: React.FC<PerilItemProps> = ({
       <Container color={color} onClick={onClick}>
         <IconWrapper dangerouslySetInnerHTML={{ __html: iconString }} />
         <Title>{title}</Title>
-        <Description>{shortDescription}</Description>
       </Container>
     </OuterContainer>
   )
