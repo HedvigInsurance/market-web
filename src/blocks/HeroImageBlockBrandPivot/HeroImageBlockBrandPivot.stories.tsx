@@ -6,7 +6,7 @@ import { MarkdownHtmlComponent } from '../BaseBlockProps'
 import { Hero } from './HeroImageBlockBrandPivot'
 
 export default {
-  title: 'Blocks/HeroBlock',
+  title: 'Blocks/HeroBlockBrandPivot',
   component: Hero,
   decorators: [withKnobs, StoryRouter()],
 }
