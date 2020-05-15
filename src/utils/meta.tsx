@@ -1,6 +1,6 @@
 import React from 'react'
 import { HrefLang, SeoContent, Story } from '../storyblok/StoryContainer'
-import { getHreflangIsoCode } from './CurrentLocale'
+import { getHreflangIsoCode, HreflangLocale } from './CurrentLocale'
 import { getPublicHost, getStoryblokImage } from './storyblok'
 
 interface Meta {
@@ -137,5 +137,14 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <meta name="theme-color" content="#651eff" />
+
+    {story &&
+    [HreflangLocale.EnNo, HreflangLocale.NoNo].includes(
+      getAlternateLang(story.full_slug),
+    ) ? (
+      <script defer src="https://cdn.adt387.com/jsTag?ap=1492109567"></script>
+    ) : (
+      <script defer src="https://adtr.io/jsTag?ap=1412531808"></script>
+    )}
   </>
 )
