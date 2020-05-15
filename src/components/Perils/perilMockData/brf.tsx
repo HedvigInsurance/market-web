@@ -3,8 +3,6 @@ import { Peril } from '../types'
 export const brfPerils: Peril[] = [
   {
     title: 'Eldsvåda',
-    shortDescription:
-      'Om det skulle brinna så ersätter Hedvig både skador på din bostad och saker som blir förstörda.',
     info: 'Var försiktig med levande ljus eller eld.',
     covered: [
       'Eld som har brunnit med öppen låga (inte enbart glöd- eller svedskada)',
@@ -28,8 +26,6 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Vattenläcka',
-    shortDescription:
-      'Ersättning vid olika typer av vattenskador som till exempel översvämning.',
     info:
       'Se till att kranar är täta och stängda när de inte används. Lägg underlägg under kyl/frys/ diskmaskin som samlar upp vatten. Se till att ledningssystem och anslutna anordningar inte fryser sönder. Och lämnar du lägenheten i mer än 7 dagar så måste vattnet stängas av helt.',
     covered: [
@@ -59,8 +55,6 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Inbrott',
-    shortDescription:
-      'Skydd när någon utan lov gjort inbrott eller förstört din lägenhet. ',
     info:
       'Lås ytterdörrar och regla fönster när ingen är hemma. Och märk inte dina nycklar så att folk förstår vart du bor eller vart de går.',
     covered: [
@@ -83,8 +77,6 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Stöld',
-    shortDescription:
-      'Vid stöld av dina saker så täcks dem och ersätts av oss.',
     info:
       'Ha alltid uppsikt över dina saker. Lämna inte värdesaker på t.ex. ett bord på ett café. Lås alltid bilen om du förvarar saker där och stöldbegärlig egendom (smycke, dator) ska alltid döljas. Och lås alltid din cykel.',
     covered: [
@@ -111,8 +103,6 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Skadegörelse',
-    shortDescription:
-      'Vid skadegörelse av dina saker så täcks dem och ersätts av oss.',
     info:
       'Lås ytterdörrar och regla fönster när ingen är hemma. Och märk inte dina nycklar så att folk förstår vart du bor eller vart de går.',
     covered: [
@@ -135,8 +125,6 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Ansvarsskydd',
-    shortDescription:
-      'Vi hjälper dig med utredning och förhandling och vi betalar både rättegångskostnader och skadestånd.',
     info:
       'Kontakta Hedvig direkt när någon kräver dig på skadestånd. Medge aldrig någon skyldighet utan ta ett djupt andetag och låt oss hjälpa dig istället.',
     covered: [
@@ -165,8 +153,6 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Rättsskydd',
-    shortDescription:
-      'Vårt rättsskydd ger dig ersättning för att t.ex. anlita advokat/ombud om du hamnar i en rättslig tvist.',
     info:
       'Du måste välja vem som ska representera dig och personen måste vara medlem i Svenska advokatsamfundet. Sen måste ombudet skicka in en ansökan till oss innan du kan få besked om rättsskyddet täcker tvisten.',
     covered: [
@@ -195,8 +181,6 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Resetrubbel',
-    shortDescription:
-      'Det mesta kan hända när du är ute och reser. Som tur är skyddar Hedvig dig.',
     info:
       'Anmäl försenat bagage direkt till flygbolaget och se alltid till att få en så kallad PIR-rapport, som kvitto på att ditt bagage är försenat/försvunnet.',
     covered: [
@@ -224,8 +208,6 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Överfall',
-    shortDescription:
-      'Om någon skulle utsätta dig för ett våldsbrott, rån eller våldtäkt, ersätts du med ett fast belopp.',
     info:
       'Hur du själv agerar i olika situationer kan påverka hur stor din ersättning blir. Om du är påverkad av alkohol eller droger, är provocerande eller aggressiv eller medvetet går in i konflikter kan din ersättning minskas eller helt utebli.',
     covered: [
@@ -253,8 +235,6 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Sjuk på resa',
-    shortDescription:
-      'Vårt reseskydd ersätter kostnader om du blir akut sjuk eller skadar dig.',
     info:
       'Kontakta alltid oss direkt via appen eller ring Hedvig Global Assistance på +45 38 48 94 61 som har öppet dygnet runt.',
     covered: [
@@ -281,8 +261,6 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Vitvaror',
-    shortDescription:
-      'Om dina vitvaror plötsligt går sönder ersätter Hedvig dig för att reparera eller ersätta dem.',
     info: 'Det finns inget speciellt att tänka på.',
     covered: [
       'Vitvaror/hushållsmaskiner p.g.a kortslutning, överslag eller överspänning',
@@ -310,8 +288,6 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Drulle',
-    shortDescription:
-      'Om du har otur och dina saker går sönder ersätter Hedvig dig.',
     info:
       'Ta med mobilen (stöldbegärlig egendom) när du lämnar bilen. Lämna inte värdefulla ägodelar i källaren (biyta) och checka inte in smycken eller klockor när du reser.',
     covered: [
@@ -340,8 +316,6 @@ export const brfPerils: Peril[] = [
   },
   {
     title: 'Bostadsrätts­tillägg',
-    shortDescription:
-      'Hedvig ersätter kostnaden för att reparera skador på din lägenhets fasta inredning och ytskikt.',
     info: 'Inget särskilt.',
     covered: [
       'skador på fast inredning (typ ditt nya kök',
