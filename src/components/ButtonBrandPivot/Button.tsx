@@ -8,7 +8,7 @@ import { getMinimalColorStyles, MOBILE_BP_UP } from '../blockHelpers'
 
 export const buttonSizes = {
   sm: '.75rem 1.5rem',
-  md: '1.125rem 2rem',
+  md: '1rem 2rem',
   lg: '1.125rem 3rem',
 }
 
@@ -72,6 +72,7 @@ export const ButtonBrandPivot = styled('button')<
     return {
       display: 'inline-block',
       width: fullWidth ? '100%' : 'auto',
+      minWidth: '10rem',
       padding: buttonSizes[size],
       borderRadius: 8,
       border: `1px solid ${colorStyles.background}`,
