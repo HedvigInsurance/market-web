@@ -5,7 +5,7 @@ import React from 'react'
 import StoryRouter from 'storybook-react-router'
 import { globalStoryMock, minimalColorMap } from 'utils/storybook'
 import { Header } from '.'
-import { Hero } from '../HeroImageBlockBrandPivot/HeroImageBlockBrandPivot'
+import { HeroBlock } from '../HeroBlock/HeroBlock'
 
 export default {
   title: 'Blocks/HeaderBlock',
@@ -68,14 +68,18 @@ export const WithHero = () => (
         'outlined',
       )}
     />
-    <Hero
+    <HeroBlock
       _uid="1234"
       component="hero"
-      headline="Hjälp så som du aldrig kunnat föreställa dig den"
+      color={minimalColorMap['standard-inverse']}
+      headline="Hjälp så som du aldrig kunnat <br/>föreställa dig den"
       headline_font_size="md"
       image="https://source.unsplash.com/user/heytowner/?orientation=landscape"
       image_mobile=""
-      story={globalStoryMock}
+      show_cta={true}
+      cta_label="Läs mer"
+      cta_style="outlined"
+      cta_color={minimalColorMap['standard-inverse']}
     />
     <ScrollContainer />
   </div>
