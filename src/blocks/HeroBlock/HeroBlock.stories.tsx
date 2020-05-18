@@ -35,6 +35,7 @@ export const Default = () => (
   <HeroBlock
     {...heroProps}
     headline="Bostadsrätt"
+    animate={boolean('Animate', true)}
     text={heroText}
     headline_font_size_mobile={select('Font size mobile', fontSizes, 'lg')}
     headline_font_size={select('Font size', fontSizes, 'lg')}
@@ -49,8 +50,8 @@ export const Default = () => (
       ]
     }
     text_position={select('Text position', ['left', 'center', 'right'], 'left')}
-    image={image}
-    image_mobile={image}
+    image="https://res.cloudinary.com/gustaveen-com/image/upload/q_40/v1589550685/hus_villa_z07bvi.jpg"
+    image_mobile="https://res.cloudinary.com/gustaveen-com/image/upload/q_40/v1589552944/hus_villa_mobile_vu7rx6.jpg"
     show_hedvig_wordmark={boolean('Show Hedvig wordmark', false)}
   />
 )
@@ -58,6 +59,7 @@ export const Default = () => (
 export const WithCTA = () => (
   <HeroBlock
     {...heroProps}
+    animate={boolean('Animate', true)}
     headline="Hjälp så som du aldrig kunnat <br/>föreställa dig den"
     headline_font_size_mobile={select('Font size mobile', fontSizes, 'md')}
     headline_font_size={select('Font size', fontSizes, 'sm')}
