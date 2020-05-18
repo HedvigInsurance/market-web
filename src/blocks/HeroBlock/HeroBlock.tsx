@@ -1,4 +1,4 @@
-import { keyframes } from '@emotion/core'
+import { keyframes, css } from '@emotion/core'
 import styled from '@emotion/styled'
 import {
   BrandPivotBaseBlockProps,
@@ -38,108 +38,119 @@ interface WrapperProps {
   dynamicHeight: boolean
 }
 
-const Wrapper = styled(SectionWrapper)<WrapperProps>(
-  ({
-    colorComponent,
-    backgroundImageMobile,
-    backgroundImage,
-    dynamicHeight,
-  }) => ({
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    minHeight: dynamicHeight ? '50vh' : '100vh',
-    paddingTop: '2.5rem',
-    paddingBottom: '2.5rem',
-    color: getMinimalColorStyles(colorComponent?.color ?? 'standard').color,
-    backgroundImage: backgroundImage
-      ? `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${backgroundImageMobile})`
-      : '',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+const Wrapper = styled(SectionWrapper)<WrapperProps>`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: ${(props) => (props.dynamicHeight ? '50vh' : '100vh')};
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  color: ${(props) =>
+    getMinimalColorStyles(props.colorComponent?.color ?? 'standard').color};
+  background-image: ${(props) =>
+    props.backgroundImageMobile
+      ? `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${props.backgroundImageMobile})`
+      : ''};
+  background-size: cover;
+  background-position: center;
 
-    [MOBILE_BP_UP]: {
-      backgroundImage: backgroundImage
-        ? `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${backgroundImageMobile})`
-        : '',
-    },
-  }),
-)
+  ${MOBILE_BP_UP} {
+    background-image: ${(props) =>
+      props.backgroundImage
+        ? `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${props.backgroundImageMobile})`
+        : ''};
+  }
+`
 
 const WrapperWithExtraStyling = styled(Wrapper)<{ extraStyling?: string }>`
   ${({ extraStyling }) => extraStyling};
 `
 
-const fadeSlideIn = keyframes({
-  from: { opacity: 0, transform: 'translateY(10%)' },
-  to: { opacity: 1, transform: 'translateY(0%)' },
-})
+const fadeSlideIn = keyframes`
+  from {
+    opacity: 0; 
+    transform: translateY(10%); 
+  }
+  to {
+    opacity: 1; 
+    transform: translateY(0%);
+  }
+`
 
 const HeroContent = styled(ContentWrapper)`
   z-index: 2;
 `
 
-const HeroHeadline = styled(Heading)<Animatable>(({ animate }) => ({
-  position: 'relative',
-  animation: animate ? `${fadeSlideIn} 800ms forwards` : 'none',
-  opacity: animate ? 0 : 1,
-  animationDelay: '400ms',
-  marginBottom: '1rem',
+const HeroHeadline = styled(Heading)<Animatable>`
+  position: relative;
+  animation: ${(props) =>
+    props.animate
+      ? css`
+          ${fadeSlideIn} 800ms forwards
+        `
+      : 'none'};
+  opacity: ${(props) => (props.animate ? 0 : 1)};
+  animation-delay: 400ms;
+  margin-bottom: 1rem;
 
-  br: {
-    display: 'none',
-    [MOBILE_BP_UP]: {
-      display: 'block',
-    },
-  },
-}))
+  br {
+    display: none;
+    ${MOBILE_BP_UP} {
+      display: block;
+    }
+  }
+`
 
-const Text = styled('div')<TextProps>(
-  ({ animate, colorComponent, textPosition }) => ({
-    animation: animate ? `${fadeSlideIn} 800ms forwards` : 'none',
-    opacity: animate ? 0 : 1,
-    animationDelay: '600ms',
-    maxWidth: '40rem',
-    marginLeft: textPosition === 'left' ? '0' : 'auto',
-    marginRight: textPosition === 'right' ? '0' : 'auto',
-    color: getMinimalColorStyles(colorComponent?.color ?? 'standard').color,
-    fontSize: '1.25rem',
-    textAlign: textPosition ?? 'center',
+const Text = styled.div<TextProps>`
+  animation: ${(props) =>
+    props.animate
+      ? css`
+          ${fadeSlideIn} 800ms forwards
+        `
+      : 'none'};
+  opacity: ${(props) => (props.animate ? 0 : 1)};
+  animation-delay: 600ms;
+  max-width: 40rem;
+  margin-left: ${(props) => (props.textPosition === 'left' ? '0' : 'auto')};
+  margin-right: ${(props) => (props.textPosition === 'right' ? '0' : 'auto')};
+  color: ${(props) =>
+    getMinimalColorStyles(props.colorComponent?.color ?? 'standard').color};
+  font-size: 1.25rem;
+  text-align: ${(props) => props.textPosition ?? 'center'};
 
-    [TABLET_BP_UP]: {
-      fontSize: '1.5rem',
-    },
-  }),
-)
+  ${TABLET_BP_UP} {
+    font-size: 1.5rem;
+  }
+`
 
-const Wordmark = styled('div')({
-  display: 'inline-flex',
-  position: 'absolute',
-  marginTop: '0.625rem',
-  marginLeft: '0.5rem',
+const Wordmark = styled.div`
+  display: inline-flex;
+  position: absolute;
+  margin-top: 0.625rem;
+  margin-left: 0.5rem;
 
-  ['svg']: {
-    width: '1.25rem',
-    height: '1.25rem',
-  },
+  svg {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
 
-  [TABLET_BP_UP]: {
-    marginTop: '1rem',
-    ['svg']: {
-      width: '2rem',
-      height: '2rem',
-    },
-  },
-})
+  ${TABLET_BP_UP} {
+    margin-top: 1rem;
+    svg {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+`
 
-const ButtonWrapper = styled('div')({
-  display: 'flex',
-  paddingTop: '0.5rem',
+const ButtonWrapper = styled.div`
+  display: flex;
+  padding-top: 0.5rem;
 
-  [TABLET_BP_UP]: {
-    paddingTop: '1rem',
-  },
-})
+  ${TABLET_BP_UP} {
+    padding-top: 1rem;
+  }
+`
 
 export interface HeroBlockProps extends BrandPivotBaseBlockProps {
   headline: string
