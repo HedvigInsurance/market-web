@@ -1,4 +1,4 @@
-import { keyframes, css } from '@emotion/core'
+import { css, keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import {
   BrandPivotBaseBlockProps,
@@ -45,14 +45,6 @@ const Wrapper = styled(SectionWrapper)<WrapperProps>`
   min-height: ${(props) => props.height ?? '100vh'};
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
-  color: ${(props) =>
-    getMinimalColorStyles(props.colorComponent?.color ?? 'standard').color};
-  background-image: ${(props) =>
-    props.backgroundImageMobile
-      ? `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${props.backgroundImageMobile})`
-      : ''};
-  background-size: cover;
-  background-position: center;
 
   ${TABLET_BP_UP} {
     padding-bottom: 3.75rem;
@@ -87,7 +79,7 @@ const HeroHeadline = styled(Heading)<Animatable>`
         `
       : 'none'};
   opacity: ${(props) => (props.animate ? 0 : 1)};
-  animation-delay: 400ms;
+  animation-delay: 1000ms;
   margin-bottom: 1rem;
 
   br {
@@ -106,7 +98,7 @@ const Text = styled.div<TextProps>`
         `
       : 'none'};
   opacity: ${(props) => (props.animate ? 0 : 1)};
-  animation-delay: 600ms;
+  animation-delay: 1200ms;
   max-width: 40rem;
   margin-left: ${(props) => (props.textPosition === 'left' ? '0' : 'auto')};
   margin-right: ${(props) => (props.textPosition === 'right' ? '0' : 'auto')};
@@ -140,9 +132,17 @@ const Wordmark = styled.div`
   }
 `
 
-const ButtonWrapper = styled.div`
+const ButtonWrapper = styled.div<Animatable>`
   display: flex;
   padding-top: 0.5rem;
+  animation: ${(props) =>
+    props.animate
+      ? css`
+          ${fadeSlideIn} 800ms forwards
+        `
+      : 'none'};
+  opacity: ${(props) => (props.animate ? 0 : 1)};
+  animation-delay: 1200ms;
 
   ${TABLET_BP_UP} {
     padding-top: 1rem;
@@ -192,6 +192,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
       colorComponent={color}
       extraStyling={extra_styling}
       backgroundImage={getStoryblokImage(image)}
+      backgroundTint
       backgroundImageMobile={getStoryblokImage(image_mobile)}
       height={height}
     >
@@ -219,7 +220,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
           />
         )}
         {show_cta && cta_label && (
-          <ButtonWrapper>
+          <ButtonWrapper animate={animate}>
             <ButtonLinkBrandPivot
               color={cta_color?.color}
               styleType={cta_style}
