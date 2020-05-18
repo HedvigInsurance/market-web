@@ -17,7 +17,19 @@ const OuterContainer = styled.div`
   color: ${colorsV3.gray900};
 `
 
-const Container = styled.button<{ color: minimalColorComponentColors }>`
+const MiddleContainer = styled.button`
+  display: flex;
+  width: 100%;
+  background: transparent;
+  border: 0;
+
+  ${TABLET_BP_UP} {
+    position: relative;
+    padding-top: 100%;
+  }
+`
+
+const InnerContainer = styled.div<{ color: minimalColorComponentColors }>`
   display: flex;
   width: 100%;
   align-items: center;
@@ -28,7 +40,6 @@ const Container = styled.button<{ color: minimalColorComponentColors }>`
   color: inherit;
   font-family: inherit;
   border-radius: 0.375rem;
-  border: 0;
   background-color: ${({ color }) =>
     color === 'standard-inverse' ? colorsV3.gray100 : colorsV3.white};
   cursor: pointer;
@@ -36,10 +47,18 @@ const Container = styled.button<{ color: minimalColorComponentColors }>`
   appearance: none;
 
   ${TABLET_BP_UP} {
-    flex-direction: column;
-    align-items: flex-start;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     padding: 1.25rem;
     border-radius: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
 
     &:hover {
       box-shadow: 0 0 16px rgba(0, 0, 0, 0.08);
@@ -71,7 +90,6 @@ const IconWrapper = styled.div`
   ${TABLET_BP_UP} {
     width: 3rem;
     height: 3rem;
-    margin-bottom: 4.75rem;
   }
 
   svg {
@@ -96,19 +114,6 @@ const Title = styled('h4')`
   }
 `
 
-export const Description = styled.p`
-  display: none;
-
-  ${TABLET_BP_UP} {
-    display: block;
-    margin-top: 0;
-    font-size: 0.875rem;
-    text-align: left;
-    line-height: 1.45;
-    color: ${colorsV3.gray700};
-  }
-`
-
 export const PerilItem: React.FC<PerilItemProps> = ({
   title,
   color,
@@ -120,10 +125,12 @@ export const PerilItem: React.FC<PerilItemProps> = ({
 
   return (
     <OuterContainer>
-      <Container color={color} onClick={onClick}>
-        <IconWrapper dangerouslySetInnerHTML={{ __html: iconString }} />
-        <Title>{title}</Title>
-      </Container>
+      <MiddleContainer>
+        <InnerContainer color={color} onClick={onClick}>
+          <IconWrapper dangerouslySetInnerHTML={{ __html: iconString }} />
+          <Title>{title}</Title>
+        </InnerContainer>
+      </MiddleContainer>
     </OuterContainer>
   )
 }
