@@ -82,6 +82,10 @@ const HeroHeadline = styled(Heading)<Animatable>`
   animation-delay: 1000ms;
   margin-bottom: 1rem;
 
+  ${TABLET_BP_UP} {
+    margin-bottom: 1.25rem;
+  }
+
   br {
     display: none;
     ${MOBILE_BP_UP} {
@@ -104,30 +108,35 @@ const Text = styled.div<TextProps>`
   margin-right: ${(props) => (props.textPosition === 'right' ? '0' : 'auto')};
   color: ${(props) =>
     getMinimalColorStyles(props.colorComponent?.color ?? 'standard').color};
-  font-size: 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5;
   text-align: ${(props) => props.textPosition ?? 'center'};
 
-  ${TABLET_BP_UP} {
-    font-size: 1.5rem;
+  br {
+    display: none;
+    ${MOBILE_BP_UP} {
+      display: block;
+    }
   }
 `
 
 const Wordmark = styled.div`
   display: inline-flex;
   position: absolute;
-  margin-top: 0.625rem;
-  margin-left: 0.5rem;
+  margin-top: 0.375rem;
+  margin-left: 0.25rem;
 
   svg {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 0.75rem;
+    height: 0.75rem;
   }
 
   ${TABLET_BP_UP} {
-    margin-top: 1rem;
+    margin-top: 0.5rem;
+    margin-left: 0.375rem;
     svg {
-      width: 2rem;
-      height: 2rem;
+      width: 1rem;
+      height: 1rem;
     }
   }
 `

@@ -14,9 +14,9 @@ export default {
 const heroText: MarkdownHtmlComponent = {
   _uid: '1234',
   html:
-    '<p>Omfattande skydd för dig, din lägenhet och dina saker. Bostadsrättstillägg ingår alltid.</p>',
+    '<p>Omfattande skydd för dig, din lägenhet och dina saker. <br/>Bostadsrättstillägg ingår alltid.</p>',
   original:
-    '<p>Omfattande skydd för dig, din lägenhet och dina saker. Bostadsrättstillägg ingår alltid.</p>',
+    '<p>Omfattande skydd för dig, din lägenhet och dina saker. <br/>Bostadsrättstillägg ingår alltid.</p>',
   plugin: 'markdown-html',
 }
 
@@ -37,8 +37,8 @@ export const Default = () => (
     headline="Bostadsrätt"
     animate={boolean('Animate', true)}
     text={heroText}
-    headline_font_size_mobile={select('Font size mobile', fontSizes, 'lg')}
-    headline_font_size={select('Font size', fontSizes, 'lg')}
+    headline_font_size_mobile={select('Font size mobile', fontSizes, 'md')}
+    headline_font_size={select('Font size', fontSizes, 'sm')}
     color={
       minimalColorMap[
         select('color', Object.keys(minimalColorMap), 'standard-inverse')
@@ -52,7 +52,7 @@ export const Default = () => (
     text_position={select('Text position', ['left', 'center', 'right'], 'left')}
     image="https://res.cloudinary.com/gustaveen-com/image/upload/q_40/v1589550685/hus_villa_z07bvi.jpg"
     image_mobile="https://res.cloudinary.com/gustaveen-com/image/upload/q_40/v1589552944/hus_villa_mobile_vu7rx6.jpg"
-    show_hedvig_wordmark={boolean('Show Hedvig wordmark', false)}
+    show_hedvig_wordmark={boolean('Show Hedvig wordmark', true)}
   />
 )
 
