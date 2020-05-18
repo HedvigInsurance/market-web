@@ -35,14 +35,14 @@ interface WrapperProps {
   colorComponent?: MinimalColorComponent
   backgroundImageMobile?: Image
   backgroundImage?: Image
-  dynamicHeight: boolean
+  height?: '80vh' | '90vh' | '100vh'
 }
 
 const Wrapper = styled(SectionWrapper)<WrapperProps>`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: ${(props) => (props.dynamicHeight ? '50vh' : '100vh')};
+  min-height: ${(props) => props.height ?? '100vh'};
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
   color: ${(props) =>
@@ -54,11 +54,8 @@ const Wrapper = styled(SectionWrapper)<WrapperProps>`
   background-size: cover;
   background-position: center;
 
-  ${MOBILE_BP_UP} {
-    background-image: ${(props) =>
-      props.backgroundImage
-        ? `linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(${props.backgroundImageMobile})`
-        : ''};
+  ${TABLET_BP_UP} {
+    padding-bottom: 3.75rem;
   }
 `
 
@@ -163,7 +160,7 @@ export interface HeroBlockProps extends BrandPivotBaseBlockProps {
   image_mobile: Image
   animate?: boolean
   show_hedvig_wordmark?: boolean
-  dynamic_height?: boolean
+  height?: '80vh' | '90vh' | '100vh'
   show_cta?: boolean
   cta_label?: string
   cta_color?: MinimalColorComponent
@@ -183,7 +180,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
   image_mobile,
   index,
   show_hedvig_wordmark,
-  dynamic_height = false,
+  height,
   text_position = 'left',
   show_cta,
   cta_label,
@@ -196,7 +193,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
       extraStyling={extra_styling}
       backgroundImage={getStoryblokImage(image)}
       backgroundImageMobile={getStoryblokImage(image_mobile)}
-      dynamicHeight={dynamic_height}
+      height={height}
     >
       <HeroContent index={index} brandPivot fullWidth>
         <HeroHeadline
