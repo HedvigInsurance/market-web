@@ -3,7 +3,7 @@ import { colorsV3 } from '@hedviginsurance/brand'
 import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
 import StoryRouter from 'storybook-react-router'
-import { globalStoryMock, minimalColorMap } from 'utils/storybook'
+import { globalStoryMock, link, minimalColorMap } from 'utils/storybook'
 import { Header } from '.'
 import { HeroBlock } from '../HeroBlock/HeroBlock'
 
@@ -80,6 +80,7 @@ export const WithHero = () => (
       cta_label="Läs mer"
       cta_style="outlined"
       cta_color={minimalColorMap['standard-inverse']}
+      cta_link={link}
     />
     <ScrollContainer />
   </div>
