@@ -1,6 +1,9 @@
 import styled from '@emotion/styled'
 import { BrandPivotBaseBlockProps } from 'blocks/BaseBlockProps'
-import { ContentWrapper, SectionWrapper } from 'components/blockHelpers'
+import {
+  ContentWrapper as OriginalContentWrapper,
+  SectionWrapper,
+} from 'components/blockHelpers'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import { Perils } from 'components/Perils'
 import { TypeOfContract } from 'components/Perils/types'
@@ -16,6 +19,10 @@ export interface ContractOption {
 interface PerilsBlockProps extends BrandPivotBaseBlockProps {
   insurance_types: ContractOption[]
 }
+
+const ContentWrapper = styled(OriginalContentWrapper)`
+  max-width: calc(784px + 2rem);
+`
 
 const SelectInsurance = styled(Select)`
   max-width: 16rem;

@@ -20,7 +20,6 @@ export const usePerils = (insuranceType: TypeOfContract, locale: Locale) => {
             perils(contractType: $typeOfContract, locale: $locale) {
               title
               description
-              shortDescription
               covered
               info
               icon {
@@ -42,7 +41,7 @@ export const usePerils = (insuranceType: TypeOfContract, locale: Locale) => {
           'content-type': 'application/json',
         },
       })
-      const perilsData = await perilsRequest.data.data.perils
+      const perilsData = perilsRequest.data.data.perils
       setPerils(perilsData)
     } catch (e) {
       throw e
