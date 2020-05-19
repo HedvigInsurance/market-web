@@ -225,7 +225,18 @@ export const getStoryblokEditorScript = (nonce: string) =>
       type="text/javascript"></script>
     <script nonce="${nonce}">
       storyblok.on(['published', 'change'], function() {
-        location.reload(true)
+        if (window.updateStoryContainer) {
+          fetch(
+            window.location.pathname + window.location.search,
+             { headers: { accept: 'application/json' } }
+          )
+            .then(r => r.json())
+            .then(data => {
+              window.updateStoryContainer(data)
+            })
+        } else {
+          location.reload(true)
+        }
       })
 
       storyblok.pingEditor(function() {
