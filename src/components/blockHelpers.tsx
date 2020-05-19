@@ -250,16 +250,31 @@ export const getMinimalColorStyles: ColorSetGetter<minimalColorComponentColors> 
 export const getSectionSizeStyle = (size: SectionSize) =>
   sectionSizeStyles[size]
 
-export const backgroundImageStyles = (backgroundImage: string) => {
-  return (
-    backgroundImage !== 'none' &&
-    backgroundImage !== '' && {
-      backgroundImage: `url(${backgroundImage})`,
-      backgroundSize: 'cover',
-      backgroundPosition: 'center center',
-      backgroundRepeat: 'no-repeat',
-    }
-  )
+export const backgroundImageStyles = (
+  backgroundImage = '',
+  backgroundImageMobile = '',
+  tint = false,
+) => {
+  if (backgroundImage === '') {
+    return
+  }
+
+  const bgTint = tint
+    ? 'linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),'
+    : ''
+
+  return {
+    backgroundImage: `${bgTint} url(${backgroundImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center center',
+    backgroundRepeat: 'no-repeat',
+
+    [TABLET_BP_DOWN]: backgroundImageMobile
+      ? {
+          backgroundImage: `${bgTint} url(${backgroundImageMobile})`,
+        }
+      : {},
+  }
 }
 
 export const STANDARD_COLOR_COMPONENT: ColorComponent = {
@@ -273,6 +288,8 @@ interface SectionProps {
   colorComponent?: ColorComponent | MinimalColorComponent
   size?: SectionSize
   backgroundImage?: string
+  backgroundImageMobile?: string
+  backgroundTint?: boolean
   extraStyling?: string
   brandPivot?: boolean
 }
@@ -306,8 +323,10 @@ const fadeIn = keyframes({
 })
 const SectionBackground = styled('div')<{
   backgroundImage?: string
+  backgroundImageMobile?: string
+  tint?: boolean
   colorComponent?: ColorComponent | MinimalColorComponent
-}>(({ backgroundImage, colorComponent }) => ({
+}>(({ backgroundImage, backgroundImageMobile, tint, colorComponent }) => ({
   position: 'absolute',
   top: 0,
   bottom: 0,
@@ -322,19 +341,27 @@ const SectionBackground = styled('div')<{
       : getColorStyles(
           (colorComponent as ColorComponent | undefined)?.color ?? 'standard',
         ).background,
-  ...backgroundImageStyles(backgroundImage || 'none'),
+  ...backgroundImageStyles(
+    backgroundImage || '',
+    backgroundImageMobile || '',
+    tint,
+  ),
   zIndex: -1,
 }))
 
 export const SectionWrapper: React.FC<SectionProps> = ({
   children,
   backgroundImage,
+  backgroundImageMobile,
+  backgroundTint,
   ...props
 }) => {
   return (
     <SectionWrapperComponent {...props}>
       <SectionBackground
         backgroundImage={backgroundImage}
+        backgroundImageMobile={backgroundImageMobile}
+        tint={backgroundTint}
         colorComponent={props.colorComponent}
       />
       {children}

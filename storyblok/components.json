@@ -1799,6 +1799,267 @@
       "component_group_uuid": null
     },
     {
+      "name": "hero_block",
+      "display_name": null,
+      "updated_at": "2020-05-19T08:35:48.577Z",
+      "schema": {
+        "background_image": {
+          "type": "section",
+          "keys": ["image", "image_mobile"],
+          "pos": 0
+        },
+        "image": {
+          "type": "image",
+          "pos": 1,
+          "image_crop": false,
+          "keep_image_size": true,
+          "image_width": "2000",
+          "image_height": "1420"
+        },
+        "image_mobile": {
+          "type": "image",
+          "pos": 2
+        },
+        "layout": {
+          "type": "section",
+          "pos": 3,
+          "keys": ["height", "text_position"]
+        },
+        "height": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "80vh",
+              "name": "80%"
+            },
+            {
+              "value": "90vh",
+              "name": "90%"
+            },
+            {
+              "value": "100vh",
+              "name": "100%"
+            }
+          ],
+          "default_value": "100vh",
+          "description": "Hero height in relation to viewport ",
+          "pos": 4
+        },
+        "text_position": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "left",
+              "name": "Left"
+            },
+            {
+              "value": "center",
+              "name": "Center"
+            },
+            {
+              "value": "right",
+              "name": "Right"
+            }
+          ],
+          "default_value": "center",
+          "pos": 5,
+          "display_name": "",
+          "description": "Text alignment for headline and body"
+        },
+        "headline_group": {
+          "type": "section",
+          "keys": [
+            "headline",
+            "headline_font_size",
+            "headline_font_size_mobile",
+            "use_display_font",
+            "show_hedvig_wordmark"
+          ],
+          "pos": 6,
+          "display_name": "Headline"
+        },
+        "headline": {
+          "type": "text",
+          "pos": 7
+        },
+        "headline_font_size": {
+          "type": "option",
+          "pos": 8,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "xs",
+              "name": "XS"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "md",
+              "name": "MD"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "display_name": "Font size",
+          "default_value": "lg"
+        },
+        "headline_font_size_mobile": {
+          "type": "option",
+          "pos": 9,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "xs",
+              "name": "XS"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "md",
+              "name": "MD"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "display_name": "Font size mobile",
+          "default_value": ""
+        },
+        "use_display_font": {
+          "type": "boolean",
+          "pos": 10,
+          "keys": ["headline", "show_hedvig_wordmark"],
+          "description": ""
+        },
+        "show_hedvig_wordmark": {
+          "type": "boolean",
+          "pos": 11
+        },
+        "body": {
+          "type": "section",
+          "pos": 12,
+          "keys": ["text", "text_color"]
+        },
+        "text": {
+          "type": "custom",
+          "field_type": "markdown-html",
+          "options": [],
+          "pos": 13
+        },
+        "text_color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 14
+        },
+        "cta": {
+          "type": "section",
+          "pos": 15,
+          "keys": [
+            "show_cta",
+            "cta_link",
+            "cta_label",
+            "cta_color",
+            "cta_style"
+          ]
+        },
+        "show_cta": {
+          "type": "boolean",
+          "pos": 16
+        },
+        "cta_link": {
+          "type": "multilink",
+          "required": false,
+          "pos": 17
+        },
+        "cta_label": {
+          "type": "text",
+          "pos": 18,
+          "default_value": "Button label"
+        },
+        "cta_color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 19
+        },
+        "cta_style": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "filled",
+              "name": "Filled"
+            },
+            {
+              "value": "outlined",
+              "name": "Outlined"
+            },
+            {
+              "value": "plain",
+              "name": "Plain"
+            }
+          ],
+          "pos": 20,
+          "description": "",
+          "default_value": "outlined"
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 21
+        },
+        "animate": {
+          "type": "boolean",
+          "pos": 22
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 23
+        },
+        "tab-e69e2291-e9ec-4a70-92ec-2a64959f84de": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": [
+            "color",
+            "extra_styling",
+            "animate",
+            "size",
+            "full_screen",
+            "dynamic_height"
+          ],
+          "pos": 24
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "hero_block",
+      "component_group_uuid": null
+    },
+    {
       "name": "hero_image_block_brand_pivot",
       "display_name": null,
       "updated_at": "2020-04-17T10:04:53.730Z",
