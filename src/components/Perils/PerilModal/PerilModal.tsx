@@ -64,7 +64,6 @@ const DirectionButton = styled('button')`
   padding: 0;
   cursor: pointer;
   background: none;
-  border: none;
   border: 1px solid currentColor;
   border-radius: 0.5rem;
 

@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 interface IconVariant {
   svgUrl: string
 }
@@ -12,9 +14,8 @@ export interface PerilIcon {
 }
 
 export interface Peril {
-  title: React.ReactNode
+  title: ReactNode
   description?: string
-  shortDescription?: string
   covered: string[]
   exceptions: string[]
   info?: string

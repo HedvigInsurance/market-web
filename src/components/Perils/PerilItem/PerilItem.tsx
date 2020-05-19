@@ -1,6 +1,10 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
-import { MOBILE_BP_UP, TABLET_BP_UP } from 'components/blockHelpers'
+import {
+  LAPTOP_BP_UP,
+  MOBILE_BP_UP,
+  TABLET_BP_UP,
+} from 'components/blockHelpers'
 import { PerilIcon } from 'components/Perils/types'
 import React from 'react'
 import { minimalColorComponentColors } from 'src/blocks/BaseBlockProps'
@@ -9,16 +13,29 @@ import { useIcon } from '../data/useIcon'
 interface PerilItemProps {
   title: React.ReactNode
   color: minimalColorComponentColors
-  shortDescription?: string
   icon: PerilIcon
   onClick: () => void
 }
 
 const OuterContainer = styled.div`
   color: ${colorsV3.gray900};
+  position: relative;
+
+  &:before {
+    content: '';
+
+    ${TABLET_BP_UP} {
+      position: relative;
+      padding-top: 75%;
+    }
+
+    ${LAPTOP_BP_UP} {
+      padding-top: 100%;
+    }
+  }
 `
 
-const Container = styled.button<{ color: minimalColorComponentColors }>`
+const InnerContainer = styled.button<{ color: minimalColorComponentColors }>`
   display: flex;
   width: 100%;
   align-items: center;
@@ -29,18 +46,26 @@ const Container = styled.button<{ color: minimalColorComponentColors }>`
   color: inherit;
   font-family: inherit;
   border-radius: 0.375rem;
-  border: 0;
   background-color: ${({ color }) =>
     color === 'standard-inverse' ? colorsV3.gray100 : colorsV3.white};
+  border: 0;
   cursor: pointer;
   transition: all 150ms ease-in-out;
   appearance: none;
 
   ${TABLET_BP_UP} {
-    flex-direction: column;
-    align-items: flex-start;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     padding: 1.25rem;
     border-radius: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
 
     &:hover {
       box-shadow: 0 0 16px rgba(0, 0, 0, 0.08);
@@ -72,7 +97,6 @@ const IconWrapper = styled.div`
   ${TABLET_BP_UP} {
     width: 3rem;
     height: 3rem;
-    margin-bottom: 1.5rem;
   }
 
   svg {
@@ -93,28 +117,13 @@ const Title = styled('h4')`
   font-size: 0.875rem;
 
   ${TABLET_BP_UP} {
-    margin-bottom: 1.5rem;
     font-size: 1rem;
-  }
-`
-
-export const Description = styled.p`
-  display: none;
-
-  ${TABLET_BP_UP} {
-    display: block;
-    margin-top: 0;
-    font-size: 0.875rem;
-    text-align: left;
-    line-height: 1.45;
-    color: ${colorsV3.gray700};
   }
 `
 
 export const PerilItem: React.FC<PerilItemProps> = ({
   title,
   color,
-  shortDescription,
   icon,
   onClick,
 }) => {
@@ -123,11 +132,10 @@ export const PerilItem: React.FC<PerilItemProps> = ({
 
   return (
     <OuterContainer>
-      <Container color={color} onClick={onClick}>
+      <InnerContainer color={color} onClick={onClick}>
         <IconWrapper dangerouslySetInnerHTML={{ __html: iconString }} />
         <Title>{title}</Title>
-        <Description>{shortDescription}</Description>
-      </Container>
+      </InnerContainer>
     </OuterContainer>
   )
 }

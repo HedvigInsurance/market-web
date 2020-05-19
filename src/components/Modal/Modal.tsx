@@ -1,3 +1,4 @@
+import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
 import React from 'react'
@@ -40,16 +41,16 @@ interface ModalContainerProps {
 }
 
 const ModalContainer = styled('div')<ModalContainerProps>`
-  position: relative;
   width: 100%;
   max-width: 33rem;
   max-height: calc(100vh - 6rem);
   ${(props) =>
     !props.dynamicHeight &&
-    `
-  height: 100%;
-  min-height: 25rem;
-  max-height: 50rem;`}
+    css`
+      height: 100%;
+      min-height: 20rem;
+      max-height: 42rem;
+    `};
   background: ${colorsV3.gray100};
   border-radius: 1rem;
   position: absolute;
@@ -58,7 +59,8 @@ const ModalContainer = styled('div')<ModalContainerProps>`
   box-shadow: 0 0 14px rgba(0, 0, 0, 0.06);
   box-sizing: border-box;
   overflow-x: scroll;
-  transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1), transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
   opacity: ${(props) => (props.isVisible ? 1 : 0)};
   transform: ${(props) =>
     props.isVisible
