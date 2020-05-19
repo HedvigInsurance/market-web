@@ -13,7 +13,8 @@ import { FontSizes, Heading } from 'components/Heading/Heading'
 import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
 import { TextPosition } from 'src/utils/textPosition'
-import { getStoryblokImage, Image } from 'utils/storyblok'
+import { LinkComponent } from 'storyblok/StoryContainer'
+import { getStoryblokImage, getStoryblokLinkUrl, Image } from 'utils/storyblok'
 import {
   ContentWrapper,
   getMinimalColorStyles,
@@ -172,6 +173,7 @@ export interface HeroBlockProps extends BrandPivotBaseBlockProps {
   height?: '80vh' | '90vh' | '100vh'
   show_cta?: boolean
   cta_label?: string
+  cta_link?: LinkComponent
   cta_color?: MinimalColorComponent
   cta_style?: ButtonStyleType
 }
@@ -193,6 +195,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
   text_position = 'left',
   show_cta,
   cta_label,
+  cta_link,
   cta_color,
   cta_style,
 }) => {
@@ -228,11 +231,12 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
             textPosition={text_position}
           />
         )}
-        {show_cta && cta_label && (
+        {show_cta && cta_link && (
           <ButtonWrapper animate={animate}>
             <ButtonLinkBrandPivot
               color={cta_color?.color}
               styleType={cta_style}
+              href={getStoryblokLinkUrl(cta_link)}
             >
               {cta_label}
             </ButtonLinkBrandPivot>
