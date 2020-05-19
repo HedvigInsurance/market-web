@@ -102,7 +102,7 @@ interface TitleProps {
 const Title = styled(Heading)<TitleProps & Animateable>(
   ({ displayorder, alignment, animate }) => ({
     width: '100%',
-    maxWidth: alignment === 'center' ? '40rem' : '31rem',
+    maxWidth: alignment === 'center' ? '40rem' : 'none',
     margin: alignment === 'center' ? 'auto' : undefined,
     marginTop: displayorder === 'top' ? '3rem' : '1.414rem',
     opacity: animate ? 0 : 1,
@@ -146,7 +146,6 @@ const Image = styled(DeferredImage)<{
   display: 'block',
   flexShrink: 0,
   order: alignment === 'center' && displayorder === 'top' ? -1 : 'initial',
-  borderRadius: 8,
   overflow: 'hidden',
   [MOBILE_BP_DOWN]: {
     maxWidth: '100%',
@@ -166,7 +165,6 @@ const ImageVideoWrapper = styled('div')<{
   flexShrink: 0,
   display: 'block',
   order: alignment === 'center' && displayorder === 'top' ? -1 : 'initial',
-  borderRadius: 8,
   overflow: 'hidden',
   [MOBILE_BP_DOWN]: {
     maxWidth: '100%',
@@ -182,25 +180,25 @@ const ImageVideo = styled(DeferredVideo)({
   objectFit: 'cover',
   transition: 'height 1500ms',
   overflow: 'hidden',
-  borderRadius: 0.01,
 })
 
 const Wordmark = styled('div')({
   display: 'inline-flex',
   position: 'absolute',
-  marginTop: 0,
+  marginTop: '0.33em',
   marginLeft: '0.2rem',
 
   ['svg']: {
-    width: '1.1rem',
-    height: '1.1rem',
+    width: '0.625rem',
+    height: '0.625rem',
   },
 
   [TABLET_BP_UP]: {
+    marginTop: '0.25em',
     marginLeft: '0.5rem',
     ['svg']: {
-      width: '2rem',
-      height: '2rem',
+      width: '1rem',
+      height: '1rem',
     },
   },
 })
