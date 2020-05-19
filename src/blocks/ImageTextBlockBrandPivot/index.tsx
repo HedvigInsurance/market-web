@@ -230,6 +230,7 @@ interface ImageTextBlockProps extends BrandPivotBaseBlockProps {
   background_video_file_location: string
   mobile_background_video_file_location: string
   size: SectionSize
+  full_width: boolean
   media_position: DisplayOrder
   media_size_small: boolean
   button_color?: MinimalColorComponent
@@ -268,6 +269,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
   button_position_mobile,
   index,
   show_hedvig_wordmark,
+  full_width,
 }) => {
   return (
     <SectionWrapper
@@ -293,6 +295,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
         textPosition={text_position}
         index={index}
         brandPivot
+        fullWidth={full_width}
       >
         <TextWrapper
           textPosition={text_position}
