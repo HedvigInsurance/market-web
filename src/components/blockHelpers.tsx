@@ -260,20 +260,20 @@ export const backgroundImageStyles = (
   }
 
   const bgTint = tint
-    ? 'linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), '
+    ? 'linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),'
     : ''
 
   return {
-    backgroundImage: `${bgTint}url(${backgroundImage})`,
+    backgroundImage: `${bgTint} url(${backgroundImage})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center center',
     backgroundRepeat: 'no-repeat',
 
-    [TABLET_BP_DOWN]: {
-      backgroundImage: `${bgTint}url(${
-        backgroundImageMobile === '' ? backgroundImage : backgroundImageMobile
-      })`,
-    },
+    [TABLET_BP_DOWN]: backgroundImageMobile
+      ? {
+          backgroundImage: `${bgTint} url(${backgroundImageMobile})`,
+        }
+      : {},
   }
 }
 
