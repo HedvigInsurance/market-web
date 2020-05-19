@@ -191,15 +191,22 @@ export const getPageMiddleware = (
     return
   }
 
+  const initialState = {
+    story,
+    globalStory,
+    context: { lang },
+    ...(ctx.state.additionalStates || {}),
+  }
+
+  if (ctx.request.headers.accept === 'application/json') {
+    ctx.body = initialState
+    return
+  }
+
   ctx.body = template({
     body,
     lang,
-    initialState: {
-      story,
-      globalStory,
-      context: { lang },
-      ...(ctx.state.additionalStates || {}),
-    },
+    initialState,
     helmet: (helmetContext as FilledContext).helmet,
     dangerouslyExposeApiKeyToProvideEditing: ctx.request.query._storyblok,
     nonce: (ctx.res as any).cspNonce,
