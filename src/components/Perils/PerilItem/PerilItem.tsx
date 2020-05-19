@@ -1,6 +1,10 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
-import { MOBILE_BP_UP, TABLET_BP_UP } from 'components/blockHelpers'
+import {
+  LAPTOP_BP_UP,
+  MOBILE_BP_UP,
+  TABLET_BP_UP,
+} from 'components/blockHelpers'
 import { PerilIcon } from 'components/Perils/types'
 import React from 'react'
 import { minimalColorComponentColors } from 'src/blocks/BaseBlockProps'
@@ -25,6 +29,10 @@ const MiddleContainer = styled.button`
 
   ${TABLET_BP_UP} {
     position: relative;
+    padding-top: 75%;
+  }
+
+  ${LAPTOP_BP_UP} {
     padding-top: 100%;
   }
 `
