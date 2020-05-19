@@ -145,6 +145,10 @@ export const GlobalStoryContainer: React.FunctionComponent<GlobalStoryContainerP
   </Container>
 )
 
+interface WithUpdateState<TStoryType extends Story> {
+  updateState: (newState: { story: WithStory<TStoryType> }) => void
+}
+
 export interface StoryContainerProps<TStoryType extends Story> {
   children: (props: WithStory<TStoryType>) => React.ReactNode
 }
@@ -152,11 +156,46 @@ export interface StoryContainerProps<TStoryType extends Story> {
 export class StoryContainer<
   TStoryType extends Story
 > extends React.PureComponent<StoryContainerProps<TStoryType>> {
+  private timeout: number | undefined
+  public componentDidMount() {
+    const update = () => {
+      fetch(window.location.pathname + window.location.search, {
+        headers: { accept: 'application/json' },
+      })
+        .then((r) => r.json())
+        .then((data) => {
+          ;(window as any).updateStoryContainer(data)
+        })
+        .finally(() => {
+          this.timeout = window.setTimeout(update, 5000)
+        })
+    }
+
+    if (window.location.search.includes('live_reload=true')) {
+      this.timeout = window.setTimeout(update, 5000)
+    }
+  }
+
+  public componentWillUnmount() {
+    window.clearTimeout(this.timeout)
+  }
+
   public render() {
     const { children } = this.props
     return (
-      <Container<WithStory<TStoryType>> context="story" pure>
-        {(state) => children(state)}
+      <Container<WithStory<TStoryType>, WithUpdateState<TStoryType>>
+        context="story"
+        actions={{
+          updateState: (newState) => () => newState.story,
+        }}
+      >
+        {({ updateState, ...state }) => {
+          if (typeof window !== 'undefined') {
+            ;(window as any).updateStoryContainer = updateState
+          }
+
+          return children(state)
+        }}
       </Container>
     )
   }
