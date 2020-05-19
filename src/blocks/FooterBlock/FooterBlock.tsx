@@ -207,8 +207,8 @@ export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
     <ContentWrapper brandPivot>
       <LinksColumnsWrapper>
         {(story.content.footer_menu_items ?? []).map((menuItem) => (
-          <LinkColumn>
-            <ColumnHeader key={menuItem._uid}>{menuItem.label}</ColumnHeader>
+          <LinkColumn key={menuItem._uid}>
+            <ColumnHeader>{menuItem.label}</ColumnHeader>
             <MenuList>
               {(menuItem.menu_items ?? []).map((link) => (
                 <li key={link._uid}>

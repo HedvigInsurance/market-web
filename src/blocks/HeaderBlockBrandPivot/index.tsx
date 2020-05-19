@@ -145,7 +145,7 @@ const Menu = styled('ul')<{ open: boolean }>(({ open }) => ({
 const DesktopLogo = styled('div')({
   display: 'none',
   [TABLET_BP_UP]: {
-    display: 'block',
+    display: 'flex',
   },
 })
 
