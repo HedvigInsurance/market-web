@@ -19,25 +19,23 @@ interface PerilItemProps {
 
 const OuterContainer = styled.div`
   color: ${colorsV3.gray900};
-`
+  position: relative;
 
-const MiddleContainer = styled.button`
-  display: flex;
-  width: 100%;
-  background: transparent;
-  border: 0;
+  &:before {
+    content: '';
 
-  ${TABLET_BP_UP} {
-    position: relative;
-    padding-top: 75%;
-  }
+    ${TABLET_BP_UP} {
+      position: relative;
+      padding-top: 75%;
+    }
 
-  ${LAPTOP_BP_UP} {
-    padding-top: 100%;
+    ${LAPTOP_BP_UP} {
+      padding-top: 100%;
+    }
   }
 `
 
-const InnerContainer = styled.div<{ color: minimalColorComponentColors }>`
+const InnerContainer = styled.button<{ color: minimalColorComponentColors }>`
   display: flex;
   width: 100%;
   align-items: center;
@@ -50,6 +48,7 @@ const InnerContainer = styled.div<{ color: minimalColorComponentColors }>`
   border-radius: 0.375rem;
   background-color: ${({ color }) =>
     color === 'standard-inverse' ? colorsV3.gray100 : colorsV3.white};
+  border: 0;
   cursor: pointer;
   transition: all 150ms ease-in-out;
   appearance: none;
@@ -133,12 +132,10 @@ export const PerilItem: React.FC<PerilItemProps> = ({
 
   return (
     <OuterContainer>
-      <MiddleContainer>
-        <InnerContainer color={color} onClick={onClick}>
-          <IconWrapper dangerouslySetInnerHTML={{ __html: iconString }} />
-          <Title>{title}</Title>
-        </InnerContainer>
-      </MiddleContainer>
+      <InnerContainer color={color} onClick={onClick}>
+        <IconWrapper dangerouslySetInnerHTML={{ __html: iconString }} />
+        <Title>{title}</Title>
+      </InnerContainer>
     </OuterContainer>
   )
 }
