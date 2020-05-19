@@ -34,8 +34,6 @@ type TextProps = {
 
 interface WrapperProps {
   colorComponent?: MinimalColorComponent
-  backgroundImageMobile?: Image
-  backgroundImage?: Image
   height?: '80vh' | '90vh' | '100vh'
 }
 
