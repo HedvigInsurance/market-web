@@ -21,7 +21,7 @@ const MOBILE_MENU_HIDDEN = '@media (min-width: 1001px)'
 
 const FooterWrapper = styled(SectionWrapper)`
   padding: 4rem 0 5.5rem;
-  box-shadow: 0px -1px 0px rgba(250, 250, 250, 0.15);
+  border-top: 1px solid ${colorsV3.gray800};
 
   ${TABLET_BP_UP} {
     padding: 6.5rem 0 12rem;
@@ -76,12 +76,10 @@ const LinkColumn = styled.div`
 
   ${BP_UP} {
     width: 50%;
-    padding-right: 4rem;
   }
 
   ${TABLET_BP_UP} {
     width: 25%;
-    padding-right: 7rem;
 
     @supports (display: grid) {
       width: auto;
@@ -202,7 +200,7 @@ export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
     extraStyling={extra_styling}
   >
     <IconWrapper>
-      <HedvigH size={48} />
+      <HedvigH size={32} />
     </IconWrapper>
     <ContentWrapper brandPivot>
       <LinksColumnsWrapper>
