@@ -10,16 +10,16 @@ import {
   MarkdownHtmlComponent,
 } from './BaseBlockProps'
 
-type ParagraphFontSizes = 'sm' | 'md' | 'lg' | 'xl'
+type ParagraphFontSize = 'sm' | 'md' | 'lg' | 'xl'
 
-const paragraphSizeMap = {
+const paragraphSizeMap: Record<ParagraphFontSize, string> = {
   sm: '1rem', // 16px
   md: '1.125rem', // 18px
   lg: '1.5rem', // 24px
   xl: '2rem', // 32px
 }
 
-const InnerContent = styled.div<{ fontSize: ParagraphFontSizes }>`
+const InnerContent = styled.div<{ fontSize: ParagraphFontSize }>`
   max-width: 44rem;
   margin-left: auto;
   margin-right: auto;
@@ -31,7 +31,7 @@ const InnerContent = styled.div<{ fontSize: ParagraphFontSizes }>`
 
 export interface PlainTextBlockProps extends BrandPivotBaseBlockProps {
   content: MarkdownHtmlComponent
-  font_size: ParagraphFontSizes
+  font_size: ParagraphFontSize
 }
 
 export const PlainTextBlock: React.FunctionComponent<PlainTextBlockProps> = ({
@@ -50,7 +50,7 @@ export const PlainTextBlock: React.FunctionComponent<PlainTextBlockProps> = ({
     <ContentWrapper brandPivot index={index}>
       <InnerContent
         fontSize={font_size}
-        dangerouslySetInnerHTML={{ __html: content && content.html }}
+        dangerouslySetInnerHTML={{ __html: content?.html }}
       />
     </ContentWrapper>
   </SectionWrapper>
