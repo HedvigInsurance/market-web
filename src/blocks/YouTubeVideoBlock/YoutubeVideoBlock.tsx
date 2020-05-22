@@ -1,14 +1,14 @@
 import { css, keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
-import React, { useEffect, useRef, useState } from 'react'
-import { Image } from 'utils/storyblok'
+import { BrandPivotBaseBlockProps } from 'blocks/BaseBlockProps'
 import {
   ContentWrapper,
   SectionWrapper,
   TABLET_BP_UP,
-} from '../components/blockHelpers'
-import { BrandPivotBaseBlockProps } from './BaseBlockProps'
+} from 'components/blockHelpers'
+import React, { useEffect, useRef, useState } from 'react'
+import { Image } from 'utils/storyblok'
 
 const StyledContentWrapper = styled(ContentWrapper)`
   display: flex;
