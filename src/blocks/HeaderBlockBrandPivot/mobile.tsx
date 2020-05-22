@@ -61,6 +61,7 @@ const MiddleBurger = styled('div')<TogglableState>(({ isOpen, isClosing }) => ({
 }))
 
 export const NavToggle = styled('button')({
+  position: 'relative',
   display: 'block',
   top: HEADER_VERTICAL_PADDING,
   appearance: 'none',
