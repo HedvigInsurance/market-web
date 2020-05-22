@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
-import { HeaderTop } from 'blocks/HeaderBlockBrandPivot/HeaderTop'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
@@ -22,6 +21,7 @@ import {
   MinimalColorComponent,
   minimalColorComponentColors,
 } from '../BaseBlockProps'
+import { LanguagePicker } from './LanguagePicker'
 import { MenuItem } from './MenuItem'
 import { Burger, TABLET_BP_DOWN, TABLET_BP_UP } from './mobile'
 
@@ -256,10 +256,6 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
           props.is_transparent && props.inverse_colors && !isBelowThreshold
         }
       >
-        <HeaderTop
-          transparent={props.is_transparent}
-          inverse={props.inverse_colors}
-        />
         {!props.is_transparent && <Filler />}
         <Togglable>
           {({ isOpen, isClosing, toggleOpen }) => (
@@ -320,6 +316,12 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                         <MenuItem menuItem={menuItem} key={menuItem._uid} />
                       ),
                     )}
+
+                    <ContextContainer>
+                      {(context) => (
+                        <LanguagePicker currentLanguage={context.lang} />
+                      )}
+                    </ContextContainer>
 
                     <MobileButtonWrapper>
                       <>
