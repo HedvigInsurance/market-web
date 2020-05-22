@@ -50,7 +50,7 @@ export const PerilCollection: React.FC<Props> = ({
   <Wrapper>
     {perils.map((peril, perilIndex) => (
       <PerilItem
-        key={peril.title?.toString()}
+        key={peril.title?.toString() || 'unknown'}
         color={color}
         title={peril.title}
         icon={peril.icon}

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import React from 'react'
+import React, { MutableRefObject } from 'react'
 import VisibilitySensor from 'react-visibility-sensor'
 
 interface State {
@@ -23,13 +23,13 @@ export class DeferredImage extends React.PureComponent<
   React.DetailedHTMLProps<
     React.ImgHTMLAttributes<HTMLImageElement>,
     HTMLImageElement
-  >,
+  > & { imageRef?: MutableRefObject<HTMLImageElement | null> | null },
   State
 > {
   public state: State = {
     width: undefined,
     height: undefined,
-    ref: React.createRef(),
+    ref: this.props.imageRef || React.createRef<HTMLImageElement>(),
     isLoaded: false,
   }
 

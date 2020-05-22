@@ -13,6 +13,7 @@ import React from 'react'
 
 export interface QuoteBlockProps extends BrandPivotBaseBlockProps {
   quotes: ReadonlyArray<{
+    _uid: string
     quote: string
     author: string
     large_quote?: boolean
@@ -65,7 +66,7 @@ export const QuoteBlockBrandPivot: React.FunctionComponent<QuoteBlockProps> = ({
   <SectionWrapper brandPivot colorComponent={color}>
     <ContentWrapper brandPivot index={index}>
       {quotes.map((quote) => (
-        <QuoteWrapper largeQuote={quote.large_quote}>
+        <QuoteWrapper largeQuote={quote.large_quote} key={quote._uid}>
           <Quote largeQuote={quote.large_quote}>{quote.quote}</Quote>
           <Cite colorComponent={color}>{quote.author}</Cite>
         </QuoteWrapper>
