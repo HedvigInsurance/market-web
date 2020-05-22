@@ -3,6 +3,7 @@ import { HeroBlock } from 'blocks/HeroBlock/HeroBlock'
 import { HeroImageBlockBrandPivot } from 'blocks/HeroImageBlockBrandPivot/HeroImageBlockBrandPivot'
 import { ImageTextBlockBrandPivot } from 'blocks/ImageTextBlockBrandPivot'
 import { SpacerBlockBrandPivot } from 'blocks/SpacerBlockBrandPivot'
+import { YoutubeVideoBlock } from 'blocks/YoutubeVideoBlock'
 import React from 'react'
 import { AboutUsHeroBlock } from './AboutUsHeroBlock'
 import { AccordionBlock } from './AccordionBlock'
@@ -84,6 +85,7 @@ const blockComponents = {
   footer_block_brand_pivot: FooterBlockBrandPivot,
   card_checklist_bullet_point_block: CardChecklistBulletPointBlock,
   press_card_block: PressCardBlock,
+  youtube_video_block: YoutubeVideoBlock,
 }
 
 export const getBlockComponent = <
