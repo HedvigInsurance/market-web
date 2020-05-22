@@ -153,7 +153,7 @@ const footerMenuItems: MenuItem[] = [
       },
       {
         _uid: '14',
-        label: 'Press',
+        label: 'Hedvig Forever',
         link,
         component: 'menu_item',
       },
