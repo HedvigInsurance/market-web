@@ -44,6 +44,16 @@ export const getMarketLocale = (locale: string) => {
   }
 }
 
+export const getCurrentMarket = (locale: string) => {
+  switch (locale) {
+    case 'no':
+    case 'no-en':
+      return 'no'
+    default:
+      return 'se'
+  }
+}
+
 export const getHreflangIsoCode = (locale: string) => {
   switch (locale) {
     case 'se-en':
