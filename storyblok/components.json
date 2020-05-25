@@ -2594,13 +2594,11 @@
           "translatable": true
         },
         "caption": {
-          "type": "text",
+          "type": "custom",
           "pos": 1,
-          "translatable": true
-        },
-        "caption_shadow": {
-          "type": "boolean",
-          "pos": 2
+          "translatable": true,
+          "field_type": "markdown-html",
+          "options": []
         },
         "full_width": {
           "type": "boolean"
@@ -5133,6 +5131,11 @@
           "display_name": "Styling",
           "keys": ["extra_styling", "color"],
           "pos": 4
+        },
+        "caption": {
+          "type": "custom",
+          "field_type": "markdown-html",
+          "options": []
         }
       },
       "image": null,
