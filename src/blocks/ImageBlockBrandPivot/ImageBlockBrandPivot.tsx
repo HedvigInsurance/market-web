@@ -26,7 +26,6 @@ const ImageWrapper = styled('div')<{ fullWidth: boolean }>(({ fullWidth }) => ({
   justifyContent: 'center',
   maxHeight: fullWidth ? '45rem' : '34rem',
   overflow: 'hidden',
-  borderRadius: '0.5rem',
 }))
 
 const Image = styled(DeferredImage)({
