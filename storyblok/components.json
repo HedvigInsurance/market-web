@@ -113,7 +113,6 @@
     {
       "name": "accordion_block_brand_pivot",
       "display_name": null,
-      "updated_at": "2020-03-24T13:19:38.865Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -189,7 +188,6 @@
     {
       "name": "accordion_item",
       "display_name": "",
-      "updated_at": "2020-03-03T14:17:01.360Z",
       "schema": {
         "title": {
           "type": "text",
@@ -223,7 +221,6 @@
     {
       "name": "accordion_item_brand_pivot",
       "display_name": "",
-      "updated_at": "2020-03-24T12:41:40.134Z",
       "schema": {
         "title": {
           "type": "text",
@@ -699,9 +696,7 @@
           "type": "bloks",
           "maximum": "6",
           "restrict_components": true,
-          "component_whitelist": [
-            "bullet_point_item_brand_pivot"
-          ],
+          "component_whitelist": ["bullet_point_item_brand_pivot"],
           "required": true,
           "pos": 6,
           "translatable": false
@@ -946,7 +941,6 @@
     {
       "name": "chat_block",
       "display_name": null,
-      "updated_at": "2020-04-01T22:34:10.401Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -1185,7 +1179,6 @@
     {
       "name": "footer_block",
       "display_name": null,
-      "updated_at": "2020-04-20T12:25:55.319Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -1240,7 +1233,6 @@
     {
       "name": "global",
       "display_name": null,
-      "updated_at": "2020-05-12T09:46:36.687Z",
       "schema": {
         "header_menu_items": {
           "type": "bloks",
@@ -1589,47 +1581,47 @@
           ],
           "description": "",
           "pos": 6
-        },	
-        "cta_mobile": {	
-          "type": "section",	
-          "keys": [	
-            "override_mobile_header_cta_label",	
-            "override_mobile_header_cta_link",	
-            "mobile_header_cta_color",	
-            "mobile_header_cta_style"	
-          ],	
-          "display_name": "CTA mobile",	
-          "pos": 7	
-        },	
-        "override_mobile_header_cta_label": {	
-          "type": "text",	
-          "translatable": false,	
-          "pos": 8	
-        },	
-        "override_mobile_header_cta_link": {	
-          "type": "multilink",	
-          "pos": 9	
-        },	
-        "mobile_header_cta_color": {	
-          "type": "custom",	
-          "field_type": "hedvig-minimal-color-picker",	
-          "options": [],	
-          "pos": 10	
-        },	
-        "mobile_header_cta_style": {	
-          "type": "option",	
-          "use_uuid": true,	
-          "options": [	
-            {	
-              "value": "filled",	
-              "name": "Filled"	
-            },	
-            {	
-              "value": "outlined",	
-              "name": "Outlined"	
-            }	
-          ],	
-          "pos": 11	
+        },
+        "cta_mobile": {
+          "type": "section",
+          "keys": [
+            "override_mobile_header_cta_label",
+            "override_mobile_header_cta_link",
+            "mobile_header_cta_color",
+            "mobile_header_cta_style"
+          ],
+          "display_name": "CTA mobile",
+          "pos": 7
+        },
+        "override_mobile_header_cta_label": {
+          "type": "text",
+          "translatable": false,
+          "pos": 8
+        },
+        "override_mobile_header_cta_link": {
+          "type": "multilink",
+          "pos": 9
+        },
+        "mobile_header_cta_color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 10
+        },
+        "mobile_header_cta_style": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "filled",
+              "name": "Filled"
+            },
+            {
+              "value": "outlined",
+              "name": "Outlined"
+            }
+          ],
+          "pos": 11
         }
       },
       "image": null,
@@ -1645,7 +1637,6 @@
     {
       "name": "headline_block",
       "display_name": null,
-      "updated_at": "2020-04-08T13:13:13.165Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -1801,7 +1792,6 @@
     {
       "name": "hero_block",
       "display_name": null,
-      "updated_at": "2020-05-19T08:35:48.577Z",
       "schema": {
         "background_image": {
           "type": "section",
@@ -2062,7 +2052,6 @@
     {
       "name": "hero_image_block_brand_pivot",
       "display_name": null,
-      "updated_at": "2020-04-17T10:04:53.730Z",
       "schema": {
         "background_image": {
           "type": "section",
@@ -2596,7 +2585,6 @@
     {
       "name": "image_block_brand_pivot",
       "display_name": null,
-      "updated_at": "2020-03-31T12:46:30.639Z",
       "schema": {
         "image": {
           "type": "image",
@@ -3093,7 +3081,6 @@
     {
       "name": "image_text_block_brand_pivot",
       "display_name": "",
-      "updated_at": "2020-05-19T12:38:52.714Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -3492,7 +3479,6 @@
     {
       "name": "insurance_type",
       "display_name": null,
-      "updated_at": "2020-04-06T14:55:51.963Z",
       "schema": {
         "value": {
           "type": "option",
@@ -3733,7 +3719,6 @@
     {
       "name": "page",
       "display_name": "",
-      "updated_at": "2020-04-22T07:22:26.992Z",
       "schema": {
         "page_title": {
           "type": "text",
@@ -3823,7 +3808,6 @@
     {
       "name": "perils_block",
       "display_name": null,
-      "updated_at": "2020-04-06T14:43:37.677Z",
       "schema": {
         "color": {
           "type": "custom",
@@ -4429,7 +4413,6 @@
     {
       "name": "text_field",
       "display_name": null,
-      "updated_at": "2020-04-01T22:25:46.684Z",
       "schema": {
         "text": {
           "type": "text"
@@ -5115,6 +5098,50 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "trustpilot_rating_item",
+      "component_group_uuid": null
+    },
+    {
+      "name": "youtube_video_block",
+      "display_name": null,
+      "schema": {
+        "video_id": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "",
+          "default_value": "",
+          "description": "ex: CWRTqMGvdpc",
+          "max_length": ""
+        },
+        "overlay_image": {
+          "type": "image",
+          "description": "828x471px",
+          "pos": 1
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 2
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 3
+        },
+        "tab-8bfe4df2-63fb-4144-8ee9-02d0ff1bbccf": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["extra_styling", "color"],
+          "pos": 4
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "youtube_video_block",
       "component_group_uuid": null
     }
   ]

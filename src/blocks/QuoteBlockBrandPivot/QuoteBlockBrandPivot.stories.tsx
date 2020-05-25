@@ -24,6 +24,7 @@ export const Default = () => (
     }
     quotes={[
       {
+        _uid: 'a',
         quote: text(
           'Quote',
           '”My boyfriend got sick while I was on vacation, Hedvig flew me home and also kept in touch with the hospital. I’m overwhelmed.”',

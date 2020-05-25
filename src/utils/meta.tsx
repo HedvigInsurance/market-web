@@ -82,6 +82,7 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
         (alternate) =>
           alternate.published && (
             <link
+              key={alternate.id}
               rel="alternate"
               hrefLang={getAlternateLang(alternate.full_slug)}
               href={`${getPublicHost()}/${removeTrailingSlash(
