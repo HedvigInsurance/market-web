@@ -20,6 +20,7 @@ const ChatItems = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  overflow-x: hidden;
 `
 
 const ChatItem = styled.div<{ visible: boolean }>`

@@ -2,7 +2,7 @@ import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import { FontSizes, Heading } from 'components/Heading/Heading'
 import { HedvigH } from 'components/icons/HedvigH'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MediaQuery from 'react-responsive'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { SectionSize } from 'src/utils/SectionSize'
@@ -271,6 +271,12 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
   show_hedvig_wordmark,
   full_width,
 }) => {
+  const [hasRendered, setHasRendered] = useState(false)
+
+  useEffect(() => {
+    setHasRendered(true)
+  }, [])
+
   return (
     <SectionWrapper
       brandPivot
@@ -325,7 +331,24 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             colorComponent={color}
             textPosition={text_position}
           />
-          <MediaQuery query="(min-width: 481px)">
+          {hasRendered && (
+            <MediaQuery query="(min-width: 481px)">
+              <AnimatedAlignedButton
+                title={button_title}
+                type={button_type}
+                branchLink={button_branch_link}
+                buttonLink={button_link}
+                show={show_button}
+                color={button_color}
+                size={'md'}
+                positionMobile={button_position_mobile}
+                animate={animate}
+              />
+            </MediaQuery>
+          )}
+        </TextWrapper>
+        {hasRendered && (
+          <MediaQuery query="(max-width: 480px)">
             <AnimatedAlignedButton
               title={button_title}
               type={button_type}
@@ -338,39 +361,30 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
               animate={animate}
             />
           </MediaQuery>
-        </TextWrapper>
-        <MediaQuery query="(max-width: 480px)">
-          <AnimatedAlignedButton
-            title={button_title}
-            type={button_type}
-            branchLink={button_branch_link}
-            buttonLink={button_link}
-            show={show_button}
-            color={button_color}
-            size={'md'}
-            positionMobile={button_position_mobile}
-            animate={animate}
-          />
-        </MediaQuery>
+        )}
         {image && image_type !== 'video' ? (
           mobile_image ? (
             <>
-              <MediaQuery query="(max-width: 480px)">
-                <Image
-                  alignment={text_position}
-                  displayorder={media_position}
-                  smallImage={media_size_small}
-                  src={getStoryblokImage(mobile_image)}
-                />
-              </MediaQuery>
-              <MediaQuery query="(min-width: 481px)">
-                <Image
-                  alignment={text_position}
-                  displayorder={media_position}
-                  smallImage={media_size_small}
-                  src={getStoryblokImage(image)}
-                />
-              </MediaQuery>
+              {hasRendered && (
+                <>
+                  <MediaQuery query="(max-width: 480px)">
+                    <Image
+                      alignment={text_position}
+                      displayorder={media_position}
+                      smallImage={media_size_small}
+                      src={getStoryblokImage(mobile_image)}
+                    />
+                  </MediaQuery>
+                  <MediaQuery query="(min-width: 481px)">
+                    <Image
+                      alignment={text_position}
+                      displayorder={media_position}
+                      smallImage={media_size_small}
+                      src={getStoryblokImage(image)}
+                    />
+                  </MediaQuery>
+                </>
+              )}
             </>
           ) : (
             <Image
@@ -389,13 +403,17 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
               displayorder={media_position}
               smallImage={media_size_small}
             >
-              <MediaQuery query="(max-width: 700px)">
-                <ImageVideo src={mobile_image_video_file_location} />
-              </MediaQuery>
+              {hasRendered && (
+                <>
+                  <MediaQuery query="(max-width: 700px)">
+                    <ImageVideo src={mobile_image_video_file_location} />
+                  </MediaQuery>
 
-              <MediaQuery query="(min-width: 701px)">
-                <ImageVideo src={image_video_file_location} />
-              </MediaQuery>
+                  <MediaQuery query="(min-width: 701px)">
+                    <ImageVideo src={image_video_file_location} />
+                  </MediaQuery>
+                </>
+              )}
             </ImageVideoWrapper>
           )
         )}

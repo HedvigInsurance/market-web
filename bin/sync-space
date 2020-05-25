@@ -52,8 +52,8 @@ const plan = async () => {
     .filter(
       ([local, remote]) =>
         !deepEqual(
-          { ...local, id: undefined, created_at: undefined },
-          { ...remote, id: undefined, created_at: undefined },
+          { ...local, id: undefined, created_at: undefined, updated_at: undefined },
+          { ...remote, id: undefined, created_at: undefined, updated_at: undefined },
         ),
     )
   const deleted = remoteComponentsResponse.data.components.filter(
