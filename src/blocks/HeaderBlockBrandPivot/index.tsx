@@ -4,7 +4,6 @@ import { HeaderTop } from 'blocks/HeaderBlockBrandPivot/HeaderTop'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
-import { AppLink } from '../../components/AppLink'
 import { ContentWrapper, MOBILE_BP_DOWN } from '../../components/blockHelpers'
 import {
   ButtonLinkBrandPivot,
@@ -351,28 +350,6 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                             )
                           }
 
-                          if (
-                            props.story.content.show_cta &&
-                            props.story.content.cta_branch_link
-                          ) {
-                            return (
-                              <AppLink>
-                                {({ link, handleClick }) => (
-                                  <ButtonWrapper>
-                                    <ButtonLinkBrandPivot
-                                      styleType={props.mobile_header_cta_style}
-                                      fullWidth={true}
-                                      color={mobileCtaColor}
-                                      onClick={handleClick}
-                                      href={link}
-                                    >
-                                      {mobileCtaLabel}
-                                    </ButtonLinkBrandPivot>
-                                  </ButtonWrapper>
-                                )}
-                              </AppLink>
-                            )
-                          }
                           return (
                             <ButtonWrapper>
                               <ButtonLinkBrandPivot
@@ -411,29 +388,6 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                                 {ctaLabel}
                               </ButtonLinkBrandPivot>
                             </ButtonWrapper>
-                          )
-                        }
-
-                        if (
-                          props.story.content.show_cta &&
-                          props.story.content.cta_branch_link
-                        ) {
-                          return (
-                            <AppLink>
-                              {({ link, handleClick }) => (
-                                <ButtonWrapper>
-                                  <ButtonLinkBrandPivot
-                                    styleType={props.cta_style}
-                                    color={buttonColor}
-                                    href={link}
-                                    fullWidth={true}
-                                    onClick={handleClick}
-                                  >
-                                    {ctaLabel}
-                                  </ButtonLinkBrandPivot>
-                                </ButtonWrapper>
-                              )}
-                            </AppLink>
                           )
                         }
 

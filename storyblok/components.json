@@ -303,11 +303,6 @@
           "pos": 7,
           "translatable": true
         },
-        "cta_branch_link": {
-          "type": "boolean",
-          "pos": 8,
-          "translatable": true
-        },
         "cta_target": {
           "type": "multilink",
           "pos": 9,
@@ -457,12 +452,6 @@
         "cta_label": {
           "type": "text",
           "pos": 8
-        },
-        "cta_branch_link": {
-          "type": "boolean",
-          "description": "Create a branch link instead of the link field",
-          "pos": 9,
-          "translatable": true
         },
         "cta_target": {
           "type": "text",
@@ -1240,7 +1229,8 @@
           "maximum": "",
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
-          "translatable": true
+          "translatable": true,
+          "required": false
         },
         "cta": {
           "type": "section",
@@ -1250,11 +1240,6 @@
         "show_cta": {
           "type": "boolean",
           "pos": 2,
-          "translatable": true
-        },
-        "cta_branch_link": {
-          "type": "boolean",
-          "pos": 3,
           "translatable": true
         },
         "cta_label": {
@@ -2927,12 +2912,6 @@
           "default_value": "filled",
           "pos": 17
         },
-        "button_branch_link": {
-          "type": "boolean",
-          "description": "Create a branch link instead of the link field",
-          "pos": 18,
-          "translatable": true
-        },
         "button_link": {
           "type": "multilink",
           "description": "",
@@ -3080,56 +3059,6 @@
       "name": "image_text_block_brand_pivot",
       "display_name": "",
       "schema": {
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-minimal-color-picker",
-          "options": [],
-          "required": true,
-          "pos": 0
-        },
-        "size": {
-          "type": "option",
-          "required": true,
-          "regex": "",
-          "options": [
-            {
-              "value": "none",
-              "name": "Zero margins"
-            },
-            {
-              "value": "sm",
-              "name": "Small"
-            },
-            {
-              "value": "lg",
-              "name": "Large"
-            },
-            {
-              "value": "xl",
-              "name": "X-Large"
-            }
-          ],
-          "default_value": "lg",
-          "pos": 1
-        },
-        "full_width": {
-          "type": "boolean",
-          "pos": 2,
-          "description": "Tick this box if you want to have the largest max width"
-        },
-        "animate": {
-          "type": "boolean",
-          "pos": 3,
-          "description": "Whether to animate the section on page load",
-          "display_name": ""
-        },
-        "extra_styling": {
-          "type": "textarea",
-          "display_name": "",
-          "default_value": "",
-          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break.",
-          "pos": 4
-        },
         "text": {
           "type": "section",
           "keys": [
@@ -3143,13 +3072,13 @@
             "text_position_mobile"
           ],
           "display_name": "",
-          "pos": 5
+          "pos": 0
         },
         "title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 6,
+          "pos": 1,
           "translatable": true
         },
         "title_size": {
@@ -3178,7 +3107,7 @@
           ],
           "description": "",
           "default_value": "sm",
-          "pos": 7
+          "pos": 2
         },
         "title_size_mobile": {
           "type": "option",
@@ -3205,24 +3134,24 @@
               "name": "LG"
             }
           ],
-          "pos": 8,
+          "pos": 3,
           "default_value": ""
         },
         "title_color": {
           "type": "custom",
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
-          "pos": 9
+          "pos": 4
         },
         "show_hedvig_wordmark": {
           "type": "boolean",
-          "pos": 10
+          "pos": 5
         },
         "paragraph": {
           "type": "custom",
           "required": true,
           "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
-          "pos": 11,
+          "pos": 6,
           "field_type": "markdown-html",
           "options": [],
           "translatable": true
@@ -3244,7 +3173,7 @@
             }
           ],
           "default_value": "left",
-          "pos": 12,
+          "pos": 7,
           "required": true
         },
         "text_position_mobile": {
@@ -3264,7 +3193,7 @@
             }
           ],
           "default_value": "left",
-          "pos": 13
+          "pos": 8
         },
         "image_video": {
           "type": "section",
@@ -3282,7 +3211,7 @@
             "media_position",
             "media_size_small"
           ],
-          "pos": 14
+          "pos": 9
         },
         "image_type": {
           "type": "option",
@@ -3297,27 +3226,27 @@
             }
           ],
           "default_value": "image",
-          "pos": 15
+          "pos": 10
         },
         "image": {
           "type": "image",
           "required": false,
-          "pos": 16
+          "pos": 11
         },
         "mobile_image": {
           "type": "image",
-          "pos": 17
+          "pos": 12
         },
         "image_video_file_location": {
           "type": "text",
           "required": false,
-          "pos": 18,
+          "pos": 13,
           "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
         },
         "mobile_image_video_file_location": {
           "type": "text",
           "required": false,
-          "pos": 19,
+          "pos": 14,
           "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
         },
         "background_type": {
@@ -3334,23 +3263,23 @@
           ],
           "required": false,
           "default_value": "image",
-          "pos": 20
+          "pos": 15
         },
         "background_image": {
           "type": "image",
           "required": false,
-          "pos": 21
+          "pos": 16
         },
         "background_video_file_location": {
           "type": "text",
           "required": false,
-          "pos": 22,
+          "pos": 17,
           "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
         },
         "mobile_background_video_file_location": {
           "type": "text",
           "required": false,
-          "pos": 23,
+          "pos": 18,
           "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
         },
         "media_position": {
@@ -3367,12 +3296,12 @@
           ],
           "required": true,
           "default_value": "top",
-          "pos": 24
+          "pos": 19
         },
         "media_size_small": {
           "type": "boolean",
           "display_name": "Small image",
-          "pos": 25,
+          "pos": 20,
           "description": "Makes the image 1/3 in larger viewports"
         },
         "button": {
@@ -3386,13 +3315,19 @@
             "button_color",
             "button_position_mobile"
           ],
-          "pos": 26
+          "pos": 21
+        },
+        "show_button": {
+          "type": "boolean",
+          "required": false,
+          "default_value": "true",
+          "pos": 22
         },
         "button_title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 27,
+          "pos": 23,
           "translatable": true
         },
         "button_type": {
@@ -3413,34 +3348,22 @@
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 28
-        },
-        "button_branch_link": {
-          "type": "boolean",
-          "description": "Create a branch link instead of the link field",
-          "pos": 29,
-          "translatable": true
+          "pos": 24
         },
         "button_link": {
           "type": "multilink",
           "description": "",
           "display_name": "",
-          "required": true,
-          "default_value": "",
-          "pos": 30,
-          "translatable": true
-        },
-        "show_button": {
-          "type": "boolean",
           "required": false,
-          "default_value": "true",
-          "pos": 31
+          "default_value": "",
+          "pos": 25,
+          "translatable": true
         },
         "button_color": {
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
           "type": "custom",
-          "pos": 32
+          "pos": 26
         },
         "button_position_mobile": {
           "type": "option",
@@ -3455,13 +3378,63 @@
               "name": "Below media"
             }
           ],
-          "pos": 33
+          "pos": 27
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "required": true,
+          "pos": 28
+        },
+        "size": {
+          "type": "option",
+          "required": true,
+          "regex": "",
+          "options": [
+            {
+              "value": "none",
+              "name": "Zero margins"
+            },
+            {
+              "value": "sm",
+              "name": "Small"
+            },
+            {
+              "value": "lg",
+              "name": "Large"
+            },
+            {
+              "value": "xl",
+              "name": "X-Large"
+            }
+          ],
+          "default_value": "lg",
+          "pos": 29
+        },
+        "full_width": {
+          "type": "boolean",
+          "pos": 30,
+          "description": "Tick this box if you want to have the largest max width"
+        },
+        "animate": {
+          "type": "boolean",
+          "pos": 31,
+          "description": "Whether to animate the section on page load",
+          "display_name": ""
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "display_name": "",
+          "default_value": "",
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break.",
+          "pos": 32
         },
         "tab-0bf0bbf5-e344-409c-945f-862a2b060b08": {
           "type": "tab",
           "display_name": "Styling",
           "keys": ["animate", "size", "color", "extra_styling", "full_width"],
-          "pos": 34
+          "pos": 33
         }
       },
       "image": null,
@@ -4515,12 +4488,6 @@
           "default_value": "filled",
           "pos": 5
         },
-        "button_branch_link": {
-          "type": "boolean",
-          "description": "Create a branch link instead of the link field",
-          "pos": 6,
-          "translatable": true
-        },
         "button_link": {
           "type": "multilink",
           "description": "",
@@ -4872,12 +4839,6 @@
           "required": true,
           "default_value": "filled",
           "pos": 7
-        },
-        "button_branch_link": {
-          "type": "boolean",
-          "description": "Create a branch link instead of the link field",
-          "pos": 8,
-          "translatable": true
         },
         "button_link": {
           "type": "multilink",

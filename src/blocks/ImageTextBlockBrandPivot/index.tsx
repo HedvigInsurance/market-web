@@ -215,8 +215,7 @@ interface ImageTextBlockProps extends BrandPivotBaseBlockProps {
   text_position_mobile: TextPosition
   button_title: string
   button_type: 'filled' | 'outlined'
-  button_branch_link: boolean
-  button_link: LinkComponent
+  button_link?: LinkComponent
   show_button: boolean
   image_type: 'image' | 'video'
   image?: StoryblokImage
@@ -249,7 +248,6 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
   text_position_mobile,
   button_title,
   button_type,
-  button_branch_link,
   button_link,
   show_button,
   image_type,
@@ -336,7 +334,6 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
               <AnimatedAlignedButton
                 title={button_title}
                 type={button_type}
-                branchLink={button_branch_link}
                 buttonLink={button_link}
                 show={show_button}
                 color={button_color}
@@ -352,7 +349,6 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             <AnimatedAlignedButton
               title={button_title}
               type={button_type}
-              branchLink={button_branch_link}
               buttonLink={button_link}
               show={show_button}
               color={button_color}
