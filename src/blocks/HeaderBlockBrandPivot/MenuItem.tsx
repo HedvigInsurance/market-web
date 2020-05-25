@@ -196,7 +196,7 @@ export const MenuItem: React.FunctionComponent<{ menuItem: MenuItemType }> = ({
           <AnimateHeight height={isOpen && !isClosing ? 'auto' : 0}>
             <DropdownMenuItemList isOpen={isOpen} isClosing={isClosing}>
               {menuItem.menu_items.map((innerMenuItem) =>
-                innerMenuItem.link && innerMenuItem.link.cached_url ? (
+                innerMenuItem.link?.cached_url ? (
                   <MenuListItem key={innerMenuItem._uid}>
                     <DropdownMenuLink
                       href={getStoryblokLinkUrl(innerMenuItem.link)}
