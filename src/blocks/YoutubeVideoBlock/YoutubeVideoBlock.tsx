@@ -22,11 +22,6 @@ const Overlay = styled.div<{ isPlaying: boolean; isOnFront: boolean }>`
   z-index: ${({ isOnFront }) => (isOnFront ? 2 : 0)};
   color: ${colorsV3.gray100};
 
-  ${TABLET_BP_UP} {
-    color: ${colorsV3.white};
-    font-size: 6rem;
-  }
-
   ${({ isPlaying }) =>
     isPlaying
       ? css`
@@ -70,6 +65,10 @@ const OverlayText = styled.button`
   border: 0;
   text-shadow: 0 0.5rem 7.5rem rgba(0, 0, 0, 0.15);
   cursor: pointer;
+
+  ${TABLET_BP_UP} {
+    font-size: 6rem;
+  }
 
   &:focus {
     outline: 0;
