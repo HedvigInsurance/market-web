@@ -3907,25 +3907,46 @@
     {
       "name": "plain_text_block",
       "display_name": null,
+      "updated_at": "2020-05-22T12:14:22.877Z",
       "schema": {
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
+        "font_size": {
+          "type": "option",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "sm",
+              "name": "SM (16px)"
+            },
+            {
+              "value": "md",
+              "name": "MD (18px)"
+            },
+            {
+              "value": "lg",
+              "name": "LG (24px)"
+            },
+            {
+              "value": "xl",
+              "name": "XL (32px)"
+            }
+          ],
+          "default_value": "sm",
+          "description": "",
           "pos": 0
-        },
-        "title": {
-          "type": "text",
-          "pos": 1,
-          "translatable": true
         },
         "content": {
           "type": "custom",
           "required": true,
           "field_type": "markdown-html",
           "options": [],
-          "pos": 2,
+          "pos": 1,
           "translatable": true
+        },
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 2
         },
         "size": {
           "type": "option",
@@ -3960,7 +3981,8 @@
         },
         "extra_styling": {
           "type": "textarea",
-          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break.",
+          "pos": 5
         }
       },
       "image": null,
