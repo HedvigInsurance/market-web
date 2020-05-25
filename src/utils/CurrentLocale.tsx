@@ -54,6 +54,16 @@ export const getCurrentMarket = (locale: string) => {
   }
 }
 
+export const getMarketLabel = (locale: string) => {
+  switch (locale) {
+    case 'no-en':
+    case 'se-en':
+      return { se: 'Sweden', no: 'Norway' }
+    default:
+      return { se: 'Sverige', no: 'Norge' }
+  }
+}
+
 export const getHreflangIsoCode = (locale: string) => {
   switch (locale) {
     case 'se-en':
