@@ -1,5 +1,6 @@
 import React from 'react'
 import { Image as ImageType } from '../../utils/storyblok'
+import { MarkdownHtmlComponent } from '../BaseBlockProps'
 import { ImageBlockBrandPivot } from './ImageBlockBrandPivot'
 
 const image: ImageType =
@@ -16,6 +17,13 @@ export default {
   },
 }
 
+const caption: MarkdownHtmlComponent = {
+  _uid: '5',
+  html: '<p>Bildtext</p><p>Stockholm, 2020</p>',
+  original: '<p>Bildtext</p><p>Stockholm, 2020</p>',
+  plugin: 'markdown-html',
+}
+
 export const Default = () => (
   <ImageBlockBrandPivot _uid="5678" component="image_block" image={image} />
 )
@@ -25,7 +33,6 @@ export const WithCaption = () => (
     _uid="5678"
     component="image_block"
     image={image}
-    caption="This is a caption"
-    caption_shadow
+    caption={caption}
   />
 )
