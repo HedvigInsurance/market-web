@@ -5131,6 +5131,11 @@
           "display_name": "Styling",
           "keys": ["extra_styling", "color"],
           "pos": 4
+        },
+        "caption": {
+          "type": "custom",
+          "field_type": "markdown-html",
+          "options": []
         }
       },
       "image": null,
