@@ -48,6 +48,7 @@ const Overlay = styled.div<{ isPlaying: boolean; isOnFront: boolean }>`
 `
 
 const OverlayImage = styled.img`
+  display: block;
   max-width: 828px;
   width: 100%;
 `
