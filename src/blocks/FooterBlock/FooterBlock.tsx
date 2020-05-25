@@ -209,7 +209,7 @@ export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
             <ColumnHeader>{menuItem.label}</ColumnHeader>
             <MenuList>
               {(menuItem.menu_items ?? []).map((innerMenuItem) =>
-                innerMenuItem.link && innerMenuItem.link.cached_url ? (
+                innerMenuItem.link?.cached_url ? (
                   <li key={innerMenuItem._uid}>
                     <Link href={getStoryblokLinkUrl(innerMenuItem.link)}>
                       {innerMenuItem.label}
