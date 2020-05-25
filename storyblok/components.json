@@ -3658,6 +3658,7 @@
     {
       "name": "menu_item",
       "display_name": null,
+      "updated_at": "2020-05-25T09:05:40.161Z",
       "schema": {
         "label": {
           "type": "text",
@@ -3669,7 +3670,7 @@
           "type": "multilink",
           "restrict_content_types": true,
           "component_whitelist": ["page"],
-          "required": true,
+          "required": false,
           "pos": 1,
           "translatable": false
         },
