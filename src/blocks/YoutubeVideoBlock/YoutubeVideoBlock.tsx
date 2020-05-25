@@ -33,7 +33,7 @@ const Overlay = styled.div<{ isPlaying: boolean; isOnFront: boolean }>`
           opacity: 0;
 
           button {
-            transform: translateY(-50%) scale(1.1);
+            transform: scale(1.1);
             transition: transform ${OVERLAY_FADE_TIME}ms;
           }
         `
@@ -41,7 +41,7 @@ const Overlay = styled.div<{ isPlaying: boolean; isOnFront: boolean }>`
           opacity: 1;
 
           button {
-            transform: translateY(-50%) scale(1);
+            transform: scale(1);
             transition: transform ${OVERLAY_FADE_TIME}ms;
           }
         `}
@@ -54,10 +54,14 @@ const OverlayImage = styled.img`
 
 const OverlayText = styled.button`
   position: absolute;
-  text-align: center;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
   width: 100%;
-  top: 50%;
-  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 3rem;
   font-family: inherit;
   color: inherit;
@@ -65,6 +69,11 @@ const OverlayText = styled.button`
   border: 0;
   text-shadow: 0 0.5rem 7.5rem rgba(0, 0, 0, 0.15);
   cursor: pointer;
+
+  &:focus {
+    outline: 0;
+    box-shadow: none;
+  }
 `
 
 const spinCentered = keyframes`
