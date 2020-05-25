@@ -1,18 +1,24 @@
 import { css, keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
-import { BrandPivotBaseBlockProps } from 'blocks/BaseBlockProps'
+import {
+  BrandPivotBaseBlockProps,
+  MarkdownHtmlComponent,
+} from 'blocks/BaseBlockProps'
 import {
   ContentWrapper,
   SectionWrapper,
   TABLET_BP_UP,
 } from 'components/blockHelpers'
+import { Caption } from 'components/Caption'
 import React, { useEffect, useRef, useState } from 'react'
 import { Image } from 'utils/storyblok'
 
-const StyledContentWrapper = styled(ContentWrapper)`
+const InnerWrapper = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
+  max-width: 828px;
 `
 
 const OVERLAY_FADE_TIME = 1500
@@ -21,11 +27,6 @@ const Overlay = styled.div<{ isPlaying: boolean; isOnFront: boolean }>`
   transition: opacity ${OVERLAY_FADE_TIME}ms;
   z-index: ${({ isOnFront }) => (isOnFront ? 2 : 0)};
   color: ${colorsV3.gray100};
-
-  ${TABLET_BP_UP} {
-    color: ${colorsV3.white};
-    font-size: 6rem;
-  }
 
   ${({ isPlaying }) =>
     isPlaying
@@ -70,6 +71,10 @@ const OverlayText = styled.button`
   border: 0;
   text-shadow: 0 0.5rem 7.5rem rgba(0, 0, 0, 0.15);
   cursor: pointer;
+
+  ${TABLET_BP_UP} {
+    font-size: 6rem;
+  }
 
   &:focus {
     outline: 0;
@@ -122,11 +127,13 @@ const VideoFrame = styled.iframe<{ width?: number; height?: number }>`
 interface YoutubeVideoBlockProps extends BrandPivotBaseBlockProps {
   overlay_image: Image
   video_id: string
+  caption?: MarkdownHtmlComponent
 }
 
 export const YoutubeVideoBlock: React.FunctionComponent<YoutubeVideoBlockProps> = ({
   overlay_image,
   video_id,
+  caption,
   extra_styling,
   color,
   index,
@@ -169,33 +176,36 @@ export const YoutubeVideoBlock: React.FunctionComponent<YoutubeVideoBlockProps> 
       extraStyling={extra_styling}
       brandPivot
     >
-      <StyledContentWrapper index={index} brandPivot>
-        <Overlay
-          isPlaying={isPlaying && isPlayerLoaded}
-          isOnFront={isShowingOverlay}
-        >
-          {!isPlaying && (
-            <OverlayText onClick={() => setIsPlaying(!isPlaying)}>
-              Play
-            </OverlayText>
-          )}
-          {isPlaying && !isPlayerLoaded && <Spinner />}
-          <OverlayImage src={overlay_image} ref={imageRef} />
-        </Overlay>
-        <VideoFrame
-          width={playerWidth}
-          height={playerHeight}
-          src={`https://www.youtube.com/embed/${video_id}?autoplay=${
-            isPlaying ? '1' : '0'
-          }&controls=0&loop=1&playlist=${video_id}`}
-          frameBorder="0"
-          onLoad={() => {
-            if (isPlaying) {
-              setPlayerLoaded(true)
-            }
-          }}
-        />
-      </StyledContentWrapper>
+      <ContentWrapper index={index} brandPivot>
+        <InnerWrapper>
+          <Overlay
+            isPlaying={isPlaying && isPlayerLoaded}
+            isOnFront={isShowingOverlay}
+          >
+            {!isPlaying && (
+              <OverlayText onClick={() => setIsPlaying(!isPlaying)}>
+                Play
+              </OverlayText>
+            )}
+            {isPlaying && !isPlayerLoaded && <Spinner />}
+            <OverlayImage src={overlay_image} ref={imageRef} />
+          </Overlay>
+          <VideoFrame
+            width={playerWidth}
+            height={playerHeight}
+            src={`https://www.youtube.com/embed/${video_id}?autoplay=${
+              isPlaying ? '1' : '0'
+            }&controls=0&loop=1&playlist=${video_id}`}
+            frameBorder="0"
+            onLoad={() => {
+              if (isPlaying) {
+                setPlayerLoaded(true)
+              }
+            }}
+          />
+        </InnerWrapper>
+        {caption && <Caption caption={caption} />}
+      </ContentWrapper>
     </SectionWrapper>
   )
 }
