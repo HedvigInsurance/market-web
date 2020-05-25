@@ -78,7 +78,6 @@ export interface BlogStory extends Story {
     content: MarkdownHtmlComponent
     show_cta: boolean
     cta_label: string
-    cta_branch_link: boolean
     cta_target: string
   }
 }
@@ -105,7 +104,6 @@ export interface GlobalStory extends Story {
     component: 'global'
     header_menu_items?: ReadonlyArray<MenuItem>
     show_cta: boolean
-    cta_branch_link: boolean
     cta_label: string
     cta_link: LinkComponent
     footer_menu_items_1?: ReadonlyArray<MenuItem>

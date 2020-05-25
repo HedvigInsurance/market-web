@@ -4,7 +4,6 @@ import { Container } from 'constate'
 import React from 'react'
 import { Mount } from 'react-lifecycle-components'
 import MediaQuery from 'react-responsive'
-import { AppLink } from '../components/AppLink'
 import {
   CONTENT_GUTTER_MOBILE,
   ContentWrapper,
@@ -135,7 +134,6 @@ interface BackgroundVideoBlockProps extends BaseBlockProps {
   title: string
   paragraph: MarkdownHtmlComponent
   cta_label: string
-  cta_branch_link: boolean
   cta_target: LinkComponent
   ghost_cta: boolean
   ghost_cta_target: LinkComponent
@@ -248,32 +246,15 @@ export const BackgroundVideoBlock: React.FunctionComponent<BackgroundVideoBlockP
               useDropShadow={props.use_text_drop_shadow}
             />
 
-            {props.cta_branch_link ? (
-              <AppLink>
-                {({ link, handleClick }) => (
-                  <Cta
-                    href={link}
-                    onClick={handleClick}
-                    size="sm"
-                    weight={props.cta_weight}
-                    color={props.cta_color && props.cta_color.color}
-                    styleType={props.cta_style}
-                  >
-                    {props.cta_label}
-                  </Cta>
-                )}
-              </AppLink>
-            ) : (
-              <Cta
-                href={getStoryblokLinkUrl(props.cta_target)}
-                size="sm"
-                weight={props.cta_weight}
-                color={props.cta_color && props.cta_color.color}
-                styleType={props.cta_style}
-              >
-                {props.cta_label}
-              </Cta>
-            )}
+            <Cta
+              href={getStoryblokLinkUrl(props.cta_target)}
+              size="sm"
+              weight={props.cta_weight}
+              color={props.cta_color && props.cta_color.color}
+              styleType={props.cta_style}
+            >
+              {props.cta_label}
+            </Cta>
             {props.ghost_cta && (
               <GhostCta
                 href={getStoryblokLinkUrl(props.ghost_cta_target)}
