@@ -11,6 +11,11 @@ import React from 'react'
 
 const StyledSectionWrapper = styled(SectionWrapper)`
   color: ${colorsV3.gray900};
+  padding: 4rem 0;
+
+  ${TABLET_BP_UP} {
+    padding: 7rem 0;
+  }
 `
 
 const StyledContentWrapper = styled(ContentWrapper)`
