@@ -30,7 +30,11 @@ const StyledContentWrapper = styled(ContentWrapper)`
   }
 `
 
-const Column = styled.div<{ hardBottom?: boolean; lastOnMobile?: boolean }>`
+const Column = styled.div<{
+  hardBottom?: boolean
+  halfHardBottom?: boolean
+  lastOnMobile?: boolean
+}>`
   width: 100%;
 
   ${TABLET_BP_DOWN} {
@@ -54,6 +58,11 @@ const Column = styled.div<{ hardBottom?: boolean; lastOnMobile?: boolean }>`
     hardBottom &&
     css`
       padding-bottom: 0;
+    `};
+  ${({ halfHardBottom }) =>
+    halfHardBottom &&
+    css`
+      padding-bottom: 1.5rem;
     `};
 `
 
@@ -160,7 +169,7 @@ export const InsuranceInfoBlock: React.FC<InsuranceInfoBlockProps> = ({
           </Link>
         </Column>
 
-        <Column>
+        <Column halfHardBottom>
           <Cta href={values.cta_link}>{values.cta_text}</Cta>
         </Column>
       </StyledContentWrapper>
