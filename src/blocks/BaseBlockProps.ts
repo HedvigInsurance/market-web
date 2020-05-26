@@ -5,6 +5,7 @@ export type minimalColorComponentColors =
   | 'standard-inverse'
   | 'gray700'
   | 'gray500-inverse'
+  | 'purple300'
   | 'purple500'
 
 export type colorComponentColors =

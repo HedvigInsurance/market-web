@@ -18,7 +18,7 @@ export const Default = () => (
     component="image_block"
     color={{
       _uid: '2134',
-      color: 'purple500',
+      color: 'purple300',
       plugin: 'hedvig_minimal_color_picker',
     }}
     index={2}
