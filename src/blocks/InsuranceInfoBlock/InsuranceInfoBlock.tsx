@@ -9,6 +9,7 @@ import {
   TABLET_BP_DOWN,
   TABLET_BP_UP,
 } from 'components/blockHelpers'
+import { ButtonLinkBrandPivot } from 'components/ButtonBrandPivot/Button'
 import React from 'react'
 
 const StyledSectionWrapper = styled(SectionWrapper)`
@@ -85,17 +86,6 @@ const Link = styled.a`
   }
 `
 
-const Cta = styled.a`
-  display: inline-block;
-  border: 1px solid ${colorsV3.gray900};
-  border-radius: 0.5rem;
-  padding: 0.75rem 1rem;
-  width: 100%;
-  color: inherit;
-  text-decoration: none;
-  text-align: center;
-`
-
 interface InsuranceInfoBlockProps extends BrandPivotBaseBlockProps {
   value_1_description: string
   value_1_value: string
@@ -169,7 +159,13 @@ export const InsuranceInfoBlock: React.FC<InsuranceInfoBlockProps> = ({
         </Column>
 
         <Column halfHardBottom>
-          <Cta href={values.cta_link}>{values.cta_text}</Cta>
+          <ButtonLinkBrandPivot
+            href={values.cta_link}
+            fullWidth
+            styleType="outlined"
+          >
+            {values.cta_text}
+          </ButtonLinkBrandPivot>
         </Column>
       </StyledContentWrapper>
     </StyledSectionWrapper>
