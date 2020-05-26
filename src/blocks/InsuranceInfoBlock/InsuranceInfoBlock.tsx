@@ -5,7 +5,6 @@ import { BrandPivotBaseBlockProps } from 'blocks/BaseBlockProps'
 import {
   ContentWrapper,
   LAPTOP_BP_UP,
-  MOBILE_BP_DOWN,
   SectionWrapper,
   TABLET_BP_DOWN,
   TABLET_BP_UP,
