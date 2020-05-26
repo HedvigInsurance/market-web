@@ -14,11 +14,14 @@ import { Caption } from 'components/Caption'
 import React, { useEffect, useRef, useState } from 'react'
 import { Image } from 'utils/storyblok'
 
+const StyledContentWrapper = styled(ContentWrapper)`
+  max-width: 828px;
+`
+
 const InnerWrapper = styled.div`
   position: relative;
   display: flex;
   justify-content: center;
-  max-width: 828px;
 `
 
 const OVERLAY_FADE_TIME = 1500
@@ -176,7 +179,7 @@ export const YoutubeVideoBlock: React.FunctionComponent<YoutubeVideoBlockProps> 
       extraStyling={extra_styling}
       brandPivot
     >
-      <ContentWrapper index={index} brandPivot>
+      <StyledContentWrapper index={index} brandPivot>
         <InnerWrapper>
           <Overlay
             isPlaying={isPlaying && isPlayerLoaded}
@@ -205,7 +208,7 @@ export const YoutubeVideoBlock: React.FunctionComponent<YoutubeVideoBlockProps> 
           />
         </InnerWrapper>
         {caption && <Caption caption={caption} />}
-      </ContentWrapper>
+      </StyledContentWrapper>
     </SectionWrapper>
   )
 }
