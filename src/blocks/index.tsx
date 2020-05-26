@@ -17,8 +17,6 @@ import { CardChecklistBulletPointBlock } from './CardChecklistBulletPointBlock'
 import { ChatBlock } from './ChatBlock/ChatBlock'
 import { CtaBlock } from './CtaBlock/CtaBlock'
 import { DownloadBlock } from './DownloadBlock'
-import { FooterBlock } from './FooterBlock/FooterBlock'
-import { FooterBlockBrandPivot } from './FooterBlockBrandPivot'
 import { HeaderBlock } from './HeaderBlock'
 import { HeaderBlockBrandPivot } from './HeaderBlockBrandPivot'
 import { HeadlineBlock } from './HeadlineBlock/HeadlineBlock'
@@ -83,8 +81,6 @@ const blockComponents = {
   trustpilot_block: TrustpilotBlock,
   spacer_block: SpacerBlock,
   spacer_block_brand_pivot: SpacerBlockBrandPivot,
-  footer_block: FooterBlock,
-  footer_block_brand_pivot: FooterBlockBrandPivot,
   card_checklist_bullet_point_block: CardChecklistBulletPointBlock,
   press_card_block: PressCardBlock,
   youtube_video_block: YoutubeVideoBlock,
