@@ -2587,6 +2587,16 @@
         },
         "full_width": {
           "type": "boolean"
+        },
+        "tab-d08c01a1-cfa1-4256-88e9-5ab96e58a7b1": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["extra_styling"],
+          "pos": 0
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         }
       },
       "image": null,
