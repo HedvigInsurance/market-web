@@ -1,10 +1,13 @@
+import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
 import { BrandPivotBaseBlockProps } from 'blocks/BaseBlockProps'
 import {
   ContentWrapper,
   LAPTOP_BP_UP,
+  MOBILE_BP_DOWN,
   SectionWrapper,
+  TABLET_BP_DOWN,
   TABLET_BP_UP,
 } from 'components/blockHelpers'
 import React from 'react'
@@ -27,8 +30,16 @@ const StyledContentWrapper = styled(ContentWrapper)`
   }
 `
 
-const Column = styled.div`
+const Column = styled.div<{ hardBottom?: boolean; lastOnMobile?: boolean }>`
   width: 100%;
+
+  ${TABLET_BP_DOWN} {
+    ${({ lastOnMobile }) =>
+      lastOnMobile &&
+      css`
+        order: 999;
+      `};
+  }
 
   ${TABLET_BP_UP} {
     width: calc(100% / 2);
@@ -38,9 +49,12 @@ const Column = styled.div`
     width: calc(100% / 3);
   }
 
-  :not(:last-of-type) {
-    padding-bottom: 3rem;
-  }
+  padding-bottom: 3rem;
+  ${({ hardBottom }) =>
+    hardBottom &&
+    css`
+      padding-bottom: 0;
+    `};
 `
 
 const InsuranceValueDescription = styled.div`
@@ -129,7 +143,7 @@ export const InsuranceInfoBlock: React.FC<InsuranceInfoBlockProps> = ({
           <InsuranceValue>{values.value_4_value}</InsuranceValue>
         </Column>
 
-        <Column>
+        <Column lastOnMobile hardBottom>
           <Link
             href={values.terms_link}
             target="_blank"
