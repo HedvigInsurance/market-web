@@ -34,10 +34,6 @@ export const StoryPage: React.FunctionComponent<{ nonce?: string }> = ({
             )
           }
 
-          if (block.component === 'footer_block_brand_pivot') {
-            return
-          }
-
           return <BlockComponent key={block._uid} index={index} {...block} />
         })}
         <FooterBlock
