@@ -38,7 +38,9 @@ const Column = styled.div`
     width: calc(100% / 3);
   }
 
-  padding-bottom: 3rem;
+  :not(:last-of-type) {
+    padding-bottom: 3rem;
+  }
 `
 
 const InsuranceValueDescription = styled.div`
