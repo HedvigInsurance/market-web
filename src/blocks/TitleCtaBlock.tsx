@@ -2,7 +2,6 @@ import styled from '@emotion/styled'
 import React from 'react'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { CenterLeftTextPosition } from 'src/utils/textPosition'
-import { AppLink } from '../components/AppLink'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
@@ -67,7 +66,6 @@ interface TitleCtaBlockInterface extends BaseBlockProps {
   text_position: CenterLeftTextPosition
   button_title: string
   button_type: ButtonStyleType
-  button_branch_link: boolean
   button_link: LinkComponent
   show_button: boolean
   button_color?: ColorComponent
@@ -82,7 +80,6 @@ export const TitleCtaBlock: React.FunctionComponent<TitleCtaBlockInterface> = ({
   text_position,
   button_title,
   button_type,
-  button_branch_link,
   button_link,
   button_color,
   button_weight,
@@ -99,32 +96,15 @@ export const TitleCtaBlock: React.FunctionComponent<TitleCtaBlockInterface> = ({
         index={index}
       >
         <TitleComponent alignment={text_position}>{title}</TitleComponent>
-        {button_branch_link ? (
-          <AppLink>
-            {({ link, handleClick }) => (
-              <ButtonLinkWithMargin
-                href={link}
-                onClick={handleClick}
-                styleType={button_type}
-                size="sm"
-                weight={button_weight}
-                color={button_color?.color}
-              >
-                {button_title}
-              </ButtonLinkWithMargin>
-            )}
-          </AppLink>
-        ) : (
-          <ButtonLinkWithMargin
-            href={getStoryblokLinkUrl(button_link)}
-            styleType={button_type}
-            size="sm"
-            weight={button_weight}
-            color={button_color && button_color.color}
-          >
-            {button_title}
-          </ButtonLinkWithMargin>
-        )}
+        <ButtonLinkWithMargin
+          href={getStoryblokLinkUrl(button_link)}
+          styleType={button_type}
+          size="sm"
+          weight={button_weight}
+          color={button_color && button_color.color}
+        >
+          {button_title}
+        </ButtonLinkWithMargin>
       </FlexboxContentWrapperComponent>
     </SectionWrapper>
   )

@@ -3,7 +3,6 @@ import { colors } from '@hedviginsurance/brand'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import React from 'react'
 import { Mount, Unmount } from 'react-lifecycle-components'
-import { AppLink } from '../../components/AppLink'
 import { ContentWrapper } from '../../components/blockHelpers'
 import {
   ButtonLink,
@@ -240,30 +239,6 @@ class Header extends React.PureComponent<
                           )
                         }
 
-                        if (
-                          this.props.story.content.show_cta &&
-                          this.props.story.content.cta_branch_link
-                        ) {
-                          return (
-                            <AppLink>
-                              {({ link, handleClick }) => (
-                                <MobileHeaderLink
-                                  size="sm"
-                                  styleType={this.props.mobile_header_cta_style}
-                                  weight={this.props.mobile_header_weight}
-                                  color={
-                                    this.props.mobile_header_cta_color &&
-                                    this.props.mobile_header_cta_color.color
-                                  }
-                                  onClick={handleClick}
-                                  href={link}
-                                >
-                                  {mobileHeaderCtaLabel}
-                                </MobileHeaderLink>
-                              )}
-                            </AppLink>
-                          )
-                        }
                         return (
                           <MobileHeaderLink
                             size="sm"
@@ -315,33 +290,6 @@ class Header extends React.PureComponent<
                               {ctaLabel}
                             </ButtonLink>
                           </ButtonWrapper>
-                        )
-                      }
-
-                      if (
-                        this.props.story.content.show_cta &&
-                        this.props.story.content.cta_branch_link
-                      ) {
-                        return (
-                          <AppLink>
-                            {({ link, handleClick }) => (
-                              <ButtonWrapper>
-                                <ButtonLink
-                                  size="sm"
-                                  weight={this.props.cta_weight}
-                                  styleType={this.props.cta_style}
-                                  color={
-                                    this.props.cta_color &&
-                                    this.props.cta_color.color
-                                  }
-                                  href={link}
-                                  onClick={handleClick}
-                                >
-                                  {ctaLabel}
-                                </ButtonLink>
-                              </ButtonWrapper>
-                            )}
-                          </AppLink>
                         )
                       }
 
