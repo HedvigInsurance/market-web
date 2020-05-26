@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-import { colorsV3 } from '@hedviginsurance/brand'
 import { TABLET_BP_UP } from 'components/blockHelpers'
 import React from 'react'
 import { getCurrentMarket } from 'utils/CurrentLocale'
@@ -49,7 +48,7 @@ const Lang = styled.a<{ active: boolean }>`
     display: inline-flex;
     width: 1px;
     height: 0.875rem;
-    background-color: ${colorsV3.gray100};
+    background-color: currentColor;
   }
 `
 

@@ -25,15 +25,13 @@ import { LanguagePicker } from './LanguagePicker'
 import { MenuItem } from './MenuItem'
 import { Burger, TABLET_BP_DOWN, TABLET_BP_UP } from './mobile'
 
-export const HEADER_TOP_HEIGHT = '2.5rem'
-export const HEADER_MAIN_HEIGHT = '6rem'
-export const WRAPPER_HEIGHT = '8.5rem'
+export const WRAPPER_HEIGHT = '6rem'
 export const MOBILE_WRAPPER_HEIGHT = '4.5rem'
 export const HEADER_VERTICAL_PADDING = '1.2rem'
 export const TOGGLE_TRANSITION_TIME = 250
 
 const isBelowScrollThreshold = () =>
-  typeof window !== 'undefined' && window.scrollY > 41
+  typeof window !== 'undefined' && window.scrollY > 20
 
 const HeaderWrapper = styled('header')<{
   inverse: boolean
@@ -52,12 +50,12 @@ const HeaderMain = styled('div')<{
   inverse: boolean
   open: boolean
   sticky: boolean
-}>(({ inverse, open, sticky }) => ({
-  position: sticky ? 'fixed' : 'absolute',
-  top: sticky ? 0 : HEADER_TOP_HEIGHT,
+}>(({ inverse, open }) => ({
+  position: 'fixed',
+  top: 0,
   left: 0,
   width: '100%',
-  height: HEADER_MAIN_HEIGHT,
+  height: WRAPPER_HEIGHT,
   zIndex: 100,
   color: inverse ? colorsV3.gray100 : colorsV3.gray900,
   transition: 'color 300ms',
@@ -90,7 +88,7 @@ const HeaderBackgroundFiller = styled('div')<{ transparent: boolean }>(
     zIndex: -1,
     height: MOBILE_WRAPPER_HEIGHT,
     [TABLET_BP_UP]: {
-      height: HEADER_MAIN_HEIGHT,
+      height: WRAPPER_HEIGHT,
       backgroundColor: colorsV3.gray100,
       opacity: transparent ? 0 : 1,
     },
@@ -108,7 +106,7 @@ const InnerHeaderWrapper = styled('div')({
   width: '100%',
   height: MOBILE_WRAPPER_HEIGHT,
   [TABLET_BP_UP]: {
-    height: HEADER_MAIN_HEIGHT,
+    height: WRAPPER_HEIGHT,
   },
   padding: HEADER_VERTICAL_PADDING + ' 0',
 })
