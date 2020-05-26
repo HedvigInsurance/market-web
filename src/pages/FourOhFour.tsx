@@ -1,4 +1,4 @@
-import { FooterBlockBrandPivot } from 'blocks/FooterBlockBrandPivot'
+import { FooterBlock } from 'blocks/FooterBlock/FooterBlock'
 import { HeaderBlockBrandPivot } from 'blocks/HeaderBlockBrandPivot'
 import React from 'react'
 import { withRouter } from 'react-router'
@@ -15,16 +15,16 @@ export const FourOhFourPage: React.ComponentType = withRouter(
           is_transparent={true}
           inverse_colors={true}
           _uid="header"
-          component="blog"
+          component="header_block_brand_pivot"
         />
 
         <FourOhFourBlock />
 
-        <FooterBlockBrandPivot
-          component="blog"
-          _uid="footer"
+        <FooterBlock
+          component="footer_block"
+          _uid="4007e38a-8975-41cb-b412-0da350b0b61f"
           color={{
-            _uid: 'footer',
+            _uid: '6ea4c3c0-3595-4cf4-8d92-396d3f7a9cd2',
             color: 'standard-inverse',
             plugin: 'hedvig_minimal_color_picker',
           }}
