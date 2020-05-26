@@ -25,7 +25,7 @@ const StyledContentWrapper = styled(ContentWrapper)`
   flex-direction: row;
   flex-wrap: wrap;
   & {
-    max-width: calc(784px + 2 * 2rem);
+    max-width: calc(49rem + 2 * 2rem);
   }
 `
 
@@ -88,7 +88,7 @@ const Link = styled.a`
 const Cta = styled.a`
   display: inline-block;
   border: 1px solid ${colorsV3.gray900};
-  border-radius: 8px;
+  border-radius: 0.5rem;
   padding: 0.75rem 1rem;
   width: 100%;
   color: inherit;
