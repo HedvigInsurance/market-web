@@ -3448,6 +3448,113 @@
       "component_group_uuid": null
     },
     {
+      "name": "insurance_info_block",
+      "display_name": null,
+      "schema": {
+        "value_1": {
+          "type": "section",
+          "pos": 0,
+          "keys": ["value_1_description", "value_1_value"]
+        },
+        "value_1_description": {
+          "type": "text",
+          "pos": 1
+        },
+        "value_1_value": {
+          "type": "text",
+          "pos": 2
+        },
+        "value_2": {
+          "type": "section",
+          "pos": 3,
+          "keys": ["value_2_description", "value_2_value"]
+        },
+        "value_2_description": {
+          "type": "text",
+          "pos": 4
+        },
+        "value_2_value": {
+          "type": "text",
+          "pos": 5
+        },
+        "value_3": {
+          "type": "section",
+          "pos": 6,
+          "keys": ["value_3_description", "value_3_value"]
+        },
+        "value_3_description": {
+          "type": "text",
+          "pos": 7
+        },
+        "value_3_value": {
+          "type": "text",
+          "pos": 8
+        },
+        "value_4": {
+          "type": "section",
+          "pos": 9,
+          "keys": ["value_4_description", "value_4_value"]
+        },
+        "value_4_description": {
+          "type": "text",
+          "pos": 10
+        },
+        "value_4_value": {
+          "type": "text",
+          "pos": 11
+        },
+        "terms_link": {
+          "type": "text",
+          "pos": 12
+        },
+        "terms_link_text": {
+          "type": "text",
+          "pos": 13
+        },
+        "presale_info_link": {
+          "type": "text",
+          "pos": 14
+        },
+        "cta_link": {
+          "type": "text",
+          "pos": 16
+        },
+        "cta_text": {
+          "type": "text",
+          "pos": 17
+        },
+        "color": {
+          "type": "custom",
+          "pos": 18,
+          "field_type": "hedvig-minimal-color-picker",
+          "options": []
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 19
+        },
+        "tab-3af4122d-35df-4012-a15e-7b0a7e687292": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["extra_styling", "color"],
+          "pos": 20
+        },
+        "presale_info_link_text": {
+          "type": "text",
+          "pos": 15
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "insurance_info_block",
+      "component_group_uuid": null
+    },
+    {
       "name": "insurance_type",
       "display_name": null,
       "schema": {
@@ -3629,7 +3736,6 @@
     {
       "name": "menu_item",
       "display_name": null,
-      "updated_at": "2020-05-25T09:05:40.161Z",
       "schema": {
         "label": {
           "type": "text",
@@ -3879,7 +3985,6 @@
     {
       "name": "plain_text_block",
       "display_name": null,
-      "updated_at": "2020-05-22T12:14:22.877Z",
       "schema": {
         "font_size": {
           "type": "option",

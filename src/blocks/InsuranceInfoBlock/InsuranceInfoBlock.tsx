@@ -123,8 +123,18 @@ export const InsuranceInfoBlock: React.FC<InsuranceInfoBlockProps> = ({
         </Column>
 
         <Column>
-          <Link href={values.terms_link}>{values.terms_link_text}↗</Link>
-          <Link href={values.presale_info_link}>
+          <Link
+            href={values.terms_link}
+            target="_blank"
+            rel="noopener nofollow"
+          >
+            {values.terms_link_text}↗
+          </Link>
+          <Link
+            href={values.presale_info_link}
+            target="_blank"
+            rel="noopener nofollow"
+          >
             {values.presale_info_link_text}↗
           </Link>
         </Column>
