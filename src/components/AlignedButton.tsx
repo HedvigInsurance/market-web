@@ -3,7 +3,6 @@ import React from 'react'
 
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { ColorComponent, MinimalColorComponent } from '../blocks/BaseBlockProps'
-import { AppLink } from '../components/AppLink'
 import { TABLET_BP_DOWN } from '../components/blockHelpers'
 import { ButtonLinkBrandPivot } from '../components/ButtonBrandPivot/Button'
 import {
@@ -33,8 +32,7 @@ const createButtonLinkWithMargin = <TColor extends string>(
 export interface AlignedButtonProps<TColor> {
   title: string
   type: 'filled' | 'outlined'
-  branchLink: boolean
-  buttonLink: LinkComponent
+  buttonLink?: LinkComponent
   show: boolean
   color?: TColor
   size?: keyof typeof buttonSizes
@@ -48,7 +46,6 @@ export const AlignedButton: React.FunctionComponent<AlignedButtonProps<
 >> = ({
   title,
   type,
-  branchLink,
   buttonLink,
   show,
   color,
@@ -64,37 +61,19 @@ export const AlignedButton: React.FunctionComponent<AlignedButtonProps<
 
   return (
     <>
-      {show &&
-        (branchLink ? (
-          <AppLink>
-            {({ link, handleClick }) => (
-              <ButtonLinkWithMargin
-                href={link}
-                onClick={handleClick}
-                styleType={type}
-                size={size ? size : 'sm'}
-                color={color?.color as any}
-                weight={weight}
-                mobilePosition={positionMobile}
-                className={className}
-              >
-                {title}
-              </ButtonLinkWithMargin>
-            )}
-          </AppLink>
-        ) : (
-          <ButtonLinkWithMargin
-            href={getStoryblokLinkUrl(buttonLink)}
-            styleType={type}
-            size={size ? size : 'sm'}
-            color={color?.color as any}
-            weight={weight}
-            mobilePosition={positionMobile}
-            className={className}
-          >
-            {title}
-          </ButtonLinkWithMargin>
-        ))}
+      {show && buttonLink && (
+        <ButtonLinkWithMargin
+          href={getStoryblokLinkUrl(buttonLink)}
+          styleType={type}
+          size={size ? size : 'sm'}
+          color={color?.color as any}
+          weight={weight}
+          mobilePosition={positionMobile}
+          className={className}
+        >
+          {title}
+        </ButtonLinkWithMargin>
+      )}
     </>
   )
 }

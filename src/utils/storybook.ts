@@ -277,7 +277,6 @@ export const globalStoryMock: GlobalStory = {
     component: 'global',
     header_menu_items: headerMenuItems,
     show_cta: true,
-    cta_branch_link: false,
     cta_label: 'Beräkna ditt pris',
     cta_link: link,
     footer_menu_items: footerMenuItems,

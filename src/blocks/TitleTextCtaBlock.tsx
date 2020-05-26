@@ -67,7 +67,6 @@ interface TitleTextCtaBlockProps extends BaseBlockProps {
   text_position_mobile: TextPosition
   button_title: string
   button_type: 'filled' | 'outlined'
-  button_branch_link: boolean
   button_link: LinkComponent
   show_button: boolean
   background_image: string
@@ -89,7 +88,6 @@ export const TitleTextCtaBlock: React.FunctionComponent<TitleTextCtaBlockProps> 
   paragraph,
   button_title,
   button_type,
-  button_branch_link,
   button_link,
   show_button,
   background_image,
@@ -127,7 +125,6 @@ export const TitleTextCtaBlock: React.FunctionComponent<TitleTextCtaBlockProps> 
           <AlignedButton
             title={button_title}
             type={button_type}
-            branchLink={button_branch_link}
             buttonLink={button_link}
             show={show_button}
             color={button_color}
