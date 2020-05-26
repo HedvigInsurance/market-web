@@ -22,7 +22,7 @@ export const Default = () => (
       plugin: 'hedvig_minimal_color_picker',
     }}
     index={2}
-    value_1_description="Dina sake är försäkrade till"
+    value_1_description="Dina saker är försäkrade till"
     value_1_value="1 500 000 SEK"
     value_2_description="Självrisk"
     value_2_value="1 500 SEK"
