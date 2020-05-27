@@ -241,14 +241,14 @@ export const getMinimalColorStyles: ColorSetGetter<minimalColorComponentColors> 
       'purple300',
       {
         background: colorsV3.purple300,
-        color: standardInverseColor,
+        color: colorsV3.gray900,
       },
     ],
     [
       'purple500',
       {
         background: colorsV3.purple500,
-        color: standardInverseColor,
+        color: colorsV3.gray900,
       },
     ],
     [match.any(), { background: standardColor, color: standardInverseColor }],
