@@ -256,12 +256,14 @@ export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
           </div>
         )}
 
-        <div>
-          <ColumnHeader>{story.content.footer_download_title}</ColumnHeader>
-          <ContextContainer>
-            {(context) => <MarketPicker currentLanguage={context.lang} />}
-          </ContextContainer>
-        </div>
+        {story.content.footer_market_title && (
+          <div>
+            <ColumnHeader>{story.content.footer_market_title}</ColumnHeader>
+            <ContextContainer>
+              {(context) => <MarketPicker currentLanguage={context.lang} />}
+            </ContextContainer>
+          </div>
+        )}
       </DoubleColumn>
       <FooterFooter
         dangerouslySetInnerHTML={{
