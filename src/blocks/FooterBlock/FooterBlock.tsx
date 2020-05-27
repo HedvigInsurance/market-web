@@ -1,7 +1,6 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
 import { AppButtons } from 'components/AppButtons/AppButtons'
-import { ContextContainer } from 'components/containers/ContextContainer'
 import {
   CONTENT_GUTTER,
   ContentWrapper,
@@ -10,6 +9,7 @@ import {
   SITE_MAX_WIDTH,
   TABLET_BP_UP,
 } from 'components/blockHelpers'
+import { ContextContainer } from 'components/containers/ContextContainer'
 import { HedvigH } from 'components/icons/HedvigH'
 import { StarRating } from 'components/icons/StarRating'
 import React from 'react'
