@@ -60,25 +60,25 @@ export const LanguagePicker: React.FC<LanguagePickerProps> = ({
   currentLanguage,
 }) => {
   const market = getCurrentMarket(currentLanguage)
-  const activeLocale = (locale: string) => locale === currentLanguage
+  const isLocaleActive = (locale: string) => locale === currentLanguage
   return (
     <MenuListItem>
       {market === 'no' && (
         <>
-          <Lang active={activeLocale('no')} href="/no">
+          <Lang active={isLocaleActive('no')} href="/no">
             No
           </Lang>
-          <Lang active={activeLocale('no-en')} href="/no-en">
+          <Lang active={isLocaleActive('no-en')} href="/no-en">
             En
           </Lang>
         </>
       )}
       {market === 'se' && (
         <>
-          <Lang active={activeLocale('se')} href="/se">
+          <Lang active={isLocaleActive('se')} href="/se">
             Sv
           </Lang>
-          <Lang active={activeLocale('se-en')} href="/se-en">
+          <Lang active={isLocaleActive('se-en')} href="/se-en">
             En
           </Lang>
         </>
