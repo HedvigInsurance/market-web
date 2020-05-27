@@ -8,13 +8,16 @@ type LanguagePickerProps = {
 }
 
 const MenuListItem = styled.li`
+  display: flex;
   position: relative;
-  margin: 0;
-  padding: 0;
+  margin: 0 0 auto 0;
+  padding-left: 1.5rem;
+  order: -1;
 
   ${TABLET_BP_UP} {
-    display: flex;
+    margin-bottom: 0;
     padding-left: 1.25rem;
+    order: 0;
   }
 `
 
