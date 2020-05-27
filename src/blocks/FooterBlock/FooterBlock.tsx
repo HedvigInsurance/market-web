@@ -16,7 +16,7 @@ import React from 'react'
 import { GlobalStory, GlobalStoryContainer } from 'storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from 'utils/storyblok'
 import { BrandPivotBaseBlockProps } from '../BaseBlockProps'
-import { MarketPicker } from './MarketPicker'
+import { MarketPicker } from './MarketPicker/MarketPicker'
 
 const BP_UP = '@media (min-width: 601px)'
 const MOBILE_MENU_HIDDEN = '@media (min-width: 1001px)'
