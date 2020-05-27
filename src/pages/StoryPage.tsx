@@ -1,9 +1,9 @@
-import { FooterBlock } from 'blocks/FooterBlock/FooterBlock'
 import SbEditable from 'patched/storyblok-react'
 import React from 'react'
 import Helmet from 'react-helmet-async'
 import { getBlockComponent } from '../blocks'
 import { BaseBlockProps } from '../blocks/BaseBlockProps'
+import { FooterBlock } from '../blocks/FooterBlock/FooterBlock'
 import { BodyStory, StoryContainer } from '../storyblok/StoryContainer'
 import { getMeta } from '../utils/meta'
 
