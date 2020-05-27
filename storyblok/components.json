@@ -1244,13 +1244,13 @@
         },
         "cta_label": {
           "type": "text",
-          "pos": 4,
+          "pos": 3,
           "translatable": true
         },
         "cta_link": {
           "type": "multilink",
           "translatable": true,
-          "pos": 5
+          "pos": 4
         },
         "footer": {
           "type": "section",
@@ -1267,16 +1267,17 @@
             "footer_safety_body",
             "footer_rating_title",
             "footer_rating_paragraph",
+            "footer_market_title",
             "footer_paragraph"
           ],
-          "pos": 6
+          "pos": 5
         },
         "footer_menu_items_1": {
           "type": "bloks",
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
           "display_name": "",
-          "pos": 7,
+          "pos": 6,
           "translatable": true
         },
         "footer_menu_items_2": {
@@ -1284,7 +1285,7 @@
           "maximum": "",
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
-          "pos": 8,
+          "pos": 7,
           "translatable": true
         },
         "get_started": {
@@ -1292,7 +1293,7 @@
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
           "display_name": "",
-          "pos": 9,
+          "pos": 8,
           "translatable": true
         },
         "company": {
@@ -1300,7 +1301,7 @@
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
           "display_name": "",
-          "pos": 10,
+          "pos": 9,
           "translatable": true
         },
         "legal": {
@@ -1308,7 +1309,7 @@
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
           "display_name": "",
-          "pos": 11,
+          "pos": 10,
           "translatable": true
         },
         "social": {
@@ -1316,39 +1317,43 @@
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
           "display_name": "",
-          "pos": 12,
+          "pos": 11,
           "translatable": true
         },
         "footer_menu_items": {
           "type": "bloks",
-          "pos": 13,
+          "pos": 12,
           "maximum": "4",
           "restrict_components": true,
           "component_whitelist": ["menu_item"]
         },
         "footer_download_title": {
           "type": "text",
-          "pos": 14
+          "pos": 13
         },
         "footer_safety_title": {
           "type": "text",
-          "pos": 15
+          "pos": 14
         },
         "footer_safety_body": {
           "type": "custom",
-          "pos": 16,
+          "pos": 15,
           "field_type": "markdown-html",
           "options": []
         },
         "footer_rating_title": {
           "type": "text",
-          "pos": 17
+          "pos": 16
         },
         "footer_rating_paragraph": {
           "type": "custom",
-          "pos": 18,
+          "pos": 17,
           "field_type": "markdown-html",
           "options": []
+        },
+        "footer_market_title": {
+          "type": "text",
+          "pos": 18
         },
         "footer_paragraph": {
           "type": "custom",
