@@ -31,15 +31,16 @@ export const getSelectStyling = (theme: any): StylesConfig => ({
     ...provided,
     minHeight: selectHeight,
     borderColor: theme.color + ' !important',
+    borderRadius: '8px',
     boxShadow: 'none',
-    backgroundColor: theme.background,
+    backgroundColor: 'transparent',
     overflow: 'hidden',
     textAlign: 'center',
   }),
   menu: (provided) => ({
     ...provided,
     boxShadow: 'none',
-    borderRadius: '6px',
+    borderRadius: '8px',
     minWidth: '100%',
     border: '1px solid ' + theme.color,
     backgroundColor: theme.background,
@@ -83,7 +84,7 @@ export const Select: React.FC<SelectProps> = ({
 }) => {
   const themeColors = getMinimalColorStyles(color)
   const styles = getSelectStyling(themeColors)
-
+  console.log(styles)
   return (
     <ReactSelect
       components={{
