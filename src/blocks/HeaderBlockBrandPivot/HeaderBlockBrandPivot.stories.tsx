@@ -74,7 +74,7 @@ export const WithHero = () => (
       color={minimalColorMap['standard-inverse']}
       headline="Hjälp så som du aldrig kunnat <br/>föreställa dig den"
       headline_font_size="md"
-      image="https://source.unsplash.com/user/heytowner/?orientation=landscape"
+      image="https://res.cloudinary.com/gustaveen-com/image/upload/q_40/v1589550685/hus_villa_z07bvi.jpg"
       image_mobile=""
       show_cta={true}
       cta_label="Läs mer"

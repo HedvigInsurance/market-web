@@ -87,15 +87,15 @@ const HeaderBackgroundFiller = styled('div')<{ transparent: boolean }>(
     right: 0,
     zIndex: -1,
     height: MOBILE_WRAPPER_HEIGHT,
-    [TABLET_BP_UP]: {
-      height: WRAPPER_HEIGHT,
-      backgroundColor: colorsV3.gray100,
-      opacity: transparent ? 0 : 1,
-    },
-    opacity: 1,
+    opacity: transparent ? 0 : 1,
     backgroundColor: colorsV3.gray900,
     transitionDuration: '300ms',
     transitionProperty: 'opacity, background-color',
+
+    [TABLET_BP_UP]: {
+      height: WRAPPER_HEIGHT,
+      backgroundColor: colorsV3.gray100,
+    },
   }),
 )
 
@@ -110,7 +110,28 @@ const InnerHeaderWrapper = styled('div')({
   },
   padding: HEADER_VERTICAL_PADDING + ' 0',
 })
-const Menu = styled('ul')<{ open: boolean }>(({ open }) => ({
+
+const Menu = styled('div')<{ open: boolean }>(({ open }) => ({
+  display: 'flex',
+  [TABLET_BP_DOWN]: {
+    flexDirection: 'column',
+    position: 'absolute',
+    zIndex: 101,
+    width: '100%',
+    height: open ? '100vh' : 0,
+    top: 0,
+    bottom: 0,
+    right: 0,
+    paddingTop: 0,
+    background: open ? colorsV3.gray900 : 'transparent',
+    transitionDuration: `${TOGGLE_TRANSITION_TIME}ms`,
+    transitionProperty: 'background-color, height',
+    overflow: 'scroll',
+    WebkitOverflowScrolling: 'touch',
+  },
+}))
+
+const MenuList = styled('ul')<{ open: boolean }>(({ open }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
@@ -119,26 +140,10 @@ const Menu = styled('ul')<{ open: boolean }>(({ open }) => ({
   listStyle: 'none',
 
   [TABLET_BP_DOWN]: {
-    position: 'absolute',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-end',
-    zIndex: 101,
-    width: '100%',
-
-    height: open ? `calc(100vh - ${MOBILE_WRAPPER_HEIGHT})` : 0,
-    top: MOBILE_WRAPPER_HEIGHT,
-    bottom: 0,
-    right: 0,
-    paddingTop: open ? HEADER_VERTICAL_PADDING : 0,
-    fontSize: 18,
-    background: colorsV3.gray900,
+    display: 'block',
     transitionDuration: `${TOGGLE_TRANSITION_TIME}ms`,
-    transitionProperty: 'background-color, height, padding-top, color',
-    color: open ? colorsV3.gray100 : 'transparent',
-    overflow: 'scroll',
-    WebkitOverflowScrolling: 'touch',
+    transitionProperty: 'opacity',
+    opacity: open ? 1 : 0,
   },
 }))
 
@@ -150,6 +155,8 @@ const DesktopLogo = styled('div')({
 })
 
 const MobileLogo = styled('div')({
+  position: 'relative',
+  zIndex: 102,
   [TABLET_BP_UP]: {
     display: 'none',
   },
@@ -179,7 +186,7 @@ const LeftContainer = styled('div')({
 const MobileButtonWrapper = styled('div')({
   display: 'inline-block',
   width: '100%',
-  marginBottom: '5rem',
+  marginBottom: '7rem',
   [TABLET_BP_UP]: {
     display: 'none',
   },
@@ -193,6 +200,7 @@ const DesktopButtonWrapper = styled('div')({
 })
 
 const Wordmark = styled('a')({
+  display: 'block',
   width: '2rem',
   height: '2rem',
   zIndex: 102,
@@ -313,11 +321,13 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                   </MobileLogo>
 
                   <Menu open={isOpen}>
-                    {(props.story.content.header_menu_items ?? []).map(
-                      (menuItem) => (
-                        <MenuItem menuItem={menuItem} key={menuItem._uid} />
-                      ),
-                    )}
+                    <MenuList open={isOpen}>
+                      {(props.story.content.header_menu_items ?? []).map(
+                        (menuItem) => (
+                          <MenuItem menuItem={menuItem} key={menuItem._uid} />
+                        ),
+                      )}
+                    </MenuList>
 
                     <ContextContainer>
                       {(context) => (

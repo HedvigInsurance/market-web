@@ -44,7 +44,7 @@ const DropdownMenuItemList = styled('ul')<{
     position: 'static',
     boxShadow: 'none',
     left: 0,
-    padding: '.5rem 1rem',
+    padding: '0 1rem',
     background: 'inherit',
     color: 'inherit',
     fontSize: '1.5rem',
@@ -72,7 +72,8 @@ const DropdownMenuLink = styled(MenuLink)({
   paddingBottom: '1rem',
 
   [TABLET_BP_DOWN]: {
-    fontSize: '1.5rem',
+    fontSize: '1.2rem',
+    padding: '0.5rem 0.5rem 0.5rem 1.5rem',
   },
 })
 

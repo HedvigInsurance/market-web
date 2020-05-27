@@ -10,11 +10,12 @@ type LanguagePickerProps = {
 const MenuListItem = styled.li`
   display: flex;
   position: relative;
-  margin: 0 0 auto 0;
+  margin: 5.25rem 0 auto 0;
   padding-left: 1.5rem;
   order: -1;
 
   ${TABLET_BP_UP} {
+    margin-top: 0;
     margin-bottom: 0;
     padding-left: 1.25rem;
     order: 0;
