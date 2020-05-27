@@ -1,13 +1,11 @@
 import styled from '@emotion/styled'
 import React from 'react'
 import { components, OptionProps } from 'react-select'
-
-type MarketSelectOption = {
-  label: string
-  value: string
-}
+import { MarketSelectOption } from './MarketPicker'
 
 const OptionLink = styled.a`
+  width: 100%;
+  text-align: left;
   text-decoration: none;
 `
 
