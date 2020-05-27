@@ -1,9 +1,9 @@
 import styled from '@emotion/styled'
-import React from 'react'
-import { Select } from 'components/Select/Select'
-import { MarketOption } from './MarketOption'
-import { getMarketLabel, getCurrentMarket } from 'utils/CurrentLocale'
 import { MOBILE_BP_UP } from 'components/blockHelpers'
+import { Select } from 'components/Select/Select'
+import React from 'react'
+import { getCurrentMarket, getMarketLabel } from 'utils/CurrentLocale'
+import { MarketOption } from './MarketOption'
 import { MarketValueContainer } from './MarketValueContainer'
 
 const MarketSelect = styled(Select)`
@@ -12,11 +12,11 @@ const MarketSelect = styled(Select)`
   }
 `
 
-type MarketPickerProps = {
+interface MarketPickerProps {
   currentLanguage: string
 }
 
-export type MarketSelectOption = {
+export interface MarketSelectOption {
   label: string
   value: string
 }

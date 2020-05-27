@@ -3,7 +3,7 @@ import { TABLET_BP_UP } from 'components/blockHelpers'
 import React from 'react'
 import { getCurrentMarket } from 'utils/CurrentLocale'
 
-type LanguagePickerProps = {
+interface LanguagePickerProps {
   currentLanguage: string
 }
 

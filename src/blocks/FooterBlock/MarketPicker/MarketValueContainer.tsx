@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
+import { Globe } from 'components/icons/Globe'
 import React from 'react'
 import { components, ValueContainerProps } from 'react-select'
 import { MarketSelectOption } from './MarketPicker'
-import { Globe } from 'components/icons/Globe'
 
 const GlobeIcon = styled(Globe)`
   margin-left: -0.875rem;

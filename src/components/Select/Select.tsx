@@ -84,7 +84,6 @@ export const Select: React.FC<SelectProps> = ({
 }) => {
   const themeColors = getMinimalColorStyles(color)
   const styles = getSelectStyling(themeColors)
-  console.log(styles)
   return (
     <ReactSelect
       components={{
