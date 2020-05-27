@@ -120,7 +120,10 @@ const Menu = styled('ul')<{ open: boolean }>(({ open }) => ({
 
   [TABLET_BP_DOWN]: {
     position: 'absolute',
-    display: 'block',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end',
     zIndex: 101,
     width: '100%',
 
@@ -176,6 +179,7 @@ const LeftContainer = styled('div')({
 const MobileButtonWrapper = styled('div')({
   display: 'inline-block',
   width: '100%',
+  marginBottom: '5rem',
   [TABLET_BP_UP]: {
     display: 'none',
   },
