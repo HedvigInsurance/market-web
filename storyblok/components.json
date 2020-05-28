@@ -638,20 +638,34 @@
       "name": "bullet_point_block_brand_pivot",
       "display_name": "",
       "schema": {
+        "align_center": {
+          "type": "boolean",
+          "pos": 0,
+          "description": "Tick this box if you want each bullet to have text and image centered"
+        },
+        "bullet_points": {
+          "type": "bloks",
+          "maximum": "6",
+          "restrict_components": true,
+          "component_whitelist": ["bullet_point_item_brand_pivot"],
+          "required": true,
+          "pos": 1,
+          "translatable": false
+        },
         "extra_styling": {
           "type": "textarea",
-          "pos": 0,
+          "pos": 2,
           "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         },
         "color": {
           "type": "custom",
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
-          "pos": 1
+          "pos": 3
         },
         "color_body": {
           "type": "custom",
-          "pos": 2,
+          "pos": 4,
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
           "description": "Set the color on the paragraph text"
@@ -676,19 +690,10 @@
               "name": "XL"
             }
           ],
-          "pos": 3,
+          "pos": 5,
           "display_name": "",
           "description": "",
           "default_value": "sm"
-        },
-        "bullet_points": {
-          "type": "bloks",
-          "maximum": "6",
-          "restrict_components": true,
-          "component_whitelist": ["bullet_point_item_brand_pivot"],
-          "required": true,
-          "pos": 6,
-          "translatable": false
         },
         "tab-ebd6ef28-5e5a-4600-8c0b-5f6542654eab": {
           "type": "tab",
@@ -700,7 +705,7 @@
             "body_color",
             "color_body"
           ],
-          "pos": 7
+          "pos": 6
         }
       },
       "image": null,
@@ -735,7 +740,7 @@
         },
         "title": {
           "type": "text",
-          "required": true,
+          "required": false,
           "default_value": "",
           "pos": 2,
           "translatable": true
