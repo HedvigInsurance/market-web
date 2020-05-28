@@ -125,7 +125,7 @@ interface BulletPointsBlockProps extends BaseBlockProps {
     BaseBlockProps & {
       image: Image
       icon_layout: boolean
-      title: string
+      title?: string
       paragraph: MarkdownHtmlComponent
     }
   >
@@ -155,7 +155,9 @@ export const BulletPointBlockBrandPivot: React.FunctionComponent<BulletPointsBlo
               />
             </BulletPointHead>
             <div>
-              <BulletPointTitle>{bullet.title}</BulletPointTitle>
+              {bullet.title && (
+                <BulletPointTitle>{bullet.title}</BulletPointTitle>
+              )}
               <BulletPointBody
                 colorComponent={color_body}
                 dangerouslySetInnerHTML={{
