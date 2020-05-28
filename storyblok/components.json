@@ -733,11 +733,6 @@
           "image_height": "240",
           "translatable": true
         },
-        "icon_layout": {
-          "type": "boolean",
-          "pos": 1,
-          "description": "Tick this box to get the icon layout"
-        },
         "title": {
           "type": "text",
           "required": false,
