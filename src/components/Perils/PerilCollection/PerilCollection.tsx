@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   margin-left: -0.5rem;
 
   ${TABLET_BP_UP} {
-    margin-left: -0.625rem;
+    margin-left: -1rem;
   }
 
   & > * {
@@ -30,13 +30,13 @@ const Wrapper = styled.div`
     margin-bottom: 0.5rem;
 
     ${TABLET_BP_UP} {
-      width: calc(100% / 3 - 0.625rem);
-      margin-left: 0.625rem;
-      margin-bottom: 0.625rem;
+      width: calc(100% / 3 - 1rem);
+      margin-left: 1rem;
+      margin-bottom: 1rem;
     }
 
     ${LAPTOP_BP_UP} {
-      width: calc(25% - 0.625rem);
+      width: calc(25% - 1rem);
     }
   }
 `
