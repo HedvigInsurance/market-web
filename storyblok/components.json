@@ -4369,7 +4369,7 @@
       "schema": {
         "color": {
           "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
+          "field_type": "hedvig-minimal-color-picker",
           "options": [],
           "pos": 0
         },
@@ -4381,59 +4381,40 @@
               "name": "None"
             },
             {
+              "value": "xxs",
+              "name": "XXS (8px)"
+            },
+            {
               "value": "xs",
-              "name": "XS"
+              "name": "XS (16px)"
             },
             {
               "value": "sm",
-              "name": "SM"
+              "name": "SM (56px)"
             },
             {
               "value": "lg",
-              "name": "LG"
+              "name": "LG (80px)"
             },
             {
               "value": "xl",
-              "name": "XL"
+              "name": "XL (160px)"
             }
           ],
           "pos": 1,
           "display_name": "",
           "description": "",
-          "default_value": "lg"
+          "default_value": "sm"
         },
-        "blob_direction": {
-          "type": "option",
-          "options": [
-            {
-              "value": "none",
-              "name": "None"
-            },
-            {
-              "value": "up",
-              "name": "Up"
-            },
-            {
-              "value": "down",
-              "name": "Down"
-            }
-          ],
-          "pos": 2,
-          "display_name": "",
-          "description": "",
-          "default_value": "none"
+        "tab-a68f8911-7347-4926-aa62-78f5db42a6eb": {
+          "type": "tab",
+          "display_name": "Styling",
+          "keys": ["extra_styling"],
+          "pos": 0
         },
-        "overlap": {
-          "type": "boolean",
-          "pos": 3,
-          "default_value": "false",
-          "description": "Whether the blobs should overlap with the content above it in case of up-blob and below it in case of down-blob"
-        },
-        "blob_color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 4
+        "extra_styling": {
+          "type": "textarea",
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         }
       },
       "image": null,
@@ -4448,7 +4429,7 @@
     },
     {
       "name": "spacer_block_brand_pivot",
-      "display_name": "",
+      "display_name": "Spacer Block Brand Pivot (DEPRECATED)",
       "schema": {
         "color": {
           "type": "custom",
@@ -4493,7 +4474,7 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "spacer_block_brand_pivot",
+      "real_name": "Spacer Block Brand Pivot (DEPRECATED)",
       "component_group_uuid": null
     },
     {
