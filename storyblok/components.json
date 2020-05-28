@@ -735,7 +735,7 @@
         },
         "title": {
           "type": "text",
-          "required": true,
+          "required": false,
           "default_value": "",
           "pos": 2,
           "translatable": true
