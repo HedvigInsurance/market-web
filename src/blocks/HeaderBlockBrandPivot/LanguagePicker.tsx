@@ -1,7 +1,8 @@
 import styled from '@emotion/styled'
-import { TABLET_BP_UP } from 'components/blockHelpers'
+import { MOBILE_BP_UP } from 'components/blockHelpers'
 import React from 'react'
 import { getCurrentMarket } from 'utils/CurrentLocale'
+import { TABLET_BP_UP } from './mobile'
 
 interface LanguagePickerProps {
   currentLanguage: string
@@ -13,6 +14,10 @@ const MenuListItem = styled.li`
   margin: 5.25rem 0 auto 0;
   padding-left: 1.5rem;
   order: -1;
+
+  ${MOBILE_BP_UP} {
+    padding-left: 2rem;
+  }
 
   ${TABLET_BP_UP} {
     margin-top: 0;
