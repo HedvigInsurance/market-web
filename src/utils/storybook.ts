@@ -285,6 +285,7 @@ export const globalStoryMock: GlobalStory = {
     footer_safety_body: safetyText,
     footer_rating_title: 'Betyg',
     footer_rating_paragraph: ratingText,
+    footer_market_title: 'Marknad',
     footer_paragraph: footerText,
     peril_modal_info_title: 'Att tänka på',
     peril_modal_coverage_title: 'Det här täcks',

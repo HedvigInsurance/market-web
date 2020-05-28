@@ -44,7 +44,7 @@ const DropdownMenuItemList = styled('ul')<{
     position: 'static',
     boxShadow: 'none',
     left: 0,
-    padding: '.5rem 1rem',
+    padding: '0 1rem',
     background: 'inherit',
     color: 'inherit',
     fontSize: '1.5rem',
@@ -57,9 +57,9 @@ const MenuLink = styled('a')({
 
   [TABLET_BP_DOWN]: {
     display: 'inline-block',
-    padding: `0.625rem 0.5rem 0.625rem 1.5rem`,
+    padding: `1rem 0.5rem 1rem 1.5rem`,
     fontFamily: fonts.FAVORIT,
-    fontSize: '2.5rem',
+    fontSize: '1.5rem',
   },
 })
 const MenuFakeLink = styled(MenuLink)({ cursor: 'default' }).withComponent(
@@ -72,13 +72,14 @@ const DropdownMenuLink = styled(MenuLink)({
   paddingBottom: '1rem',
 
   [TABLET_BP_DOWN]: {
-    fontSize: '1.5rem',
+    fontSize: '1.2rem',
+    padding: '0.5rem 0.5rem 0.5rem 1.5rem',
   },
 })
 
 const Toggler = styled('button')<{ isOpen: boolean }>(({ isOpen }) => ({
   position: 'relative',
-  top: -2,
+  top: 2,
   appearance: 'none',
   background: 0,
   border: 0,
