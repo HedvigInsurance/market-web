@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
-import { HeaderTop } from 'blocks/HeaderBlockBrandPivot/HeaderTop'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import { HedvigH } from 'components/icons/HedvigH'
 import React from 'react'
@@ -22,18 +21,17 @@ import {
   MinimalColorComponent,
   minimalColorComponentColors,
 } from '../BaseBlockProps'
+import { LanguagePicker } from './LanguagePicker'
 import { MenuItem } from './MenuItem'
 import { Burger, TABLET_BP_DOWN, TABLET_BP_UP } from './mobile'
 
-export const HEADER_TOP_HEIGHT = '2.5rem'
-export const HEADER_MAIN_HEIGHT = '6rem'
-export const WRAPPER_HEIGHT = '8.5rem'
+export const WRAPPER_HEIGHT = '6rem'
 export const MOBILE_WRAPPER_HEIGHT = '4.5rem'
 export const HEADER_VERTICAL_PADDING = '1.2rem'
 export const TOGGLE_TRANSITION_TIME = 250
 
 const isBelowScrollThreshold = () =>
-  typeof window !== 'undefined' && window.scrollY > 41
+  typeof window !== 'undefined' && window.scrollY > 20
 
 const HeaderWrapper = styled('header')<{
   inverse: boolean
@@ -52,12 +50,12 @@ const HeaderMain = styled('div')<{
   inverse: boolean
   open: boolean
   sticky: boolean
-}>(({ inverse, open, sticky }) => ({
-  position: sticky ? 'fixed' : 'absolute',
-  top: sticky ? 0 : HEADER_TOP_HEIGHT,
+}>(({ inverse, open }) => ({
+  position: 'fixed',
+  top: 0,
   left: 0,
   width: '100%',
-  height: HEADER_MAIN_HEIGHT,
+  height: WRAPPER_HEIGHT,
   zIndex: 100,
   color: inverse ? colorsV3.gray100 : colorsV3.gray900,
   transition: 'color 300ms',
@@ -89,15 +87,15 @@ const HeaderBackgroundFiller = styled('div')<{ transparent: boolean }>(
     right: 0,
     zIndex: -1,
     height: MOBILE_WRAPPER_HEIGHT,
-    [TABLET_BP_UP]: {
-      height: HEADER_MAIN_HEIGHT,
-      backgroundColor: colorsV3.gray100,
-      opacity: transparent ? 0 : 1,
-    },
-    opacity: 1,
+    opacity: transparent ? 0 : 1,
     backgroundColor: colorsV3.gray900,
     transitionDuration: '300ms',
     transitionProperty: 'opacity, background-color',
+
+    [TABLET_BP_UP]: {
+      height: WRAPPER_HEIGHT,
+      backgroundColor: colorsV3.gray100,
+    },
   }),
 )
 
@@ -108,11 +106,32 @@ const InnerHeaderWrapper = styled('div')({
   width: '100%',
   height: MOBILE_WRAPPER_HEIGHT,
   [TABLET_BP_UP]: {
-    height: HEADER_MAIN_HEIGHT,
+    height: WRAPPER_HEIGHT,
   },
   padding: HEADER_VERTICAL_PADDING + ' 0',
 })
-const Menu = styled('ul')<{ open: boolean }>(({ open }) => ({
+
+const Menu = styled('div')<{ open: boolean }>(({ open }) => ({
+  display: 'flex',
+  [TABLET_BP_DOWN]: {
+    flexDirection: 'column',
+    position: 'absolute',
+    zIndex: 101,
+    width: '100%',
+    height: open ? '100vh' : 0,
+    top: 0,
+    bottom: 0,
+    right: 0,
+    paddingTop: 0,
+    background: open ? colorsV3.gray900 : 'transparent',
+    transitionDuration: `${TOGGLE_TRANSITION_TIME}ms`,
+    transitionProperty: 'background-color, height',
+    overflow: 'scroll',
+    WebkitOverflowScrolling: 'touch',
+  },
+}))
+
+const MenuList = styled('ul')<{ open: boolean }>(({ open }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
@@ -121,23 +140,10 @@ const Menu = styled('ul')<{ open: boolean }>(({ open }) => ({
   listStyle: 'none',
 
   [TABLET_BP_DOWN]: {
-    position: 'absolute',
     display: 'block',
-    zIndex: 101,
-    width: '100%',
-
-    height: open ? `calc(100vh - ${MOBILE_WRAPPER_HEIGHT})` : 0,
-    top: MOBILE_WRAPPER_HEIGHT,
-    bottom: 0,
-    right: 0,
-    paddingTop: open ? HEADER_VERTICAL_PADDING : 0,
-    fontSize: 18,
-    background: colorsV3.gray900,
     transitionDuration: `${TOGGLE_TRANSITION_TIME}ms`,
-    transitionProperty: 'background-color, height, padding-top, color',
-    color: open ? colorsV3.gray100 : 'transparent',
-    overflow: 'scroll',
-    WebkitOverflowScrolling: 'touch',
+    transitionProperty: 'opacity',
+    opacity: open ? 1 : 0,
   },
 }))
 
@@ -149,6 +155,8 @@ const DesktopLogo = styled('div')({
 })
 
 const MobileLogo = styled('div')({
+  position: 'relative',
+  zIndex: 102,
   [TABLET_BP_UP]: {
     display: 'none',
   },
@@ -178,6 +186,7 @@ const LeftContainer = styled('div')({
 const MobileButtonWrapper = styled('div')({
   display: 'inline-block',
   width: '100%',
+  marginBottom: '7rem',
   [TABLET_BP_UP]: {
     display: 'none',
   },
@@ -191,6 +200,7 @@ const DesktopButtonWrapper = styled('div')({
 })
 
 const Wordmark = styled('a')({
+  display: 'block',
   width: '2rem',
   height: '2rem',
   zIndex: 102,
@@ -256,10 +266,6 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
           props.is_transparent && props.inverse_colors && !isBelowThreshold
         }
       >
-        <HeaderTop
-          transparent={props.is_transparent}
-          inverse={props.inverse_colors}
-        />
         {!props.is_transparent && <Filler />}
         <Togglable>
           {({ isOpen, isClosing, toggleOpen }) => (
@@ -315,11 +321,19 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                   </MobileLogo>
 
                   <Menu open={isOpen}>
-                    {(props.story.content.header_menu_items ?? []).map(
-                      (menuItem) => (
-                        <MenuItem menuItem={menuItem} key={menuItem._uid} />
-                      ),
-                    )}
+                    <MenuList open={isOpen}>
+                      {(props.story.content.header_menu_items ?? []).map(
+                        (menuItem) => (
+                          <MenuItem menuItem={menuItem} key={menuItem._uid} />
+                        ),
+                      )}
+                    </MenuList>
+
+                    <ContextContainer>
+                      {(context) => (
+                        <LanguagePicker currentLanguage={context.lang} />
+                      )}
+                    </ContextContainer>
 
                     <MobileButtonWrapper>
                       <>

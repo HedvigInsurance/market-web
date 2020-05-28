@@ -9,12 +9,14 @@ import {
   SITE_MAX_WIDTH,
   TABLET_BP_UP,
 } from 'components/blockHelpers'
+import { ContextContainer } from 'components/containers/ContextContainer'
 import { HedvigH } from 'components/icons/HedvigH'
 import { StarRating } from 'components/icons/StarRating'
 import React from 'react'
 import { GlobalStory, GlobalStoryContainer } from 'storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from 'utils/storyblok'
 import { BrandPivotBaseBlockProps } from '../BaseBlockProps'
+import { MarketPicker } from './MarketPicker/MarketPicker'
 
 const BP_UP = '@media (min-width: 601px)'
 const MOBILE_MENU_HIDDEN = '@media (min-width: 1001px)'
@@ -253,8 +255,16 @@ export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
             <AppButtons />
           </div>
         )}
-      </DoubleColumn>
 
+        {story.content.footer_market_title && (
+          <div>
+            <ColumnHeader>{story.content.footer_market_title}</ColumnHeader>
+            <ContextContainer>
+              {(context) => <MarketPicker currentLanguage={context.lang} />}
+            </ContextContainer>
+          </div>
+        )}
+      </DoubleColumn>
       <FooterFooter
         dangerouslySetInnerHTML={{
           __html: story.content.footer_paragraph?.html,

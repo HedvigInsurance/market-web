@@ -118,6 +118,7 @@ export interface GlobalStory extends Story {
     footer_safety_body: MarkdownHtmlComponent
     footer_rating_title?: string
     footer_rating_paragraph: MarkdownHtmlComponent
+    footer_market_title?: string
     footer_paragraph: MarkdownHtmlComponent
     peril_modal_info_title?: string
     peril_modal_coverage_title?: string
