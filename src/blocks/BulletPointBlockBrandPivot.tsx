@@ -21,7 +21,9 @@ const BulletPointSectionWrapper = styled(SectionWrapper)({
   overflowX: 'hidden',
 })
 
-const InnerWrapper = styled('div')({
+const InnerWrapper = styled('div')<{
+  alignCenter: boolean
+}>(({ alignCenter }) => ({
   display: 'flex',
   flexWrap: 'wrap',
   minWidth: '100%',
@@ -35,23 +37,31 @@ const InnerWrapper = styled('div')({
     marginLeft: '-1.5rem',
   },
 
-  [LAPTOP_BP_UP]: {
-    marginLeft: '-3.5rem',
-  },
-})
+  ...(alignCenter
+    ? {
+        [LAPTOP_BP_UP]: {
+          marginLeft: '-3.5rem',
+        },
+      }
+    : {
+        [LAPTOP_BP_UP]: {
+          marginLeft: '-2rem',
+        },
+      }),
+}))
 
 const BulletPoint = styled('div')<{
-  iconLayout: boolean
-}>(({ iconLayout }) => ({
+  alignCenter: boolean
+}>(({ alignCenter }) => ({
   display: 'flex',
-  flexDirection: iconLayout ? 'row' : 'column',
-  alignItems: 'flex-start',
+  flexDirection: alignCenter ? 'column' : 'row',
+  alignItems: alignCenter ? 'center' : 'flex-start',
+  textAlign: alignCenter ? 'center' : 'left',
   width: `calc(100% - 1.5rem)`,
   marginTop: '1.25rem',
   marginBottom: '1.25rem',
 
   [MOBILE_BP_UP]: {
-    flexDirection: 'column',
     width: `calc(50% - 1.5rem)`,
     marginLeft: '1.5rem',
   },
@@ -60,44 +70,45 @@ const BulletPoint = styled('div')<{
     width: `calc(${(1 / 3) * 100}% - 1.5rem)`,
   },
 
-  [LAPTOP_BP_UP]: {
-    width: `calc(${(1 / 3) * 100}% - 3.5rem)`,
-    marginLeft: '3.5rem',
-  },
+  ...(alignCenter
+    ? {
+        [LAPTOP_BP_UP]: {
+          width: `calc(${(1 / 3) * 100}% - 3.5rem)`,
+          marginLeft: '3.5rem',
+        },
+      }
+    : {
+        [LAPTOP_BP_UP]: {
+          width: `calc(${(1 / 3) * 100}% - 2rem)`,
+          marginLeft: '2rem',
+        },
+      }),
 }))
 
 const BulletPointHead = styled('div')<{
-  iconLayout: boolean
-}>(({ iconLayout }) => ({
+  alignCenter: boolean
+}>(({ alignCenter }) => ({
   display: 'flex',
   alignItems: 'center',
   flexShrink: 0,
   marginBottom: '1.5rem',
 
-  ...(iconLayout
+  ...(alignCenter
     ? {
+        marginBottom: '1.5rem',
+      }
+    : {
         justifyContent: 'flex-start',
         maxWidth: '2rem',
         maxHeight: '2rem',
         marginRight: '1.5rem',
-      }
-    : {
-        marginBottom: '1.5rem',
       }),
-
-  [MOBILE_BP_UP]: {
-    maxWidth: 'none',
-    maxHeight: 'none',
-    width: 'auto',
-    marginRight: 0,
-    marginBottom: '1.5rem',
-  },
 }))
 
 const BulletPointImage = styled(DeferredImage)<{
-  iconLayout: boolean
-}>(({ iconLayout }) => ({
-  width: iconLayout ? 'auto' : '100%',
+  alignCenter: boolean
+}>(({ alignCenter }) => ({
+  width: alignCenter ? 'auto' : '100%',
 }))
 
 const BulletPointTitle = styled('h3')({
@@ -111,27 +122,31 @@ const BulletPointTitle = styled('h3')({
 })
 
 const BulletPointBody = styled('div')<{
+  alignCenter: boolean
   colorComponent: MinimalColorComponent
-}>(({ colorComponent }) => ({
+}>(({ alignCenter, colorComponent }) => ({
   color: getMinimalColorStyles(colorComponent?.color ?? 'standard').color,
+  fontSize: alignCenter ? '18px' : '16px',
   [LAPTOP_BP_UP]: {
     fontSize: '1.125rem',
   },
 }))
 
 interface BulletPointsBlockProps extends BaseBlockProps {
+  align_center: boolean
   color_body: MinimalColorComponent
   bullet_points: ReadonlyArray<
     BaseBlockProps & {
       image: Image
       icon_layout: boolean
-      title: string
+      title?: string
       paragraph: MarkdownHtmlComponent
     }
   >
 }
 
 export const BulletPointBlockBrandPivot: React.FunctionComponent<BulletPointsBlockProps> = ({
+  align_center,
   extra_styling,
   color,
   color_body,
@@ -145,18 +160,21 @@ export const BulletPointBlockBrandPivot: React.FunctionComponent<BulletPointsBlo
     extraStyling={extra_styling}
   >
     <ContentWrapper brandPivot>
-      <InnerWrapper>
+      <InnerWrapper alignCenter={align_center}>
         {bullet_points.map((bullet) => (
-          <BulletPoint key={bullet._uid} iconLayout={bullet.icon_layout}>
-            <BulletPointHead iconLayout={bullet.icon_layout}>
+          <BulletPoint key={bullet._uid} alignCenter={align_center}>
+            <BulletPointHead alignCenter={align_center}>
               <BulletPointImage
                 src={getStoryblokImage(bullet.image)}
-                iconLayout={bullet.icon_layout}
+                alignCenter={align_center}
               />
             </BulletPointHead>
             <div>
-              <BulletPointTitle>{bullet.title}</BulletPointTitle>
+              {bullet.title && (
+                <BulletPointTitle>{bullet.title}</BulletPointTitle>
+              )}
               <BulletPointBody
+                alignCenter={align_center}
                 colorComponent={color_body}
                 dangerouslySetInnerHTML={{
                   __html: bullet.paragraph?.html,
