@@ -3535,6 +3535,10 @@
           "type": "text",
           "pos": 14
         },
+        "presale_info_link_text": {
+          "type": "text",
+          "pos": 15
+        },
         "cta_link": {
           "type": "text",
           "pos": 16
@@ -3558,10 +3562,6 @@
           "display_name": "Styling",
           "keys": ["extra_styling", "color"],
           "pos": 20
-        },
-        "presale_info_link_text": {
-          "type": "text",
-          "pos": 15
         }
       },
       "image": null,
