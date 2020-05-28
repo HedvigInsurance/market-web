@@ -120,7 +120,7 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
     )}
     <meta
       property="og:url"
-      content={`${getPublicHost()}${fullSlug || getFullSlugFromStory(story)}`}
+      content={`${getPublicHost()}/${fullSlug || getFullSlugFromStory(story)}`}
     />
     {story && story.content.seo_meta_og_title && (
       <meta name="twitter:title" content={story.content.seo_meta_og_title} />
