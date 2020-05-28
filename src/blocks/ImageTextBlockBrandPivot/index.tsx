@@ -109,9 +109,16 @@ const Title = styled(Heading)<TitleProps & Animateable>(
     animation: animate ? fadeSlideIn + ' 500ms forwards' : undefined,
     animationDelay: '1000ms',
 
+    ['br']: {
+      display: 'none',
+    },
+
     [TABLET_BP_UP]: {
       marginTop:
         alignment === 'center' && displayorder === 'top' ? '3rem' : '1.414rem',
+      ['br']: {
+        display: 'block',
+      },
     },
   }),
 )
@@ -134,6 +141,9 @@ const Paragraph = styled('div')<
 
   [TABLET_BP_DOWN]: {
     maxWidth: '100%',
+    ['br']: {
+      display: 'none',
+    },
   },
 }))
 
@@ -314,7 +324,11 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             size={title_size}
             mobileSize={title_size_mobile}
           >
-            {title}
+            <span
+              dangerouslySetInnerHTML={{
+                __html: title,
+              }}
+            />
             {show_hedvig_wordmark && (
               <Wordmark>
                 <HedvigH />
