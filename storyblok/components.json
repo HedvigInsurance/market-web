@@ -1843,7 +1843,7 @@
               "name": "Right"
             }
           ],
-          "default_value": "center",
+          "default_value": "left",
           "pos": 5,
           "display_name": "",
           "description": "Text alignment for headline and body"
@@ -1891,7 +1891,7 @@
             }
           ],
           "display_name": "Font size",
-          "default_value": "lg"
+          "default_value": "sm"
         },
         "headline_font_size_mobile": {
           "type": "option",
@@ -1920,13 +1920,7 @@
             }
           ],
           "display_name": "Font size mobile",
-          "default_value": ""
-        },
-        "use_display_font": {
-          "type": "boolean",
-          "pos": 10,
-          "keys": ["headline", "show_hedvig_wordmark"],
-          "description": ""
+          "default_value": "md"
         },
         "show_hedvig_wordmark": {
           "type": "boolean",
