@@ -75,7 +75,7 @@ const Filler = styled('div')({
 
 const HeaderContentWrapper = styled(ContentWrapper)({
   [MOBILE_BP_DOWN]: {
-    padding: '0 1.5rem',
+    padding: '0 1rem',
   },
 })
 
@@ -173,9 +173,13 @@ const ButtonWrapper = styled('div')({
 
   [TABLET_BP_DOWN]: {
     paddingTop: '1.5rem',
-    paddingLeft: '1rem',
+    paddingLeft: '2rem',
     paddingRight: '1rem',
     paddingBottom: HEADER_VERTICAL_PADDING,
+  },
+
+  [MOBILE_BP_DOWN]: {
+    paddingLeft: '1rem',
   },
 })
 

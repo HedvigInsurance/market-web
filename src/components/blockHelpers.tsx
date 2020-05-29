@@ -160,16 +160,28 @@ const colorMap: Record<
 
 const sectionSizeStyles = {
   none: { padding: 0 },
-  xs: {
+  xxs: {
     padding: '0.5rem 0',
     [TABLET_BP_DOWN]: {
       padding: '0.25rem 0',
+    },
+  },
+  xs: {
+    padding: '1rem 0',
+    [TABLET_BP_DOWN]: {
+      padding: '0.5rem 0',
     },
   },
   sm: {
     padding: '3.5rem 0',
     [TABLET_BP_DOWN]: {
       padding: '2rem 0',
+    },
+  },
+  md: {
+    padding: '5rem 0',
+    [TABLET_BP_DOWN]: {
+      padding: '2.5rem 0',
     },
   },
   lg: {
@@ -179,9 +191,9 @@ const sectionSizeStyles = {
     },
   },
   xl: {
-    padding: '14rem 0',
+    padding: '10rem 0',
     [TABLET_BP_DOWN]: {
-      padding: '7rem 0',
+      padding: '6rem 0',
     },
   },
 }
