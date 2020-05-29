@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { colorsV3, fonts } from '@hedviginsurance/brand'
+import { MOBILE_BP_DOWN } from 'components/blockHelpers'
 import { Chevron } from 'components/icons/Chevron'
 import { Container } from 'constate'
 import React from 'react'
@@ -57,9 +58,13 @@ const MenuLink = styled('a')({
 
   [TABLET_BP_DOWN]: {
     display: 'inline-block',
-    padding: `1rem 0.5rem 1rem 1.5rem`,
+    padding: `1rem 0.5rem 1rem 2rem`,
     fontFamily: fonts.FAVORIT,
     fontSize: '1.5rem',
+  },
+
+  [MOBILE_BP_DOWN]: {
+    paddingLeft: '1.5rem',
   },
 })
 const MenuFakeLink = styled(MenuLink)({ cursor: 'default' }).withComponent(
