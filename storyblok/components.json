@@ -4393,8 +4393,12 @@
               "name": "SM (56px)"
             },
             {
+              "value": "md",
+              "name": "MD (80px)"
+            },
+            {
               "value": "lg",
-              "name": "LG (80px)"
+              "name": "LG (120px)"
             },
             {
               "value": "xl",
