@@ -191,7 +191,7 @@ type FooterBlockProps = BrandPivotBaseBlockProps
 
 export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
   color,
-  extra_styling,
+  extra_styling = '',
   story,
 }) => (
   <FooterWrapper
