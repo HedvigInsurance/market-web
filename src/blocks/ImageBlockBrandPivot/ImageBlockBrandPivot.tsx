@@ -26,7 +26,6 @@ const ImageWrapper = styled.div`
 const Image = styled(DeferredImage)({
   display: 'block',
   width: '100%',
-  height: 'auto',
 })
 
 export const ImageBlockBrandPivot: React.FunctionComponent<ImageBlockProps> = ({
