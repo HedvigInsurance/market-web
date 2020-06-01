@@ -8,6 +8,7 @@ import React from 'react'
 import { AboutUsHeroBlock } from './AboutUsHeroBlock'
 import { AccordionBlock } from './AccordionBlock'
 import { AccordionBlockBrandPivot } from './AccordionBlockBandPivot/AccordionBlockBandPivot'
+import { AppButtonsBlock } from './AppButtonsBlock'
 import { BackgroundVideoBlock } from './BackgroundVideoBlock'
 import { BannerBlock } from './BannerBlock/BannerBlock'
 import { BaseBlockProps } from './BaseBlockProps'
@@ -43,6 +44,7 @@ import { TitleTextCtaBlock } from './TitleTextCtaBlock'
 import { TrustpilotBlock } from './TrustpilotBlock'
 
 const blockComponents = {
+  app_buttons_block: AppButtonsBlock,
   header_block: HeaderBlock,
   header_block_brand_pivot: HeaderBlockBrandPivot,
   about_us_hero_block: AboutUsHeroBlock,
