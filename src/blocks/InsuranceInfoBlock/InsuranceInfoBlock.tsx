@@ -142,20 +142,24 @@ export const InsuranceInfoBlock: React.FC<InsuranceInfoBlockProps> = ({
         </Column>
 
         <Column lastOnMobile hardBottom>
-          <Link
-            href={values.terms_link}
-            target="_blank"
-            rel="noopener nofollow"
-          >
-            {values.terms_link_text}↗
-          </Link>
-          <Link
-            href={values.presale_info_link}
-            target="_blank"
-            rel="noopener nofollow"
-          >
-            {values.presale_info_link_text}↗
-          </Link>
+          {values.terms_link_text && (
+            <Link
+              href={values.terms_link}
+              target="_blank"
+              rel="noopener nofollow"
+            >
+              {values.terms_link_text}↗
+            </Link>
+          )}
+          {values.presale_info_link_text && (
+            <Link
+              href={values.presale_info_link}
+              target="_blank"
+              rel="noopener nofollow"
+            >
+              {values.presale_info_link_text}↗
+            </Link>
+          )}
         </Column>
 
         <Column halfHardBottom>
