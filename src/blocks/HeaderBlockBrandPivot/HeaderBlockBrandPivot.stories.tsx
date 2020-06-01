@@ -76,6 +76,7 @@ export const WithHero = () => (
       headline_font_size="md"
       image="https://res.cloudinary.com/gustaveen-com/image/upload/q_40/v1589550685/hus_villa_z07bvi.jpg"
       image_mobile=""
+      hide_bg_tint={false}
       show_cta={true}
       cta_label="Läs mer"
       cta_style="outlined"
