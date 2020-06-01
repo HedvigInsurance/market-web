@@ -252,6 +252,31 @@
       "component_group_uuid": null
     },
     {
+      "name": "app_buttons_block",
+      "display_name": null,
+      "schema": {
+        "color": {
+          "type": "custom",
+          "field_type": "hedvig-minimal-color-picker",
+          "options": [],
+          "pos": 0
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 1
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "app_buttons_block",
+      "component_group_uuid": null
+    },
+    {
       "name": "background_video_block",
       "display_name": "",
       "schema": {
