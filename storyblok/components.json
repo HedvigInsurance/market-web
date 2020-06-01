@@ -4254,6 +4254,11 @@
           "restrict_components": true,
           "component_whitelist": ["quote_item"],
           "pos": 1
+        },
+        "extra_styling": {
+          "type": "textarea",
+          "default_value": "",
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
         }
       },
       "image": null,
