@@ -29,8 +29,8 @@ const QuoteWrapper = styled('div')<{ largeQuote?: boolean }>(
     textAlign: 'center',
 
     [TABLET_BP_UP]: {
-      width: largeQuote ? '100%' : '80%',
-      maxWidth: largeQuote ? 'none' : '47.5rem',
+      width: '100%',
+      maxWidth: largeQuote ? 'none' : '53rem',
     },
   }),
 )
@@ -42,6 +42,22 @@ const Quote = styled('blockquote')<{ largeQuote?: boolean }>(
     fontKerning: 'none',
     fontSize: largeQuote ? '3rem' : '2rem',
     margin: '0 0 2.5rem 0',
+
+    '&:before, &:after': {
+      position: 'relative',
+      display: 'block',
+      content: '"“"',
+    },
+
+    '&:before': {
+      content: '"“"',
+      lineHeight: 0.4,
+    },
+
+    '&:after': {
+      content: '"”"',
+      marginTop: '0.35em',
+    },
 
     [TABLET_BP_UP]: {
       marginBottom: '4rem',
@@ -62,8 +78,13 @@ export const QuoteBlockBrandPivot: React.FunctionComponent<QuoteBlockProps> = ({
   color,
   quotes,
   index,
+  extra_styling = '',
 }) => (
-  <SectionWrapper brandPivot colorComponent={color}>
+  <SectionWrapper
+    brandPivot
+    colorComponent={color}
+    extraStyling={extra_styling}
+  >
     <ContentWrapper brandPivot index={index}>
       {quotes.map((quote) => (
         <QuoteWrapper largeQuote={quote.large_quote} key={quote._uid}>
