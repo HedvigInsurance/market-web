@@ -90,7 +90,7 @@ const BulletPointHead = styled('div')<{
           maxHeight: 'none',
           width: 'auto',
           marginRight: 0,
-          marginBottom: '1.5rem',
+          marginBottom: alignCenter ? '2rem' : '1.25rem',
         },
       }),
 }))
@@ -118,6 +118,11 @@ const BulletPointBody = styled('div')<{
   maxWidth: alignCenter ? '16rem' : 'none',
   color: getMinimalColorStyles(colorComponent?.color ?? 'standard').color,
   fontSize: alignCenter ? '18px' : '16px',
+
+  ['p']: {
+    marginTop: '0',
+  },
+
   [LAPTOP_BP_UP]: {
     fontSize: '1.125rem',
   },
