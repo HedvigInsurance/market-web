@@ -21,6 +21,18 @@ interface HeadlineBlockProps extends BrandPivotBaseBlockProps {
   element: 'h1' | 'h2' | 'h3' | 'h4'
 }
 
+const Text = styled('span')({
+  ['br']: {
+    display: 'none',
+  },
+
+  [TABLET_BP_UP]: {
+    ['br']: {
+      display: 'block',
+    },
+  },
+})
+
 const Wordmark = styled('div')({
   display: 'inline-flex',
   position: 'absolute',
@@ -70,7 +82,11 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
           useDisplayFont={use_display_font}
           capitalize={capitalize}
         >
-          {text}
+          <Text
+            dangerouslySetInnerHTML={{
+              __html: text,
+            }}
+          />
           {show_hedvig_wordmark && (
             <Wordmark>
               <HedvigH />
