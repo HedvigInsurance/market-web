@@ -166,6 +166,7 @@ export interface HeroBlockProps extends BrandPivotBaseBlockProps {
   text_position?: TextPosition
   image: Image
   image_mobile: Image
+  hide_bg_tint: boolean
   animate?: boolean
   show_hedvig_wordmark?: boolean
   height?: '80vh' | '90vh' | '100vh'
@@ -187,6 +188,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
   headline_font_size_mobile,
   image,
   image_mobile,
+  hide_bg_tint,
   index,
   show_hedvig_wordmark,
   height,
@@ -202,7 +204,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
       colorComponent={color}
       extraStyling={extra_styling}
       backgroundImage={getStoryblokImage(image)}
-      backgroundTint
+      backgroundTint={!hide_bg_tint}
       backgroundImageMobile={getStoryblokImage(image_mobile)}
       height={height}
     >
