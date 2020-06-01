@@ -52,6 +52,7 @@ export const Default = () => (
     text_position={select('Text position', ['left', 'center', 'right'], 'left')}
     image="https://res.cloudinary.com/gustaveen-com/image/upload/q_40/v1589550685/hus_villa_z07bvi.jpg"
     image_mobile="https://res.cloudinary.com/gustaveen-com/image/upload/q_40/v1589552944/hus_villa_mobile_vu7rx6.jpg"
+    hide_bg_tint={false}
     show_hedvig_wordmark={boolean('Show Hedvig wordmark', true)}
   />
 )
@@ -79,6 +80,7 @@ export const WithCTA = () => (
     }
     text_position={select('Text position', ['left', 'center', 'right'], 'left')}
     image={image}
+    hide_bg_tint={false}
     show_hedvig_wordmark={boolean('Show Hedvig wordmark', false)}
   />
 )
@@ -99,6 +101,7 @@ export const WithoutImage = () => (
         select('Text color', Object.keys(minimalColorMap), 'standard-inverse')
       ]
     }
+    hide_bg_tint={false}
     show_hedvig_wordmark={boolean('Show Hedvig wordmark', false)}
   />
 )

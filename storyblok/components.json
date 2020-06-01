@@ -1785,7 +1785,7 @@
       "schema": {
         "background_image": {
           "type": "section",
-          "keys": ["image", "image_mobile"],
+          "keys": ["image", "image_mobile", "hide_bg_tint"],
           "pos": 0
         },
         "image": {
@@ -1800,9 +1800,14 @@
           "type": "image",
           "pos": 2
         },
+        "hide_bg_tint": {
+          "type": "boolean",
+          "pos": 3,
+          "display_name": "Hide image overlay "
+        },
         "layout": {
           "type": "section",
-          "pos": 3,
+          "pos": 4,
           "keys": ["height", "text_position"]
         },
         "height": {
@@ -1824,7 +1829,7 @@
           ],
           "default_value": "100vh",
           "description": "Hero height in relation to viewport ",
-          "pos": 4
+          "pos": 5
         },
         "text_position": {
           "type": "option",
@@ -1844,7 +1849,7 @@
             }
           ],
           "default_value": "left",
-          "pos": 5,
+          "pos": 6,
           "display_name": "",
           "description": "Text alignment for headline and body"
         },
@@ -1857,16 +1862,16 @@
             "use_display_font",
             "show_hedvig_wordmark"
           ],
-          "pos": 6,
+          "pos": 7,
           "display_name": "Headline"
         },
         "headline": {
           "type": "text",
-          "pos": 7
+          "pos": 8
         },
         "headline_font_size": {
           "type": "option",
-          "pos": 8,
+          "pos": 9,
           "use_uuid": true,
           "options": [
             {
@@ -1895,7 +1900,7 @@
         },
         "headline_font_size_mobile": {
           "type": "option",
-          "pos": 9,
+          "pos": 10,
           "use_uuid": true,
           "options": [
             {
