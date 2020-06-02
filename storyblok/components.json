@@ -3542,45 +3542,84 @@
           "type": "text",
           "pos": 11
         },
-        "terms_link": {
-          "type": "text",
-          "pos": 12
+        "value_5": {
+          "type": "section",
+          "pos": 12,
+          "keys": ["value_5_description", "value_5_value"]
         },
-        "terms_link_text": {
+        "value_5_description": {
           "type": "text",
           "pos": 13
         },
-        "presale_info_link": {
+        "value_5_value": {
           "type": "text",
           "pos": 14
         },
-        "presale_info_link_text": {
-          "type": "text",
-          "pos": 15
+        "value_6": {
+          "type": "section",
+          "pos": 15,
+          "keys": ["value_6_description", "value_6_value"]
         },
-        "cta_link": {
+        "value_6_description": {
           "type": "text",
           "pos": 16
         },
-        "cta_text": {
+        "value_6_value": {
           "type": "text",
           "pos": 17
         },
+        "value_7": {
+          "type": "section",
+          "pos": 18,
+          "keys": ["value_7_description", "value_7_value"]
+        },
+        "value_7_description": {
+          "type": "text",
+          "pos": 19
+        },
+        "value_7_value": {
+          "type": "text",
+          "pos": 20
+        },
+        "terms_link": {
+          "type": "text",
+          "pos": 21
+        },
+        "terms_link_text": {
+          "type": "text",
+          "pos": 22
+        },
+        "presale_info_link": {
+          "type": "text",
+          "pos": 23
+        },
+        "presale_info_link_text": {
+          "type": "text",
+          "pos": 24
+        },
+        "cta_link": {
+          "type": "text",
+          "pos": 25
+        },
+        "cta_text": {
+          "type": "text",
+          "pos": 26
+        },
         "color": {
           "type": "custom",
-          "pos": 18,
+          "pos": 27,
           "field_type": "hedvig-minimal-color-picker",
           "options": []
         },
         "extra_styling": {
           "type": "textarea",
-          "pos": 19
+          "pos": 28
         },
         "tab-3af4122d-35df-4012-a15e-7b0a7e687292": {
           "type": "tab",
           "display_name": "Styling",
           "keys": ["extra_styling", "color"],
-          "pos": 20
+          "pos": 29
         }
       },
       "image": null,
