@@ -17,7 +17,7 @@ const StyledSectionWrapper = styled(SectionWrapper)`
   padding: 4rem 0;
 
   ${TABLET_BP_UP} {
-    padding: 7rem 0;
+    padding: 7rem 0 4rem;
   }
 `
 
@@ -95,6 +95,12 @@ interface InsuranceInfoBlockProps extends BrandPivotBaseBlockProps {
   value_3_value: string
   value_4_description: string
   value_4_value: string
+  value_5_description: string
+  value_5_value: string
+  value_6_description: string
+  value_6_value: string
+  value_7_description: string
+  value_7_value: string
   terms_link: string
   terms_link_text: string
   presale_info_link: string
@@ -116,30 +122,62 @@ export const InsuranceInfoBlock: React.FC<InsuranceInfoBlockProps> = ({
       brandPivot
     >
       <StyledContentWrapper index={index}>
-        <Column>
-          <InsuranceValueDescription>
-            {values.value_1_description}
-          </InsuranceValueDescription>
-          <InsuranceValue>{values.value_1_value}</InsuranceValue>
-        </Column>
-        <Column>
-          <InsuranceValueDescription>
-            {values.value_2_description}
-          </InsuranceValueDescription>
-          <InsuranceValue>{values.value_2_value}</InsuranceValue>
-        </Column>
-        <Column>
-          <InsuranceValueDescription>
-            {values.value_3_description}
-          </InsuranceValueDescription>
-          <InsuranceValue>{values.value_3_value}</InsuranceValue>
-        </Column>
-        <Column>
-          <InsuranceValueDescription>
-            {values.value_4_description}
-          </InsuranceValueDescription>
-          <InsuranceValue>{values.value_4_value}</InsuranceValue>
-        </Column>
+        {values.value_1_value && (
+          <Column>
+            <InsuranceValueDescription>
+              {values.value_1_description}
+            </InsuranceValueDescription>
+            <InsuranceValue>{values.value_1_value}</InsuranceValue>
+          </Column>
+        )}
+        {values.value_2_value && (
+          <Column>
+            <InsuranceValueDescription>
+              {values.value_2_description}
+            </InsuranceValueDescription>
+            <InsuranceValue>{values.value_2_value}</InsuranceValue>
+          </Column>
+        )}
+        {values.value_3_value && (
+          <Column>
+            <InsuranceValueDescription>
+              {values.value_3_description}
+            </InsuranceValueDescription>
+            <InsuranceValue>{values.value_3_value}</InsuranceValue>
+          </Column>
+        )}
+        {values.value_4_value && (
+          <Column>
+            <InsuranceValueDescription>
+              {values.value_4_description}
+            </InsuranceValueDescription>
+            <InsuranceValue>{values.value_4_value}</InsuranceValue>
+          </Column>
+        )}
+        {values.value_5_value && (
+          <Column>
+            <InsuranceValueDescription>
+              {values.value_5_description}
+            </InsuranceValueDescription>
+            <InsuranceValue>{values.value_5_value}</InsuranceValue>
+          </Column>
+        )}
+        {values.value_6_value && (
+          <Column>
+            <InsuranceValueDescription>
+              {values.value_6_description}
+            </InsuranceValueDescription>
+            <InsuranceValue>{values.value_6_value}</InsuranceValue>
+          </Column>
+        )}
+        {values.value_7_value && (
+          <Column>
+            <InsuranceValueDescription>
+              {values.value_7_description}
+            </InsuranceValueDescription>
+            <InsuranceValue>{values.value_7_value}</InsuranceValue>
+          </Column>
+        )}
 
         <Column lastOnMobile hardBottom>
           {values.terms_link_text && (
@@ -162,15 +200,17 @@ export const InsuranceInfoBlock: React.FC<InsuranceInfoBlockProps> = ({
           )}
         </Column>
 
-        <Column halfHardBottom>
-          <ButtonLinkBrandPivot
-            href={values.cta_link}
-            fullWidth
-            styleType="outlined"
-          >
-            {values.cta_text}
-          </ButtonLinkBrandPivot>
-        </Column>
+        {values.cta_link && (
+          <Column halfHardBottom>
+            <ButtonLinkBrandPivot
+              href={values.cta_link}
+              fullWidth
+              styleType="outlined"
+            >
+              {values.cta_text}
+            </ButtonLinkBrandPivot>
+          </Column>
+        )}
       </StyledContentWrapper>
     </StyledSectionWrapper>
   )
