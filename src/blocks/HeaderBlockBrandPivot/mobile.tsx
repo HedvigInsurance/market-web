@@ -27,7 +27,7 @@ export const CrossBurger = styled('div')<TogglableState>(
     },
 
     '&::before': {
-      top: 6,
+      top: 8,
       ...(isOpen && !isClosing
         ? {
             transform: 'translateY(-1px) rotate(45deg)',
@@ -37,7 +37,7 @@ export const CrossBurger = styled('div')<TogglableState>(
         : {}),
     },
     '&::after': {
-      bottom: 6,
+      bottom: 8,
       ...(isOpen && !isClosing
         ? {
             bottom: '50%',
