@@ -205,8 +205,8 @@ const DesktopButtonWrapper = styled('div')({
 
 const Wordmark = styled('a')({
   display: 'block',
-  width: '2rem',
-  height: '2rem',
+  width: '1.75rem',
+  height: '1.75rem',
   zIndex: 102,
 })
 
@@ -318,7 +318,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                             '/' + (context.lang === 'sv' ? '' : context.lang)
                           }
                         >
-                          <HedvigH />
+                          <HedvigH size={28} />
                         </Wordmark>
                       )}
                     </ContextContainer>
