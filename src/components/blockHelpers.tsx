@@ -334,7 +334,7 @@ const SectionWrapperComponentUnstyled = styled('section')<SectionProps>(
 export const SectionWrapperComponent = styled(SectionWrapperComponentUnstyled)<
   SectionProps
 >`
-  ${({ extraStyling }) => String(extraStyling)}
+  ${({ extraStyling = '' }) => String(extraStyling)}
 `
 const fadeIn = keyframes({
   from: { opacity: 0 },
