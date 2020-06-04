@@ -8,8 +8,8 @@ import { getMinimalColorStyles, MOBILE_BP_UP } from '../blockHelpers'
 
 export const buttonSizes = {
   sm: '.75rem 1.5rem',
-  md: '1rem 2rem',
-  lg: '1.125rem 3rem',
+  md: 'calc(1rem - 1px) 2rem',
+  lg: 'calc(1.125rem - 1px) 3rem',
 }
 
 export type ButtonStyleType = 'filled' | 'outlined' | 'plain'
