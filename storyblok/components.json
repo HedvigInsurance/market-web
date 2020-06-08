@@ -1280,12 +1280,6 @@
         "footer": {
           "type": "section",
           "keys": [
-            "footer_menu_items_1",
-            "footer_menu_items_2",
-            "get_started",
-            "company",
-            "legal",
-            "social",
             "footer_menu_items",
             "footer_download_title",
             "footer_safety_title",
@@ -1296,54 +1290,6 @@
             "footer_paragraph"
           ],
           "pos": 5
-        },
-        "footer_menu_items_1": {
-          "type": "bloks",
-          "restrict_components": true,
-          "component_whitelist": ["menu_item"],
-          "display_name": "",
-          "pos": 6,
-          "translatable": true
-        },
-        "footer_menu_items_2": {
-          "type": "bloks",
-          "maximum": "",
-          "restrict_components": true,
-          "component_whitelist": ["menu_item"],
-          "pos": 7,
-          "translatable": true
-        },
-        "get_started": {
-          "type": "bloks",
-          "restrict_components": true,
-          "component_whitelist": ["menu_item"],
-          "display_name": "",
-          "pos": 8,
-          "translatable": true
-        },
-        "company": {
-          "type": "bloks",
-          "restrict_components": true,
-          "component_whitelist": ["menu_item"],
-          "display_name": "",
-          "pos": 9,
-          "translatable": true
-        },
-        "legal": {
-          "type": "bloks",
-          "restrict_components": true,
-          "component_whitelist": ["menu_item"],
-          "display_name": "",
-          "pos": 10,
-          "translatable": true
-        },
-        "social": {
-          "type": "bloks",
-          "restrict_components": true,
-          "component_whitelist": ["menu_item"],
-          "display_name": "",
-          "pos": 11,
-          "translatable": true
         },
         "footer_menu_items": {
           "type": "bloks",
