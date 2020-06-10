@@ -137,7 +137,7 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
     <meta name="twitter:site" content="@hedvigapp" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
-    <meta name="theme-color" content="#651eff" />
+    <meta name="theme-color" content="#121212" />
 
     {story &&
     [HreflangLocale.EnNo, HreflangLocale.NoNo].includes(
