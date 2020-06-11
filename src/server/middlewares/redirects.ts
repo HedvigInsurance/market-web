@@ -1,4 +1,6 @@
 import { Middleware } from 'koa'
+import { IMiddleware } from 'koa-router'
+import { lookupCountry } from 'server/utils/ip2location'
 import { Logger } from 'typescript-logging'
 import { State } from './states'
 
@@ -17,4 +19,16 @@ export const forceHost = ({
   }
 
   await next()
+}
+
+export const startPageRedirect: IMiddleware<object> = async (ctx) => {
+  const actualIp = ctx.ip
+  const country = lookupCountry(actualIp)
+
+  if (country === 'NO') {
+    ctx.redirect(`/no${ctx.querystring ? '?' + ctx.querystring : ''}`)
+    return
+  }
+
+  ctx.redirect(`/se${ctx.querystring ? '?' + ctx.querystring : ''}`)
 }
