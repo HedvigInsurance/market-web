@@ -236,10 +236,4 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
     'https://cdn.hedvig.com/info/informasjon-for-kjopet-eu-reise.pdf',
     302,
   ],
-  // Redirect to our claimsrating Slack workspace
-  [
-    '/claimsrating',
-    'https://join.slack.com/t/hedvigclaimsrating/shared_invite/zt-f37hza38-Z0GEgFViLEQjO6Mi5KAGBA',
-    302,
-  ],
 ]
