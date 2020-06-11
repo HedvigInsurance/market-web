@@ -17,7 +17,7 @@ import {
   inCaseOfEmergency,
   savePartnershipCookie,
 } from './middlewares/enhancers'
-import { forceHost } from './middlewares/redirects'
+import { forceHost, startPageRedirect } from './middlewares/redirects'
 import {
   addBlogPostsToState,
   addTagBlogPostsToState,
@@ -80,10 +80,12 @@ const server = createKoaServer({
   helmetConfig: helmetConfigToUse,
   authConfig,
 })
+server.app.proxy = true
 
 if (config.forceHost) {
   server.router.use('/*', forceHost({ host: config.forceHost }))
 }
+server.router.get('/', startPageRedirect)
 server.router.use('/*', savePartnershipCookie)
 server.router.use('/*', removeTrailingSlashes<State>())
 redirects.forEach(([source, target, code]) => {

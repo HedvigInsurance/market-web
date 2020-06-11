@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+current_dir="$(dirname "$0")"
+
+mkdir -p "$current_dir/ip2location"
+curl -vL --output "$current_dir/ip2location.bin.zip" https://download.ip2location.com/lite/IP2LOCATION-LITE-DB1.BIN.ZIP
+
+unzip "$current_dir/ip2location.bin.zip" -d "$current_dir/ip2location"
