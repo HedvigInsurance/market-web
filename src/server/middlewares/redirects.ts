@@ -24,11 +24,17 @@ export const forceHost = ({
 export const startPageRedirect: IMiddleware<object> = async (ctx) => {
   const actualIp = ctx.ip
   const country = lookupCountry(actualIp)
+  const queryStringMaybe = ctx.querystring ? '?' + ctx.querystring : ''
 
-  if (country === 'NO') {
-    ctx.redirect(`/no${ctx.querystring ? '?' + ctx.querystring : ''}`)
+  if (!country || country === 'SE' || country === 'FI') {
+    ctx.redirect(`/se${queryStringMaybe}`)
     return
   }
 
-  ctx.redirect(`/se${ctx.querystring ? '?' + ctx.querystring : ''}`)
+  if (country === 'NO') {
+    ctx.redirect(`/no${queryStringMaybe}`)
+    return
+  }
+
+  ctx.redirect(`/se-en${queryStringMaybe}`)
 }
