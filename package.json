@@ -36,6 +36,7 @@
     "emotion-server": "^10.0.17",
     "es6-promise": "^4.2.5",
     "ioredis": "^4.2.0",
+    "ip2location-nodejs": "^8.3.0",
     "is-ios": "^1.0.0",
     "js-cookie": "^2.2.0",
     "just-kebab-case": "^1.1.0",
@@ -153,7 +154,7 @@
     "test": "NODE_ENV=test jest",
     "typecheck": "tsc --noEmit",
     "lint": "tslint \"src/**/*.{ts,tsx}\"",
-    "heroku-postbuild": "yarn build",
+    "heroku-postbuild": "yarn build && (./bin/update-ip2location-bin || exit 0)",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
