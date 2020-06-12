@@ -24,7 +24,3 @@ fi
 echo "syncing space #$space_id"
 
 "$current_dir"/sync-space --space="$space_id" --clean
-
-echo "downloading geolocation database"
-
-"$current_dir"/update-ip2location-bin
