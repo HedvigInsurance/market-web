@@ -1,9 +1,3 @@
-import { appLogger } from './logging'
-
-const Koa = require('koa') // tslint:disable-line
-const moxios = require('moxios') // tslint:disable-line
-const supertest = require('supertest') // tslint:disable-line
-
 jest.mock('./utils/redis', () => ({
   redisClient: {
     get: jest.fn(),
@@ -11,7 +5,11 @@ jest.mock('./utils/redis', () => ({
   },
 }))
 
+import Koa from 'koa'
+import moxios from 'moxios'
+import supertest from 'supertest'
 import { parseString } from 'xml2js'
+import { appLogger } from './logging'
 import { SitemapXml, sitemapXml } from './sitemap'
 import {
   indexedStoryResponse,
@@ -67,7 +65,7 @@ test('it stitches together a correct sitemap with cache miss', () => {
     .expect(200)
     .then(
       ({ text }: { text: string }) =>
-        new Promise((resolve, reject) => {
+        new Promise<SitemapXml>((resolve, reject) => {
           parseString(text, (err, result) => {
             if (err) {
               reject(err)
@@ -125,7 +123,7 @@ test('it stitches together a correct sitemap with cache hit', () => {
     .expect(200)
     .then(
       ({ text }: { text: string }) =>
-        new Promise((resolve, reject) => {
+        new Promise<SitemapXml>((resolve, reject) => {
           parseString(text, (err, result) => {
             if (err) {
               reject(err)
