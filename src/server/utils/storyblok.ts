@@ -1,5 +1,6 @@
 import axios, { AxiosRequestConfig } from 'axios'
 import { IMiddleware } from 'koa-router'
+import { warmSitemapCache } from 'server/sitemap'
 import {
   BlogStory,
   BodyStory,
@@ -23,13 +24,9 @@ export const nukeCache: IMiddleware<State> = async (ctx) => {
   const keys = await redisClient.keys('storyblok:*')
   ctx.status = 204
 
-  if (keys.length === 0) {
-    appLogger.info('Tried to nuke cache but no keys found, skipping')
-    return
-  }
-
   appLogger.warn(`Nuking cache for ${keys.length} pages`)
-  await redisClient.del(...keys)
+  await redisClient.del(...keys, 'hvg:sitemap')
+  warmSitemapCache(appLogger)
 }
 
 const cachedGet = async <T>(
@@ -58,7 +55,7 @@ const cachedGet = async <T>(
     )
     return result
   } catch (e) {
-    if (e.response && e.response.status && e.response.status === 404) {
+    if (e?.response?.status === 404) {
       const result = { status: e.response.status, data: e.response.data }
       await redisClient.set(
         `storyblok:${cacheKey}`,
@@ -122,9 +119,7 @@ export const getPublishedStoryFromSlug = async (
   path: string,
   bypassCache?: boolean,
 ): Promise<{ story: BodyStory }> => {
-  const lang = getLangFromPath(path)
-  const realSlug = (lang === null ? '/sv' : '') + path
-  const uri = encodeURI(`/v1/cdn/stories${realSlug}`)
+  const uri = encodeURI(`/v1/cdn/stories${path}`)
   const result = await cachedGet<{ story: BodyStory }>(
     uri,
     [
