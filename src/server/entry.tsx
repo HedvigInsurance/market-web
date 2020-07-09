@@ -88,10 +88,13 @@ if (config.forceHost) {
 server.router.get('/', startPageRedirect)
 server.router.use('/*', savePartnershipCookie)
 server.router.use('/*', removeTrailingSlashes<State>())
-server.router.use('/:locale(se|se-en|no|no-en)/referrals/:code', async (ctx) => {
-  ctx.status = 301
-  ctx.redirect(`/${ctx.params.locale}/forever/${ctx.params.code}`)
-})
+server.router.use(
+  '/:locale(se|se-en|no|no-en)/referrals/:code',
+  async (ctx) => {
+    ctx.status = 301
+    ctx.redirect(`/${ctx.params.locale}/forever/${ctx.params.code}`)
+  },
+)
 redirects.forEach(([source, target, code]) => {
   server.router.get(source, (ctx) => {
     ctx.status = code
