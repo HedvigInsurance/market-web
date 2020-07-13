@@ -1,6 +1,3 @@
-import { min as createMinifiedSegmentSnippet } from '@segment/snippet'
-import { config } from '../config'
-
 const snap = `
  (function(win, doc, sdk_url){
     if(win.snaptr) return;
@@ -18,14 +15,6 @@ const snap = `
     snaptr('init','2615a7c0-d8e9-4ae6-9914-814a1017010d')
     snaptr('track','PAGE_VIEW')
 `
-
-const segmentSnippet = config.segmentApiKey
-  ? createMinifiedSegmentSnippet({
-      apiKey: config.segmentApiKey,
-      page: true,
-      load: true,
-    })
-  : ''
 
 export const allTracking = (nonce: string) => `
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -50,7 +39,7 @@ export const allTracking = (nonce: string) => `
 </script>
 
 <script nonce="${nonce}">
-${[snap, segmentSnippet].join(';\n')}
+${[snap].join(';\n')}
 </script>
 
 
