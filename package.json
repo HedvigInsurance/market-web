@@ -17,7 +17,6 @@
     "@hedviginsurance/cli": "^2.3.2",
     "@hedviginsurance/react-swipeable-views": "^0.12.20",
     "@hedviginsurance/web-survival-kit": "^1.7.0",
-    "@segment/snippet": "^4.4.0",
     "@segment/utm-params": "^2.0.0",
     "@sentry/node": "^4.3.0",
     "animated": "^0.2.2",

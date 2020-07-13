@@ -6,8 +6,6 @@ export interface Config {
   forceHost?: string
   teamtailorApiToken?: string
   storyblokApiToken: string
-  segmentApiKey: string
-  branchApiKey: string
 }
 
 export const config: Config = {
@@ -15,6 +13,4 @@ export const config: Config = {
   forceHost: process.env.FORCE_HOST,
   teamtailorApiToken: process.env.TEAMTAILOR_API_TOKEN,
   storyblokApiToken: process.env.STORYBLOK_API_TOKEN!,
-  segmentApiKey: process.env.SEGMENT_API_KEY || '',
-  branchApiKey: process.env.BRANCH_API_KEY || '',
 }
