@@ -1,7 +1,7 @@
-import { getScriptLocation } from '@hedviginsurance/web-survival-kit'
 import { AxiosError } from 'axios'
 import { Provider } from 'constate'
 import { renderStylesToString } from 'emotion-server'
+import fs from 'fs'
 import { IMiddleware, RouterContext } from 'koa-router'
 import path from 'path'
 import React from 'react'
@@ -23,10 +23,16 @@ import {
 } from './utils/storyblok'
 import { allTracking } from './utils/tracking'
 
-const scriptLocation = getScriptLocation({
-  statsLocation: path.resolve(__dirname, 'assets'),
-  webpackPublicPath: process.env.WEBPACK_PUBLIC_PATH || '',
-})
+const scriptLocation =
+  process.env.NODE_ENV === 'production'
+    ? '/static/' +
+      JSON.parse(
+        fs.readFileSync(
+          path.resolve(__dirname, '../../build/static/stats.json'),
+          'utf-8',
+        ),
+      ).assetsByChunkName.app[0]
+    : '/static/app.js'
 
 interface Template {
   body: string
