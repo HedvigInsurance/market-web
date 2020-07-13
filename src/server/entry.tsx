@@ -6,12 +6,9 @@ import Koa, { Middleware } from 'koa'
 import auth from 'koa-basic-auth'
 import bodyParser from 'koa-bodyparser'
 import compress from 'koa-compress'
-import mount from 'koa-mount'
 import removeTrailingSlashes from 'koa-remove-trailing-slashes'
 import Router from 'koa-router'
 import proxy from 'koa-server-http-proxy'
-import koaStatic from 'koa-static'
-import path from 'path'
 import { Logger } from 'typescript-logging'
 import { redirects, routes } from '../routes'
 import { config } from './config'
@@ -38,6 +35,7 @@ import {
   getCachedTeamtailorUsers,
   initializeTeamtailorUsers,
 } from './utils/teamtailor'
+import { configureAssets } from 'server/middlewares/assets'
 
 Sentry.init({
   ...sentryConfig(),
@@ -67,42 +65,7 @@ app.use(setLoggerMiddleware)
 app.use(logRequestMiddleware)
 app.use(compress({ threshold: 5 * 1024 }))
 
-const rootDir = path.resolve(__dirname, '../..')
-app.use(
-  mount(
-    '/assets-next',
-    koaStatic(path.resolve(rootDir, 'assets'), {
-      maxage: 1000 * 86400 * 365,
-      brotli: true,
-      gzip: true,
-    }),
-  ),
-)
-
-if (process.env.NODE_ENV === 'production') {
-  app.use(
-    mount(
-      '/static',
-      koaStatic(path.resolve(rootDir, 'build/static'), {
-        maxage: 1000 * 86400 * 365,
-        brotli: true,
-        gzip: true,
-      }),
-    ),
-  )
-} else {
-  app.use(
-    proxy('/static', {
-      target: 'http://localhost:8031',
-    }),
-  )
-  app.use(
-    proxy('/sockjs-node', {
-      target: 'http://localhost:8031',
-      ws: true,
-    }),
-  )
-}
+configureAssets(app)
 
 if (process.env.USE_AUTH) {
   appLogger.info(
