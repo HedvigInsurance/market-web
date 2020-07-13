@@ -17,7 +17,6 @@ import { BulletPointBlockBrandPivot } from './BulletPointBlockBrandPivot'
 import { CardChecklistBulletPointBlock } from './CardChecklistBulletPointBlock'
 import { ChatBlock } from './ChatBlock/ChatBlock'
 import { CtaBlock } from './CtaBlock/CtaBlock'
-import { DownloadBlock } from './DownloadBlock'
 import { HeaderBlock } from './HeaderBlock'
 import { HeaderBlockBrandPivot } from './HeaderBlockBrandPivot'
 import { HeadlineBlock } from './HeadlineBlock/HeadlineBlock'
@@ -56,7 +55,6 @@ const blockComponents = {
   column_text_block: ColumnTextBlock,
   chat_block: ChatBlock,
   cta_block: CtaBlock,
-  download_block: DownloadBlock,
   image_multi_text_block: ImageMultiTextBlock,
   image_text_block: ImageTextBlock,
   image_text_block_brand_pivot: ImageTextBlockBrandPivot,
