@@ -92,7 +92,7 @@ const onPlay = ({
     video.pause()
     video.currentTime = 0
     video.play()
-    video.webkitEnterFullscreen()
+    ;(video as any).webkitEnterFullscreen()
     return
   }
 

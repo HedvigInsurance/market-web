@@ -22,7 +22,7 @@
       "*": ["*", "src/*"]
     },
     "typeRoots": ["./src/types", "./node_modules/@types"],
-    "types": ["jest"],
+    "types": ["jest", "node"],
 
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true
