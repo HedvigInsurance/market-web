@@ -1,21 +1,26 @@
+import '@babel/polyfill'
 import 'source-map-support/register'
 
-import { createKoaServer } from '@hedviginsurance/web-survival-kit'
 import * as Sentry from '@sentry/node'
-import { IHelmetConfiguration } from 'helmet'
-import { Middleware } from 'koa'
+import Koa, { Middleware } from 'koa'
+import auth from 'koa-basic-auth'
 import bodyParser from 'koa-bodyparser'
-import proxy from 'koa-proxy'
+import compress from 'koa-compress'
 import removeTrailingSlashes from 'koa-remove-trailing-slashes'
+import Router from 'koa-router'
+import proxy from 'koa-server-http-proxy'
+import { configureAssets } from 'server/middlewares/assets'
 import { Logger } from 'typescript-logging'
 import { redirects, routes } from '../routes'
 import { config } from './config'
-import { helmetConfig } from './config/helmetConfig'
 import { sentryConfig } from './config/sentry'
 import { appLogger } from './logging'
 import {
   inCaseOfEmergency,
+  logRequestMiddleware,
   savePartnershipCookie,
+  setLoggerMiddleware,
+  setRequestUuidMiddleware,
 } from './middlewares/enhancers'
 import { forceHost, startPageRedirect } from './middlewares/redirects'
 import {
@@ -52,97 +57,86 @@ if (!config.storyblokApiToken) {
   process.nextTick(() => process.exit(1))
 }
 
-let authConfig: { name: string; pass: string } | undefined
+const app = new Koa()
+const router = new Router()
+
+app.use(setRequestUuidMiddleware)
+app.use(setLoggerMiddleware)
+app.use(logRequestMiddleware)
+app.use(compress({ threshold: 5 * 1024 }))
+
+configureAssets(app)
+
 if (process.env.USE_AUTH) {
   appLogger.info(
     `Protecting server using basic auth with user ${process.env.AUTH_NAME} 💂‍`,
   )
-  authConfig = {
-    name: process.env.AUTH_NAME!,
-    pass: process.env.AUTH_PASS!,
-  }
+  app.use(
+    auth({
+      name: process.env.AUTH_NAME!,
+      pass: process.env.AUTH_PASS!,
+    }),
+  )
 } else {
   appLogger.info('Not using any auth, server is open to the public')
 }
-let helmetConfigToUse: IHelmetConfiguration | undefined
-if (process.env.USE_HELMET) {
-  appLogger.info('Using helmet and strict CSP ⛑')
-  helmetConfigToUse = helmetConfig()
-} else if (process.env.NODE_ENV !== 'development') {
-  appLogger.warn(
-    'NOT using any helmet or CSP headers. This is not recommended for production usage',
-  )
-}
-
-const server = createKoaServer({
-  publicPath: '/assets-next',
-  assetLocation: __dirname + '/assets',
-  helmetConfig: helmetConfigToUse,
-  authConfig,
-})
-server.app.proxy = true
 
 if (config.forceHost) {
-  server.router.use('/*', forceHost({ host: config.forceHost }))
+  router.use('/*', forceHost({ host: config.forceHost }))
 }
-server.router.get('/', startPageRedirect)
-server.router.use('/*', savePartnershipCookie)
-server.router.use('/*', removeTrailingSlashes<State>())
-server.router.use(
-  '/:locale(se|se-en|no|no-en)/referrals/:code',
-  async (ctx) => {
-    ctx.status = 301
-    ctx.redirect(`/${ctx.params.locale}/forever/${ctx.params.code}`)
-  },
-)
+router.get('/', startPageRedirect)
+router.use('/*', savePartnershipCookie)
+router.use('/*', removeTrailingSlashes<State>())
+router.get('/:locale(se|se-en|no|no-en)/referrals/:code', async (ctx) => {
+  ctx.status = 301
+  ctx.redirect(`/${ctx.params.locale}/forever/${ctx.params.code}`)
+})
 redirects.forEach(([source, target, code]) => {
-  server.router.get(source, (ctx) => {
+  router.get(source, (ctx) => {
     ctx.status = code
     ctx.redirect(target)
   })
 })
-server.router.use(
-  proxy({
-    host: 'https://a.storyblok.com',
-    match: /^\/f\//,
+app.use(
+  proxy('/f/', {
+    target: 'https://a.storyblok.com',
   }),
 )
-server.router.use(
+router.use(
   '/*',
   bodyParser({
     extendTypes: { json: ['application/csp-report'] },
   }) as Middleware<State, any>,
 )
 
-server.app.use(inCaseOfEmergency)
-server.router.use(inCaseOfEmergency)
+app.use(inCaseOfEmergency)
+router.use(inCaseOfEmergency)
 
-server.router.get('/panic-room', async () => {
+router.get('/panic-room', async () => {
   throw new Error(
     'Entered the panic room, this is an expected error. Carry on 👜',
   )
 })
 
-server.router.post('/_report-csp-violation', (ctx) => {
+router.post('/_report-csp-violation', (ctx) => {
   ;(ctx.state.getLogger('cspViolation') as Logger).error(
     `CSP VIOLATION: ${JSON.stringify((ctx.request as any).body)}`,
   )
   ctx.status = 204
 })
 
-server.router.get('/sitemap.xml', sitemapXml)
-server.router.use('/blog', addBlogPostsToState)
-server.router.use('/blog', addTeamtailorUsersToState)
-server.router.use('/about-us', addTeamtailorUsersToState)
-server.router.use('/en/about-us', addTeamtailorUsersToState)
-server.router.use('/blog/tags/:tag', addTagBlogPostsToState)
+router.get('/sitemap.xml', sitemapXml)
+router.use('/blog', addBlogPostsToState)
+router.use('/blog', addTeamtailorUsersToState)
+router.use('/about-us', addTeamtailorUsersToState)
+router.use('/en/about-us', addTeamtailorUsersToState)
+router.use('/blog/tags/:tag', addTagBlogPostsToState)
 routes.forEach((route) => {
-  server.router.get(
-    route.path,
-    getPageMiddleware(Boolean(route.ignoreStoryblokMiss)),
-  )
+  router.get(route.path, getPageMiddleware(Boolean(route.ignoreStoryblokMiss)))
 })
-server.router.post('/_nuke-cache', nukeCache)
+router.post('/_nuke-cache', nukeCache)
+
+app.use(router.middleware())
 
 getCachedTeamtailorUsers()
   .then(async (users) => {
@@ -163,7 +157,7 @@ getCachedTeamtailorUsers()
     appLogger.error('Failed to fetch teamtailor users, ignoring')
   })
   .then(() => {
-    server.app.listen(getPort(), () => {
+    app.listen(getPort(), () => {
       appLogger.info(`Server started 🚀 listening on port ${getPort()}`)
     })
   })
