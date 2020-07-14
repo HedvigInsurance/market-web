@@ -3,7 +3,7 @@ import { mount } from 'enzyme'
 import React from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter } from 'react-router-dom'
-import uuid from 'uuid'
+import { v4 as uuidV4 } from 'uuid'
 import { StoryPage } from './StoryPage'
 
 test('renders without 💥', () => {
@@ -12,10 +12,10 @@ test('renders without 💥', () => {
       initialState={{
         story: {
           story: {
-            uuid: uuid.v4(),
+            uuid: uuidV4(),
             name: 'blargh',
             full_slug: '/home',
-            content: { _uid: uuid.v4(), body: [] },
+            content: { _uid: uuidV4(), body: [] },
           },
         },
       }}
