@@ -6,6 +6,7 @@ const webpackConfig = require('./webpack.config.base')
 const root = path.resolve(__dirname, '..')
 
 const whiteListedEnvVars = [
+  'PORT',
   'STORYBLOK_API_TOKEN',
   'TEAMTAILOR_API_TOKEN',
   'PUBLIC_HOST',
