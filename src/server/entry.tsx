@@ -9,6 +9,7 @@ import compress from 'koa-compress'
 import removeTrailingSlashes from 'koa-remove-trailing-slashes'
 import Router from 'koa-router'
 import proxy from 'koa-server-http-proxy'
+import { configureAssets } from 'server/middlewares/assets'
 import { Logger } from 'typescript-logging'
 import { redirects, routes } from '../routes'
 import { config } from './config'
@@ -35,7 +36,6 @@ import {
   getCachedTeamtailorUsers,
   initializeTeamtailorUsers,
 } from './utils/teamtailor'
-import { configureAssets } from 'server/middlewares/assets'
 
 Sentry.init({
   ...sentryConfig(),
