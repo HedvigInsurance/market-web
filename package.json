@@ -134,6 +134,7 @@
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "^23.6.0",
     "babel-plugin-dynamic-import-node": "^2.1.0",
+    "concurrently": "^5.2.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
     "husky": "^0.14.3",
@@ -181,6 +182,5 @@
       "prettier --write",
       "git add"
     ]
-  },
-  "sideEffects": false
+  }
 }
