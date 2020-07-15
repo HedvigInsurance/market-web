@@ -75,7 +75,7 @@ const template = ({
   </head>
   <body>
   <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5BCDJ2B"
+  <noscript><iframe src="https://googletagmanager.com/ns.html?id=GTM-5BCDJ2B"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
