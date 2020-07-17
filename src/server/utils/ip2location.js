@@ -39,6 +39,6 @@ const createIp2LocationCountryLookup = (filePath) => {
 module.exports = {
   createIp2LocationCountryLookup,
   lookupCountry: createIp2LocationCountryLookup(
-    '../bin/ip2location/IP2LOCATION-LITE-DB1.BIN', // relative path from '/build'
+    '../../../bin/ip2location/IP2LOCATION-LITE-DB1.BIN',
   ),
 }
