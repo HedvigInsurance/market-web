@@ -58,6 +58,7 @@ if (!config.storyblokApiToken) {
 }
 
 const app = new Koa()
+app.proxy = true
 const router = new Router()
 
 app.use(setRequestUuidMiddleware)
