@@ -174,12 +174,12 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Terms and conditions - norway - Home Content
   [
     '/no/villkar/villkar/innbo.pdf',
-    'https://cdn.hedvig.com/info/innbo-vilkar-2020-04.pdf',
+    'https://cdn.hedvig.com/info/innbo-vilkar-2020-07.pdf',
     302,
   ],
   [
     '/no/villkar/generelle-villkar/innbo.pdf',
-    'https://cdn.hedvig.com/info/generelle-vilkar-2020-04.pdf',
+    'https://cdn.hedvig.com/info/generelle-vilkar-2020-07.pdf',
     302,
   ],
   [
@@ -207,12 +207,12 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Travel
   [
     '/no/villkar/villkar/reise.pdf',
-    'https://cdn.hedvig.com/info/reise-vilkar-2020-04.pdf',
+    'https://cdn.hedvig.com/info/reise-vilkar-2020-07.pdf',
     302,
   ],
   [
     '/no/villkar/generelle-villkar/reise.pdf',
-    'https://cdn.hedvig.com/info/generelle-vilkar-2020-04.pdf',
+    'https://cdn.hedvig.com/info/generelle-vilkar-2020-07.pdf',
     302,
   ],
   [
