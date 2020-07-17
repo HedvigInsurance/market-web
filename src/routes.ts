@@ -190,12 +190,12 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Awaiting english terms - so default to norwegian
   [
     '/no-en/terms/terms/home-content.pdf',
-    'https://cdn.hedvig.com/info/innbo-vilkar-2020-04.pdf',
+    'https://cdn.hedvig.com/info/innbo-vilkar-2020-07.pdf',
     302,
   ],
   [
     '/no-en/terms/general-terms/home-content.pdf',
-    'https://cdn.hedvig.com/info/generelle-vilkar-2020-04.pdf',
+    'https://cdn.hedvig.com/info/generelle-vilkar-2020-07.pdf',
     302,
   ],
   [
@@ -223,12 +223,12 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Awaiting english terms - so default to norwegian
   [
     '/no-en/terms/terms/travel.pdf',
-    'https://cdn.hedvig.com/info/reise-vilkar-2020-04.pdf',
+    'https://cdn.hedvig.com/info/reise-vilkar-2020-07.pdf',
     302,
   ],
   [
     '/no-en/terms/general-terms/travel.pdf',
-    'https://cdn.hedvig.com/info/generelle-vilkar-2020-04.pdf',
+    'https://cdn.hedvig.com/info/generelle-vilkar-2020-07.pdf',
     302,
   ],
   [
