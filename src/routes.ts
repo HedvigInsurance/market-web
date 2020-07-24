@@ -110,22 +110,22 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Terms and conditions - students
   [
     '/villkor/villkor/hyresratt-student.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-student-hyresratt-2020-05-v2.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-student-hyresratt-2020-07.pdf',
     302,
   ],
   [
     '/en/terms/terms/tenant-student.pdf',
-    'https://cdn.hedvig.com/info/insurance-terms-student-tenant-2020-05.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-student-tenant-2020-07.pdf',
     302,
   ],
   [
     '/villkor/villkor/bostadsratt-student.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-student-bostadsratt-2020-05-v2.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-student-bostadsratt-2020-07.pdf',
     302,
   ],
   [
     '/en/terms/terms/tenant-owner-student.pdf',
-    'https://cdn.hedvig.com/info/insurance-terms-student-tenant-owners-2020-05.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-student-tenant-owners-2020-07.pdf',
     302,
   ],
   [
