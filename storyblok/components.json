@@ -36,81 +36,6 @@
       "component_group_uuid": null
     },
     {
-      "name": "accordion_block",
-      "display_name": null,
-      "schema": {
-        "extra_styling": {
-          "type": "textarea",
-          "pos": 0,
-          "default_value": "",
-          "display_name": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
-        },
-        "title": {
-          "type": "text",
-          "required": true,
-          "pos": 1,
-          "translatable": true
-        },
-        "accordions": {
-          "type": "bloks",
-          "maximum": "",
-          "restrict_components": true,
-          "component_whitelist": ["accordion_item"],
-          "required": true,
-          "description": "",
-          "display_name": "",
-          "default_value": "",
-          "pos": 2
-        },
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 3
-        },
-        "size": {
-          "type": "option",
-          "options": [
-            {
-              "value": "none",
-              "name": "Zero margins"
-            },
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "lg",
-              "name": "LG"
-            },
-            {
-              "value": "xl",
-              "name": "XL"
-            }
-          ],
-          "pos": 4,
-          "display_name": "",
-          "description": "",
-          "default_value": "lg"
-        },
-        "tab-b8f2032f-e956-4f8f-b79b-0c963ed5ff31": {
-          "type": "tab",
-          "display_name": "Styling",
-          "keys": ["size", "color", "extra_styling"],
-          "pos": 5
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "accordion_block",
-      "component_group_uuid": null
-    },
-    {
       "name": "accordion_block_brand_pivot",
       "display_name": null,
       "schema": {
@@ -183,39 +108,6 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "accordion_block_brand_pivot",
-      "component_group_uuid": null
-    },
-    {
-      "name": "accordion_item",
-      "display_name": "",
-      "schema": {
-        "title": {
-          "type": "text",
-          "required": true,
-          "default_value": "",
-          "pos": 0,
-          "display_name": "",
-          "translatable": true
-        },
-        "paragraph": {
-          "type": "custom",
-          "required": true,
-          "default_value": "",
-          "pos": 1,
-          "field_type": "markdown-html",
-          "options": [],
-          "display_name": "",
-          "translatable": true
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": false,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "accordion_item",
       "component_group_uuid": null
     },
     {
@@ -411,13 +303,16 @@
         "tab-a848083b-3680-4166-ae63-2bca0b0ba84c": {
           "type": "tab",
           "display_name": "Styling",
-          "keys": ["color"],
+          "keys": ["color", "extra_styling"],
           "pos": 0
         },
         "color": {
           "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
+          "field_type": "hedvig-minimal-color-picker",
           "options": []
+        },
+        "extra_styling": {
+          "type": "textarea"
         }
       },
       "image": null,
@@ -1365,128 +1260,6 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "global",
-      "component_group_uuid": null
-    },
-    {
-      "name": "header_block",
-      "display_name": null,
-      "schema": {
-        "is_transparent": {
-          "type": "boolean",
-          "pos": 0
-        },
-        "inverse_colors": {
-          "type": "boolean",
-          "pos": 1,
-          "display_name": "Inverse Colors (transparent header only)"
-        },
-        "override_cta_label": {
-          "type": "text",
-          "pos": 3
-        },
-        "override_cta_link": {
-          "type": "multilink",
-          "pos": 4
-        },
-        "override_mobile_header_cta_label": {
-          "type": "text",
-          "translatable": false,
-          "pos": 5
-        },
-        "override_mobile_header_cta_link": {
-          "type": "multilink",
-          "pos": 6
-        },
-        "cta_color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 7
-        },
-        "cta_weight": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "value": "normal",
-              "name": "Normal"
-            },
-            {
-              "value": "bold",
-              "name": "Bold"
-            }
-          ],
-          "pos": 8
-        },
-        "mobile_header_cta_color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 9
-        },
-        "mobile_header_cta_weight": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "value": "normal",
-              "name": "Normal"
-            },
-            {
-              "value": "bold",
-              "name": "Bold"
-            }
-          ],
-          "pos": 10
-        },
-        "cta_style": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "value": "filled",
-              "name": "Filled"
-            },
-            {
-              "value": "outlined",
-              "name": "Outlined"
-            },
-            {
-              "value": "plain",
-              "name": "Plain"
-            }
-          ],
-          "description": "",
-          "pos": 11
-        },
-        "mobile_header_cta_style": {
-          "type": "option",
-          "use_uuid": true,
-          "options": [
-            {
-              "value": "filled",
-              "name": "Filled"
-            },
-            {
-              "value": "outlined",
-              "name": "Outlined"
-            },
-            {
-              "value": "plain",
-              "name": "Plain"
-            }
-          ],
-          "pos": 12
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "header_block",
       "component_group_uuid": null
     },
     {
