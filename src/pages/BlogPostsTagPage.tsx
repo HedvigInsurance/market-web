@@ -2,7 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet-async'
 import { RouteComponentProps, withRouter } from 'react-router'
 import { FooterBlock } from '../blocks/FooterBlock/FooterBlock'
-import { HeaderBlock } from '../blocks/HeaderBlock'
+import { HeaderBlockBrandPivot } from '../blocks/HeaderBlockBrandPivot'
 import { BlogPostList } from '../components/BlogPostList'
 import { BlogPostsContainer } from '../components/containers/BlogPostsContainer'
 import { getMeta } from '../utils/meta'
@@ -22,7 +22,7 @@ export const BlogPostsTagPageComponent: React.FunctionComponent<{
         fullSlug: `blog/tags/${encodeURIComponent(match.params.tag)}`,
       })}
     </Helmet>
-    <HeaderBlock
+    <HeaderBlockBrandPivot
       is_transparent={false}
       inverse_colors={false}
       _uid="header"

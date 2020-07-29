@@ -16,7 +16,6 @@ import { BulletPointBlockBrandPivot } from './BulletPointBlockBrandPivot'
 import { CardChecklistBulletPointBlock } from './CardChecklistBulletPointBlock'
 import { ChatBlock } from './ChatBlock/ChatBlock'
 import { CtaBlock } from './CtaBlock/CtaBlock'
-import { HeaderBlock } from './HeaderBlock'
 import { HeaderBlockBrandPivot } from './HeaderBlockBrandPivot'
 import { HeadlineBlock } from './HeadlineBlock/HeadlineBlock'
 import { HeroVideoBlock } from './HeroVideoBlock'
@@ -43,7 +42,6 @@ import { TrustpilotBlock } from './TrustpilotBlock'
 
 const blockComponents = {
   app_buttons_block: AppButtonsBlock,
-  header_block: HeaderBlock,
   header_block_brand_pivot: HeaderBlockBrandPivot,
   about_us_hero_block: AboutUsHeroBlock,
   accordion_block: AccordionBlockBrandPivot,
