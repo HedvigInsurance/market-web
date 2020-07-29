@@ -4,7 +4,7 @@ import { DeferredImage } from 'components/DeferredImage'
 import React from 'react'
 import Helmet from 'react-helmet-async'
 import { FooterBlock } from '../blocks/FooterBlock/FooterBlock'
-import { HeaderBlock } from '../blocks/HeaderBlock'
+import { HeaderBlockBrandPivot } from '../blocks/HeaderBlockBrandPivot'
 import {
   ContentWrapper,
   MOBILE_BP_DOWN,
@@ -111,7 +111,7 @@ export const BlogPostPage: React.FunctionComponent<{ nonce?: string }> = ({
         <>
           <Helmet>{getMeta({ story, nonce })}</Helmet>
 
-          <HeaderBlock
+          <HeaderBlockBrandPivot
             is_transparent={false}
             inverse_colors={false}
             _uid="header"

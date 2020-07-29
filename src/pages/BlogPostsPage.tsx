@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import React from 'react'
 import Helmet from 'react-helmet-async'
 import { FooterBlock } from '../blocks/FooterBlock/FooterBlock'
-import { HeaderBlock } from '../blocks/HeaderBlock'
+import { HeaderBlockBrandPivot } from '../blocks/HeaderBlockBrandPivot'
 import { ContentWrapper, TABLET_BP_DOWN } from '../components/blockHelpers'
 import { BlogPostList } from '../components/BlogPostList'
 import { BlogPostsContainer } from '../components/containers/BlogPostsContainer'
@@ -36,7 +36,7 @@ export const BlogPostsPage: React.FunctionComponent<{ nonce?: string }> = ({
     <Helmet>
       {getMeta({ nonce, title: 'Blogg | Hedvig', fullSlug: 'blog' })}
     </Helmet>
-    <HeaderBlock
+    <HeaderBlockBrandPivot
       is_transparent={false}
       inverse_colors={false}
       _uid="header"
