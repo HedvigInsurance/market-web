@@ -27,7 +27,6 @@ import { QuoteBlockBrandPivot } from './QuoteBlockBrandPivot/QuoteBlockBrandPivo
 import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
 import { TitleParagraphBlockBrandPivot } from './TitleParagraphBlockBrandPivot/TitleParagraphBlockBrandPivot'
-import { TitleTextCtaBlock } from './TitleTextCtaBlock'
 import { TrustpilotBlock } from './TrustpilotBlock'
 
 const blockComponents = {
@@ -50,7 +49,6 @@ const blockComponents = {
   home_hero_block: HomeHeroBlock,
   quote_block: QuoteBlockBrandPivot,
   single_quote_block: SingleQuoteBlock,
-  title_text_cta_block: TitleTextCtaBlock,
   image_block_brand_pivot: ImageBlockBrandPivot,
   insurance_info_block: InsuranceInfoBlock,
   title_paragraph_block_brand_pivot: TitleParagraphBlockBrandPivot,
