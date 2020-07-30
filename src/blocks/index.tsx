@@ -17,7 +17,6 @@ import { CtaBlock } from './CtaBlock/CtaBlock'
 import { HeaderBlockBrandPivot } from './HeaderBlockBrandPivot'
 import { HeadlineBlock } from './HeadlineBlock/HeadlineBlock'
 import { HeroVideoBlock } from './HeroVideoBlock'
-import { HomeHeroBlock } from './HomeHeroBlock'
 import { ImageBlockBrandPivot } from './ImageBlockBrandPivot/ImageBlockBrandPivot'
 import { InsuranceInfoBlock } from './InsuranceInfoBlock/InsuranceInfoBlock'
 import { PerilsBlock } from './PerilsBlock/PerilsBlock'
@@ -43,7 +42,6 @@ const blockComponents = {
   hero_video_block: HeroVideoBlock,
   hero_block: HeroBlock,
   hero_image_block_brand_pivot: HeroImageBlockBrandPivot,
-  home_hero_block: HomeHeroBlock,
   quote_block: QuoteBlockBrandPivot,
   single_quote_block: SingleQuoteBlock,
   image_block_brand_pivot: ImageBlockBrandPivot,

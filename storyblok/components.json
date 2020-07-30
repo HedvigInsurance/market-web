@@ -1739,68 +1739,6 @@
       "component_group_uuid": null
     },
     {
-      "name": "home_hero_block",
-      "display_name": null,
-      "schema": {
-        "video_file_location": {
-          "type": "text",
-          "description": "Will be suffixed with \".<format>\" . Ie. https://cdn.hedvig.com/www/about-us-video/web. Formats that must be present are png (for the poster), m3u8, mp4 and webm",
-          "pos": 1
-        },
-        "mobile_video_file_location": {
-          "type": "text",
-          "description": "Will be suffixed with \".<format>\" . Ie. https://cdn.hedvig.com/www/about-us-video/web. Formats that must be present are png (for the poster), m3u8, mp4 and webm",
-          "pos": 2
-        },
-        "desktop_background_image": {
-          "type": "image",
-          "pos": 3,
-          "description": "Optional background"
-        },
-        "mobile_background_image": {
-          "type": "image",
-          "pos": 4,
-          "description": "Optional background"
-        },
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 5
-        },
-        "title": {
-          "type": "text",
-          "pos": 6,
-          "translatable": true
-        },
-        "second_title": {
-          "type": "text",
-          "pos": 7,
-          "translatable": true
-        },
-        "title_color": {
-          "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
-          "options": [],
-          "pos": 8
-        },
-        "subtitle": {
-          "type": "text",
-          "pos": 9,
-          "translatable": true
-        }
-      },
-      "image": null,
-      "preview_field": "",
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "home_hero_block",
-      "component_group_uuid": null
-    },
-    {
       "name": "image_block_brand_pivot",
       "display_name": null,
       "schema": {
