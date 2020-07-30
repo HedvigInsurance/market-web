@@ -737,50 +737,6 @@
       "component_group_uuid": null
     },
     {
-      "name": "download_block",
-      "display_name": null,
-      "schema": {
-        "title": {
-          "type": "text",
-          "translatable": true,
-          "pos": 0
-        },
-        "cta_text": {
-          "type": "text",
-          "translatable": true,
-          "pos": 1
-        },
-        "error_text": {
-          "type": "text",
-          "translatable": true,
-          "default_value": "Ojdå! Det gick inte att skicka sms till det angivna numret. Dubbelkolla numret och prova igen.",
-          "pos": 2
-        },
-        "success_text": {
-          "type": "text",
-          "translatable": true,
-          "default_value": "Vi har skickat dig ett sms med en länk för att ladda ner Hedvig-appen",
-          "pos": 3
-        },
-        "phone_number_placeholder": {
-          "type": "text",
-          "translatable": true,
-          "description": "",
-          "default_value": "Skriv in ditt mobilnummer",
-          "pos": 4
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "download_block",
-      "component_group_uuid": null
-    },
-    {
       "name": "footer_block",
       "display_name": null,
       "schema": {
