@@ -18,16 +18,11 @@ import { HeaderBlockBrandPivot } from './HeaderBlockBrandPivot'
 import { HeadlineBlock } from './HeadlineBlock/HeadlineBlock'
 import { HeroVideoBlock } from './HeroVideoBlock'
 import { HomeHeroBlock } from './HomeHeroBlock'
-import { ImageBlock } from './ImageBlock'
 import { ImageBlockBrandPivot } from './ImageBlockBrandPivot/ImageBlockBrandPivot'
-import { ImageMultiTextBlock } from './ImageMultiTextBlock'
-import { ImageTextBlock } from './ImageTextBlock'
 import { InsuranceInfoBlock } from './InsuranceInfoBlock/InsuranceInfoBlock'
 import { InvestorsBlock } from './InvestorsBlock'
 import { PerilsBlock } from './PerilsBlock/PerilsBlock'
 import { PlainTextBlock } from './PlainTextBlock'
-import { PressBlock } from './PressBlock'
-import { PressCardBlock } from './PressCardBlock'
 import { QuoteBlockBrandPivot } from './QuoteBlockBrandPivot/QuoteBlockBrandPivot'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
@@ -48,8 +43,6 @@ const blockComponents = {
   column_text_block: ColumnTextBlock,
   chat_block: ChatBlock,
   cta_block: CtaBlock,
-  image_multi_text_block: ImageMultiTextBlock,
-  image_text_block: ImageTextBlock,
   image_text_block_brand_pivot: ImageTextBlockBrandPivot,
   investors_block: InvestorsBlock,
   headline_block: HeadlineBlock,
@@ -60,7 +53,6 @@ const blockComponents = {
   quote_block: QuoteBlockBrandPivot,
   single_quote_block: SingleQuoteBlock,
   title_text_cta_block: TitleTextCtaBlock,
-  image_block: ImageBlock,
   image_block_brand_pivot: ImageBlockBrandPivot,
   insurance_info_block: InsuranceInfoBlock,
   title_paragraph_block: TitleParagraphBlock,
@@ -69,11 +61,9 @@ const blockComponents = {
   background_video_block: BackgroundVideoBlock,
   plain_text_block: PlainTextBlock,
   perils_block: PerilsBlock,
-  press_block: PressBlock,
   trustpilot_block: TrustpilotBlock,
   spacer_block: SpacerBlock,
   spacer_block_brand_pivot: SpacerBlockBrandPivot,
-  press_card_block: PressCardBlock,
   youtube_video_block: YoutubeVideoBlock,
 }
 
