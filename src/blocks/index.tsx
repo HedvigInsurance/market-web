@@ -23,8 +23,6 @@ import { InsuranceInfoBlock } from './InsuranceInfoBlock/InsuranceInfoBlock'
 import { InvestorsBlock } from './InvestorsBlock'
 import { PerilsBlock } from './PerilsBlock/PerilsBlock'
 import { PlainTextBlock } from './PlainTextBlock'
-import { PressBlock } from './PressBlock'
-import { PressCardBlock } from './PressCardBlock'
 import { QuoteBlockBrandPivot } from './QuoteBlockBrandPivot/QuoteBlockBrandPivot'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
@@ -63,11 +61,9 @@ const blockComponents = {
   background_video_block: BackgroundVideoBlock,
   plain_text_block: PlainTextBlock,
   perils_block: PerilsBlock,
-  press_block: PressBlock,
   trustpilot_block: TrustpilotBlock,
   spacer_block: SpacerBlock,
   spacer_block_brand_pivot: SpacerBlockBrandPivot,
-  press_card_block: PressCardBlock,
   youtube_video_block: YoutubeVideoBlock,
 }
 
