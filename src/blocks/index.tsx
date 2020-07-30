@@ -20,7 +20,6 @@ import { HeroVideoBlock } from './HeroVideoBlock'
 import { HomeHeroBlock } from './HomeHeroBlock'
 import { ImageBlockBrandPivot } from './ImageBlockBrandPivot/ImageBlockBrandPivot'
 import { InsuranceInfoBlock } from './InsuranceInfoBlock/InsuranceInfoBlock'
-import { InvestorsBlock } from './InvestorsBlock'
 import { PerilsBlock } from './PerilsBlock/PerilsBlock'
 import { PlainTextBlock } from './PlainTextBlock'
 import { QuoteBlockBrandPivot } from './QuoteBlockBrandPivot/QuoteBlockBrandPivot'
@@ -40,7 +39,6 @@ const blockComponents = {
   chat_block: ChatBlock,
   cta_block: CtaBlock,
   image_text_block_brand_pivot: ImageTextBlockBrandPivot,
-  investors_block: InvestorsBlock,
   headline_block: HeadlineBlock,
   hero_video_block: HeroVideoBlock,
   hero_block: HeroBlock,
