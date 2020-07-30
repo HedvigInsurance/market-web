@@ -27,7 +27,6 @@ import { QuoteBlockBrandPivot } from './QuoteBlockBrandPivot/QuoteBlockBrandPivo
 import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
 import { TitleParagraphBlockBrandPivot } from './TitleParagraphBlockBrandPivot/TitleParagraphBlockBrandPivot'
-import { TrustpilotBlock } from './TrustpilotBlock'
 
 const blockComponents = {
   app_buttons_block: AppButtonsBlock,
@@ -55,7 +54,6 @@ const blockComponents = {
   background_video_block: BackgroundVideoBlock,
   plain_text_block: PlainTextBlock,
   perils_block: PerilsBlock,
-  trustpilot_block: TrustpilotBlock,
   spacer_block: SpacerBlock,
   spacer_block_brand_pivot: SpacerBlockBrandPivot,
   youtube_video_block: YoutubeVideoBlock,
