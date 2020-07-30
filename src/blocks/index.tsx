@@ -19,7 +19,6 @@ import { HeadlineBlock } from './HeadlineBlock/HeadlineBlock'
 import { HeroVideoBlock } from './HeroVideoBlock'
 import { HomeHeroBlock } from './HomeHeroBlock'
 import { ImageBlockBrandPivot } from './ImageBlockBrandPivot/ImageBlockBrandPivot'
-import { ImageMultiTextBlock } from './ImageMultiTextBlock'
 import { ImageTextBlock } from './ImageTextBlock'
 import { InsuranceInfoBlock } from './InsuranceInfoBlock/InsuranceInfoBlock'
 import { InvestorsBlock } from './InvestorsBlock'
@@ -47,7 +46,6 @@ const blockComponents = {
   column_text_block: ColumnTextBlock,
   chat_block: ChatBlock,
   cta_block: CtaBlock,
-  image_multi_text_block: ImageMultiTextBlock,
   image_text_block: ImageTextBlock,
   image_text_block_brand_pivot: ImageTextBlockBrandPivot,
   investors_block: InvestorsBlock,
