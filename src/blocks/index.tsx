@@ -26,7 +26,6 @@ import { PlainTextBlock } from './PlainTextBlock'
 import { QuoteBlockBrandPivot } from './QuoteBlockBrandPivot/QuoteBlockBrandPivot'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
-import { TitleCtaBlock } from './TitleCtaBlock'
 import { TitleParagraphBlock } from './TitleParagraphBlock'
 import { TitleParagraphBlockBrandPivot } from './TitleParagraphBlockBrandPivot/TitleParagraphBlockBrandPivot'
 import { TitleTextCtaBlock } from './TitleTextCtaBlock'
@@ -57,7 +56,6 @@ const blockComponents = {
   insurance_info_block: InsuranceInfoBlock,
   title_paragraph_block: TitleParagraphBlock,
   title_paragraph_block_brand_pivot: TitleParagraphBlockBrandPivot,
-  title_cta_block: TitleCtaBlock,
   background_video_block: BackgroundVideoBlock,
   plain_text_block: PlainTextBlock,
   perils_block: PerilsBlock,
