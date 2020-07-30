@@ -2454,27 +2454,6 @@
       "component_group_uuid": null
     },
     {
-      "name": "logotype_item",
-      "display_name": "",
-      "schema": {
-        "image": {
-          "type": "image",
-          "required": true,
-          "pos": 0,
-          "translatable": true
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": false,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "logotype_item",
-      "component_group_uuid": null
-    },
-    {
       "name": "menu_item",
       "display_name": null,
       "schema": {
@@ -2509,30 +2488,6 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "menu_item",
-      "component_group_uuid": null
-    },
-    {
-      "name": "multi_logotype_block",
-      "display_name": "",
-      "schema": {
-        "logotypes": {
-          "type": "bloks",
-          "maximum": "",
-          "description": "",
-          "restrict_components": true,
-          "component_whitelist": ["logotype_item"],
-          "required": true,
-          "pos": 0
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "multi_logotype_block",
       "component_group_uuid": null
     },
     {
