@@ -4,7 +4,6 @@ import { HeroImageBlockBrandPivot } from 'blocks/HeroImageBlockBrandPivot/HeroIm
 import { ImageTextBlockBrandPivot } from 'blocks/ImageTextBlockBrandPivot'
 import { YoutubeVideoBlock } from 'blocks/YoutubeVideoBlock/YoutubeVideoBlock'
 import React from 'react'
-import { AboutUsHeroBlock } from './AboutUsHeroBlock'
 import { AccordionBlockBrandPivot } from './AccordionBlockBandPivot/AccordionBlockBandPivot'
 import { AppButtonsBlock } from './AppButtonsBlock'
 import { BackgroundVideoBlock } from './BackgroundVideoBlock'
@@ -26,7 +25,6 @@ import { TitleParagraphBlockBrandPivot } from './TitleParagraphBlockBrandPivot/T
 const blockComponents = {
   app_buttons_block: AppButtonsBlock,
   header_block_brand_pivot: HeaderBlockBrandPivot,
-  about_us_hero_block: AboutUsHeroBlock,
   accordion_block: AccordionBlockBrandPivot,
   accordion_block_brand_pivot: AccordionBlockBrandPivot,
   banner_block: BannerBlock,
