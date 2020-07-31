@@ -12,7 +12,6 @@ import { BackgroundVideoBlock } from './BackgroundVideoBlock'
 import { BannerBlock } from './BannerBlock/BannerBlock'
 import { BaseBlockProps } from './BaseBlockProps'
 import { BulletPointBlockBrandPivot } from './BulletPointBlockBrandPivot'
-import { ChatBlock } from './ChatBlock/ChatBlock'
 import { CtaBlock } from './CtaBlock/CtaBlock'
 import { HeaderBlockBrandPivot } from './HeaderBlockBrandPivot'
 import { HeadlineBlock } from './HeadlineBlock/HeadlineBlock'
@@ -35,7 +34,6 @@ const blockComponents = {
   banner_block: BannerBlock,
   bullet_point_block_brand_pivot: BulletPointBlockBrandPivot,
   column_text_block: ColumnTextBlock,
-  chat_block: ChatBlock,
   cta_block: CtaBlock,
   image_text_block_brand_pivot: ImageTextBlockBrandPivot,
   headline_block: HeadlineBlock,

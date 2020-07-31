@@ -564,65 +564,6 @@
       "component_group_uuid": null
     },
     {
-      "name": "chat_block",
-      "display_name": null,
-      "schema": {
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-minimal-color-picker",
-          "options": [],
-          "pos": 0
-        },
-        "size": {
-          "type": "option",
-          "options": [
-            {
-              "value": "none",
-              "name": "Zero margins"
-            },
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "lg",
-              "name": "LG"
-            },
-            {
-              "value": "xl",
-              "name": "XL"
-            }
-          ],
-          "pos": 1,
-          "display_name": "",
-          "description": "",
-          "default_value": "lg"
-        },
-        "tab-b8f2032f-e956-4f8f-b79b-0c963ed5ff31": {
-          "type": "tab",
-          "display_name": "Styling",
-          "keys": ["size", "color", "extra_styling"],
-          "pos": 5
-        },
-        "messages": {
-          "type": "bloks",
-          "maximum": "",
-          "restrict_components": true,
-          "component_whitelist": ["text_field"],
-          "options": []
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "chat_block",
-      "component_group_uuid": null
-    },
-    {
       "name": "column_text_block",
       "display_name": null,
       "schema": {
@@ -760,34 +701,6 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "footer_block",
-      "component_group_uuid": null
-    },
-    {
-      "name": "footer_block_brand_pivot",
-      "display_name": "",
-      "schema": {
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-minimal-color-picker",
-          "options": [],
-          "default_value": "off-black-dark",
-          "pos": 0,
-          "display_name": ""
-        },
-        "extra_styling": {
-          "type": "textarea",
-          "pos": 1,
-          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "footer_block_brand_pivot",
       "component_group_uuid": null
     },
     {
@@ -2956,24 +2869,6 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "Spacer Block Brand Pivot (DEPRECATED)",
-      "component_group_uuid": null
-    },
-    {
-      "name": "text_field",
-      "display_name": null,
-      "schema": {
-        "text": {
-          "type": "text"
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "text_field",
       "component_group_uuid": null
     },
     {
