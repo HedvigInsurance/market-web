@@ -2,21 +2,17 @@ import { ColumnTextBlock } from 'blocks/ColumnTextBlock/ColumnTextBlock'
 import { HeroBlock } from 'blocks/HeroBlock/HeroBlock'
 import { HeroImageBlockBrandPivot } from 'blocks/HeroImageBlockBrandPivot/HeroImageBlockBrandPivot'
 import { ImageTextBlockBrandPivot } from 'blocks/ImageTextBlockBrandPivot'
-import { SpacerBlockBrandPivot } from 'blocks/SpacerBlockBrandPivot'
 import { YoutubeVideoBlock } from 'blocks/YoutubeVideoBlock/YoutubeVideoBlock'
 import React from 'react'
-import { AboutUsHeroBlock } from './AboutUsHeroBlock'
 import { AccordionBlockBrandPivot } from './AccordionBlockBandPivot/AccordionBlockBandPivot'
 import { AppButtonsBlock } from './AppButtonsBlock'
 import { BackgroundVideoBlock } from './BackgroundVideoBlock'
 import { BannerBlock } from './BannerBlock/BannerBlock'
 import { BaseBlockProps } from './BaseBlockProps'
 import { BulletPointBlockBrandPivot } from './BulletPointBlockBrandPivot'
-import { ChatBlock } from './ChatBlock/ChatBlock'
 import { CtaBlock } from './CtaBlock/CtaBlock'
 import { HeaderBlockBrandPivot } from './HeaderBlockBrandPivot'
 import { HeadlineBlock } from './HeadlineBlock/HeadlineBlock'
-import { HeroVideoBlock } from './HeroVideoBlock'
 import { ImageBlockBrandPivot } from './ImageBlockBrandPivot/ImageBlockBrandPivot'
 import { InsuranceInfoBlock } from './InsuranceInfoBlock/InsuranceInfoBlock'
 import { PerilsBlock } from './PerilsBlock/PerilsBlock'
@@ -29,17 +25,14 @@ import { TitleParagraphBlockBrandPivot } from './TitleParagraphBlockBrandPivot/T
 const blockComponents = {
   app_buttons_block: AppButtonsBlock,
   header_block_brand_pivot: HeaderBlockBrandPivot,
-  about_us_hero_block: AboutUsHeroBlock,
   accordion_block: AccordionBlockBrandPivot,
   accordion_block_brand_pivot: AccordionBlockBrandPivot,
   banner_block: BannerBlock,
   bullet_point_block_brand_pivot: BulletPointBlockBrandPivot,
   column_text_block: ColumnTextBlock,
-  chat_block: ChatBlock,
   cta_block: CtaBlock,
   image_text_block_brand_pivot: ImageTextBlockBrandPivot,
   headline_block: HeadlineBlock,
-  hero_video_block: HeroVideoBlock,
   hero_block: HeroBlock,
   hero_image_block_brand_pivot: HeroImageBlockBrandPivot,
   quote_block: QuoteBlockBrandPivot,
@@ -51,7 +44,7 @@ const blockComponents = {
   plain_text_block: PlainTextBlock,
   perils_block: PerilsBlock,
   spacer_block: SpacerBlock,
-  spacer_block_brand_pivot: SpacerBlockBrandPivot,
+  spacer_block_brand_pivot: SpacerBlock,
   youtube_video_block: YoutubeVideoBlock,
 }
 

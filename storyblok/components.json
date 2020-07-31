@@ -1,41 +1,6 @@
 {
   "components": [
     {
-      "name": "about_us_hero_block",
-      "display_name": null,
-      "schema": {
-        "video_file_location": {
-          "type": "text",
-          "description": "Will be suffixed with \".<format>\" . Ie. https://cdn.hedvig.com/www/about-us-video/web. Formats that must be present are png (for the poster), m3u8, mp4 and webm",
-          "pos": 0
-        },
-        "headline": {
-          "type": "text",
-          "pos": 1,
-          "translatable": true
-        },
-        "title": {
-          "type": "text",
-          "pos": 2,
-          "translatable": true
-        },
-        "play_button_text": {
-          "type": "text",
-          "pos": 3,
-          "translatable": true
-        }
-      },
-      "image": null,
-      "preview_field": "",
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "about_us_hero_block",
-      "component_group_uuid": null
-    },
-    {
       "name": "accordion_block_brand_pivot",
       "display_name": null,
       "schema": {
@@ -564,65 +529,6 @@
       "component_group_uuid": null
     },
     {
-      "name": "chat_block",
-      "display_name": null,
-      "schema": {
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-minimal-color-picker",
-          "options": [],
-          "pos": 0
-        },
-        "size": {
-          "type": "option",
-          "options": [
-            {
-              "value": "none",
-              "name": "Zero margins"
-            },
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "lg",
-              "name": "LG"
-            },
-            {
-              "value": "xl",
-              "name": "XL"
-            }
-          ],
-          "pos": 1,
-          "display_name": "",
-          "description": "",
-          "default_value": "lg"
-        },
-        "tab-b8f2032f-e956-4f8f-b79b-0c963ed5ff31": {
-          "type": "tab",
-          "display_name": "Styling",
-          "keys": ["size", "color", "extra_styling"],
-          "pos": 5
-        },
-        "messages": {
-          "type": "bloks",
-          "maximum": "",
-          "restrict_components": true,
-          "component_whitelist": ["text_field"],
-          "options": []
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "chat_block",
-      "component_group_uuid": null
-    },
-    {
       "name": "column_text_block",
       "display_name": null,
       "schema": {
@@ -760,34 +666,6 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "footer_block",
-      "component_group_uuid": null
-    },
-    {
-      "name": "footer_block_brand_pivot",
-      "display_name": "",
-      "schema": {
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-minimal-color-picker",
-          "options": [],
-          "default_value": "off-black-dark",
-          "pos": 0,
-          "display_name": ""
-        },
-        "extra_styling": {
-          "type": "textarea",
-          "pos": 1,
-          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "footer_block_brand_pivot",
       "component_group_uuid": null
     },
     {
@@ -1679,63 +1557,6 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "hero_image_block_brand_pivot",
-      "component_group_uuid": null
-    },
-    {
-      "name": "hero_video_block",
-      "display_name": null,
-      "schema": {
-        "video_file_location": {
-          "type": "text",
-          "description": "Will be suffixed with \".<format>\" . Ie. https://cdn.hedvig.com/www/about-us-video/web. Formats that must be present are png (for the poster), m3u8, mp4 and webm",
-          "pos": 0
-        },
-        "headline": {
-          "type": "text",
-          "pos": 1,
-          "translatable": true
-        },
-        "title": {
-          "type": "text",
-          "pos": 2,
-          "translatable": true
-        },
-        "play_button_text": {
-          "type": "text",
-          "pos": 3,
-          "translatable": true
-        },
-        "cta_text": {
-          "type": "text",
-          "pos": 4,
-          "translatable": true
-        },
-        "use_text_drop_shadow": {
-          "type": "boolean",
-          "pos": 5,
-          "description": "",
-          "display_name": ""
-        },
-        "use_shadow": {
-          "type": "boolean",
-          "pos": 6
-        },
-        "background_color": {
-          "type": "custom",
-          "pos": 7,
-          "field_type": "native-color-picker",
-          "options": [],
-          "description": "As shown while loading the poster"
-        }
-      },
-      "image": null,
-      "preview_field": "",
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "hero_video_block",
       "component_group_uuid": null
     },
     {
@@ -2906,74 +2727,6 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "spacer_block",
-      "component_group_uuid": null
-    },
-    {
-      "name": "spacer_block_brand_pivot",
-      "display_name": "Spacer Block Brand Pivot (DEPRECATED)",
-      "schema": {
-        "color": {
-          "type": "custom",
-          "field_type": "hedvig-minimal-color-picker",
-          "options": [],
-          "pos": 0
-        },
-        "size": {
-          "type": "option",
-          "options": [
-            {
-              "value": "none",
-              "name": "None"
-            },
-            {
-              "value": "xs",
-              "name": "XS"
-            },
-            {
-              "value": "sm",
-              "name": "SM"
-            },
-            {
-              "value": "lg",
-              "name": "LG"
-            },
-            {
-              "value": "xl",
-              "name": "XL"
-            }
-          ],
-          "pos": 1,
-          "display_name": "",
-          "description": "",
-          "default_value": "lg"
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "Spacer Block Brand Pivot (DEPRECATED)",
-      "component_group_uuid": null
-    },
-    {
-      "name": "text_field",
-      "display_name": null,
-      "schema": {
-        "text": {
-          "type": "text"
-        }
-      },
-      "image": null,
-      "preview_field": null,
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "text_field",
       "component_group_uuid": null
     },
     {
