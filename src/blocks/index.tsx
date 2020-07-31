@@ -17,20 +17,14 @@ import { CtaBlock } from './CtaBlock/CtaBlock'
 import { HeaderBlockBrandPivot } from './HeaderBlockBrandPivot'
 import { HeadlineBlock } from './HeadlineBlock/HeadlineBlock'
 import { HeroVideoBlock } from './HeroVideoBlock'
-import { HomeHeroBlock } from './HomeHeroBlock'
 import { ImageBlockBrandPivot } from './ImageBlockBrandPivot/ImageBlockBrandPivot'
 import { InsuranceInfoBlock } from './InsuranceInfoBlock/InsuranceInfoBlock'
-import { InvestorsBlock } from './InvestorsBlock'
 import { PerilsBlock } from './PerilsBlock/PerilsBlock'
 import { PlainTextBlock } from './PlainTextBlock'
 import { QuoteBlockBrandPivot } from './QuoteBlockBrandPivot/QuoteBlockBrandPivot'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
-import { TitleCtaBlock } from './TitleCtaBlock'
-import { TitleParagraphBlock } from './TitleParagraphBlock'
 import { TitleParagraphBlockBrandPivot } from './TitleParagraphBlockBrandPivot/TitleParagraphBlockBrandPivot'
-import { TitleTextCtaBlock } from './TitleTextCtaBlock'
-import { TrustpilotBlock } from './TrustpilotBlock'
 
 const blockComponents = {
   app_buttons_block: AppButtonsBlock,
@@ -44,24 +38,18 @@ const blockComponents = {
   chat_block: ChatBlock,
   cta_block: CtaBlock,
   image_text_block_brand_pivot: ImageTextBlockBrandPivot,
-  investors_block: InvestorsBlock,
   headline_block: HeadlineBlock,
   hero_video_block: HeroVideoBlock,
   hero_block: HeroBlock,
   hero_image_block_brand_pivot: HeroImageBlockBrandPivot,
-  home_hero_block: HomeHeroBlock,
   quote_block: QuoteBlockBrandPivot,
   single_quote_block: SingleQuoteBlock,
-  title_text_cta_block: TitleTextCtaBlock,
   image_block_brand_pivot: ImageBlockBrandPivot,
   insurance_info_block: InsuranceInfoBlock,
-  title_paragraph_block: TitleParagraphBlock,
   title_paragraph_block_brand_pivot: TitleParagraphBlockBrandPivot,
-  title_cta_block: TitleCtaBlock,
   background_video_block: BackgroundVideoBlock,
   plain_text_block: PlainTextBlock,
   perils_block: PerilsBlock,
-  trustpilot_block: TrustpilotBlock,
   spacer_block: SpacerBlock,
   spacer_block_brand_pivot: SpacerBlockBrandPivot,
   youtube_video_block: YoutubeVideoBlock,
