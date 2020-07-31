@@ -2,7 +2,6 @@ import { ColumnTextBlock } from 'blocks/ColumnTextBlock/ColumnTextBlock'
 import { HeroBlock } from 'blocks/HeroBlock/HeroBlock'
 import { HeroImageBlockBrandPivot } from 'blocks/HeroImageBlockBrandPivot/HeroImageBlockBrandPivot'
 import { ImageTextBlockBrandPivot } from 'blocks/ImageTextBlockBrandPivot'
-import { SpacerBlockBrandPivot } from 'blocks/SpacerBlockBrandPivot'
 import { YoutubeVideoBlock } from 'blocks/YoutubeVideoBlock/YoutubeVideoBlock'
 import React from 'react'
 import { AboutUsHeroBlock } from './AboutUsHeroBlock'
@@ -47,7 +46,7 @@ const blockComponents = {
   plain_text_block: PlainTextBlock,
   perils_block: PerilsBlock,
   spacer_block: SpacerBlock,
-  spacer_block_brand_pivot: SpacerBlockBrandPivot,
+  spacer_block_brand_pivot: SpacerBlock,
   youtube_video_block: YoutubeVideoBlock,
 }
 
