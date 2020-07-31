@@ -1,41 +1,6 @@
 {
   "components": [
     {
-      "name": "about_us_hero_block",
-      "display_name": null,
-      "schema": {
-        "video_file_location": {
-          "type": "text",
-          "description": "Will be suffixed with \".<format>\" . Ie. https://cdn.hedvig.com/www/about-us-video/web. Formats that must be present are png (for the poster), m3u8, mp4 and webm",
-          "pos": 0
-        },
-        "headline": {
-          "type": "text",
-          "pos": 1,
-          "translatable": true
-        },
-        "title": {
-          "type": "text",
-          "pos": 2,
-          "translatable": true
-        },
-        "play_button_text": {
-          "type": "text",
-          "pos": 3,
-          "translatable": true
-        }
-      },
-      "image": null,
-      "preview_field": "",
-      "is_root": false,
-      "preview_tmpl": null,
-      "is_nestable": true,
-      "all_presets": [],
-      "preset_id": null,
-      "real_name": "about_us_hero_block",
-      "component_group_uuid": null
-    },
-    {
       "name": "accordion_block_brand_pivot",
       "display_name": null,
       "schema": {
