@@ -303,7 +303,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                               '/' + (context.lang === 'sv' ? '' : context.lang)
                             }
                           >
-                            <HedvigLogotype width={100} />
+                            <HedvigLogotype width={94} />
                           </LogoLink>
                         )}
                       </ContextContainer>
