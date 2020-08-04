@@ -68,12 +68,12 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Terms and conditions - hyresratt and bostadsratt
   [
     '/villkor/villkor/hyresratt.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-hyresratt-2020-05-v2.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-hyresratt-2020-08.pdf',
     302,
   ],
   [
     '/en/terms/terms/tenants.pdf',
-    'https://cdn.hedvig.com/info/insurance-terms-tenants-2020-05.pdf',
+    'https://cdn.hedvig.com/info/insurance-terms-tenants-2020-08.pdf',
     302,
   ],
   [
