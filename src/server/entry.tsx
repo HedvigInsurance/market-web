@@ -6,9 +6,9 @@ import Koa, { Middleware } from 'koa'
 import auth from 'koa-basic-auth'
 import bodyParser from 'koa-bodyparser'
 import compress from 'koa-compress'
+import proxy from 'koa-proxy'
 import removeTrailingSlashes from 'koa-remove-trailing-slashes'
 import Router from 'koa-router'
-import proxy from 'koa-server-http-proxy'
 import { configureAssets } from 'server/middlewares/assets'
 import { Logger } from 'typescript-logging'
 import { redirects, routes } from '../routes'
@@ -99,8 +99,9 @@ redirects.forEach(([source, target, code]) => {
   })
 })
 app.use(
-  proxy('/f/', {
-    target: 'https://a.storyblok.com',
+  proxy({
+    host: 'https://a.storyblok.com',
+    match: /^\/f\//,
   }),
 )
 router.use(
