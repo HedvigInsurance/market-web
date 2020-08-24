@@ -493,7 +493,7 @@
         "image": {
           "type": "image",
           "pos": 0,
-          "required": true,
+          "required": false,
           "display_name": "",
           "regex": "",
           "image_crop": false,
