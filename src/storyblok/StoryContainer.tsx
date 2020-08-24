@@ -58,6 +58,7 @@ export interface BodyStory extends Story {
       public: boolean
       component: 'page'
       body: ReadonlyArray<BaseBlockProps>
+      hide_footer?: boolean
     }
 }
 
