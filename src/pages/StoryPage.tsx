@@ -36,15 +36,17 @@ export const StoryPage: React.FunctionComponent<{ nonce?: string }> = ({
 
           return <BlockComponent key={block._uid} index={index} {...block} />
         })}
-        <FooterBlock
-          component="footer_block"
-          _uid="a6f692fc-2dcc-42b9-a031-c47f8e829c1b"
-          color={{
-            _uid: '4a200d8c-9ebc-4648-b41d-3b1b0de8fbc5',
-            color: 'standard-inverse',
-            plugin: 'hedvig_minimal_color_picker',
-          }}
-        />
+        {!story?.content.hide_footer && (
+          <FooterBlock
+            component="footer_block"
+            _uid="a6f692fc-2dcc-42b9-a031-c47f8e829c1b"
+            color={{
+              _uid: '4a200d8c-9ebc-4648-b41d-3b1b0de8fbc5',
+              color: 'standard-inverse',
+              plugin: 'hedvig_minimal_color_picker',
+            }}
+          />
+        )}
       </>
     )}
   </StoryContainer>
