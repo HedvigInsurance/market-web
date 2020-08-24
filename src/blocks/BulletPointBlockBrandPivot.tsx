@@ -159,12 +159,14 @@ export const BulletPointBlockBrandPivot: React.FunctionComponent<BulletPointsBlo
       <InnerWrapper>
         {bullet_points.map((bullet) => (
           <BulletPoint key={bullet._uid} alignCenter={align_center}>
-            <BulletPointHead alignCenter={align_center}>
-              <BulletPointImage
-                src={getStoryblokImage(bullet.image)}
-                alignCenter={align_center}
-              />
-            </BulletPointHead>
+            {bullet.image && (
+              <BulletPointHead alignCenter={align_center}>
+                <BulletPointImage
+                  src={getStoryblokImage(bullet.image)}
+                  alignCenter={align_center}
+                />
+              </BulletPointHead>
+            )}
             <div>
               {bullet.title && (
                 <BulletPointTitle>{bullet.title}</BulletPointTitle>
