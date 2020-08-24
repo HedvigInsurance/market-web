@@ -2326,6 +2326,11 @@
           "type": "image",
           "pos": 9,
           "display_name": "SEO Meta og:image"
+        },
+        "hide_footer": {
+          "type": "boolean",
+          "max_length": "",
+          "display_name": ""
         }
       },
       "image": null,
