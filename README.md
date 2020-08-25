@@ -6,6 +6,7 @@ Hedvig's storyblok-based website [https://www.hedvig.com](https://www.hedvig.com
 
 - `node`
 - `yarn`
+- `docker`
 
 ### Install Node with nvm
 
@@ -28,6 +29,10 @@ Use one of the following `yarn` or `yvm`
 1. Install `yvm` [https://yvm.js.org/docs/overview#installation](https://yvm.js.org/docs/overview#installation)
 2. Run any yarn command and watch it automagically use the correct version of yarn. (Version specified in `package.json` or `.yvmrc`)
 
+### Install Docker
+
+Download [Docker Desktop](https://docs.docker.com/docker-for-mac/install/)
+
 ## Installation
 
 ```sh
@@ -38,6 +43,9 @@ $ yarn
 ## Development
 
 ```sh
+# Start redis (docker must be running)
+$ docker run --rm -d --name=redis -p 6379:6379 redis
+
 # Start the app
 $ yarn watch
 ```
@@ -53,7 +61,11 @@ We use [Storybook](https://storybook.js.org/) for building new components in iso
 $ yarn storybook
 ```
 
-## Managing Storyblok
+## Storyblok
+
+[Storyblok](https://app.storyblok.com/) is the headless CMS we use for the web
+
+### Managing Storyblok
 
 There's a few tools for deploying spaces (workspaces/backend environments) in Storyblok.
 
@@ -165,8 +177,7 @@ heroku run -a pr-instance-name bin/sync-space --space 1337 --clean --plan
 
 a) Running 2 commands isn't too bad right? b) 3 real reasons:
 
-1. Destroying things automatically is scary, and we would need to destroy the created spaces on predestroy of the app
-   - possibly only if we changed the space id.
+1. Destroying things automatically is scary, and we would need to destroy the created spaces on predestroy of the app - possibly only if we changed the space id.
 1. Same thing goes for schema sync, we need to know if the space is specific for this app or not.
 1. The Heroku container would need ability to modify it's own configuration which seems tricky, and it also needs
    notion of its own metadata which is currently [experimental](https://devcenter.heroku.com/articles/dyno-metadata)
