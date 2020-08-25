@@ -15,9 +15,10 @@ module.exports = webpackConfig({
   context: root,
   output: {
     filename: '[name]-[hash].js',
-    publicPath: '/assets-next/',
+    publicPath: '/static/',
     path: path.resolve(root, 'build/static'),
   },
+  devtool: 'source-map',
   plugins: [
     new webpack.LoaderOptionsPlugin({
       minimize: true,
