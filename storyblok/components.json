@@ -885,6 +885,9 @@
             }
           ],
           "pos": 11
+        },
+        "hide_menu": {
+          "type": "boolean"
         }
       },
       "image": null,

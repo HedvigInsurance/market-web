@@ -33,6 +33,7 @@ export const Default = () => (
     <Header
       {...headerBaseProps}
       story={globalStoryMock}
+      hide_menu={boolean('Hide menu', false)}
       is_transparent={boolean('Is Transparent', true)}
       inverse_colors={boolean('Inverse Colors (transparent header only)', true)}
       cta_color={
