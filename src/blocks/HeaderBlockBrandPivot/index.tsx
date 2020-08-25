@@ -217,6 +217,7 @@ interface HeaderBlockProps extends BaseBlockProps {
   override_cta_label?: string | null
   cta_color?: MinimalColorComponent
   cta_style?: ButtonStyleType
+  hide_menu?: boolean
   override_mobile_header_cta_label?: string | null
   override_mobile_header_cta_link?: LinkComponent | null
   mobile_header_cta_color?: MinimalColorComponent
@@ -323,46 +324,87 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                       )}
                     </ContextContainer>
                   </MobileLogo>
+                  {!props.hide_menu && (
+                    <Menu open={isOpen}>
+                      <MenuList open={isOpen}>
+                        {(props.story.content.header_menu_items ?? []).map(
+                          (menuItem) => (
+                            <MenuItem menuItem={menuItem} key={menuItem._uid} />
+                          ),
+                        )}
+                      </MenuList>
 
-                  <Menu open={isOpen}>
-                    <MenuList open={isOpen}>
-                      {(props.story.content.header_menu_items ?? []).map(
-                        (menuItem) => (
-                          <MenuItem menuItem={menuItem} key={menuItem._uid} />
-                        ),
-                      )}
-                    </MenuList>
+                      <ContextContainer>
+                        {(context) => (
+                          <LanguagePicker currentLanguage={context.lang} />
+                        )}
+                      </ContextContainer>
 
-                    <ContextContainer>
-                      {(context) => (
-                        <LanguagePicker currentLanguage={context.lang} />
-                      )}
-                    </ContextContainer>
+                      <MobileButtonWrapper>
+                        <>
+                          {(() => {
+                            const mobileCtaLabel =
+                              props.override_mobile_header_cta_label ||
+                              props.story.content.cta_label
+                            const mobileCtaColor =
+                              props.mobile_header_cta_color?.color ||
+                              'standard-inverse'
 
-                    <MobileButtonWrapper>
-                      <>
-                        {(() => {
-                          const mobileCtaLabel =
-                            props.override_mobile_header_cta_label ||
-                            props.story.content.cta_label
-                          const mobileCtaColor =
-                            props.mobile_header_cta_color?.color ||
-                            'standard-inverse'
+                            if (
+                              props.override_mobile_header_cta_link?.cached_url
+                            ) {
+                              return (
+                                <ButtonWrapper>
+                                  <ButtonLinkBrandPivot
+                                    styleType={props.mobile_header_cta_style}
+                                    fullWidth={true}
+                                    href={getStoryblokLinkUrl(
+                                      props.override_mobile_header_cta_link,
+                                    )}
+                                    color={mobileCtaColor}
+                                  >
+                                    {mobileCtaLabel}
+                                  </ButtonLinkBrandPivot>
+                                </ButtonWrapper>
+                              )
+                            }
 
-                          if (
-                            props.override_mobile_header_cta_link?.cached_url
-                          ) {
                             return (
                               <ButtonWrapper>
                                 <ButtonLinkBrandPivot
                                   styleType={props.mobile_header_cta_style}
                                   fullWidth={true}
                                   href={getStoryblokLinkUrl(
-                                    props.override_mobile_header_cta_link,
+                                    props.story.content.cta_link,
                                   )}
                                   color={mobileCtaColor}
                                 >
                                   {mobileCtaLabel}
+                                </ButtonLinkBrandPivot>
+                              </ButtonWrapper>
+                            )
+                          })()}
+                        </>
+                      </MobileButtonWrapper>
+
+                      <DesktopButtonWrapper>
+                        {(() => {
+                          const ctaLabel =
+                            props.override_cta_label ||
+                            props.story.content.cta_label
+
+                          if (props.override_cta_link?.cached_url) {
+                            return (
+                              <ButtonWrapper>
+                                <ButtonLinkBrandPivot
+                                  styleType={props.cta_style}
+                                  color={buttonColor}
+                                  fullWidth={true}
+                                  href={getStoryblokLinkUrl(
+                                    props.override_cta_link,
+                                  )}
+                                >
+                                  {ctaLabel}
                                 </ButtonLinkBrandPivot>
                               </ButtonWrapper>
                             )
@@ -371,60 +413,20 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                           return (
                             <ButtonWrapper>
                               <ButtonLinkBrandPivot
-                                styleType={props.mobile_header_cta_style}
-                                fullWidth={true}
-                                href={getStoryblokLinkUrl(
-                                  props.story.content.cta_link,
-                                )}
-                                color={mobileCtaColor}
-                              >
-                                {mobileCtaLabel}
-                              </ButtonLinkBrandPivot>
-                            </ButtonWrapper>
-                          )
-                        })()}
-                      </>
-                    </MobileButtonWrapper>
-
-                    <DesktopButtonWrapper>
-                      {(() => {
-                        const ctaLabel =
-                          props.override_cta_label ||
-                          props.story.content.cta_label
-
-                        if (props.override_cta_link?.cached_url) {
-                          return (
-                            <ButtonWrapper>
-                              <ButtonLinkBrandPivot
                                 styleType={props.cta_style}
                                 color={buttonColor}
-                                fullWidth={true}
                                 href={getStoryblokLinkUrl(
-                                  props.override_cta_link,
+                                  props.story.content.cta_link,
                                 )}
                               >
                                 {ctaLabel}
                               </ButtonLinkBrandPivot>
                             </ButtonWrapper>
                           )
-                        }
-
-                        return (
-                          <ButtonWrapper>
-                            <ButtonLinkBrandPivot
-                              styleType={props.cta_style}
-                              color={buttonColor}
-                              href={getStoryblokLinkUrl(
-                                props.story.content.cta_link,
-                              )}
-                            >
-                              {ctaLabel}
-                            </ButtonLinkBrandPivot>
-                          </ButtonWrapper>
-                        )
-                      })()}
-                    </DesktopButtonWrapper>
-                  </Menu>
+                        })()}
+                      </DesktopButtonWrapper>
+                    </Menu>
+                  )}
                 </InnerHeaderWrapper>
               </HeaderContentWrapper>
             </HeaderMain>
