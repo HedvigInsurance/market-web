@@ -8,30 +8,7 @@ Hedvig's storyblok-based website [https://www.hedvig.com](https://www.hedvig.com
 - `yarn`
 - `docker`
 
-### Install Node with nvm
-
-1. Install `nvm` [https://github.com/creationix/nvm](https://github.com/creationix/nvm)
-2. `nvm install` (installs the node version specified in `.nvmrc`)
-3. `nvm use` (use version from `.nvmrc`)
-
-### Install Yarn package manager
-
-Use one of the following `yarn` or `yvm`
-
-#### Install Yarn
-
-1. Install `yarn` [https://classic.yarnpkg.com/en/docs/install/#mac-stable](https://classic.yarnpkg.com/en/docs/install/#mac-stable)
-
-#### Install yvm
-
-`yvm` is a neat yarn version manager just like `nvm` is for node.
-
-1. Install `yvm` [https://yvm.js.org/docs/overview#installation](https://yvm.js.org/docs/overview#installation)
-2. Run any yarn command and watch it automagically use the correct version of yarn. (Version specified in `package.json` or `.yvmrc`)
-
-### Install Docker
-
-Download [Docker Desktop](https://docs.docker.com/docker-for-mac/install/)
+For further instructions on managing yarn and node versions, checkout [web contributing guide](https://github.com/HedvigInsurance/tech-stuff/blob/master/web/contributing.md)
 
 ## Installation
 
