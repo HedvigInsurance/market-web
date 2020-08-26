@@ -1,14 +1,11 @@
 import { select, withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
 import { minimalColorMap } from 'utils/storybook'
-import {
-  AccordionBlockBrandPivot,
-  AccordionBlockProps,
-} from './AccordionBlockBandPivot'
+import { AccordionBlock, AccordionBlockProps } from './AccordionBlock'
 
 export default {
-  title: 'Blocks/AccotdionBlock',
-  component: AccordionBlockBrandPivot,
+  title: 'Blocks/AccordionBlock',
+  component: AccordionBlock,
   decorators: [withKnobs],
 }
 
@@ -90,7 +87,7 @@ const accordionProps: AccordionBlockProps = {
   ],
 }
 export const Default = () => (
-  <AccordionBlockBrandPivot
+  <AccordionBlock
     color={
       minimalColorMap[select('color', Object.keys(minimalColorMap), 'standard')]
     }

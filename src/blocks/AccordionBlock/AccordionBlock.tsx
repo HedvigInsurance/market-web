@@ -165,7 +165,7 @@ export interface AccordionBlockProps extends BrandPivotBaseBlockProps {
   accordions: ReadonlyArray<AccordionProps>
 }
 
-export const AccordionBlockBrandPivot: React.FunctionComponent<AccordionBlockProps> = ({
+export const AccordionBlock: React.FunctionComponent<AccordionBlockProps> = ({
   accordions,
   color,
   extra_styling,
