@@ -113,8 +113,6 @@ const ExpanderWrapper = styled('div')({
   flexShrink: 0,
   width: '1.625rem',
   height: '1.625rem',
-  border: '1px solid currentColor',
-  borderRadius: '0.25rem',
 
   [TABLET_BP_UP]: {
     width: '3rem',
