@@ -100,8 +100,10 @@ const AccordionContent = styled('div')({
   overflowY: 'hidden',
 
   [TABLET_BP_UP]: {
-    paddingTop: '2rem',
-    paddingBottom: '2rem',
+    padding: '3rem',
+    '& p': {
+      margin: 0,
+    },
   },
 })
 
