@@ -207,7 +207,7 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Travel
   [
     '/no/villkar/villkar/reise.pdf',
-    'https://cdn.hedvig.com/info/reise-vilkar-2020-07.pdf',
+    'https://cdn.hedvig.com/info/reise-vilkar-2020-08.pdf',
     302,
   ],
   [
@@ -223,7 +223,7 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Awaiting english terms - so default to norwegian
   [
     '/no-en/terms/terms/travel.pdf',
-    'https://cdn.hedvig.com/info/reise-vilkar-2020-07.pdf',
+    'https://cdn.hedvig.com/info/reise-vilkar-2020-08.pdf',
     302,
   ],
   [
