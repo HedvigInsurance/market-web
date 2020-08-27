@@ -8,7 +8,7 @@ const root = path.resolve(__dirname, '..')
 
 module.exports = webpackConfig({
   entry: {
-    app: ['@babel/polyfill', path.resolve(root, 'src/client/entry.tsx')],
+    app: [path.resolve(root, 'src/client/entry.tsx')],
   },
   target: 'web',
   mode: 'production',

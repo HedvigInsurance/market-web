@@ -1,4 +1,3 @@
-import '@babel/polyfill'
 import 'source-map-support/register'
 
 import * as Sentry from '@sentry/node'
