@@ -100,8 +100,14 @@ const AccordionContent = styled('div')({
   overflowY: 'hidden',
 
   [TABLET_BP_UP]: {
-    paddingTop: '2rem',
-    paddingBottom: '2rem',
+    padding: '3rem 3rem 1.5rem 3rem',
+    '& p': {
+      marginTop: 0,
+      marginBottom: '1rem',
+    },
+    '& p:last-child': {
+      margin: 0,
+    },
   },
 })
 
@@ -113,8 +119,6 @@ const ExpanderWrapper = styled('div')({
   flexShrink: 0,
   width: '1.625rem',
   height: '1.625rem',
-  border: '1px solid currentColor',
-  borderRadius: '0.25rem',
 
   [TABLET_BP_UP]: {
     width: '3rem',
@@ -165,7 +169,7 @@ export interface AccordionBlockProps extends BrandPivotBaseBlockProps {
   accordions: ReadonlyArray<AccordionProps>
 }
 
-export const AccordionBlockBrandPivot: React.FunctionComponent<AccordionBlockProps> = ({
+export const AccordionBlock: React.FunctionComponent<AccordionBlockProps> = ({
   accordions,
   color,
   extra_styling,
