@@ -8,5 +8,5 @@ interface Context {
 export const ContextContainer: React.FunctionComponent<{
   children: (context: Context) => React.ReactNode
 }> = ({ children }) => (
-  <Container<Context> context="context" children={children} />
+  <Container<Context> context="context">{children}</Container>
 )
