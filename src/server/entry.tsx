@@ -47,7 +47,7 @@ const getPort = () => (process.env.PORT ? Number(process.env.PORT) : 8030)
 appLogger.info(`Booting server on ${getPort()} 👢`)
 appLogger.info(
   `Sentry is ${
-    Boolean(sentryConfig().enabled) ? 'enabled' : 'disabled'
+    sentryConfig().enabled ? 'enabled' : 'disabled'
   }, with environment "${sentryConfig().environment}"`,
 )
 
