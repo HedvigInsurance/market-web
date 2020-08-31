@@ -13,9 +13,11 @@ interface Actions {
   setLoadedLottie: (ReactLottie: typeof ReactLottieComponent) => void
 }
 
-export const LazyLottie: React.SFC<ReactLottieProps & {
-  innerRef?: React.Ref<any> | null
-}> = (props) =>
+export const LazyLottie: React.SFC<
+  ReactLottieProps & {
+    innerRef?: React.Ref<any> | null
+  }
+> = (props) =>
   process.env.NODE_ENV === 'test' ? null : (
     <Container<State, Actions>
       initialState={{ animationData: null, ReactLottie: null }}

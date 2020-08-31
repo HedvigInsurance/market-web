@@ -88,8 +88,9 @@ export const initializeTeamtailorUsers = () =>
     .then(handleTeamtailorResponse)
     .catch(async (e) => {
       appLogger.error(
-        `Failed to fetch Teamtailor data: "${e.message ||
-          e.status}", retrying after 5 sec...`,
+        `Failed to fetch Teamtailor data: "${
+          e.message || e.status
+        }", retrying after 5 sec...`,
       )
 
       await new Promise((resolve) => setTimeout(resolve, 5000))

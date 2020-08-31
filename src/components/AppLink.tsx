@@ -53,8 +53,9 @@ const generateLink = (
   return link.replace(/&\s*$/, '')
 }
 
-const AppLinkComponent: React.FunctionComponent<AppLinkProps &
-  RouteComponentProps> = (props) => (
+const AppLinkComponent: React.FunctionComponent<
+  AppLinkProps & RouteComponentProps
+> = (props) => (
   <StoryContainer>
     {({ story }) =>
       props.children({
