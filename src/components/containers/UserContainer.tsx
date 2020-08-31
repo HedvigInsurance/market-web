@@ -9,5 +9,5 @@ interface State {
 export const UserContainer: React.FunctionComponent<{
   children: (state: State) => React.ReactNode
 }> = ({ children }) => (
-  <Container<State> context="teamtailorUsers" children={children} />
+  <Container<State> context="teamtailorUsers">{children}</Container>
 )
