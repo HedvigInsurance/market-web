@@ -44,7 +44,7 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
     "@context": "http://schema.org",
     "@type": "Organization",
     "url": "https://www.hedvig.com",
-    "logo": "https://www.hedvig.com/assets-next/favicons-bp/apple-icon.png",
+    "logo": "https://www.hedvig.com/assets-next/favicons/apple-icon.png",
     "name": "Hedvig",
     "description": "Med Hedvig Hemförsäkring får du allt du förväntar dig av en försäkring, men inget du förväntar dig av ett försäkringsbolag",
     "address": {
