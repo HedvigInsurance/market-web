@@ -145,9 +145,11 @@ export interface HeroImageBlockBrandPivotProps
   cta_mobile_style?: ButtonStyleType
 }
 
-export const Hero: React.FC<{
-  story: GlobalStory
-} & HeroImageBlockBrandPivotProps> = ({
+export const Hero: React.FC<
+  {
+    story: GlobalStory
+  } & HeroImageBlockBrandPivotProps
+> = ({
   color,
   extra_styling,
   animate,
