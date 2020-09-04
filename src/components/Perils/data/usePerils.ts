@@ -33,19 +33,15 @@ export const usePerils = (insuranceType: TypeOfContract, locale: Locale) => {
           }
         `,
     }
-    try {
-      const perilsRequest = await axios.post(url, data, {
-        withCredentials: false,
-        headers: {
-          Accept: '*/*',
-          'content-type': 'application/json',
-        },
-      })
-      const perilsData = perilsRequest.data.data.perils
-      setPerils(perilsData)
-    } catch (e) {
-      throw e
-    }
+    const perilsRequest = await axios.post(url, data, {
+      withCredentials: false,
+      headers: {
+        Accept: '*/*',
+        'content-type': 'application/json',
+      },
+    })
+    const perilsData = perilsRequest.data.data.perils
+    setPerils(perilsData)
   }
 
   useEffect(() => {

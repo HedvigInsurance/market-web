@@ -103,12 +103,10 @@ const Overlay = styled('div')({
   },
 })
 
-export const Burger: React.FunctionComponent<TogglableState &
-  React.HTMLAttributes<HTMLButtonElement> & { preventInverse: boolean }> = ({
-  isOpen,
-  isClosing,
-  ...rest
-}) => (
+export const Burger: React.FunctionComponent<
+  TogglableState &
+    React.HTMLAttributes<HTMLButtonElement> & { preventInverse: boolean }
+> = ({ isOpen, isClosing, ...rest }) => (
   <>
     <NavToggle {...rest}>
       <CrossBurger isOpen={isOpen} isClosing={isClosing} />
