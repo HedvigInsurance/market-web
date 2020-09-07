@@ -318,7 +318,7 @@ export const brfPerils: Peril[] = [
     title: 'Bostadsrätts­tillägg',
     info: 'Inget särskilt.',
     covered: [
-      'skador på fast inredning (typ ditt nya kök',
+      'skador på fast inredning (typ ditt nya kök)',
       'skador på ytskikt (typ dina nyfixade golv, tak eller väggar)',
     ],
     exceptions: ['Inget särskilt!'],
