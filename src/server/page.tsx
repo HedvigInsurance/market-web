@@ -9,18 +9,19 @@ import { renderToString } from 'react-dom/server'
 import { FilledContext, HelmetProvider } from 'react-helmet-async'
 import { StaticRouter, StaticRouterContext } from 'react-router'
 import { State } from 'server/middlewares/states'
-import { getLangFromPath } from 'server/utils/storyblok'
+import {
+  getLangFromPath,
+  getDraftedStoryById,
+  getGlobalStory,
+  getPublishedStoryFromSlug,
+  getStoryblokEditorScript,
+} from 'server/utils/storyblok'
 import { Logger } from 'typescript-logging'
 import { getHtmlLang } from 'utils/CurrentLocale'
 import { App } from '../App'
 import { sentryConfig } from './config/sentry'
 import { favicons } from './utils/favicons'
-import {
-  getDraftedStoryById,
-  getGlobalStory,
-  getPublishedStoryFromSlug,
-  getStoryblokEditorScript,
-} from './utils/storyblok'
+
 import { allTracking } from './utils/tracking'
 
 const scriptLocation =
