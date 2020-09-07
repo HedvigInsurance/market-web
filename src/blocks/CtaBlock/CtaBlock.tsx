@@ -1,10 +1,10 @@
 import styled from '@emotion/styled'
+import * as React from 'react'
 import { ContentWrapper, SectionWrapper } from 'components/blockHelpers'
 import {
   ButtonLinkBrandPivot,
   buttonSizes,
 } from 'components/ButtonBrandPivot/Button'
-import * as React from 'react'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from 'utils/storyblok'
 import {

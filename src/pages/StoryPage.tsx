@@ -1,6 +1,6 @@
-import SbEditable from 'patched/storyblok-react'
 import React from 'react'
 import Helmet from 'react-helmet-async'
+import SbEditable from 'patched/storyblok-react'
 import { getBlockComponent } from '../blocks'
 import { BaseBlockProps } from '../blocks/BaseBlockProps'
 import { FooterBlock } from '../blocks/FooterBlock/FooterBlock'

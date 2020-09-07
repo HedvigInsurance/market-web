@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
-import { Globe } from 'components/icons/Globe'
 import React from 'react'
 import { components, ValueContainerProps } from 'react-select'
+import { Globe } from 'components/icons/Globe'
 import { MarketSelectOption } from './MarketPicker'
 
 const GlobeIcon = styled(Globe)`

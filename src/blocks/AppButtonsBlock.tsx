@@ -1,6 +1,6 @@
+import React from 'react'
 import { AppButtons } from 'components/AppButtons/AppButtons'
 import { ContentWrapper, SectionWrapper } from 'components/blockHelpers'
-import React from 'react'
 import { BrandPivotBaseBlockProps } from './BaseBlockProps'
 
 export const AppButtonsBlock: React.FC<BrandPivotBaseBlockProps> = ({

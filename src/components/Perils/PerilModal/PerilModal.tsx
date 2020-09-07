@@ -1,11 +1,11 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
 
+import React, { useState, useEffect } from 'react'
 import { LAPTOP_BP_UP, TABLET_BP_UP } from 'components/blockHelpers'
 import { Chevron } from 'components/icons/Chevron'
 import { Cross } from 'components/icons/Cross'
 import { Modal, ModalProps } from 'components/Modal/Modal'
-import React, { useState, useEffect } from 'react'
 import { GlobalStory } from 'storyblok/StoryContainer'
 import { Peril } from '../types'
 

@@ -1,5 +1,6 @@
 import { css, keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
+import React from 'react'
 import {
   BrandPivotBaseBlockProps,
   MarkdownHtmlComponent,
@@ -11,7 +12,6 @@ import {
 } from 'components/ButtonBrandPivot/Button'
 import { FontSizes, Heading } from 'components/Heading/Heading'
 import { HedvigH } from 'components/icons/HedvigH'
-import React from 'react'
 import { TextPosition } from 'src/utils/textPosition'
 import { LinkComponent } from 'storyblok/StoryContainer'
 import { getStoryblokImage, getStoryblokLinkUrl, Image } from 'utils/storyblok'

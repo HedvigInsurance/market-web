@@ -1,9 +1,9 @@
-import { IMiddleware } from 'koa-router'
-import { redisClient } from 'server/utils/redis'
-import { Changefreq, createSitemap, Url } from 'sitemap'
-import { BodyStory } from 'storyblok/StoryContainer'
-import { Logger } from 'typescript-logging'
 import { promisify } from 'util'
+import { IMiddleware } from 'koa-router'
+import { Changefreq, createSitemap, Url } from 'sitemap'
+import { Logger } from 'typescript-logging'
+import { redisClient } from 'server/utils/redis'
+import { BodyStory } from 'storyblok/StoryContainer'
 import { State } from './middlewares/states'
 import {
   getAllStoryblokLinks,

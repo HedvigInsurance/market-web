@@ -1,6 +1,7 @@
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
+import React from 'react'
 import { BrandPivotBaseBlockProps } from 'blocks/BaseBlockProps'
 import {
   ContentWrapper,
@@ -10,7 +11,6 @@ import {
   TABLET_BP_UP,
 } from 'components/blockHelpers'
 import { ButtonLinkBrandPivot } from 'components/ButtonBrandPivot/Button'
-import React from 'react'
 
 const StyledSectionWrapper = styled(SectionWrapper)`
   color: ${colorsV3.gray900};
