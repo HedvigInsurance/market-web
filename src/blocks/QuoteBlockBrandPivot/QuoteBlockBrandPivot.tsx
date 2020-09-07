@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { fonts } from '@hedviginsurance/brand'
+import React from 'react'
 import {
   BrandPivotBaseBlockProps,
   MinimalColorComponent,
@@ -9,7 +10,6 @@ import {
   getMinimalColorStyles,
   SectionWrapper,
 } from 'components/blockHelpers'
-import React from 'react'
 
 export interface QuoteBlockProps extends BrandPivotBaseBlockProps {
   quotes: ReadonlyArray<{

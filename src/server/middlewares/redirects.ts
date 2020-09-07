@@ -1,7 +1,7 @@
 import { Middleware } from 'koa'
 import { IMiddleware } from 'koa-router'
-import { lookupCountry } from 'server/utils/ip2location'
 import { Logger } from 'typescript-logging'
+import { lookupCountry } from 'server/utils/ip2location'
 import { State } from './states'
 
 export const forceHost = ({

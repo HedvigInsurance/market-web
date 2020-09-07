@@ -26,6 +26,15 @@ module.exports = {
   plugins: ['import', 'react', '@typescript-eslint', 'prettier'],
   rules: {
     'import/no-named-as-default': 'off',
+    'import/order': ['error', {
+      'groups': [
+        'builtin',
+        'external',
+        ['internal', 'unknown'],
+        'parent',
+        'sibling',
+      ]
+    }],
     'react/prop-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',

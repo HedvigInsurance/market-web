@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
+import React from 'react'
 import { MOBILE_BP_UP } from 'components/blockHelpers'
 import { Select } from 'components/Select/Select'
-import React from 'react'
 import { getCurrentMarket, getMarketLabel } from 'utils/CurrentLocale'
 import { MarketOption } from './MarketOption'
 import { MarketValueContainer } from './MarketValueContainer'

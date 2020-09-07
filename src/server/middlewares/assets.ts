@@ -1,8 +1,8 @@
+import path from 'path'
 import Koa from 'koa'
 import mount from 'koa-mount'
 import proxy from 'koa-server-http-proxy'
 import koaStatic from 'koa-static'
-import path from 'path'
 
 export const configureAssets = (app: Koa) => {
   const rootDir = path.resolve(__dirname, '../../..')

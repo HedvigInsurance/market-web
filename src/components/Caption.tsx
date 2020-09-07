@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
-import { MarkdownHtmlComponent } from 'blocks/BaseBlockProps'
 import React from 'react'
+import { MarkdownHtmlComponent } from 'blocks/BaseBlockProps'
 import { MOBILE_BP_UP } from './blockHelpers'
 
 interface CaptionProps {

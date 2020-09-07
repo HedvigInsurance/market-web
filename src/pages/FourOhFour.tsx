@@ -1,7 +1,7 @@
-import { FooterBlock } from 'blocks/FooterBlock/FooterBlock'
-import { HeaderBlockBrandPivot } from 'blocks/HeaderBlockBrandPivot'
 import React from 'react'
 import { withRouter } from 'react-router'
+import { FooterBlock } from 'blocks/FooterBlock/FooterBlock'
+import { HeaderBlockBrandPivot } from 'blocks/HeaderBlockBrandPivot'
 import { FourOhFourBlock } from '../blocks/FourOhFourBlock'
 
 export const FourOhFourPage: React.ComponentType = withRouter(

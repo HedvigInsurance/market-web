@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
 import { colorsV2 } from '@hedviginsurance/brand'
+import Cookies from 'js-cookie'
+import React, { useState, useEffect } from 'react'
+import { useLocation } from 'react-router'
 import {
   CONTENT_GUTTER,
   CONTENT_MAX_WIDTH_DEPRECATED,
 } from 'components/blockHelpers'
-import Cookies from 'js-cookie'
-import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router'
 
 const OuterWrapper = styled('div')<{ visible: boolean; closing: boolean }>(
   ({ visible, closing }) => ({
