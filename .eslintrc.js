@@ -12,6 +12,7 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
     'prettier/react',
+    'plugin:import/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -22,7 +23,7 @@ module.exports = {
     },
     project: './tsconfig.json',
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  plugins: ['import', 'react', '@typescript-eslint', 'prettier'],
   rules: {
     'react/prop-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
@@ -37,6 +38,12 @@ module.exports = {
   settings: {
     react: {
       version: 'detect',
+    },
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      typescript: {},
     },
   },
 }
