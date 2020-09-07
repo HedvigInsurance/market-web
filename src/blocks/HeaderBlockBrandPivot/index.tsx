@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import { HedvigH } from 'components/icons/HedvigH'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { ContentWrapper, MOBILE_BP_DOWN } from '../../components/blockHelpers'
 import {
   ButtonLinkBrandPivot,
@@ -232,8 +232,8 @@ enum InverseColors {
 export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
   props,
 ) => {
-  const [isBelowThreshold, setIsBelowThreshold] = React.useState<boolean>(false)
-  const [buttonColor, setButtonColor] = React.useState<
+  const [isBelowThreshold, setIsBelowThreshold] = useState<boolean>(false)
+  const [buttonColor, setButtonColor] = useState<
     minimalColorComponentColors | undefined
   >(props.cta_color?.color)
 
@@ -252,7 +252,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     updateHeader()
     window.addEventListener('scroll', updateHeader)
 

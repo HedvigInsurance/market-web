@@ -5,7 +5,7 @@ import {
   CONTENT_MAX_WIDTH_DEPRECATED,
 } from 'components/blockHelpers'
 import Cookies from 'js-cookie'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router'
 
 const OuterWrapper = styled('div')<{ visible: boolean; closing: boolean }>(
@@ -64,9 +64,9 @@ const CloseButton = styled('button')({
 
 export const CookieConsent: React.FC = () => {
   const location = useLocation()
-  const [isVisible, setVisible] = React.useState(false)
-  const [isClosing, setIsClosing] = React.useState(false)
-  React.useEffect(() => {
+  const [isVisible, setVisible] = useState(false)
+  const [isClosing, setIsClosing] = useState(false)
+  useEffect(() => {
     if (!Cookies.get()._hvcookie) {
       setVisible(true)
     }
