@@ -40,6 +40,7 @@ interface Animateable {
 const AlignableContentWrapper = styled(ContentWrapper)<{
   textPosition: TextPosition
 }>(({ textPosition }) => ({
+  padding: '0 1rem',
   display: 'flex',
   position: 'relative',
   flexDirection:
