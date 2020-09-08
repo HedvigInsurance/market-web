@@ -1,7 +1,7 @@
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
-import React from 'react'
+import React, { useRef, useEffect } from 'react'
 import { createPortal } from 'react-dom'
 import { Cross } from '../icons/Cross'
 
@@ -118,7 +118,7 @@ const CloseButton = styled('button')`
 `
 
 export const Modal: React.FC<ModalProps> = (props) => {
-  const containerRef = React.useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
   const handleClick = (e: MouseEvent) => {
     if (
       containerRef.current &&
@@ -128,7 +128,7 @@ export const Modal: React.FC<ModalProps> = (props) => {
     }
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     document.addEventListener('mousedown', handleClick)
     return () => document.removeEventListener('mousedown', handleClick)
   }, [])

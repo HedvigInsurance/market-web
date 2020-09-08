@@ -1,8 +1,8 @@
 import { select, withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
 import { globalStoryMock } from 'utils/storybook'
-import { Perils } from './'
 import { TypeOfContract } from './types'
+import { Perils } from './'
 
 export default {
   title: 'Components/Perils/Perils',

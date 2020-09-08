@@ -1,6 +1,6 @@
 import { IMiddleware } from 'koa-router'
-import { BlogStory } from 'storyblok/StoryContainer'
 import { Logger } from 'typescript-logging'
+import { BlogStory } from 'storyblok/StoryContainer'
 import { getBlogPosts } from '../utils/storyblok'
 import { getCachedTeamtailorUsers } from '../utils/teamtailor'
 

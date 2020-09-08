@@ -1,6 +1,7 @@
 import { css, keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
+import React, { useEffect, useRef, useState } from 'react'
 import {
   BrandPivotBaseBlockProps,
   MarkdownHtmlComponent,
@@ -11,7 +12,6 @@ import {
   TABLET_BP_UP,
 } from 'components/blockHelpers'
 import { Caption } from 'components/Caption'
-import React, { useEffect, useRef, useState } from 'react'
 import { Image } from 'utils/storyblok'
 
 const StyledContentWrapper = styled(ContentWrapper)`
