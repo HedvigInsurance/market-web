@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
+import React from 'react'
 import {
   LAPTOP_BP_UP,
   MOBILE_BP_UP,
   TABLET_BP_UP,
 } from 'components/blockHelpers'
 import { PerilIcon } from 'components/Perils/types'
-import React from 'react'
 import { minimalColorComponentColors } from 'src/blocks/BaseBlockProps'
 import { useIcon } from '../data/useIcon'
 

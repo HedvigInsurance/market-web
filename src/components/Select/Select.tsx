@@ -1,9 +1,9 @@
-import { minimalColorComponentColors } from 'blocks/BaseBlockProps'
 import React from 'react'
 import ReactSelect, {
   Props as ReactSelectProps,
   StylesConfig,
 } from 'react-select'
+import { minimalColorComponentColors } from 'blocks/BaseBlockProps'
 import { getMinimalColorStyles } from '../blockHelpers'
 import { DropdownIndicator } from './components/DropdownIndicator'
 

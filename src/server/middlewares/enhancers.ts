@@ -1,5 +1,5 @@
-import * as Sentry from '@sentry/node'
 import https from 'https'
+import * as Sentry from '@sentry/node'
 import { Middleware } from 'koa'
 import { IMiddleware, RouterContext } from 'koa-router'
 import { LFService } from 'typescript-logging'
