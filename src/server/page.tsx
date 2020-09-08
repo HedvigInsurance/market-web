@@ -88,7 +88,7 @@ const template = ({
     <div id="react-root">${body}</div>
       <script nonce="${nonce}">
       window.__INITIAL_STATE__ = ${JSON.stringify(initialState).replace(
-        '\u2028',
+        /\u2028/g,
         ' ',
       )};
       window.PUBLIC_HOST = ${JSON.stringify(process.env.PUBLIC_HOST || '')};
