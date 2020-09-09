@@ -127,6 +127,13 @@ export interface GlobalStory extends Story {
   }
 }
 
+export interface DatasourceEntry {
+  id: string
+  name: string
+  value: string
+  dimension_value: null | string
+}
+
 export interface GlobalStoryContainerProps {
   children: (props: { globalStory: GlobalStory }) => React.ReactNode
 }
