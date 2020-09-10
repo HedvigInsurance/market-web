@@ -31,5 +31,10 @@ export const startPageRedirect: IMiddleware<object> = async (ctx) => {
     return
   }
 
+  if (country === 'DK') {
+    ctx.redirect(`/dk${queryStringMaybe}`)
+    return
+  }
+
   ctx.redirect(`/se${queryStringMaybe}`)
 }
