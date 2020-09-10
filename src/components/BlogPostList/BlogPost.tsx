@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { colors } from '@hedviginsurance/brand'
-import { DeferredImage } from 'components/DeferredImage'
 import React from 'react'
+import { DeferredImage } from 'components/DeferredImage'
 import { BlogStory } from '../../storyblok/StoryContainer'
 import { findAuthor } from '../../utils/author'
 import { getStoryblokImage } from '../../utils/storyblok'

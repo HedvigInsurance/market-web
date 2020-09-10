@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import React from 'react'
+import React, { createRef, PureComponent } from 'react'
 import VisibilitySensor from 'react-visibility-sensor'
 
 const Video = styled('video')({
@@ -25,7 +25,7 @@ const stateHasRef = (
 ): state is { ref: React.RefObject<HTMLVideoElement> } =>
   Boolean(typeof state.ref === 'object' && state.ref && state.ref.current)
 
-export class DeferredVideo extends React.PureComponent<
+export class DeferredVideo extends PureComponent<
   React.DetailedHTMLProps<
     React.VideoHTMLAttributes<HTMLVideoElement>,
     HTMLVideoElement
@@ -35,7 +35,7 @@ export class DeferredVideo extends React.PureComponent<
   public state: State = {
     width: undefined,
     height: undefined,
-    ref: React.createRef<any>(),
+    ref: createRef<any>(),
   }
 
   public render() {

@@ -1,7 +1,5 @@
 import styled from '@emotion/styled'
-import format from 'date-fns/format'
-import svLocale from 'date-fns/locale/sv'
-import parse from 'date-fns/parse'
+import svLocale, { format, parse } from 'date-fns'
 import React from 'react'
 import { User } from '../server/utils/teamtailor'
 import { DeferredImage } from './DeferredImage'

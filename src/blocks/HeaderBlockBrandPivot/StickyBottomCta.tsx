@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 interface Hidable {
   isVisible: boolean
@@ -48,9 +48,9 @@ export const StickyBottomCta: React.FC<{ isVisible: boolean }> = ({
   children,
   isVisible,
 }) => {
-  const [reallyIsVisible, setReallyIsVisible] = React.useState(false)
-  const [displayNone, setDisplayNone] = React.useState(false)
-  React.useEffect(
+  const [reallyIsVisible, setReallyIsVisible] = useState(false)
+  const [displayNone, setDisplayNone] = useState(false)
+  useEffect(
     avoidDisplayNoneGlitch(setReallyIsVisible, setDisplayNone, isVisible),
     [isVisible],
   )

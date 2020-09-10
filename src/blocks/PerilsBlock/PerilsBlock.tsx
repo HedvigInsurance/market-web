@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import React, { useState } from 'react'
 import { BrandPivotBaseBlockProps } from 'blocks/BaseBlockProps'
 import {
   ContentWrapper as OriginalContentWrapper,
@@ -8,7 +9,6 @@ import { ContextContainer } from 'components/containers/ContextContainer'
 import { Perils } from 'components/Perils'
 import { TypeOfContract } from 'components/Perils/types'
 import { Select } from 'components/Select/Select'
-import React, { useState } from 'react'
 import { GlobalStoryContainer } from 'storyblok/StoryContainer'
 
 export interface ContractOption {

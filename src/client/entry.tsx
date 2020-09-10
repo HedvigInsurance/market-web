@@ -2,12 +2,12 @@ import utm from '@segment/utm-params'
 import { Provider } from 'constate'
 import Cookies from 'js-cookie'
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { hydrate } from 'react-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter } from 'react-router-dom'
 import { HotApp } from '../App'
 
-ReactDOM.hydrate(
+hydrate(
   <Provider initialState={{ ...(window as any).__INITIAL_STATE__ }}>
     <BrowserRouter>
       <HelmetProvider>

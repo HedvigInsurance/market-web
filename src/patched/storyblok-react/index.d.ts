@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 export interface SbEditableContent {
   _uid: string
   _editable?: string
@@ -8,7 +8,7 @@ export interface SbEditableContent {
 interface SbEditableProps {
   content: SbEditableContent
 }
-declare class SbEditable extends React.Component<SbEditableProps, {}> {
+declare class SbEditable extends Component<SbEditableProps, {}> {
   constructor(props: SbEditableProps)
   public componentDidMount(): void
   public render(): React.ReactNode

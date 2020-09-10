@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
+import React from 'react'
 import { AppButtons } from 'components/AppButtons/AppButtons'
 import {
   CONTENT_GUTTER,
@@ -11,7 +12,6 @@ import {
 import { ContextContainer } from 'components/containers/ContextContainer'
 import { HedvigH } from 'components/icons/HedvigH'
 import { StarRating } from 'components/icons/StarRating'
-import React from 'react'
 import { GlobalStory, GlobalStoryContainer } from 'storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from 'utils/storyblok'
 import { BrandPivotBaseBlockProps } from '../BaseBlockProps'
