@@ -68,7 +68,7 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Terms and conditions - hyresratt and bostadsratt
   [
     '/villkor/villkor/hyresratt.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-hyresratt-2020-08.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-hyresratt-2020-08-v2.pdf',
     302,
   ],
   [
@@ -78,7 +78,7 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   ],
   [
     '/villkor/villkor/bostadsratt.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-bostadsratt-2020-05-v2.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-bostadsratt-2020-08.pdf',
     302,
   ],
   [
@@ -110,7 +110,7 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Terms and conditions - students
   [
     '/villkor/villkor/hyresratt-student.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-student-hyresratt-2020-07.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-student-hyresratt-2020-08.pdf',
     302,
   ],
   [
@@ -120,7 +120,7 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   ],
   [
     '/villkor/villkor/bostadsratt-student.pdf',
-    'https://cdn.hedvig.com/info/forsakringsvillkor-student-bostadsratt-2020-07.pdf',
+    'https://cdn.hedvig.com/info/forsakringsvillkor-student-bostadsratt-2020-08.pdf',
     302,
   ],
   [
@@ -174,7 +174,7 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
   // Terms and conditions - norway - Home Content
   [
     '/no/villkar/villkar/innbo.pdf',
-    'https://cdn.hedvig.com/info/innbo-vilkar-2020-07.pdf',
+    'https://cdn.hedvig.com/info/innbo-vilkar-2020-08.pdf',
     302,
   ],
   [
