@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { minimalColorComponentColors } from 'src/blocks/BaseBlockProps'
 import { GlobalStory } from 'storyblok/StoryContainer'
 import { getLocaleIsoCode } from 'utils/CurrentLocale'
@@ -22,8 +22,8 @@ export const Perils: React.FC<Props> = ({
 }) => {
   const localeIsoCode = getLocaleIsoCode(currentLocale)
   const perils = usePerils(insuranceType, localeIsoCode)
-  const [isShowingPeril, setIsShowingPeril] = React.useState(false)
-  const [currentPeril, setCurrentPeril] = React.useState(0)
+  const [isShowingPeril, setIsShowingPeril] = useState(false)
+  const [currentPeril, setCurrentPeril] = useState(0)
 
   return (
     <>

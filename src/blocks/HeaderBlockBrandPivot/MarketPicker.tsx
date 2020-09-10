@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
+import React, { useState } from 'react'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import { Chevron } from 'components/icons/Chevron'
 import { Cross } from 'components/icons/Cross'
 import { Norway } from 'components/icons/flags/Norway'
 import { Sweden } from 'components/icons/flags/Sweden'
 import { Globe } from 'components/icons/Globe'
-import React, { useState } from 'react'
 import { getMarketLocale } from 'utils/CurrentLocale'
 import { TABLET_BP_UP } from './mobile'
 

@@ -1,11 +1,11 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
 
+import React, { useState, useEffect } from 'react'
 import { LAPTOP_BP_UP, TABLET_BP_UP } from 'components/blockHelpers'
 import { Chevron } from 'components/icons/Chevron'
 import { Cross } from 'components/icons/Cross'
 import { Modal, ModalProps } from 'components/Modal/Modal'
-import React from 'react'
 import { GlobalStory } from 'storyblok/StoryContainer'
 import { Peril } from '../types'
 
@@ -132,8 +132,8 @@ const CoverageListItem = styled.div`
 `
 
 export const PerilModal: React.FC<PerilModalProps & ModalProps> = (props) => {
-  const [actionsAllowed, setActionsAllowed] = React.useState(true)
-  React.useEffect(() => {
+  const [actionsAllowed, setActionsAllowed] = useState(true)
+  useEffect(() => {
     const isBelowBoundary = props.currentPerilIndex < props.perils.length
     const isAboveBoundary = props.currentPerilIndex > props.perils.length * 2
 

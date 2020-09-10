@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
+import React from 'react'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import { Claims } from 'components/illustrations/Claims'
-import React from 'react'
 import {
   ContentWrapper,
   LAPTOP_BP_UP,

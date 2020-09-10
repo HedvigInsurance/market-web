@@ -1,4 +1,7 @@
 import styled from '@emotion/styled'
+import { Container } from 'constate'
+import React from 'react'
+import AnimateHeight from 'react-animate-height'
 import {
   BrandPivotBaseBlockProps,
   MarkdownHtmlComponent,
@@ -9,9 +12,6 @@ import {
   TABLET_BP_UP,
 } from 'components/blockHelpers'
 import { PlusBrandPivot } from 'components/icons/PlusBrandPivot'
-import { Container } from 'constate'
-import React from 'react'
-import AnimateHeight from 'react-animate-height'
 
 interface AccordionProps {
   _uid: string

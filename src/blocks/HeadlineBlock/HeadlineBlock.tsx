@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import React from 'react'
 import { BrandPivotBaseBlockProps } from 'blocks/BaseBlockProps'
 import {
   ContentWrapper,
@@ -7,7 +8,6 @@ import {
 } from 'components/blockHelpers'
 import { FontSizes, Heading } from 'components/Heading/Heading'
 import { HedvigH } from 'components/icons/HedvigH'
-import React from 'react'
 import { TextPosition } from 'utils/textPosition'
 
 interface HeadlineBlockProps extends BrandPivotBaseBlockProps {

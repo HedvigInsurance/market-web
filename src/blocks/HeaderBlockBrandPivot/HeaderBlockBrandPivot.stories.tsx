@@ -4,8 +4,8 @@ import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
 import StoryRouter from 'storybook-react-router'
 import { globalStoryMock, link, minimalColorMap } from 'utils/storybook'
-import { Header } from '.'
 import { HeroBlock } from '../HeroBlock/HeroBlock'
+import { Header } from '.'
 
 export default {
   title: 'Blocks/HeaderBlock',

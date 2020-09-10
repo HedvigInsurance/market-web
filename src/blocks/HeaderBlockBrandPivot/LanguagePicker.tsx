@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
-import { MOBILE_BP_UP } from 'components/blockHelpers'
 import React from 'react'
+import { MOBILE_BP_UP } from 'components/blockHelpers'
 import { getCurrentMarket } from 'utils/CurrentLocale'
 import { TABLET_BP_UP } from './mobile'
 

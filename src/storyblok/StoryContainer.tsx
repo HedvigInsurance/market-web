@@ -1,5 +1,5 @@
 import { Container } from 'constate'
-import React from 'react'
+import React, { PureComponent } from 'react'
 import { BaseBlockProps, MarkdownHtmlComponent } from '../blocks/BaseBlockProps'
 import { ErrorBlock } from '../components/blockHelpers'
 import { Image } from '../utils/storyblok'
@@ -153,9 +153,9 @@ export interface StoryContainerProps<TStoryType extends Story> {
   children: (props: WithStory<TStoryType>) => React.ReactNode
 }
 
-export class StoryContainer<
-  TStoryType extends Story
-> extends React.PureComponent<StoryContainerProps<TStoryType>> {
+export class StoryContainer<TStoryType extends Story> extends PureComponent<
+  StoryContainerProps<TStoryType>
+> {
   private timeout: number | undefined
   public componentDidMount() {
     const update = () => {
