@@ -24,7 +24,6 @@ export const LAPTOP_BP_UP = '@media (min-width: 1024px)'
 export const GIANT_BP_UP = '@media (min-width: 1700px)'
 
 export const SITE_MAX_WIDTH = {
-  // TODO: Decide whether it's a good idea to have this kind of global styling variables here (or at all)
   maxWidth: '100%',
 }
 
