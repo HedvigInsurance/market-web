@@ -2,6 +2,7 @@ import { Middleware } from 'koa'
 import { IMiddleware } from 'koa-router'
 import { Logger } from 'typescript-logging'
 import { lookupCountry } from 'server/utils/ip2location'
+import { getDatasourceEntries } from 'server/utils/storyblok'
 import { State } from './states'
 
 export const forceHost = ({
@@ -32,4 +33,27 @@ export const startPageRedirect: IMiddleware<object> = async (ctx) => {
   }
 
   ctx.redirect(`/se${queryStringMaybe}`)
+}
+
+export const manualRedirects: IMiddleware<State, any> = async (ctx, next) => {
+  const permanentRedirects = await getDatasourceEntries('permanent-redirects')
+  const temporaryRedirects = await getDatasourceEntries('temporary-redirects')
+
+  permanentRedirects.datasource_entries.map((redirect) => {
+    if (redirect.name === ctx.request.originalUrl) {
+      ctx.redirect(redirect.value)
+      ctx.status = 301
+      return
+    }
+  })
+
+  temporaryRedirects.datasource_entries.map((redirect) => {
+    if (redirect.name === ctx.originalUrl) {
+      ctx.redirect(redirect.value)
+      ctx.status = 302
+      return
+    }
+  })
+
+  await next()
 }

@@ -2,7 +2,6 @@ import React from 'react'
 import { BlogPostsPage } from './pages/BlogPostsPage'
 import { BlogPostsTagPage } from './pages/BlogPostsTagPage'
 import { PageFork } from './pages/PageFork'
-import { getDatasourceEntries } from './server/utils/storyblok'
 
 export interface Route {
   path: string
@@ -238,10 +237,3 @@ export const redirects: ReadonlyArray<[string, string, number]> = [
     302,
   ],
 ]
-
-export const getRedirects = async () => {
-  return await Promise.all([
-    getDatasourceEntries('permanent-redirects'),
-    getDatasourceEntries('temporary-redirects'),
-  ])
-}
