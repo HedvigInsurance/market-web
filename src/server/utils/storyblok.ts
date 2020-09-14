@@ -5,7 +5,6 @@ import {
   BlogStory,
   BodyStory,
   GlobalStory,
-  Story,
 } from '../../storyblok/StoryContainer'
 import { config } from '../config'
 import { appLogger } from '../logging'
@@ -75,44 +74,20 @@ export const getGlobalStory = async (
   bypassCache?: boolean,
 ): Promise<{ story: GlobalStory } | undefined> => {
   const uri = encodeURI(`/v1/cdn/stories/${locale}/global`)
+  const axiosParams = {
+    params: {
+      token: config.storyblokApiToken,
+      find_by: 'slug',
+      cv: calculateCacheVersionTimestamp(new Date()),
+    },
+  }
   const result = await cachedGet<{ story: GlobalStory }>(
     uri,
-    [
-      uri,
-      {
-        params: {
-          token: config.storyblokApiToken,
-          find_by: 'slug',
-          cv: calculateCacheVersionTimestamp(new Date()),
-        },
-      },
-    ],
+    [uri, axiosParams],
     bypassCache,
   )
-  return result && result.data && result.data
-}
 
-export const getLangFromPath = (path: string) => {
-  switch (true) {
-    case /^\/se($|\/.*)/.test(path):
-      return 'se'
-    case /^\/se-en($|\/.*)/.test(path):
-      return 'se-en'
-    case /^\/no($|\/.*)/.test(path):
-      return 'no'
-    case /^\/no-en($|\/.*)/.test(path):
-      return 'no-en'
-    case /^\/en($|\/.*)/.test(path):
-      return 'en'
-    case /^\/sv($|\/.*)/.test(path):
-      return 'sv'
-    default:
-      return null
-  }
-}
-
-const sanitizeStorySlug = (story: Story) => {
-  story.full_slug = story.full_slug.replace(/^sv(\/|$)/, '$1')
+  return result?.data
 }
 
 export const getPublishedStoryFromSlug = async (
@@ -134,25 +109,6 @@ export const getPublishedStoryFromSlug = async (
     ],
     bypassCache,
   )
-
-  const component =
-    result.data && result.data.story && result.data.story.content.component
-  const isPublic =
-    result.data && result.data.story && result.data.story.content.public
-
-  if (
-    (component === 'page' && !isPublic) ||
-    path === '/sv' ||
-    path.startsWith('/sv/')
-  ) {
-    const err: any = new Error()
-    err.response = { status: 404 }
-    throw err
-  }
-
-  if (result.data && result.data.story) {
-    sanitizeStorySlug(result.data.story)
-  }
 
   return result.data
 }

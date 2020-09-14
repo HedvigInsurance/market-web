@@ -179,7 +179,7 @@ export const MarketPicker: React.FC<MarketPickerProps> = ({
         <MarketPickerContainer transparent={transparent}>
           <MarketPickerToggle onClick={toggleHandler}>
             <Globe size="1.5rem" />
-            <span>{getMarketLocale(context.lang)}</span>
+            <span>{getMarketLocale(context.locale)}</span>
             <Chevron />
           </MarketPickerToggle>
           <MarketPickerWrapper isOpen={openMarketPicker} inverse={inverse}>

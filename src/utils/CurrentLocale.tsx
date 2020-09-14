@@ -77,6 +77,7 @@ export const getHreflangIsoCode = (locale: string) => {
   }
 }
 
+// TODO: get locale from globalpost
 export const getHtmlLang = (locale: string) => {
   switch (locale) {
     case 'se':

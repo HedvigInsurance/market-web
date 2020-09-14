@@ -62,7 +62,7 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
                   <Perils
                     color={color?.color}
                     insuranceType={currentInsurance}
-                    currentLocale={context.lang}
+                    currentLocale={context.locale}
                     story={globalStory}
                   />
                 )}

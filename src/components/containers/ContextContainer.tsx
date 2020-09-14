@@ -2,7 +2,7 @@ import { Container } from 'constate'
 import React from 'react'
 
 interface Context {
-  lang: string
+  locale: string
 }
 
 export const ContextContainer: React.FunctionComponent<{

@@ -13,7 +13,7 @@ const MarketSelect = styled(Select)`
 `
 
 interface MarketPickerProps {
-  currentLanguage: string
+  currentLocale: string
 }
 
 export interface MarketSelectOption {
@@ -22,10 +22,10 @@ export interface MarketSelectOption {
 }
 
 export const MarketPicker: React.FC<MarketPickerProps> = ({
-  currentLanguage,
+  currentLocale,
 }) => {
-  const marketLabel = getMarketLabel(currentLanguage)
-  const activeMarket = getCurrentMarket(currentLanguage)
+  const marketLabel = getMarketLabel(currentLocale)
+  const activeMarket = getCurrentMarket(currentLocale)
   return (
     <MarketSelect
       color="standard-inverse"

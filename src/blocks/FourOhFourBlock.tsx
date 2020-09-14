@@ -74,6 +74,7 @@ export const FourOhFourBlock: React.FunctionComponent = () => (
           </IllustrationWrapper>
           <Title>
             {(() => {
+              // TODO get copy from global post
               switch (context.lang) {
                 case 'se':
                   return 'Oj! Här fanns inget.'
