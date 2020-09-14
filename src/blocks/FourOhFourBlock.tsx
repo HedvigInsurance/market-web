@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import React from 'react'
-import { ContextContainer } from 'components/containers/ContextContainer'
 import { Claims } from 'components/illustrations/Claims'
+import { GlobalStoryContainer } from 'storyblok/StoryContainer'
 import {
   ContentWrapper,
   LAPTOP_BP_UP,
@@ -57,38 +57,25 @@ const Illustration = styled.div`
 `
 
 export const FourOhFourBlock: React.FunctionComponent = () => (
-  <ContextContainer>
-    {(context) => (
-      <SectionWrapper
-        colorComponent={{
-          _uid: '404',
-          color: 'standard-inverse',
-          plugin: 'hedvig_minimal_color_picker',
+  <SectionWrapper
+    colorComponent={{
+      _uid: '404',
+      color: 'standard-inverse',
+      plugin: 'hedvig_minimal_color_picker',
+    }}
+  >
+    <ContentWrapper>
+      <IllustrationWrapper>
+        <Illustration>
+          <Claims />
+        </Illustration>
+      </IllustrationWrapper>
+
+      <GlobalStoryContainer>
+        {(story) => {
+          return <Title>{story.globalStory.content.four_oh_four_title}</Title>
         }}
-      >
-        <ContentWrapper>
-          <IllustrationWrapper>
-            <Illustration>
-              <Claims />
-            </Illustration>
-          </IllustrationWrapper>
-          <Title>
-            {(() => {
-              // TODO get copy from global post
-              switch (context.lang) {
-                case 'se':
-                  return 'Oj! Här fanns inget.'
-
-                case 'no':
-                  return 'Ups! Her finnes ikke noe.'
-
-                default:
-                  return "Oops! There's nothing here."
-              }
-            })()}
-          </Title>
-        </ContentWrapper>
-      </SectionWrapper>
-    )}
-  </ContextContainer>
+      </GlobalStoryContainer>
+    </ContentWrapper>
+  </SectionWrapper>
 )
