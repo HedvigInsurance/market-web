@@ -4,9 +4,6 @@
     "USE_AUTH": "true",
     "USE_HELMET": "true",
     "SYNC_STORYBLOK_ON_RELEASE": "false",
-    "TEAMTAILOR_API_TOKEN": {
-      "required": true
-    },
     "STORYBLOK_MANAGEMENT_TOKEN": {
       "required": true
     },

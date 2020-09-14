@@ -26,14 +26,10 @@ import {
   startPageRedirect,
   manualRedirects,
 } from './middlewares/redirects'
-import { addTeamtailorUsersToState, State } from './middlewares/states'
+import { State } from './middlewares/states'
 import { getPageMiddleware } from './page'
 import { sitemapXml } from './sitemap'
 import { nukeCache } from './utils/storyblok'
-import {
-  getCachedTeamtailorUsers,
-  initializeTeamtailorUsers,
-} from './utils/teamtailor'
 
 Sentry.init({
   ...sentryConfig(),
@@ -121,8 +117,6 @@ router.post('/_report-csp-violation', (ctx) => {
 })
 
 router.get('/sitemap.xml', sitemapXml)
-router.use('/about-us', addTeamtailorUsersToState)
-router.use('/en/about-us', addTeamtailorUsersToState)
 routes.forEach((route) => {
   router.get(route.path, getPageMiddleware(Boolean(route.ignoreStoryblokMiss)))
 })
@@ -130,26 +124,6 @@ router.post('/_nuke-cache', nukeCache)
 
 app.use(router.middleware())
 
-getCachedTeamtailorUsers()
-  .then(async (users) => {
-    if (users.length === 0) {
-      appLogger.info(
-        'No teamtailor users found in cache, waiting for initialization to complete before starting server',
-      )
-      return initializeTeamtailorUsers() // wait for promise to complete before continuing
-    } else {
-      appLogger.info(
-        'Teamtailor users found in cache, starting server while refreshing cache',
-      )
-      initializeTeamtailorUsers() // ignore promise since we want to start even if we're timing out TT users
-      return users
-    }
-  })
-  .catch(() => {
-    appLogger.error('Failed to fetch teamtailor users, ignoring')
-  })
-  .then(() => {
-    app.listen(getPort(), () => {
-      appLogger.info(`Server started 🚀 listening on port ${getPort()}`)
-    })
-  })
+app.listen(getPort(), () => {
+  appLogger.info(`Server started 🚀 listening on port ${getPort()}`)
+})
