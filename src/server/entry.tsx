@@ -26,12 +26,7 @@ import {
   startPageRedirect,
   manualRedirects,
 } from './middlewares/redirects'
-import {
-  addBlogPostsToState,
-  addTagBlogPostsToState,
-  addTeamtailorUsersToState,
-  State,
-} from './middlewares/states'
+import { addTeamtailorUsersToState, State } from './middlewares/states'
 import { getPageMiddleware } from './page'
 import { sitemapXml } from './sitemap'
 import { nukeCache } from './utils/storyblok'
@@ -126,11 +121,8 @@ router.post('/_report-csp-violation', (ctx) => {
 })
 
 router.get('/sitemap.xml', sitemapXml)
-router.use('/blog', addBlogPostsToState)
-router.use('/blog', addTeamtailorUsersToState)
 router.use('/about-us', addTeamtailorUsersToState)
 router.use('/en/about-us', addTeamtailorUsersToState)
-router.use('/blog/tags/:tag', addTagBlogPostsToState)
 routes.forEach((route) => {
   router.get(route.path, getPageMiddleware(Boolean(route.ignoreStoryblokMiss)))
 })
