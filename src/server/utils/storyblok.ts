@@ -197,7 +197,7 @@ export const getDatasourceEntries = async (
   datasource: string,
   bypassCache?: boolean,
 ) => {
-  const uri = encodeURI(`/v1/cdn/datasource_entries`)
+  const uri = encodeURI(`/v1/cdn/datasource_entries?datasource=${datasource}`)
   const result = await cachedGet<{
     datasource_entries: DatasourceEntry[]
   }>(
@@ -207,7 +207,6 @@ export const getDatasourceEntries = async (
       {
         params: {
           token: config.storyblokApiToken,
-          datasource: datasource,
           per_page: 1000,
           cv: calculateCacheVersionTimestamp(new Date()),
         },
