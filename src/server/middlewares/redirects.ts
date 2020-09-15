@@ -39,21 +39,25 @@ export const manualRedirects: IMiddleware<State, any> = async (ctx, next) => {
   const permanentRedirects = await getDatasourceEntries('permanent-redirects')
   const temporaryRedirects = await getDatasourceEntries('temporary-redirects')
 
-  permanentRedirects.datasource_entries.map((redirect) => {
-    if (redirect.name === ctx.request.originalUrl) {
-      ctx.redirect(redirect.value)
-      ctx.status = 301
-      return
-    }
-  })
+  const permanentRedirect = permanentRedirects.datasource_entries.find(
+    (redirect) => redirect.name === ctx.path,
+  )
 
-  temporaryRedirects.datasource_entries.map((redirect) => {
-    if (redirect.name === ctx.originalUrl) {
-      ctx.redirect(redirect.value)
-      ctx.status = 302
-      return
-    }
-  })
+  if (permanentRedirect) {
+    ctx.redirect(permanentRedirect.value)
+    ctx.status = 301
+    return
+  }
+
+  const temporaryRedirect = temporaryRedirects.datasource_entries.find(
+    (redirect) => redirect.name === ctx.path,
+  )
+
+  if (temporaryRedirect) {
+    ctx.redirect(temporaryRedirect.value)
+    ctx.status = 302
+    return
+  }
 
   await next()
 }
