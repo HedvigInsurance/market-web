@@ -44,7 +44,8 @@ export const manualRedirects: IMiddleware<State, any> = async (ctx, next) => {
   )
 
   if (permanentRedirect) {
-    ctx.redirect(permanentRedirect.value)
+    const queryStringMaybe = ctx.querystring ? '?' + ctx.querystring : ''
+    ctx.redirect(`${permanentRedirect.value}${queryStringMaybe}`)
     ctx.status = 301
     return
   }
@@ -54,7 +55,8 @@ export const manualRedirects: IMiddleware<State, any> = async (ctx, next) => {
   )
 
   if (temporaryRedirect) {
-    ctx.redirect(temporaryRedirect.value)
+    const queryStringMaybe = ctx.querystring ? '?' + ctx.querystring : ''
+    ctx.redirect(`${temporaryRedirect.value}${queryStringMaybe}`)
     ctx.status = 302
     return
   }
