@@ -10,7 +10,7 @@ import removeTrailingSlashes from 'koa-remove-trailing-slashes'
 import Router from 'koa-router'
 import { Logger } from 'typescript-logging'
 import { configureAssets } from 'server/middlewares/assets'
-import { redirects, routes } from '../routes'
+import { routes } from '../routes'
 import { config } from './config'
 import { sentryConfig } from './config/sentry'
 import { appLogger } from './logging'
@@ -21,7 +21,11 @@ import {
   setLoggerMiddleware,
   setRequestUuidMiddleware,
 } from './middlewares/enhancers'
-import { forceHost, startPageRedirect } from './middlewares/redirects'
+import {
+  forceHost,
+  startPageRedirect,
+  manualRedirects,
+} from './middlewares/redirects'
 import {
   addBlogPostsToState,
   addTagBlogPostsToState,
@@ -91,12 +95,7 @@ router.get('/:locale(se|se-en|no|no-en)/referrals/:code', async (ctx) => {
   ctx.status = 301
   ctx.redirect(`/${ctx.params.locale}/forever/${ctx.params.code}`)
 })
-redirects.forEach(([source, target, code]) => {
-  router.get(source, (ctx) => {
-    ctx.status = code
-    ctx.redirect(target)
-  })
-})
+router.use('/*', manualRedirects)
 app.use(
   proxy({
     host: 'https://a.storyblok.com',
