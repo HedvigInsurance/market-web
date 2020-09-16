@@ -6,6 +6,7 @@ import {
   BodyStory,
   GlobalStory,
   Story,
+  DatasourceEntry,
 } from '../../storyblok/StoryContainer'
 import { config } from '../config'
 import { appLogger } from '../logging'
@@ -190,6 +191,30 @@ export const getBlogPosts = (bypassCache: boolean, tag?: string) => {
     ],
     bypassCache,
   )
+}
+
+export const getDatasourceEntries = async (
+  datasource: string,
+  bypassCache?: boolean,
+) => {
+  const uri = encodeURI(`/v1/cdn/datasource_entries?datasource=${datasource}`)
+  const result = await cachedGet<{
+    datasource_entries: DatasourceEntry[]
+  }>(
+    uri,
+    [
+      uri,
+      {
+        params: {
+          token: config.storyblokApiToken,
+          per_page: 1000,
+          cv: calculateCacheVersionTimestamp(new Date()),
+        },
+      },
+    ],
+    bypassCache,
+  )
+  return result.data
 }
 
 export interface Link {
