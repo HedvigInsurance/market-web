@@ -70,10 +70,9 @@ export const FourOhFourBlock: React.FunctionComponent = () => (
           <Claims />
         </Illustration>
       </IllustrationWrapper>
-
       <GlobalStoryContainer>
-        {(story) => {
-          return <Title>{story.globalStory.content.four_oh_four_title}</Title>
+        {({ globalStory }) => {
+          return <Title>{globalStory.content.four_oh_four_title}</Title>
         }}
       </GlobalStoryContainer>
     </ContentWrapper>

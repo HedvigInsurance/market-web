@@ -16,7 +16,6 @@ import {
   getPublishedStoryFromSlug,
   getStoryblokEditorScript,
 } from 'server/utils/storyblok'
-import { getHtmlLang } from 'utils/CurrentLocale'
 import { App } from '../App'
 import { sentryConfig } from './config/sentry'
 import { favicons } from './utils/favicons'
@@ -40,7 +39,6 @@ interface Template {
   initialState: any
   dangerouslyExposeApiKeyToProvideEditing: boolean
   nonce: string
-  locale: string
 }
 
 const template = ({
@@ -49,10 +47,9 @@ const template = ({
   initialState,
   dangerouslyExposeApiKeyToProvideEditing,
   nonce,
-  locale,
 }: Template) => `
   <!doctype html>
-  <html lang="${getHtmlLang(locale)}">
+  <html lang="${initialState.globalStory.story.content.html_lang}">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -209,7 +206,6 @@ export const getPageMiddleware = (
 
   ctx.body = template({
     body,
-    locale,
     initialState,
     helmet: (helmetContext as FilledContext).helmet,
     dangerouslyExposeApiKeyToProvideEditing: ctx.request.query._storyblok,
