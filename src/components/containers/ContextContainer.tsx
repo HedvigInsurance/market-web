@@ -1,8 +1,9 @@
-import { Container } from 'constate'
 import React from 'react'
+import { Container } from 'constate'
+import { LocaleData } from '../../utils/CurrentLocale'
 
-interface Context {
-  locale: string
+type Context = {
+  currentLocale: LocaleData
 }
 
 export const ContextContainer: React.FunctionComponent<{

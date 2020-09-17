@@ -1,6 +1,6 @@
 import React from 'react'
 import { HrefLang, SeoContent, Story } from '../storyblok/StoryContainer'
-import { getHreflangIsoCode, HreflangLocale } from './CurrentLocale'
+import { getLocaleData, LocaleData } from './CurrentLocale'
 import { getPublicHost, getStoryblokImage } from './storyblok'
 
 interface Meta {
@@ -8,6 +8,7 @@ interface Meta {
   nonce?: string
   fullSlug?: string
   title?: string
+  currentLocale?: LocaleData
 }
 
 const removeTrailingSlash = (text: string) => text.replace(/\/+$/, '')
@@ -23,11 +24,18 @@ const getPageTitleFromStory = (story?: Story) => {
 }
 
 const getAlternateLang = (fullSlug: string) => {
-  const lang = fullSlug.substring(0, fullSlug.indexOf('/'))
-  return getHreflangIsoCode(lang)
+  const localeSlug = fullSlug.replace('/', '')
+  const marketLocale = getLocaleData(localeSlug as LocaleData['label'])
+  return marketLocale.hrefLang
 }
 
-export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
+export const getMeta = ({
+  story,
+  title,
+  nonce = '',
+  fullSlug,
+  currentLocale,
+}: Meta) => (
   <>
     {[
       <script type="application/ld+json" nonce={nonce} key="jsonld">
@@ -138,14 +146,8 @@ export const getMeta = ({ story, title, nonce = '', fullSlug }: Meta) => (
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <meta name="theme-color" content="#121212" />
-
-    {story &&
-    [HreflangLocale.EnNo, HreflangLocale.NoNo].includes(
-      getAlternateLang(story.full_slug),
-    ) ? (
-      <script defer src="https://cdn.adt387.com/jsTag?ap=1492109567"></script>
-    ) : (
-      <script defer src="https://adtr.io/jsTag?ap=1412531808"></script>
+    {currentLocale?.adtractionSrc && (
+      <script defer src={currentLocale.adtractionSrc}></script>
     )}
   </>
 )

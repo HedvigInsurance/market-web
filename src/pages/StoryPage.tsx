@@ -6,6 +6,7 @@ import { BaseBlockProps } from '../blocks/BaseBlockProps'
 import { FooterBlock } from '../blocks/FooterBlock/FooterBlock'
 import { BodyStory, StoryContainer } from '../storyblok/StoryContainer'
 import { getMeta } from '../utils/meta'
+import { ContextContainer } from '../components/containers/ContextContainer'
 
 const getBlocksOrDefault = (story: BodyStory) =>
   (story && story.content && story.content.body) ?? []
@@ -16,8 +17,11 @@ export const StoryPage: React.FunctionComponent<{ nonce?: string }> = ({
   <StoryContainer<BodyStory>>
     {({ story }) => (
       <>
-        <Helmet>{getMeta({ story, nonce })}</Helmet>
-
+        <ContextContainer>
+          {({ currentLocale }) => (
+            <Helmet>{getMeta({ story, nonce, currentLocale })}</Helmet>
+          )}
+        </ContextContainer>
         {getBlocksOrDefault(story!).map((block, index) => {
           const BlockComponent:
             | React.ComponentType<BaseBlockProps & any>

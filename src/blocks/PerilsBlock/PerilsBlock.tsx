@@ -47,7 +47,7 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
     <GlobalStoryContainer>
       {({ globalStory }) => (
         <ContextContainer>
-          {(context) => (
+          {({ currentLocale }) => (
             <SectionWrapper colorComponent={color} size={size} brandPivot>
               <ContentWrapper brandPivot index={index}>
                 {insurance_types.length > 1 && (
@@ -62,7 +62,7 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
                   <Perils
                     color={color?.color}
                     insuranceType={currentInsurance}
-                    currentLocale={context.locale}
+                    localeIsoCode={currentLocale.iso}
                     story={globalStory}
                   />
                 )}

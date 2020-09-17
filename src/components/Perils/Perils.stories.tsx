@@ -1,6 +1,7 @@
 import { select, withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
 import { globalStoryMock } from 'utils/storybook'
+import { locales, fallbackLocale } from '../../utils/CurrentLocale'
 import { TypeOfContract } from './types'
 import { Perils } from './'
 
@@ -30,11 +31,12 @@ const types: TypeOfContract[] = [
   'NO_TRAVEL_YOUTH',
 ]
 
-const locales = ['sv_SE', 'en_SE', 'nb_NO', 'en_NO']
+const localesArr = Object.values(locales)
+const localeIsoCodes = localesArr.map((obj) => obj.iso)
 
 export const Default = () => (
   <Perils
-    currentLocale={select('Language', locales, 'sv_SE')}
+    localeIsoCode={select('Language', localeIsoCodes, fallbackLocale.iso)}
     insuranceType={select('Type of insurance', types, 'SE_HOUSE')}
     story={globalStoryMock}
   />

@@ -17,6 +17,7 @@ import {
   getStoryblokEditorScript,
 } from 'server/utils/storyblok'
 import { App } from '../App'
+import { getLocaleData } from '../utils/CurrentLocale'
 import { sentryConfig } from './config/sentry'
 import { favicons } from './utils/favicons'
 
@@ -165,12 +166,14 @@ export const getPageMiddleware = (
     return
   }
 
+  const currentLocale = getLocaleData(locale)
+
   const serverApp = (
     <Provider
       initialState={{
         story,
         globalStory,
-        context: { locale },
+        context: { currentLocale },
         ...(ctx.state.additionalStates || {}),
       }}
     >
@@ -195,7 +198,7 @@ export const getPageMiddleware = (
   const initialState = {
     story,
     globalStory,
-    context: { locale },
+    context: { currentLocale },
     ...(ctx.state.additionalStates || {}),
   }
 

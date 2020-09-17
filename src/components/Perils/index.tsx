@@ -1,27 +1,27 @@
 import React, { useState } from 'react'
 import { minimalColorComponentColors } from 'src/blocks/BaseBlockProps'
 import { GlobalStory } from 'storyblok/StoryContainer'
-import { getLocaleIsoCode } from 'utils/CurrentLocale'
+import { LocaleData } from 'utils/CurrentLocale'
 import { usePerils } from './data/usePerils'
 import { PerilCollection } from './PerilCollection/PerilCollection'
 import { PerilModal } from './PerilModal/PerilModal'
 import { TypeOfContract } from './types'
 
-interface Props {
+type Props = {
   color?: minimalColorComponentColors
   insuranceType: TypeOfContract
-  currentLocale: string
+  localeIsoCode: LocaleData['iso']
   story: GlobalStory
 }
 
 export const Perils: React.FC<Props> = ({
   insuranceType,
-  currentLocale,
+  localeIsoCode,
   story,
   color = 'standard',
 }) => {
-  const localeIsoCode = getLocaleIsoCode(currentLocale)
   const perils = usePerils(insuranceType, localeIsoCode)
+
   const [isShowingPeril, setIsShowingPeril] = useState(false)
   const [currentPeril, setCurrentPeril] = useState(0)
 

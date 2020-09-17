@@ -260,7 +260,9 @@ export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
           <div>
             <ColumnHeader>{story.content.footer_market_title}</ColumnHeader>
             <ContextContainer>
-              {(context) => <MarketPicker currentLocale={context.locale} />}
+              {({ currentLocale }) => (
+                <MarketPicker currentLocale={currentLocale.label} />
+              )}
             </ContextContainer>
           </div>
         )}
