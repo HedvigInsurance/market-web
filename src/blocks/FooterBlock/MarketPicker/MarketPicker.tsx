@@ -2,7 +2,13 @@ import styled from '@emotion/styled'
 import React from 'react'
 import { MOBILE_BP_UP } from 'components/blockHelpers'
 import { Select } from 'components/Select/Select'
-import { getCurrentMarket, getMarketLabel } from 'utils/CurrentLocale'
+import {
+  getMarketsInLocalLang,
+  getMarketsInEnglish,
+  checkIsInEnglish,
+  locales,
+  LocaleData,
+} from 'utils/CurrentLocale'
 import { MarketOption } from './MarketOption'
 import { MarketValueContainer } from './MarketValueContainer'
 
@@ -13,7 +19,7 @@ const MarketSelect = styled(Select)`
 `
 
 interface MarketPickerProps {
-  currentLocale: string
+  currentLocale: LocaleData
 }
 
 export interface MarketSelectOption {
@@ -21,11 +27,31 @@ export interface MarketSelectOption {
   value: string
 }
 
+const getLocalesWithoutCurrent = (
+  locales: LocaleData[],
+  currentMarket: string,
+) => {
+  return locales.filter((locale) => locale.marketName !== currentMarket)
+}
+
 export const MarketPicker: React.FC<MarketPickerProps> = ({
   currentLocale,
 }) => {
-  const marketLabel = getMarketLabel(currentLocale)
-  const activeMarket = getCurrentMarket(currentLocale)
+  const currentMarket = currentLocale.marketName
+  const marketsInLocalLang = getMarketsInLocalLang(locales)
+  const marketsInLocalLangExceptCurrent = getLocalesWithoutCurrent(
+    marketsInLocalLang,
+    currentMarket,
+  )
+  const marketsInEnglish = getMarketsInEnglish(locales)
+  const marketsInEnglishExceptCurrent = getLocalesWithoutCurrent(
+    marketsInEnglish,
+    currentMarket,
+  )
+  const markets = checkIsInEnglish(currentLocale)
+    ? marketsInEnglishExceptCurrent
+    : marketsInLocalLangExceptCurrent
+
   return (
     <MarketSelect
       color="standard-inverse"
@@ -33,11 +59,14 @@ export const MarketPicker: React.FC<MarketPickerProps> = ({
         Option: MarketOption,
         ValueContainer: MarketValueContainer,
       }}
-      defaultValue={{ label: marketLabel[activeMarket], value: activeMarket }}
-      options={[
-        { label: marketLabel.se, value: 'se' },
-        { label: marketLabel.no, value: 'no' },
-      ]}
+      defaultValue={{
+        label: currentMarket,
+        value: currentLocale.marketLabel,
+      }}
+      options={markets.map(({ marketName, label }) => ({
+        label: marketName,
+        value: label,
+      }))}
     />
   )
 }

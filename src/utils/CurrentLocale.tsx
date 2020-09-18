@@ -1,23 +1,3 @@
-export const getCurrentMarket = (locale: string) => {
-  switch (locale) {
-    case 'no':
-    case 'no-en':
-      return 'no'
-    default:
-      return 'se'
-  }
-}
-
-export const getMarketLabel = (locale: string) => {
-  switch (locale) {
-    case 'no-en':
-    case 'se-en':
-      return { se: 'Sweden', no: 'Norway' }
-    default:
-      return { se: 'Sverige', no: 'Norge' }
-  }
-}
-
 type Label = string // format: 'se' / 'no-en'
 type IsoCode = string // format: 'sv_SE' / 'en_NO'
 type MarketLabel = string // format: 'se' / 'no'
@@ -35,7 +15,9 @@ export type LocaleData = {
   adtractionSrc?: string
 }
 
-export const locales: Record<Label, LocaleData> = {
+export type Locales = Record<Label, LocaleData>
+
+export const locales: Locales = {
   se: {
     label: 'se',
     iso: 'sv_SE',
@@ -98,6 +80,19 @@ export const getLocaleData = (label: LocaleData['label']): LocaleData => {
 
 export const getAssociatedLocales = (locale: LocaleData): LocaleData[] => {
   const currentMarket = locale.marketLabel
-  const localesArr = Object.values(locales)
-  return localesArr.filter(({ marketLabel }) => marketLabel === currentMarket)
+  return Object.values(locales).filter(
+    ({ marketLabel }) => marketLabel === currentMarket,
+  )
+}
+
+export const getMarketsInLocalLang = (localesObj: Locales) => {
+  return Object.values(localesObj).filter(({ langLabel }) => langLabel !== 'En')
+}
+
+export const getMarketsInEnglish = (localesObj: Locales) => {
+  return Object.values(localesObj).filter(({ langLabel }) => langLabel === 'En')
+}
+
+export const checkIsInEnglish = (locale: LocaleData) => {
+  return locale.langLabel === 'En'
 }
