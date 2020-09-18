@@ -85,14 +85,14 @@ export const getAssociatedLocales = (locale: LocaleData): LocaleData[] => {
   )
 }
 
+export const checkIsInEnglish = (locale: LocaleData): boolean => {
+  return locale.langLabel === 'En'
+}
+
 export const getMarketsInLocalLang = (localesObj: Locales) => {
-  return Object.values(localesObj).filter(({ langLabel }) => langLabel !== 'En')
+  return Object.values(localesObj).filter((locale) => !checkIsInEnglish(locale))
 }
 
 export const getMarketsInEnglish = (localesObj: Locales) => {
-  return Object.values(localesObj).filter(({ langLabel }) => langLabel === 'En')
-}
-
-export const checkIsInEnglish = (locale: LocaleData) => {
-  return locale.langLabel === 'En'
+  return Object.values(localesObj).filter((locale) => checkIsInEnglish(locale))
 }
