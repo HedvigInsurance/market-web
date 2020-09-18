@@ -21,14 +21,16 @@ export const getMarketLabel = (locale: string) => {
 type Label = string // format: 'se' / 'no-en'
 type IsoCode = string // format: 'sv_SE' / 'en_NO'
 type MarketLabel = string // format: 'se' / 'no'
-type MarketName = string // 'Sverige' / 'Norway'
+type MarketName = string // format: 'Sverige' / 'Norway'
+type LanguageLabel = string // format: 'Sv' / 'En'
 type HrefLang = string // format: 'sv-se' / 'en-no'
 
 export type LocaleData = {
   label: Label
   iso: IsoCode
   marketLabel: MarketLabel
-  name: MarketName
+  marketName: MarketName
+  langLabel: LanguageLabel
   hrefLang: HrefLang
   adtractionSrc?: string
 }
@@ -38,7 +40,8 @@ export const locales: Record<Label, LocaleData> = {
     label: 'se',
     iso: 'sv_SE',
     marketLabel: 'se',
-    name: 'Sverige',
+    marketName: 'Sverige',
+    langLabel: 'Sv',
     hrefLang: 'sv-se',
     adtractionSrc: 'https://adtr.io/jsTag?ap=1412531808',
   },
@@ -46,7 +49,8 @@ export const locales: Record<Label, LocaleData> = {
     label: 'se-en',
     iso: 'en_SE',
     marketLabel: 'se',
-    name: 'Sweden',
+    marketName: 'Sweden',
+    langLabel: 'En',
     hrefLang: 'en-se',
     adtractionSrc: 'https://adtr.io/jsTag?ap=1412531808',
   },
@@ -54,7 +58,8 @@ export const locales: Record<Label, LocaleData> = {
     label: 'no',
     iso: 'nb_NO',
     marketLabel: 'no',
-    name: 'Norge',
+    marketName: 'Norge',
+    langLabel: 'No',
     hrefLang: 'no-no',
     adtractionSrc: 'https://cdn.adt387.com/jsTag?ap=1492109567',
   },
@@ -62,7 +67,8 @@ export const locales: Record<Label, LocaleData> = {
     label: 'no-en',
     iso: 'en_NO',
     marketLabel: 'no',
-    name: 'Norway',
+    marketName: 'Norway',
+    langLabel: 'En',
     hrefLang: 'en-no',
     adtractionSrc: 'https://cdn.adt387.com/jsTag?ap=1492109567',
   },
@@ -70,14 +76,16 @@ export const locales: Record<Label, LocaleData> = {
     label: 'dk',
     iso: 'da_DK',
     marketLabel: 'dk',
-    name: 'Danmark',
+    marketName: 'Danmark',
+    langLabel: 'Da',
     hrefLang: 'da-dk',
   },
   'dk-en': {
     label: 'dk-en',
     iso: 'en_DK',
     marketLabel: 'dk',
-    name: 'Denmark',
+    marketName: 'Denmark',
+    langLabel: 'En',
     hrefLang: 'en-dk',
   },
 }
@@ -86,4 +94,10 @@ export const fallbackLocale = locales.se
 
 export const getLocaleData = (label: LocaleData['label']): LocaleData => {
   return locales[label] ?? fallbackLocale
+}
+
+export const getAssociatedLocales = (locale: LocaleData): LocaleData[] => {
+  const currentMarket = locale.marketLabel
+  const localesArr = Object.values(locales)
+  return localesArr.filter(({ marketLabel }) => marketLabel === currentMarket)
 }

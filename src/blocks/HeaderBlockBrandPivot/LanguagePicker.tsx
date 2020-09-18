@@ -1,11 +1,11 @@
 import styled from '@emotion/styled'
 import React from 'react'
 import { MOBILE_BP_UP } from 'components/blockHelpers'
-import { getCurrentMarket } from 'utils/CurrentLocale'
+import { getAssociatedLocales, LocaleData } from 'utils/CurrentLocale'
 import { TABLET_BP_UP } from './mobile'
 
 interface LanguagePickerProps {
-  currentLanguage: string
+  currentLocale: LocaleData
 }
 
 const MenuListItem = styled.li`
@@ -33,8 +33,9 @@ const Lang = styled.a<{ active: boolean }>`
   align-items: center;
   justify-content: space-between;
   text-decoration: none;
-  opacity: ${(props) => (props.active ? 1 : 0.5)};
+  opacity: ${({ active }) => (active ? 1 : 0.5)};
   transition: opacity 150ms;
+  pointer-events: ${({ active }) => (active ? 'none' : 'auto')};
 
   &:hover {
     opacity: 1;
@@ -62,32 +63,21 @@ const Lang = styled.a<{ active: boolean }>`
 `
 
 export const LanguagePicker: React.FC<LanguagePickerProps> = ({
-  currentLanguage,
+  currentLocale,
 }) => {
-  const market = getCurrentMarket(currentLanguage)
-  const isLocaleActive = (locale: string) => locale === currentLanguage
+  const associatedLocales: LocaleData[] = getAssociatedLocales(currentLocale)
+
   return (
     <MenuListItem>
-      {market === 'no' && (
-        <>
-          <Lang active={isLocaleActive('no')} href="/no">
-            No
-          </Lang>
-          <Lang active={isLocaleActive('no-en')} href="/no-en">
-            En
-          </Lang>
-        </>
-      )}
-      {market === 'se' && (
-        <>
-          <Lang active={isLocaleActive('se')} href="/se">
-            Sv
-          </Lang>
-          <Lang active={isLocaleActive('se-en')} href="/se-en">
-            En
-          </Lang>
-        </>
-      )}
+      {associatedLocales.map(({ label, langLabel }) => (
+        <Lang
+          key={label}
+          active={label === currentLocale.label}
+          href={'/' + label}
+        >
+          {langLabel}
+        </Lang>
+      ))}
     </MenuListItem>
   )
 }

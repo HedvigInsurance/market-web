@@ -328,9 +328,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
 
                       <ContextContainer>
                         {({ currentLocale }) => (
-                          <LanguagePicker
-                            currentLanguage={currentLocale.label}
-                          />
+                          <LanguagePicker currentLocale={currentLocale} />
                         )}
                       </ContextContainer>
 
