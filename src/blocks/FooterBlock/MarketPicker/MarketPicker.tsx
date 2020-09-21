@@ -8,7 +8,7 @@ import {
   checkIsInEnglish,
   locales,
   LocaleData,
-} from 'utils/CurrentLocale'
+} from 'utils/locales'
 import { MarketOption } from './MarketOption'
 import { MarketValueContainer } from './MarketValueContainer'
 

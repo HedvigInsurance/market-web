@@ -16,11 +16,10 @@ import {
   getPublishedStoryFromSlug,
   getStoryblokEditorScript,
 } from 'server/utils/storyblok'
+import { getLocaleData } from 'utils/locales'
 import { App } from '../App'
-import { getLocaleData } from '../utils/CurrentLocale'
 import { sentryConfig } from './config/sentry'
 import { favicons } from './utils/favicons'
-
 import { allTracking } from './utils/tracking'
 
 const scriptLocation =

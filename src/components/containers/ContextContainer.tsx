@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container } from 'constate'
-import { LocaleData } from '../../utils/CurrentLocale'
+import { LocaleData } from 'utils/locales'
 
 type Context = {
   currentLocale: LocaleData

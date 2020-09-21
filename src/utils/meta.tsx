@@ -1,6 +1,6 @@
 import React from 'react'
 import { HrefLang, SeoContent, Story } from '../storyblok/StoryContainer'
-import { getLocaleData, LocaleData } from './CurrentLocale'
+import { getLocaleData, LocaleData } from './locales'
 import { getPublicHost, getStoryblokImage } from './storyblok'
 
 interface Meta {

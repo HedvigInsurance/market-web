@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { LocaleData } from 'utils/CurrentLocale'
+import { LocaleData } from 'utils/locales'
 import { Peril, TypeOfContract } from '../types'
 
 export const usePerils = (
