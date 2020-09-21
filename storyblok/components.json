@@ -670,15 +670,10 @@
         },
         "locale": {
           "type": "section",
-          "keys": ["four_oh_four_title", "html_lang"]
+          "keys": ["four_oh_four_title"]
         },
         "four_oh_four_title": {
           "type": "text"
-        },
-        "html_lang": {
-          "type": "text",
-          "required": true,
-          "max_length": "2"
         }
       },
       "image": null,

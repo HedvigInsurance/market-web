@@ -3,6 +3,7 @@ type IsoCode = string // format: 'sv_SE' / 'en_NO'
 type MarketLabel = string // format: 'se' / 'no'
 type MarketName = string // format: 'Sverige' / 'Norway'
 type LanguageLabel = string // format: 'Sv' / 'En'
+type HtmlLang = string // format: 'sv' / 'en'
 type HrefLang = string // format: 'sv-se' / 'en-no'
 
 export type LocaleData = {
@@ -11,6 +12,7 @@ export type LocaleData = {
   marketLabel: MarketLabel
   marketName: MarketName
   langLabel: LanguageLabel
+  htmlLang: HtmlLang
   hrefLang: HrefLang
   adtractionSrc?: string
 }
@@ -24,6 +26,7 @@ export const locales: Locales = {
     marketLabel: 'se',
     marketName: 'Sverige',
     langLabel: 'Sv',
+    htmlLang: 'sv',
     hrefLang: 'sv-se',
     adtractionSrc: 'https://adtr.io/jsTag?ap=1412531808',
   },
@@ -33,6 +36,7 @@ export const locales: Locales = {
     marketLabel: 'se',
     marketName: 'Sweden',
     langLabel: 'En',
+    htmlLang: 'en',
     hrefLang: 'en-se',
     adtractionSrc: 'https://adtr.io/jsTag?ap=1412531808',
   },
@@ -42,6 +46,7 @@ export const locales: Locales = {
     marketLabel: 'no',
     marketName: 'Norge',
     langLabel: 'No',
+    htmlLang: 'no',
     hrefLang: 'no-no',
     adtractionSrc: 'https://cdn.adt387.com/jsTag?ap=1492109567',
   },
@@ -51,6 +56,7 @@ export const locales: Locales = {
     marketLabel: 'no',
     marketName: 'Norway',
     langLabel: 'En',
+    htmlLang: 'en',
     hrefLang: 'en-no',
     adtractionSrc: 'https://cdn.adt387.com/jsTag?ap=1492109567',
   },
@@ -60,6 +66,7 @@ export const locales: Locales = {
     marketLabel: 'dk',
     marketName: 'Danmark',
     langLabel: 'Da',
+    htmlLang: 'da',
     hrefLang: 'da-dk',
   },
   'dk-en': {
@@ -68,6 +75,7 @@ export const locales: Locales = {
     marketLabel: 'dk',
     marketName: 'Denmark',
     langLabel: 'En',
+    htmlLang: 'en',
     hrefLang: 'en-dk',
   },
 }

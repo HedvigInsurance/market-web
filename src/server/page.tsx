@@ -49,7 +49,7 @@ const template = ({
   nonce,
 }: Template) => `
   <!doctype html>
-  <html lang="${initialState.globalStory.story.content.html_lang}">
+  <html lang="${initialState.context.currentLocale.htmlLang}">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
