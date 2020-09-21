@@ -1,7 +1,10 @@
 import { Middleware } from 'koa'
 import { IMiddleware } from 'koa-router'
 import { Logger } from 'typescript-logging'
+import * as Koa from 'koa'
 import { lookupCountry } from 'server/utils/ip2location'
+import { getDatasourceEntries } from 'server/utils/storyblok'
+import { DatasourceEntry } from 'storyblok/StoryContainer'
 import { State } from './states'
 
 export const forceHost = ({
@@ -37,4 +40,39 @@ export const startPageRedirect: IMiddleware<object> = async (ctx) => {
   }
 
   ctx.redirect(`/se${queryStringMaybe}`)
+}
+
+const triggerRedirect = (
+  redirect: DatasourceEntry,
+  ctx: Koa.ParameterizedContext,
+  status: 301 | 302,
+) => {
+  const queryStringMaybe = ctx.querystring ? '?' + ctx.querystring : ''
+  ctx.redirect(`${redirect.value}${queryStringMaybe}`)
+  ctx.status = status
+}
+
+export const manualRedirects: IMiddleware<State, any> = async (ctx, next) => {
+  const permanentRedirects = await getDatasourceEntries('permanent-redirects')
+  const temporaryRedirects = await getDatasourceEntries('temporary-redirects')
+
+  const permanentRedirect = permanentRedirects.datasource_entries.find(
+    (redirect) => redirect.name === ctx.path,
+  )
+
+  if (permanentRedirect) {
+    triggerRedirect(permanentRedirect, ctx, 301)
+    return
+  }
+
+  const temporaryRedirect = temporaryRedirects.datasource_entries.find(
+    (redirect) => redirect.name === ctx.path,
+  )
+
+  if (temporaryRedirect) {
+    triggerRedirect(temporaryRedirect, ctx, 302)
+    return
+  }
+
+  await next()
 }

@@ -2,9 +2,9 @@ import axios, { AxiosRequestConfig } from 'axios'
 import { IMiddleware } from 'koa-router'
 import { warmSitemapCache } from 'server/sitemap'
 import {
-  BlogStory,
   BodyStory,
   GlobalStory,
+  DatasourceEntry,
 } from '../../storyblok/StoryContainer'
 import { config } from '../config'
 import { appLogger } from '../logging'
@@ -128,24 +128,28 @@ export const getDraftedStoryById = (id: string, cacheVersion: string) =>
     })
     .then(({ data }) => data)
 
-export const getBlogPosts = (bypassCache: boolean, tag?: string) => {
-  const cacheKey = `/v1/cdn/stories?filter_query[component][in]=blog&with_tag=${tag}`
-  return cachedGet<{ stories: ReadonlyArray<BlogStory> }>(
-    cacheKey,
+export const getDatasourceEntries = async (
+  datasource: string,
+  bypassCache?: boolean,
+) => {
+  const uri = encodeURI(`/v1/cdn/datasource_entries?datasource=${datasource}`)
+  const result = await cachedGet<{
+    datasource_entries: DatasourceEntry[]
+  }>(
+    uri,
     [
-      '/v1/cdn/stories',
+      uri,
       {
         params: {
           token: config.storyblokApiToken,
-          'filter_query[component][in]': 'blog',
-          with_tag: tag,
-          sort_by: 'first_published_at:desc',
+          per_page: 1000,
           cv: calculateCacheVersionTimestamp(new Date()),
         },
       },
     ],
     bypassCache,
   )
+  return result.data
 }
 
 export interface Link {

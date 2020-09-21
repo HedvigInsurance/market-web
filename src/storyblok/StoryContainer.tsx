@@ -46,7 +46,7 @@ export interface Story {
   content: {
     _uid: string
     page_title: string
-    component: 'page' | 'blog' | 'global'
+    component: 'page' | 'global'
   }
 }
 
@@ -64,23 +64,6 @@ export interface BodyStory extends Story {
 
 export interface WithStory<TStoryType extends Story> {
   story?: TStoryType
-}
-
-export interface BlogStory extends Story {
-  content: SeoContent & {
-    _uid: string
-    page_title: string
-    public: boolean
-    component: 'blog'
-    top_image: Image
-    title: string
-    author: string
-    excerpt: string
-    content: MarkdownHtmlComponent
-    show_cta: boolean
-    cta_label: string
-    cta_target: string
-  }
 }
 
 export interface LinkComponent {
@@ -127,6 +110,13 @@ export interface GlobalStory extends Story {
     four_oh_four_title?: string
     html_lang?: string
   }
+}
+
+export interface DatasourceEntry {
+  id: string
+  name: string
+  value: string
+  dimension_value: null | string
 }
 
 export interface GlobalStoryContainerProps {

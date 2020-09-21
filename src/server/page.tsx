@@ -173,7 +173,6 @@ export const getPageMiddleware = (
         story,
         globalStory,
         context: { currentLocale },
-        ...(ctx.state.additionalStates || {}),
       }}
     >
       <StaticRouter location={ctx.request.originalUrl} context={routerContext}>
@@ -198,7 +197,6 @@ export const getPageMiddleware = (
     story,
     globalStory,
     context: { currentLocale },
-    ...(ctx.state.additionalStates || {}),
   }
 
   if (ctx.request.headers.accept === 'application/json') {

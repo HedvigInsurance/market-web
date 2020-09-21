@@ -24,10 +24,7 @@ export const LAPTOP_BP_UP = '@media (min-width: 1024px)'
 export const GIANT_BP_UP = '@media (min-width: 1700px)'
 
 export const SITE_MAX_WIDTH = {
-  maxWidth: 1384,
-  [GIANT_BP_UP]: {
-    maxWidth: 1500, // TODO: Update this value when we have design for large screens
-  },
+  maxWidth: '100%',
 }
 
 export const CONTENT_MAX_WIDTH = {

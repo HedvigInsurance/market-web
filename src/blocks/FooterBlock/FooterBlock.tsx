@@ -7,7 +7,6 @@ import {
   ContentWrapper,
   MOBILE_BP_UP,
   SectionWrapper,
-  SITE_MAX_WIDTH,
   TABLET_BP_UP,
 } from 'components/blockHelpers'
 import { ContextContainer } from 'components/containers/ContextContainer'
@@ -44,7 +43,6 @@ const IconWrapper = styled.div`
     padding-left: ${CONTENT_GUTTER};
     padding-right: ${CONTENT_GUTTER};
   }
-  ${SITE_MAX_WIDTH}
 `
 
 const LinksColumnsWrapper = styled.nav`
@@ -201,9 +199,11 @@ export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
     size="none"
     extraStyling={extra_styling}
   >
-    <IconWrapper>
-      <HedvigH size={32} />
-    </IconWrapper>
+    <ContentWrapper brandPivot>
+      <IconWrapper>
+        <HedvigH size={32} />
+      </IconWrapper>
+    </ContentWrapper>
     <ContentWrapper brandPivot>
       <LinksColumnsWrapper>
         {(story.content.footer_menu_items ?? []).map((menuItem) => (
