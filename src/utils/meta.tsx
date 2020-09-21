@@ -24,8 +24,8 @@ const getPageTitleFromStory = (story?: Story) => {
 }
 
 const getAlternateLang = (fullSlug: string) => {
-  const localeSlug = fullSlug.replace('/', '')
-  const marketLocale = getLocaleData(localeSlug as LocaleData['label'])
+  const localeSlug: LocaleData['label'] = fullSlug.replace('/', '')
+  const marketLocale = getLocaleData(localeSlug)
   return marketLocale.hrefLang
 }
 

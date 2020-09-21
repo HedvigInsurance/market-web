@@ -39,18 +39,11 @@ export const MarketPicker: React.FC<MarketPickerProps> = ({
 }) => {
   const currentMarket = currentLocale.marketName
   const marketsInLocalLang = getMarketsInLocalLang(locales)
-  const marketsInLocalLangExceptCurrent = getLocalesWithoutCurrent(
-    marketsInLocalLang,
-    currentMarket,
-  )
   const marketsInEnglish = getMarketsInEnglish(locales)
-  const marketsInEnglishExceptCurrent = getLocalesWithoutCurrent(
-    marketsInEnglish,
-    currentMarket,
-  )
+
   const markets = checkIsInEnglish(currentLocale)
-    ? marketsInEnglishExceptCurrent
-    : marketsInLocalLangExceptCurrent
+    ? getLocalesWithoutCurrent(marketsInEnglish, currentMarket)
+    : getLocalesWithoutCurrent(marketsInLocalLang, currentMarket)
 
   return (
     <MarketSelect
