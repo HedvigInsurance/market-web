@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { ContextContainer } from 'components/containers/ContextContainer'
 import { HedvigH } from 'components/icons/HedvigH'
 import { ContentWrapper, MOBILE_BP_DOWN } from '../../components/blockHelpers'
@@ -236,7 +236,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
     minimalColorComponentColors | undefined
   >(props.cta_color?.color)
 
-  const updateHeader = () => {
+  const updateHeader = useCallback(() => {
     if (isBelowScrollThreshold()) {
       setIsBelowThreshold(true)
       if (props.inverse_colors && props.is_transparent) {
@@ -249,7 +249,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
     if (props.inverse_colors && props.is_transparent) {
       setButtonColor(InverseColors.DEFAULT)
     }
-  }
+  }, [props.inverse_colors, props.is_transparent])
 
   useEffect(() => {
     updateHeader()
@@ -261,7 +261,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
       }
       window.removeEventListener('scroll', updateHeader)
     }
-  }, [updateHeader])
+  }, [updateHeader, props.is_transparent])
 
   return (
     <>
