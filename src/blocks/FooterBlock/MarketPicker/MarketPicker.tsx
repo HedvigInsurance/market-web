@@ -20,6 +20,7 @@ const MarketSelect = styled(Select)`
 
 interface MarketPickerProps {
   currentLocale: LocaleData
+  blokId: string
 }
 
 export interface MarketSelectOption {
@@ -27,27 +28,27 @@ export interface MarketSelectOption {
   value: string
 }
 
-const getLocalesWithoutCurrent = (
-  locales: LocaleData[],
-  currentMarket: string,
-) => {
-  return locales.filter((locale) => locale.marketName !== currentMarket)
+export const sortMarketsAlphabetiacally = (markets: LocaleData[]) => {
+  return markets.sort((a, b) => (a.label < b.label ? -1 : 1))
 }
 
 export const MarketPicker: React.FC<MarketPickerProps> = ({
   currentLocale,
+  blokId,
 }) => {
   const currentMarket = currentLocale.marketName
   const marketsInLocalLang = getMarketsInLocalLang(locales)
   const marketsInEnglish = getMarketsInEnglish(locales)
 
   const markets = checkIsInEnglish(currentLocale)
-    ? getLocalesWithoutCurrent(marketsInEnglish, currentMarket)
-    : getLocalesWithoutCurrent(marketsInLocalLang, currentMarket)
+    ? sortMarketsAlphabetiacally(marketsInEnglish)
+    : sortMarketsAlphabetiacally(marketsInLocalLang)
 
   return (
     <MarketSelect
       color="standard-inverse"
+      instanceId={blokId}
+      isSearchable={false}
       components={{
         Option: MarketOption,
         ValueContainer: MarketValueContainer,
@@ -56,9 +57,9 @@ export const MarketPicker: React.FC<MarketPickerProps> = ({
         label: currentMarket,
         value: currentLocale.marketLabel,
       }}
-      options={markets.map(({ marketName, label }) => ({
+      options={markets.map(({ marketName, marketLabel }) => ({
         label: marketName,
-        value: label,
+        value: marketLabel,
       }))}
     />
   )
