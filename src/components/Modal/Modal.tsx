@@ -1,7 +1,7 @@
 import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import { Cross } from '../icons/Cross'
 
@@ -117,33 +117,38 @@ const CloseButton = styled('button')`
   }
 `
 
-export const Modal: React.FC<ModalProps> = (props) => {
+export const Modal: React.FC<ModalProps> = ({
+  children,
+  dynamicHeight,
+  isVisible,
+  onClose,
+}) => {
   const containerRef = useRef<HTMLDivElement>(null)
-  const handleClick = (e: MouseEvent) => {
-    if (
-      containerRef.current &&
-      !containerRef.current.contains(e.target as Node)
-    ) {
-      props.onClose()
-    }
-  }
+  const handleClick = useCallback(
+    (e: MouseEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(e.target as Node)
+      ) {
+        onClose()
+      }
+    },
+    [onClose],
+  )
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClick)
     return () => document.removeEventListener('mousedown', handleClick)
-  }, [])
+  }, [handleClick])
 
   return createPortal(
-    <Wrapper isVisible={props.isVisible}>
+    <Wrapper isVisible={isVisible}>
       <Background>
-        <ModalContainer
-          dynamicHeight={props.dynamicHeight}
-          isVisible={props.isVisible}
-        >
+        <ModalContainer dynamicHeight={dynamicHeight} isVisible={isVisible}>
           <ModalInnerContainer ref={containerRef}>
-            {props.children}
+            {children}
           </ModalInnerContainer>
-          <CloseButton onClick={props.onClose}>
+          <CloseButton onClick={onClose}>
             <Cross size="1rem" />
           </CloseButton>
         </ModalContainer>
