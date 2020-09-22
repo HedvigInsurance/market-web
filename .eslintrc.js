@@ -23,7 +23,7 @@ module.exports = {
     },
     project: './tsconfig.json',
   },
-  plugins: ['import', 'react', '@typescript-eslint', 'prettier'],
+  plugins: ['import', 'react', 'react-hooks', '@typescript-eslint', 'prettier'],
   rules: {
     'import/no-named-as-default': 'off',
     'import/order': ['error', {
@@ -36,6 +36,8 @@ module.exports = {
       ]
     }],
     'react/prop-types': 'off',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
     '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
