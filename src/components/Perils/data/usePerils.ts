@@ -3,10 +3,9 @@ import { useEffect, useState } from 'react'
 import { LocaleData } from 'utils/locales'
 import { Peril, TypeOfContract } from '../types'
 
-export const usePerils = (
-  insuranceType: TypeOfContract,
-  localeIso: LocaleData['iso'],
-) => {
+type Locale = LocaleData['iso']
+
+export const usePerils = (insuranceType: TypeOfContract, localeIso: Locale) => {
   const [perils, setPerils] = useState<[] | Peril[]>([])
 
   const fetchPerils = async () => {
@@ -19,8 +18,8 @@ export const usePerils = (
         localeIso,
       },
       query: `
-          query Perils($typeOfContract: TypeOfContract!, $locale: Locale!) {
-            perils(contractType: $typeOfContract, locale: $locale) {
+          query Perils($typeOfContract: TypeOfContract!, $localeIso: Locale!) {
+            perils(contractType: $typeOfContract, locale: $localeIso) {
               title
               description
               covered
