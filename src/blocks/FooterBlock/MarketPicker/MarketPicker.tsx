@@ -53,13 +53,17 @@ export const MarketPicker: React.FC<MarketPickerProps> = ({
         Option: MarketOption,
         ValueContainer: MarketValueContainer,
       }}
+      value={{
+        label: currentMarket,
+        value: currentLocale.label,
+      }}
       defaultValue={{
         label: currentMarket,
-        value: currentLocale.marketLabel,
+        value: currentLocale.label,
       }}
-      options={markets.map(({ marketName, marketLabel }) => ({
+      options={markets.map(({ marketName, label }) => ({
         label: marketName,
-        value: marketLabel,
+        value: label,
       }))}
     />
   )
