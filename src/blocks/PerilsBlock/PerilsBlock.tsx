@@ -30,6 +30,7 @@ const SelectInsurance = styled(Select)`
 `
 
 export const PerilsBlock: React.FC<PerilsBlockProps> = ({
+  _uid,
   color,
   index,
   size,
@@ -52,6 +53,7 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
               <ContentWrapper brandPivot index={index}>
                 {insurance_types.length > 1 && (
                   <SelectInsurance
+                    instanceId={_uid}
                     defaultValue={insurance_types[0]}
                     options={insurance_types}
                     color={color?.color}
