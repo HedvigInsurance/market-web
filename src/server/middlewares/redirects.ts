@@ -33,10 +33,10 @@ export const startPageRedirect: IMiddleware<object> = async (ctx) => {
   const queryStringMaybe = ctx.querystring ? '?' + ctx.querystring : ''
 
   if (Object.keys(locales).includes(countryLabel)) {
-    ctx.redirect(`/${countryLabel}${queryStringMaybe}`)
-  } else {
-    ctx.redirect(`/${fallbackCountryLabel}${queryStringMaybe}`)
+    return ctx.redirect(`/${countryLabel}${queryStringMaybe}`)
   }
+
+  ctx.redirect(`/${fallbackCountryLabel}${queryStringMaybe}`)
 }
 
 const triggerRedirect = (
