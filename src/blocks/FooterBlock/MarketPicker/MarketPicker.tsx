@@ -36,7 +36,7 @@ export const MarketPicker: React.FC<MarketPickerProps> = ({
   currentLocale,
   blokId,
 }) => {
-  const currentMarket = currentLocale.marketName
+  const currentMarketName = currentLocale.marketName
   const marketsInLocalLang = getMarketsInLocalLang(locales)
   const marketsInEnglish = getMarketsInEnglish(locales)
 
@@ -54,11 +54,11 @@ export const MarketPicker: React.FC<MarketPickerProps> = ({
         ValueContainer: MarketValueContainer,
       }}
       value={{
-        label: currentMarket,
+        label: currentMarketName,
         value: currentLocale.label,
       }}
       defaultValue={{
-        label: currentMarket,
+        label: currentMarketName,
         value: currentLocale.label,
       }}
       options={markets.map(({ marketName, label }) => ({
