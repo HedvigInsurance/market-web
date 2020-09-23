@@ -5,6 +5,7 @@ import * as Koa from 'koa'
 import { lookupCountry } from 'server/utils/ip2location'
 import { getDatasourceEntries } from 'server/utils/storyblok'
 import { DatasourceEntry } from 'storyblok/StoryContainer'
+import { locales, fallbackLocale } from 'utils/locales'
 import { State } from './states'
 
 export const forceHost = ({
@@ -26,20 +27,16 @@ export const forceHost = ({
 
 export const startPageRedirect: IMiddleware<object> = async (ctx) => {
   const actualIp = ctx.ip
-  const country = lookupCountry(actualIp)
+  const fallbackCountryLabel = fallbackLocale.label
+  const countryLabel =
+    lookupCountry(actualIp)?.toLowerCase() || fallbackCountryLabel
   const queryStringMaybe = ctx.querystring ? '?' + ctx.querystring : ''
 
-  if (country === 'NO') {
-    ctx.redirect(`/no${queryStringMaybe}`)
-    return
+  if (Object.keys(locales).includes(countryLabel)) {
+    ctx.redirect(`/${countryLabel}${queryStringMaybe}`)
+  } else {
+    ctx.redirect(`/${fallbackCountryLabel}${queryStringMaybe}`)
   }
-
-  if (country === 'DK') {
-    ctx.redirect(`/dk${queryStringMaybe}`)
-    return
-  }
-
-  ctx.redirect(`/se${queryStringMaybe}`)
 }
 
 const triggerRedirect = (
