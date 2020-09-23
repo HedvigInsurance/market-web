@@ -667,6 +667,13 @@
         "peril_modal_exceptions_title": {
           "type": "text",
           "pos": 23
+        },
+        "locale": {
+          "type": "section",
+          "keys": ["four_oh_four_title"]
+        },
+        "four_oh_four_title": {
+          "type": "text"
         }
       },
       "image": null,

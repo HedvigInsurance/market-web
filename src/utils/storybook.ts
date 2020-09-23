@@ -164,7 +164,7 @@ const footerMenuItems: MenuItem[] = [
         component: 'menu_item',
       },
       {
-        _uid: '14',
+        _uid: '16',
         label: 'Kontakt',
         link,
         component: 'menu_item',

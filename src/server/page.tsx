@@ -11,17 +11,15 @@ import { StaticRouter, StaticRouterContext } from 'react-router'
 import { Logger } from 'typescript-logging'
 import { State } from 'server/middlewares/states'
 import {
-  getLangFromPath,
   getDraftedStoryById,
   getGlobalStory,
   getPublishedStoryFromSlug,
   getStoryblokEditorScript,
 } from 'server/utils/storyblok'
-import { getHtmlLang } from 'utils/CurrentLocale'
+import { getLocaleData } from 'utils/locales'
 import { App } from '../App'
 import { sentryConfig } from './config/sentry'
 import { favicons } from './utils/favicons'
-
 import { allTracking } from './utils/tracking'
 
 const scriptLocation =
@@ -41,7 +39,6 @@ interface Template {
   initialState: any
   dangerouslyExposeApiKeyToProvideEditing: boolean
   nonce: string
-  lang: string
 }
 
 const template = ({
@@ -50,10 +47,9 @@ const template = ({
   initialState,
   dangerouslyExposeApiKeyToProvideEditing,
   nonce,
-  lang,
 }: Template) => `
   <!doctype html>
-  <html lang="${getHtmlLang(lang)}">
+  <html lang="${initialState.context.currentLocale.htmlLang}">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -130,19 +126,23 @@ const getStoryblokResponseFromContext = async (ctx: RouterContext<State>) => {
   }
 }
 
+export const getLocaleFromPath = (path: string) => {
+  return path.split('/')[1]
+}
+
 export const getPageMiddleware = (
   ignoreStoryblokMiss: boolean,
 ): IMiddleware<State> => async (ctx, next) => {
   const routerContext: StaticRouterContext & { statusCode?: number } = {}
   const helmetContext = {}
 
-  const langFromPath = getLangFromPath(ctx.path)
-  const lang = langFromPath || 'se'
+  const localeFromPath = getLocaleFromPath(ctx.path)
+  const locale = localeFromPath || 'se'
 
   const [story, globalStory] = await Promise.all([
     getStoryblokResponseFromContext(ctx),
     getGlobalStory(
-      lang,
+      locale,
       Boolean(
         ctx.request.query['_storyblok_tk[timestamp]'] ||
           ctx.query._storyblok_published,
@@ -150,20 +150,12 @@ export const getPageMiddleware = (
     ),
   ])
 
-  // Redirect /* to /se/*
-  if (!langFromPath && !ctx.query._storyblok && ctx.path !== '/') {
+  if (!globalStory?.story && !ctx.query._storyblok) {
     ctx.redirect(`/se${ctx.originalUrl}`)
     return
   }
 
-  // Redirect /sv/* to /se/*
-  if (langFromPath === 'sv' && !ctx.query._storyblok) {
-    ctx.redirect(ctx.originalUrl.replace(/^\/sv/, '/se'))
-    return
-  }
-
-  // Redirect /en/* to /se-en/*
-  if (langFromPath === 'en' && !ctx.query._storyblok) {
+  if (localeFromPath === 'en' && !ctx.query._storyblok) {
     ctx.redirect(ctx.originalUrl.replace(/^\/en/, '/se-en'))
     return
   }
@@ -173,18 +165,14 @@ export const getPageMiddleware = (
     return
   }
 
-  // TODO: Remove after we go live
-  if (langFromPath === 'sv' && !ctx.query._storyblok) {
-    ctx.redirect(ctx.originalUrl.replace(/^\/sv/, ''))
-    return
-  }
+  const currentLocale = getLocaleData(locale)
 
   const serverApp = (
     <Provider
       initialState={{
         story,
         globalStory,
-        context: { lang },
+        context: { currentLocale },
       }}
     >
       <StaticRouter location={ctx.request.originalUrl} context={routerContext}>
@@ -208,7 +196,7 @@ export const getPageMiddleware = (
   const initialState = {
     story,
     globalStory,
-    context: { lang },
+    context: { currentLocale },
   }
 
   if (ctx.request.headers.accept === 'application/json') {
@@ -218,7 +206,6 @@ export const getPageMiddleware = (
 
   ctx.body = template({
     body,
-    lang,
     initialState,
     helmet: (helmetContext as FilledContext).helmet,
     dangerouslyExposeApiKeyToProvideEditing: ctx.request.query._storyblok,

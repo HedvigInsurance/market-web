@@ -297,12 +297,8 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
 
                     <DesktopLogo>
                       <ContextContainer>
-                        {(context) => (
-                          <LogoLink
-                            href={
-                              '/' + (context.lang === 'sv' ? '' : context.lang)
-                            }
-                          >
+                        {({ currentLocale }) => (
+                          <LogoLink href={'/' + currentLocale.label}>
                             <HedvigLogotype width={94} />
                           </LogoLink>
                         )}
@@ -312,12 +308,8 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
 
                   <MobileLogo>
                     <ContextContainer>
-                      {(context) => (
-                        <Wordmark
-                          href={
-                            '/' + (context.lang === 'sv' ? '' : context.lang)
-                          }
-                        >
+                      {({ currentLocale }) => (
+                        <Wordmark href={'/' + currentLocale.label}>
                           <HedvigH size={28} />
                         </Wordmark>
                       )}
@@ -334,8 +326,8 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                       </MenuList>
 
                       <ContextContainer>
-                        {(context) => (
-                          <LanguagePicker currentLanguage={context.lang} />
+                        {({ currentLocale }) => (
+                          <LanguagePicker currentLocale={currentLocale} />
                         )}
                       </ContextContainer>
 

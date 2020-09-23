@@ -2,7 +2,13 @@ import styled from '@emotion/styled'
 import React from 'react'
 import { MOBILE_BP_UP } from 'components/blockHelpers'
 import { Select } from 'components/Select/Select'
-import { getCurrentMarket, getMarketLabel } from 'utils/CurrentLocale'
+import {
+  getMarketsInLocalLang,
+  getMarketsInEnglish,
+  checkIsInEnglish,
+  locales,
+  LocaleData,
+} from 'utils/locales'
 import { MarketOption } from './MarketOption'
 import { MarketValueContainer } from './MarketValueContainer'
 
@@ -13,7 +19,8 @@ const MarketSelect = styled(Select)`
 `
 
 interface MarketPickerProps {
-  currentLanguage: string
+  currentLocale: LocaleData
+  blokId: string
 }
 
 export interface MarketSelectOption {
@@ -21,23 +28,43 @@ export interface MarketSelectOption {
   value: string
 }
 
+export const sortMarketsAlphabetiacally = (markets: LocaleData[]) => {
+  return markets.sort((a, b) => (a.label < b.label ? -1 : 1))
+}
+
 export const MarketPicker: React.FC<MarketPickerProps> = ({
-  currentLanguage,
+  currentLocale,
+  blokId,
 }) => {
-  const marketLabel = getMarketLabel(currentLanguage)
-  const activeMarket = getCurrentMarket(currentLanguage)
+  const currentMarketName = currentLocale.marketName
+  const marketsInLocalLang = getMarketsInLocalLang(locales)
+  const marketsInEnglish = getMarketsInEnglish(locales)
+
+  const markets = checkIsInEnglish(currentLocale)
+    ? sortMarketsAlphabetiacally(marketsInEnglish)
+    : sortMarketsAlphabetiacally(marketsInLocalLang)
+
   return (
     <MarketSelect
       color="standard-inverse"
+      instanceId={blokId}
+      isSearchable={false}
       components={{
         Option: MarketOption,
         ValueContainer: MarketValueContainer,
       }}
-      defaultValue={{ label: marketLabel[activeMarket], value: activeMarket }}
-      options={[
-        { label: marketLabel.se, value: 'se' },
-        { label: marketLabel.no, value: 'no' },
-      ]}
+      value={{
+        label: currentMarketName,
+        value: currentLocale.label,
+      }}
+      defaultValue={{
+        label: currentMarketName,
+        value: currentLocale.label,
+      }}
+      options={markets.map(({ marketName, label }) => ({
+        label: marketName,
+        value: label,
+      }))}
     />
   )
 }

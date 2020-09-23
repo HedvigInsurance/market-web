@@ -30,6 +30,7 @@ const SelectInsurance = styled(Select)`
 `
 
 export const PerilsBlock: React.FC<PerilsBlockProps> = ({
+  _uid,
   color,
   index,
   size,
@@ -47,11 +48,12 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
     <GlobalStoryContainer>
       {({ globalStory }) => (
         <ContextContainer>
-          {(context) => (
+          {({ currentLocale }) => (
             <SectionWrapper colorComponent={color} size={size} brandPivot>
               <ContentWrapper brandPivot index={index}>
                 {insurance_types.length > 1 && (
                   <SelectInsurance
+                    instanceId={_uid}
                     defaultValue={insurance_types[0]}
                     options={insurance_types}
                     color={color?.color}
@@ -62,7 +64,7 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
                   <Perils
                     color={color?.color}
                     insuranceType={currentInsurance}
-                    currentLocale={context.lang}
+                    localeIsoCode={currentLocale.iso}
                     story={globalStory}
                   />
                 )}
