@@ -79,8 +79,8 @@ const TextWrapper = styled('div')<{
   position: 'relative',
   textAlign: textPosition === 'center' ? 'center' : 'left',
   width: '100%',
-  paddingRight: textPosition === 'left' ? '4rem' : '3rem',
-  paddingLeft: textPosition === 'right' ? '4rem' : '3rem',
+  paddingRight: textPosition === 'left' ? '4rem' : '4rem',
+  paddingLeft: textPosition === 'right' ? '4rem' : '4rem',
   flexShrink: 1,
   [TABLET_BP_DOWN]: {
     paddingRight: textPosition === 'left' ? '3rem' : '0',
