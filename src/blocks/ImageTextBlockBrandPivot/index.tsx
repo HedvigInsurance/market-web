@@ -75,13 +75,19 @@ const AnimatedAlignedButton = styled(AlignedButton)<
 const TextWrapper = styled('div')<{
   textPosition: TextPosition
   textPositionMobile: TextPosition
-}>(({ textPosition, textPositionMobile }) => ({
+  isBlockFullWidth: boolean
+}>(({ textPosition, textPositionMobile, isBlockFullWidth }) => ({
   position: 'relative',
   textAlign: textPosition === 'center' ? 'center' : 'left',
   width: '100%',
-  paddingRight: textPosition === 'left' ? '4rem' : '4rem',
-  paddingLeft: textPosition === 'right' ? '4rem' : '4rem',
-  flexShrink: 1,
+  ...(textPosition === 'left' && {
+    paddingLeft: isBlockFullWidth ? '4rem' : 0,
+    paddingRight: '4rem',
+  }),
+  ...(textPosition === 'right' && {
+    paddingLeft: '4rem',
+    paddingRight: isBlockFullWidth ? '4rem' : 0,
+  }),
   [TABLET_BP_DOWN]: {
     paddingRight: textPosition === 'left' ? '3rem' : '0',
     paddingLeft: textPosition === 'right' ? '3rem' : '0',
@@ -315,6 +321,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
         <TextWrapper
           textPosition={text_position}
           textPositionMobile={text_position_mobile}
+          isBlockFullWidth={full_width}
         >
           <Title
             as="h2"
