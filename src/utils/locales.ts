@@ -28,7 +28,7 @@ export const locales: Locales = {
     langLabel: 'Sv',
     htmlLang: 'sv',
     hrefLang: 'sv-se',
-    adtractionSrc: 'https://adtr.io/jsTag?ap=1412531808',
+    adtractionSrc: 'https://cdn.adt387.com/jsTag?ap=1412531808',
   },
   'se-en': {
     label: 'se-en',
@@ -38,7 +38,7 @@ export const locales: Locales = {
     langLabel: 'En',
     htmlLang: 'en',
     hrefLang: 'en-se',
-    adtractionSrc: 'https://adtr.io/jsTag?ap=1412531808',
+    adtractionSrc: 'https://cdn.adt387.com/jsTag?ap=1412531808',
   },
   no: {
     label: 'no',
