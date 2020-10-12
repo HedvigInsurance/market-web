@@ -670,10 +670,17 @@
         },
         "locale": {
           "type": "section",
-          "keys": ["four_oh_four_title"]
+          "keys": ["four_oh_four_title", "cookie_consent_message"]
         },
         "four_oh_four_title": {
           "type": "text"
+        },
+        "cookie_consent_message": {
+          "type": "custom",
+          "required": true,
+          "translatable": true,
+          "field_type": "markdown-html",
+          "options": []
         }
       },
       "image": null,

@@ -262,6 +262,15 @@ const safetyText: MarkdownHtmlComponent = {
   plugin: 'markdown-html',
 }
 
+const cookie_consent_message: MarkdownHtmlComponent = {
+  _uid: '5',
+  html:
+    'Vi använder cookies, en liten datafil som lagras i din dator, för att hantera inloggningar, öka säkerheten för våra användare och förbättra de tjänster vi erbjuder. Om du inte vill att vi använder cookies kan du enkelt stänga av det i din browser. <a href="/legal">Läs mer</a>',
+  original:
+    'Vi använder cookies, en liten datafil som lagras i din dator, för att hantera inloggningar, öka säkerheten för våra användare och förbättra de tjänster vi erbjuder. Om du inte vill att vi använder cookies kan du enkelt stänga av det i din browser. <a href="/legal">Läs mer</a>',
+  plugin: 'markdown-html',
+}
+
 export const globalStoryMock: GlobalStory = {
   name: 'storybook mock',
   created_at: '',
@@ -290,5 +299,6 @@ export const globalStoryMock: GlobalStory = {
     peril_modal_info_title: 'Att tänka på',
     peril_modal_coverage_title: 'Det här täcks',
     peril_modal_exceptions_title: 'Undantag',
+    cookie_consent_message: cookie_consent_message,
   },
 }

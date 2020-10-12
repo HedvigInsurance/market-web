@@ -108,7 +108,7 @@ export interface GlobalStory extends Story {
     peril_modal_coverage_title?: string
     peril_modal_exceptions_title?: string
     four_oh_four_title?: string
-    html_lang?: string
+    cookie_consent_message: MarkdownHtmlComponent
   }
 }
 
