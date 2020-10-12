@@ -2,10 +2,7 @@ import styled from '@emotion/styled'
 import { colorsV2 } from '@hedviginsurance/brand'
 import Cookies from 'js-cookie'
 import React, { useState, useEffect } from 'react'
-import {
-  CONTENT_GUTTER,
-  CONTENT_MAX_WIDTH_DEPRECATED,
-} from 'components/blockHelpers'
+import { CONTENT_GUTTER, CONTENT_MAX_WIDTH } from 'components/blockHelpers'
 import { GlobalStoryContainer } from 'storyblok/StoryContainer'
 
 const OuterWrapper = styled('div')<{ visible: boolean; closing: boolean }>(
@@ -33,12 +30,15 @@ const InnerWrapper = styled('div')({
   width: '100%',
   padding: CONTENT_GUTTER,
 
-  ...CONTENT_MAX_WIDTH_DEPRECATED,
+  ...CONTENT_MAX_WIDTH,
 })
+
 const ContentWrapper = styled('div')({
   fontSize: '0.8rem',
-  paddingRight: '1rem',
-  maxWidth: 1000,
+  paddingRight: '2rem',
+  '> p': {
+    margin: 0,
+  },
 })
 const CloseButton = styled('button')({
   display: 'flex',
@@ -47,7 +47,6 @@ const CloseButton = styled('button')({
   width: '3rem',
   height: '3rem',
   padding: 0,
-  paddingBottom: '0.4rem',
   fontSize: '2rem',
   background: 'transparent',
   color: colorsV2.darkgray,
@@ -94,7 +93,7 @@ export const CookieConsent: React.FC = () => {
             Cookies.set('_hvcookie', 'yes', { path: '/' })
           }}
         >
-          &times;
+          &#x2715;
         </CloseButton>
       </InnerWrapper>
     </OuterWrapper>
