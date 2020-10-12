@@ -47,7 +47,7 @@ const CloseButton = styled('button')({
   width: '3rem',
   height: '3rem',
   padding: 0,
-  fontSize: '2rem',
+  fontSize: '1.25rem',
   background: 'transparent',
   color: colorsV2.darkgray,
   border: '1px solid ' + colorsV2.darkgray,
