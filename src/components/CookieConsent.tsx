@@ -2,11 +2,11 @@ import styled from '@emotion/styled'
 import { colorsV2 } from '@hedviginsurance/brand'
 import Cookies from 'js-cookie'
 import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router'
 import {
   CONTENT_GUTTER,
   CONTENT_MAX_WIDTH_DEPRECATED,
 } from 'components/blockHelpers'
+import { GlobalStoryContainer } from 'storyblok/StoryContainer'
 
 const OuterWrapper = styled('div')<{ visible: boolean; closing: boolean }>(
   ({ visible, closing }) => ({
@@ -63,7 +63,6 @@ const CloseButton = styled('button')({
 })
 
 export const CookieConsent: React.FC = () => {
-  const location = useLocation()
   const [isVisible, setVisible] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
   useEffect(() => {
@@ -79,31 +78,15 @@ export const CookieConsent: React.FC = () => {
   return (
     <OuterWrapper visible={isVisible} closing={isClosing}>
       <InnerWrapper>
-        <ContentWrapper>
-          {/^\/en(\/|$)/.test(location.pathname) ? (
-            <>
-              We use <a href="/en/legal">cookies</a> to manage logins, to
-              strengthen security and to improve the overall service for our
-              members. If you don’t want us to use cookies, you can easily turn
-              it off through your browser. <a href="/en/legal">Read more</a>
-            </>
-          ) : /^\/no(\/|$)/.test(location.pathname) ? (
-            <>
-              We use <a href="/en/legal">cookies</a> to manage logins, to
-              strengthen security and to improve the overall service for our
-              members. If you don’t want us to use cookies, you can easily turn
-              it off through your browser. <a href="/en/legal">Read more</a>
-            </>
-          ) : (
-            <>
-              Vi använder <a href="/legal">cookies</a>, en liten datafil som
-              lagras i din dator, för att hantera inloggningar, öka säkerheten
-              för våra användare och förbättra de tjänster vi erbjuder. Om du
-              inte vill att vi använder cookies kan du enkelt stänga av det i
-              din browser. <a href="/legal">Läs mer</a>
-            </>
+        <GlobalStoryContainer>
+          {({ globalStory }) => (
+            <ContentWrapper
+              dangerouslySetInnerHTML={{
+                __html: globalStory.content.cookie_consent_message?.html,
+              }}
+            />
           )}
-        </ContentWrapper>
+        </GlobalStoryContainer>
         <CloseButton
           onClick={() => {
             setIsClosing(true)
