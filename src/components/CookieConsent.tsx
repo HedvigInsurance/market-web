@@ -64,11 +64,12 @@ const CloseButton = styled('button')({
 export const CookieConsent: React.FC = () => {
   const [isVisible, setVisible] = useState(false)
   const [isClosing, setIsClosing] = useState(false)
+  const consentCookie = Cookies.get('_hvcookie')
   useEffect(() => {
-    if (!Cookies.get()._hvcookie) {
+    if (!consentCookie) {
       setVisible(true)
     }
-  }, [Cookies.get()?._hvcookie])
+  }, [consentCookie])
 
   if (!isVisible) {
     return null
