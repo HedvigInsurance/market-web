@@ -164,7 +164,7 @@ export const YoutubeVideoBlock: React.FunctionComponent<YoutubeVideoBlockProps> 
         clearInterval(playerResizeInterval)
       }
     }
-  }, [])
+  }, [playerResizeInterval])
   useEffect(() => {
     if (isPlaying && isPlayerLoaded) {
       setTimeout(() => {

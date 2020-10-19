@@ -22,7 +22,7 @@ export const App: React.FunctionComponent<{ nonce?: string }> = ({ nonce }) => {
         .then((m) => m.default)
         .then((Snowflakes) => Snowflakes())
     }
-  }, [])
+  }, [location.search])
 
   return (
     <>

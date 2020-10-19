@@ -131,17 +131,23 @@ const CoverageListItem = styled.div`
   }
 `
 
-export const PerilModal: React.FC<PerilModalProps & ModalProps> = (props) => {
+export const PerilModal: React.FC<PerilModalProps & ModalProps> = ({
+  currentPerilIndex,
+  isVisible,
+  onClose,
+  perils,
+  setCurrentPeril,
+  story,
+}) => {
   const [actionsAllowed, setActionsAllowed] = useState(true)
   useEffect(() => {
-    const isBelowBoundary = props.currentPerilIndex < props.perils.length
-    const isAboveBoundary = props.currentPerilIndex > props.perils.length * 2
+    const isBelowBoundary = currentPerilIndex < perils.length
+    const isAboveBoundary = currentPerilIndex > perils.length * 2
 
     if (isBelowBoundary || isAboveBoundary) {
       setTimeout(() => {
-        props.setCurrentPeril(
-          props.currentPerilIndex +
-            (isBelowBoundary ? 1 : -1) * props.perils.length,
+        setCurrentPeril(
+          currentPerilIndex + (isBelowBoundary ? 1 : -1) * perils.length,
         )
       }, TRANSITION_MS)
     }
@@ -151,19 +157,17 @@ export const PerilModal: React.FC<PerilModalProps & ModalProps> = (props) => {
     setTimeout(() => {
       setActionsAllowed(true)
     }, TRANSITION_MS * 2)
-  }, [props.currentPerilIndex])
+  }, [currentPerilIndex, setCurrentPeril, perils])
 
-  const currentPeril =
-    props.perils[props.currentPerilIndex % props.perils.length]
+  const currentPeril = perils[currentPerilIndex % perils.length]
 
   return (
-    <Modal isVisible={props.isVisible} onClose={props.onClose}>
+    <Modal isVisible={isVisible} onClose={onClose}>
       <ModalWrapper>
         <Header>
           <DirectionButton
             onClick={() =>
-              actionsAllowed &&
-              props.setCurrentPeril(props.currentPerilIndex - 1)
+              actionsAllowed && setCurrentPeril(currentPerilIndex - 1)
             }
           >
             <Chevron direction="left" />
@@ -172,8 +176,7 @@ export const PerilModal: React.FC<PerilModalProps & ModalProps> = (props) => {
 
           <DirectionButton
             onClick={() =>
-              actionsAllowed &&
-              props.setCurrentPeril(props.currentPerilIndex + 1)
+              actionsAllowed && setCurrentPeril(currentPerilIndex + 1)
             }
           >
             <Chevron direction="right" />
@@ -184,7 +187,7 @@ export const PerilModal: React.FC<PerilModalProps & ModalProps> = (props) => {
           <CoverageWrapper>
             <CoverageList>
               <CoverageListTitle>
-                {props.story?.content.peril_modal_coverage_title ?? 'Coverage'}
+                {story?.content.peril_modal_coverage_title ?? 'Coverage'}
               </CoverageListTitle>
               {currentPeril.covered.map((text) => (
                 <CoverageListItem key={text}>
