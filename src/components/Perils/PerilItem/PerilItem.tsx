@@ -18,8 +18,9 @@ interface PerilItemProps {
 }
 
 const OuterContainer = styled.div`
-  color: ${colorsV3.gray900};
   position: relative;
+  display: flex;
+  color: ${colorsV3.gray900};
 
   &:before {
     content: '';

@@ -24,7 +24,6 @@ const Wrapper = styled.div`
   }
 
   & > * {
-    display: flex;
     width: calc(50% - 0.5rem);
     margin-left: 0.5rem;
     margin-bottom: 0.5rem;
