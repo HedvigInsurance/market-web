@@ -10,7 +10,9 @@ export const usePerils = (insuranceType: TypeOfContract, localeIso: Locale) => {
 
   useEffect(() => {
     const fetchPerils = async () => {
-      const url = process.env.GIRAFFE_ENDPOINT
+      const url =
+        process.env.GIRAFFE_ENDPOINT ||
+        'https://graphql.dev.hedvigit.com/graphql'
 
       const data = {
         operationName: 'Perils',
