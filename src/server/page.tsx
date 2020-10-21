@@ -89,6 +89,10 @@ const template = ({
         ' ',
       )};
       window.PUBLIC_HOST = ${JSON.stringify(process.env.PUBLIC_HOST || '')};
+      window.GIRAFFE_ENDPOINT = ${JSON.stringify(
+        process.env.GIRAFFE_ENDPOINT ||
+          'https://graphql.dev.hedvigit.com/graphql',
+      )};
       </script>
     <script src="${scriptLocation}"></script>
     <div id="modal></div>

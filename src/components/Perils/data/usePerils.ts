@@ -5,14 +5,24 @@ import { Peril, TypeOfContract } from '../types'
 
 type Locale = LocaleData['iso']
 
+const getGiraffeEndpoint = (): string => {
+  if (
+    typeof window === 'undefined' &&
+    typeof process !== 'undefined' &&
+    process.env.GIRAFFE_ENDPOINT
+  ) {
+    return process.env.GIRAFFE_ENDPOINT
+  }
+
+  return (window as any).GIRAFFE_ENDPOINT
+}
+
 export const usePerils = (insuranceType: TypeOfContract, localeIso: Locale) => {
   const [perils, setPerils] = useState<[] | Peril[]>([])
 
   useEffect(() => {
     const fetchPerils = async () => {
-      const url =
-        process.env.GIRAFFE_ENDPOINT ||
-        'https://graphql.dev.hedvigit.com/graphql'
+      const url = getGiraffeEndpoint()
 
       const data = {
         operationName: 'Perils',
