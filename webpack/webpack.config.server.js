@@ -22,6 +22,7 @@ const whiteListedEnvVars = [
   'BRANCH_API_KEY',
   'HEROKU_SLUG_COMMIT',
   'HEROKU_DYNO_ID',
+  'GIRAFFE_ENDPOINT',
 ]
 
 module.exports = webpackConfig({

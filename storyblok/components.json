@@ -2096,6 +2096,10 @@
             {
               "value": "NO_TRAVEL_YOUTH",
               "name": "NO_TRAVEL_YOUTH"
+            },
+            {
+              "value": "DK_HOME_CONTENT",
+              "name": "DK_HOME_CONTENT"
             }
           ],
           "required": true,

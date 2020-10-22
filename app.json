@@ -13,6 +13,9 @@
     "AUTH_PASS": {
       "required": true
     },
+    "GIRAFFE_ENDPOINT": {
+      "required": true
+    },
     "STORYBLOK_API_TOKEN": {
       "required": true
     },
