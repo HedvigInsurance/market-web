@@ -88,7 +88,7 @@ export const WithCTA = () => (
 export const WithoutImage = () => (
   <HeroBlock
     {...heroProps}
-    headline="Hjälp så som du aldrig kunnat föreställa dig den"
+    headline="Bostadsrätt"
     headline_font_size_mobile={select('Font size mobile', fontSizes, 'lg')}
     headline_font_size={select('Font size', fontSizes, 'lg')}
     color={
