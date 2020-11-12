@@ -449,7 +449,7 @@ export const ContentWrapper: React.FC<ContentWrapperProps> = ({
   >
     {({ isVisible }) => (
       <ContentWrapperStyled
-        visible={index <= 1 || isVisible}
+        visible={index <= 2 || isVisible}
         brandPivot={brandPivot}
         fullWidth={fullWidth}
         {...props}

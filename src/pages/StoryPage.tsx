@@ -1,8 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet-async'
 import SbEditable from 'patched/storyblok-react'
-import { getBlockComponent } from '../blocks'
-import { BaseBlockProps } from '../blocks/BaseBlockProps'
+import { BlockContext } from 'blocks'
 import { FooterBlock } from '../blocks/FooterBlock/FooterBlock'
 import { BodyStory, StoryContainer } from '../storyblok/StoryContainer'
 import { getMeta } from '../utils/meta'
@@ -22,24 +21,28 @@ export const StoryPage: React.FunctionComponent<{ nonce?: string }> = ({
             <Helmet>{getMeta({ story, nonce, currentLocale })}</Helmet>
           )}
         </ContextContainer>
-        {getBlocksOrDefault(story!).map((block, index) => {
-          const BlockComponent:
-            | React.ComponentType<BaseBlockProps & any>
-            | undefined = getBlockComponent(block.component)
-          if (!BlockComponent) {
-            return null
-          }
+        <BlockContext.Consumer>
+          {(blockComponentMap) =>
+            getBlocksOrDefault(story!).map((block, index) => {
+              const BlockComponent = blockComponentMap[block.component]
+              if (!BlockComponent) {
+                return null
+              }
 
-          if (block._editable) {
-            return (
-              <SbEditable content={block} key={block._uid}>
-                <BlockComponent index={index} {...block} />
-              </SbEditable>
-            )
-          }
+              if (block._editable) {
+                return (
+                  <SbEditable content={block} key={block._uid}>
+                    <BlockComponent index={index} {...block} />
+                  </SbEditable>
+                )
+              }
 
-          return <BlockComponent key={block._uid} index={index} {...block} />
-        })}
+              return (
+                <BlockComponent key={block._uid} index={index} {...block} />
+              )
+            })
+          }
+        </BlockContext.Consumer>
         {!story?.content.hide_footer && (
           <FooterBlock
             component="footer_block"

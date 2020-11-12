@@ -5,18 +5,28 @@ import React from 'react'
 import { hydrate } from 'react-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter } from 'react-router-dom'
+import { BlockContext, getBlockComponentMap } from 'blocks'
 import { HotApp } from '../App'
 
-hydrate(
-  <Provider initialState={{ ...(window as any).__INITIAL_STATE__ }}>
-    <BrowserRouter>
-      <HelmetProvider>
-        <HotApp />
-      </HelmetProvider>
-    </BrowserRouter>
-  </Provider>,
-  document.getElementById('react-root'),
+const initialState = (window as any).__INITIAL_STATE__
+
+const blockTypes: string[] = initialState.story.story.content.body.map(
+  (block: any) => block.component,
 )
+getBlockComponentMap(blockTypes).then((blockComponentMap) => {
+  hydrate(
+    <BlockContext.Provider value={blockComponentMap}>
+      <Provider initialState={{ ...initialState }}>
+        <BrowserRouter>
+          <HelmetProvider>
+            <HotApp />
+          </HelmetProvider>
+        </BrowserRouter>
+      </Provider>
+    </BlockContext.Provider>,
+    document.getElementById('react-root'),
+  )
+})
 
 window.addEventListener('load', () => {
   const searchParams = utm.strict(window.location.search)

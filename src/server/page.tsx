@@ -17,6 +17,7 @@ import {
   getStoryblokEditorScript,
 } from 'server/utils/storyblok'
 import { getLocaleData } from 'utils/locales'
+import { BlockContext, getBlockComponentMap } from 'blocks'
 import { App } from '../App'
 import { sentryConfig } from './config/sentry'
 import { favicons } from './utils/favicons'
@@ -171,20 +172,29 @@ export const getPageMiddleware = (
 
   const currentLocale = getLocaleData(locale)
 
+  const blockTypes =
+    story?.story.content.body.map((block) => block.component) ?? []
+  const blockMap = await getBlockComponentMap(blockTypes)
+
   const serverApp = (
-    <Provider
-      initialState={{
-        story,
-        globalStory,
-        context: { currentLocale },
-      }}
-    >
-      <StaticRouter location={ctx.request.originalUrl} context={routerContext}>
-        <HelmetProvider context={helmetContext}>
-          <App nonce={(ctx.res as any).cspNonce} />
-        </HelmetProvider>
-      </StaticRouter>
-    </Provider>
+    <BlockContext.Provider value={blockMap}>
+      <Provider
+        initialState={{
+          story,
+          globalStory,
+          context: { currentLocale },
+        }}
+      >
+        <StaticRouter
+          location={ctx.request.originalUrl}
+          context={routerContext}
+        >
+          <HelmetProvider context={helmetContext}>
+            <App nonce={(ctx.res as any).cspNonce} />
+          </HelmetProvider>
+        </StaticRouter>
+      </Provider>
+    </BlockContext.Provider>
   )
 
   const body = renderStylesToString(renderToString(serverApp))

@@ -18,7 +18,7 @@ export const App: React.FunctionComponent<{ nonce?: string }> = ({ nonce }) => {
 
     if (location.search.includes('xmas')) {
       // @ts-ignore
-      import('magic-snowflakes')
+      import(/* webpackChunkName: 'magic-snowflakes' */ 'magic-snowflakes')
         .then((m) => m.default)
         .then((Snowflakes) => Snowflakes())
     }

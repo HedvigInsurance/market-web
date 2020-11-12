@@ -51,4 +51,5 @@ module.exports = webpackConfig({
       ),
     }),
   ],
+  bail: process.env.NODE_ENV === 'production',
 })

@@ -157,7 +157,7 @@
     "watch": "concurrently -n wds,srv 'npm:watch-client' 'npm:watch-server'",
     "watch-client": "NODE_ENV=development webpack-dev-server --config webpack/webpack.config.client.development.js",
     "watch-server": "concurrently -n bld,run 'npm:watch-server-build' 'npm:watch-server-run'",
-    "watch-server-build": "NODE_ENV=development nodemon -w src -e .ts,.tsx,.js -x 'webpack --config webpack/webpack.config.server.js'",
+    "watch-server-build": "webpack --config webpack/webpack.config.server.js --watch",
     "watch-server-run": "NODE_ENV=development nodemon -w build/server.js build/server.js",
     "test": "NODE_ENV=test jest",
     "typecheck": "tsc --noEmit",
