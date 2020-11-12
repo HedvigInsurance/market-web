@@ -1,4 +1,3 @@
-import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colors, colorsV3, fonts } from '@hedviginsurance/brand'
 import { match } from 'matchly'
@@ -333,10 +332,6 @@ export const SectionWrapperComponent = styled(SectionWrapperComponentUnstyled)<
 >`
   ${({ extraStyling = '' }) => String(extraStyling)}
 `
-const fadeIn = keyframes({
-  from: { opacity: 0 },
-  to: { opacity: 1 },
-})
 const SectionBackground = styled('div')<{
   backgroundImage?: string
   backgroundImageMobile?: string
@@ -348,9 +343,6 @@ const SectionBackground = styled('div')<{
   bottom: 0,
   minHeight: '100%',
   minWidth: '100%',
-  opacity: 0,
-  animation: fadeIn + ' 500ms forwards',
-  animationDelay: '1000ms',
   backgroundColor:
     colorComponent?.plugin === 'hedvig_minimal_color_picker'
       ? getMinimalColorStyles(colorComponent.color ?? 'standard').background
@@ -449,7 +441,7 @@ export const ContentWrapper: React.FC<ContentWrapperProps> = ({
   >
     {({ isVisible }) => (
       <ContentWrapperStyled
-        visible={index <= 1 || isVisible}
+        visible={index <= 2 || isVisible}
         brandPivot={brandPivot}
         fullWidth={fullWidth}
         {...props}
