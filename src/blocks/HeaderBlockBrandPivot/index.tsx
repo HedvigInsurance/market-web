@@ -234,7 +234,11 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
   const [isBelowThreshold, setIsBelowThreshold] = useState<boolean>(false)
   const [buttonColor, setButtonColor] = useState<
     minimalColorComponentColors | undefined
-  >(props.cta_color?.color)
+  >(
+    props.inverse_colors && props.is_transparent
+      ? InverseColors.DEFAULT
+      : props.cta_color?.color,
+  )
 
   const updateHeader = useCallback(() => {
     if (isBelowScrollThreshold()) {
