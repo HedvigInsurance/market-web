@@ -9,6 +9,7 @@ import proxy from 'koa-proxy'
 import removeTrailingSlashes from 'koa-remove-trailing-slashes'
 import Router from 'koa-router'
 import { Logger } from 'typescript-logging'
+import koaHelmet from 'koa-helmet'
 import { configureAssets } from 'server/middlewares/assets'
 import { routes } from '../routes'
 import { config } from './config'
@@ -59,6 +60,12 @@ app.use(setRequestUuidMiddleware)
 app.use(setLoggerMiddleware)
 app.use(logRequestMiddleware)
 app.use(compress({ threshold: 5 * 1024 }))
+if (process.env.USE_HELMET === 'true')
+  app.use(
+    koaHelmet({
+      contentSecurityPolicy: false,
+    }),
+  )
 
 configureAssets(app)
 
