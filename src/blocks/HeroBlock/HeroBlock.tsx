@@ -69,7 +69,7 @@ const HeroContent = styled(ContentWrapper)`
   z-index: 2;
 `
 
-const HeroHeadline = styled(Heading)<Animatable>`
+const HeadlineWrapper = styled.div<Animatable>`
   position: relative;
   animation: ${(props) =>
     props.animate
@@ -91,6 +91,10 @@ const HeroHeadline = styled(Heading)<Animatable>`
       display: block;
     }
   }
+`
+
+const HeroHeadline = styled(Heading)`
+  display: inline;
 `
 
 const Text = styled.div<TextProps>`
@@ -209,20 +213,20 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
       height={height}
     >
       <HeroContent index={index} brandPivot fullWidth>
-        <HeroHeadline
-          as="h1"
-          animate={animate}
-          size={headline_font_size}
-          mobileSize={headline_font_size_mobile}
-          textPosition={text_position}
-        >
-          <span dangerouslySetInnerHTML={{ __html: headline }} />
+        <HeadlineWrapper animate={animate}>
+          <HeroHeadline
+            as="h1"
+            size={headline_font_size}
+            mobileSize={headline_font_size_mobile}
+            textPosition={text_position}
+            dangerouslySetInnerHTML={{ __html: headline }}
+          />
           {show_hedvig_wordmark && (
             <Wordmark>
               <HedvigH />
             </Wordmark>
           )}
-        </HeroHeadline>
+        </HeadlineWrapper>
         {text && (
           <Text
             dangerouslySetInnerHTML={{ __html: text?.html }}
