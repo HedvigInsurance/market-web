@@ -32,11 +32,14 @@ export const startPageRedirect: IMiddleware<object> = async (ctx) => {
     lookupCountry(actualIp)?.toLowerCase() || fallbackCountryLabel
   const queryStringMaybe = ctx.querystring ? '?' + ctx.querystring : ''
 
+  ctx.status = 301
+
   if (Object.keys(locales).includes(countryLabel)) {
-    return ctx.redirect(`/${countryLabel}${queryStringMaybe}`)
+    ctx.set('Location', `/${countryLabel}${queryStringMaybe}`)
+    return
   }
 
-  ctx.redirect(`/${fallbackCountryLabel}${queryStringMaybe}`)
+  ctx.set('Location', `/${fallbackCountryLabel}${queryStringMaybe}`)
 }
 
 const triggerRedirect = (
