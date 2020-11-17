@@ -1,0 +1,75 @@
+version: "1.0"
+stages:
+  - "clone"
+  - "install"
+  - "checks"
+
+steps:
+  clone:
+    title: "Cloning repository"
+    type: "git-clone"
+    repo: "HedvigInsurance/market-web"
+    revision: "${{CF_BRANCH}}"
+    git: "github"
+    stage: "clone"
+
+  build_dependency_container:
+    title: "Building Docker image"
+    type: "build"
+    image_name: "hedviginsurance/market-web"
+    disable_push: true
+    working_directory: "${{clone}}"
+    dockerfile: .ci/Dockerfile
+    stage: "install"
+
+  install_deps:
+    title: "Installing dependencies"
+    type: "freestyle"
+    image: "${{build_dependency_container}}"
+    working_directory: "${{clone}}"
+    commands:
+      - yarn
+    stage: "install"
+
+  checks:
+    title: "Running checks"
+    type: "parallel"
+    steps:
+      - title: "Linting"
+        type: "freestyle"
+        image: "${{build_dependency_container}}"
+        working_directory: "${{clone}}"
+        commands:
+          - yarn lint
+      - title: "Testing"
+        type: "freestyle"
+        image: "${{build_dependency_container}}"
+        working_directory: "${{clone}}"
+        commands:
+          - yarn test
+      - title: "Typecheck"
+        type: "freestyle"
+        image: "${{build_dependency_container}}"
+        working_directory: "${{clone}}"
+        commands:
+          - yarn typecheck
+    stage: "checks"
+
+  build_client:
+    title: "Building client"
+    type: "freestyle"
+    image: "${{build_dependency_container}}"
+    working_directory: "${{clone}}"
+    commands:
+      - yarn build-client
+    stage: "checks"
+
+  build_server:
+    title: "Building server"
+    type: "freestyle"
+    image: "${{build_dependency_container}}"
+    working_directory: "${{clone}}"
+    commands:
+      - yarn build-server
+    stage: "checks"
+
