@@ -1,9 +1,9 @@
 {
-  "name": "@hedviginsurance/web-next",
+  "name": "@hedviginsurance/market-web",
   "version": "1.6.1",
   "description": "Template for the next web project",
   "main": "index.js",
-  "repository": "https://github.com/HedvigInsurance/web-next",
+  "repository": "https://github.com/HedvigInsurance/morket-web",
   "author": "Johan Palmfjord <johan.palmfjord@hedvig.com>",
   "types": "./types.d.ts",
   "engines": {
