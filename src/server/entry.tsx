@@ -64,6 +64,7 @@ if (process.env.USE_HELMET === 'true')
   app.use(
     koaHelmet({
       contentSecurityPolicy: false,
+      frameguard: false,
     }),
   )
 
