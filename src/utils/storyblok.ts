@@ -1,9 +1,16 @@
 import { LinkComponent } from '../storyblok/StoryContainer'
 
-export const getStoryblokLinkUrl = (link: LinkComponent) =>
-  link.linktype !== 'story' || /^\//.test(link.cached_url)
-    ? link.cached_url
-    : `/${link.cached_url}`
+export const getStoryblokLinkUrl = (link: LinkComponent) => {
+  const cachedLink =
+    link.linktype !== 'story' || /^\//.test(link.cached_url)
+      ? link.cached_url
+      : `/${link.cached_url}`
+  const publicHost = getPublicHost()
+  return publicHost
+    ? cachedLink.replace('https://www.hedvig.com', publicHost)
+    : cachedLink
+}
+
 export const getPublicHost = (): string | undefined => {
   if (
     typeof window === 'undefined' &&
