@@ -2,6 +2,7 @@
 If there is one, add the ID of the Jira issue to the Pull Request title.
 E.g. "[HVG-123] Make the Pull Request template great again" 
 -->
+##
 
 ## What?
 
@@ -13,8 +14,8 @@ E.g. "[HVG-123] Make the Pull Request template great again"
 <!-- Why are these changes made? -->
 
 
-<!-- If there is one, add a link to the Jira issue below. -->
-_Referenced ticket [here]()_
+<!-- If there is one, add the Jira issue ID in brackets below. -->
+_Referenced ticket: []_
 
 
 <!-- And, if that makes sense, add screenshots and/or GIF's below -->
