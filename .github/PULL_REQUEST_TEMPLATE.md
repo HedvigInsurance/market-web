@@ -1,9 +1,3 @@
-<!-- 
-If there is one, add the ID of the Jira issue to the Pull Request title.
-E.g. "[HVG-123] Make the Pull Request template great again" 
--->
-##
-
 ## What?
 
 <!-- What changes are made? If there are many significant changes, a list might be a good format. -->
@@ -14,7 +8,7 @@ E.g. "[HVG-123] Make the Pull Request template great again"
 <!-- Why are these changes made? -->
 
 
-<!-- If there is one, add the Jira issue ID in brackets below. -->
+<!-- If there is one, add the Jira issue ID in brackets below. This will create a link to that issue. -->
 _Referenced ticket: []_
 
 
