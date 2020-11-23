@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import React from 'react'
+import { HedvigSymbol } from '@hedviginsurance/brand'
 import { BrandPivotBaseBlockProps } from 'blocks/BaseBlockProps'
 import {
   ContentWrapper,
@@ -7,7 +8,6 @@ import {
   TABLET_BP_UP,
 } from 'components/blockHelpers'
 import { FontSizes, Heading } from 'components/Heading/Heading'
-import { HedvigH } from 'components/icons/HedvigH'
 import { TextPosition } from 'utils/textPosition'
 
 interface HeadlineBlockProps extends BrandPivotBaseBlockProps {
@@ -89,7 +89,7 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
           />
           {show_hedvig_wordmark && (
             <Wordmark>
-              <HedvigH />
+              <HedvigSymbol />
             </Wordmark>
           )}
         </Heading>

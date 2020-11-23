@@ -2,8 +2,8 @@ import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import React, { useEffect, useState } from 'react'
 import MediaQuery from 'react-responsive'
+import { HedvigSymbol } from '@hedviginsurance/brand'
 import { FontSizes, Heading } from 'components/Heading/Heading'
-import { HedvigH } from 'components/icons/HedvigH'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { SectionSize } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
@@ -339,7 +339,7 @@ export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockPro
             />
             {show_hedvig_wordmark && (
               <Wordmark>
-                <HedvigH />
+                <HedvigSymbol />
               </Wordmark>
             )}
           </Title>

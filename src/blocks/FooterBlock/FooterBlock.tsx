@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colorsV3 } from '@hedviginsurance/brand'
+import { colorsV3, HedvigSymbol } from '@hedviginsurance/brand'
 import React from 'react'
 import { AppButtons } from 'components/AppButtons/AppButtons'
 import {
@@ -10,7 +10,6 @@ import {
   TABLET_BP_UP,
 } from 'components/blockHelpers'
 import { ContextContainer } from 'components/containers/ContextContainer'
-import { HedvigH } from 'components/icons/HedvigH'
 import { StarRating } from 'components/icons/StarRating'
 import { GlobalStory, GlobalStoryContainer } from 'storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from 'utils/storyblok'
@@ -202,7 +201,7 @@ export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
   >
     <ContentWrapper brandPivot>
       <IconWrapper>
-        <HedvigH size={32} />
+        <HedvigSymbol size={32} />
       </IconWrapper>
     </ContentWrapper>
     <ContentWrapper brandPivot>

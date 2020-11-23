@@ -1,6 +1,7 @@
 import { css, keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import React from 'react'
+import { HedvigSymbol } from '@hedviginsurance/brand'
 import {
   BrandPivotBaseBlockProps,
   MarkdownHtmlComponent,
@@ -11,7 +12,6 @@ import {
   ButtonStyleType,
 } from 'components/ButtonBrandPivot/Button'
 import { FontSizes, Heading } from 'components/Heading/Heading'
-import { HedvigH } from 'components/icons/HedvigH'
 import { TextPosition } from 'src/utils/textPosition'
 import { LinkComponent } from 'storyblok/StoryContainer'
 import { getStoryblokImage, getStoryblokLinkUrl, Image } from 'utils/storyblok'
@@ -223,7 +223,7 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
           />
           {show_hedvig_wordmark && (
             <Wordmark>
-              <HedvigH />
+              <HedvigSymbol />
             </Wordmark>
           )}
         </HeadlineWrapper>
