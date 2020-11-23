@@ -25,7 +25,7 @@ import { LanguagePicker } from './LanguagePicker'
 import { MenuItem } from './MenuItem'
 import { Burger, TABLET_BP_DOWN, TABLET_BP_UP } from './mobile'
 
-export const WRAPPER_HEIGHT = '6rem'
+export const WRAPPER_HEIGHT = '5rem'
 export const MOBILE_WRAPPER_HEIGHT = '4.5rem'
 export const HEADER_VERTICAL_PADDING = '1.2rem'
 export const TOGGLE_TRANSITION_TIME = 250
