@@ -1,15 +1,13 @@
 import styled from '@emotion/styled'
-import { colorsV3 } from '@hedviginsurance/brand'
+import { colorsV3, HedvigLogo, HedvigSymbol } from '@hedviginsurance/brand'
 import React, { useCallback, useEffect, useState } from 'react'
 import { ContextContainer } from 'components/containers/ContextContainer'
-import { HedvigH } from 'components/icons/HedvigH'
 import { ContentWrapper, MOBILE_BP_DOWN } from '../../components/blockHelpers'
 import {
   ButtonLinkBrandPivot,
   ButtonStyleType,
 } from '../../components/ButtonBrandPivot/Button'
 import { Togglable } from '../../components/containers/Togglable'
-import { HedvigLogotype } from '../../components/icons/HedvigLogotype'
 import {
   GlobalStory,
   GlobalStoryContainer,
@@ -303,7 +301,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                       <ContextContainer>
                         {({ currentLocale }) => (
                           <LogoLink href={'/' + currentLocale.label}>
-                            <HedvigLogotype width={94} />
+                            <HedvigLogo width={94} />
                           </LogoLink>
                         )}
                       </ContextContainer>
@@ -314,7 +312,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                     <ContextContainer>
                       {({ currentLocale }) => (
                         <Wordmark href={'/' + currentLocale.label}>
-                          <HedvigH size={28} />
+                          <HedvigSymbol size={28} />
                         </Wordmark>
                       )}
                     </ContextContainer>
