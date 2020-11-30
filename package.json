@@ -15,7 +15,6 @@
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.23",
     "@hedviginsurance/brand": "^4.0.3",
-    "@hedviginsurance/react-swipeable-views": "^0.12.20",
     "@segment/utm-params": "^2.0.0",
     "@sentry/node": "^4.3.0",
     "@types/koa-basic-auth": "^2.0.3",
