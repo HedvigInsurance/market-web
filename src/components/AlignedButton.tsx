@@ -41,9 +41,9 @@ export interface AlignedButtonProps<TColor> {
   className?: string
 }
 
-export const AlignedButton: React.FunctionComponent<AlignedButtonProps<
-  MinimalColorComponent | ColorComponent
->> = ({
+export const AlignedButton: React.FunctionComponent<
+  AlignedButtonProps<MinimalColorComponent | ColorComponent>
+> = ({
   title,
   type,
   buttonLink,
