@@ -16,9 +16,9 @@ const ValueWrapper = styled.div`
   padding-left: 0.5rem;
 `
 
-export const MarketValueContainer: React.FC<ValueContainerProps<
-  MarketSelectOption
->> = (props) => {
+export const MarketValueContainer: React.FC<
+  ValueContainerProps<MarketSelectOption>
+> = (props) => {
   return (
     <components.ValueContainer {...props}>
       <GlobeIcon size="1.5rem" />

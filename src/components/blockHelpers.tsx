@@ -327,9 +327,9 @@ const SectionWrapperComponentUnstyled = styled('section')<SectionProps>(
       : {},
   }),
 )
-export const SectionWrapperComponent = styled(SectionWrapperComponentUnstyled)<
-  SectionProps
->`
+export const SectionWrapperComponent = styled(
+  SectionWrapperComponentUnstyled,
+)<SectionProps>`
   ${({ extraStyling = '' }) => String(extraStyling)}
 `
 const SectionBackground = styled('div')<{
