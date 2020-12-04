@@ -144,27 +144,24 @@ export const YoutubeVideoBlock: React.FunctionComponent<YoutubeVideoBlockProps> 
   const [isPlaying, setIsPlaying] = useState(false)
   const [isPlayerLoaded, setPlayerLoaded] = useState(false)
   const [isShowingOverlay, setIsShowingOverlay] = useState(true)
-  const [playerResizeInterval, setPlayerResizeInterval] = useState<
-    number | null
-  >(null)
   const [playerWidth, setPlayerWidth] = useState(0)
   const [playerHeight, setPlayerHeight] = useState(0)
   const imageRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
-    setPlayerResizeInterval(
-      window.setInterval(() => {
-        setPlayerWidth(imageRef?.current?.width ?? 0)
-        setPlayerHeight(imageRef?.current?.height ?? 0)
-      }, 50),
-    )
+    const setPlayerSize = () => {
+      setPlayerWidth(imageRef?.current?.width ?? 0)
+      setPlayerHeight(imageRef?.current?.height ?? 0)
+    }
+
+    setPlayerSize()
+    window.addEventListener('resize', setPlayerSize)
 
     return () => {
-      if (playerResizeInterval) {
-        clearInterval(playerResizeInterval)
-      }
+      window.removeEventListener('resize', setPlayerSize)
     }
-  }, [playerResizeInterval])
+  }, [imageRef?.current?.width, imageRef?.current?.height])
+
   useEffect(() => {
     if (isPlaying && isPlayerLoaded) {
       setTimeout(() => {
