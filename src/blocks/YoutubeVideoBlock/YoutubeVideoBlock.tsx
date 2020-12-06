@@ -124,7 +124,7 @@ export const YoutubeVideoBlock: React.FunctionComponent<YoutubeVideoBlockProps> 
   index,
 }) => {
   const [isPlaying, setIsPlaying] = useState(false)
-  const [isPlayerLoaded, setPlayerLoaded] = useState(false)
+  const [isPlayerLoaded, setIsPlayerLoaded] = useState(false)
   const [isShowingOverlay, setIsShowingOverlay] = useState(true)
 
   useEffect(() => {
@@ -160,7 +160,7 @@ export const YoutubeVideoBlock: React.FunctionComponent<YoutubeVideoBlockProps> 
             frameBorder="0"
             onLoad={() => {
               if (isPlaying) {
-                setPlayerLoaded(true)
+                setIsPlayerLoaded(true)
               }
             }}
           />
