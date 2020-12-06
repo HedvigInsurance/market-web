@@ -1,7 +1,7 @@
-import { css, keyframes } from '@emotion/core'
+import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   BrandPivotBaseBlockProps,
   MarkdownHtmlComponent,
@@ -14,8 +14,12 @@ import {
 import { Caption } from 'components/Caption'
 import { Image } from 'utils/storyblok'
 
+const CONTENT_MAX_WIDTH = '828px'
+const PLAYER_WIDTH = '100%'
+const OVERLAY_FADE_TIME = 1500
+
 const StyledContentWrapper = styled(ContentWrapper)`
-  max-width: 828px;
+  max-width: ${CONTENT_MAX_WIDTH};
 `
 
 const InnerWrapper = styled.div`
@@ -24,37 +28,18 @@ const InnerWrapper = styled.div`
   justify-content: center;
 `
 
-const OVERLAY_FADE_TIME = 1500
 const Overlay = styled.div<{ isPlaying: boolean; isOnFront: boolean }>`
   position: relative;
   transition: opacity ${OVERLAY_FADE_TIME}ms;
   z-index: ${({ isOnFront }) => (isOnFront ? 2 : 0)};
+  opacity: ${({ isPlaying }) => (isPlaying ? 0 : 1)};
   color: ${colorsV3.gray100};
-
-  ${({ isPlaying }) =>
-    isPlaying
-      ? css`
-          opacity: 0;
-
-          button {
-            transform: scale(1.1);
-            transition: transform ${OVERLAY_FADE_TIME}ms;
-          }
-        `
-      : css`
-          opacity: 1;
-
-          button {
-            transform: scale(1);
-            transition: transform ${OVERLAY_FADE_TIME}ms;
-          }
-        `}
 `
 
 const OverlayImage = styled.img`
   display: block;
-  max-width: 828px;
-  width: 100%;
+  max-width: ${CONTENT_MAX_WIDTH};
+  width: ${PLAYER_WIDTH};
 `
 
 const OverlayText = styled.button`
@@ -103,7 +88,6 @@ const fade = keyframes`
 `
 const Spinner = styled.div`
   position: absolute;
-  text-align: center;
   top: 50%;
   left: 50%;
   width: 4rem;
@@ -115,15 +99,13 @@ const Spinner = styled.div`
 
   ${TABLET_BP_UP} {
     border-width: 3px;
-    width: 4rem;
-    height: 4rem;
   }
 `
 
-const VideoFrame = styled.iframe<{ width?: number; height?: number }>`
+const VideoFrame = styled.iframe`
   position: absolute;
-  width: ${({ width }) => width}px;
-  height: ${({ height }) => height}px;
+  width: ${PLAYER_WIDTH};
+  height: 100%;
   z-index: 1;
 `
 
@@ -144,23 +126,6 @@ export const YoutubeVideoBlock: React.FunctionComponent<YoutubeVideoBlockProps> 
   const [isPlaying, setIsPlaying] = useState(false)
   const [isPlayerLoaded, setPlayerLoaded] = useState(false)
   const [isShowingOverlay, setIsShowingOverlay] = useState(true)
-  const [playerWidth, setPlayerWidth] = useState(0)
-  const [playerHeight, setPlayerHeight] = useState(0)
-  const imageRef = useRef<HTMLImageElement>(null)
-
-  useEffect(() => {
-    const setPlayerSize = () => {
-      setPlayerWidth(imageRef?.current?.width ?? 0)
-      setPlayerHeight(imageRef?.current?.height ?? 0)
-    }
-
-    setPlayerSize()
-    window.addEventListener('resize', setPlayerSize)
-
-    return () => {
-      window.removeEventListener('resize', setPlayerSize)
-    }
-  }, [imageRef?.current?.width, imageRef?.current?.height])
 
   useEffect(() => {
     if (isPlaying && isPlayerLoaded) {
@@ -183,16 +148,12 @@ export const YoutubeVideoBlock: React.FunctionComponent<YoutubeVideoBlockProps> 
             isOnFront={isShowingOverlay}
           >
             {!isPlaying && (
-              <OverlayText onClick={() => setIsPlaying(!isPlaying)}>
-                Play
-              </OverlayText>
+              <OverlayText onClick={() => setIsPlaying(true)}>Play</OverlayText>
             )}
             {isPlaying && !isPlayerLoaded && <Spinner />}
-            <OverlayImage src={overlay_image} ref={imageRef} />
+            <OverlayImage src={overlay_image} />
           </Overlay>
           <VideoFrame
-            width={playerWidth}
-            height={playerHeight}
             src={`https://www.youtube.com/embed/${video_id}?autoplay=${
               isPlaying ? '1' : '0'
             }&controls=0&loop=1&playlist=${video_id}`}
