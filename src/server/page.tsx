@@ -70,6 +70,9 @@ const template = ({
       Sentry.init(${JSON.stringify(sentryConfig())})
     </script>
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i&display=swap" rel="stylesheet">
+    <!-- TrustBox script -->
+    <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+    <!-- End TrustBox script -->
   </head>
   <body>
   <!-- Google Tag Manager (noscript) -->
