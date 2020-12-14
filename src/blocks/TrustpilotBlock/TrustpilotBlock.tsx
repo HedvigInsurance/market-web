@@ -33,7 +33,7 @@ export const TrustpilotBlock: React.FC = () => {
             data-style-height="240px"
             data-style-width="100%"
             data-theme="light"
-            data-stars="4,5"
+            data-tags="SelectedReview"
             data-review-languages={
               currentLocale.htmlLang === 'sv' ? currentLocale.htmlLang : 'en'
             }
