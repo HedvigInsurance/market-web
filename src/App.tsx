@@ -12,7 +12,7 @@ export const App: React.FunctionComponent<{ nonce?: string }> = ({ nonce }) => {
   useEffect(() => {
     // tslint:disable-next-line no-console
     console.log(
-      `%cHey there! Thanks for checking us out. Curious how we built this? You can see all our source code at https://github.com/HedvigInsurance !\nLike it, and want to change the insurance industry? Of course we're hiring: https://join.hedvig.com`,
+      `%cHey there fellow developer! Curious how we built this? Find us at https://github.com/HedvigInsurance !\nLike it, and want to change the insurance industry? Of course we're hiring: https://www.hedvig.com/se-en/jobs`,
       `font-size: 2rem; font-family: sans-serif; color: ${colorsV3.gray500}; padding: 2rem; display: block;`,
     )
 
