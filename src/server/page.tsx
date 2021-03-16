@@ -87,10 +87,7 @@ const template = ({
     }
     <div id="react-root">${body}</div>
       <script nonce="${nonce}">
-      window.__INITIAL_STATE__ = ${JSON.stringify(initialState).replace(
-        /\u2028/g,
-        ' ',
-      )};
+      window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
       window.PUBLIC_HOST = ${JSON.stringify(process.env.PUBLIC_HOST || '')};
       window.GIRAFFE_ENDPOINT = ${JSON.stringify(
         process.env.GIRAFFE_ENDPOINT ||
@@ -174,14 +171,15 @@ export const getPageMiddleware = (
 
   const currentLocale = getLocaleData(locale)
 
+  const initialState = JSON.parse(
+    JSON.stringify({
+      story,
+      globalStory,
+      context: { currentLocale },
+    }).replace(/\u2028/g, ' '),
+  )
   const serverApp = (
-    <Provider
-      initialState={{
-        story,
-        globalStory,
-        context: { currentLocale },
-      }}
-    >
+    <Provider initialState={initialState}>
       <StaticRouter location={ctx.request.originalUrl} context={routerContext}>
         <HelmetProvider context={helmetContext}>
           <App nonce={(ctx.res as any).cspNonce} />
@@ -198,12 +196,6 @@ export const getPageMiddleware = (
   if (routerContext.url) {
     ctx.redirect(routerContext.url)
     return
-  }
-
-  const initialState = {
-    story,
-    globalStory,
-    context: { currentLocale },
   }
 
   if (ctx.request.headers.accept === 'application/json') {
