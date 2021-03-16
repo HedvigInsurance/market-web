@@ -14,10 +14,7 @@ import { redisClient } from './redis'
 const calculateCacheVersionTimestamp = (date: Date) =>
   String(Math.round(Number(date) / 1000))
 
-const apiClient = () =>
-  axios.create({
-    baseURL: 'https://api.storyblok.com',
-  })
+export const apiClient = axios.create({ baseURL: 'https://api.storyblok.com' })
 
 export const nukeCache: IMiddleware<State> = async (ctx) => {
   const keys = await redisClient.keys('storyblok:*')
@@ -44,7 +41,7 @@ const cachedGet = async <T>(
 
   appLogger.info(`Cache miss [key="${cacheKey}"]`)
   try {
-    const response = await apiClient().get<T>(...axiosParams)
+    const response = await apiClient.get<T>(...axiosParams)
     const result = { status: response.status, data: response.data }
     await redisClient.set(
       `storyblok:${cacheKey}`,
@@ -114,7 +111,7 @@ export const getPublishedStoryFromSlug = async (
 }
 
 export const getDraftedStoryById = (id: string, cacheVersion: string) =>
-  apiClient()
+  apiClient
     .get<{ story: BodyStory }>(encodeURI(`/v1/cdn/stories/${id}`), {
       params: {
         token: config.storyblokApiToken,
@@ -167,7 +164,7 @@ export interface LinkResult {
   links: { [uuid: string]: Link }
 }
 export const getAllStoryblokLinks = () =>
-  apiClient().get<LinkResult>('/v1/cdn/links', {
+  apiClient.get<LinkResult>('/v1/cdn/links', {
     params: {
       token: config.storyblokApiToken,
       cv: calculateCacheVersionTimestamp(new Date()),

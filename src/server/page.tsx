@@ -107,7 +107,10 @@ const getStoryblokResponseFromContext = async (ctx: RouterContext<State>) => {
       ctx.request.query['_storyblok_tk[timestamp]']
     ) {
       const id = ctx.request.query._storyblok
-      const contentVersion = ctx.request.query['_storyblok_tk[timestamp]']
+      let contentVersion = ctx.request.query['_storyblok_tk[timestamp]']
+      if (Array.isArray(contentVersion)) {
+        contentVersion = contentVersion[0]
+      }
       ;(ctx.state.getLogger('storyblok') as Logger).info(
         `Getting drafted story [id=${id}, cv=${contentVersion}]`,
       )
@@ -207,7 +210,9 @@ export const getPageMiddleware = (
     body,
     initialState,
     helmet: (helmetContext as FilledContext).helmet,
-    dangerouslyExposeApiKeyToProvideEditing: ctx.request.query._storyblok,
+    dangerouslyExposeApiKeyToProvideEditing: Boolean(
+      ctx.request.query._storyblok,
+    ),
     nonce: (ctx.res as any).cspNonce,
   })
 }

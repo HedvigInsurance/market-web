@@ -17,7 +17,7 @@ const ValueWrapper = styled.div`
 `
 
 export const MarketValueContainer: React.FC<
-  ValueContainerProps<MarketSelectOption>
+  ValueContainerProps<MarketSelectOption, false>
 > = (props) => {
   return (
     <components.ValueContainer {...props}>

@@ -14,7 +14,9 @@ interface SelectProps extends ReactSelectProps {
   color?: minimalColorComponentColors
 }
 
-export const getSelectStyling = (theme: any): StylesConfig => ({
+export const getSelectStyling = (
+  theme: any,
+): StylesConfig<{ label: string; value: string }, false> => ({
   option: (provided) => ({
     ...provided,
     display: 'flex',
