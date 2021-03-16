@@ -7,7 +7,7 @@
   "author": "Johan Palmfjord <johan.palmfjord@hedvig.com>",
   "types": "./types.d.ts",
   "engines": {
-    "node": "10.19.0",
+    "node": "14.16.0",
     "yarn": "^1.22.0"
   },
   "dependencies": {
