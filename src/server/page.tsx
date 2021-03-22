@@ -37,7 +37,7 @@ interface Template {
   body: string
   helmet: FilledContext['helmet']
   initialState: any
-  dangerouslyExposeApiKeyToProvideEditing: boolean
+  shouldDangerouslyExposeApiKeyToProvideEditing: boolean
   nonce: string
 }
 
@@ -45,7 +45,7 @@ const template = ({
   body,
   helmet,
   initialState,
-  dangerouslyExposeApiKeyToProvideEditing,
+  shouldDangerouslyExposeApiKeyToProvideEditing,
   nonce,
 }: Template) => `
   <!doctype html>
@@ -81,7 +81,7 @@ const template = ({
   <!-- End Google Tag Manager (noscript) -->
 
     ${
-      dangerouslyExposeApiKeyToProvideEditing
+      shouldDangerouslyExposeApiKeyToProvideEditing
         ? getStoryblokEditorScript(nonce)
         : ''
     }
@@ -210,7 +210,7 @@ export const getPageMiddleware = (
     body,
     initialState,
     helmet: (helmetContext as FilledContext).helmet,
-    dangerouslyExposeApiKeyToProvideEditing: Boolean(
+    shouldDangerouslyExposeApiKeyToProvideEditing: Boolean(
       ctx.request.query._storyblok,
     ),
     nonce: (ctx.res as any).cspNonce,
