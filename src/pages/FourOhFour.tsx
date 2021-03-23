@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router-dom'
 import { FooterBlock } from 'blocks/FooterBlock/FooterBlock'
 import { HeaderBlockBrandPivot } from 'blocks/HeaderBlockBrandPivot'
 import { FourOhFourBlock } from '../blocks/FourOhFourBlock'
