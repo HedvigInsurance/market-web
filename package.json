@@ -108,7 +108,7 @@
     "@types/react-hot-loader": "^4.1.0",
     "@types/react-responsive": "^8.0.2",
     "@types/react-router": "^5.1.12",
-    "@types/react-router-dom": "^5.1.12",
+    "@types/react-router-dom": "^5.1.7",
     "@types/react-select": "^3.0.20",
     "@types/storybook-react-router": "^1.0.1",
     "@types/supertest": "^2.0.6",
