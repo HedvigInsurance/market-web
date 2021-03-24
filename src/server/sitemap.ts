@@ -74,7 +74,7 @@ const getSitemapLinks = async (logger: Logger): Promise<ReadonlyArray<Url>> => {
 
 export const sitemapXml: IMiddleware<State> = async (ctx) => {
   const sitemapCreator = createSitemap({
-    hostname: process.env.PUBLIC_HOST || '',
+    hostname: process.env.PUBLIC_HOST || undefined,
     cacheTime: 60 * 10 * 1000,
     urls: await getSitemapLinks(ctx.state.getLogger('sitemap')),
   })

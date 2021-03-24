@@ -9,7 +9,7 @@ const OptionLink = styled.a`
   text-decoration: none;
 `
 
-export const MarketOption: React.FC<OptionProps<MarketSelectOption>> = (
+export const MarketOption: React.FC<OptionProps<MarketSelectOption, false>> = (
   props,
 ) => {
   return (

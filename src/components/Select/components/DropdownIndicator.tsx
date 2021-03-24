@@ -3,7 +3,7 @@ import { components, IndicatorProps } from 'react-select'
 import { Chevron } from 'components/icons/Chevron'
 import { OptionType } from '../Select'
 
-export const DropdownIndicator: React.FC<IndicatorProps<OptionType>> = (
+export const DropdownIndicator: React.FC<IndicatorProps<OptionType, false>> = (
   props,
 ) => {
   return (

@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import { colors, colorsV3, fonts } from '@hedviginsurance/brand'
 import { match } from 'matchly'
 import React from 'react'
-import { RouteComponentProps, withRouter } from 'react-router'
+import { RouteComponentProps, withRouter } from 'react-router-dom'
 import ReactVisibilitySensor from 'react-visibility-sensor'
 import { SectionSize } from 'src/utils/SectionSize'
 import {

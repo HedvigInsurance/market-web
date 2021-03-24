@@ -13,7 +13,7 @@ declare module 'sitemap' {
     priority: number
   }
   export interface CreateSitemapOptions {
-    hostname: string
+    hostname?: string
     cacheTime: number
     urls: ReadonlyArray<Url>
   }

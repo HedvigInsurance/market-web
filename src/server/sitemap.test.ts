@@ -16,13 +16,14 @@ import {
   linksResponse,
   noindexedStoryResponse,
 } from './sitemap-test-data'
+import { apiClient } from './utils/storyblok'
 import { redisClient } from './utils/redis'
 
 beforeEach(() => {
-  moxios.install()
+  moxios.install(apiClient)
 })
 afterEach(() => {
-  moxios.uninstall()
+  moxios.uninstall(apiClient)
 })
 
 test('it stitches together a correct sitemap with cache miss', () => {
@@ -33,24 +34,18 @@ test('it stitches together a correct sitemap with cache miss', () => {
   })
   app.use(sitemapXml)
 
-  moxios.stubRequest(/^https:\/\/api\.storyblok\.com\/v1\/cdn\/links/, {
+  moxios.stubRequest(/^\/v1\/cdn\/links/, {
     status: 200,
     responseText: linksResponse,
   })
-  moxios.stubRequest(
-    /^https:\/\/api\.storyblok\.com\/v1\/cdn\/stories\/se-en\/hello-world-26/,
-    {
-      status: 200,
-      responseText: indexedStoryResponse,
-    },
-  )
-  moxios.stubRequest(
-    /^https:\/\/api\.storyblok\.com\/v1\/cdn\/stories\/se-en\/hello-world-27/,
-    {
-      status: 200,
-      responseText: noindexedStoryResponse,
-    },
-  )
+  moxios.stubRequest(/^\/v1\/cdn\/stories\/se-en\/hello-world-26/, {
+    status: 200,
+    responseText: indexedStoryResponse,
+  })
+  moxios.stubRequest(/^\/v1\/cdn\/stories\/se-en\/hello-world-27/, {
+    status: 200,
+    responseText: noindexedStoryResponse,
+  })
 
   const server = app.listen()
   const request = supertest(server)

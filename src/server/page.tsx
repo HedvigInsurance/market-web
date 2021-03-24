@@ -7,7 +7,8 @@ import { IMiddleware, RouterContext } from 'koa-router'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { FilledContext, HelmetProvider } from 'react-helmet-async'
-import { StaticRouter, StaticRouterContext } from 'react-router'
+import { StaticRouterContext } from 'react-router'
+import { StaticRouter } from 'react-router-dom'
 import { Logger } from 'typescript-logging'
 import { State } from 'server/middlewares/states'
 import {
@@ -37,7 +38,7 @@ interface Template {
   body: string
   helmet: FilledContext['helmet']
   initialState: any
-  dangerouslyExposeApiKeyToProvideEditing: boolean
+  shouldDangerouslyExposeApiKeyToProvideEditing: boolean
   nonce: string
 }
 
@@ -45,7 +46,7 @@ const template = ({
   body,
   helmet,
   initialState,
-  dangerouslyExposeApiKeyToProvideEditing,
+  shouldDangerouslyExposeApiKeyToProvideEditing,
   nonce,
 }: Template) => `
   <!doctype html>
@@ -81,16 +82,13 @@ const template = ({
   <!-- End Google Tag Manager (noscript) -->
 
     ${
-      dangerouslyExposeApiKeyToProvideEditing
+      shouldDangerouslyExposeApiKeyToProvideEditing
         ? getStoryblokEditorScript(nonce)
         : ''
     }
     <div id="react-root">${body}</div>
       <script nonce="${nonce}">
-      window.__INITIAL_STATE__ = ${JSON.stringify(initialState).replace(
-        /\u2028/g,
-        ' ',
-      )};
+      window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
       window.PUBLIC_HOST = ${JSON.stringify(process.env.PUBLIC_HOST || '')};
       window.GIRAFFE_ENDPOINT = ${JSON.stringify(
         process.env.GIRAFFE_ENDPOINT ||
@@ -110,7 +108,10 @@ const getStoryblokResponseFromContext = async (ctx: RouterContext<State>) => {
       ctx.request.query['_storyblok_tk[timestamp]']
     ) {
       const id = ctx.request.query._storyblok
-      const contentVersion = ctx.request.query['_storyblok_tk[timestamp]']
+      let contentVersion = ctx.request.query['_storyblok_tk[timestamp]']
+      if (Array.isArray(contentVersion)) {
+        contentVersion = contentVersion[0]
+      }
       ;(ctx.state.getLogger('storyblok') as Logger).info(
         `Getting drafted story [id=${id}, cv=${contentVersion}]`,
       )
@@ -174,14 +175,15 @@ export const getPageMiddleware = (
 
   const currentLocale = getLocaleData(locale)
 
+  const initialState = JSON.parse(
+    JSON.stringify({
+      story,
+      globalStory,
+      context: { currentLocale },
+    }).replace(/\u2028/g, ' '),
+  )
   const serverApp = (
-    <Provider
-      initialState={{
-        story,
-        globalStory,
-        context: { currentLocale },
-      }}
-    >
+    <Provider initialState={initialState}>
       <StaticRouter location={ctx.request.originalUrl} context={routerContext}>
         <HelmetProvider context={helmetContext}>
           <App nonce={(ctx.res as any).cspNonce} />
@@ -200,12 +202,6 @@ export const getPageMiddleware = (
     return
   }
 
-  const initialState = {
-    story,
-    globalStory,
-    context: { currentLocale },
-  }
-
   if (ctx.request.headers.accept === 'application/json') {
     ctx.body = initialState
     return
@@ -215,7 +211,9 @@ export const getPageMiddleware = (
     body,
     initialState,
     helmet: (helmetContext as FilledContext).helmet,
-    dangerouslyExposeApiKeyToProvideEditing: ctx.request.query._storyblok,
+    shouldDangerouslyExposeApiKeyToProvideEditing: Boolean(
+      ctx.request.query._storyblok,
+    ),
     nonce: (ctx.res as any).cspNonce,
   })
 }
