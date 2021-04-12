@@ -5,7 +5,7 @@ import * as Koa from 'koa'
 import { lookupCountry } from 'server/utils/ip2location'
 import { getDatasourceEntries } from 'server/utils/storyblok'
 import { DatasourceEntry } from 'storyblok/StoryContainer'
-import { locales, fallbackLocale } from 'utils/locales'
+import { fallbackLocale, locales } from 'utils/locales'
 import { State } from './states'
 
 export const forceHost = ({
@@ -35,7 +35,11 @@ export const geoRedirect = (
 
   ctx.status = 301
 
-  ctx.redirect(`/${countryLabel}${path}${queryStringMaybe}`)
+  if (Object.keys(locales).includes(countryLabel)) {
+    ctx.redirect(`/${countryLabel}${path}${queryStringMaybe}`)
+  } else {
+    ctx.redirect(`/${fallbackCountryLabel}${path}${queryStringMaybe}`)
+  }
 }
 
 const triggerRedirect = (
