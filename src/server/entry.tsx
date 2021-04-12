@@ -24,7 +24,7 @@ import {
 } from './middlewares/enhancers'
 import {
   forceHost,
-  startPageRedirect,
+  geoRedirect,
   manualRedirects,
 } from './middlewares/redirects'
 import { State } from './middlewares/states'
@@ -87,7 +87,9 @@ if (process.env.USE_AUTH) {
 if (config.forceHost) {
   router.use('/*', forceHost({ host: config.forceHost }))
 }
-router.get('/', startPageRedirect)
+router.get('/', geoRedirect('/'))
+router.get('/goods', geoRedirect('/goods'))
+
 router.use('/*', savePartnershipCookie)
 router.use('/*', removeTrailingSlashes<State>())
 router.get('/:locale(se|se-en|no|no-en)/referrals/:code', async (ctx) => {

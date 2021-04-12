@@ -25,21 +25,17 @@ export const forceHost = ({
   await next()
 }
 
-export const startPageRedirect: IMiddleware<object> = async (ctx) => {
-  const actualIp = ctx.ip
-  const fallbackCountryLabel = fallbackLocale.label
+export const geoRedirect = (
+  path: string,
+  fallbackCountryLabel = fallbackLocale.label,
+): IMiddleware<void> => async (ctx) => {
   const countryLabel =
-    lookupCountry(actualIp)?.toLowerCase() || fallbackCountryLabel
+    lookupCountry(ctx.ip)?.toLowerCase() || fallbackCountryLabel
   const queryStringMaybe = ctx.querystring ? '?' + ctx.querystring : ''
 
   ctx.status = 301
 
-  if (Object.keys(locales).includes(countryLabel)) {
-    ctx.redirect(`/${countryLabel}${queryStringMaybe}`)
-    return
-  }
-
-  ctx.redirect(`/${fallbackCountryLabel}${queryStringMaybe}`)
+  ctx.redirect(`/${countryLabel}${path}${queryStringMaybe}`)
 }
 
 const triggerRedirect = (
