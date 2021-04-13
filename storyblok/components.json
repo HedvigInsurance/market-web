@@ -1527,7 +1527,7 @@
         },
         "title": {
           "type": "text",
-          "required": true,
+          "required": false,
           "default_value": "Default Text",
           "pos": 1,
           "translatable": true
