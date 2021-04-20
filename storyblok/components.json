@@ -2098,8 +2098,36 @@
               "name": "NO_TRAVEL_YOUTH"
             },
             {
-              "value": "DK_HOME_CONTENT",
-              "name": "DK_HOME_CONTENT"
+              "value": "DK_HOME_CONTENT_OWN",
+              "name": "DK_HOME_CONTENT_OWN"
+            },
+            {
+              "value": "DK_HOME_CONTENT_RENT",
+              "name": "DK_HOME_CONTENT_RENT"
+            },
+            {
+              "value": "DK_HOME_CONTENT_STUDENT_OWN",
+              "name": "DK_HOME_CONTENT_STUDENT_OWN"
+            },
+            {
+              "value": "DK_HOME_CONTENT_STUDENT_RENT",
+              "name": "DK_HOME_CONTENT_STUDENT_RENT"
+            },
+            {
+              "value": "DK_ACCIDENT",
+              "name": "DK_ACCIDENT"
+            },
+            {
+              "value": "DK_ACCIDENT_STUDENT",
+              "name": "DK_ACCIDENT_STUDENT"
+            },
+            {
+              "value": "DK_TRAVEL",
+              "name": "DK_TRAVEL"
+            },
+            {
+              "value": "DK_TRAVEL_STUDENT",
+              "name": "DK_TRAVEL_STUDENT"
             }
           ],
           "required": true,
