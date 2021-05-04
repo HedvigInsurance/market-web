@@ -13,6 +13,9 @@ For further instructions on managing yarn and node versions, checkout [web contr
 ## Installation
 
 ```sh
+# Install the correct Node version
+$ nvm install
+
 # Install dependencies
 $ yarn
 ```
@@ -22,6 +25,9 @@ $ yarn
 ```sh
 # Start redis (docker must be running)
 $ docker run --rm -d --name=redis -p 6379:6379 redis
+
+# Compile source files (only needed on first run)
+$ yarn build
 
 # Start the app
 $ yarn watch
@@ -81,11 +87,9 @@ environment variable (in `.env` for example).
 **Flags**
 
 - `--name "<awesome name>"` (required) An arbitrary name of your space
-- `--domain "<domain>"` (required) The main environment for previewing your content. Notice that you need trailing
-  slash (or Storyblok wont't like you later).
-- `--duplicate N` A space id to duplicate. With this flag you can duplicate a space, useful if you don't want to start
-  from a clean slate.
-- `--skip-wait` Skip the 5 second wait before you apply the changes. DONT use this.
+- `--domain "<domain>"` (required) The main environment for previewing your content. Notice that you need trailing slash (or Storyblok won't like you later).
+- `--duplicate N` A space id to duplicate. With this flag you can duplicate a space, useful if you don't want to start from a clean slate.
+- `--skip-wait` Skip the 5 second wait before you apply the changes. DON'T use this.
 
 ### Sync space
 
