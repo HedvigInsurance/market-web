@@ -106,10 +106,6 @@ const IconWrapper = styled.div`
     ${TABLET_BP_UP} {
       transform: translateX(-0.625rem);
     }
-
-    path {
-      fill: currentColor;
-    }
   }
 `
 
