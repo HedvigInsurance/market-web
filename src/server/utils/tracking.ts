@@ -33,7 +33,7 @@ ${[snap].join(';\n')}
 <script nonce="${nonce}">
   window.intercomSettings = {
     app_id: "ziqa7goa",
-    vertical_padding: 32,   // 2rem
+    vertical_padding: 48,   // 3rem
     horizontal_padding: 32  // 2rem
   };
 </script>
