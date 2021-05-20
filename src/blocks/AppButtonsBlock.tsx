@@ -1,7 +1,23 @@
 import React from 'react'
 import { AppButtons } from 'components/AppButtons/AppButtons'
 import { ContentWrapper, SectionWrapper } from 'components/blockHelpers'
-import { BrandPivotBaseBlockProps } from './BaseBlockProps'
+import {
+  BrandPivotBaseBlockProps,
+  minimalColorComponentColors,
+} from './BaseBlockProps'
+
+type StandardColor = 'standard' | 'standard-inverse'
+
+const STANDARD_COLORS: Array<minimalColorComponentColors> = [
+  'standard',
+  'standard-inverse',
+]
+
+function isStandardColor(
+  color: minimalColorComponentColors,
+): color is StandardColor {
+  return STANDARD_COLORS.includes(color)
+}
 
 export const AppButtonsBlock: React.FC<BrandPivotBaseBlockProps> = ({
   index,
@@ -15,7 +31,10 @@ export const AppButtonsBlock: React.FC<BrandPivotBaseBlockProps> = ({
     extraStyling={extra_styling}
   >
     <ContentWrapper brandPivot index={index}>
-      <AppButtons alignCenter />
+      <AppButtons
+        alignCenter
+        color={color && isStandardColor(color.color) ? color.color : undefined}
+      />
     </ContentWrapper>
   </SectionWrapper>
 )
