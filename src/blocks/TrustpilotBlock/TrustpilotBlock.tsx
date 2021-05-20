@@ -27,11 +27,7 @@ export const TrustpilotBlock: React.FC = () => {
           <div
             ref={trustpilotRef}
             className="trustpilot-widget"
-            data-locale={
-              currentLocale.htmlLang === 'en'
-                ? 'en-US'
-                : currentLocale.iso.replace('_', '-')
-            }
+            data-locale={currentLocale.trustpilotLocale}
             data-template-id="54ad5defc6454f065c28af8b"
             data-businessunit-id="5b62ebf41788620001d3c4ae"
             data-style-height="240px"
