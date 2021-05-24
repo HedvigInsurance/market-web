@@ -13,11 +13,9 @@ const STANDARD_COLORS: Array<minimalColorComponentColors> = [
   'standard-inverse',
 ]
 
-function isStandardColor(
+const isStandardColor = (
   color: minimalColorComponentColors,
-): color is StandardColor {
-  return STANDARD_COLORS.includes(color)
-}
+): color is StandardColor => STANDARD_COLORS.includes(color)
 
 export const AppButtonsBlock: React.FC<BrandPivotBaseBlockProps> = ({
   index,
