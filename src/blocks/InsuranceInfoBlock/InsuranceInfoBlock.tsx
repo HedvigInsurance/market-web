@@ -86,6 +86,8 @@ const Link = styled.a`
   }
 `
 
+type Links = { link: string; text: string }[]
+
 interface InsuranceInfoBlockProps extends BrandPivotBaseBlockProps {
   value_1_description: string
   value_1_value: string
@@ -103,6 +105,10 @@ interface InsuranceInfoBlockProps extends BrandPivotBaseBlockProps {
   value_7_value: string
   terms_link: string
   terms_link_text: string
+  terms_link_2: string
+  terms_link_text_2: string
+  terms_link_3: string
+  terms_link_text_3: string
   presale_info_link: string
   presale_info_link_text: string
   cta_text: string
@@ -115,6 +121,13 @@ export const InsuranceInfoBlock: React.FC<InsuranceInfoBlockProps> = ({
   extra_styling,
   ...values
 }) => {
+  const links: Links = [
+    { link: values.terms_link, text: values.terms_link_text },
+    { link: values.terms_link_2, text: values.terms_link_text_2 },
+    { link: values.terms_link_3, text: values.terms_link_text_3 },
+    { link: values.presale_info_link, text: values.presale_info_link_text },
+  ].filter((item) => item.text)
+
   return (
     <StyledSectionWrapper
       extraStyling={extra_styling}
@@ -180,24 +193,16 @@ export const InsuranceInfoBlock: React.FC<InsuranceInfoBlockProps> = ({
         )}
 
         <Column lastOnMobile hardBottom>
-          {values.terms_link_text && (
+          {links.map(({ link, text }) => (
             <Link
-              href={values.terms_link}
+              href={link}
               target="_blank"
               rel="noopener nofollow"
+              key={link}
             >
-              {values.terms_link_text}↗
+              {text}↗
             </Link>
-          )}
-          {values.presale_info_link_text && (
-            <Link
-              href={values.presale_info_link}
-              target="_blank"
-              rel="noopener nofollow"
-            >
-              {values.presale_info_link_text}↗
-            </Link>
-          )}
+          ))}
         </Column>
 
         {values.cta_link && (
