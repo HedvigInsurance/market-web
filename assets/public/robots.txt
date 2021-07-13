@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: */old-*
+Disallow: */referrals*
+Disallow: */forever*
+Disallow: */new-member/*
+Disallow: */welcome?code=
+Disallow: */partner*
+Allow: */partner-program
+Disallow: */a-b-test*
+Disallow: */invite*
+Disallow: */lp/*
+
+Sitemap: https://www.hedvig.com/sitemap.xml
