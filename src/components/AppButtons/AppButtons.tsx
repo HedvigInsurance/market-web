@@ -7,7 +7,7 @@ import { AppStore } from './svg/AppStore'
 import { PlayStore } from './svg/PlayStore'
 
 const localeToAppStoreLink = (locale: LocaleData): string => {
-  return `https://apps.apple.com/${locale.marketLabel}/app/hedvig/id1303668531?l=${locale.htmlLang}`
+  return `https://apps.apple.com/${locale.marketLabel}/app/hedvig/id1303668531?itsct=apps_box_link&itscg=30200`
 }
 
 const BP_UP = '@media (min-width: 375px)'
