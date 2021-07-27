@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react'
+import React from 'react'
 import { render, RenderOptions } from '@testing-library/react'
 import { Provider } from 'constate'
 import { HelmetProvider } from 'react-helmet-async'
@@ -16,7 +16,7 @@ const initialState = {
   },
 }
 
-const AllTheProviders: FC = ({ children }) => {
+const AllTheProviders: React.FC = ({ children }) => {
   return (
     <Provider initialState={initialState}>
       <BrowserRouter>
@@ -27,7 +27,7 @@ const AllTheProviders: FC = ({ children }) => {
 }
 
 const customRender = (
-  ui: ReactElement,
+  ui: React.ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>,
 ) => render(ui, { wrapper: AllTheProviders, ...options })
 
