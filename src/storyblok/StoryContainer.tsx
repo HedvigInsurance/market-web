@@ -55,7 +55,6 @@ export interface BodyStory extends Story {
     HrefLang & {
       _uid: string
       page_title: string
-      public: boolean
       component: 'page'
       body: ReadonlyArray<BaseBlockProps>
       hide_footer?: boolean

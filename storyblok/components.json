@@ -2239,11 +2239,6 @@
           "description": "",
           "display_name": ""
         },
-        "public": {
-          "type": "boolean",
-          "translatable": true,
-          "pos": 1
-        },
         "body": {
           "type": "bloks",
           "pos": 2

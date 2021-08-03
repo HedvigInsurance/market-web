@@ -527,7 +527,6 @@ export const indexedStoryResponse = `
           "extra_styling": ""
         }
       ],
-      "public": true,
       "robots": "index",
       "component": "page",
       "page_title": "Home & Contents Insurance | Help like you never imagined",
@@ -1023,7 +1022,6 @@ export const noindexedStoryResponse = `
           "extra_styling": ""
         }
       ],
-      "public": true,
       "robots": "noindex",
       "component": "page",
       "page_title": "Home & Contents Insurance | Help like you never imagined",
