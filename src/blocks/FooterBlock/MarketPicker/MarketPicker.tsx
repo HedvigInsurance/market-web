@@ -56,13 +56,13 @@ const Menu = styled.ul`
 const MenuItem = styled.li`
   list-style: none;
   height: 3rem;
-  padding: 0.75rem 1.5rem;
 `
 
 const MenuItemLink = styled.a`
   text-decoration: none;
   display: block;
   height: 100%;
+  padding: 0.75rem 1.5rem;
 
   &:hover {
     opacity: 0.7;
