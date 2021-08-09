@@ -22,7 +22,6 @@ const Wrapper = styled.div`
 const Button = styled(ButtonBrandPivot)`
   display: flex;
   align-items: center;
-  width: 100%;
 
   ${MOBILE_BP_UP} {
     width: 100%;
