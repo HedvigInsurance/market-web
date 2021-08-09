@@ -16,13 +16,13 @@ import { useClickOutside } from './useClickOutside'
 
 const Wrapper = styled.div`
   position: relative;
+  width: 15rem;
 `
 
 const Button = styled(ButtonBrandPivot)`
   display: flex;
   align-items: center;
   width: 100%;
-  max-width: 15rem;
 
   ${MOBILE_BP_UP} {
     width: 100%;
