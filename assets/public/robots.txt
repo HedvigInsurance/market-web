@@ -1,0 +1,8 @@
+# robots.txt for https://www.hedvig.com/
+
+User-agent: *
+Disallow: */referrals*
+Disallow: */new-member/*
+Disallow: */lp/*
+
+Sitemap: https://www.hedvig.com/sitemap.xml
