@@ -1,5 +1,10 @@
 import React from 'react'
-import { HrefLang, SeoContent, Story } from '../storyblok/StoryContainer'
+import {
+  GlobalStoryContainer,
+  HrefLang,
+  SeoContent,
+  Story,
+} from '../storyblok/StoryContainer'
 import { getLocaleData, LocaleData } from './locales'
 import { getPublicHost, getStoryblokImage } from './storyblok'
 import {
@@ -42,13 +47,23 @@ export const getMeta = ({
   currentLocale,
 }: Meta) => (
   <>
-    <script type="application/ld+json" nonce={nonce} key="jsonld">
-      {JSON.stringify([
-        structuredWebSite(),
-        structuredOrganization(),
-        ...structuredSoftwareApplication(),
-      ])}
-    </script>
+    <GlobalStoryContainer>
+      {({ globalStory }) => (
+        <script type="application/ld+json" nonce={nonce} key="jsonld">
+          {JSON.stringify([
+            structuredWebSite({
+              description:
+                globalStory.content.structured_data_website_description,
+            }),
+            structuredOrganization({
+              description:
+                globalStory.content.structured_data_organization_description,
+            }),
+            ...structuredSoftwareApplication(),
+          ])}
+        </script>
+      )}
+    </GlobalStoryContainer>
 
     <title>{title ? title : getPageTitleFromStory(story)}</title>
     <link

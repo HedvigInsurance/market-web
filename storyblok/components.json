@@ -610,44 +610,44 @@
         },
         "footer_menu_items": {
           "type": "bloks",
-          "pos": 12,
+          "pos": 6,
           "maximum": "4",
           "restrict_components": true,
           "component_whitelist": ["menu_item"]
         },
         "footer_download_title": {
           "type": "text",
-          "pos": 13
+          "pos": 7
         },
         "footer_safety_title": {
           "type": "text",
-          "pos": 14
+          "pos": 8
         },
         "footer_safety_body": {
           "type": "custom",
-          "pos": 15,
+          "pos": 9,
           "field_type": "markdown-html",
           "options": []
         },
         "footer_rating_title": {
           "type": "text",
-          "pos": 16
+          "pos": 10
         },
         "footer_rating_paragraph": {
           "type": "custom",
-          "pos": 17,
+          "pos": 11,
           "field_type": "markdown-html",
           "options": []
         },
         "footer_market_title": {
           "type": "text",
-          "pos": 18
+          "pos": 12
         },
         "footer_paragraph": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 19,
+          "pos": 13,
           "translatable": true
         },
         "perils": {
@@ -659,33 +659,58 @@
           ],
           "restrict_components": true,
           "component_whitelist": ["peril_labels"],
-          "pos": 20
+          "pos": 14
         },
         "peril_modal_info_title": {
           "type": "text",
-          "pos": 21
+          "pos": 15
         },
         "peril_modal_coverage_title": {
           "type": "text",
-          "pos": 22
+          "pos": 16
         },
         "peril_modal_exceptions_title": {
           "type": "text",
-          "pos": 23
+          "pos": 17
         },
         "locale": {
           "type": "section",
-          "keys": ["four_oh_four_title", "cookie_consent_message"]
+          "keys": ["four_oh_four_title", "cookie_consent_message"],
+          "pos": 18
         },
         "four_oh_four_title": {
-          "type": "text"
+          "type": "text",
+          "pos": 19
         },
         "cookie_consent_message": {
           "type": "custom",
           "required": true,
           "translatable": true,
           "field_type": "markdown-html",
-          "options": []
+          "options": [],
+          "pos": 20
+        },
+        "structured_data": {
+          "type": "section",
+          "pos": 21,
+          "keys": [
+            "structured_data_website_description",
+            "structured_data_organization_description"
+          ]
+        },
+        "structured_data_website_description": {
+          "type": "text",
+          "pos": 22,
+          "max_length": "",
+          "description": "Description used in structured data \"WebSite\" type for rich search results.",
+          "display_name": "WebSite Description",
+          "default_value": ""
+        },
+        "structured_data_organization_description": {
+          "type": "text",
+          "pos": 23,
+          "display_name": "Organization Description",
+          "description": "Description used in structured data \"Organization\" type for rich search results."
         }
       },
       "image": null,

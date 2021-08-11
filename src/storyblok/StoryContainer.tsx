@@ -108,6 +108,8 @@ export interface GlobalStory extends Story {
     peril_modal_exceptions_title?: string
     four_oh_four_title?: string
     cookie_consent_message: MarkdownHtmlComponent
+    structured_data_website_description?: string
+    structured_data_organization_description?: string
   }
 }
 

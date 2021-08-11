@@ -1,5 +1,11 @@
 import { AccordionProps } from 'blocks/AccordionBlock/AccordionBlock'
 
+const DEFAULT_WEBSITE_DESCRIPTION =
+  'Hedvig är en ny typ av försäkring. Byggd på smart teknik, omtanke och sunt förnuft. Så att du kan få hjälp på sekunder, och ersättning på minuter.'
+
+const DEFAULT_ORG_DESCRIPTION =
+  'Med Hedvig Hemförsäkring får du allt du förväntar dig av en försäkring, men inget du förväntar dig av ett försäkringsbolag'
+
 export const structuredFAQPage = (
   accordions: ReadonlyArray<AccordionProps>,
 ) => ({
@@ -42,23 +48,33 @@ export const structuredSoftwareApplication = () => [
   },
 ]
 
-export const structuredWebSite = () => ({
+interface StructuredWebSiteParams {
+  description?: string
+}
+
+export const structuredWebSite = ({
+  description = DEFAULT_WEBSITE_DESCRIPTION,
+}: StructuredWebSiteParams = {}) => ({
   '@context': 'http://schema.org',
   '@type': 'WebSite',
   name: 'Hedvig',
   url: 'https://www.hedvig.com',
-  description:
-    'Hedvig är en ny typ av försäkring. Byggd på smart teknik, omtanke och sunt förnuft. Så att du kan få hjälp på sekunder, och ersättning på minuter.',
+  description,
 })
 
-export const structuredOrganization = () => ({
+interface StructuredOrganizationParams {
+  description?: string
+}
+
+export const structuredOrganization = ({
+  description = DEFAULT_ORG_DESCRIPTION,
+}: StructuredOrganizationParams = {}) => ({
   '@context': 'http://schema.org',
   '@type': 'Organization',
   name: 'Hedvig',
   url: 'https://www.hedvig.com',
   logo: 'https://www.hedvig.com/assets-next/favicons/apple-icon.png',
-  description:
-    'Med Hedvig Hemförsäkring får du allt du förväntar dig av en försäkring, men inget du förväntar dig av ett försäkringsbolag',
+  description,
   address: {
     '@type': 'PostalAddress',
     streetAddress: 'Valhallavägen 117',
