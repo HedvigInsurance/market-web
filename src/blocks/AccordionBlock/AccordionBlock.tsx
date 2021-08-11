@@ -169,6 +169,7 @@ export const Accordion: React.FC<AccordionProps> = ({ title, paragraph }) => (
 export interface AccordionBlockProps extends BrandPivotBaseBlockProps {
   title: string
   accordions: ReadonlyArray<AccordionProps>
+  is_faq?: boolean
 }
 
 export const AccordionBlock: React.FunctionComponent<AccordionBlockProps> = ({
@@ -178,6 +179,7 @@ export const AccordionBlock: React.FunctionComponent<AccordionBlockProps> = ({
   index,
   size,
   title,
+  is_faq = false,
 }) => (
   <SectionWrapper
     brandPivot
@@ -198,10 +200,12 @@ export const AccordionBlock: React.FunctionComponent<AccordionBlockProps> = ({
       </AccordionsWrapper>
     </ContentWrapper>
 
-    <Helmet>
-      <script type="application/ld+json">
-        {JSON.stringify(structuredFAQPage(accordions))}
-      </script>
-    </Helmet>
+    {is_faq && (
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(structuredFAQPage(accordions))}
+        </script>
+      </Helmet>
+    )}
   </SectionWrapper>
 )

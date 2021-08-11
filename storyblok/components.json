@@ -63,6 +63,11 @@
           "display_name": "Styling",
           "keys": ["size", "color", "extra_styling"],
           "pos": 5
+        },
+        "is_faq": {
+          "type": "boolean",
+          "description": "Mark as an FAQ block. Will mark it up using structured data for SEO purposes.",
+          "display_name": "Mark as FAQ"
         }
       },
       "image": null,
