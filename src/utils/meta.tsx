@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  GlobalStoryContainer,
+  GlobalStory,
   HrefLang,
   SeoContent,
   Story,
@@ -19,6 +19,7 @@ interface Meta {
   fullSlug?: string
   title?: string
   currentLocale?: LocaleData
+  globalStory: GlobalStory
 }
 
 const removeTrailingSlash = (text: string) => text.replace(/\/+$/, '')
@@ -45,25 +46,21 @@ export const getMeta = ({
   nonce = '',
   fullSlug,
   currentLocale,
+  globalStory,
 }: Meta) => (
   <>
-    <GlobalStoryContainer>
-      {({ globalStory }) => (
-        <script type="application/ld+json" nonce={nonce} key="jsonld">
-          {JSON.stringify([
-            structuredWebSite({
-              description:
-                globalStory.content.structured_data_website_description,
-            }),
-            structuredOrganization({
-              description:
-                globalStory.content.structured_data_organization_description,
-            }),
-            ...structuredSoftwareApplication(),
-          ])}
-        </script>
-      )}
-    </GlobalStoryContainer>
+    <script type="application/ld+json" nonce={nonce} key="jsonld">
+      {JSON.stringify([
+        structuredWebSite({
+          description: globalStory.content.structured_data_website_description,
+        }),
+        structuredOrganization({
+          description:
+            globalStory.content.structured_data_organization_description,
+        }),
+        ...structuredSoftwareApplication(),
+      ])}
+    </script>
 
     <title>{title ? title : getPageTitleFromStory(story)}</title>
     <link
