@@ -1,7 +1,17 @@
 import React from 'react'
-import { HrefLang, SeoContent, Story } from '../storyblok/StoryContainer'
+import {
+  GlobalStory,
+  HrefLang,
+  SeoContent,
+  Story,
+} from '../storyblok/StoryContainer'
 import { getLocaleData, LocaleData } from './locales'
 import { getPublicHost, getStoryblokImage } from './storyblok'
+import {
+  structuredOrganization,
+  structuredSoftwareApplication,
+  structuredWebSite,
+} from './structuredData'
 
 interface Meta {
   story?: Story & { content: SeoContent & HrefLang }
@@ -9,6 +19,7 @@ interface Meta {
   fullSlug?: string
   title?: string
   currentLocale?: LocaleData
+  globalStory: GlobalStory
 }
 
 const removeTrailingSlash = (text: string) => text.replace(/\/+$/, '')
@@ -35,43 +46,22 @@ export const getMeta = ({
   nonce = '',
   fullSlug,
   currentLocale,
+  globalStory,
 }: Meta) => (
   <>
-    {[
-      <script type="application/ld+json" nonce={nonce} key="jsonld">
-        {`
-[
-  {
-    "name": "Hedvig",
-    "@context": "http://schema.org",
-    "@type": "WebSite",
-    "url": "https://www.hedvig.com",
-    "description": "Hedvig är en ny typ av försäkring. Byggd på smart teknik, omtanke och sunt förnuft. Så att du kan få hjälp på sekunder, och ersättning på minuter."
-  },
-  {
-    "@context": "http://schema.org",
-    "@type": "Organization",
-    "url": "https://www.hedvig.com",
-    "logo": "https://www.hedvig.com/assets-next/favicons/apple-icon.png",
-    "name": "Hedvig",
-    "description": "Med Hedvig Hemförsäkring får du allt du förväntar dig av en försäkring, men inget du förväntar dig av ett försäkringsbolag",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Valhallavägen 117",
-      "addressLocality": "Stockholm",
-      "postalCode": "115 31",
-      "addressCountry": "SE"
-    },
-    "sameAs": [
-      "https://www.fb.me/hedvigapp/",
-      "https://twitter.com/hedvigapp",
-      "https://www.instagram.com/hedvig/",
-      "https://www.linkedin.com/company/hedvig/"
-    ]
-  }
-]`}
-      </script>,
-    ]}
+    <script type="application/ld+json" nonce={nonce} key="jsonld">
+      {JSON.stringify([
+        structuredWebSite({
+          description: globalStory.content.structured_data_website_description,
+        }),
+        structuredOrganization({
+          description:
+            globalStory.content.structured_data_organization_description,
+        }),
+        ...structuredSoftwareApplication(),
+      ])}
+    </script>
+
     <title>{title ? title : getPageTitleFromStory(story)}</title>
     <link
       rel="canonical"

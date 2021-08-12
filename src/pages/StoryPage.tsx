@@ -4,7 +4,11 @@ import SbEditable from 'patched/storyblok-react'
 import { getBlockComponent } from '../blocks'
 import { BaseBlockProps } from '../blocks/BaseBlockProps'
 import { FooterBlock } from '../blocks/FooterBlock/FooterBlock'
-import { BodyStory, StoryContainer } from '../storyblok/StoryContainer'
+import {
+  BodyStory,
+  GlobalStoryContainer,
+  StoryContainer,
+} from '../storyblok/StoryContainer'
 import { getMeta } from '../utils/meta'
 import { ContextContainer } from '../components/containers/ContextContainer'
 
@@ -17,11 +21,17 @@ export const StoryPage: React.FunctionComponent<{ nonce?: string }> = ({
   <StoryContainer<BodyStory>>
     {({ story }) => (
       <>
-        <ContextContainer>
-          {({ currentLocale }) => (
-            <Helmet>{getMeta({ story, nonce, currentLocale })}</Helmet>
+        <GlobalStoryContainer>
+          {({ globalStory }) => (
+            <ContextContainer>
+              {({ currentLocale }) => (
+                <Helmet>
+                  {getMeta({ story, nonce, currentLocale, globalStory })}
+                </Helmet>
+              )}
+            </ContextContainer>
           )}
-        </ContextContainer>
+        </GlobalStoryContainer>
         {getBlocksOrDefault(story!).map((block, index) => {
           const BlockComponent:
             | React.ComponentType<BaseBlockProps & any>

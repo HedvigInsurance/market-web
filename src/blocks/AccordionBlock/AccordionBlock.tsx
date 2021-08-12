@@ -2,6 +2,7 @@ import styled from '@emotion/styled'
 import { Container } from 'constate'
 import React from 'react'
 import AnimateHeight from 'react-animate-height'
+import Helmet from 'react-helmet-async'
 import {
   BrandPivotBaseBlockProps,
   MarkdownHtmlComponent,
@@ -12,8 +13,9 @@ import {
   TABLET_BP_UP,
 } from 'components/blockHelpers'
 import { PlusBrandPivot } from 'components/icons/PlusBrandPivot'
+import { structuredFAQPage } from 'utils/structuredData'
 
-interface AccordionProps {
+export interface AccordionProps {
   _uid: string
   title: string
   paragraph: MarkdownHtmlComponent
@@ -167,6 +169,7 @@ export const Accordion: React.FC<AccordionProps> = ({ title, paragraph }) => (
 export interface AccordionBlockProps extends BrandPivotBaseBlockProps {
   title: string
   accordions: ReadonlyArray<AccordionProps>
+  is_faq?: boolean
 }
 
 export const AccordionBlock: React.FunctionComponent<AccordionBlockProps> = ({
@@ -176,6 +179,7 @@ export const AccordionBlock: React.FunctionComponent<AccordionBlockProps> = ({
   index,
   size,
   title,
+  is_faq = false,
 }) => (
   <SectionWrapper
     brandPivot
@@ -195,5 +199,13 @@ export const AccordionBlock: React.FunctionComponent<AccordionBlockProps> = ({
         )}
       </AccordionsWrapper>
     </ContentWrapper>
+
+    {is_faq && (
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(structuredFAQPage(accordions))}
+        </script>
+      </Helmet>
+    )}
   </SectionWrapper>
 )
