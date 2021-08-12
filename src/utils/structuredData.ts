@@ -66,10 +66,9 @@ interface StructuredOrganizationParams {
   description?: string
 }
 
-export const structuredOrganization = ({
-  description = DEFAULT_ORG_DESCRIPTION,
-}: StructuredOrganizationParams = {}) => ({
-  '@context': 'http://schema.org',
+const structuredDataOrganization = ({
+  description,
+}: Required<StructuredOrganizationParams>) => ({
   '@type': 'Organization',
   name: 'Hedvig',
   url: 'https://www.hedvig.com',
@@ -88,4 +87,22 @@ export const structuredOrganization = ({
     'https://www.instagram.com/hedvig/',
     'https://www.linkedin.com/company/hedvig/',
   ],
+})
+
+export const structuredOrganization = ({
+  description = DEFAULT_ORG_DESCRIPTION,
+}: StructuredOrganizationParams = {}) => ({
+  '@context': 'http://schema.org',
+  ...structuredDataOrganization({ description }),
+})
+
+export const structuredDataReviewSnippet = ({
+  description = DEFAULT_ORG_DESCRIPTION,
+}: StructuredOrganizationParams = {}) => ({
+  '@context': 'http://schema.org',
+  '@type': 'AggregateRating',
+  itemReviewed: structuredDataOrganization({ description }),
+  ratingValue: '4.8',
+  bestRating: '5',
+  reviewCount: '1156',
 })

@@ -8,6 +8,7 @@ import {
 import { getLocaleData, LocaleData } from './locales'
 import { getPublicHost, getStoryblokImage } from './storyblok'
 import {
+  structuredDataReviewSnippet,
   structuredOrganization,
   structuredSoftwareApplication,
   structuredWebSite,
@@ -59,6 +60,10 @@ export const getMeta = ({
             globalStory.content.structured_data_organization_description,
         }),
         ...structuredSoftwareApplication(),
+        structuredDataReviewSnippet({
+          description:
+            globalStory.content.structured_data_organization_description,
+        }),
       ])}
     </script>
 
