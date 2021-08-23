@@ -711,6 +711,15 @@
           "pos": 23,
           "display_name": "Organization Description",
           "description": "Description used in structured data \"Organization\" type for rich search results."
+        },
+        "structured_data_review_value": {
+          "type": "text"
+        },
+        "structured_data_review_count": {
+          "type": "text"
+        },
+        "trustpilot_business_unit": {
+          "type": "text"
         }
       },
       "image": null,
