@@ -60,10 +60,17 @@ export const getMeta = ({
             globalStory.content.structured_data_organization_description,
         }),
         ...structuredSoftwareApplication(),
-        structuredDataReviewSnippet({
-          description:
-            globalStory.content.structured_data_organization_description,
-        }),
+        ...(globalStory.content.structured_data_review_value &&
+        globalStory.content.structured_data_review_count
+          ? [
+              structuredDataReviewSnippet({
+                value: globalStory.content.structured_data_review_value,
+                count: globalStory.content.structured_data_review_count,
+                description:
+                  globalStory.content.structured_data_organization_description,
+              }),
+            ]
+          : []),
       ])}
     </script>
 

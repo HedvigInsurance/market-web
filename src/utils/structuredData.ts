@@ -96,13 +96,20 @@ export const structuredOrganization = ({
   ...structuredDataOrganization({ description }),
 })
 
+interface StructuredReviewSnippetParams extends StructuredOrganizationParams {
+  value: string
+  count: string
+}
+
 export const structuredDataReviewSnippet = ({
+  value,
+  count,
   description = DEFAULT_ORG_DESCRIPTION,
-}: StructuredOrganizationParams = {}) => ({
+}: StructuredReviewSnippetParams) => ({
   '@context': 'http://schema.org',
   '@type': 'AggregateRating',
   itemReviewed: structuredDataOrganization({ description }),
-  ratingValue: '4.8',
+  ratingValue: value,
   bestRating: '5',
-  reviewCount: '1156',
+  reviewCount: count,
 })
