@@ -717,9 +717,6 @@
         },
         "structured_data_review_count": {
           "type": "text"
-        },
-        "trustpilot_business_unit": {
-          "type": "text"
         }
       },
       "image": null,

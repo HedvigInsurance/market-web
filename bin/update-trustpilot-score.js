@@ -7,6 +7,7 @@ const STORYBLOK_AUTHORIZATION = process.env.STORYBLOK_MANAGEMENT_TOKEN
 const TRUSTPILOT_API_KEY = process.env.TRUSTPILOT_API_KEY
 const SPACE_ID = yargs.argv.space
 const PAGE_ID = yargs.argv.page
+const TRUSTPILOT_BUSINESS_UNIT = yargs.argv.businessunit
 
 const storyblokClient = axios.create({
   baseURL: 'https://mapi.storyblok.com/v1',
@@ -37,14 +38,14 @@ const updateGlobalStory = async () => {
   } = response.data
   console.log('Got global story')
 
-  if (!content.trustpilot_business_unit) {
-    console.log('No Trustpilot business unit defined - add it in Storyblok!')
+  if (!TRUSTPILOT_BUSINESS_UNIT) {
+    console.log('You need to define the Trustpilot business unit')
     return
   }
 
-  console.log('Fetching Trustpilot data: ', content.trustpilot_business_unit)
+  console.log('Fetching Trustpilot data')
   const { trustScore, numberOfReviews } = await getTrustpilotBusinessUnit(
-    content.trustpilot_business_unit,
+    TRUSTPILOT_BUSINESS_UNIT,
   )
   console.log('Got Trustpilot data')
   console.log(`Trust score: ${trustScore}`)
