@@ -112,7 +112,6 @@ export interface GlobalStory extends Story {
     structured_data_organization_description?: string
     structured_data_review_value?: string
     structured_data_review_count?: string
-    trustpilot_business_unit?: string
   }
 }
 
