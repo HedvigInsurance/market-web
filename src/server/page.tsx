@@ -17,7 +17,7 @@ import {
   getPublishedStoryFromSlug,
   getStoryblokEditorScript,
 } from 'server/utils/storyblok'
-import { getLocaleData } from 'utils/locales'
+import { getLocaleData, LocaleData } from 'utils/locales'
 import { LocaleProvider } from 'context/LocaleContext/LocalContext'
 import { App } from '../App'
 import { sentryConfig } from './config/sentry'
@@ -39,6 +39,7 @@ interface Template {
   body: string
   helmet: FilledContext['helmet']
   initialState: any
+  currentLocale: LocaleData
   shouldDangerouslyExposeApiKeyToProvideEditing: boolean
   nonce: string
 }
@@ -47,6 +48,7 @@ const template = ({
   body,
   helmet,
   initialState,
+  currentLocale,
   shouldDangerouslyExposeApiKeyToProvideEditing,
   nonce,
 }: Template) => `
@@ -90,6 +92,7 @@ const template = ({
     <div id="react-root">${body}</div>
       <script nonce="${nonce}">
       window.__INITIAL_STATE__ = ${JSON.stringify(initialState)};
+      window.__CURRENT_LOCALE__ = ${JSON.stringify(currentLocale)};
       window.PUBLIC_HOST = ${JSON.stringify(process.env.PUBLIC_HOST || '')};
       window.GIRAFFE_ENDPOINT = ${JSON.stringify(
         process.env.GIRAFFE_ENDPOINT ||
@@ -216,6 +219,7 @@ export const getPageMiddleware = (
   ctx.body = template({
     body,
     initialState,
+    currentLocale,
     helmet: (helmetContext as FilledContext).helmet,
     shouldDangerouslyExposeApiKeyToProvideEditing: Boolean(
       ctx.request.query._storyblok,

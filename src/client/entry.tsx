@@ -5,15 +5,18 @@ import React from 'react'
 import { hydrate } from 'react-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter } from 'react-router-dom'
+import { LocaleProvider } from 'context/LocaleContext/LocalContext'
 import { HotApp } from '../App'
 
 hydrate(
   <Provider initialState={{ ...(window as any).__INITIAL_STATE__ }}>
-    <BrowserRouter>
-      <HelmetProvider>
-        <HotApp />
-      </HelmetProvider>
-    </BrowserRouter>
+    <LocaleProvider currentLocale={{ ...(window as any).__CURRENT_LOCALE__ }}>
+      <BrowserRouter>
+        <HelmetProvider>
+          <HotApp />
+        </HelmetProvider>
+      </BrowserRouter>
+    </LocaleProvider>
   </Provider>,
   document.getElementById('react-root'),
 )
