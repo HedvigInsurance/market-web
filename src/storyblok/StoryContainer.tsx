@@ -110,6 +110,8 @@ export interface GlobalStory extends Story {
     cookie_consent_message: MarkdownHtmlComponent
     structured_data_website_description?: string
     structured_data_organization_description?: string
+    structured_data_review_value?: string
+    structured_data_review_count?: string
   }
 }
 

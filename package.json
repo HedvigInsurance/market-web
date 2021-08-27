@@ -163,7 +163,8 @@
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "heroku-postbuild": "yarn build && (./bin/update-ip2location-bin || exit 0)",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "update-trustpilot-score": "node ./bin/update-trustpilot-score.js"
   },
   "husky": {
     "hooks": {

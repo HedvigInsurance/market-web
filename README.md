@@ -165,3 +165,22 @@ a) Running 2 commands isn't too bad right? b) 3 real reasons:
    (<- not a biggie but still).
 
 ☝️ Are none of these true anymore? Feel free to automate it!
+
+### Updating Trustpilot score in Storyblok
+
+There's a script that updates the latest Trustpilot score for one market/locale at a time. The information is stored in the "Global" component for each locale. The score is used for the review snippet module that shows up in rich Google search results.
+
+```sh
+yarn update-trustpilot-score --space 123714 --page 67792582 --businessunit 5b62ebf41788620001d3c4ae
+```
+
+**Requirements**
+
+- `STORYBLOK_MANAGEMENT_TOKEN` Define your Storyblok management token in `.env`
+- `TRUSTPILOT_API_KEY` Define the Trustpilot API key in `.env`
+
+**Flags**
+
+- `--space <id>` Storyblok Space ID to fetch and update.
+- `--page <id>` Storyblok Page ID for the locale-specific "global" story.
+- `--businessunit <id>` [Trustpilot Business Unit ID for Hedvig](https://documentation-apidocumentation.trustpilot.com/#BusinessUnitID)
