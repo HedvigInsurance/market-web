@@ -712,11 +712,23 @@
           "display_name": "Organization Description",
           "description": "Description used in structured data \"Organization\" type for rich search results."
         },
+        "trustpilot": {
+          "type": "section",
+          "pos": 24,
+          "keys": [
+            "structured_data_review_value",
+            "structured_data_review_count"
+          ]
+        },
         "structured_data_review_value": {
-          "type": "text"
+          "type": "text",
+          "pos": 25,
+          "description": "READ ONLY. This field is filled in automatically. Review score used in structured data \"AggregateRating\" type for rich search results."
         },
         "structured_data_review_count": {
-          "type": "text"
+          "type": "text",
+          "pos": 26,
+          "description": "READ ONLY. This field is filled in automatically. Total number of reviews used in structured data \"AggregateRating\" type for rich search results."
         }
       },
       "image": null,
