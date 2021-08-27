@@ -98,6 +98,9 @@ const template = ({
         process.env.GIRAFFE_ENDPOINT ||
           'https://graphql.dev.hedvigit.com/graphql',
       )};
+      window.APP_ENVIRONMENT = ${JSON.stringify(
+        process.env.APP_ENVIRONMENT || 'development',
+      )};
       </script>
     <script src="${scriptLocation}"></script>
     <div id="modal></div>
