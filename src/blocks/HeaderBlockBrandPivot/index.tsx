@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { colorsV3, HedvigLogo, HedvigSymbol } from '@hedviginsurance/brand'
 import React, { useCallback, useEffect, useState } from 'react'
-import { ContextContainer } from 'components/containers/ContextContainer'
+import { LocaleContext } from '../../context/LocaleContext/LocalContext'
 import { ContentWrapper, MOBILE_BP_DOWN } from '../../components/blockHelpers'
 import {
   ButtonLinkBrandPivot,
@@ -302,24 +302,24 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                     />
 
                     <DesktopLogo>
-                      <ContextContainer>
+                      <LocaleContext.Consumer>
                         {({ currentLocale }) => (
                           <LogoLink href={'/' + currentLocale.label}>
                             <HedvigLogo width={94} />
                           </LogoLink>
                         )}
-                      </ContextContainer>
+                      </LocaleContext.Consumer>
                     </DesktopLogo>
                   </LeftContainer>
 
                   <MobileLogo>
-                    <ContextContainer>
+                    <LocaleContext.Consumer>
                       {({ currentLocale }) => (
                         <Wordmark href={'/' + currentLocale.label}>
                           <HedvigSymbol size={28} />
                         </Wordmark>
                       )}
-                    </ContextContainer>
+                    </LocaleContext.Consumer>
                   </MobileLogo>
                   {!props.hide_menu && (
                     <Menu open={isOpen}>
@@ -331,11 +331,11 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                         )}
                       </MenuList>
 
-                      <ContextContainer>
+                      <LocaleContext.Consumer>
                         {({ currentLocale }) => (
                           <LanguagePicker currentLocale={currentLocale} />
                         )}
-                      </ContextContainer>
+                      </LocaleContext.Consumer>
 
                       <MobileButtonWrapper>
                         <>

@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
 import { ContentWrapper } from 'components/blockHelpers'
-import { ContextContainer } from 'components/containers/ContextContainer'
+import { LocaleContext } from 'context/LocaleContext/LocalContext'
 
 const TrustpilotWrapper = styled(ContentWrapper)`
   && {
@@ -22,7 +22,7 @@ export const TrustpilotBlock: React.FC = () => {
 
   return (
     <TrustpilotWrapper>
-      <ContextContainer>
+      <LocaleContext.Consumer>
         {({ currentLocale }) => (
           <div
             ref={trustpilotRef}
@@ -45,7 +45,7 @@ export const TrustpilotBlock: React.FC = () => {
             </a>
           </div>
         )}
-      </ContextContainer>
+      </LocaleContext.Consumer>
     </TrustpilotWrapper>
   )
 }

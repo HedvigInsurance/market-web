@@ -5,11 +5,11 @@ import {
   ContentWrapper as OriginalContentWrapper,
   SectionWrapper,
 } from 'components/blockHelpers'
-import { ContextContainer } from 'components/containers/ContextContainer'
 import { Perils } from 'components/Perils'
 import { TypeOfContract } from 'components/Perils/types'
 import { Select } from 'components/Select/Select'
 import { GlobalStoryContainer } from 'storyblok/StoryContainer'
+import { LocaleContext } from 'context/LocaleContext/LocalContext'
 
 export interface ContractOption {
   label: string
@@ -47,7 +47,7 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
   return (
     <GlobalStoryContainer>
       {({ globalStory }) => (
-        <ContextContainer>
+        <LocaleContext.Consumer>
           {({ currentLocale }) => (
             <SectionWrapper colorComponent={color} size={size} brandPivot>
               <ContentWrapper brandPivot index={index}>
@@ -71,7 +71,7 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
               </ContentWrapper>
             </SectionWrapper>
           )}
-        </ContextContainer>
+        </LocaleContext.Consumer>
       )}
     </GlobalStoryContainer>
   )

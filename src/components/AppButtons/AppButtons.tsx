@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 import React from 'react'
+import { LocaleContext } from 'context/LocaleContext/LocalContext'
 import { LocaleData } from 'utils/locales'
 import { ButtonLinkBrandPivot } from '../ButtonBrandPivot/Button'
-import { ContextContainer } from '../containers/ContextContainer'
 import { AppStore } from './svg/AppStore'
 import { PlayStore } from './svg/PlayStore'
 
@@ -67,7 +67,7 @@ export const AppButtons: React.FC<AppButtonsProps> = ({
   alignCenter = false,
 }) => {
   return (
-    <ContextContainer>
+    <LocaleContext.Consumer>
       {({ currentLocale }) => (
         <ButtonsWrapper center={alignCenter}>
           <AppButton
@@ -92,6 +92,6 @@ export const AppButtons: React.FC<AppButtonsProps> = ({
           </AppButton>
         </ButtonsWrapper>
       )}
-    </ContextContainer>
+    </LocaleContext.Consumer>
   )
 }

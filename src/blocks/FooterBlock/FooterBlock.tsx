@@ -9,10 +9,10 @@ import {
   SectionWrapper,
   TABLET_BP_UP,
 } from 'components/blockHelpers'
-import { ContextContainer } from 'components/containers/ContextContainer'
 import { StarRating } from 'components/icons/StarRating'
 import { GlobalStory, GlobalStoryContainer } from 'storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from 'utils/storyblok'
+import { LocaleContext } from 'context/LocaleContext/LocalContext'
 import { BrandPivotBaseBlockProps } from '../BaseBlockProps'
 import { MarketPicker } from './MarketPicker/MarketPicker'
 
@@ -258,11 +258,11 @@ export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
         {story.content.footer_market_title && (
           <div>
             <ColumnHeader>{story.content.footer_market_title}</ColumnHeader>
-            <ContextContainer>
+            <LocaleContext.Consumer>
               {({ currentLocale }) => (
                 <MarketPicker currentLocale={currentLocale} />
               )}
-            </ContextContainer>
+            </LocaleContext.Consumer>
           </div>
         )}
       </DoubleColumn>

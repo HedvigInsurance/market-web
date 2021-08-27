@@ -18,6 +18,7 @@ import {
   getStoryblokEditorScript,
 } from 'server/utils/storyblok'
 import { getLocaleData } from 'utils/locales'
+import { LocaleProvider } from 'context/LocaleContext/LocalContext'
 import { App } from '../App'
 import { sentryConfig } from './config/sentry'
 import { favicons } from './utils/favicons'
@@ -184,11 +185,16 @@ export const getPageMiddleware = (
   )
   const serverApp = (
     <Provider initialState={initialState}>
-      <StaticRouter location={ctx.request.originalUrl} context={routerContext}>
-        <HelmetProvider context={helmetContext}>
-          <App nonce={(ctx.res as any).cspNonce} />
-        </HelmetProvider>
-      </StaticRouter>
+      <LocaleProvider currentLocale={currentLocale}>
+        <StaticRouter
+          location={ctx.request.originalUrl}
+          context={routerContext}
+        >
+          <HelmetProvider context={helmetContext}>
+            <App nonce={(ctx.res as any).cspNonce} />
+          </HelmetProvider>
+        </StaticRouter>
+      </LocaleProvider>
     </Provider>
   )
 

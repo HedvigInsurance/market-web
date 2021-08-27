@@ -1,6 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet-async'
 import SbEditable from 'patched/storyblok-react'
+import { LocaleContext } from 'context/LocaleContext/LocalContext'
 import { getBlockComponent } from '../blocks'
 import { BaseBlockProps } from '../blocks/BaseBlockProps'
 import { FooterBlock } from '../blocks/FooterBlock/FooterBlock'
@@ -10,7 +11,6 @@ import {
   StoryContainer,
 } from '../storyblok/StoryContainer'
 import { getMeta } from '../utils/meta'
-import { ContextContainer } from '../components/containers/ContextContainer'
 
 const getBlocksOrDefault = (story: BodyStory) =>
   (story && story.content && story.content.body) ?? []
@@ -23,13 +23,13 @@ export const StoryPage: React.FunctionComponent<{ nonce?: string }> = ({
       <>
         <GlobalStoryContainer>
           {({ globalStory }) => (
-            <ContextContainer>
+            <LocaleContext.Consumer>
               {({ currentLocale }) => (
                 <Helmet>
                   {getMeta({ story, nonce, currentLocale, globalStory })}
                 </Helmet>
               )}
-            </ContextContainer>
+            </LocaleContext.Consumer>
           )}
         </GlobalStoryContainer>
         {getBlocksOrDefault(story!).map((block, index) => {
