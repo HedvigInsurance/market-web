@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet-async'
 import SbEditable from 'patched/storyblok-react'
-import { LocaleContext } from 'context/LocaleContext/LocalContext'
+import { useLocal } from 'context/LocaleContext/useLocal'
 import { getBlockComponent } from '../blocks'
 import { BaseBlockProps } from '../blocks/BaseBlockProps'
 import { FooterBlock } from '../blocks/FooterBlock/FooterBlock'
@@ -17,51 +17,50 @@ const getBlocksOrDefault = (story: BodyStory) =>
 
 export const StoryPage: React.FunctionComponent<{ nonce?: string }> = ({
   nonce,
-}) => (
-  <StoryContainer<BodyStory>>
-    {({ story }) => (
-      <>
-        <GlobalStoryContainer>
-          {({ globalStory }) => (
-            <LocaleContext.Consumer>
-              {({ currentLocale }) => (
-                <Helmet>
-                  {getMeta({ story, nonce, currentLocale, globalStory })}
-                </Helmet>
-              )}
-            </LocaleContext.Consumer>
+}) => {
+  const { currentLocale } = useLocal()
+  return (
+    <StoryContainer<BodyStory>>
+      {({ story }) => (
+        <>
+          <GlobalStoryContainer>
+            {({ globalStory }) => (
+              <Helmet>
+                {getMeta({ story, nonce, currentLocale, globalStory })}
+              </Helmet>
+            )}
+          </GlobalStoryContainer>
+          {getBlocksOrDefault(story!).map((block, index) => {
+            const BlockComponent:
+              | React.ComponentType<BaseBlockProps & any>
+              | undefined = getBlockComponent(block.component)
+            if (!BlockComponent) {
+              return null
+            }
+
+            if (block._editable) {
+              return (
+                <SbEditable content={block} key={block._uid}>
+                  <BlockComponent index={index} {...block} />
+                </SbEditable>
+              )
+            }
+
+            return <BlockComponent key={block._uid} index={index} {...block} />
+          })}
+          {!story?.content.hide_footer && (
+            <FooterBlock
+              component="footer_block"
+              _uid="a6f692fc-2dcc-42b9-a031-c47f8e829c1b"
+              color={{
+                _uid: '4a200d8c-9ebc-4648-b41d-3b1b0de8fbc5',
+                color: 'standard-inverse',
+                plugin: 'hedvig_minimal_color_picker',
+              }}
+            />
           )}
-        </GlobalStoryContainer>
-        {getBlocksOrDefault(story!).map((block, index) => {
-          const BlockComponent:
-            | React.ComponentType<BaseBlockProps & any>
-            | undefined = getBlockComponent(block.component)
-          if (!BlockComponent) {
-            return null
-          }
-
-          if (block._editable) {
-            return (
-              <SbEditable content={block} key={block._uid}>
-                <BlockComponent index={index} {...block} />
-              </SbEditable>
-            )
-          }
-
-          return <BlockComponent key={block._uid} index={index} {...block} />
-        })}
-        {!story?.content.hide_footer && (
-          <FooterBlock
-            component="footer_block"
-            _uid="a6f692fc-2dcc-42b9-a031-c47f8e829c1b"
-            color={{
-              _uid: '4a200d8c-9ebc-4648-b41d-3b1b0de8fbc5',
-              color: 'standard-inverse',
-              plugin: 'hedvig_minimal_color_picker',
-            }}
-          />
-        )}
-      </>
-    )}
-  </StoryContainer>
-)
+        </>
+      )}
+    </StoryContainer>
+  )
+}

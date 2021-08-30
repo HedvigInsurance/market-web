@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { colorsV3, HedvigLogo, HedvigSymbol } from '@hedviginsurance/brand'
 import React, { useCallback, useEffect, useState } from 'react'
-import { LocaleContext } from '../../context/LocaleContext/LocalContext'
+import { useLocal } from 'context/LocaleContext/useLocal'
 import { ContentWrapper, MOBILE_BP_DOWN } from '../../components/blockHelpers'
 import {
   ButtonLinkBrandPivot,
@@ -233,6 +233,7 @@ enum InverseColors {
 export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
   props,
 ) => {
+  const { currentLocale } = useLocal()
   const [isBelowThreshold, setIsBelowThreshold] = useState<boolean>(false)
   const [buttonColor, setButtonColor] = useState<
     minimalColorComponentColors | undefined
@@ -302,24 +303,16 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                     />
 
                     <DesktopLogo>
-                      <LocaleContext.Consumer>
-                        {({ currentLocale }) => (
-                          <LogoLink href={'/' + currentLocale.label}>
-                            <HedvigLogo width={94} />
-                          </LogoLink>
-                        )}
-                      </LocaleContext.Consumer>
+                      <LogoLink href={'/' + currentLocale.label}>
+                        <HedvigLogo width={94} />
+                      </LogoLink>
                     </DesktopLogo>
                   </LeftContainer>
 
                   <MobileLogo>
-                    <LocaleContext.Consumer>
-                      {({ currentLocale }) => (
-                        <Wordmark href={'/' + currentLocale.label}>
-                          <HedvigSymbol size={28} />
-                        </Wordmark>
-                      )}
-                    </LocaleContext.Consumer>
+                    <Wordmark href={'/' + currentLocale.label}>
+                      <HedvigSymbol size={28} />
+                    </Wordmark>
                   </MobileLogo>
                   {!props.hide_menu && (
                     <Menu open={isOpen}>
@@ -330,13 +323,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                           ),
                         )}
                       </MenuList>
-
-                      <LocaleContext.Consumer>
-                        {({ currentLocale }) => (
-                          <LanguagePicker currentLocale={currentLocale} />
-                        )}
-                      </LocaleContext.Consumer>
-
+                      <LanguagePicker currentLocale={currentLocale} />
                       <MobileButtonWrapper>
                         <>
                           {(() => {

@@ -12,7 +12,7 @@ import {
 import { StarRating } from 'components/icons/StarRating'
 import { GlobalStory, GlobalStoryContainer } from 'storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from 'utils/storyblok'
-import { LocaleContext } from 'context/LocaleContext/LocalContext'
+import { useLocal } from 'context/LocaleContext/useLocal'
 import { BrandPivotBaseBlockProps } from '../BaseBlockProps'
 import { MarketPicker } from './MarketPicker/MarketPicker'
 
@@ -190,90 +190,89 @@ export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
   color,
   extra_styling = '',
   story,
-}) => (
-  <FooterWrapper
-    as="footer"
-    brandPivot
-    colorComponent={color}
-    size="none"
-    extraStyling={extra_styling}
-  >
-    <ContentWrapper brandPivot>
-      <IconWrapper>
-        <HedvigSymbol size={32} />
-      </IconWrapper>
-    </ContentWrapper>
-    <ContentWrapper brandPivot>
-      <LinksColumnsWrapper>
-        {(story.content.footer_menu_items ?? []).map((menuItem) => (
-          <LinkColumn key={menuItem._uid}>
-            <ColumnHeader>{menuItem.label}</ColumnHeader>
-            <MenuList>
-              {(menuItem.menu_items ?? []).map((innerMenuItem) =>
-                innerMenuItem.link?.cached_url ? (
-                  <li key={innerMenuItem._uid}>
-                    <Link href={getStoryblokLinkUrl(innerMenuItem.link)}>
-                      {innerMenuItem.label}
-                    </Link>
-                  </li>
-                ) : null,
-              )}
-            </MenuList>
-          </LinkColumn>
-        ))}
-      </LinksColumnsWrapper>
-      <DoubleColumn>
-        {story.content.footer_safety_title && (
-          <div>
-            <ColumnHeader>{story.content.footer_safety_title}</ColumnHeader>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: story.content.footer_safety_body?.html,
-              }}
-            />
-          </div>
-        )}
+}) => {
+  const { currentLocale } = useLocal()
+  return (
+    <FooterWrapper
+      as="footer"
+      brandPivot
+      colorComponent={color}
+      size="none"
+      extraStyling={extra_styling}
+    >
+      <ContentWrapper brandPivot>
+        <IconWrapper>
+          <HedvigSymbol size={32} />
+        </IconWrapper>
+      </ContentWrapper>
+      <ContentWrapper brandPivot>
+        <LinksColumnsWrapper>
+          {(story.content.footer_menu_items ?? []).map((menuItem) => (
+            <LinkColumn key={menuItem._uid}>
+              <ColumnHeader>{menuItem.label}</ColumnHeader>
+              <MenuList>
+                {(menuItem.menu_items ?? []).map((innerMenuItem) =>
+                  innerMenuItem.link?.cached_url ? (
+                    <li key={innerMenuItem._uid}>
+                      <Link href={getStoryblokLinkUrl(innerMenuItem.link)}>
+                        {innerMenuItem.label}
+                      </Link>
+                    </li>
+                  ) : null,
+                )}
+              </MenuList>
+            </LinkColumn>
+          ))}
+        </LinksColumnsWrapper>
+        <DoubleColumn>
+          {story.content.footer_safety_title && (
+            <div>
+              <ColumnHeader>{story.content.footer_safety_title}</ColumnHeader>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: story.content.footer_safety_body?.html,
+                }}
+              />
+            </div>
+          )}
 
-        {story.content.footer_rating_title && (
-          <div>
-            <ColumnHeader>{story.content.footer_rating_title}</ColumnHeader>
-            <Rating>
-              <StarRating />
-            </Rating>
-            <RatingParagraph
-              dangerouslySetInnerHTML={{
-                __html: story.content.footer_rating_paragraph?.html,
-              }}
-            />
-          </div>
-        )}
+          {story.content.footer_rating_title && (
+            <div>
+              <ColumnHeader>{story.content.footer_rating_title}</ColumnHeader>
+              <Rating>
+                <StarRating />
+              </Rating>
+              <RatingParagraph
+                dangerouslySetInnerHTML={{
+                  __html: story.content.footer_rating_paragraph?.html,
+                }}
+              />
+            </div>
+          )}
 
-        {story.content.footer_download_title && (
-          <div>
-            <ColumnHeader>{story.content.footer_download_title}</ColumnHeader>
-            <AppButtons />
-          </div>
-        )}
+          {story.content.footer_download_title && (
+            <div>
+              <ColumnHeader>{story.content.footer_download_title}</ColumnHeader>
+              <AppButtons />
+            </div>
+          )}
 
-        {story.content.footer_market_title && (
-          <div>
-            <ColumnHeader>{story.content.footer_market_title}</ColumnHeader>
-            <LocaleContext.Consumer>
-              {({ currentLocale }) => (
-                <MarketPicker currentLocale={currentLocale} />
-              )}
-            </LocaleContext.Consumer>
-          </div>
-        )}
-      </DoubleColumn>
-      <FooterFooter
-        dangerouslySetInnerHTML={{
-          __html: story.content.footer_paragraph?.html,
-        }}
-      />
-    </ContentWrapper>
-  </FooterWrapper>
-)
+          {story.content.footer_market_title && (
+            <div>
+              <ColumnHeader>{story.content.footer_market_title}</ColumnHeader>
+              <MarketPicker currentLocale={currentLocale} />
+            </div>
+          )}
+        </DoubleColumn>
+        <FooterFooter
+          dangerouslySetInnerHTML={{
+            __html: story.content.footer_paragraph?.html,
+          }}
+        />
+      </ContentWrapper>
+    </FooterWrapper>
+  )
+}
 
 export const FooterBlock: React.FunctionComponent<FooterBlockProps> = (
   footerBlockProps,

@@ -9,7 +9,7 @@ import { Perils } from 'components/Perils'
 import { TypeOfContract } from 'components/Perils/types'
 import { Select } from 'components/Select/Select'
 import { GlobalStoryContainer } from 'storyblok/StoryContainer'
-import { LocaleContext } from 'context/LocaleContext/LocalContext'
+import { useLocal } from 'context/LocaleContext/useLocal'
 
 export interface ContractOption {
   label: string
@@ -36,6 +36,7 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
   size,
   insurance_types,
 }) => {
+  const { currentLocale } = useLocal()
   const [currentInsurance, setCurrentInsurance] = useState<TypeOfContract>(
     insurance_types[0].value,
   )
@@ -47,31 +48,27 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
   return (
     <GlobalStoryContainer>
       {({ globalStory }) => (
-        <LocaleContext.Consumer>
-          {({ currentLocale }) => (
-            <SectionWrapper colorComponent={color} size={size} brandPivot>
-              <ContentWrapper brandPivot index={index}>
-                {insurance_types.length > 1 && (
-                  <SelectInsurance
-                    instanceId={_uid}
-                    defaultValue={insurance_types[0]}
-                    options={insurance_types}
-                    color={color?.color}
-                    onChange={onChangeHandler}
-                  />
-                )}
-                {currentInsurance && (
-                  <Perils
-                    color={color?.color}
-                    insuranceType={currentInsurance}
-                    localeIsoCode={currentLocale.iso}
-                    story={globalStory}
-                  />
-                )}
-              </ContentWrapper>
-            </SectionWrapper>
-          )}
-        </LocaleContext.Consumer>
+        <SectionWrapper colorComponent={color} size={size} brandPivot>
+          <ContentWrapper brandPivot index={index}>
+            {insurance_types.length > 1 && (
+              <SelectInsurance
+                instanceId={_uid}
+                defaultValue={insurance_types[0]}
+                options={insurance_types}
+                color={color?.color}
+                onChange={onChangeHandler}
+              />
+            )}
+            {currentInsurance && (
+              <Perils
+                color={color?.color}
+                insuranceType={currentInsurance}
+                localeIsoCode={currentLocale.iso}
+                story={globalStory}
+              />
+            )}
+          </ContentWrapper>
+        </SectionWrapper>
       )}
     </GlobalStoryContainer>
   )
