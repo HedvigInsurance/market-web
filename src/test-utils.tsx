@@ -5,7 +5,7 @@ import { HelmetProvider } from 'react-helmet-async'
 import { v4 as uuidV4 } from 'uuid'
 import { BrowserRouter } from 'react-router-dom'
 import { locales } from 'utils/locales'
-import { LocaleProvider } from './context/LocaleContext/LocalContext'
+import { LocaleProvider } from './context/LocaleContext'
 
 const initialState = {
   story: {

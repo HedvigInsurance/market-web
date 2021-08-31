@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet-async'
+import { useLocale } from 'context/LocaleContext'
 import SbEditable from 'patched/storyblok-react'
-import { useLocal } from 'context/LocaleContext/useLocal'
 import { getBlockComponent } from '../blocks'
 import { BaseBlockProps } from '../blocks/BaseBlockProps'
 import { FooterBlock } from '../blocks/FooterBlock/FooterBlock'
@@ -18,7 +18,7 @@ const getBlocksOrDefault = (story: BodyStory) =>
 export const StoryPage: React.FunctionComponent<{ nonce?: string }> = ({
   nonce,
 }) => {
-  const { currentLocale } = useLocal()
+  const { currentLocale } = useLocale()
   return (
     <StoryContainer<BodyStory>>
       {({ story }) => (

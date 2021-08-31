@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { colorsV3, HedvigLogo, HedvigSymbol } from '@hedviginsurance/brand'
 import React, { useCallback, useEffect, useState } from 'react'
-import { useLocal } from 'context/LocaleContext/useLocal'
+import { useLocale } from 'context/LocaleContext'
 import { ContentWrapper, MOBILE_BP_DOWN } from '../../components/blockHelpers'
 import {
   ButtonLinkBrandPivot,
@@ -233,7 +233,7 @@ enum InverseColors {
 export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
   props,
 ) => {
-  const { currentLocale } = useLocal()
+  const { currentLocale } = useLocale()
   const [isBelowThreshold, setIsBelowThreshold] = useState<boolean>(false)
   const [buttonColor, setButtonColor] = useState<
     minimalColorComponentColors | undefined

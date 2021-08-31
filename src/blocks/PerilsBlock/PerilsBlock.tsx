@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import React, { useState } from 'react'
+import { useLocale } from 'context/LocaleContext'
 import { BrandPivotBaseBlockProps } from 'blocks/BaseBlockProps'
 import {
   ContentWrapper as OriginalContentWrapper,
@@ -9,7 +10,6 @@ import { Perils } from 'components/Perils'
 import { TypeOfContract } from 'components/Perils/types'
 import { Select } from 'components/Select/Select'
 import { GlobalStoryContainer } from 'storyblok/StoryContainer'
-import { useLocal } from 'context/LocaleContext/useLocal'
 
 export interface ContractOption {
   label: string
@@ -36,7 +36,7 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
   size,
   insurance_types,
 }) => {
-  const { currentLocale } = useLocal()
+  const { currentLocale } = useLocale()
   const [currentInsurance, setCurrentInsurance] = useState<TypeOfContract>(
     insurance_types[0].value,
   )

@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react'
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
+import { useLocale } from 'context/LocaleContext'
 import { ContentWrapper } from 'components/blockHelpers'
-import { useLocal } from 'context/LocaleContext/useLocal'
 
 const TrustpilotWrapper = styled(ContentWrapper)`
   && {
@@ -11,7 +11,7 @@ const TrustpilotWrapper = styled(ContentWrapper)`
 `
 
 export const TrustpilotBlock: React.FC = () => {
-  const { currentLocale } = useLocal()
+  const { currentLocale } = useLocale()
   const trustpilotRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {

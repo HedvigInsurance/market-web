@@ -18,7 +18,7 @@ import {
   getStoryblokEditorScript,
 } from 'server/utils/storyblok'
 import { getLocaleData, LocaleData } from 'utils/locales'
-import { LocaleProvider } from 'context/LocaleContext/LocalContext'
+import { LocaleProvider } from 'context/LocaleContext'
 import { App } from '../App'
 import { sentryConfig } from './config/sentry'
 import { favicons } from './utils/favicons'

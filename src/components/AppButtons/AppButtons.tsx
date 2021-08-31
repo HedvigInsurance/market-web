@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import React from 'react'
+import { useLocale } from 'context/LocaleContext'
 import { LocaleData } from 'utils/locales'
-import { useLocal } from 'context/LocaleContext/useLocal'
 import { ButtonLinkBrandPivot } from '../ButtonBrandPivot/Button'
 import { AppStore } from './svg/AppStore'
 import { PlayStore } from './svg/PlayStore'
@@ -66,7 +66,7 @@ export const AppButtons: React.FC<AppButtonsProps> = ({
   color = 'standard-inverse',
   alignCenter = false,
 }) => {
-  const { currentLocale } = useLocal()
+  const { currentLocale } = useLocale()
   return (
     <ButtonsWrapper center={alignCenter}>
       <AppButton

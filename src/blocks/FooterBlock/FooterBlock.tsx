@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import { colorsV3, HedvigSymbol } from '@hedviginsurance/brand'
 import React from 'react'
+import { useLocale } from 'context/LocaleContext'
 import { AppButtons } from 'components/AppButtons/AppButtons'
 import {
   CONTENT_GUTTER,
@@ -12,7 +13,6 @@ import {
 import { StarRating } from 'components/icons/StarRating'
 import { GlobalStory, GlobalStoryContainer } from 'storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from 'utils/storyblok'
-import { useLocal } from 'context/LocaleContext/useLocal'
 import { BrandPivotBaseBlockProps } from '../BaseBlockProps'
 import { MarketPicker } from './MarketPicker/MarketPicker'
 
@@ -191,7 +191,7 @@ export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
   extra_styling = '',
   story,
 }) => {
-  const { currentLocale } = useLocal()
+  const { currentLocale } = useLocale()
   return (
     <FooterWrapper
       as="footer"

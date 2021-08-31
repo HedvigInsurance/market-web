@@ -5,7 +5,7 @@ import React from 'react'
 import { hydrate } from 'react-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter } from 'react-router-dom'
-import { LocaleProvider } from 'context/LocaleContext/LocalContext'
+import { LocaleProvider } from 'context/LocaleContext'
 import { HotApp } from '../App'
 
 hydrate(
