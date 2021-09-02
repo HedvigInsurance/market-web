@@ -1,11 +1,13 @@
 import React, { createContext, useContext } from 'react'
-import { LocaleData } from 'utils/locales'
+import { LocaleData, locales } from 'utils/locales'
 
 export type LocaleContext = {
   currentLocale: LocaleData
 }
 
-export const LocaleContext = createContext<LocaleContext | undefined>(undefined)
+export const LocaleContext = createContext<LocaleContext>({
+  currentLocale: locales['se-en'],
+})
 
 export const useLocale = () => {
   const context = useContext(LocaleContext)
