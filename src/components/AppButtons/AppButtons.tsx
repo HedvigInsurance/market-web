@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 import React from 'react'
+import { useLocale } from 'context/LocaleContext'
 import { LocaleData } from 'utils/locales'
 import { ButtonLinkBrandPivot } from '../ButtonBrandPivot/Button'
-import { ContextContainer } from '../containers/ContextContainer'
 import { AppStore } from './svg/AppStore'
 import { PlayStore } from './svg/PlayStore'
 
@@ -66,32 +66,29 @@ export const AppButtons: React.FC<AppButtonsProps> = ({
   color = 'standard-inverse',
   alignCenter = false,
 }) => {
+  const { currentLocale } = useLocale()
   return (
-    <ContextContainer>
-      {({ currentLocale }) => (
-        <ButtonsWrapper center={alignCenter}>
-          <AppButton
-            color={color}
-            styleType="outlined"
-            size="sm"
-            href="https://play.google.com/store/apps/details?id=com.hedvig.app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <PlayStore />
-          </AppButton>
-          <AppButton
-            color={color}
-            styleType="outlined"
-            size="sm"
-            href={localeToAppStoreLink(currentLocale)}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <AppStore />
-          </AppButton>
-        </ButtonsWrapper>
-      )}
-    </ContextContainer>
+    <ButtonsWrapper center={alignCenter}>
+      <AppButton
+        color={color}
+        styleType="outlined"
+        size="sm"
+        href="https://play.google.com/store/apps/details?id=com.hedvig.app"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <PlayStore />
+      </AppButton>
+      <AppButton
+        color={color}
+        styleType="outlined"
+        size="sm"
+        href={localeToAppStoreLink(currentLocale)}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <AppStore />
+      </AppButton>
+    </ButtonsWrapper>
   )
 }
