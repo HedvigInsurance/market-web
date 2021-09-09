@@ -1,23 +1,17 @@
 import React, { createContext, useContext } from 'react'
 import { LocaleData, locales } from 'utils/locales'
 
-export type LocaleContext = {
+type LocaleContextProps = {
   currentLocale: LocaleData
 }
 
-export const LocaleContext = createContext<LocaleContext>({
+const LocaleContext = createContext<LocaleContextProps>({
   currentLocale: locales['se-en'],
 })
 
-export const useLocale = () => {
-  const context = useContext(LocaleContext)
-  if (context === undefined) {
-    throw new Error('useLocale has to be used inside a LocaleProvider')
-  }
-  return context
-}
+export const useLocale = () => useContext(LocaleContext)
 
-export const LocaleProvider: React.FC<LocaleContext> = ({
+export const LocaleProvider: React.FC<LocaleContextProps> = ({
   currentLocale,
   children,
 }) => {

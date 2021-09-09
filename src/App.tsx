@@ -7,9 +7,11 @@ import { useLocation, Route, Switch } from 'react-router-dom'
 import { CookieConsent } from './components/CookieConsent'
 import { globalStyles } from './components/GlobalStyles'
 import { routes } from './routes'
+import { useGTMTracking } from './utils/tracking/gtm'
 
 export const App: React.FunctionComponent<{ nonce?: string }> = ({ nonce }) => {
   const location = useLocation()
+  useGTMTracking()
   useEffect(() => {
     // tslint:disable-next-line no-console
     console.log(
