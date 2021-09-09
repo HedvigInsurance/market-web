@@ -2,6 +2,7 @@ import { FontSizes } from 'components/Heading/Heading'
 import {
   MarkdownHtmlComponent,
   MinimalColorComponent,
+  ColorComponent,
 } from 'src/blocks/BaseBlockProps'
 import {
   GlobalStory,
@@ -271,6 +272,21 @@ const cookie_consent_message: MarkdownHtmlComponent = {
   plugin: 'markdown-html',
 }
 
+const exampleBannerText: MarkdownHtmlComponent = {
+  _uid: '1234',
+  html:
+    '<p><strong>Corona-viruset – <a href="https://www.hedvig.com/blog/coronaviruset">så fungerar din försäkring</a></strong></p>',
+  original:
+    '<p><strong>Corona-viruset – <a href="https://www.hedvig.com/blog/coronaviruset">så fungerar din försäkring</a></strong></p>',
+  plugin: 'markdown-html',
+}
+
+const bannerColor: ColorComponent = {
+  _uid: '6ecde11d-ba0a-48fb-9b7b-e6dbf31415d9',
+  color: 'off-black-dark',
+  plugin: 'hedvig_limited_color_picker',
+}
+
 export const globalStoryMock: GlobalStory = {
   name: 'storybook mock',
   created_at: '',
@@ -285,6 +301,9 @@ export const globalStoryMock: GlobalStory = {
     page_title: '',
     component: 'global',
     header_menu_items: headerMenuItems,
+    show_banner: false,
+    banner_text: exampleBannerText,
+    banner_color: bannerColor,
     show_cta: true,
     cta_label: 'Beräkna ditt pris',
     cta_link: link,

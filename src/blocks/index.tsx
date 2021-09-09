@@ -11,7 +11,7 @@ import { BannerBlock } from './BannerBlock/BannerBlock'
 import { BaseBlockProps } from './BaseBlockProps'
 import { BulletPointBlockBrandPivot } from './BulletPointBlockBrandPivot'
 import { CtaBlock } from './CtaBlock/CtaBlock'
-import { HeaderBlockBrandPivot } from './HeaderBlockBrandPivot'
+import { HeaderBlock } from './HeaderBlockBrandPivot'
 import { HeadlineBlock } from './HeadlineBlock/HeadlineBlock'
 import { ImageBlockBrandPivot } from './ImageBlockBrandPivot/ImageBlockBrandPivot'
 import { InsuranceInfoBlock } from './InsuranceInfoBlock/InsuranceInfoBlock'
@@ -25,7 +25,7 @@ import { TrustpilotBlock } from './TrustpilotBlock/TrustpilotBlock'
 
 const blockComponents = {
   app_buttons_block: AppButtonsBlock,
-  header_block_brand_pivot: HeaderBlockBrandPivot,
+  header_block_brand_pivot: HeaderBlock,
   accordion_block: AccordionBlock,
   accordion_block_brand_pivot: AccordionBlock,
   banner_block: BannerBlock,

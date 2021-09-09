@@ -1,7 +1,7 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
 import { FooterBlock } from 'blocks/FooterBlock/FooterBlock'
-import { HeaderBlockBrandPivot } from 'blocks/HeaderBlockBrandPivot'
+import { HeaderBlock } from '../blocks/HeaderBlockBrandPivot'
 import { FourOhFourBlock } from '../blocks/FourOhFourBlock'
 
 export const FourOhFourPage: React.ComponentType = withRouter(
@@ -11,7 +11,7 @@ export const FourOhFourPage: React.ComponentType = withRouter(
     }
     return (
       <>
-        <HeaderBlockBrandPivot
+        <HeaderBlock
           is_transparent={true}
           inverse_colors={true}
           _uid="header"

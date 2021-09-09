@@ -22,6 +22,7 @@ import {
 import { LanguagePicker } from './LanguagePicker'
 import { MenuItem } from './MenuItem'
 import { Burger, TABLET_BP_DOWN, TABLET_BP_UP, DESKTOP_BP_UP } from './mobile'
+import { Banner } from './Banner'
 
 export const WRAPPER_HEIGHT = '5rem'
 export const MOBILE_WRAPPER_HEIGHT = '4.5rem'
@@ -34,7 +35,8 @@ const isBelowScrollThreshold = () =>
 const HeaderWrapper = styled('header')<{
   inverse: boolean
 }>(({ inverse }) => ({
-  position: 'relative',
+  position: 'sticky',
+  top: 0,
   zIndex: 100,
   color: inverse ? colorsV3.gray100 : colorsV3.gray900,
   transition: 'color 300ms',
@@ -49,7 +51,7 @@ const HeaderMain = styled('div')<{
   open: boolean
   sticky: boolean
 }>(({ inverse, open }) => ({
-  position: 'fixed',
+  position: 'absolute',
   top: 0,
   left: 0,
   width: '100%',
@@ -219,6 +221,7 @@ interface HeaderBlockProps extends BaseBlockProps {
   cta_color?: MinimalColorComponent
   cta_style?: ButtonStyleType
   hide_menu?: boolean
+  hide_global_banner?: boolean
   override_mobile_header_cta_label?: string | null
   override_mobile_header_cta_link?: LinkComponent | null
   mobile_header_cta_color?: MinimalColorComponent
@@ -233,6 +236,11 @@ enum InverseColors {
 export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
   props,
 ) => {
+  const showBanner =
+    props.story.content.show_banner &&
+    props.story.content.banner_text &&
+    !props.hide_global_banner
+
   const { currentLocale } = useLocale()
   const [isBelowThreshold, setIsBelowThreshold] = useState<boolean>(false)
   const [buttonColor, setButtonColor] = useState<
@@ -272,6 +280,12 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
 
   return (
     <>
+      {showBanner && (
+        <Banner
+          color={props.story.content.banner_color}
+          text={props.story.content.banner_text}
+        />
+      )}
       <HeaderWrapper
         inverse={
           props.is_transparent && props.inverse_colors && !isBelowThreshold
@@ -421,7 +435,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
   )
 }
 
-export const HeaderBlockBrandPivot: React.FunctionComponent<HeaderBlockProps> = (
+export const HeaderBlock: React.FunctionComponent<HeaderBlockProps> = (
   headerBlockProps,
 ) => (
   <GlobalStoryContainer>

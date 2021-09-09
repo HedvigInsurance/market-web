@@ -1,6 +1,10 @@
 import { Container } from 'constate'
 import React, { PureComponent } from 'react'
-import { BaseBlockProps, MarkdownHtmlComponent } from '../blocks/BaseBlockProps'
+import {
+  BaseBlockProps,
+  ColorComponent,
+  MarkdownHtmlComponent,
+} from '../blocks/BaseBlockProps'
 import { ErrorBlock } from '../components/blockHelpers'
 import { Image } from '../utils/storyblok'
 
@@ -85,6 +89,9 @@ export interface GlobalStory extends Story {
     _uid: string
     page_title: string // NOT USED
     component: 'global'
+    show_banner: boolean
+    banner_text: MarkdownHtmlComponent
+    banner_color?: ColorComponent
     header_menu_items?: ReadonlyArray<MenuItem>
     show_cta: boolean
     cta_label: string
