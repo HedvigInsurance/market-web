@@ -565,9 +565,34 @@
       "name": "global",
       "display_name": null,
       "schema": {
+        "banner": {
+          "type": "section",
+          "pos": 0,
+          "display_name": "Top Banner",
+          "keys": ["show_banner", "banner_text", "banner_color"]
+        },
+        "show_banner": {
+          "type": "boolean",
+          "pos": 1,
+          "display_name": "Enable"
+        },
+        "banner_text": {
+          "type": "custom",
+          "field_type": "markdown-html",
+          "options": [],
+          "pos": 2,
+          "display_name": "Text",
+          "description": ""
+        },
+        "banner_color": {
+          "type": "custom",
+          "pos": 3,
+          "field_type": "hedvig-minimal-color-picker",
+          "options": []
+        },
         "header_menu_items": {
           "type": "bloks",
-          "pos": 0,
+          "pos": 4,
           "maximum": "",
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
@@ -577,22 +602,22 @@
         "cta": {
           "type": "section",
           "keys": ["show_cta", "cta_branch_link", "cta_label", "cta_link"],
-          "pos": 1
+          "pos": 5
         },
         "show_cta": {
           "type": "boolean",
-          "pos": 2,
+          "pos": 6,
           "translatable": true
         },
         "cta_label": {
           "type": "text",
-          "pos": 3,
+          "pos": 7,
           "translatable": true
         },
         "cta_link": {
           "type": "multilink",
           "translatable": true,
-          "pos": 4
+          "pos": 8
         },
         "footer": {
           "type": "section",
@@ -606,48 +631,48 @@
             "footer_market_title",
             "footer_paragraph"
           ],
-          "pos": 5
+          "pos": 9
         },
         "footer_menu_items": {
           "type": "bloks",
-          "pos": 6,
+          "pos": 10,
           "maximum": "4",
           "restrict_components": true,
           "component_whitelist": ["menu_item"]
         },
         "footer_download_title": {
           "type": "text",
-          "pos": 7
+          "pos": 11
         },
         "footer_safety_title": {
           "type": "text",
-          "pos": 8
+          "pos": 12
         },
         "footer_safety_body": {
           "type": "custom",
-          "pos": 9,
+          "pos": 13,
           "field_type": "markdown-html",
           "options": []
         },
         "footer_rating_title": {
           "type": "text",
-          "pos": 10
+          "pos": 14
         },
         "footer_rating_paragraph": {
           "type": "custom",
-          "pos": 11,
+          "pos": 15,
           "field_type": "markdown-html",
           "options": []
         },
         "footer_market_title": {
           "type": "text",
-          "pos": 12
+          "pos": 16
         },
         "footer_paragraph": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 13,
+          "pos": 17,
           "translatable": true
         },
         "perils": {
@@ -659,28 +684,28 @@
           ],
           "restrict_components": true,
           "component_whitelist": ["peril_labels"],
-          "pos": 14
+          "pos": 18
         },
         "peril_modal_info_title": {
           "type": "text",
-          "pos": 15
+          "pos": 19
         },
         "peril_modal_coverage_title": {
           "type": "text",
-          "pos": 16
+          "pos": 20
         },
         "peril_modal_exceptions_title": {
           "type": "text",
-          "pos": 17
+          "pos": 21
         },
         "locale": {
           "type": "section",
           "keys": ["four_oh_four_title", "cookie_consent_message"],
-          "pos": 18
+          "pos": 22
         },
         "four_oh_four_title": {
           "type": "text",
-          "pos": 19
+          "pos": 23
         },
         "cookie_consent_message": {
           "type": "custom",
@@ -688,11 +713,11 @@
           "translatable": true,
           "field_type": "markdown-html",
           "options": [],
-          "pos": 20
+          "pos": 24
         },
         "structured_data": {
           "type": "section",
-          "pos": 21,
+          "pos": 25,
           "keys": [
             "structured_data_website_description",
             "structured_data_organization_description"
@@ -700,7 +725,7 @@
         },
         "structured_data_website_description": {
           "type": "text",
-          "pos": 22,
+          "pos": 26,
           "max_length": "",
           "description": "Description used in structured data \"WebSite\" type for rich search results.",
           "display_name": "WebSite Description",
@@ -708,13 +733,13 @@
         },
         "structured_data_organization_description": {
           "type": "text",
-          "pos": 23,
+          "pos": 27,
           "display_name": "Organization Description",
           "description": "Description used in structured data \"Organization\" type for rich search results."
         },
         "trustpilot": {
           "type": "section",
-          "pos": 24,
+          "pos": 28,
           "keys": [
             "structured_data_review_value",
             "structured_data_review_count"
@@ -722,12 +747,12 @@
         },
         "structured_data_review_value": {
           "type": "text",
-          "pos": 25,
+          "pos": 29,
           "description": "READ ONLY. This field is filled in automatically. Review score used in structured data \"AggregateRating\" type for rich search results."
         },
         "structured_data_review_count": {
           "type": "text",
-          "pos": 26,
+          "pos": 30,
           "description": "READ ONLY. This field is filled in automatically. Total number of reviews used in structured data \"AggregateRating\" type for rich search results."
         }
       },
@@ -838,6 +863,11 @@
         },
         "hide_menu": {
           "type": "boolean"
+        },
+        "hide_global_banner": {
+          "type": "boolean",
+          "display_name": "",
+          "description": "Hides the global top banner on this header block"
         }
       },
       "image": null,
