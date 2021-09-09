@@ -7,6 +7,7 @@
     "STORYBLOK_MANAGEMENT_TOKEN": {
       "required": true
     },
+    "APP_ENVIRONMENT": "development",
     "AUTH_NAME": {
       "required": true
     },
