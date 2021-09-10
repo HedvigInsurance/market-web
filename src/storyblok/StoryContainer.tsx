@@ -78,6 +78,13 @@ export interface MenuItem {
   link: LinkComponent
   component: 'menu_item'
   menu_items?: ReadonlyArray<MenuItem>
+  menu_item_groups?: ReadonlyArray<MenuItemGroup>
+}
+
+export interface MenuItemGroup {
+  _uid: string
+  label: string
+  menu_items: ReadonlyArray<MenuItem>
 }
 
 export interface GlobalStory extends Story {
