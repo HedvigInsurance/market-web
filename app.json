@@ -16,6 +16,7 @@
     "GIRAFFE_ENDPOINT": {
       "required": true
     },
+    "APP_ENVIRONMENT": "development",
     "STORYBLOK_API_TOKEN": {
       "required": true
     },
