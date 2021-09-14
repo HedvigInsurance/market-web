@@ -21,6 +21,10 @@ const BannerContent = styled.div`
     margin-top: 0;
     margin-bottom: 0;
   }
+
+  a {
+    white-space: nowrap;
+  }
 `
 
 export const Banner: React.FC<{
