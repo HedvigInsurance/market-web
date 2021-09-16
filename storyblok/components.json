@@ -2293,16 +2293,51 @@
           "component_whitelist": ["menu_item"],
           "display_name": "Sub menu items",
           "pos": 2
+        },
+        "menu_item_groups": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": ["menu_item_group"],
+          "display_name": "Sub Menu Groups"
         }
       },
       "image": null,
       "preview_field": null,
       "is_root": false,
       "preview_tmpl": null,
-      "is_nestable": false,
+      "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
       "real_name": "menu_item",
+      "component_group_uuid": null
+    },
+    {
+      "name": "menu_item_group",
+      "display_name": null,
+      "schema": {
+        "label": {
+          "type": "text",
+          "required": true,
+          "pos": 0,
+          "translatable": false
+        },
+        "menu_items": {
+          "type": "bloks",
+          "translatable": true,
+          "restrict_components": true,
+          "component_whitelist": ["menu_item"],
+          "display_name": "Group menu items",
+          "pos": 2
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "menu_item_group",
       "component_group_uuid": null
     },
     {

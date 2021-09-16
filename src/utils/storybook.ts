@@ -88,6 +88,57 @@ const headerMenuItems: MenuItem[] = [
   },
   {
     _uid: '4',
+    label: 'Våra Försäkringar',
+    link,
+    component: 'menu_item',
+    menu_item_groups: [
+      {
+        _uid: '1',
+        label: 'Hemförsäkringar',
+        menu_items: [
+          {
+            _uid: '11',
+            label: 'Hyresrätt & Andrahand',
+            link,
+            component: 'menu_item',
+          },
+          {
+            _uid: '12',
+            label: 'Bostadsrätt',
+            link,
+            component: 'menu_item',
+          },
+          {
+            _uid: '13',
+            label: 'Student',
+            link,
+            component: 'menu_item',
+          },
+          {
+            _uid: '14',
+            label: 'Villa',
+            link,
+            component: 'menu_item',
+          },
+        ],
+      },
+
+      {
+        _uid: '2',
+        label: 'Tillval',
+        menu_items: [
+          {
+            _uid: '15',
+            label: 'Olycksfallsförsäkring',
+            link,
+            component: 'menu_item',
+          },
+        ],
+      },
+    ],
+  },
+  {
+    _uid: '5',
     label: 'Om Hedvig',
     link,
     component: 'menu_item',
