@@ -1,0 +1,56 @@
+#!/usr/bin/env node
+// Adapted from Storyblok FAQ here: https://www.storyblok.com/faq/how-to-get-all-unused-components
+require('dotenv').config()
+
+const StoryblokClient = require('storyblok-js-client')
+const yargs = require('yargs')
+
+const token = process.env.STORYBLOK_MANAGEMENT_TOKEN
+const spaceId = yargs.argv.space
+
+console.log(token, spaceId)
+
+const Storyblok = new StoryblokClient({
+  oauthToken: token,
+})
+
+const start = async () => {
+  let usedComponents = []
+  let unusedComponents = []
+
+  console.log('Loading list of components')
+  const {
+    data: { components },
+  } = await Storyblok.get(`spaces/${spaceId}/components/`, { per_page: 100 })
+
+  console.log('Looking for unused components')
+  await Promise.all(
+    components.map(async ({ name }, index) => {
+      // call the management api with the contain_component query parameter and the per_page
+      // parameter 1 to reduce payload and speed up to process even tho it is sync
+      const {
+        data: { stories },
+      } = await Storyblok.get(`spaces/${spaceId}/stories/`, {
+        contain_component: name,
+        per_page: 1,
+      })
+
+      // check if at least one story returned; if no story would contain a component
+      // the stories array of the call above would be empty, and assign component accordingly.
+      stories.length > 0
+        ? usedComponents.push(name)
+        : unusedComponents.push(name)
+
+      // Some more output, so you see what is going on here
+      console.log(
+        `Looking for unused components (${index + 1}/${components.length})`,
+      )
+    }),
+  )
+
+  // Output
+  console.log('Used Components: ', usedComponents)
+  console.log('Unused Components: ', unusedComponents)
+}
+
+start()

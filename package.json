@@ -134,6 +134,7 @@
     "moxios": "^0.4.0",
     "prettier": "^2.1.1",
     "pretty-quick": "^2.0.1",
+    "storyblok-js-client": "^4.1.5",
     "storybook-addon-paddings": "^2.0.0",
     "storybook-react-router": "^1.0.8",
     "supertest": "^3.3.0",
@@ -164,7 +165,8 @@
     "heroku-postbuild": "yarn build && (./bin/update-ip2location-bin || exit 0)",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "update-trustpilot-score": "node ./bin/update-trustpilot-score.js"
+    "update-trustpilot-score": "node ./bin/update-trustpilot-score.js",
+    "unused-components": " node ./bin/get-unused-components"
   },
   "husky": {
     "hooks": {
