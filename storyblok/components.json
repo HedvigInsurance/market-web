@@ -2193,6 +2193,10 @@
               "name": "SE_APARTMENT_STUDENT_RENT"
             },
             {
+              "value": "SE_ACCIDENT",
+              "name": "SE_ACCIDENT"
+            },
+            {
               "value": "NO_HOME_CONTENT_OWN",
               "name": "NO_HOME_CONTENT_OWN"
             },
