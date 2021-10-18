@@ -2110,47 +2110,73 @@
           "type": "text",
           "pos": 29
         },
-        "presale_info_section": {
+        "terms_link_section_4": {
           "type": "section",
-          "keys": ["presale_info_link", "presale_info_link_text"],
-          "pos": 30
+          "pos": 30,
+          "keys": ["terms_link_4", "terms_link_text_4"]
         },
-        "presale_info_link": {
+        "terms_link_4": {
           "type": "text",
           "pos": 31
         },
-        "presale_info_link_text": {
+        "terms_link_text_4": {
           "type": "text",
           "pos": 32
+        },
+        "terms_link_section_5": {
+          "type": "section",
+          "keys": ["terms_link_5", "terms_link_text_5"],
+          "pos": 33
+        },
+        "terms_link_5": {
+          "type": "text",
+          "pos": 34
+        },
+        "terms_link_text_5": {
+          "type": "text",
+          "pos": 35
+        },
+        "presale_info_section": {
+          "type": "section",
+          "keys": ["presale_info_link", "presale_info_link_text"],
+          "pos": 36
+        },
+        "presale_info_link": {
+          "type": "text",
+          "pos": 37
+        },
+        "presale_info_link_text": {
+          "type": "text",
+          "pos": 38
         },
         "cta_link_section": {
           "type": "section",
           "keys": ["cta_link", "cta_text"],
-          "pos": 33
+          "pos": 39
         },
         "cta_link": {
           "type": "text",
-          "pos": 34
+          "pos": 40
         },
         "cta_text": {
           "type": "text",
-          "pos": 35
+          "pos": 41
         },
         "color": {
           "type": "custom",
-          "pos": 36,
+          "pos": 43,
           "field_type": "hedvig-minimal-color-picker",
           "options": []
         },
         "extra_styling": {
           "type": "textarea",
-          "pos": 37
+          "pos": 44
         },
         "tab-3af4122d-35df-4012-a15e-7b0a7e687292": {
           "type": "tab",
           "display_name": "Styling",
           "keys": ["extra_styling", "color"],
-          "pos": 38
+          "pos": 45
         }
       },
       "image": null,
@@ -2161,7 +2187,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "insurance_info_block",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "insurance_type",

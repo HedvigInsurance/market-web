@@ -117,6 +117,10 @@ interface InsuranceInfoBlockProps extends BrandPivotBaseBlockProps {
   terms_link_text_2: string
   terms_link_3: string
   terms_link_text_3: string
+  terms_link_4: string
+  terms_link_text_4: string
+  terms_link_5: string
+  terms_link_text_5: string
   presale_info_link: string
   presale_info_link_text: string
   cta_text: string
@@ -143,6 +147,8 @@ export const InsuranceInfoBlock: React.FC<InsuranceInfoBlockProps> = ({
     { link: data.terms_link, text: data.terms_link_text },
     { link: data.terms_link_2, text: data.terms_link_text_2 },
     { link: data.terms_link_3, text: data.terms_link_text_3 },
+    { link: data.terms_link_4, text: data.terms_link_text_4 },
+    { link: data.terms_link_5, text: data.terms_link_text_5 },
     { link: data.presale_info_link, text: data.presale_info_link_text },
   ].filter((item) => item.text)
 
