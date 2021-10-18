@@ -184,3 +184,15 @@ yarn update-trustpilot-score --space 123714 --page 67792582 --businessunit 5b62e
 - `--space <id>` Storyblok Space ID to fetch and update.
 - `--page <id>` Storyblok Page ID for the locale-specific "global" story.
 - `--businessunit <id>` [Trustpilot Business Unit ID for Hedvig](https://documentation-apidocumentation.trustpilot.com/#BusinessUnitID)
+
+### Check for unsued components
+
+In order to list the unused components in Storyblock, you can run this script
+
+```bash
+yarn unused-components --space 1337
+```
+
+**Flags**
+
+- `--space N` Your space id to check for unsued components

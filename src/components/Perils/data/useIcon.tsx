@@ -9,8 +9,7 @@ export const useIcon = (iconUrl: string) => {
       if (!iconUrl) {
         return
       }
-      const url = `https://giraffe.hedvig.com${iconUrl}`
-      const iconResponse = await axios.get(url, {
+      const iconResponse = await axios.get(iconUrl, {
         withCredentials: false,
       })
       seticonString(iconResponse.data)
