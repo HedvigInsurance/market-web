@@ -32,7 +32,7 @@ export const usePerils = (insuranceType: TypeOfContract, localeIso: Locale) => {
         },
         query: `
           query Perils($typeOfContract: TypeOfContract!, $localeIso: Locale!) {
-            perils(contractType: $typeOfContract, locale: $localeIso) {
+            contractPerils(contractType: $typeOfContract, locale: $localeIso) {
                 title
                 description
                 covered
@@ -55,7 +55,7 @@ export const usePerils = (insuranceType: TypeOfContract, localeIso: Locale) => {
           'content-type': 'application/json',
         },
       })
-      const perilsData = perilsRequest.data.data.perils
+      const perilsData = perilsRequest.data.data.contractPerils
       setPerils(perilsData)
     }
 
