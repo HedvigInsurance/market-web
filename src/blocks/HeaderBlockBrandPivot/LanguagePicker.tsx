@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import React from 'react'
 import { MOBILE_BP_UP } from 'components/blockHelpers'
-import { getAssociatedLocales, LocaleData } from 'utils/locales'
+import { getAssociatedLocales, LocaleData } from 'src/l10n/locales'
 import { TABLET_BP_UP } from './mobile'
 
 interface LanguagePickerProps {

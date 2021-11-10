@@ -7,7 +7,7 @@ import {
   checkIsInEnglish,
   locales,
   LocaleData,
-} from 'utils/locales'
+} from 'src/l10n/locales'
 import { ButtonBrandPivot } from 'components/ButtonBrandPivot/Button'
 import { Globe } from 'components/icons/Globe'
 import { Chevron } from 'components/icons/Chevron'

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import React from 'react'
 import { useLocale } from 'context/LocaleContext'
-import { LocaleData } from 'utils/locales'
+import { LocaleData } from 'src/l10n/locales'
 import { ButtonLinkBrandPivot } from '../ButtonBrandPivot/Button'
 import { AppStore } from './svg/AppStore'
 import { PlayStore } from './svg/PlayStore'

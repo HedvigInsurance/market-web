@@ -5,7 +5,7 @@ import {
   SeoContent,
   Story,
 } from '../storyblok/StoryContainer'
-import { getLocaleData, LocaleData } from './locales'
+import { getLocaleData, LocaleData } from '../l10n/locales'
 import { getPublicHost, getStoryblokImage } from './storyblok'
 import {
   structuredDataReviewSnippet,

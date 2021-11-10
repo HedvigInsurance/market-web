@@ -5,7 +5,7 @@ import * as Koa from 'koa'
 import { lookupCountry } from 'server/utils/ip2location'
 import { getDatasourceEntries } from 'server/utils/storyblok'
 import { DatasourceEntry } from 'storyblok/StoryContainer'
-import { fallbackLocale, locales } from 'utils/locales'
+import { fallbackLocale, locales } from 'src/l10n/locales'
 import { State } from './states'
 
 export const forceHost = ({

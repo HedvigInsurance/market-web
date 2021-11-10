@@ -1,5 +1,5 @@
 import React, { createContext, useContext } from 'react'
-import { LocaleData, locales } from 'utils/locales'
+import { LocaleData, locales } from 'src/l10n/locales'
 
 type LocaleContextProps = {
   currentLocale: LocaleData
