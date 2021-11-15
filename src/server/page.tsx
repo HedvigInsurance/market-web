@@ -17,8 +17,8 @@ import {
   getPublishedStoryFromSlug,
   getStoryblokEditorScript,
 } from 'server/utils/storyblok'
-import { LocaleData } from 'src/l10n/locales'
-import { fallbackLocale, getLocaleData } from 'src/l10n/l10n-utils'
+import { LocaleData } from 'l10n/locales'
+import { fallbackLocale, getLocaleData } from 'l10n/l10n-utils'
 import { LocaleProvider } from 'context/LocaleContext'
 import { App } from '../App'
 import { sentryConfig } from './config/sentry'

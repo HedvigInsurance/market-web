@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { minimalColorComponentColors } from 'src/blocks/BaseBlockProps'
 import { GlobalStory } from 'storyblok/StoryContainer'
-import { LocaleData } from 'src/l10n/locales'
+import { LocaleData } from 'l10n/locales'
 import { usePerils } from './data/usePerils'
 import { PerilCollection } from './PerilCollection/PerilCollection'
 import { PerilModal } from './PerilModal/PerilModal'

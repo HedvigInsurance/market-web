@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
 import React, { useRef, useState, useCallback } from 'react'
 import { colorsV3 } from '@hedviginsurance/brand'
-import { locales, LocaleData } from 'src/l10n/locales'
+import { locales, LocaleData } from 'l10n/locales'
 import {
   getMarketsInLocalLang,
   getMarketsInEnglish,
   checkIsInEnglish,
-} from 'src/l10n/l10n-utils'
+} from 'l10n/l10n-utils'
 import { ButtonBrandPivot } from 'components/ButtonBrandPivot/Button'
 import { Globe } from 'components/icons/Globe'
 import { Chevron } from 'components/icons/Chevron'

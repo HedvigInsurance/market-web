@@ -1,8 +1,8 @@
 import { select, withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
 import { globalStoryMock } from 'utils/storybook'
-import { locales } from 'src/l10n/locales'
-import { fallbackLocale } from 'src/l10n/l10n-utils'
+import { locales } from 'l10n/locales'
+import { fallbackLocale } from 'l10n/l10n-utils'
 import { TypeOfContract } from './types'
 import { Perils } from './'
 
