@@ -16,8 +16,7 @@ type MarketName =
   | 'Norway'
   | 'Danmark'
   | 'Denmark'
-  | 'Français'
-  | 'French'
+  | 'France'
 type LanguageLabel = 'Sv' | 'En' | 'No' | 'Da' | 'Fr'
 type HtmlLang = 'sv' | 'en' | 'no' | 'da' | 'fr'
 type HrefLang =
@@ -115,7 +114,7 @@ export const locales: Locales = {
     label: 'fr',
     iso: 'fr-FR',
     marketLabel: 'fr',
-    marketName: 'Français',
+    marketName: 'France',
     langLabel: 'Fr',
     htmlLang: 'fr',
     hrefLang: 'fr-fr',
@@ -124,7 +123,7 @@ export const locales: Locales = {
     label: 'fr-en',
     iso: 'en-FR',
     marketLabel: 'fr',
-    marketName: 'French',
+    marketName: 'France',
     langLabel: 'En',
     htmlLang: 'en',
     hrefLang: 'en-fr',
