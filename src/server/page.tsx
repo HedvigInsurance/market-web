@@ -17,7 +17,8 @@ import {
   getPublishedStoryFromSlug,
   getStoryblokEditorScript,
 } from 'server/utils/storyblok'
-import { getLocaleData, LocaleData } from 'src/l10n/locales'
+import { LocaleData } from 'src/l10n/locales'
+import { fallbackLocale, getLocaleData } from 'src/l10n/l10n-utils'
 import { LocaleProvider } from 'context/LocaleContext'
 import { App } from '../App'
 import { sentryConfig } from './config/sentry'
@@ -152,7 +153,7 @@ export const getPageMiddleware = (
   const helmetContext = {}
 
   const localeFromPath = getLocaleFromPath(ctx.path)
-  const locale = localeFromPath || 'se'
+  const locale = localeFromPath || fallbackLocale.label
 
   const [story, globalStory] = await Promise.all([
     getStoryblokResponseFromContext(ctx),
@@ -180,7 +181,7 @@ export const getPageMiddleware = (
     return
   }
 
-  const currentLocale = getLocaleData(locale)
+  const currentLocale = getLocaleData(locale as LocaleData['label'])
 
   const initialState = JSON.parse(
     JSON.stringify({
