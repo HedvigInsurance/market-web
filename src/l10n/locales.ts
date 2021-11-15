@@ -1,10 +1,16 @@
-type Label = string // format: 'se' / 'no-en'
-type IsoCode = string // format: 'sv_SE' / 'en_NO'
-type MarketLabel = string // format: 'se' / 'no'
-type MarketName = string // format: 'Sverige' / 'Norway'
-type LanguageLabel = string // format: 'Sv' / 'En'
-type HtmlLang = string // format: 'sv' / 'en'
-type HrefLang = string // format: 'sv-se' / 'en-no'
+type Label = 'se' | 'se-en' | 'no' | 'no-en' | 'dk' | 'dk-en'
+type IsoCode = 'sv_SE' | 'en_SE' | 'nb_NO' | 'en_NO' | 'da_DK' | 'en_DK'
+type MarketLabel = 'se' | 'no' | 'dk'
+type MarketName =
+  | 'Sverige'
+  | 'Sweden'
+  | 'Norge'
+  | 'Norway'
+  | 'Danmark'
+  | 'Denmark'
+type LanguageLabel = 'Sv' | 'En' | 'No' | 'Da'
+type HtmlLang = 'sv' | 'en' | 'no' | 'da'
+type HrefLang = 'sv-se' | 'en-se' | 'no-no' | 'en-no' | 'da-dk' | 'en-dk'
 
 export type LocaleData = {
   label: Label
