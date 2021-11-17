@@ -1,14 +1,6 @@
-type Label = 'se' | 'se-en' | 'no' | 'no-en' | 'dk' | 'dk-en' | 'fr' | 'fr-en'
-type IsoCode =
-  | 'sv_SE'
-  | 'en_SE'
-  | 'nb_NO'
-  | 'en_NO'
-  | 'da_DK'
-  | 'en_DK'
-  | 'fr-FR'
-  | 'en-FR'
-type MarketLabel = 'se' | 'no' | 'dk' | 'fr'
+type Label = 'se' | 'se-en' | 'no' | 'no-en' | 'dk' | 'dk-en'
+type IsoCode = 'sv_SE' | 'en_SE' | 'nb_NO' | 'en_NO' | 'da_DK' | 'en_DK'
+type MarketLabel = 'se' | 'no' | 'dk'
 type MarketName =
   | 'Sverige'
   | 'Sweden'
@@ -16,18 +8,9 @@ type MarketName =
   | 'Norway'
   | 'Danmark'
   | 'Denmark'
-  | 'France'
-type LanguageLabel = 'Sv' | 'En' | 'No' | 'Da' | 'Fr'
-type HtmlLang = 'sv' | 'en' | 'no' | 'da' | 'fr'
-type HrefLang =
-  | 'sv-se'
-  | 'en-se'
-  | 'no-no'
-  | 'en-no'
-  | 'da-dk'
-  | 'en-dk'
-  | 'fr-fr'
-  | 'en-fr'
+type LanguageLabel = 'Sv' | 'En' | 'No' | 'Da'
+type HtmlLang = 'sv' | 'en' | 'no' | 'da'
+type HrefLang = 'sv-se' | 'en-se' | 'no-no' | 'en-no' | 'da-dk' | 'en-dk'
 
 export type LocaleData = {
   label: Label
@@ -109,23 +92,5 @@ export const locales: Locales = {
     hrefLang: 'en-dk',
     adtractionSrc: 'https://cdn.adt387.com/jsTag?ap=1589794294',
     trustpilotLocale: 'en-US',
-  },
-  fr: {
-    label: 'fr',
-    iso: 'fr-FR',
-    marketLabel: 'fr',
-    marketName: 'France',
-    langLabel: 'Fr',
-    htmlLang: 'fr',
-    hrefLang: 'fr-fr',
-  },
-  'fr-en': {
-    label: 'fr-en',
-    iso: 'en-FR',
-    marketLabel: 'fr',
-    marketName: 'France',
-    langLabel: 'En',
-    htmlLang: 'en',
-    hrefLang: 'en-fr',
   },
 }
