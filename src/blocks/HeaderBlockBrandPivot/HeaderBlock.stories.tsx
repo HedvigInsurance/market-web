@@ -5,7 +5,7 @@ import React from 'react'
 import StoryRouter from 'storybook-react-router'
 import { Provider } from 'constate'
 import { globalStoryMock, link, minimalColorMap } from 'utils/storybook'
-import { fallbackLocale } from 'utils/locales'
+import { fallbackLocale } from 'l10n/l10n-utils'
 import { HeroBlock } from '../HeroBlock/HeroBlock'
 import { Header } from '.'
 
