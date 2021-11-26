@@ -4,6 +4,7 @@ To link the branch/PR to a Jira issue either
 2. prefix your PR title with it
 
 Also, if applicable, include whether this is a Fix, Feature or Chore.
+
 Example PR title: GRW-123 / Feature / Awesome new thing
 -->
 
@@ -17,17 +18,17 @@ Example PR title: GRW-123 / Feature / Awesome new thing
 <!-- Why are these changes made? -->
 
 
-<!-- If there is a Jira issue, add the key (e.g. GRW-123) between brackets below, and a link to that issue will automaticaly be created. -->
-**Referenced ticket(s): []**
+
+**Ticket(s): []**
+<!-- If there is a Jira issue, add the key (e.g. GRW-123) between the brackets, and a link to that issue will automatically be created. -->
 
 
-
-<!-- If it makes sense, add screenshots and/or screen recordings below, preferably with headlines and/or descriptions -->
+<!-- If it makes sense, add screenshots and/or screen recordings below, with headlines and/or descriptions if needed. -->
 <!--
 ## Screenshots / recordings 
 -->
 
-<!-- Finally, you can create a review app on Heroku if you think that will be helpful to the reviewers -->
+<!-- Finally, you can create a review app on Heroku to make it easier to review and/or get input from the design team before merging. -->
 <!--
-## Review app
+### [Review app]()
 -->
