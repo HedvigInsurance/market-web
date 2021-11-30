@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colorsV2 } from '@hedviginsurance/brand'
+import { colorsV3 } from '@hedviginsurance/brand'
 import Cookies from 'js-cookie'
 import React, { useState, useEffect } from 'react'
 import { CONTENT_GUTTER, CONTENT_MAX_WIDTH } from 'components/blockHelpers'
@@ -14,11 +14,11 @@ const OuterWrapper = styled('div')<{ visible: boolean; closing: boolean }>(
     bottom: 0,
     left: 0,
     right: 0,
-    background: colorsV2.white,
+    background: colorsV3.white,
     opacity: visible && !closing ? 1 : 0,
     transform: visible && !closing ? 'translateY(0)' : 'translateY(5%)',
     transition: 'opacity 300ms, transform 300ms',
-    borderTop: '1px solid ' + colorsV2.lightgray,
+    borderTop: '1px solid ' + colorsV3.gray300,
     boxShadow: '-5px 0 5px rgba(50, 50, 50, 0.2)',
     zIndex: 9999999999,
   }),
@@ -49,8 +49,8 @@ const CloseButton = styled('button')({
   padding: 0,
   fontSize: '1.25rem',
   background: 'transparent',
-  color: colorsV2.darkgray,
-  border: '1px solid ' + colorsV2.darkgray,
+  color: colorsV3.gray700,
+  border: '1px solid ' + colorsV3.gray700,
   cursor: 'pointer',
   borderRadius: '100%',
   flexShrink: 0,
