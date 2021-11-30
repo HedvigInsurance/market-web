@@ -1,9 +1,8 @@
 import { withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
-// import StoryRouter from 'storybook-react-router'
 import { Provider } from 'constate'
 import { globalStoryMock, minimalColorMap } from 'utils/storybook'
-import { fallbackLocale } from 'utils/locales'
+import { fallbackLocale } from 'l10n/l10n-utils'
 import { Footer } from './FooterBlock'
 
 export default {

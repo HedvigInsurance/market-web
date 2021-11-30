@@ -5,7 +5,8 @@ import {
   SeoContent,
   Story,
 } from '../storyblok/StoryContainer'
-import { getLocaleData, LocaleData } from './locales'
+import { LocaleData } from '../l10n/locales'
+import { getLocaleData } from '../l10n/l10n-utils'
 import { getPublicHost, getStoryblokImage } from './storyblok'
 import {
   structuredDataReviewSnippet,
@@ -36,8 +37,8 @@ const getPageTitleFromStory = (story?: Story) => {
 }
 
 const getAlternateLang = (fullSlug: string) => {
-  const localeSlug: LocaleData['label'] = fullSlug.split('/')[0]
-  const marketLocale = getLocaleData(localeSlug)
+  const localeSlug = fullSlug.split('/')[0]
+  const marketLocale = getLocaleData(localeSlug as LocaleData['label'])
   return marketLocale.hrefLang
 }
 
@@ -142,7 +143,10 @@ export const getMeta = ({
       />
     )}
     {story && story.content.seo_meta_og_image && (
-      <meta name="twitter:image" content={story.content.seo_meta_og_image} />
+      <meta
+        name="twitter:image"
+        content={getStoryblokImage(story.content.seo_meta_og_image)}
+      />
     )}
     <meta name="twitter:site" content="@hedvigapp" />
     <meta name="twitter:card" content="summary_large_image" />

@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { LocaleData } from 'utils/locales'
+import { LocaleData } from 'l10n/locales'
 import { Peril, TypeOfContract } from '../types'
 
 type Locale = LocaleData['iso']

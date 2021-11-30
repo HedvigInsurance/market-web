@@ -1,10 +1,16 @@
-type Label = string // format: 'se' / 'no-en'
-type IsoCode = string // format: 'sv_SE' / 'en_NO'
-type MarketLabel = string // format: 'se' / 'no'
-type MarketName = string // format: 'Sverige' / 'Norway'
-type LanguageLabel = string // format: 'Sv' / 'En'
-type HtmlLang = string // format: 'sv' / 'en'
-type HrefLang = string // format: 'sv-se' / 'en-no'
+type Label = 'se' | 'se-en' | 'no' | 'no-en' | 'dk' | 'dk-en'
+type IsoCode = 'sv_SE' | 'en_SE' | 'nb_NO' | 'en_NO' | 'da_DK' | 'en_DK'
+type MarketLabel = 'se' | 'no' | 'dk'
+type MarketName =
+  | 'Sverige'
+  | 'Sweden'
+  | 'Norge'
+  | 'Norway'
+  | 'Danmark'
+  | 'Denmark'
+type LanguageLabel = 'Sv' | 'En' | 'No' | 'Da'
+type HtmlLang = 'sv' | 'en' | 'no' | 'da'
+type HrefLang = 'sv-se' | 'en-se' | 'no-no' | 'en-no' | 'da-dk' | 'en-dk'
 
 export type LocaleData = {
   label: Label
@@ -87,29 +93,4 @@ export const locales: Locales = {
     adtractionSrc: 'https://cdn.adt387.com/jsTag?ap=1589794294',
     trustpilotLocale: 'en-US',
   },
-}
-
-export const fallbackLocale = locales.se
-
-export const getLocaleData = (label: LocaleData['label']): LocaleData => {
-  return locales[label] ?? fallbackLocale
-}
-
-export const getAssociatedLocales = (locale: LocaleData): LocaleData[] => {
-  const currentMarket = locale.marketLabel
-  return Object.values(locales).filter(
-    ({ marketLabel }) => marketLabel === currentMarket,
-  )
-}
-
-export const checkIsInEnglish = (locale: LocaleData): boolean => {
-  return locale.langLabel === 'En'
-}
-
-export const getMarketsInLocalLang = (localesObj: Locales) => {
-  return Object.values(localesObj).filter((locale) => !checkIsInEnglish(locale))
-}
-
-export const getMarketsInEnglish = (localesObj: Locales) => {
-  return Object.values(localesObj).filter((locale) => checkIsInEnglish(locale))
 }
