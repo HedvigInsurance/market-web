@@ -296,7 +296,7 @@
       "component_group_uuid": null
     },
     {
-      "name": "bullet_point_block_brand_pivot",
+      "name": "bullet_point_block",
       "display_name": "",
       "schema": {
         "align_center": {
@@ -308,7 +308,7 @@
           "type": "bloks",
           "maximum": "6",
           "restrict_components": true,
-          "component_whitelist": ["bullet_point_item_brand_pivot"],
+          "component_whitelist": ["bullet_point_item"],
           "required": true,
           "pos": 1,
           "translatable": false
@@ -376,11 +376,13 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "bullet_point_block_brand_pivot",
-      "component_group_uuid": null
+      "real_name": "bullet_point_block",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
-      "name": "bullet_point_item_brand_pivot",
+      "name": "bullet_point_item",
       "display_name": "",
       "schema": {
         "image": {
@@ -418,8 +420,10 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "bullet_point_item_brand_pivot",
-      "component_group_uuid": null
+      "real_name": "bullet_point_item",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "column_text_block",
