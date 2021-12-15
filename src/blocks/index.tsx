@@ -9,6 +9,7 @@ import { AppButtonsBlock } from './AppButtonsBlock'
 import { BackgroundVideoBlock } from './BackgroundVideoBlock'
 import { BannerBlock } from './BannerBlock/BannerBlock'
 import { BaseBlockProps } from './BaseBlockProps'
+import { BulletPointBlock } from './BulletPointBlock'
 import { BulletPointBlockBrandPivot } from './BulletPointBlockBrandPivot'
 import { CtaBlock } from './CtaBlock/CtaBlock'
 import { HeaderBlock } from './HeaderBlockBrandPivot'
@@ -29,6 +30,7 @@ const blockComponents = {
   accordion_block: AccordionBlock,
   accordion_block_brand_pivot: AccordionBlock,
   banner_block: BannerBlock,
+  bullet_point_block: BulletPointBlock,
   bullet_point_block_brand_pivot: BulletPointBlockBrandPivot,
   column_text_block: ColumnTextBlock,
   cta_block: CtaBlock,
