@@ -135,24 +135,18 @@ const BulletPointBody = styled.div<{
   }
 `
 
-export type BulletPointItemProps = BrandPivotBaseBlockProps & {
-  image: Image
-  icon_layout: boolean
-  title?: string
-  paragraph: MarkdownHtmlComponent
-}
+export type BulletPointItemProps = ReadonlyArray<
+  BrandPivotBaseBlockProps & {
+    image: Image
+    title?: string
+    paragraph: MarkdownHtmlComponent
+  }
+>
 
-export interface BulletPointBlockProps extends BrandPivotBaseBlockProps {
+export type BulletPointBlockProps = BrandPivotBaseBlockProps & {
   align_center: boolean
   color_body: MinimalColorComponent
-  bullet_points: ReadonlyArray<
-    BaseBlockProps & {
-      image: Image
-      icon_layout: boolean
-      title?: string
-      paragraph: MarkdownHtmlComponent
-    }
-  >
+  bullet_points: BulletPointItemProps
 }
 
 export const BulletPointBlock: React.FC<BulletPointBlockProps> = ({
