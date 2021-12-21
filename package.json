@@ -163,7 +163,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint 'src/**/*.{ts,tsx}'",
     "heroku-postbuild": "yarn build && (./bin/update-ip2location-bin || exit 0)",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006 --static-dir ./.storybook/assets",
     "build-storybook": "build-storybook",
     "update-trustpilot-score": "node ./bin/update-trustpilot-score.js",
     "unused-components": " node ./bin/get-unused-components"
