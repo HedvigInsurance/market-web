@@ -42,8 +42,10 @@ const InnerWrapper = styled.div`
 
 const BulletPoint = styled.div<{
   alignCenter: boolean
+  bulletPointLayout: boolean
 }>`
   display: flex;
+  flex-direction: ${(props) => (props.bulletPointLayout ? 'row' : 'column')};
   width: 100%;
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
@@ -51,7 +53,6 @@ const BulletPoint = styled.div<{
   ${(props) =>
     props.alignCenter &&
     `
-      flex-direction: column;
       align-items: center;
       text-align: center;
     `}
@@ -74,6 +75,7 @@ const BulletPoint = styled.div<{
 
 const BulletPointHead = styled.div<{
   alignCenter: boolean
+  bulletPointLayout: boolean
 }>`
   display: flex;
   align-items: center;
@@ -81,11 +83,8 @@ const BulletPointHead = styled.div<{
   margin-bottom: 1.5rem;
 
   ${(props) =>
-    props.alignCenter
-      ? `
-        margin-bottom: 1.5rem;
-      `
-      : `
+    props.bulletPointLayout &&
+    `
         justify-content: flex-start;
         max-width: 2rem;
         max-height: 2rem;
@@ -96,7 +95,6 @@ const BulletPointHead = styled.div<{
           max-height: none;
           width: auto;
           margin-right: 0;
-          margin-bottom: 2rem;
         }
       `}
 `
@@ -145,12 +143,14 @@ export type BulletPointItemProps = ReadonlyArray<
 
 export type BulletPointBlockProps = BrandPivotBaseBlockProps & {
   align_center: boolean
+  bullet_point_layout: boolean
   color_body: MinimalColorComponent
   bullet_points: BulletPointItemProps
 }
 
 export const BulletPointBlock: React.FC<BulletPointBlockProps> = ({
   align_center,
+  bullet_point_layout,
   extra_styling,
   color,
   color_body,
@@ -166,9 +166,16 @@ export const BulletPointBlock: React.FC<BulletPointBlockProps> = ({
     <ContentWrapper brandPivot>
       <InnerWrapper>
         {bullet_points.map((bullet) => (
-          <BulletPoint key={bullet._uid} alignCenter={align_center}>
+          <BulletPoint
+            key={bullet._uid}
+            alignCenter={align_center}
+            bulletPointLayout={bullet_point_layout}
+          >
             {bullet.image && (
-              <BulletPointHead alignCenter={align_center}>
+              <BulletPointHead
+                alignCenter={align_center}
+                bulletPointLayout={bullet_point_layout}
+              >
                 <BulletPointImage
                   src={getStoryblokImage(bullet.image)}
                   alignCenter={align_center}
