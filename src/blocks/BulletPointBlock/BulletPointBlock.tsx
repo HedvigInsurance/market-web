@@ -43,6 +43,7 @@ const InnerWrapper = styled.div`
 const BulletPoint = styled.div<{
   alignCenter: boolean
   bulletPointLayout: boolean
+  columns: number
 }>`
   display: flex;
   flex-direction: ${(props) => (props.bulletPointLayout ? 'row' : 'column')};
@@ -64,11 +65,15 @@ const BulletPoint = styled.div<{
   }
 
   ${TABLET_BP_UP} {
-    width: calc((1 / 3 * 100%) - 1.5rem);
+    ${(props) =>
+      props.columns === 3 &&
+      `
+        width: calc((1 / 3 * 100%) - 1.5rem)
+      `}
   }
 
   ${LAPTOP_BP_UP} {
-    width: calc((1 / 3 * 100%) - 3.5rem);
+    width: ${(props) => `calc((1 / ${props.columns} * 100%) - 3.5rem)`};
     margin-left: 3.5rem;
   }
 `
@@ -163,13 +168,14 @@ export const BulletPointBlock: React.FC<BulletPointBlockProps> = ({
     size={size}
     extraStyling={extra_styling}
   >
-    <ContentWrapper brandPivot>
+    <ContentWrapper fullWidth>
       <InnerWrapper>
         {bullet_points.map((bullet) => (
           <BulletPoint
             key={bullet._uid}
             alignCenter={align_center}
             bulletPointLayout={bullet_point_layout}
+            columns={bullet_points.length}
           >
             {bullet.image && (
               <BulletPointHead
