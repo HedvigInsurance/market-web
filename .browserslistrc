@@ -1,0 +1,5 @@
+# Browsers that we support
+# The defaults give us a reasonable configuration
+
+defaults # equals '> 0.5%, last 2 versions, Firefox ESR, not dead'
+not IE > 0 # no support for any IE version

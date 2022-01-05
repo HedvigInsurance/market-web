@@ -5,10 +5,7 @@
       {
         "modules": false,
         "useBuiltIns": "usage",
-        "corejs": 2,
-        "targets": {
-          "browsers": ["last 3 version", "ie >= 11"]
-        }
+        "corejs": 2
       }
     ],
     "@babel/preset-react",
