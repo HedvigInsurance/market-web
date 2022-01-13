@@ -23,7 +23,7 @@ import { LocaleProvider } from 'context/LocaleContext'
 import { App } from '../App'
 import { sentryConfig } from './config/sentry'
 import { favicons } from './utils/favicons'
-import { allTracking } from './utils/tracking'
+import { allTracking, gtmDevScript, gtmProdScript } from './utils/tracking'
 
 const scriptLocation =
   process.env.NODE_ENV === 'production'
@@ -68,7 +68,7 @@ const template = ({
     ${helmet.style}
     ${helmet.script}
     
-    ${allTracking(nonce)}
+    ${allTracking(nonce, process.env.APP_ENVIRONMENT)}
     ${favicons}
     <script src="https://browser.sentry-cdn.com/4.2.3/bundle.min.js" crossorigin="anonymous"></script>
     <script nonce="${nonce}">
@@ -80,10 +80,11 @@ const template = ({
     <!-- End TrustBox script -->
   </head>
   <body>
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://googletagmanager.com/ns.html?id=GTM-5BCDJ2B"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+    ${
+      process.env.APP_ENVIRONMENT === 'production'
+        ? gtmProdScript.body
+        : gtmDevScript.body
+    }
 
     ${
       shouldDangerouslyExposeApiKeyToProvideEditing
