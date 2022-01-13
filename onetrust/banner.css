@@ -1,0 +1,112 @@
+/* Banner container element */
+#onetrust-consent-sdk #onetrust-banner-sdk {
+  top: unset;
+  bottom: 0;
+  width: 100%;
+  max-width: 740px;
+  margin: 0;
+  padding: 1rem;
+  border-radius: 0;
+  transform: none;
+}
+
+#onetrust-banner-sdk #onetrust-policy {
+  margin-top: 0;
+}
+
+#onetrust-consent-sdk * {
+  font-weight: 400 !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+
+#onetrust-consent-sdk #onetrust-policy-title {
+  margin-bottom: 1rem;
+  padding: 0;
+  font-size: 1rem;
+}
+
+#onetrust-consent-sdk #onetrust-policy-text {
+  margin: 0 0 1.5rem 0;
+  font-size: 0.875rem;
+}
+
+#onetrust-banner-sdk #onetrust-policy-text {
+  width: 100%;
+}
+
+#onetrust-consent-sdk #onetrust-accept-btn-handler, 
+#onetrust-banner-sdk #onetrust-reject-all-handler {
+  width: 100%;
+  padding: calc(1rem - 1px) 2rem;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  letter-spacing: 0;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+#onetrust-consent-sdk #onetrust-pc-btn-handler {
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  letter-spacing: 0;
+}
+
+#onetrust-banner-sdk #onetrust-button-group {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+#onetrust-banner-sdk #onetrust-button-group-parent {
+  padding: 0;
+}
+
+/* Follow OneTrust's defined media queries */
+@media only screen and (min-width: 426px) {
+  #onetrust-consent-sdk #onetrust-accept-btn-handler, 
+  #onetrust-banner-sdk #onetrust-reject-all-handler {
+    width: auto;
+  }
+
+  #onetrust-banner-sdk #onetrust-button-group {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  #onetrust-banner-sdk .banner-actions-container {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+/* Follow OneTrust's defined media queries */
+@media only screen and (min-width: 600px) {
+  #onetrust-consent-sdk #onetrust-banner-sdk {
+    bottom: 32px;
+    width: calc(100% - 2rem);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+
+  #onetrust-consent-sdk #onetrust-policy-title {
+    font-size: 1.25rem;
+  }
+
+  #onetrust-consent-sdk #onetrust-policy-text {
+    font-size: 1rem;
+  }
+
+  #onetrust-consent-sdk #onetrust-accept-btn-handler, 
+  #onetrust-banner-sdk #onetrust-reject-all-handler {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+
+  #onetrust-consent-sdk #onetrust-pc-btn-handler {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+  }
+}

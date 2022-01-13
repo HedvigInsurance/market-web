@@ -1,0 +1,138 @@
+/* Preference Center styling */
+#onetrust-pc-sdk .ot-pc-header {
+  display: none !important;
+}
+
+#onetrust-pc-sdk #ot-pc-content {
+  top: 0;
+  width: auto;
+  margin: 0;
+  padding: 1.5rem;
+}
+
+#onetrust-pc-sdk #ot-pc-title {
+  margin-top: 0;
+  font-size: 1rem;
+}
+
+#onetrust-pc-sdk .ot-accordion-layout.ot-cat-item:first-of-type {
+  border-top: 0;
+}
+
+#onetrust-pc-sdk .ot-accordion-layout.ot-cat-item {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #D2D2D2;
+}
+
+#onetrust-pc-sdk .ot-accordion-layout .ot-acc-hdr {
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+#onetrust-pc-sdk .ot-cat-grp .ot-always-active {
+  color: #777777;
+}
+
+#onetrust-pc-sdk .ot-accordion-layout .ot-acc-grpdesc {
+  width: 100%;
+  margin-top: 0;
+  padding-left: 0;
+  padding-right: 0;
+  font-size: 0.75rem;
+}
+
+#onetrust-pc-sdk .ot-switch-nob {
+  background-color: #AAAAAA;
+  border-color: #AAAAAA;
+}
+
+#onetrust-pc-sdk .ot-tgl input:checked+.ot-switch .ot-switch-nob {
+  background-color: #121212;
+  border-color: #121212;
+}
+
+#onetrust-pc-sdk .ot-switch-nob:before {
+  background-color: #FAFAFA;
+}
+
+#onetrust-pc-sdk .ot-tgl input:checked+.ot-switch .ot-switch-nob:before {
+  background-color: #FAFAFA;
+}
+
+#onetrust-pc-sdk .ot-cat-header+.ot-arw-cntr .ot-arw {
+  transform: rotate(90deg);
+}
+
+#onetrust-pc-sdk input:checked~.ot-acc-hdr .ot-arw,
+#onetrust-pc-sdk button[aria-expanded=true]~.ot-acc-hdr .ot-arw-cntr svg {
+  transform: rotate(-90deg);
+}
+
+#onetrust-consent-sdk #onetrust-pc-sdk *:focus,
+#onetrust-consent-sdk #onetrust-pc-sdk .ot-vlst-cntr > a:focus,
+#onetrust-pc-sdk .ot-tgl input:focus+.ot-switch {
+  outline: none !important
+}
+
+#onetrust-pc-sdk .ot-pc-footer {
+  border: none;
+}
+
+#onetrust-pc-sdk .ot-pc-footer-logo {
+  display: none !important;
+}
+
+#onetrust-pc-sdk .ot-btn-container {
+  padding: 0 1.5rem;
+}
+
+#onetrust-pc-sdk #accept-recommended-btn-handler,
+#onetrust-pc-sdk .ot-btn-container button {
+  width: 100%;
+  max-width: none;
+  padding: calc(1rem - 1px) 2rem;
+  font-size: 0.875rem;
+  line-height: 1rem;
+  letter-spacing: 0;
+  text-decoration: none;
+  border-radius: 8px;
+}
+
+@media only screen and (min-width: 426px) {
+  #onetrust-pc-sdk #accept-recommended-btn-handler {
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  #onetrust-pc-sdk.otPcCenter {
+    top: 50%;
+    max-width: 520px;
+    min-width: 520px;
+    max-height: 400px;
+    transform: translateY(-50%);
+    border-radius: 8px;
+  }
+
+  #onetrust-pc-sdk #ot-pc-content {
+    padding: 2rem;
+  }
+
+  #onetrust-pc-sdk .ot-btn-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  #onetrust-pc-sdk .ot-pc-footer {
+    margin: 0;
+  }
+  
+  #onetrust-pc-sdk #ot-pc-title {
+    font-size: 1.25rem;
+  }
+
+  #onetrust-consent-sdk #onetrust-pc-btn-handler {
+    font-size: 1rem;
+  }
+}
