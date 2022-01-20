@@ -16,6 +16,7 @@ import {
   MarkdownHtmlComponent,
   MinimalColorComponent,
 } from 'blocks/BaseBlockProps'
+import { FontSizes, Heading } from 'components/Heading/Heading'
 
 const BulletPointSectionWrapper = styled(SectionWrapper)`
   overflow-x: hidden;
@@ -112,16 +113,6 @@ const BulletPointImage = styled(DeferredImage)<{
 
 const BulletPointContent = styled.div``
 
-const BulletPointTitle = styled.h3`
-  margin-top: 0;
-  font-size: 1.5rem;
-
-  ${LAPTOP_BP_UP} {
-    margin-bottom: 2rem;
-    font-size: 2rem;
-  }
-`
-
 const BulletPointBody = styled.div<{
   alignCenter: boolean
   colorComponent: MinimalColorComponent
@@ -142,6 +133,8 @@ export type BulletPointItemProps = ReadonlyArray<
   BrandPivotBaseBlockProps & {
     image: Image
     title?: string
+    title_size: FontSizes
+    title_size_mobile?: FontSizes
     paragraph: MarkdownHtmlComponent
   }
 >
@@ -190,7 +183,13 @@ export const BulletPointBlock: React.FC<BulletPointBlockProps> = ({
             )}
             <BulletPointContent>
               {bullet.title && (
-                <BulletPointTitle>{bullet.title}</BulletPointTitle>
+                <Heading
+                  as="h3"
+                  size={bullet.title_size}
+                  mobileSize={bullet.title_size_mobile}
+                >
+                  {bullet.title}
+                </Heading>
               )}
               <BulletPointBody
                 alignCenter={align_center}

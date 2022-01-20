@@ -1,6 +1,7 @@
 import { select, withKnobs, boolean } from '@storybook/addon-knobs'
 import * as React from 'react'
 import { minimalColorMap } from 'utils/storybook'
+import { FontSizes } from 'components/Heading/Heading'
 import { MarkdownHtmlComponent } from '../BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock'
 
@@ -35,6 +36,8 @@ const bulletPointsIcon = [
     image: 'icons/hedvig_reviews_trustpilot.svg',
     icon_layout: false,
     title: 'Trustpilot rating: Excellent',
+    title_size: 'xs' as FontSizes,
+    title_size_mobile: 'sm' as FontSizes,
     paragraph: text,
   },
   {
@@ -43,6 +46,8 @@ const bulletPointsIcon = [
     image: 'icons/hedvig_reviews_apple.svg',
     icon_layout: true,
     title: 'iOS app rating: 4,7/5 stars',
+    title_size: 'xs' as FontSizes,
+    title_size_mobile: 'sm' as FontSizes,
     paragraph: text,
   },
   {
@@ -51,6 +56,8 @@ const bulletPointsIcon = [
     image: 'icons/hedvig_reviews_claims_rating.svg',
     icon_layout: true,
     title: 'Claims rating: 4,7/5 stars',
+    title_size: 'xs' as FontSizes,
+    title_size_mobile: 'sm' as FontSizes,
     paragraph: text,
   },
 ]
@@ -68,6 +75,8 @@ const bulletPointsImage = [
     image: 'images/square_couch.jpg',
     icon_layout: false,
     title: 'Make a claim anytime',
+    title_size: 'xs' as FontSizes,
+    title_size_mobile: 'sm' as FontSizes,
     paragraph: text2,
   },
   {
@@ -76,6 +85,8 @@ const bulletPointsImage = [
     image: 'images/square_rental.jpg',
     icon_layout: true,
     title: 'Get instant help',
+    title_size: 'xs' as FontSizes,
+    title_size_mobile: 'sm' as FontSizes,
     paragraph: text2,
   },
   {
@@ -84,6 +95,8 @@ const bulletPointsImage = [
     image: 'images/square_sofa.jpg',
     icon_layout: true,
     title: 'Follow your claim',
+    title_size: 'xs' as FontSizes,
+    title_size_mobile: 'sm' as FontSizes,
     paragraph: text2,
   },
   {
@@ -92,6 +105,8 @@ const bulletPointsImage = [
     image: 'images/square_sofa.jpg',
     icon_layout: true,
     title: 'Payouts in no time',
+    title_size: 'xs' as FontSizes,
+    title_size_mobile: 'sm' as FontSizes,
     paragraph: text2,
   },
 ]
