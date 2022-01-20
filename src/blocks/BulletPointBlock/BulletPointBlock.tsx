@@ -191,13 +191,15 @@ export const BulletPointBlock: React.FC<BulletPointBlockProps> = ({
                   {bullet.title}
                 </Heading>
               )}
-              <BulletPointBody
-                alignCenter={align_center}
-                colorComponent={color_body}
-                dangerouslySetInnerHTML={{
-                  __html: bullet.paragraph?.html,
-                }}
-              />
+              {bullet.paragraph && (
+                <BulletPointBody
+                  alignCenter={align_center}
+                  colorComponent={color_body}
+                  dangerouslySetInnerHTML={{
+                    __html: bullet.paragraph?.html,
+                  }}
+                />
+              )}
             </BulletPointContent>
           </BulletPoint>
         ))}
