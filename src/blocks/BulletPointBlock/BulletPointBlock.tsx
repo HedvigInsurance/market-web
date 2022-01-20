@@ -41,6 +41,10 @@ const InnerWrapper = styled.div`
   }
 `
 
+const BulletPointTitle = styled(Heading)`
+  margin-bottom: 1rem;
+`
+
 const BulletPoint = styled.div<{
   alignCenter: boolean
   bulletPointLayout: boolean
@@ -124,6 +128,10 @@ const BulletPointBody = styled.div<{
     getMinimalColorStyles(props.colorComponent?.color ?? 'standard').color};
   font-size: 1rem;
 
+  & > * {
+    margin: 0 auto 1rem;
+  }
+
   ${LAPTOP_BP_UP} {
     font-size: 1.125rem;
   }
@@ -183,13 +191,13 @@ export const BulletPointBlock: React.FC<BulletPointBlockProps> = ({
             )}
             <BulletPointContent>
               {bullet.title && (
-                <Heading
+                <BulletPointTitle
                   as="h3"
                   size={bullet.title_size}
                   mobileSize={bullet.title_size_mobile}
                 >
                   {bullet.title}
-                </Heading>
+                </BulletPointTitle>
               )}
               {bullet.paragraph && (
                 <BulletPointBody
