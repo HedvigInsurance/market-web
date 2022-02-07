@@ -304,25 +304,26 @@
           "pos": 0,
           "description": "Tick this box if you want each bullet to have text and image centered"
         },
+        "bullet_point_layout": {
+          "type": "boolean",
+          "pos": 1,
+          "description": "Aligns the icon like a bullet point to the left of the text in mobile"
+        },
         "bullet_points": {
           "type": "bloks",
           "maximum": "6",
           "restrict_components": true,
           "component_whitelist": ["bullet_point_item"],
           "required": true,
-          "pos": 1,
-          "translatable": false
-        },
-        "extra_styling": {
-          "type": "textarea",
           "pos": 2,
-          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
+          "translatable": false
         },
         "color": {
           "type": "custom",
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
-          "pos": 3
+          "pos": 3,
+          "display_name": "Color Title"
         },
         "color_body": {
           "type": "custom",
@@ -356,6 +357,11 @@
           "description": "",
           "default_value": "sm"
         },
+        "extra_styling": {
+          "type": "textarea",
+          "pos": 6,
+          "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break."
+        },
         "tab-ebd6ef28-5e5a-4600-8c0b-5f6542654eab": {
           "type": "tab",
           "display_name": "Styling",
@@ -366,7 +372,7 @@
             "body_color",
             "color_body"
           ],
-          "pos": 6
+          "pos": 7
         }
       },
       "image": null,
@@ -385,9 +391,14 @@
       "name": "bullet_point_item",
       "display_name": "",
       "schema": {
+        "Image": {
+          "type": "section",
+          "pos": 0,
+          "keys": ["image"]
+        },
         "image": {
           "type": "image",
-          "pos": 0,
+          "pos": 1,
           "required": false,
           "display_name": "",
           "regex": "",
@@ -396,18 +407,79 @@
           "image_height": "240",
           "translatable": true
         },
+        "Text": {
+          "type": "section",
+          "pos": 2,
+          "keys": ["title", "title_size", "title_size_mobile", "paragraph"]
+        },
         "title": {
           "type": "text",
           "required": false,
           "default_value": "",
-          "pos": 2,
+          "pos": 3,
           "translatable": true
+        },
+        "title_size_mobile": {
+          "type": "option",
+          "pos": 4,
+          "use_uuid": true,
+          "display_name": "Title Size",
+          "options": [
+            {
+              "value": "xxs",
+              "name": "XXS"
+            },
+            {
+              "value": "xs",
+              "name": "XS"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "md",
+              "name": "MD"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            }
+          ]
+        },
+        "title_size": {
+          "type": "option",
+          "pos": 5,
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "xxs",
+              "name": "XXS"
+            },
+            {
+              "value": "xs",
+              "name": "XS"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "md",
+              "name": "MD"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            }
+          ],
+          "display_name": "Title Size Desktop"
         },
         "paragraph": {
           "type": "custom",
           "default_value": "",
-          "required": true,
-          "pos": 3,
+          "required": false,
+          "pos": 6,
           "field_type": "markdown-html",
           "options": [],
           "translatable": true
