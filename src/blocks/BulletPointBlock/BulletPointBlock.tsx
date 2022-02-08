@@ -152,7 +152,7 @@ export type BulletPointBlockProps = BrandPivotBaseBlockProps & {
   bullet_points: BulletPointItemProps
 }
 
-export const BulletPointBlock: React.FC<BulletPointBlockProps> = ({
+export const BulletPointBlock = ({
   align_center,
   bullet_point_layout,
   extra_styling,
@@ -160,7 +160,7 @@ export const BulletPointBlock: React.FC<BulletPointBlockProps> = ({
   color_body,
   size,
   bullet_points,
-}) => (
+}: BulletPointBlockProps) => (
   <BulletPointSectionWrapper
     brandPivot
     colorComponent={color}
