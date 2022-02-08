@@ -83,7 +83,7 @@ const BulletPoint = styled.div<{
   }
 `
 
-const BulletPointHead = styled.div<{
+const BulletPointHeader = styled.div<{
   alignCenter: boolean
   bulletPointLayout: boolean
 }>`
@@ -177,12 +177,12 @@ export const BulletPointBlock: React.FC<BulletPointBlockProps> = ({
             columns={bullet_points.length}
           >
             {bullet.image && (
-              <BulletPointHead
+              <BulletPointHeader
                 alignCenter={align_center}
                 bulletPointLayout={bullet_point_layout}
               >
                 <BulletPointImage src={getStoryblokImage(bullet.image)} />
-              </BulletPointHead>
+              </BulletPointHeader>
             )}
             <BulletPointContent>
               {bullet.title && (
