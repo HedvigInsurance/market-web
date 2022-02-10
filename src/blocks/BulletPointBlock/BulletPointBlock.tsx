@@ -167,7 +167,7 @@ export const BulletPointBlock = ({
     size={size}
     extraStyling={extra_styling}
   >
-    <ContentWrapper fullWidth>
+    <ContentWrapper brandPivot>
       <InnerWrapper>
         {bullet_points.map((bullet) => (
           <BulletPoint
@@ -189,7 +189,7 @@ export const BulletPointBlock = ({
                 <BulletPointTitle
                   as="h3"
                   size={bullet.title_size}
-                  mobileSize={bullet.title_size_mobile}
+                  mobileSize={bullet.title_size_mobile || 'sm'}
                 >
                   {bullet.title}
                 </BulletPointTitle>
