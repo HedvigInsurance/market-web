@@ -27,7 +27,7 @@ import {
   Image as StoryblokImage,
 } from '../../utils/storyblok'
 import {
-  BrandPivotBaseBlockProps,
+  BaseBlockProps,
   MarkdownHtmlComponent,
   MinimalColorComponent,
 } from '../BaseBlockProps'
@@ -220,7 +220,7 @@ const Wordmark = styled('div')({
   },
 })
 
-interface ImageTextBlockProps extends BrandPivotBaseBlockProps {
+interface ImageTextBlockProps extends BaseBlockProps {
   animate?: boolean
   title_size?: FontSizes
   title_size_mobile?: FontSizes

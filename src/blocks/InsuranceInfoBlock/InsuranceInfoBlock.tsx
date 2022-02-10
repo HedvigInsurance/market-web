@@ -2,7 +2,7 @@ import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
 import React from 'react'
-import { BrandPivotBaseBlockProps } from 'blocks/BaseBlockProps'
+import { BaseBlockProps } from 'blocks/BaseBlockProps'
 import {
   ContentWrapper,
   LAPTOP_BP_UP,
@@ -96,7 +96,7 @@ type Values = {
   value: string
 }[]
 
-interface InsuranceInfoBlockProps extends BrandPivotBaseBlockProps {
+interface InsuranceInfoBlockProps extends BaseBlockProps {
   value_1_description: string
   value_1_value: string
   value_2_description: string

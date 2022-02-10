@@ -5,10 +5,7 @@ import {
   MOBILE_BP_UP,
   SectionWrapper,
 } from '../components/blockHelpers'
-import {
-  BrandPivotBaseBlockProps,
-  MarkdownHtmlComponent,
-} from './BaseBlockProps'
+import { BaseBlockProps, MarkdownHtmlComponent } from './BaseBlockProps'
 
 type ParagraphFontSize = 'sm' | 'md' | 'lg' | 'xl'
 
@@ -29,7 +26,7 @@ const InnerContent = styled.div<{ fontSize: ParagraphFontSize }>`
   }
 `
 
-export interface PlainTextBlockProps extends BrandPivotBaseBlockProps {
+export interface PlainTextBlockProps extends BaseBlockProps {
   content: MarkdownHtmlComponent
   font_size: ParagraphFontSize
 }

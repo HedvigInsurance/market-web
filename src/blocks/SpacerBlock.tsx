@@ -1,14 +1,14 @@
 import styled from '@emotion/styled'
 import React from 'react'
 import { SectionWrapper } from '../components/blockHelpers'
-import { BrandPivotBaseBlockProps } from './BaseBlockProps'
+import { BaseBlockProps } from './BaseBlockProps'
 
 const Spacer = styled(SectionWrapper)`
   padding-bottom: 0 !important;
   z-index: 1;
 `
 
-export const SpacerBlock: React.FunctionComponent<BrandPivotBaseBlockProps> = ({
+export const SpacerBlock: React.FunctionComponent<BaseBlockProps> = ({
   size,
   color,
   extra_styling,

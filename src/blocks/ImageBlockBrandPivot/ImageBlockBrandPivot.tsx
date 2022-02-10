@@ -4,12 +4,9 @@ import { Caption } from 'components/Caption'
 import { ContentWrapper } from '../../components/blockHelpers'
 import { DeferredImage } from '../../components/DeferredImage'
 import { getStoryblokImage, Image as ImageType } from '../../utils/storyblok'
-import {
-  BrandPivotBaseBlockProps,
-  MarkdownHtmlComponent,
-} from '../BaseBlockProps'
+import { BaseBlockProps, MarkdownHtmlComponent } from '../BaseBlockProps'
 
-interface ImageBlockProps extends BrandPivotBaseBlockProps {
+interface ImageBlockProps extends BaseBlockProps {
   image: ImageType
   caption?: MarkdownHtmlComponent
   full_width?: boolean

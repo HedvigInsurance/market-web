@@ -72,11 +72,11 @@ export interface BrandAgnosticBaseBlockProps {
   index?: number
 }
 
-export interface BaseBlockProps extends BrandAgnosticBaseBlockProps {
+export interface BaseBlockPropsDeprecated extends BrandAgnosticBaseBlockProps {
   color?: ColorComponent
 }
 
-export interface BrandPivotBaseBlockProps extends BrandAgnosticBaseBlockProps {
+export interface BaseBlockProps extends BrandAgnosticBaseBlockProps {
   color?: MinimalColorComponent
 }
 

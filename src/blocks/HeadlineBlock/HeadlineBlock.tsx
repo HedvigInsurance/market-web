@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import React from 'react'
 import { HedvigSymbol } from '@hedviginsurance/brand'
-import { BrandPivotBaseBlockProps } from 'blocks/BaseBlockProps'
+import { BaseBlockProps } from 'blocks/BaseBlockProps'
 import {
   ContentWrapper,
   SectionWrapper,
@@ -10,7 +10,7 @@ import {
 import { FontSizes, Heading } from 'components/Heading/Heading'
 import { TextPosition } from 'utils/textPosition'
 
-interface HeadlineBlockProps extends BrandPivotBaseBlockProps {
+interface HeadlineBlockProps extends BaseBlockProps {
   text: string
   text_position: TextPosition
   capitalize?: boolean

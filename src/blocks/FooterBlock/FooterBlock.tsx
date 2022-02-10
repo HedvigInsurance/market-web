@@ -13,7 +13,7 @@ import {
 import { StarRating } from 'components/icons/StarRating'
 import { GlobalStory, GlobalStoryContainer } from 'storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from 'utils/storyblok'
-import { BrandPivotBaseBlockProps } from '../BaseBlockProps'
+import { BaseBlockProps } from '../BaseBlockProps'
 import { MarketPicker } from './MarketPicker/MarketPicker'
 
 const BP_UP = '@media (min-width: 601px)'
@@ -184,7 +184,7 @@ const FooterFooter = styled(DoubleColumn)`
   }
 `
 
-type FooterBlockProps = BrandPivotBaseBlockProps
+type FooterBlockProps = BaseBlockProps
 
 export const Footer: React.FC<{ story: GlobalStory } & FooterBlockProps> = ({
   color,

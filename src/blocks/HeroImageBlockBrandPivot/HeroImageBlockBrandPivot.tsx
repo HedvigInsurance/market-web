@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import React from 'react'
 import { HedvigSymbol } from '@hedviginsurance/brand'
 import {
-  BrandPivotBaseBlockProps,
+  BaseBlockProps,
   MarkdownHtmlComponent,
   MinimalColorComponent,
 } from 'blocks/BaseBlockProps'
@@ -126,8 +126,7 @@ const ButtonWrapper = styled('div')({
   },
 })
 
-export interface HeroImageBlockBrandPivotProps
-  extends BrandPivotBaseBlockProps {
+export interface HeroImageBlockBrandPivotProps extends BaseBlockProps {
   headline: string
   headline_font_size: FontSizes
   headline_font_size_mobile?: FontSizes

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import React from 'react'
 import {
-  BaseBlockProps,
+  BaseBlockPropsDeprecated,
   MarkdownHtmlComponent,
 } from 'src/blocks/BaseBlockProps'
 import {
@@ -27,7 +27,7 @@ const BannerContent = styled('div')({
   },
 })
 
-interface BannerBlockProps extends BaseBlockProps {
+interface BannerBlockProps extends BaseBlockPropsDeprecated {
   text: MarkdownHtmlComponent
 }
 

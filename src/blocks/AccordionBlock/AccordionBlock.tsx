@@ -3,10 +3,7 @@ import { Container } from 'constate'
 import React from 'react'
 import AnimateHeight from 'react-animate-height'
 import Helmet from 'react-helmet-async'
-import {
-  BrandPivotBaseBlockProps,
-  MarkdownHtmlComponent,
-} from 'blocks/BaseBlockProps'
+import { BaseBlockProps, MarkdownHtmlComponent } from 'blocks/BaseBlockProps'
 import {
   ContentWrapper,
   SectionWrapper,
@@ -166,7 +163,7 @@ export const Accordion: React.FC<AccordionProps> = ({ title, paragraph }) => (
   </Container>
 )
 
-export interface AccordionBlockProps extends BrandPivotBaseBlockProps {
+export interface AccordionBlockProps extends BaseBlockProps {
   title: string
   accordions: ReadonlyArray<AccordionProps>
   is_faq?: boolean

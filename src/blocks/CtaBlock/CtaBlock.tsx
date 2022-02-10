@@ -7,12 +7,9 @@ import {
 } from 'components/ButtonBrandPivot/Button'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from 'utils/storyblok'
-import {
-  BrandPivotBaseBlockProps,
-  MinimalColorComponent,
-} from '../BaseBlockProps'
+import { BaseBlockProps, MinimalColorComponent } from '../BaseBlockProps'
 
-export interface CtaBlockProps extends BrandPivotBaseBlockProps {
+export interface CtaBlockProps extends BaseBlockProps {
   cta_label: string
   cta_link: LinkComponent
   cta_color?: MinimalColorComponent
