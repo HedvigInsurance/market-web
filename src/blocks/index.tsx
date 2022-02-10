@@ -3,12 +3,13 @@ import { ColumnTextBlock } from 'blocks/ColumnTextBlock/ColumnTextBlock'
 import { HeroBlock } from 'blocks/HeroBlock/HeroBlock'
 import { HeroImageBlockBrandPivot } from 'blocks/HeroImageBlockBrandPivot/HeroImageBlockBrandPivot'
 import { ImageTextBlockBrandPivot } from 'blocks/ImageTextBlockBrandPivot'
+import { ImageTextBlock } from 'blocks/ImageTextBlock'
 import { YoutubeVideoBlock } from 'blocks/YoutubeVideoBlock/YoutubeVideoBlock'
 import { AccordionBlock } from './AccordionBlock/AccordionBlock'
 import { AppButtonsBlock } from './AppButtonsBlock'
 import { BackgroundVideoBlock } from './BackgroundVideoBlock'
 import { BannerBlock } from './BannerBlock/BannerBlock'
-import { BaseBlockProps } from './BaseBlockProps'
+import { BaseBlockPropsDeprecated } from './BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock/BulletPointBlock'
 import { CtaBlock } from './CtaBlock/CtaBlock'
 import { HeaderBlock } from './HeaderBlockBrandPivot'
@@ -33,6 +34,7 @@ const blockComponents = {
   column_text_block: ColumnTextBlock,
   cta_block: CtaBlock,
   image_text_block_brand_pivot: ImageTextBlockBrandPivot,
+  image_text_block: ImageTextBlock,
   headline_block: HeadlineBlock,
   hero_block: HeroBlock,
   hero_image_block_brand_pivot: HeroImageBlockBrandPivot,
@@ -52,7 +54,7 @@ const blockComponents = {
 
 export const getBlockComponent = <
   TBlockType extends keyof typeof blockComponents,
-  TBlockProps extends BaseBlockProps
+  TBlockProps extends BaseBlockPropsDeprecated
 >(
   blockType: string | TBlockType,
 ):
