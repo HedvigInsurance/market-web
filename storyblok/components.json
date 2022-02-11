@@ -78,7 +78,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "accordion_block_brand_pivot",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "accordion_item_brand_pivot",
@@ -111,7 +113,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "accordion_item_brand_pivot",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "app_buttons_block",
@@ -136,7 +140,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "app_buttons_block",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "background_video_block",
@@ -259,7 +265,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "background_video_block",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "banner_block",
@@ -293,7 +301,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "banner_block",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "bullet_point_block",
@@ -445,7 +455,8 @@
               "value": "lg",
               "name": "LG"
             }
-          ]
+          ],
+          "default_value": ""
         },
         "title_size": {
           "type": "option",
@@ -528,7 +539,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "column_text_block",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "cta_block",
@@ -609,7 +622,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "cta_block",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "footer_block",
@@ -635,7 +650,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "footer_block",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "global",
@@ -840,7 +857,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "global",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "header_block_brand_pivot",
@@ -954,7 +973,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "header_block_brand_pivot",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "headline_block",
@@ -1109,7 +1130,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "headline_block",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "hero_block",
@@ -1368,7 +1391,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "hero_block",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "hero_image_block_brand_pivot",
@@ -1616,10 +1641,12 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "hero_image_block_brand_pivot",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
-      "name": "image_block_brand_pivot",
+      "name": "image_block",
       "display_name": null,
       "schema": {
         "image": {
@@ -1657,11 +1684,13 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "image_block_brand_pivot",
-      "component_group_uuid": null
+      "real_name": "image_block",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
-      "name": "image_text_block_brand_pivot",
+      "name": "image_text_block",
       "display_name": "",
       "schema": {
         "text": {
@@ -1712,7 +1741,8 @@
           ],
           "description": "",
           "default_value": "sm",
-          "pos": 2
+          "pos": 2,
+          "display_name": "Title Size Desktop"
         },
         "title_size_mobile": {
           "type": "option",
@@ -2049,8 +2079,10 @@
       "is_nestable": true,
       "all_presets": [],
       "preset_id": null,
-      "real_name": "image_text_block_brand_pivot",
-      "component_group_uuid": null
+      "real_name": "image_text_block",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "insurance_info_block",
@@ -2374,7 +2406,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "insurance_type",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "menu_item",
@@ -2417,7 +2451,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "menu_item",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "menu_item_group",
@@ -2446,7 +2482,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "menu_item_group",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "page",
@@ -2535,7 +2573,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "page",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "perils_block",
@@ -2634,7 +2674,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "perils_block",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "plain_text_block",
@@ -2724,7 +2766,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "plain_text_block",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "quote_block",
@@ -2756,7 +2800,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "quote_block",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "quote_item",
@@ -2784,7 +2830,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "quote_item",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "single_quote_block",
@@ -2858,7 +2906,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "single_quote_block",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "spacer_block",
@@ -2926,7 +2976,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "spacer_block",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "title_paragraph_block_brand_pivot",
@@ -2960,7 +3012,7 @@
         "title": {
           "type": "text",
           "pos": 1,
-          "required": true,
+          "required": false,
           "default_value": "Default Text",
           "translatable": true
         },
@@ -2999,7 +3051,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "title_paragraph_block_brand_pivot",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "trustpilot_block",
@@ -3013,7 +3067,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "trustpilot_block",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     },
     {
       "name": "youtube_video_block",
@@ -3062,7 +3118,9 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "youtube_video_block",
-      "component_group_uuid": null
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
     }
   ]
 }
