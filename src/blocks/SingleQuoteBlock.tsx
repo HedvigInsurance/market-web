@@ -3,7 +3,7 @@ import { fonts } from '@hedviginsurance/brand'
 import React from 'react'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
 import { textFlexPositionMap, TextPosition } from '../utils/textPosition'
-import { BaseBlockProps } from './BaseBlockProps'
+import { BaseBlockPropsDeprecated } from './BaseBlockProps'
 
 const TABLET_BP_DOWN = '@media (max-width: 850px)'
 
@@ -54,7 +54,7 @@ const Cite = styled('cite')({
   fontStyle: 'normal',
 })
 
-export interface SingleQuoteBlockProps extends BaseBlockProps {
+export interface SingleQuoteBlockProps extends BaseBlockPropsDeprecated {
   quote: string
   author: string
   is_long_quote: boolean

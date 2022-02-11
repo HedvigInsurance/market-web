@@ -253,7 +253,7 @@ interface ImageTextBlockProps extends BaseBlockProps {
   button_position_mobile?: 'above' | 'below'
 }
 
-export const ImageTextBlockBrandPivot: React.FunctionComponent<ImageTextBlockProps> = ({
+export const ImageTextBlock: React.FC<ImageTextBlockProps> = ({
   animate,
   extra_styling,
   title_size = 'sm',

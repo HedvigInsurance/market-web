@@ -17,7 +17,7 @@ import {
 import { LinkComponent } from '../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../utils/storyblok'
 import {
-  BaseBlockProps,
+  BaseBlockPropsDeprecated,
   ColorComponent,
   MarkdownHtmlComponent,
 } from './BaseBlockProps'
@@ -126,7 +126,7 @@ const GhostCta = styled(Cta)({
   },
 })
 
-interface BackgroundVideoBlockProps extends BaseBlockProps {
+interface BackgroundVideoBlockProps extends BaseBlockPropsDeprecated {
   video_file_location: string
   use_text_drop_shadow: boolean
   background_gradient_start: string

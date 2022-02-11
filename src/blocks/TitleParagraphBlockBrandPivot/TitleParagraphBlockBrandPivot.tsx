@@ -5,10 +5,7 @@ import {
   MOBILE_BP_DOWN,
   SectionWrapper,
 } from '../../components/blockHelpers'
-import {
-  BrandPivotBaseBlockProps,
-  MarkdownHtmlComponent,
-} from '../BaseBlockProps'
+import { BaseBlockProps, MarkdownHtmlComponent } from '../BaseBlockProps'
 
 const Headline = styled('h4')({
   textTransform: 'uppercase',
@@ -42,7 +39,7 @@ const TitleParagraphContentWrapper = styled(ContentWrapper)({
   maxWidth: '930px',
 })
 
-export interface TitleParagraphBlockProps extends BrandPivotBaseBlockProps {
+export interface TitleParagraphBlockProps extends BaseBlockProps {
   title: string
   paragraph: MarkdownHtmlComponent
 }

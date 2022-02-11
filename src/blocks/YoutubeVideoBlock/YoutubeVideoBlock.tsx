@@ -2,10 +2,7 @@ import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
 import React, { useEffect, useState } from 'react'
-import {
-  BrandPivotBaseBlockProps,
-  MarkdownHtmlComponent,
-} from 'blocks/BaseBlockProps'
+import { BaseBlockProps, MarkdownHtmlComponent } from 'blocks/BaseBlockProps'
 import {
   ContentWrapper,
   SectionWrapper,
@@ -109,7 +106,7 @@ const VideoFrame = styled.iframe`
   z-index: 1;
 `
 
-interface YoutubeVideoBlockProps extends BrandPivotBaseBlockProps {
+interface YoutubeVideoBlockProps extends BaseBlockProps {
   overlay_image: Image
   video_id: string
   caption?: MarkdownHtmlComponent

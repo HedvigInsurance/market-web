@@ -11,7 +11,7 @@ import {
 import { DeferredImage } from 'components/DeferredImage'
 import { getStoryblokImage, Image } from 'utils/storyblok'
 import {
-  BrandPivotBaseBlockProps,
+  BaseBlockProps,
   MarkdownHtmlComponent,
   MinimalColorComponent,
 } from 'blocks/BaseBlockProps'
@@ -130,7 +130,7 @@ const BulletPointBody = styled.div<{
 `
 
 export type BulletPointItemProps = ReadonlyArray<
-  BrandPivotBaseBlockProps & {
+  BaseBlockProps & {
     image: Image
     title?: string
     title_size: FontSizes
@@ -139,7 +139,7 @@ export type BulletPointItemProps = ReadonlyArray<
   }
 >
 
-export type BulletPointBlockProps = BrandPivotBaseBlockProps & {
+export type BulletPointBlockProps = BaseBlockProps & {
   align_center: boolean
   bullet_point_layout: boolean
   color_body: MinimalColorComponent

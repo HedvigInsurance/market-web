@@ -3,17 +3,19 @@ import { ColumnTextBlock } from 'blocks/ColumnTextBlock/ColumnTextBlock'
 import { HeroBlock } from 'blocks/HeroBlock/HeroBlock'
 import { HeroImageBlockBrandPivot } from 'blocks/HeroImageBlockBrandPivot/HeroImageBlockBrandPivot'
 import { ImageTextBlockBrandPivot } from 'blocks/ImageTextBlockBrandPivot'
+import { ImageTextBlock } from 'blocks/ImageTextBlock'
 import { YoutubeVideoBlock } from 'blocks/YoutubeVideoBlock/YoutubeVideoBlock'
 import { AccordionBlock } from './AccordionBlock/AccordionBlock'
 import { AppButtonsBlock } from './AppButtonsBlock'
 import { BackgroundVideoBlock } from './BackgroundVideoBlock'
 import { BannerBlock } from './BannerBlock/BannerBlock'
-import { BaseBlockProps } from './BaseBlockProps'
+import { BaseBlockPropsDeprecated } from './BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock/BulletPointBlock'
 import { CtaBlock } from './CtaBlock/CtaBlock'
 import { HeaderBlock } from './HeaderBlockBrandPivot'
 import { HeadlineBlock } from './HeadlineBlock/HeadlineBlock'
 import { ImageBlockBrandPivot } from './ImageBlockBrandPivot/ImageBlockBrandPivot'
+import { ImageBlock } from './ImageBlock/ImageBlock'
 import { InsuranceInfoBlock } from './InsuranceInfoBlock/InsuranceInfoBlock'
 import { PerilsBlock } from './PerilsBlock/PerilsBlock'
 import { PlainTextBlock } from './PlainTextBlock'
@@ -33,12 +35,14 @@ const blockComponents = {
   column_text_block: ColumnTextBlock,
   cta_block: CtaBlock,
   image_text_block_brand_pivot: ImageTextBlockBrandPivot,
+  image_text_block: ImageTextBlock,
   headline_block: HeadlineBlock,
   hero_block: HeroBlock,
   hero_image_block_brand_pivot: HeroImageBlockBrandPivot,
   quote_block: QuoteBlockBrandPivot,
   single_quote_block: SingleQuoteBlock,
   image_block_brand_pivot: ImageBlockBrandPivot,
+  image_block: ImageBlock,
   insurance_info_block: InsuranceInfoBlock,
   title_paragraph_block_brand_pivot: TitleParagraphBlockBrandPivot,
   background_video_block: BackgroundVideoBlock,
@@ -52,7 +56,7 @@ const blockComponents = {
 
 export const getBlockComponent = <
   TBlockType extends keyof typeof blockComponents,
-  TBlockProps extends BaseBlockProps
+  TBlockProps extends BaseBlockPropsDeprecated
 >(
   blockType: string | TBlockType,
 ):

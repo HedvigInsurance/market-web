@@ -15,7 +15,7 @@ import {
 } from '../../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../../utils/storyblok'
 import {
-  BaseBlockProps,
+  BaseBlockPropsDeprecated,
   MinimalColorComponent,
   minimalColorComponentColors,
 } from '../BaseBlockProps'
@@ -213,7 +213,7 @@ const Wordmark = styled('a')({
   zIndex: 102,
 })
 
-interface HeaderBlockProps extends BaseBlockProps {
+interface HeaderBlockProps extends BaseBlockPropsDeprecated {
   is_transparent: boolean
   inverse_colors: boolean
   override_cta_link?: LinkComponent | null

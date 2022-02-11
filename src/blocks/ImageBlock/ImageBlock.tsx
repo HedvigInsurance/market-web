@@ -25,7 +25,7 @@ const Image = styled(DeferredImage)({
   width: '100%',
 })
 
-export const ImageBlockBrandPivot: React.FunctionComponent<ImageBlockProps> = ({
+export const ImageBlock: React.FunctionComponent<ImageBlockProps> = ({
   image,
   caption,
   full_width = false,

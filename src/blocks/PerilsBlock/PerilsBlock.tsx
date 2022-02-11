@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import React, { useState } from 'react'
 import { useLocale } from 'context/LocaleContext'
-import { BrandPivotBaseBlockProps } from 'blocks/BaseBlockProps'
+import { BaseBlockProps } from 'blocks/BaseBlockProps'
 import {
   ContentWrapper as OriginalContentWrapper,
   SectionWrapper,
@@ -16,7 +16,7 @@ export interface ContractOption {
   value: TypeOfContract
 }
 
-interface PerilsBlockProps extends BrandPivotBaseBlockProps {
+interface PerilsBlockProps extends BaseBlockProps {
   insurance_types: ContractOption[]
 }
 
