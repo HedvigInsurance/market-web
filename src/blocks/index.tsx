@@ -14,7 +14,6 @@ import { BulletPointBlock } from './BulletPointBlock/BulletPointBlock'
 import { CtaBlock } from './CtaBlock/CtaBlock'
 import { HeaderBlock } from './HeaderBlockBrandPivot'
 import { HeadlineBlock } from './HeadlineBlock/HeadlineBlock'
-import { ImageBlockBrandPivot } from './ImageBlockBrandPivot/ImageBlockBrandPivot'
 import { ImageBlock } from './ImageBlock/ImageBlock'
 import { InsuranceInfoBlock } from './InsuranceInfoBlock/InsuranceInfoBlock'
 import { PerilsBlock } from './PerilsBlock/PerilsBlock'
@@ -41,7 +40,6 @@ const blockComponents = {
   hero_image_block_brand_pivot: HeroImageBlockBrandPivot,
   quote_block: QuoteBlockBrandPivot,
   single_quote_block: SingleQuoteBlock,
-  image_block_brand_pivot: ImageBlockBrandPivot,
   image_block: ImageBlock,
   insurance_info_block: InsuranceInfoBlock,
   title_paragraph_block_brand_pivot: TitleParagraphBlockBrandPivot,
