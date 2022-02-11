@@ -8966,10 +8966,10 @@ koa-proxy@^1.0.0-alpha.3:
     request "^2.88.0"
     request-promise-native "^1.0.5"
 
-koa-remove-trailing-slashes@^2.0.0:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/koa-remove-trailing-slashes/-/koa-remove-trailing-slashes-2.0.1.tgz#420b5e34d00f612b1e0a8cdb18d39c941c7d45c9"
-  integrity sha512-JlTSvXggiNe74yJFzYwizs6N26u3Zk2Q6l6HgYSsRR45nvtYT1l2RLe+Y2vDZZtL1XmvKQYmA8hP5uMGLBZiFQ==
+koa-remove-trailing-slashes@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/koa-remove-trailing-slashes/-/koa-remove-trailing-slashes-2.0.2.tgz#fcaae775cd367f41f79514aa2b1937e44806f878"
+  integrity sha512-cdeXXFLqGpiJnOf56Mv5edCxn/vQTo9rLeZr/oyF4G36KXZoomUhXT7skICaMp7/szj6E5mAlUlrNl7v+nBZBA==
 
 koa-router@^7.4.0:
   version "7.4.0"
