@@ -4,7 +4,6 @@ import {
   ContentWrapper,
   getMinimalColorStyles,
   LAPTOP_BP_UP,
-  MOBILE_BP_DOWN,
   MOBILE_BP_UP,
   SectionWrapper,
   TABLET_BP_UP,
@@ -26,11 +25,6 @@ const InnerWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   min-width: 100%;
-
-  ${MOBILE_BP_DOWN} {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
 
   ${MOBILE_BP_UP} {
     margin-left: -1.5rem;
