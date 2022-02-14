@@ -33,7 +33,7 @@ import {
 } from '../BaseBlockProps'
 import { BackgroundVideo } from './BackgroundVideo'
 
-interface Animateable {
+type Animateable = {
   animate?: boolean
 }
 
@@ -101,7 +101,7 @@ const TextWrapper = styled('div')<{
 
 type DisplayOrder = 'top' | 'bottom'
 
-interface TitleProps {
+type TitleProps = {
   displayorder: DisplayOrder
   alignment: TextPosition
 }
@@ -220,7 +220,7 @@ const Wordmark = styled('div')({
   },
 })
 
-interface ImageTextBlockProps extends BaseBlockProps {
+type ImageTextBlockProps = BaseBlockProps & {
   animate?: boolean
   title_size?: FontSizes
   title_size_mobile?: FontSizes
