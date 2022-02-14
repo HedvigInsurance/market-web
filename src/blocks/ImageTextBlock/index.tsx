@@ -3,7 +3,7 @@ import styled from '@emotion/styled'
 import React, { useEffect, useState } from 'react'
 import MediaQuery from 'react-responsive'
 import { HedvigSymbol } from '@hedviginsurance/brand'
-import { FontSizes, Heading } from 'components/Heading/Heading'
+import { FontSizes, Heading, HeadingTag } from 'components/Heading/Heading'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { SectionSize } from 'src/utils/SectionSize'
 import { TextPosition } from 'src/utils/textPosition'
@@ -226,6 +226,7 @@ type ImageTextBlockProps = BaseBlockProps & {
   title_size_mobile?: FontSizes
   title: string
   title_color?: MinimalColorComponent
+  heading_tag?: HeadingTag
   show_hedvig_wordmark?: boolean
   paragraph: MarkdownHtmlComponent
   text_position: TextPosition
@@ -260,6 +261,7 @@ export const ImageTextBlock: React.FC<ImageTextBlockProps> = ({
   title_size_mobile,
   title,
   title_color,
+  heading_tag = 'h2',
   paragraph,
   text_position,
   text_position_mobile,
@@ -324,7 +326,7 @@ export const ImageTextBlock: React.FC<ImageTextBlockProps> = ({
           isBlockFullWidth={full_width}
         >
           <Title
-            as="h2"
+            as={heading_tag}
             alignment={text_position}
             animate={animate}
             color={title_color?.color}
