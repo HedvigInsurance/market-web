@@ -4,6 +4,7 @@ import { HeroBlock } from 'blocks/HeroBlock/HeroBlock'
 import { HeroImageBlockBrandPivot } from 'blocks/HeroImageBlockBrandPivot/HeroImageBlockBrandPivot'
 import { ImageTextBlock } from 'blocks/ImageTextBlock'
 import { YoutubeVideoBlock } from 'blocks/YoutubeVideoBlock/YoutubeVideoBlock'
+import { HeaderBlock } from './HeaderBlock'
 import { AccordionBlock } from './AccordionBlock/AccordionBlock'
 import { AppButtonsBlock } from './AppButtonsBlock'
 import { BackgroundVideoBlock } from './BackgroundVideoBlock'
@@ -11,7 +12,6 @@ import { BannerBlock } from './BannerBlock/BannerBlock'
 import { BaseBlockPropsDeprecated } from './BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock/BulletPointBlock'
 import { CtaBlock } from './CtaBlock/CtaBlock'
-import { HeaderBlock } from './HeaderBlockBrandPivot'
 import { HeadlineBlock } from './HeadlineBlock/HeadlineBlock'
 import { ImageBlock } from './ImageBlock/ImageBlock'
 import { InsuranceInfoBlock } from './InsuranceInfoBlock/InsuranceInfoBlock'
@@ -25,6 +25,7 @@ import { TrustpilotBlock } from './TrustpilotBlock/TrustpilotBlock'
 
 const blockComponents = {
   app_buttons_block: AppButtonsBlock,
+  header_block: HeaderBlock,
   header_block_brand_pivot: HeaderBlock,
   accordion_block: AccordionBlock,
   accordion_block_brand_pivot: AccordionBlock,

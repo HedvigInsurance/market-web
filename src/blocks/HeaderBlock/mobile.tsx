@@ -1,7 +1,7 @@
 import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import React from 'react'
-import { TogglableState } from '../../components/containers/Togglable'
+import { TogglableState } from 'components/containers/Togglable'
 import { HEADER_VERTICAL_PADDING, TOGGLE_TRANSITION_TIME } from './index'
 
 export const TABLET_BP_DOWN = '@media (max-width: 1023px)'
