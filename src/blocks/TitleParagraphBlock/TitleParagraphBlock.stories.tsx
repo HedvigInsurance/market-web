@@ -2,13 +2,13 @@ import { select, withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
 import { minimalColorMap } from 'utils/storybook'
 import {
-  TitleParagraphBlockBrandPivot,
+  TitleParagraphBlock,
   TitleParagraphBlockProps,
-} from './TitleParagraphBlockBrandPivot'
+} from './TitleParagraphBlock'
 
 export default {
   title: 'Blocks/TitleParagraphBlock',
-  component: TitleParagraphBlockBrandPivot,
+  component: TitleParagraphBlock,
   decorators: [withKnobs],
 }
 
@@ -27,7 +27,7 @@ const blockProps: TitleParagraphBlockProps = {
 }
 
 export const Default = () => (
-  <TitleParagraphBlockBrandPivot
+  <TitleParagraphBlock
     color={
       minimalColorMap[select('color', Object.keys(minimalColorMap), 'standard')]
     }

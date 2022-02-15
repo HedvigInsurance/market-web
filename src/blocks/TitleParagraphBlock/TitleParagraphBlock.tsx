@@ -44,7 +44,7 @@ export interface TitleParagraphBlockProps extends BaseBlockProps {
   paragraph: MarkdownHtmlComponent
 }
 
-export const TitleParagraphBlockBrandPivot: React.FunctionComponent<TitleParagraphBlockProps> = ({
+export const TitleParagraphBlock: React.FunctionComponent<TitleParagraphBlockProps> = ({
   title,
   paragraph,
   color,

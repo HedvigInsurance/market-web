@@ -3,6 +3,7 @@ import { ColumnTextBlock } from 'blocks/ColumnTextBlock/ColumnTextBlock'
 import { HeroBlock } from 'blocks/HeroBlock/HeroBlock'
 import { ImageTextBlock } from 'blocks/ImageTextBlock'
 import { YoutubeVideoBlock } from 'blocks/YoutubeVideoBlock/YoutubeVideoBlock'
+import { TitleParagraphBlock } from './TitleParagraphBlock/TitleParagraphBlock'
 import { HeroImageBlock } from './HeroImageBlock/HeroImageBlock'
 import { HeaderBlock } from './HeaderBlock'
 import { AccordionBlock } from './AccordionBlock/AccordionBlock'
@@ -20,7 +21,6 @@ import { PlainTextBlock } from './PlainTextBlock'
 import { QuoteBlockBrandPivot } from './QuoteBlockBrandPivot/QuoteBlockBrandPivot'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
-import { TitleParagraphBlockBrandPivot } from './TitleParagraphBlockBrandPivot/TitleParagraphBlockBrandPivot'
 import { TrustpilotBlock } from './TrustpilotBlock/TrustpilotBlock'
 
 const blockComponents = {
@@ -42,7 +42,8 @@ const blockComponents = {
   single_quote_block: SingleQuoteBlock,
   image_block: ImageBlock,
   insurance_info_block: InsuranceInfoBlock,
-  title_paragraph_block_brand_pivot: TitleParagraphBlockBrandPivot,
+  title_paragraph_block: TitleParagraphBlock,
+  title_paragraph_block_brand_pivot: TitleParagraphBlock,
   background_video_block: BackgroundVideoBlock,
   plain_text_block: PlainTextBlock,
   perils_block: PerilsBlock,
