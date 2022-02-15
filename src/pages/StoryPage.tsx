@@ -2,7 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet-async'
 import { useLocale } from 'context/LocaleContext'
 import SbEditable from 'patched/storyblok-react'
-import { getBlockComponent } from '../blocks'
+import { getBlockComponent } from 'blocks'
 import { BaseBlockPropsDeprecated } from '../blocks/BaseBlockProps'
 import { FooterBlock } from '../blocks/FooterBlock/FooterBlock'
 import {

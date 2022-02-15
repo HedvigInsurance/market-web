@@ -1,9 +1,9 @@
 import React from 'react'
 import { ColumnTextBlock } from 'blocks/ColumnTextBlock/ColumnTextBlock'
 import { HeroBlock } from 'blocks/HeroBlock/HeroBlock'
-import { HeroImageBlockBrandPivot } from 'blocks/HeroImageBlockBrandPivot/HeroImageBlockBrandPivot'
 import { ImageTextBlock } from 'blocks/ImageTextBlock'
 import { YoutubeVideoBlock } from 'blocks/YoutubeVideoBlock/YoutubeVideoBlock'
+import { HeroImageBlock } from './HeroImageBlock/HeroImageBlock'
 import { HeaderBlock } from './HeaderBlock'
 import { AccordionBlock } from './AccordionBlock/AccordionBlock'
 import { AppButtonsBlock } from './AppButtonsBlock'
@@ -36,7 +36,8 @@ const blockComponents = {
   image_text_block: ImageTextBlock,
   headline_block: HeadlineBlock,
   hero_block: HeroBlock,
-  hero_image_block_brand_pivot: HeroImageBlockBrandPivot,
+  hero_image_block: HeroImageBlock,
+  hero_image_block_brand_pivot: HeroImageBlock,
   quote_block: QuoteBlockBrandPivot,
   single_quote_block: SingleQuoteBlock,
   image_block: ImageBlock,
