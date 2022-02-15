@@ -1,11 +1,11 @@
 import { boolean, select, text, withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
 import { minimalColorMap } from 'utils/storybook'
-import { QuoteBlockBrandPivot } from './QuoteBlockBrandPivot'
+import { QuoteBlock } from 'blocks/QuoteBlock/QuoteBlock'
 
 export default {
   title: 'Blocks/QuoteBlock',
-  component: QuoteBlockBrandPivot,
+  component: QuoteBlock,
   decorators: [withKnobs],
 }
 
@@ -15,7 +15,7 @@ const quoteProps = {
 }
 
 export const Default = () => (
-  <QuoteBlockBrandPivot
+  <QuoteBlock
     {...quoteProps}
     color={
       minimalColorMap[

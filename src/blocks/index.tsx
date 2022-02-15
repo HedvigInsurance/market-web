@@ -18,7 +18,7 @@ import { ImageBlock } from './ImageBlock/ImageBlock'
 import { InsuranceInfoBlock } from './InsuranceInfoBlock/InsuranceInfoBlock'
 import { PerilsBlock } from './PerilsBlock/PerilsBlock'
 import { PlainTextBlock } from './PlainTextBlock'
-import { QuoteBlockBrandPivot } from './QuoteBlockBrandPivot/QuoteBlockBrandPivot'
+import { QuoteBlock } from './QuoteBlock/QuoteBlock'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
 import { TrustpilotBlock } from './TrustpilotBlock/TrustpilotBlock'
@@ -38,7 +38,7 @@ const blockComponents = {
   hero_block: HeroBlock,
   hero_image_block: HeroImageBlock,
   hero_image_block_brand_pivot: HeroImageBlock,
-  quote_block: QuoteBlockBrandPivot,
+  quote_block: QuoteBlock,
   single_quote_block: SingleQuoteBlock,
   image_block: ImageBlock,
   insurance_info_block: InsuranceInfoBlock,

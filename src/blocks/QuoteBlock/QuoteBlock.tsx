@@ -71,7 +71,7 @@ const Cite = styled('cite')<{
     .secondaryColor,
 }))
 
-export const QuoteBlockBrandPivot: React.FunctionComponent<QuoteBlockProps> = ({
+export const QuoteBlock: React.FunctionComponent<QuoteBlockProps> = ({
   color,
   quotes,
   index,
