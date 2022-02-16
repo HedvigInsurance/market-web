@@ -1,10 +1,10 @@
 import { colorsV3 } from '@hedviginsurance/brand'
 import React from 'react'
-import { ButtonBrandPivot } from './Button'
+import { Button } from './Button'
 
 export default {
   title: 'Components/Button',
-  component: ButtonBrandPivot,
+  component: Button,
   decorators: [],
   parameters: {
     paddings: [
@@ -16,49 +16,49 @@ export default {
 
 export const Standard = () => (
   <>
-    <ButtonBrandPivot color="standard">Some text</ButtonBrandPivot>
+    <Button color="standard">Some text</Button>
     <br />
     <br />
-    <ButtonBrandPivot color="standard" styleType="outlined">
+    <Button color="standard" styleType="outlined">
       Some text
-    </ButtonBrandPivot>
+    </Button>
     <br />
     <br />
-    <ButtonBrandPivot color="standard" styleType="plain">
+    <Button color="standard" styleType="plain">
       Some text
-    </ButtonBrandPivot>
+    </Button>
   </>
 )
 
 export const StandardInverse = () => (
   <>
-    <ButtonBrandPivot color="standard-inverse">Some text</ButtonBrandPivot>
+    <Button color="standard-inverse">Some text</Button>
     <br />
     <br />
-    <ButtonBrandPivot color="standard-inverse" styleType="outlined">
+    <Button color="standard-inverse" styleType="outlined">
       Some text
-    </ButtonBrandPivot>
+    </Button>
     <br />
     <br />
-    <ButtonBrandPivot color="standard-inverse" styleType="plain">
+    <Button color="standard-inverse" styleType="plain">
       Some text
-    </ButtonBrandPivot>
+    </Button>
   </>
 )
 
 export const Purple = () => (
   <>
-    <ButtonBrandPivot color="purple500">Some text</ButtonBrandPivot>
+    <Button color="purple500">Some text</Button>
     <br />
     <br />
-    <ButtonBrandPivot color="purple500" styleType="outlined">
+    <Button color="purple500" styleType="outlined">
       Some text
-    </ButtonBrandPivot>
+    </Button>
     <br />
     <br />
-    <ButtonBrandPivot color="purple500" styleType="plain">
+    <Button color="purple500" styleType="plain">
       Some text
-    </ButtonBrandPivot>
+    </Button>
   </>
 )
 

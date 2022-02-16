@@ -7,10 +7,7 @@ import {
   MarkdownHtmlComponent,
   MinimalColorComponent,
 } from 'blocks/BaseBlockProps'
-import {
-  ButtonLinkBrandPivot,
-  ButtonStyleType,
-} from 'components/ButtonBrandPivot/Button'
+import { ButtonLink, ButtonStyleType } from 'components/Button/Button'
 import { FontSizes, Heading } from 'components/Heading/Heading'
 import { TextPosition } from 'src/utils/textPosition'
 import { LinkComponent } from 'storyblok/StoryContainer'
@@ -237,13 +234,13 @@ export const HeroBlock: React.FC<HeroBlockProps> = ({
         )}
         {show_cta && cta_link && (
           <ButtonWrapper animate={animate}>
-            <ButtonLinkBrandPivot
+            <ButtonLink
               color={cta_color?.color}
               styleType={cta_style}
               href={getStoryblokLinkUrl(cta_link)}
             >
               {cta_label}
-            </ButtonLinkBrandPivot>
+            </ButtonLink>
           </ButtonWrapper>
         )}
       </HeroContent>

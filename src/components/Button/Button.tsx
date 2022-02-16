@@ -3,7 +3,7 @@ import { colorsV3 } from '@hedviginsurance/brand'
 import {
   colorComponentColors,
   minimalColorComponentColors,
-} from 'src/blocks/BaseBlockProps'
+} from 'blocks/BaseBlockProps'
 import { getMinimalColorStyles, MOBILE_BP_UP } from '../blockHelpers'
 
 export const buttonSizes = {
@@ -55,7 +55,7 @@ const getMinimalButtonTypeStyle = (
   }
 }
 
-export const ButtonBrandPivot = styled('button')<
+export const Button = styled('button')<
   ButtonProps<minimalColorComponentColors>
 >(
   ({
@@ -103,4 +103,4 @@ export const ButtonBrandPivot = styled('button')<
   },
 )
 
-export const ButtonLinkBrandPivot = ButtonBrandPivot.withComponent('a')
+export const ButtonLink = Button.withComponent('a')

@@ -2,6 +2,7 @@ import { css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
 import React from 'react'
+import { ButtonLink } from 'components/Button/Button'
 import { BaseBlockProps } from 'blocks/BaseBlockProps'
 import {
   ContentWrapper,
@@ -10,7 +11,6 @@ import {
   TABLET_BP_DOWN,
   TABLET_BP_UP,
 } from 'components/blockHelpers'
-import { ButtonLinkBrandPivot } from 'components/ButtonBrandPivot/Button'
 
 const StyledSectionWrapper = styled(SectionWrapper)`
   color: ${colorsV3.gray900};
@@ -181,13 +181,9 @@ export const InsuranceInfoBlock: React.FC<InsuranceInfoBlockProps> = ({
 
         {data.cta_link && (
           <Column halfHardBottom>
-            <ButtonLinkBrandPivot
-              href={data.cta_link}
-              fullWidth
-              styleType="outlined"
-            >
+            <ButtonLink href={data.cta_link} fullWidth styleType="outlined">
               {data.cta_text}
-            </ButtonLinkBrandPivot>
+            </ButtonLink>
           </Column>
         )}
       </StyledContentWrapper>

@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import React from 'react'
 import { useLocale } from 'context/LocaleContext'
 import { LocaleData } from 'l10n/locales'
-import { ButtonLinkBrandPivot } from '../ButtonBrandPivot/Button'
+import { ButtonLink } from '../Button/Button'
 import { AppStore } from './svg/AppStore'
 import { PlayStore } from './svg/PlayStore'
 
@@ -23,7 +23,7 @@ const ButtonsWrapper = styled.div<{ center: boolean }>`
   }
 `
 
-const AppButton = styled(ButtonLinkBrandPivot)`
+const AppButton = styled(ButtonLink)`
   display: inline-flex;
   justify-content: center;
   padding: 0.625rem 1rem;
