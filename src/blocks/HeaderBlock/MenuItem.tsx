@@ -5,8 +5,8 @@ import React from 'react'
 import AnimateHeight from 'react-animate-height'
 import { Chevron } from 'components/icons/Chevron'
 import { MOBILE_BP_DOWN } from 'components/blockHelpers'
-import { MenuItem as MenuItemType } from '../../storyblok/StoryContainer'
-import { getStoryblokLinkUrl } from '../../utils/storyblok'
+import { MenuItem as MenuItemType } from 'storyblok/StoryContainer'
+import { getStoryblokLinkUrl } from 'utils/storyblok'
 import { TABLET_BP_DOWN, TABLET_BP_UP, DESKTOP_BP_UP } from './mobile'
 
 const MenuListItem = styled('li')({

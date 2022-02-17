@@ -2,23 +2,23 @@ import styled from '@emotion/styled'
 import { colorsV3, HedvigLogo, HedvigSymbol } from '@hedviginsurance/brand'
 import React, { useCallback, useEffect, useState } from 'react'
 import { useLocale } from 'context/LocaleContext'
-import { ContentWrapper, MOBILE_BP_DOWN } from '../../components/blockHelpers'
+import { ContentWrapper, MOBILE_BP_DOWN } from 'components/blockHelpers'
 import {
   ButtonLinkBrandPivot,
   ButtonStyleType,
-} from '../../components/ButtonBrandPivot/Button'
-import { Togglable } from '../../components/containers/Togglable'
+} from 'components/ButtonBrandPivot/Button'
+import { Togglable } from 'components/containers/Togglable'
 import {
   GlobalStory,
   GlobalStoryContainer,
   LinkComponent,
-} from '../../storyblok/StoryContainer'
-import { getStoryblokLinkUrl } from '../../utils/storyblok'
+} from 'storyblok/StoryContainer'
+import { getStoryblokLinkUrl } from 'utils/storyblok'
 import {
   BaseBlockPropsDeprecated,
   MinimalColorComponent,
   minimalColorComponentColors,
-} from '../BaseBlockProps'
+} from 'blocks/BaseBlockProps'
 import { LanguagePicker } from './LanguagePicker'
 import { MenuItem } from './MenuItem'
 import { Burger, TABLET_BP_DOWN, TABLET_BP_UP, DESKTOP_BP_UP } from './mobile'

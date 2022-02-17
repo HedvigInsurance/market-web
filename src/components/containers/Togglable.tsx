@@ -1,6 +1,6 @@
 import { Container } from 'constate'
 import React from 'react'
-import { TOGGLE_TRANSITION_TIME } from '../../blocks/HeaderBlockBrandPivot'
+import { TOGGLE_TRANSITION_TIME } from 'blocks/HeaderBlock'
 
 export interface TogglableEffects {
   toggleOpen: () => void

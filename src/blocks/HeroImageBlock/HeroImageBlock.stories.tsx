@@ -2,11 +2,11 @@ import { boolean, select, withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
 import StoryRouter from 'storybook-react-router'
 import { fontSizes, globalStoryMock, minimalColorMap } from 'utils/storybook'
-import { MarkdownHtmlComponent } from '../BaseBlockProps'
-import { Hero } from './HeroImageBlockBrandPivot'
+import { MarkdownHtmlComponent } from 'blocks/BaseBlockProps'
+import { Hero } from 'blocks/HeroImageBlock/HeroImageBlock'
 
 export default {
-  title: 'Blocks/HeroBlockBrandPivot',
+  title: 'Blocks/HeroImageBlock',
   component: Hero,
   decorators: [withKnobs, StoryRouter()],
 }

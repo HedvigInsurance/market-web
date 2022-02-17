@@ -12,7 +12,7 @@ import {
   ButtonStyleType,
 } from 'components/ButtonBrandPivot/Button'
 import { FontSizes, Heading } from 'components/Heading/Heading'
-import { TextPosition } from 'src/utils/textPosition'
+import { TextPosition } from 'utils/textPosition'
 import { GlobalStory, GlobalStoryContainer } from 'storyblok/StoryContainer'
 import { getStoryblokImage, getStoryblokLinkUrl, Image } from 'utils/storyblok'
 import {
@@ -21,7 +21,7 @@ import {
   MOBILE_BP_UP,
   SectionWrapper,
   TABLET_BP_UP,
-} from '../../components/blockHelpers'
+} from 'components/blockHelpers'
 
 interface Animatable {
   animate?: boolean
@@ -126,7 +126,7 @@ const ButtonWrapper = styled('div')({
   },
 })
 
-export interface HeroImageBlockBrandPivotProps extends BaseBlockProps {
+export interface HeroImageBlockProps extends BaseBlockProps {
   headline: string
   headline_font_size: FontSizes
   headline_font_size_mobile?: FontSizes
@@ -147,7 +147,7 @@ export interface HeroImageBlockBrandPivotProps extends BaseBlockProps {
 export const Hero: React.FC<
   {
     story: GlobalStory
-  } & HeroImageBlockBrandPivotProps
+  } & HeroImageBlockProps
 > = ({
   color,
   extra_styling,
@@ -219,7 +219,7 @@ export const Hero: React.FC<
   )
 }
 
-export const HeroImageBlockBrandPivot: React.FunctionComponent<HeroImageBlockBrandPivotProps> = (
+export const HeroImageBlock: React.FunctionComponent<HeroImageBlockProps> = (
   heroBlockProps,
 ) => (
   <GlobalStoryContainer>

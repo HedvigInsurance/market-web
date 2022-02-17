@@ -3,8 +3,8 @@ import React from 'react'
 import {
   MinimalColorComponent,
   MarkdownHtmlComponent,
-} from 'src/blocks/BaseBlockProps'
-import { SectionWrapper, TABLET_BP_UP } from '../../components/blockHelpers'
+} from 'blocks/BaseBlockProps'
+import { SectionWrapper, TABLET_BP_UP } from 'components/blockHelpers'
 
 const BannerContent = styled.div`
   margin-left: auto;
