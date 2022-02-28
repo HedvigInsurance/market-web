@@ -4,9 +4,9 @@ import React from 'react'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { ColorComponent, MinimalColorComponent } from '../blocks/BaseBlockProps'
 import { TABLET_BP_DOWN } from '../components/blockHelpers'
-import { ButtonLinkBrandPivot } from '../components/ButtonBrandPivot/Button'
+import { ButtonLink } from '../components/Button/Button'
 import {
-  ButtonLink,
+  ButtonLinkDeprecated,
   ButtonProps,
   buttonSizes,
   ButtonWeight,
@@ -56,8 +56,8 @@ export const AlignedButton: React.FunctionComponent<
 }) => {
   const ButtonLinkWithMargin =
     color?.plugin === 'hedvig_minimal_color_picker'
-      ? createButtonLinkWithMargin(ButtonLinkBrandPivot)
-      : createButtonLinkWithMargin(ButtonLink)
+      ? createButtonLinkWithMargin(ButtonLink)
+      : createButtonLinkWithMargin(ButtonLinkDeprecated)
 
   return (
     <>

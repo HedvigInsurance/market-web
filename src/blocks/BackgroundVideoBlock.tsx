@@ -10,7 +10,7 @@ import {
   MOBILE_BP_DOWN,
 } from '../components/blockHelpers'
 import {
-  ButtonLink,
+  ButtonLinkDeprecated,
   ButtonStyleType,
   ButtonWeight,
 } from '../components/buttons'
@@ -105,7 +105,7 @@ const Paragraph = styled('div')<{ useDropShadow: boolean }>(
     textShadow: useDropShadow ? '3px 3px 5px rgba(0, 0, 0, .3)' : undefined,
   }),
 )
-const Cta = styled(ButtonLink)({
+const Cta = styled(ButtonLinkDeprecated)({
   marginTop: '1.7rem',
   fontsize: '1.25rem',
   padding: '1rem 2rem',

@@ -1,13 +1,13 @@
 import styled from '@emotion/styled'
 import React, { useRef, useState, useCallback } from 'react'
 import { colorsV3 } from '@hedviginsurance/brand'
+import { Button } from 'components/Button/Button'
 import { locales, LocaleData } from 'l10n/locales'
 import {
   getMarketsInLocalLang,
   getMarketsInEnglish,
   checkIsInEnglish,
 } from 'l10n/l10n-utils'
-import { ButtonBrandPivot } from 'components/ButtonBrandPivot/Button'
 import { Globe } from 'components/icons/Globe'
 import { Chevron } from 'components/icons/Chevron'
 import { MOBILE_BP_UP } from 'components/blockHelpers'
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   width: 15rem;
 `
 
-const Button = styled(ButtonBrandPivot)`
+const MarketPickerButton = styled(Button)`
   display: flex;
   align-items: center;
 
@@ -93,7 +93,7 @@ export const MarketPicker: React.FC<MarketPickerProps> = ({
 
   return (
     <Wrapper ref={wrapperRef}>
-      <Button
+      <MarketPickerButton
         size="sm"
         styleType="outlined"
         color="standard-inverse"
@@ -104,7 +104,7 @@ export const MarketPicker: React.FC<MarketPickerProps> = ({
         <GlobeIcon />
         <ButtonLabel>{currentMarketName}</ButtonLabel>
         <Chevron />
-      </Button>
+      </MarketPickerButton>
 
       <Menu
         style={{ display: isOpen ? 'block' : 'none' }}

@@ -1,10 +1,7 @@
 import styled from '@emotion/styled'
 import * as React from 'react'
+import { ButtonLink, buttonSizes } from 'components/Button/Button'
 import { ContentWrapper, SectionWrapper } from 'components/blockHelpers'
-import {
-  ButtonLinkBrandPivot,
-  buttonSizes,
-} from 'components/ButtonBrandPivot/Button'
 import { LinkComponent } from 'src/storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from 'utils/storyblok'
 import { BaseBlockProps, MinimalColorComponent } from '../BaseBlockProps'
@@ -35,7 +32,7 @@ export const CtaBlock: React.FC<CtaBlockProps> = ({
   <SectionWrapper brandPivot colorComponent={color} size={size}>
     <ContentWrapper brandPivot index={index}>
       <ButtonWrapper>
-        <ButtonLinkBrandPivot
+        <ButtonLink
           href={getStoryblokLinkUrl(cta_link)}
           size={cta_size}
           color={cta_color?.color}
@@ -43,7 +40,7 @@ export const CtaBlock: React.FC<CtaBlockProps> = ({
           styleType={cta_style}
         >
           {cta_label}
-        </ButtonLinkBrandPivot>
+        </ButtonLink>
       </ButtonWrapper>
     </ContentWrapper>
   </SectionWrapper>

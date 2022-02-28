@@ -44,7 +44,7 @@ const getButtonTypeStyle = (
   }
 }
 
-export const Button = styled('button')<ButtonProps>(
+export const ButtonDeprecated = styled('button')<ButtonProps>(
   ({
     size = 'md',
     weight = 'bold',
@@ -69,4 +69,4 @@ export const Button = styled('button')<ButtonProps>(
   }),
 )
 
-export const ButtonLink = Button.withComponent('a')
+export const ButtonLinkDeprecated = ButtonDeprecated.withComponent('a')

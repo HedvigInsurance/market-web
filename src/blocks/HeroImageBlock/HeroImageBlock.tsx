@@ -2,15 +2,12 @@ import { keyframes } from '@emotion/core'
 import styled from '@emotion/styled'
 import React from 'react'
 import { HedvigSymbol } from '@hedviginsurance/brand'
+import { ButtonLink, ButtonStyleType } from 'components/Button/Button'
 import {
   BaseBlockProps,
   MarkdownHtmlComponent,
   MinimalColorComponent,
 } from 'blocks/BaseBlockProps'
-import {
-  ButtonLinkBrandPivot,
-  ButtonStyleType,
-} from 'components/ButtonBrandPivot/Button'
 import { FontSizes, Heading } from 'components/Heading/Heading'
 import { TextPosition } from 'utils/textPosition'
 import { GlobalStory, GlobalStoryContainer } from 'storyblok/StoryContainer'
@@ -205,13 +202,13 @@ export const Hero: React.FC<
         )}
         {show_cta_mobile && (
           <ButtonWrapper>
-            <ButtonLinkBrandPivot
+            <ButtonLink
               color={cta_mobile_color?.color}
               styleType={cta_mobile_style}
               href={getStoryblokLinkUrl(story.content.cta_link)}
             >
               {story.content.cta_label}
-            </ButtonLinkBrandPivot>
+            </ButtonLink>
           </ButtonWrapper>
         )}
       </ContentWrapper>

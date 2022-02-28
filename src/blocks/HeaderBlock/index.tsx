@@ -3,10 +3,7 @@ import { colorsV3, HedvigLogo, HedvigSymbol } from '@hedviginsurance/brand'
 import React, { useCallback, useEffect, useState } from 'react'
 import { useLocale } from 'context/LocaleContext'
 import { ContentWrapper, MOBILE_BP_DOWN } from 'components/blockHelpers'
-import {
-  ButtonLinkBrandPivot,
-  ButtonStyleType,
-} from 'components/ButtonBrandPivot/Button'
+import { ButtonLink, ButtonStyleType } from 'components/Button/Button'
 import { Togglable } from 'components/containers/Togglable'
 import {
   GlobalStory,
@@ -353,7 +350,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                             ) {
                               return (
                                 <ButtonWrapper>
-                                  <ButtonLinkBrandPivot
+                                  <ButtonLink
                                     styleType={props.mobile_header_cta_style}
                                     fullWidth={true}
                                     href={getStoryblokLinkUrl(
@@ -362,14 +359,14 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                                     color={mobileCtaColor}
                                   >
                                     {mobileCtaLabel}
-                                  </ButtonLinkBrandPivot>
+                                  </ButtonLink>
                                 </ButtonWrapper>
                               )
                             }
 
                             return (
                               <ButtonWrapper>
-                                <ButtonLinkBrandPivot
+                                <ButtonLink
                                   styleType={props.mobile_header_cta_style}
                                   fullWidth={true}
                                   href={getStoryblokLinkUrl(
@@ -378,7 +375,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                                   color={mobileCtaColor}
                                 >
                                   {mobileCtaLabel}
-                                </ButtonLinkBrandPivot>
+                                </ButtonLink>
                               </ButtonWrapper>
                             )
                           })()}
@@ -394,7 +391,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                           if (props.override_cta_link?.cached_url) {
                             return (
                               <ButtonWrapper>
-                                <ButtonLinkBrandPivot
+                                <ButtonLink
                                   styleType={props.cta_style}
                                   color={buttonColor}
                                   fullWidth={true}
@@ -403,14 +400,14 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                                   )}
                                 >
                                   {ctaLabel}
-                                </ButtonLinkBrandPivot>
+                                </ButtonLink>
                               </ButtonWrapper>
                             )
                           }
 
                           return (
                             <ButtonWrapper>
-                              <ButtonLinkBrandPivot
+                              <ButtonLink
                                 styleType={props.cta_style}
                                 color={buttonColor}
                                 href={getStoryblokLinkUrl(
@@ -418,7 +415,7 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                                 )}
                               >
                                 {ctaLabel}
-                              </ButtonLinkBrandPivot>
+                              </ButtonLink>
                             </ButtonWrapper>
                           )
                         })()}
