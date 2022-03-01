@@ -1,15 +1,41 @@
 import { css } from '@emotion/core'
-import { colorsV3, fonts, getCdnFontFaces } from '@hedviginsurance/brand'
+import { colorsV3, getCdnFontFaces } from '@hedviginsurance/brand'
 
 export const globalStyles = css`
   ${getCdnFontFaces()}
+  @font-face {
+    font-family: 'HedvigLetters-Standard';
+    font-weight: '400';
+    src: url('https://cdn.hedvig.com/identity/fonts/HedvigLetters-Standard.woff2')
+        format('woff2'),
+      url('https://cdn.hedvig.com/identity/fonts/HedvigLetters-Standard.woff')
+        format('woff');
+  }
+
+  @font-face {
+    font-family: 'HedvigLetters-Big';
+    font-weight: '400';
+    src: url('https://cdn.hedvig.com/identity/fonts/HedvigLetters-Big.woff2')
+        format('woff2'),
+      url('https://cdn.hedvig.com/identity/fonts/HedvigLetters-Big.woff')
+        format('woff');
+  }
+
+  @font-face {
+    font-family: 'HedvigLetters-Small';
+    font-weight: '400';
+    src: url('https://cdn.hedvig.com/identity/fonts/HedvigLetters-Small.woff2')
+        format('woff2'),
+      url('https://cdn.hedvig.com/identity/fonts/HedvigLetters-Small.woff')
+        format('woff');
+  }
 
   * {
     box-sizing: border-box;
   }
 
   body {
-    font-family: ${fonts.FAVORIT}, sans-serif;
+    font-family: 'HedvigLetters-Standard', sans-serif;
     font-size: 16px;
     line-height: 1.5;
     margin: 0;

@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import { colors, colorsV3, fonts } from '@hedviginsurance/brand'
+import { colors, colorsV3 } from '@hedviginsurance/brand'
 import { match } from 'matchly'
 import React from 'react'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
@@ -312,7 +312,7 @@ const SectionWrapperComponentUnstyled = styled('section')<SectionProps>(
   ({ colorComponent = STANDARD_COLOR_COMPONENT, size = 'lg', brandPivot }) => ({
     position: 'relative',
     transition: 'background 300ms',
-    fontFamily: brandPivot ? `${fonts.FAVORIT}, sans-serif` : undefined,
+    fontFamily: `'HedvigLetters-Standard', sans-serif`,
     ...getSectionSizeStyle(size),
     color:
       colorComponent?.plugin === 'hedvig_minimal_color_picker'
@@ -321,7 +321,7 @@ const SectionWrapperComponentUnstyled = styled('section')<SectionProps>(
 
     'h1, h2, h3, h4': brandPivot
       ? {
-          fontFamily: `${fonts.FAVORIT}, sans-serif`,
+          fontFamily: `'HedvigLetters-Standard', sans-serif`,
           fontWeight: 400,
         }
       : {},
