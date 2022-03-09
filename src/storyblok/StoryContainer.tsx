@@ -88,6 +88,7 @@ export interface MenuItem {
 export interface MenuItemGroup {
   _uid: string
   label: string
+  link?: LinkComponent
   menu_items: ReadonlyArray<MenuItem>
 }
 

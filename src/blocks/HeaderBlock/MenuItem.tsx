@@ -87,13 +87,14 @@ const GroupLabelListItem = styled(MenuListItem)({
   fontSize: '0.75rem',
 })
 
-const MenuGroupLabel = styled('span')({
+const MenuGroupLabel = styled('a')<{ as?: 'a' | 'span' }>({
   display: 'block',
   color: colorsV3.gray700,
   textTransform: 'uppercase',
   lineHeight: '1rem',
   whiteSpace: 'nowrap',
   paddingBottom: '1rem',
+  textDecoration: 'none',
 
   [TABLET_BP_DOWN]: {
     display: 'inline-block',
@@ -273,14 +274,22 @@ export const MenuItem: React.FunctionComponent<{ menuItem: MenuItemType }> = ({
                     isClosing={isClosing}
                     hasMenuGroups={true}
                   >
-                    {menu_item_groups.map(({ label, menu_items, _uid }) => (
-                      <DropdownMenuItemList key={_uid}>
-                        <GroupLabelListItem>
-                          <MenuGroupLabel>{label}</MenuGroupLabel>
-                        </GroupLabelListItem>
-                        <SubMenuLinks menu_items={menu_items} />
-                      </DropdownMenuItemList>
-                    ))}
+                    {menu_item_groups.map(
+                      ({ label, link, menu_items, _uid }) => (
+                        <DropdownMenuItemList key={_uid}>
+                          <GroupLabelListItem>
+                            {link?.cached_url ? (
+                              <MenuGroupLabel href={getStoryblokLinkUrl(link)}>
+                                {label}
+                              </MenuGroupLabel>
+                            ) : (
+                              <MenuGroupLabel as="span">{label}</MenuGroupLabel>
+                            )}
+                          </GroupLabelListItem>
+                          <SubMenuLinks menu_items={menu_items} />
+                        </DropdownMenuItemList>
+                      ),
+                    )}
                   </DropdownMenuContainer>
                 )}
               </AnimateHeight>
