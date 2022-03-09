@@ -87,7 +87,7 @@ const GroupLabelListItem = styled(MenuListItem)({
   fontSize: '0.75rem',
 })
 
-const MenuGroupLabel = styled('a')<{ as?: 'a' | 'span' }>({
+const MenuGroupLabel = styled('a')<{ as?: 'span' }>({
   display: 'block',
   color: colorsV3.gray700,
   textTransform: 'uppercase',
