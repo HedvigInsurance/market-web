@@ -1700,6 +1700,7 @@
             "title_size",
             "title_size_mobile",
             "title_color",
+            "heading_tag",
             "show_hedvig_wordmark",
             "paragraph",
             "text_position",
@@ -1778,18 +1779,43 @@
           "options": [],
           "pos": 4
         },
+        "heading_tag": {
+          "type": "option",
+          "pos": 5,
+          "use_uuid": true,
+          "display_name": "",
+          "default_value": "h2",
+          "options": [
+            {
+              "value": "h1",
+              "name": "H1"
+            },
+            {
+              "value": "h2",
+              "name": "H2"
+            },
+            {
+              "value": "h3",
+              "name": "H3"
+            },
+            {
+              "value": "h4",
+              "name": "H4"
+            }
+          ]
+        },
         "show_hedvig_wordmark": {
           "type": "boolean",
-          "pos": 5
+          "pos": 6
         },
         "paragraph": {
           "type": "custom",
           "required": true,
           "default_value": "Default text default text default text default text default text default text default text default text default text default text default text",
-          "pos": 6,
-          "field_type": "markdown-html",
+          "pos": 7,
           "options": [],
-          "translatable": true
+          "translatable": true,
+          "field_type": "markdown-html"
         },
         "text_position": {
           "type": "option",
@@ -1808,7 +1834,7 @@
             }
           ],
           "default_value": "left",
-          "pos": 7,
+          "pos": 8,
           "required": true
         },
         "text_position_mobile": {
@@ -1828,7 +1854,7 @@
             }
           ],
           "default_value": "left",
-          "pos": 8
+          "pos": 9
         },
         "image_video": {
           "type": "section",
@@ -1846,7 +1872,7 @@
             "media_position",
             "media_size_small"
           ],
-          "pos": 9
+          "pos": 10
         },
         "image_type": {
           "type": "option",
@@ -1861,27 +1887,27 @@
             }
           ],
           "default_value": "image",
-          "pos": 10
+          "pos": 11
         },
         "image": {
           "type": "image",
           "required": false,
-          "pos": 11
+          "pos": 12
         },
         "mobile_image": {
           "type": "image",
-          "pos": 12
+          "pos": 13
         },
         "image_video_file_location": {
           "type": "text",
           "required": false,
-          "pos": 13,
+          "pos": 14,
           "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
         },
         "mobile_image_video_file_location": {
           "type": "text",
           "required": false,
-          "pos": 14,
+          "pos": 15,
           "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
         },
         "background_type": {
@@ -1898,23 +1924,23 @@
           ],
           "required": false,
           "default_value": "image",
-          "pos": 15
+          "pos": 16
         },
         "background_image": {
           "type": "image",
           "required": false,
-          "pos": 16
+          "pos": 17
         },
         "background_video_file_location": {
           "type": "text",
           "required": false,
-          "pos": 17,
+          "pos": 18,
           "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
         },
         "mobile_background_video_file_location": {
           "type": "text",
           "required": false,
-          "pos": 18,
+          "pos": 19,
           "description": "Will be suffixed with /<size>.<format>, i.e. /md.png. Uploaded sizes must be: md, lg, xl, xxl. Uploaded formats must be png (for the poster), webm, mp4"
         },
         "media_position": {
@@ -1931,12 +1957,12 @@
           ],
           "required": true,
           "default_value": "top",
-          "pos": 19
+          "pos": 20
         },
         "media_size_small": {
           "type": "boolean",
           "display_name": "Small image",
-          "pos": 20,
+          "pos": 21,
           "description": "Makes the image 1/3 in larger viewports"
         },
         "button": {
@@ -1950,19 +1976,19 @@
             "button_color",
             "button_position_mobile"
           ],
-          "pos": 21
+          "pos": 22
         },
         "show_button": {
           "type": "boolean",
           "required": false,
           "default_value": "true",
-          "pos": 22
+          "pos": 23
         },
         "button_title": {
           "type": "text",
           "required": true,
           "default_value": "Default Text",
-          "pos": 23,
+          "pos": 24,
           "translatable": true
         },
         "button_type": {
@@ -1983,7 +2009,7 @@
           ],
           "required": true,
           "default_value": "filled",
-          "pos": 24
+          "pos": 25
         },
         "button_link": {
           "type": "multilink",
@@ -1991,14 +2017,14 @@
           "display_name": "",
           "required": false,
           "default_value": "",
-          "pos": 25,
+          "pos": 26,
           "translatable": true
         },
         "button_color": {
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
           "type": "custom",
-          "pos": 26
+          "pos": 27
         },
         "button_position_mobile": {
           "type": "option",
@@ -2013,14 +2039,14 @@
               "name": "Below media"
             }
           ],
-          "pos": 27
+          "pos": 28
         },
         "color": {
           "type": "custom",
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
           "required": true,
-          "pos": 28
+          "pos": 29
         },
         "size": {
           "type": "option",
@@ -2045,16 +2071,16 @@
             }
           ],
           "default_value": "lg",
-          "pos": 29
+          "pos": 30
         },
         "full_width": {
           "type": "boolean",
-          "pos": 30,
+          "pos": 31,
           "description": "Tick this box if you want to have the largest max width"
         },
         "animate": {
           "type": "boolean",
-          "pos": 31,
+          "pos": 32,
           "description": "Whether to animate the section on page load",
           "display_name": ""
         },
@@ -2063,13 +2089,13 @@
           "display_name": "",
           "default_value": "",
           "description": "Raw CSS for this section Nb! Do NOT target classes directly, especially not ones that look like .css-g041i5! They are auto-generated and will change often, causing your changes to break.",
-          "pos": 32
+          "pos": 33
         },
         "tab-0bf0bbf5-e344-409c-945f-862a2b060b08": {
           "type": "tab",
           "display_name": "Styling",
           "keys": ["animate", "size", "color", "extra_styling", "full_width"],
-          "pos": 33
+          "pos": 34
         }
       },
       "image": null,

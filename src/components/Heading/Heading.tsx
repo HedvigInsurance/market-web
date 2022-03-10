@@ -5,9 +5,10 @@ import { TextPosition } from 'utils/textPosition'
 import { getMinimalColorStyles, TABLET_BP_UP } from '../blockHelpers'
 
 export type FontSizes = 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+export type HeadingTag = 'h1' | 'h2' | 'h3' | 'h4' | 'h5'
 
 interface HeadingProps {
-  as: 'h1' | 'h2' | 'h3' | 'h4' | 'h5'
+  as: HeadingTag
   capitalize?: boolean
   color?: minimalColorComponentColors
   mobileSize?: FontSizes
