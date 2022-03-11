@@ -2499,6 +2499,10 @@
           "pos": 0,
           "translatable": false
         },
+        "link": {
+          "type": "multilink",
+          "pos": 1
+        },
         "menu_items": {
           "type": "bloks",
           "translatable": true,
