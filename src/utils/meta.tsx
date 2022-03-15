@@ -81,7 +81,7 @@ export const getMeta = ({
       href={`${getPublicHost()}/${fullSlug || getFullSlugFromStory(story)}`}
     />
 
-    {story && story.alternates?.length && (
+    {story && (
       <link
         rel="alternate"
         hrefLang={getAlternateLang(story.full_slug)}
