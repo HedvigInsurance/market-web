@@ -160,8 +160,12 @@ const MobileLogo = styled('div')({
 })
 
 const LogoLink = styled('a')({
-  display: 'inline-flex',
+  display: 'flex',
   color: 'inherit',
+
+  svg: {
+    height: '100%',
+  },
 })
 
 const ButtonWrapper = styled('div')({
