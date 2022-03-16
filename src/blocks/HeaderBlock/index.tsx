@@ -29,19 +29,11 @@ export const TOGGLE_TRANSITION_TIME = 250
 const isBelowScrollThreshold = () =>
   typeof window !== 'undefined' && window.scrollY > 20
 
-const HeaderWrapper = styled('header')<{
-  inverse: boolean
-}>(({ inverse }) => ({
+const HeaderWrapper = styled('header')({
   position: 'sticky',
   top: 0,
   zIndex: 100,
-  color: inverse ? colorsV3.gray100 : colorsV3.gray900,
-  transition: 'color 300ms',
-
-  [TABLET_BP_DOWN]: {
-    color: colorsV3.gray100,
-  },
-}))
+})
 
 const HeaderMain = styled('div')<{
   inverse: boolean
@@ -159,10 +151,17 @@ const MobileLogo = styled('div')({
   },
 })
 
-const LogoLink = styled('a')({
-  display: 'inline-flex',
-  color: 'inherit',
-})
+const LogoLink = styled('a')<{
+  inverse: boolean
+}>(({ inverse }) => ({
+  display: 'flex',
+  color: inverse ? colorsV3.gray100 : colorsV3.gray900,
+  transition: 'color 300ms',
+
+  svg: {
+    height: '100%',
+  },
+}))
 
 const ButtonWrapper = styled('div')({
   paddingLeft: '2rem',
@@ -248,6 +247,9 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
       : props.cta_color?.color,
   )
 
+  const inverseColor =
+    props.is_transparent && props.inverse_colors && !isBelowThreshold
+
   const updateHeader = useCallback(() => {
     if (isBelowScrollThreshold()) {
       setIsBelowThreshold(true)
@@ -283,20 +285,12 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
           text={props.story.content.banner_text}
         />
       )}
-      <HeaderWrapper
-        inverse={
-          props.is_transparent && props.inverse_colors && !isBelowThreshold
-        }
-      >
+      <HeaderWrapper>
         {!props.is_transparent && <Filler />}
         <Togglable>
           {({ isOpen, isClosing, toggleOpen }) => (
             <HeaderMain
-              inverse={
-                props.is_transparent &&
-                props.inverse_colors &&
-                !isBelowThreshold
-              }
+              inverse={inverseColor}
               open={isOpen || isClosing}
               sticky={isBelowThreshold}
             >
@@ -314,7 +308,10 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                     />
 
                     <DesktopLogo>
-                      <LogoLink href={'/' + currentLocale.label}>
+                      <LogoLink
+                        inverse={inverseColor}
+                        href={'/' + currentLocale.label}
+                      >
                         <HedvigLogo width={94} />
                       </LogoLink>
                     </DesktopLogo>
@@ -330,7 +327,11 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                       <MenuList open={isOpen}>
                         {(props.story.content.header_menu_items ?? []).map(
                           (menuItem) => (
-                            <MenuItem menuItem={menuItem} key={menuItem._uid} />
+                            <MenuItem
+                              inverseColor={inverseColor}
+                              menuItem={menuItem}
+                              key={menuItem._uid}
+                            />
                           ),
                         )}
                       </MenuList>

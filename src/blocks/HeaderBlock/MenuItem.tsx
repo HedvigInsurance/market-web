@@ -67,21 +67,24 @@ const DropdownMenuItemList = styled('ul')({
   },
 })
 
-const MenuLink = styled('a')({
-  color: 'inherit',
-  textDecoration: 'none',
+const MenuLink = styled('a')<{ inverseColor?: boolean }>(
+  ({ inverseColor }) => ({
+    color: inverseColor ? colorsV3.gray100 : colorsV3.gray900,
+    textDecoration: 'none',
+    transition: 'color 300ms',
 
-  [TABLET_BP_DOWN]: {
-    display: 'inline-block',
-    padding: `1rem 0.5rem 1rem 2rem`,
-    fontFamily: fonts.FAVORIT,
-    fontSize: '1.5rem',
-  },
+    [TABLET_BP_DOWN]: {
+      display: 'inline-block',
+      padding: `1rem 0.5rem 1rem 2rem`,
+      fontFamily: fonts.FAVORIT,
+      fontSize: '1.5rem',
+    },
 
-  [MOBILE_BP_DOWN]: {
-    paddingLeft: '1.5rem',
-  },
-})
+    [MOBILE_BP_DOWN]: {
+      paddingLeft: '1.5rem',
+    },
+  }),
+)
 
 const GroupLabelListItem = styled(MenuListItem)({
   fontSize: '0.75rem',
@@ -174,9 +177,10 @@ export const SubMenuLinks: React.FC<{
   </>
 )
 
-export const MenuItem: React.FunctionComponent<{ menuItem: MenuItemType }> = ({
-  menuItem,
-}) => {
+export const MenuItem: React.FunctionComponent<{
+  menuItem: MenuItemType
+  inverseColor: boolean
+}> = ({ menuItem, inverseColor }) => {
   const { menu_items = [], menu_item_groups = [] } = menuItem
   const hasSubMenuItems = menu_items.length > 0
   const hasSubMenuGroups = menu_item_groups.length > 0
@@ -243,11 +247,16 @@ export const MenuItem: React.FunctionComponent<{ menuItem: MenuItemType }> = ({
           onMouseOut={() => close()}
         >
           {menuItem.link && menuItem.link.cached_url ? (
-            <MenuLink href={getStoryblokLinkUrl(menuItem.link)}>
+            <MenuLink
+              inverseColor={inverseColor}
+              href={getStoryblokLinkUrl(menuItem.link)}
+            >
               {menuItem.label}
             </MenuLink>
           ) : (
-            <MenuFakeLink>{menuItem.label}</MenuFakeLink>
+            <MenuFakeLink inverseColor={inverseColor}>
+              {menuItem.label}
+            </MenuFakeLink>
           )}
 
           {hasSubMenus && (
