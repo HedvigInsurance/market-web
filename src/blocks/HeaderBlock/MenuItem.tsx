@@ -78,6 +78,7 @@ const MenuLink = styled('a')<{ inverseColor?: boolean }>(
       padding: `1rem 0.5rem 1rem 2rem`,
       fontFamily: fonts.FAVORIT,
       fontSize: '1.5rem',
+      color: colorsV3.gray100,
     },
 
     [MOBILE_BP_DOWN]: {
