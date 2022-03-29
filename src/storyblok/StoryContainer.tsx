@@ -101,6 +101,7 @@ export interface GlobalStory extends Story {
     banner_text: MarkdownHtmlComponent
     banner_color?: MinimalColorComponent
     header_menu_items?: ReadonlyArray<MenuItem>
+    header_menu_business?: ReadonlyArray<MenuItem>
     show_cta: boolean
     cta_label: string
     cta_link: LinkComponent
