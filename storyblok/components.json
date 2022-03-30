@@ -699,13 +699,6 @@
           "restrict_components": true,
           "component_whitelist": ["menu_item"]
         },
-        "header_menus": {
-          "type": "bloks",
-          "maximum": "",
-          "pos": 6,
-          "restrict_components": true,
-          "component_whitelist": ["menu"]
-        },
         "cta": {
           "type": "section",
           "keys": ["show_cta", "cta_branch_link", "cta_label", "cta_link"],
