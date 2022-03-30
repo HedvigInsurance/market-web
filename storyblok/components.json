@@ -692,25 +692,39 @@
           "translatable": true,
           "required": false
         },
+        "header_menu_business": {
+          "type": "bloks",
+          "pos": 5,
+          "maximum": "",
+          "restrict_components": true,
+          "component_whitelist": ["menu_item"]
+        },
+        "header_menus": {
+          "type": "bloks",
+          "maximum": "",
+          "pos": 6,
+          "restrict_components": true,
+          "component_whitelist": ["menu"]
+        },
         "cta": {
           "type": "section",
           "keys": ["show_cta", "cta_branch_link", "cta_label", "cta_link"],
-          "pos": 5
+          "pos": 7
         },
         "show_cta": {
           "type": "boolean",
-          "pos": 6,
+          "pos": 8,
           "translatable": true
         },
         "cta_label": {
           "type": "text",
-          "pos": 7,
+          "pos": 9,
           "translatable": true
         },
         "cta_link": {
           "type": "multilink",
           "translatable": true,
-          "pos": 8
+          "pos": 10
         },
         "footer": {
           "type": "section",
@@ -724,48 +738,48 @@
             "footer_market_title",
             "footer_paragraph"
           ],
-          "pos": 9
+          "pos": 11
         },
         "footer_menu_items": {
           "type": "bloks",
-          "pos": 10,
+          "pos": 12,
           "maximum": "4",
           "restrict_components": true,
           "component_whitelist": ["menu_item"]
         },
         "footer_download_title": {
           "type": "text",
-          "pos": 11
+          "pos": 13
         },
         "footer_safety_title": {
           "type": "text",
-          "pos": 12
-        },
-        "footer_safety_body": {
-          "type": "custom",
-          "pos": 13,
-          "field_type": "markdown-html",
-          "options": []
-        },
-        "footer_rating_title": {
-          "type": "text",
           "pos": 14
         },
-        "footer_rating_paragraph": {
+        "footer_safety_body": {
           "type": "custom",
           "pos": 15,
           "field_type": "markdown-html",
           "options": []
         },
-        "footer_market_title": {
+        "footer_rating_title": {
           "type": "text",
           "pos": 16
+        },
+        "footer_rating_paragraph": {
+          "type": "custom",
+          "pos": 17,
+          "field_type": "markdown-html",
+          "options": []
+        },
+        "footer_market_title": {
+          "type": "text",
+          "pos": 18
         },
         "footer_paragraph": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 17,
+          "pos": 19,
           "translatable": true
         },
         "perils": {
@@ -777,28 +791,28 @@
           ],
           "restrict_components": true,
           "component_whitelist": ["peril_labels"],
-          "pos": 18
+          "pos": 20
         },
         "peril_modal_info_title": {
           "type": "text",
-          "pos": 19
+          "pos": 21
         },
         "peril_modal_coverage_title": {
           "type": "text",
-          "pos": 20
+          "pos": 22
         },
         "peril_modal_exceptions_title": {
           "type": "text",
-          "pos": 21
+          "pos": 23
         },
         "locale": {
           "type": "section",
           "keys": ["four_oh_four_title", "cookie_consent_message"],
-          "pos": 22
+          "pos": 24
         },
         "four_oh_four_title": {
           "type": "text",
-          "pos": 23
+          "pos": 25
         },
         "cookie_consent_message": {
           "type": "custom",
@@ -806,11 +820,11 @@
           "translatable": true,
           "field_type": "markdown-html",
           "options": [],
-          "pos": 24
+          "pos": 26
         },
         "structured_data": {
           "type": "section",
-          "pos": 25,
+          "pos": 27,
           "keys": [
             "structured_data_website_description",
             "structured_data_organization_description"
@@ -818,7 +832,7 @@
         },
         "structured_data_website_description": {
           "type": "text",
-          "pos": 26,
+          "pos": 28,
           "max_length": "",
           "description": "Description used in structured data \"WebSite\" type for rich search results.",
           "display_name": "WebSite Description",
@@ -826,13 +840,13 @@
         },
         "structured_data_organization_description": {
           "type": "text",
-          "pos": 27,
+          "pos": 29,
           "display_name": "Organization Description",
           "description": "Description used in structured data \"Organization\" type for rich search results."
         },
         "trustpilot": {
           "type": "section",
-          "pos": 28,
+          "pos": 30,
           "keys": [
             "structured_data_review_value",
             "structured_data_review_count"
@@ -840,12 +854,12 @@
         },
         "structured_data_review_value": {
           "type": "text",
-          "pos": 29,
+          "pos": 31,
           "description": "READ ONLY. This field is filled in automatically. Review score used in structured data \"AggregateRating\" type for rich search results."
         },
         "structured_data_review_count": {
           "type": "text",
-          "pos": 30,
+          "pos": 32,
           "description": "READ ONLY. This field is filled in automatically. Total number of reviews used in structured data \"AggregateRating\" type for rich search results."
         }
       },
@@ -865,18 +879,22 @@
       "name": "header_block",
       "display_name": null,
       "schema": {
-        "is_transparent": {
+        "hide_menu": {
           "type": "boolean",
           "pos": 0
         },
+        "is_transparent": {
+          "type": "boolean",
+          "pos": 1
+        },
         "inverse_colors": {
           "type": "boolean",
-          "pos": 1,
+          "pos": 2,
           "display_name": "Inverse Colors (transparent header only)"
         },
         "cta_group": {
           "type": "section",
-          "pos": 2,
+          "pos": 3,
           "keys": [
             "override_cta_label",
             "override_cta_link",
@@ -887,17 +905,17 @@
         },
         "override_cta_label": {
           "type": "text",
-          "pos": 3
+          "pos": 4
         },
         "override_cta_link": {
           "type": "multilink",
-          "pos": 4
+          "pos": 5
         },
         "cta_color": {
           "type": "custom",
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
-          "pos": 5
+          "pos": 6
         },
         "cta_style": {
           "type": "option",
@@ -913,7 +931,7 @@
             }
           ],
           "description": "",
-          "pos": 6
+          "pos": 7
         },
         "cta_mobile": {
           "type": "section",
@@ -924,22 +942,22 @@
             "mobile_header_cta_style"
           ],
           "display_name": "CTA mobile",
-          "pos": 7
+          "pos": 8
         },
         "override_mobile_header_cta_label": {
           "type": "text",
           "translatable": false,
-          "pos": 8
+          "pos": 9
         },
         "override_mobile_header_cta_link": {
           "type": "multilink",
-          "pos": 9
+          "pos": 10
         },
         "mobile_header_cta_color": {
           "type": "custom",
           "field_type": "hedvig-minimal-color-picker",
           "options": [],
-          "pos": 10
+          "pos": 11
         },
         "mobile_header_cta_style": {
           "type": "option",
@@ -954,15 +972,27 @@
               "name": "Outlined"
             }
           ],
-          "pos": 11
-        },
-        "hide_menu": {
-          "type": "boolean"
+          "pos": 12
         },
         "hide_global_banner": {
           "type": "boolean",
           "display_name": "",
-          "description": "Hides the global top banner on this header block"
+          "description": "Hides the global top banner on this header block",
+          "pos": 13
+        },
+        "tab-300132ab-4879-4382-9003-10ea8bd123ac": {
+          "type": "tab",
+          "display_name": "Menu",
+          "keys": [
+            "hide_menu",
+            "use_hedvig_business_menu",
+            "use_business_menu"
+          ],
+          "pos": 14
+        },
+        "use_business_menu": {
+          "type": "boolean",
+          "display_name": "Use Hedvig Business Menu"
         }
       },
       "image": null,
