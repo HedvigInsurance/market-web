@@ -222,6 +222,7 @@ interface HeaderBlockProps extends BaseBlockPropsDeprecated {
   override_mobile_header_cta_link?: LinkComponent | null
   mobile_header_cta_color?: MinimalColorComponent
   mobile_header_cta_style?: ButtonStyleType
+  use_business_menu?: boolean
 }
 
 enum InverseColors {
@@ -249,6 +250,10 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
 
   const inverseColor =
     props.is_transparent && props.inverse_colors && !isBelowThreshold
+
+  const headerMenu = props.use_business_menu
+    ? props.story.content.header_menu_business
+    : props.story.content.header_menu_items
 
   const updateHeader = useCallback(() => {
     if (isBelowScrollThreshold()) {
@@ -325,15 +330,13 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                   {!props.hide_menu && (
                     <Menu open={isOpen}>
                       <MenuList open={isOpen}>
-                        {(props.story.content.header_menu_items ?? []).map(
-                          (menuItem) => (
-                            <MenuItem
-                              inverseColor={inverseColor}
-                              menuItem={menuItem}
-                              key={menuItem._uid}
-                            />
-                          ),
-                        )}
+                        {(headerMenu ?? []).map((menuItem) => (
+                          <MenuItem
+                            inverseColor={inverseColor}
+                            menuItem={menuItem}
+                            key={menuItem._uid}
+                          />
+                        ))}
                       </MenuList>
                       <LanguagePicker currentLocale={currentLocale} />
                       <MobileButtonWrapper>
