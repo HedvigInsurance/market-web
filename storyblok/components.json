@@ -2398,6 +2398,10 @@
               "name": "NO_HOME_CONTENT_YOUTH_RENT"
             },
             {
+              "value": "NO_HOUSE",
+              "name": "NO_HOUSE"
+            },
+            {
               "value": "NO_TRAVEL",
               "name": "NO_TRAVEL"
             },
