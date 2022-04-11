@@ -30,6 +30,7 @@ const types: TypeOfContract[] = [
   'NO_HOME_CONTENT_YOUTH_RENT',
   'NO_TRAVEL',
   'NO_TRAVEL_YOUTH',
+  'NO_HOUSE',
   'DK_HOME_CONTENT',
 ]
 

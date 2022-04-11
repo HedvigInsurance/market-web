@@ -2418,6 +2418,10 @@
               "name": "NO_ACCIDENT_YOUTH"
             },
             {
+              "value": "NO_HOUSE",
+              "name": "NO_HOUSE"
+            },
+            {
               "value": "DK_HOME_CONTENT_OWN",
               "name": "DK_HOME_CONTENT_OWN"
             },
