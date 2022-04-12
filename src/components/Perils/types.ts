@@ -36,4 +36,5 @@ export type TypeOfContract =
   | 'NO_TRAVEL_YOUTH'
   | 'NO_ACCIDENT'
   | 'NO_ACCIDENT_YOUTH'
+  | 'NO_HOUSE'
   | 'DK_HOME_CONTENT'
