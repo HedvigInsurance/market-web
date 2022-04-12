@@ -312,7 +312,9 @@ const SectionWrapperComponentUnstyled = styled('section')<SectionProps>(
   ({ colorComponent = STANDARD_COLOR_COMPONENT, size = 'lg', brandPivot }) => ({
     position: 'relative',
     transition: 'background 300ms',
-    fontFamily: brandPivot ? `${fonts.FAVORIT}, sans-serif` : undefined,
+    fontFamily: brandPivot
+      ? `${fonts.HEDVIG_LETTERS_STANDARD}, sans-serif`
+      : undefined,
     ...getSectionSizeStyle(size),
     color:
       colorComponent?.plugin === 'hedvig_minimal_color_picker'
@@ -321,7 +323,7 @@ const SectionWrapperComponentUnstyled = styled('section')<SectionProps>(
 
     'h1, h2, h3, h4': brandPivot
       ? {
-          fontFamily: `${fonts.FAVORIT}, sans-serif`,
+          fontFamily: `${fonts.HEDVIG_LETTERS_STANDARD}, sans-serif`,
           fontWeight: 400,
         }
       : {},
