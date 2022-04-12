@@ -3,7 +3,7 @@ import Helmet from 'react-helmet-async'
 import { useLocale } from 'context/LocaleContext'
 import SbEditable from 'patched/storyblok-react'
 import { getBlockComponent } from 'blocks'
-import { BaseBlockPropsDeprecated } from '../blocks/BaseBlockProps'
+import { BaseBlockProps } from '../blocks/BaseBlockProps'
 import { FooterBlock } from '../blocks/FooterBlock/FooterBlock'
 import {
   BodyStory,
@@ -32,7 +32,7 @@ export const StoryPage: React.FunctionComponent<{ nonce?: string }> = ({
           </GlobalStoryContainer>
           {getBlocksOrDefault(story!).map((block, index) => {
             const BlockComponent:
-              | React.ComponentType<BaseBlockPropsDeprecated & any>
+              | React.ComponentType<BaseBlockProps & any>
               | undefined = getBlockComponent(block.component)
             if (!BlockComponent) {
               return null

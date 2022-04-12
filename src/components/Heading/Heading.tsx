@@ -44,7 +44,7 @@ export const Heading = styled.h1<HeadingProps>`
   text-transform: ${(props) => (props.capitalize ? 'uppercase' : undefined)};
   font-family: ${(props) =>
     props.useDisplayFont
-      ? `${fonts.EB_GARAMOND}, serif !important`
+      ? `${fonts.HEDVIG_LETTERS_BIG}, serif !important`
       : undefined};
   line-height: 1.2;
 

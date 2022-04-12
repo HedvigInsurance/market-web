@@ -1,24 +1,20 @@
 import styled from '@emotion/styled'
-import { colors } from '@hedviginsurance/brand'
+import { colorsV3 } from '@hedviginsurance/brand'
 import { Container } from 'constate'
 import React from 'react'
 import { Mount } from 'react-lifecycle-components'
 import MediaQuery from 'react-responsive'
+import { ButtonLink, ButtonStyleType } from 'components/Button/Button'
 import {
   CONTENT_GUTTER_MOBILE,
   ContentWrapper,
   MOBILE_BP_DOWN,
 } from '../components/blockHelpers'
-import {
-  ButtonLinkDeprecated,
-  ButtonStyleType,
-  ButtonWeight,
-} from '../components/buttons'
 import { LinkComponent } from '../storyblok/StoryContainer'
 import { getStoryblokLinkUrl } from '../utils/storyblok'
 import {
-  BaseBlockPropsDeprecated,
-  ColorComponent,
+  BaseBlockProps,
+  MinimalColorComponent,
   MarkdownHtmlComponent,
 } from './BaseBlockProps'
 
@@ -71,7 +67,7 @@ const Content = styled(ContentWrapper)({
   left: '50%',
   transform: 'translateY(-50%) translateX(-50%)',
   zIndex: 1,
-  color: colors.WHITE,
+  color: colorsV3.gray100,
 
   [TABLET_BP_DOWN]: {
     position: 'static',
@@ -105,7 +101,7 @@ const Paragraph = styled('div')<{ useDropShadow: boolean }>(
     textShadow: useDropShadow ? '3px 3px 5px rgba(0, 0, 0, .3)' : undefined,
   }),
 )
-const Cta = styled(ButtonLinkDeprecated)({
+const Cta = styled(ButtonLink)({
   marginTop: '1.7rem',
   fontsize: '1.25rem',
   padding: '1rem 2rem',
@@ -115,18 +111,18 @@ const Cta = styled(ButtonLinkDeprecated)({
   },
 })
 const GhostCta = styled(Cta)({
-  color: colors.WHITE,
-  borderColor: colors.WHITE,
+  color: colorsV3.gray100,
+  borderColor: colorsV3.gray100,
   marginLeft: '1rem',
   transition: 'color 300ms, background 300ms',
 
   '&:hover, &:focus': {
-    color: colors.PURPLE,
-    background: colors.WHITE,
+    color: colorsV3.purple500,
+    background: colorsV3.gray100,
   },
 })
 
-interface BackgroundVideoBlockProps extends BaseBlockPropsDeprecated {
+interface BackgroundVideoBlockProps extends BaseBlockProps {
   video_file_location: string
   use_text_drop_shadow: boolean
   background_gradient_start: string
@@ -138,8 +134,7 @@ interface BackgroundVideoBlockProps extends BaseBlockPropsDeprecated {
   ghost_cta: boolean
   ghost_cta_target: LinkComponent
   ghost_cta_label: string
-  cta_color?: ColorComponent
-  cta_weight?: ButtonWeight
+  cta_color?: MinimalColorComponent
   cta_style?: ButtonStyleType
 }
 
@@ -249,7 +244,6 @@ export const BackgroundVideoBlock: React.FunctionComponent<BackgroundVideoBlockP
             <Cta
               href={getStoryblokLinkUrl(props.cta_target)}
               size="sm"
-              weight={props.cta_weight}
               color={props.cta_color && props.cta_color.color}
               styleType={props.cta_style}
             >
@@ -261,7 +255,6 @@ export const BackgroundVideoBlock: React.FunctionComponent<BackgroundVideoBlockP
                 size="sm"
                 styleType="outlined"
                 color={props.cta_color && props.cta_color.color}
-                weight={props.cta_weight}
               >
                 {props.ghost_cta_label}
               </GhostCta>

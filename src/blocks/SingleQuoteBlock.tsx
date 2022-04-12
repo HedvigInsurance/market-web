@@ -3,7 +3,7 @@ import { fonts } from '@hedviginsurance/brand'
 import React from 'react'
 import { ContentWrapper, SectionWrapper } from '../components/blockHelpers'
 import { textFlexPositionMap, TextPosition } from '../utils/textPosition'
-import { BaseBlockPropsDeprecated } from './BaseBlockProps'
+import { BaseBlockProps } from './BaseBlockProps'
 
 const TABLET_BP_DOWN = '@media (max-width: 850px)'
 
@@ -40,7 +40,7 @@ const QuoteWrapper = styled('div')<QuoteWrapperProps>(
 )
 
 const Quote = styled('blockquote')<{ shrink: boolean }>(({ shrink }) => ({
-  fontFamily: fonts.GEOMANIST,
+  fontFamily: fonts.HEDVIG_LETTERS_BIG,
   lineHeight: 1,
   fontKerning: 'none',
   fontSize: shrink ? '2.5rem' : '3.5rem',
@@ -54,7 +54,7 @@ const Cite = styled('cite')({
   fontStyle: 'normal',
 })
 
-export interface SingleQuoteBlockProps extends BaseBlockPropsDeprecated {
+export interface SingleQuoteBlockProps extends BaseBlockProps {
   quote: string
   author: string
   is_long_quote: boolean

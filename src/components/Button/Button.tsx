@@ -1,9 +1,6 @@
 import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
-import {
-  colorComponentColors,
-  minimalColorComponentColors,
-} from 'blocks/BaseBlockProps'
+import { minimalColorComponentColors } from 'blocks/BaseBlockProps'
 import { getMinimalColorStyles, MOBILE_BP_UP } from '../blockHelpers'
 
 export const buttonSizes = {
@@ -15,10 +12,10 @@ export const buttonSizes = {
 export type ButtonStyleType = 'filled' | 'outlined' | 'plain'
 export type ButtonWeight = 'normal' | 'bold'
 
-export interface ButtonProps<TColor = colorComponentColors> {
+export interface ButtonProps {
   size?: keyof typeof buttonSizes
   styleType?: ButtonStyleType
-  color?: TColor
+  color?: minimalColorComponentColors
   fullWidth?: boolean
 }
 
@@ -55,9 +52,7 @@ const getMinimalButtonTypeStyle = (
   }
 }
 
-export const Button = styled('button')<
-  ButtonProps<minimalColorComponentColors>
->(
+export const Button = styled('button')<ButtonProps>(
   ({
     styleType = 'filled',
     color = 'standard',
