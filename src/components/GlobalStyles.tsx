@@ -26,7 +26,7 @@ export const globalStyles = css`
   h4,
   h5,
   h6 {
-    font-kerning: none;
+    font-kerning: normal;
     margin: 1.414rem 0 0.5rem;
     font-weight: inherit;
     line-height: 1;
