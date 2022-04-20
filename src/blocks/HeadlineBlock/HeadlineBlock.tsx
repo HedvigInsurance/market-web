@@ -70,7 +70,7 @@ export const HeadlineBlock: React.FC<HeadlineBlockProps> = ({
     <SectionWrapper
       colorComponent={color}
       extraStyling={extra_styling}
-      size="none"
+      size="xxs"
       brandPivot
     >
       <ContentWrapper brandPivot index={index}>
