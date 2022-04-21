@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import React from 'react'
 import {
-  BaseBlockPropsDeprecated,
+  BaseBlockProps,
   MarkdownHtmlComponent,
 } from 'src/blocks/BaseBlockProps'
 import {
@@ -35,7 +35,7 @@ const Column = styled('div')({
   },
 })
 
-interface ColumnTextBlockProps extends BaseBlockPropsDeprecated {
+interface ColumnTextBlockProps extends BaseBlockProps {
   text_one: MarkdownHtmlComponent
   text_two: MarkdownHtmlComponent
 }

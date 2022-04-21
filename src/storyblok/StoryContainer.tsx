@@ -1,7 +1,7 @@
 import { Container } from 'constate'
 import React, { PureComponent } from 'react'
 import {
-  BaseBlockPropsDeprecated,
+  BaseBlockProps,
   MinimalColorComponent,
   MarkdownHtmlComponent,
 } from '../blocks/BaseBlockProps'
@@ -60,7 +60,7 @@ export interface BodyStory extends Story {
       _uid: string
       page_title: string
       component: 'page'
-      body: ReadonlyArray<BaseBlockPropsDeprecated>
+      body: ReadonlyArray<BaseBlockProps>
       hide_footer?: boolean
     }
 }

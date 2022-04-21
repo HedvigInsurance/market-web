@@ -9,7 +9,7 @@ export const globalStyles = css`
   }
 
   body {
-    font-family: ${fonts.FAVORIT}, sans-serif;
+    font-family: ${fonts.HEDVIG_LETTERS_STANDARD}, sans-serif;
     font-size: 16px;
     line-height: 1.5;
     margin: 0;
@@ -26,7 +26,7 @@ export const globalStyles = css`
   h4,
   h5,
   h6 {
-    font-kerning: none;
+    font-kerning: normal;
     margin: 1.414rem 0 0.5rem;
     font-weight: inherit;
     line-height: 1;

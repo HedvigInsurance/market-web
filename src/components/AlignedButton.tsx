@@ -2,32 +2,20 @@ import styled from '@emotion/styled'
 import React from 'react'
 
 import { LinkComponent } from 'src/storyblok/StoryContainer'
-import { ColorComponent, MinimalColorComponent } from '../blocks/BaseBlockProps'
+import { MinimalColorComponent } from '../blocks/BaseBlockProps'
 import { TABLET_BP_DOWN } from '../components/blockHelpers'
-import { ButtonLink } from '../components/Button/Button'
-import {
-  ButtonLinkDeprecated,
-  ButtonProps,
-  buttonSizes,
-  ButtonWeight,
-} from '../components/buttons'
+import { ButtonLink, buttonSizes } from '../components/Button/Button'
 
 import { getStoryblokLinkUrl } from '../utils/storyblok'
 
-type ButtonComponentProps<TColor> = ButtonProps<TColor> &
-  React.AnchorHTMLAttributes<HTMLAnchorElement>
-
-const createButtonLinkWithMargin = <TColor extends string>(
-  ButtonComponent: React.ComponentType<ButtonComponentProps<TColor>>,
-) =>
-  styled(ButtonComponent)<{
-    mobilePosition?: 'above' | 'below'
-  }>(({ mobilePosition }) => ({
-    marginTop: '1.7rem',
-    [TABLET_BP_DOWN]: {
-      order: mobilePosition === 'below' ? 100 : 'initial',
-    },
-  }))
+const ButtonLinkWithMargin = styled(ButtonLink)<{
+  mobilePosition?: 'above' | 'below'
+}>(({ mobilePosition }) => ({
+  marginTop: '1.7rem',
+  [TABLET_BP_DOWN]: {
+    order: mobilePosition === 'below' ? 100 : 'initial',
+  },
+}))
 
 export interface AlignedButtonProps<TColor> {
   title: string
@@ -36,13 +24,12 @@ export interface AlignedButtonProps<TColor> {
   show: boolean
   color?: TColor
   size?: keyof typeof buttonSizes
-  weight?: ButtonWeight
   positionMobile?: 'above' | 'below'
   className?: string
 }
 
 export const AlignedButton: React.FunctionComponent<
-  AlignedButtonProps<MinimalColorComponent | ColorComponent>
+  AlignedButtonProps<MinimalColorComponent>
 > = ({
   title,
   type,
@@ -50,15 +37,9 @@ export const AlignedButton: React.FunctionComponent<
   show,
   color,
   size,
-  weight,
   positionMobile,
   className,
 }) => {
-  const ButtonLinkWithMargin =
-    color?.plugin === 'hedvig_minimal_color_picker'
-      ? createButtonLinkWithMargin(ButtonLink)
-      : createButtonLinkWithMargin(ButtonLinkDeprecated)
-
   return (
     <>
       {show && buttonLink && (
@@ -66,8 +47,7 @@ export const AlignedButton: React.FunctionComponent<
           href={getStoryblokLinkUrl(buttonLink)}
           styleType={type}
           size={size ? size : 'sm'}
-          color={color?.color as any}
-          weight={weight}
+          color={color?.color}
           mobilePosition={positionMobile}
           className={className}
         >

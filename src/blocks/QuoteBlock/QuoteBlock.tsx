@@ -34,7 +34,7 @@ const QuoteWrapper = styled('div')<{ largeQuote?: boolean }>(
 
 const Quote = styled('blockquote')<{ largeQuote?: boolean }>(
   ({ largeQuote }) => ({
-    fontFamily: fonts.EB_GARAMOND,
+    fontFamily: fonts.HEDVIG_LETTERS_BIG,
     lineHeight: 1.16,
     fontKerning: 'none',
     fontSize: largeQuote ? '3rem' : '2rem',

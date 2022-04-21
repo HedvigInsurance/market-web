@@ -10,7 +10,7 @@ import { AccordionBlock } from './AccordionBlock/AccordionBlock'
 import { AppButtonsBlock } from './AppButtonsBlock'
 import { BackgroundVideoBlock } from './BackgroundVideoBlock'
 import { BannerBlock } from './BannerBlock/BannerBlock'
-import { BaseBlockPropsDeprecated } from './BaseBlockProps'
+import { BaseBlockProps } from './BaseBlockProps'
 import { BulletPointBlock } from './BulletPointBlock/BulletPointBlock'
 import { CtaBlock } from './CtaBlock/CtaBlock'
 import { HeadlineBlock } from './HeadlineBlock/HeadlineBlock'
@@ -55,7 +55,7 @@ const blockComponents = {
 
 export const getBlockComponent = <
   TBlockType extends keyof typeof blockComponents,
-  TBlockProps extends BaseBlockPropsDeprecated
+  TBlockProps extends BaseBlockProps
 >(
   blockType: string | TBlockType,
 ):

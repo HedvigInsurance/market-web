@@ -76,7 +76,7 @@ const MenuLink = styled('a')<{ inverseColor?: boolean }>(
     [TABLET_BP_DOWN]: {
       display: 'inline-block',
       padding: `1rem 0.5rem 1rem 2rem`,
-      fontFamily: fonts.FAVORIT,
+      fontFamily: fonts.HEDVIG_LETTERS_STANDARD,
       fontSize: '1.5rem',
       color: colorsV3.gray100,
     },

@@ -1,5 +1,5 @@
 import React from 'react'
-import { ColorComponent, MarkdownHtmlComponent } from '../BaseBlockProps'
+import { MinimalColorComponent, MarkdownHtmlComponent } from '../BaseBlockProps'
 import { BannerBlock } from './BannerBlock'
 
 const exampleText: MarkdownHtmlComponent = {
@@ -16,10 +16,10 @@ export default {
   component: BannerBlock,
 }
 
-const color: ColorComponent = {
+const color: MinimalColorComponent = {
   _uid: '6ecde11d-ba0a-48fb-9b7b-e6dbf31415d9',
-  color: 'off-black-dark',
-  plugin: 'hedvig_limited_color_picker',
+  color: 'standard',
+  plugin: 'hedvig_minimal_color_picker',
 }
 
 export const Default = () => (

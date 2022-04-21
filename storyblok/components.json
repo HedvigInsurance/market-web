@@ -217,7 +217,7 @@
           "pos": 12
         },
         "cta_color": {
-          "field_type": "hedvig-limited-color-picker",
+          "field_type": "hedvig-minimal-color-picker",
           "options": [],
           "type": "custom",
           "pos": 13
@@ -2905,7 +2905,7 @@
       "schema": {
         "color": {
           "type": "custom",
-          "field_type": "hedvig-limited-color-picker",
+          "field_type": "hedvig-minimal-color-picker",
           "options": [],
           "pos": 0
         },
