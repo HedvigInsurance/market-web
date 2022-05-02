@@ -22,6 +22,12 @@ export interface Peril {
   icon: PerilIcon
 }
 
+export interface PerilsCollection {
+  id: string
+  label: string
+  items: Peril[]
+}
+
 export type TypeOfContract =
   | 'SE_HOUSE'
   | 'SE_APARTMENT_BRF'
