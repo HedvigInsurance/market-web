@@ -18,7 +18,7 @@ export const Perils: React.FC<Props> = ({
 }) => {
   const tabItems = useMemo(
     () =>
-      perilsCollections.map((perilsCollection: any) => ({
+      perilsCollections.map((perilsCollection: PerilsCollection) => ({
         id: perilsCollection.id,
         name: perilsCollection.label,
         content: (
