@@ -5,7 +5,7 @@ import { PerilItem } from 'components/Perils/PerilItem/PerilItem'
 import { minimalColorComponentColors } from 'src/blocks/BaseBlockProps'
 import { Peril } from '../types'
 
-interface Props {
+type Props = {
   color: minimalColorComponentColors
   perils: ReadonlyArray<Peril>
   setCurrentPeril: (index: number) => void
@@ -40,12 +40,12 @@ const Wrapper = styled.div`
   }
 `
 
-export const PerilList: React.FC<Props> = ({
+export const PerilList = ({
   color,
   perils,
   setCurrentPeril,
   setIsShowingPeril,
-}) => (
+}: Props) => (
   <Wrapper>
     {perils.map((peril, perilIndex) => (
       <PerilItem

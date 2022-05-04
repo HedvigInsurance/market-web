@@ -1,19 +1,19 @@
 import { ReactNode } from 'react'
 
-interface IconVariant {
+type IconVariant = {
   svgUrl: string
 }
 
-interface IconVariants {
+type IconVariants = {
   dark: IconVariant
   light: IconVariant
 }
 
-export interface PerilIcon {
+export type PerilIcon = {
   variants: IconVariants
 }
 
-export interface Peril {
+export type Peril = {
   title: ReactNode
   description?: string
   covered: string[]
@@ -22,7 +22,7 @@ export interface Peril {
   icon: PerilIcon
 }
 
-export interface PerilsCollection {
+export type PerilsCollection = {
   id: string
   label: string
   items: Peril[]
