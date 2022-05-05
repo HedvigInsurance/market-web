@@ -89,6 +89,7 @@ const IconWrapper = styled.div`
   width: 2rem;
   height: 2rem;
   margin-right: 0.375rem;
+  flex-shrink: 0;
 
   ${MOBILE_BP_UP} {
     width: 2.5rem;
