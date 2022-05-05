@@ -72,7 +72,7 @@ export const usePerils = (
     }
 
     fetchPerils()
-  }, [])
+  }, [insuranceTypes, localeIso])
 
   return perils
 }

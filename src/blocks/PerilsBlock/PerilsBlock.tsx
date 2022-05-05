@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { useLocale } from 'context/LocaleContext'
 import { BaseBlockProps } from 'blocks/BaseBlockProps'
 import {
@@ -35,11 +35,12 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
   insurance_types,
 }) => {
   const { currentLocale } = useLocale()
-  const insuranceTypes = insurance_types.map(
-    (insuranceType) => insuranceType.value,
+  const insuranceTypes = useMemo(
+    () => insurance_types.map((insuranceType) => insuranceType.value),
+    [insurance_types],
   )
-  const perils = usePerils(insuranceTypes, currentLocale.iso)
 
+  const perils = usePerils(insuranceTypes, currentLocale.iso)
   const perilsCollections = perils.map(
     (perilItems: Peril[], i: number): PerilsCollection => ({
       id: insurance_types[i].value,
