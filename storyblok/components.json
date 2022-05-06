@@ -2448,6 +2448,18 @@
             {
               "value": "DK_TRAVEL_STUDENT",
               "name": "DK_TRAVEL_STUDENT"
+            },
+            {
+              "value": "SE_CAR_TRAFFIC",
+              "name": "SE_CAR_TRAFFIC"
+            },
+            {
+              "value": "SE_CAR_HALF",
+              "name": "SE_CAR_HALF"
+            },
+            {
+              "value": "SE_CAR_FULL",
+              "name": "SE_CAR_FULL"
             }
           ],
           "required": true,
