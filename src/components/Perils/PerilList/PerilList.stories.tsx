@@ -1,11 +1,11 @@
 import { withKnobs } from '@storybook/addon-knobs'
 import React from 'react'
 import { brfPerils } from '../perilMockData/brf'
-import { PerilCollection } from './PerilCollection'
+import { PerilList } from './PerilList'
 
 export default {
   title: 'Components/Perils/PerilCollection',
-  component: PerilCollection,
+  component: PerilList,
   decorators: [withKnobs],
   parameters: {
     paddings: [
@@ -16,9 +16,9 @@ export default {
 }
 
 export const Default = () => (
-  <PerilCollection
+  <PerilList
     color="standard"
-    perils={brfPerils}
+    perils={brfPerils[0].items}
     setCurrentPeril={() => 1}
     setIsShowingPeril={() => true}
   />

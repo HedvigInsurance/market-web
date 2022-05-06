@@ -17,50 +17,62 @@ const getGiraffeEndpoint = (): string => {
   return (window as any).GIRAFFE_ENDPOINT
 }
 
-export const usePerils = (insuranceType: TypeOfContract, localeIso: Locale) => {
-  const [perils, setPerils] = useState<[] | Peril[]>([])
+const perilsQuery = `
+query Perils($typeOfContract: TypeOfContract!, $localeIso: Locale!) {
+  contractPerils(contractType: $typeOfContract, locale: $localeIso) {
+      title
+      description
+      covered
+      info
+      icon {
+        variants {
+          light {
+            svgUrl
+          }
+        }
+      }
+    }
+  }
+`
+
+export const usePerils = (
+  insuranceTypes: TypeOfContract[],
+  localeIso: Locale,
+) => {
+  const [perils, setPerils] = useState<[] | Peril[][]>([])
 
   useEffect(() => {
     const fetchPerils = async () => {
       const url = getGiraffeEndpoint()
+      const perilsArray: Peril[][] = []
 
-      const data = {
-        operationName: 'Perils',
-        variables: {
-          typeOfContract: insuranceType,
-          localeIso,
-        },
-        query: `
-          query Perils($typeOfContract: TypeOfContract!, $localeIso: Locale!) {
-            contractPerils(contractType: $typeOfContract, locale: $localeIso) {
-                title
-                description
-                covered
-                info
-                icon {
-                  variants {
-                    light {
-                      svgUrl
-                    }
-                  }
-                }
-              }
-            }
-          `,
-      }
-      const perilsRequest = await axios.post(url, data, {
-        withCredentials: false,
-        headers: {
-          Accept: '*/*',
-          'content-type': 'application/json',
-        },
-      })
-      const perilsData = perilsRequest.data.data.contractPerils
-      setPerils(perilsData)
+      await Promise.all(
+        insuranceTypes.map(async (insuranceType) => {
+          const data = {
+            operationName: 'Perils',
+            variables: {
+              typeOfContract: insuranceType,
+              localeIso,
+            },
+            query: perilsQuery,
+          }
+
+          const perilsRequest = await axios.post(url, data, {
+            withCredentials: false,
+            headers: {
+              Accept: '*/*',
+              'content-type': 'application/json',
+            },
+          })
+
+          perilsArray.push(perilsRequest.data.data.contractPerils)
+        }),
+      )
+      setPerils(perilsArray)
     }
 
     fetchPerils()
-  }, [insuranceType, localeIso])
+  }, [insuranceTypes, localeIso])
 
   return perils
 }

@@ -1,48 +1,37 @@
-import React, { useState } from 'react'
+import React, { useMemo } from 'react'
 import { minimalColorComponentColors } from 'src/blocks/BaseBlockProps'
 import { GlobalStory } from 'storyblok/StoryContainer'
-import { LocaleData } from 'l10n/locales'
-import { usePerils } from './data/usePerils'
+import { Tabs } from '../Tabs/Tabs'
 import { PerilCollection } from './PerilCollection/PerilCollection'
-import { PerilModal } from './PerilModal/PerilModal'
-import { TypeOfContract } from './types'
+import { PerilsCollection } from './types'
 
 type Props = {
   color?: minimalColorComponentColors
-  insuranceType: TypeOfContract
-  localeIsoCode: LocaleData['iso']
+  perilsCollections: PerilsCollection[]
   story: GlobalStory
 }
 
 export const Perils: React.FC<Props> = ({
-  insuranceType,
-  localeIsoCode,
-  story,
   color = 'standard',
+  perilsCollections,
+  story,
 }) => {
-  const perils = usePerils(insuranceType, localeIsoCode)
-
-  const [isShowingPeril, setIsShowingPeril] = useState(false)
-  const [currentPeril, setCurrentPeril] = useState(0)
-
-  return (
-    <>
-      <PerilCollection
-        color={color}
-        perils={perils}
-        setCurrentPeril={setCurrentPeril}
-        setIsShowingPeril={setIsShowingPeril}
-      />
-      {perils.length > 0 && (
-        <PerilModal
-          perils={perils}
-          currentPerilIndex={currentPeril}
-          setCurrentPeril={setCurrentPeril}
-          isVisible={isShowingPeril}
-          story={story}
-          onClose={() => setIsShowingPeril(false)}
-        />
-      )}
-    </>
+  const tabItems = useMemo(
+    () =>
+      perilsCollections.map((perilsCollection: PerilsCollection) => ({
+        id: perilsCollection.id,
+        name: perilsCollection.label,
+        content: (
+          <PerilCollection
+            key={perilsCollection.id}
+            perils={perilsCollection.items}
+            story={story}
+            color={color}
+          />
+        ),
+      })),
+    [color, perilsCollections, story],
   )
+
+  return <Tabs items={tabItems} />
 }

@@ -14,14 +14,14 @@ export default {
   },
 }
 
-const perilProps = brfPerils[1]
+const peril = brfPerils[0].items[0]
 
 export const Default = () => (
   <div style={{ maxWidth: '290px' }}>
     <PerilItem
-      title={perilProps.title}
+      title={peril.title}
       color="standard"
-      icon={perilProps.icon}
+      icon={peril.icon}
       onClick={action('click')}
     />
   </div>
