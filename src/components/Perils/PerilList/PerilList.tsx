@@ -2,7 +2,7 @@ import styled from '@emotion/styled'
 import React from 'react'
 import { LAPTOP_BP_UP, TABLET_BP_UP } from 'components/blockHelpers'
 import { PerilItem } from 'components/Perils/PerilItem/PerilItem'
-import { minimalColorComponentColors } from 'src/blocks/BaseBlockProps'
+import { minimalColorComponentColors } from 'blocks/BaseBlockProps'
 import { Peril } from '../types'
 
 type Props = {
