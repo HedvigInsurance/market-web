@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import { minimalColorComponentColors } from 'src/blocks/BaseBlockProps'
 import { GlobalStory } from 'storyblok/StoryContainer'
 import { Tabs } from '../Tabs/Tabs'
@@ -16,9 +16,20 @@ export const Perils: React.FC<Props> = ({
   perilsCollections,
   story,
 }) => {
-  const tabItems = useMemo(
-    () =>
-      perilsCollections.map((perilsCollection: PerilsCollection) => ({
+  if (perilsCollections.length === 1) {
+    return (
+      <PerilCollection
+        key={perilsCollections[0].id}
+        perils={perilsCollections[0].items}
+        story={story}
+        color={color}
+      />
+    )
+  }
+
+  return (
+    <Tabs
+      items={perilsCollections.map((perilsCollection: PerilsCollection) => ({
         id: perilsCollection.id,
         name: perilsCollection.label,
         content: (
@@ -29,9 +40,7 @@ export const Perils: React.FC<Props> = ({
             color={color}
           />
         ),
-      })),
-    [color, perilsCollections, story],
+      }))}
+    />
   )
-
-  return <Tabs items={tabItems} />
 }
