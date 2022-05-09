@@ -104,9 +104,6 @@ const IconWrapper = styled.div`
   svg {
     width: 100%;
     height: 100%;
-    ${TABLET_BP_UP} {
-      transform: translateX(-0.625rem);
-    }
   }
 `
 
