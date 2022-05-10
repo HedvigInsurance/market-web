@@ -44,9 +44,8 @@ export const usePerils = (
   useEffect(() => {
     const fetchPerils = async () => {
       const url = getGiraffeEndpoint()
-      const perilsArray: Peril[][] = []
 
-      await Promise.all(
+      const perilsArray = await Promise.all(
         insuranceTypes.map(async (insuranceType) => {
           const data = {
             operationName: 'Perils',
@@ -65,7 +64,7 @@ export const usePerils = (
             },
           })
 
-          perilsArray.push(perilsRequest.data.data.contractPerils)
+          return perilsRequest.data.data.contractPerils
         }),
       )
       setPerils(perilsArray)
