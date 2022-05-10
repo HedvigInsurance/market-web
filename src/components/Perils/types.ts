@@ -15,6 +15,7 @@ export type PerilIcon = {
 
 export type Peril = {
   title: ReactNode
+  disabled?: boolean
   description?: string
   covered: string[]
   exceptions: string[]

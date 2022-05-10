@@ -26,3 +26,15 @@ export const Default = () => (
     />
   </div>
 )
+
+export const Disabled = () => (
+  <div style={{ maxWidth: '184px', margin: 'auto' }}>
+    <PerilItem
+      title={peril.title}
+      color="standard"
+      disabled={true}
+      icon={peril.icon}
+      onClick={action('click')}
+    />
+  </div>
+)
