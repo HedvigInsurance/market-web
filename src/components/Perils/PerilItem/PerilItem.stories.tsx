@@ -17,10 +17,22 @@ export default {
 const peril = brfPerils[0].items[0]
 
 export const Default = () => (
-  <div style={{ maxWidth: '290px' }}>
+  <div style={{ maxWidth: '184px', margin: 'auto' }}>
     <PerilItem
       title={peril.title}
       color="standard"
+      icon={peril.icon}
+      onClick={action('click')}
+    />
+  </div>
+)
+
+export const Disabled = () => (
+  <div style={{ maxWidth: '184px', margin: 'auto' }}>
+    <PerilItem
+      title={peril.title}
+      color="standard"
+      disabled={true}
       icon={peril.icon}
       onClick={action('click')}
     />

@@ -13,6 +13,7 @@ import { useIcon } from '../data/useIcon'
 interface PerilItemProps {
   title: React.ReactNode
   color: minimalColorComponentColors
+  disabled?: boolean
   icon: PerilIcon
   onClick: () => void
 }
@@ -36,7 +37,9 @@ const OuterContainer = styled.div`
   }
 `
 
-const InnerContainer = styled.button<{ color: minimalColorComponentColors }>`
+const InnerContainer = styled.button<{
+  color: minimalColorComponentColors
+}>`
   display: flex;
   width: 100%;
   align-items: center;
@@ -47,12 +50,19 @@ const InnerContainer = styled.button<{ color: minimalColorComponentColors }>`
   color: inherit;
   font-family: inherit;
   border-radius: 0.375rem;
-  background-color: ${({ color }) =>
-    color === 'standard-inverse' ? colorsV3.gray100 : colorsV3.white};
+  background-color: ${colorsV3.white};
   border: 0;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transition: all 150ms ease-in-out;
   appearance: none;
+
+  &:disabled {
+    color: ${colorsV3.gray500};
+    background-color: ${colorsV3.gray100};
+    border: 1px solid ${colorsV3.gray300};
+    cursor: initial;
+  }
 
   ${TABLET_BP_UP} {
     position: absolute;
@@ -68,7 +78,7 @@ const InnerContainer = styled.button<{ color: minimalColorComponentColors }>`
     align-items: flex-start;
     justify-content: space-between;
 
-    &:hover {
+    &:not([disabled]):hover {
       box-shadow: 0 0 16px rgba(0, 0, 0, 0.08);
       transform: translateY(-2px);
     }
@@ -78,7 +88,7 @@ const InnerContainer = styled.button<{ color: minimalColorComponentColors }>`
     outline: none;
   }
 
-  &:active {
+  &:not([disabled]):active {
     background-color: ${colorsV3.gray300};
     box-shadow: none;
   }
@@ -119,6 +129,7 @@ const Title = styled('h4')`
 export const PerilItem: React.FC<PerilItemProps> = ({
   title,
   color,
+  disabled,
   icon,
   onClick,
 }) => {
@@ -127,7 +138,7 @@ export const PerilItem: React.FC<PerilItemProps> = ({
 
   return (
     <OuterContainer>
-      <InnerContainer color={color} onClick={onClick}>
+      <InnerContainer color={color} disabled={disabled} onClick={onClick}>
         <IconWrapper dangerouslySetInnerHTML={{ __html: iconString }} />
         <Title>{title}</Title>
       </InnerContainer>

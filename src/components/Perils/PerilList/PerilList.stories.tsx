@@ -4,7 +4,7 @@ import { brfPerils } from '../perilMockData/brf'
 import { PerilList } from './PerilList'
 
 export default {
-  title: 'Components/Perils/PerilCollection',
+  title: 'Components/Perils/PerilList',
   component: PerilList,
   decorators: [withKnobs],
   parameters: {
@@ -16,10 +16,12 @@ export default {
 }
 
 export const Default = () => (
-  <PerilList
-    color="standard"
-    perils={brfPerils[0].items}
-    setCurrentPeril={() => 1}
-    setIsShowingPeril={() => true}
-  />
+  <div style={{ maxWidth: '800px', margin: 'auto' }}>
+    <PerilList
+      color="standard"
+      perils={brfPerils[0].items}
+      setCurrentPeril={() => 1}
+      setIsShowingPeril={() => true}
+    />
+  </div>
 )

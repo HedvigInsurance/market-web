@@ -219,6 +219,7 @@ export const mockPerils: PerilsCollection[] = [
       },
       {
         title: 'Assault',
+        disabled: true,
         info:
           'How you act in various situations affects the level of compensation. If you intervene in a fight or if you are under the influence of alcohol or drugs, then compensation will be lowered or of zero value.',
         covered: [
@@ -247,6 +248,7 @@ export const mockPerils: PerilsCollection[] = [
       },
       {
         title: 'Travel illness',
+        disabled: true,
         info:
           'Always contact us directly through our app or by calling Hedvig Global Assistance on +45 38 48 94 61.',
         covered: [
@@ -275,6 +277,7 @@ export const mockPerils: PerilsCollection[] = [
       },
       {
         title: 'White goods',
+        disabled: true,
         info: "There's nothing special for you to think about.",
         covered: [
           'White goods/home appliances due to short circuit, over voltage or high voltage',
@@ -304,6 +307,7 @@ export const mockPerils: PerilsCollection[] = [
       },
       {
         title: 'All-risk',
+        disabled: true,
         info:
           "Take your mobile phone (theft-prone property) with you when leaving your car. Don't leave valuable property in your basement (ancillary space). If you check-in jewelry or watches in your bag while travelling, we will not be able to compensate you if they are lost.",
         covered: [
@@ -334,6 +338,7 @@ export const mockPerils: PerilsCollection[] = [
       },
       {
         title: 'Tenant ownership',
+        disabled: true,
         info: "There's nothing special for you to think about",
         covered: [
           'Water or fire damage on interior, e.g. your new kitchen',

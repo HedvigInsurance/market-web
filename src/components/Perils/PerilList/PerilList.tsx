@@ -51,6 +51,7 @@ export const PerilList = ({
       <PerilItem
         key={peril.title?.toString() || 'unknown'}
         color={color}
+        disabled={peril.disabled}
         title={peril.title}
         icon={peril.icon}
         onClick={() => {
