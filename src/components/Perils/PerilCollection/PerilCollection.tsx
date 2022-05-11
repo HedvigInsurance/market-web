@@ -14,6 +14,7 @@ type Props = {
 export const PerilCollection: React.FC<Props> = ({ perils, story, color }) => {
   const [isShowingPeril, setIsShowingPeril] = useState(false)
   const [currentPeril, setCurrentPeril] = useState(0)
+  const enabledPerils = perils.filter((peril) => !peril.disabled)
   return (
     <>
       <PerilList
@@ -22,9 +23,9 @@ export const PerilCollection: React.FC<Props> = ({ perils, story, color }) => {
         setCurrentPeril={setCurrentPeril}
         setIsShowingPeril={setIsShowingPeril}
       />
-      {perils.length > 0 && (
+      {enabledPerils.length > 0 && (
         <PerilModal
-          perils={perils}
+          perils={enabledPerils}
           currentPerilIndex={currentPeril}
           setCurrentPeril={setCurrentPeril}
           isVisible={isShowingPeril}
