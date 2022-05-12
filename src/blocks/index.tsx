@@ -22,6 +22,7 @@ import { QuoteBlock } from './QuoteBlock/QuoteBlock'
 import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
 import { TrustpilotBlock } from './TrustpilotBlock/TrustpilotBlock'
+import { TableBlock } from './TableBlock/TableBlock'
 
 const blockComponents = {
   app_buttons_block: AppButtonsBlock,
@@ -49,6 +50,7 @@ const blockComponents = {
   perils_block: PerilsBlock,
   spacer_block: SpacerBlock,
   spacer_block_brand_pivot: SpacerBlock,
+  table_block: TableBlock,
   trustpilot_block: TrustpilotBlock,
   youtube_video_block: YoutubeVideoBlock,
 }
