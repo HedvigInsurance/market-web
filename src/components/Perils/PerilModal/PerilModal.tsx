@@ -59,6 +59,7 @@ const DirectionButton = styled('button')`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
   width: 2rem;
   height: 2rem;
   padding: 0;
