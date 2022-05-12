@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table can render 1`] = `
+<table
+  class="css-qfk35h-Table e1vwxjz80"
+>
+  <tbody
+    class="css-r22c21-TableBody e1vwxjz83"
+  >
+    <tr
+      class="css-168pto2-TableRow e1vwxjz82"
+    >
+      <td
+        class="css-1etym39-TableCellElement e1vwxjz84"
+      >
+        hello
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`Table can render table header 1`] = `
+<table
+  class="css-qfk35h-Table e1vwxjz80"
+>
+  <thead
+    class="css-1q4jspl-TableHeadElement e1vwxjz81"
+  >
+    <tr
+      class="css-168pto2-TableRow e1vwxjz82"
+    >
+      <th
+        class="css-1pp02jo-TableHeadCellElement e1vwxjz85"
+      >
+        hello
+      </th>
+    </tr>
+  </thead>
+</table>
+`;
