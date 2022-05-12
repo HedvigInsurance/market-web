@@ -46,8 +46,11 @@ const Header = styled('div')`
 `
 
 const Title = styled.div`
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   font-size: 1.5rem;
   line-height: 1.2;
+  text-align: center;
   color: ${colorsV3.gray900};
 
   @media (min-width: 400px) {
