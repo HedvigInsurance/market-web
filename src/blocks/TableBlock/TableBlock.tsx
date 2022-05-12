@@ -1,4 +1,5 @@
 import React from 'react'
+import { colorsV3 } from '@hedviginsurance/brand'
 import {
   Table,
   TableBody,
@@ -7,10 +8,16 @@ import {
   TableRow,
 } from 'components/Table/Table'
 import { SectionWrapper, ContentWrapper } from 'components/blockHelpers'
+import { Tick } from 'components/icons/Tick'
+import { Dash } from 'src/components/icons/Dash'
 import { BaseBlockProps } from '../BaseBlockProps'
 
 type TableBlockProps = BaseBlockProps & {
   table: any
+}
+
+const getCellIcon = (cell: string) => {
+  return Number(cell) ? <Tick /> : <Dash fill={colorsV3.gray400} />
 }
 
 export const TableBlock = ({ color, index, size, table }: TableBlockProps) => {
@@ -41,7 +48,7 @@ export const TableBlock = ({ color, index, size, table }: TableBlockProps) => {
                       key={cell._uid}
                       align={cellIndex === 0 ? 'left' : 'center'}
                     >
-                      {cell.value}
+                      {cellIndex === 0 ? cell.value : getCellIcon(cell.value)}
                     </TableCell>
                   ))}
                 </TableRow>
