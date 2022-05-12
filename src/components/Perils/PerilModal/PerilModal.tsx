@@ -36,7 +36,7 @@ const Header = styled('div')`
   width: 100%;
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   margin-bottom: 2rem;
 
