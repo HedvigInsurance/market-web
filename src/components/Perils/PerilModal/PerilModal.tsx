@@ -36,7 +36,7 @@ const Header = styled('div')`
   width: 100%;
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   margin-bottom: 2rem;
 
@@ -46,8 +46,11 @@ const Header = styled('div')`
 `
 
 const Title = styled.div`
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   font-size: 1.5rem;
   line-height: 1.2;
+  text-align: center;
   color: ${colorsV3.gray900};
 
   @media (min-width: 400px) {
@@ -59,6 +62,7 @@ const DirectionButton = styled('button')`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
   width: 2rem;
   height: 2rem;
   padding: 0;
