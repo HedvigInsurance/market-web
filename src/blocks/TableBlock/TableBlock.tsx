@@ -18,10 +18,25 @@ import { Dash } from 'components/icons/Dash'
 import { Heading } from 'components/Heading/Heading'
 import { BaseBlockProps } from '../BaseBlockProps'
 
+type TableCell = {
+  value: string
+  _uid: string
+}
+
+type TableRow = {
+  body: TableCell[]
+  _uid: string
+}
+
+type TableType = {
+  thead: TableCell[]
+  tbody: TableRow[]
+}
+
 type TableBlockProps = BaseBlockProps & {
   title?: string
   text?: string
-  table: any
+  table: TableType
 }
 
 const TableHeader = styled.div({
@@ -66,7 +81,7 @@ export const TableBlock = ({
           {table.thead && (
             <TableHead>
               <TableRow>
-                {table.thead.map((cell: any, cellIndex: number) => (
+                {table.thead.map((cell: TableCell, cellIndex: number) => (
                   <TableCell
                     key={cell._uid}
                     align={cellIndex === 0 ? 'left' : 'center'}
@@ -79,9 +94,9 @@ export const TableBlock = ({
           )}
           {table.tbody && (
             <TableBody>
-              {table.tbody.map((row: any) => (
+              {table.tbody.map((row: TableRow) => (
                 <TableRow key={row._uid}>
-                  {row.body.map((cell: any, cellIndex: number) => (
+                  {row.body.map((cell: TableCell, cellIndex: number) => (
                     <TableCell
                       key={cell._uid}
                       align={cellIndex === 0 ? 'left' : 'center'}
