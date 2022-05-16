@@ -3058,6 +3058,68 @@
       "icon": null
     },
     {
+      "name": "table_block",
+      "display_name": null,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0
+        },
+        "text": {
+          "type": "text",
+          "pos": 1
+        },
+        "table": {
+          "type": "table",
+          "pos": 2
+        },
+        "size": {
+          "type": "option",
+          "min_options": "",
+          "use_uuid": true,
+          "options": [
+            {
+              "value": "none",
+              "name": "None"
+            },
+            {
+              "value": "xs",
+              "name": "XS"
+            },
+            {
+              "value": "sm",
+              "name": "SM"
+            },
+            {
+              "value": "md",
+              "name": "MD"
+            },
+            {
+              "value": "lg",
+              "name": "LG"
+            },
+            {
+              "value": "xl",
+              "name": "XL"
+            }
+          ],
+          "default_value": "sm",
+          "pos": 3
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "table_block",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
       "name": "title_paragraph_block",
       "display_name": null,
       "schema": {
