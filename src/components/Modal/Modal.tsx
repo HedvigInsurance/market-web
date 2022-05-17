@@ -60,8 +60,7 @@ const ModalContainer = styled.div<ModalContainerProps>`
 
   @media (min-width: 600px) {
     width: calc(100% - 2rem);
-    max-height: ${({ dynamicHeight }) =>
-      !dynamicHeight ? '42rem' : undefined};
+    max-height: ${({ dynamicHeight }) => (!dynamicHeight ? '42rem' : '100%')};
     height: ${({ dynamicHeight }) => (dynamicHeight ? 'auto' : undefined)};
   }
 
@@ -131,6 +130,19 @@ export const Modal: React.FC<ModalProps> = ({
     },
     [onClose],
   )
+
+  useEffect(() => {
+    // Disable scroll on body when modal is open
+    if (isVisible) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'initial'
+    }
+
+    return () => {
+      document.body.style.overflow = 'initial'
+    }
+  }, [isVisible])
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClick)
