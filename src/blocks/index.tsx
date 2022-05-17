@@ -16,6 +16,7 @@ import { CtaBlock } from './CtaBlock/CtaBlock'
 import { HeadlineBlock } from './HeadlineBlock/HeadlineBlock'
 import { ImageBlock } from './ImageBlock/ImageBlock'
 import { InsuranceInfoBlock } from './InsuranceInfoBlock/InsuranceInfoBlock'
+import { ModalBlock } from './ModalBlock/ModalBlock'
 import { PerilsBlock } from './PerilsBlock/PerilsBlock'
 import { PlainTextBlock } from './PlainTextBlock'
 import { QuoteBlock } from './QuoteBlock/QuoteBlock'
@@ -42,6 +43,7 @@ const blockComponents = {
   image_block: ImageBlock,
   image_text_block: ImageTextBlock,
   insurance_info_block: InsuranceInfoBlock,
+  modal_block: ModalBlock,
   perils_block: PerilsBlock,
   plain_text_block: PlainTextBlock,
   quote_block: QuoteBlock,
