@@ -166,7 +166,7 @@ export const PerilModal: React.FC<PerilModalProps & ModalProps> = ({
   const currentPeril = perils[currentPerilIndex % perils.length]
 
   return (
-    <Modal isVisible={isVisible} onClose={onClose}>
+    <Modal maxWidth="33rem" isVisible={isVisible} onClose={onClose}>
       <ModalWrapper>
         <Header>
           <DirectionButton

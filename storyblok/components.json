@@ -2564,6 +2564,56 @@
       "icon": null
     },
     {
+      "name": "modal_block",
+      "display_name": null,
+      "schema": {
+        "label": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Label for text button to open the modal"
+        },
+        "modal_max_width": {
+          "type": "number",
+          "pos": 1,
+          "display_name": "Max width for desktop in pixels"
+        },
+        "modal_content": {
+          "type": "bloks",
+          "maximum": "1",
+          "restrict_components": true,
+          "component_whitelist": ["table_block"],
+          "pos": 2
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "modal_block",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "Modal Block",
+      "display_name": null,
+      "schema": {},
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "Modal Block",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
       "name": "page",
       "display_name": "",
       "schema": {

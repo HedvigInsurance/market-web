@@ -3,11 +3,13 @@ import styled from '@emotion/styled'
 import { colorsV3 } from '@hedviginsurance/brand'
 import React, { useRef, useEffect, useCallback } from 'react'
 import { createPortal } from 'react-dom'
+import { TABLET_BP_UP } from '../blockHelpers'
 import { Cross } from '../icons/Cross'
 
-export interface ModalProps {
+export type ModalProps = {
   isVisible: boolean
   dynamicHeight?: boolean
+  maxWidth?: string | number
   onClose: () => void
 }
 
@@ -35,22 +37,11 @@ const Background = styled('div')`
   background-color: rgba(25, 25, 25, 0.4);
 `
 
-interface ModalContainerProps {
-  dynamicHeight?: boolean
-  isVisible: boolean
-}
+type ModalContainerProps = Omit<ModalProps, 'onClose'>
 
-const ModalContainer = styled('div')<ModalContainerProps>`
+const ModalContainer = styled.div<ModalContainerProps>`
   width: 100%;
-  max-width: 33rem;
-  max-height: calc(100vh - 6rem);
-  ${(props) =>
-    !props.dynamicHeight &&
-    css`
-      height: 100%;
-      min-height: 20rem;
-      max-height: 42rem;
-    `};
+  height: 100%;
   background: ${colorsV3.gray100};
   border-radius: 1rem;
   position: absolute;
@@ -67,18 +58,21 @@ const ModalContainer = styled('div')<ModalContainerProps>`
       ? 'translateX(-50%) translateY(-50%) scale(1)'
       : 'translateX(-50%) translateY(30%) scale(0.9)'};
 
-  @media (max-height: 900px) {
-    max-height: calc(100vh - 2rem);
+  @media (min-width: 600px) {
+    width: calc(100% - 2rem);
+    max-height: ${({ dynamicHeight }) => (!dynamicHeight ? '42rem' : '100%')};
+    height: ${({ dynamicHeight }) => (dynamicHeight ? 'auto' : undefined)};
   }
 
-  @media (max-width: 900px) {
-    max-width: calc(100% - 2rem);
-  }
+  ${TABLET_BP_UP} {
+    width: auto;
 
-  @media (max-width: 600px) {
-    max-width: 100%;
-    max-height: 100%;
-    min-height: 15rem;
+    ${({ maxWidth }) =>
+      maxWidth &&
+      css`
+        width: calc(100% - 2rem);
+        max-width: ${maxWidth};
+      `}
   }
 `
 
@@ -121,6 +115,7 @@ export const Modal: React.FC<ModalProps> = ({
   children,
   dynamicHeight,
   isVisible,
+  maxWidth,
   onClose,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -137,14 +132,35 @@ export const Modal: React.FC<ModalProps> = ({
   )
 
   useEffect(() => {
+    // Disable scroll on body when modal is open
+    if (isVisible) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'initial'
+    }
+
+    return () => {
+      document.body.style.overflow = 'initial'
+    }
+  }, [isVisible])
+
+  useEffect(() => {
     document.addEventListener('mousedown', handleClick)
     return () => document.removeEventListener('mousedown', handleClick)
   }, [handleClick])
 
+  if (typeof window !== 'object') {
+    return null
+  }
+
   return createPortal(
     <Wrapper isVisible={isVisible}>
       <Background>
-        <ModalContainer dynamicHeight={dynamicHeight} isVisible={isVisible}>
+        <ModalContainer
+          dynamicHeight={dynamicHeight}
+          isVisible={isVisible}
+          maxWidth={maxWidth}
+        >
           <ModalInnerContainer ref={containerRef}>
             {children}
           </ModalInnerContainer>
