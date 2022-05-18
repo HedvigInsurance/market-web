@@ -49,7 +49,7 @@ const ModalContainer = styled.div<ModalContainerProps>`
   top: 50%;
   box-shadow: 0 0 14px rgba(0, 0, 0, 0.06);
   box-sizing: border-box;
-  overflow-x: scroll;
+  overflow-x: auto;
   transition: opacity 350ms cubic-bezier(0.4, 0, 0.2, 1),
     transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
   opacity: ${(props) => (props.isVisible ? 1 : 0)};
