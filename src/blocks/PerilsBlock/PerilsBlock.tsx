@@ -14,6 +14,7 @@ import {
 import { GlobalStoryContainer } from 'storyblok/StoryContainer'
 import { Perils } from 'components/Perils'
 import { usePerils } from 'components/Perils/data/usePerils'
+import { getPerilsComparison } from 'components/Perils/Perils.helpers'
 
 export type ContractOption = {
   label: string
@@ -22,6 +23,7 @@ export type ContractOption = {
 
 export type PerilsBlockProps = BaseBlockProps & {
   insurance_types: ContractOption[]
+  compare_perils?: boolean
 }
 
 const ContentWrapper = styled(OriginalContentWrapper)`
@@ -33,6 +35,7 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
   index,
   size,
   insurance_types,
+  compare_perils,
 }) => {
   const { currentLocale } = useLocale()
   const insuranceTypes = useMemo(
@@ -40,7 +43,9 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
     [insurance_types],
   )
 
-  const perils = usePerils(insuranceTypes, currentLocale.iso)
+  let perils = usePerils(insuranceTypes, currentLocale.iso)
+  perils = compare_perils ? getPerilsComparison(perils) : perils
+
   const perilsCollections = perils.map(
     (perilItems: Peril[], i: number): PerilsCollection => ({
       id: insurance_types[i].value,
@@ -48,7 +53,6 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
       items: perilItems,
     }),
   )
-
   return (
     <GlobalStoryContainer>
       {({ globalStory }) => (
