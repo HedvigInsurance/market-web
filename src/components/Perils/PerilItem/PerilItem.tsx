@@ -62,6 +62,10 @@ const InnerContainer = styled.button<{
     background-color: ${colorsV3.gray100};
     border: 1px solid ${colorsV3.gray300};
     cursor: initial;
+
+    svg * {
+      fill: currentColor;
+    }
   }
 
   ${TABLET_BP_UP} {
