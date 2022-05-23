@@ -2742,9 +2742,14 @@
           "default_value": "lg",
           "pos": 1
         },
+        "compare_perils": {
+          "type": "boolean",
+          "pos": 2,
+          "description": "Compare Perils between tabs"
+        },
         "insurance_types": {
           "type": "bloks",
-          "pos": 2,
+          "pos": 3,
           "use_uuid": true,
           "options": [
             {
