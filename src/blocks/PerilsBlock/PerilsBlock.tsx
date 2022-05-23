@@ -43,10 +43,13 @@ export const PerilsBlock: React.FC<PerilsBlockProps> = ({
     [insurance_types],
   )
 
-  let perils = usePerils(insuranceTypes, currentLocale.iso)
-  perils = compare_perils ? getPerilsComparison(perils) : perils
+  const perils = usePerils(insuranceTypes, currentLocale.iso)
+  const perilsGroup = useMemo(
+    () => (compare_perils ? getPerilsComparison(perils) : perils),
+    [compare_perils, perils],
+  )
 
-  const perilsCollections = perils.map(
+  const perilsCollections = perilsGroup.map(
     (perilItems: Peril[], i: number): PerilsCollection => ({
       id: insurance_types[i].value,
       label: insurance_types[i].label,
