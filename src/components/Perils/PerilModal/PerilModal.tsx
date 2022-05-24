@@ -68,7 +68,7 @@ const DirectionButton = styled('button')`
   padding: 0;
   cursor: pointer;
   background: none;
-  border: 1px solid currentColor;
+  border: 1px solid ${colorsV3.gray900};
   border-radius: 0.5rem;
 
   svg {
