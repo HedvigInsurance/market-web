@@ -83,6 +83,7 @@ export const globalStyles = css`
   input,
   button {
     font-size: inherit;
+    font-family: inherit;
   }
 `
 export const globalStylesStorybook = css`
