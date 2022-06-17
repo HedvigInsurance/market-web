@@ -72,14 +72,13 @@ test('it stitches together a correct sitemap with cache miss', () => {
     )
     .then((response: SitemapXml) => {
       const partialExpectedResponse = [
-        { changefreq: 'daily', loc: '/se-en/hello-world-26', priority: '0.7' },
+        { changefreq: 'daily', loc: '/se-en/hello-world-26' },
       ]
 
       expect(
         response.urlset.url.map((u) => ({
           loc: u.loc[0],
           changefreq: u.changefreq[0],
-          priority: u.priority[0],
         })),
       ).toEqual(partialExpectedResponse)
     })
@@ -105,7 +104,6 @@ test('it stitches together a correct sitemap with cache hit', () => {
   const cachedSitemap = [
     {
       url: 'blah',
-      priority: 0.7,
       changefreq: 'daily',
     },
   ]
@@ -133,13 +131,11 @@ test('it stitches together a correct sitemap with cache hit', () => {
         response.urlset.url.map((u) => ({
           loc: u.loc[0],
           changefreq: u.changefreq[0],
-          priority: u.priority[0],
         })),
       ).toEqual([
         {
           loc: 'blah',
           changefreq: 'daily',
-          priority: '0.7',
         },
       ])
     })
