@@ -16,7 +16,6 @@ export interface SitemapXml {
     url: ReadonlyArray<{
       loc: [string]
       changefreq: [Changefreq]
-      priority: [string]
     }>
   }
 }
@@ -62,7 +61,6 @@ const getSitemapLinks = async (logger: Logger): Promise<ReadonlyArray<Url>> => {
     .filter(({ page }) => page?.story?.content?.robots === 'index')
     .map(({ url }) => ({
       url,
-      priority: 0.7,
       changefreq: 'daily' as Changefreq,
     }))
 

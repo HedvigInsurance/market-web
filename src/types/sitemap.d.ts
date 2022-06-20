@@ -10,7 +10,6 @@ declare module 'sitemap' {
   export interface Url {
     url: string
     changefreq: Changefreq
-    priority: number
   }
   export interface CreateSitemapOptions {
     hostname?: string
