@@ -1020,6 +1020,26 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
+"@datadog/browser-core@4.13.0":
+  version "4.13.0"
+  resolved "https://registry.yarnpkg.com/@datadog/browser-core/-/browser-core-4.13.0.tgz#5819593414340252914278bf86d8a04190729c5b"
+  integrity sha512-MfMge7/kj1ZCUv/MSRHI+iVtjvJGLe3rtCu3EgBTArqQ5f8aYbkFzT+YuPSqEW8U1Fj0TG5JF5GiJooY4PV4Pg==
+
+"@datadog/browser-rum-core@4.13.0":
+  version "4.13.0"
+  resolved "https://registry.yarnpkg.com/@datadog/browser-rum-core/-/browser-rum-core-4.13.0.tgz#102431d70177d699af51173ed42c9e2a7586a6dc"
+  integrity sha512-V0Xz1sTQxzch9pmdw3xNRMlnoK4n3FCrdLgJdcCSeh5ftfYXlapIamgUxMKbPIX94tcbdVrfkbs4tTS0WEe26g==
+  dependencies:
+    "@datadog/browser-core" "4.13.0"
+
+"@datadog/browser-rum@^4.13.0":
+  version "4.13.0"
+  resolved "https://registry.yarnpkg.com/@datadog/browser-rum/-/browser-rum-4.13.0.tgz#bfede4b2a5d104d7d608398afb1aeecddb1ec701"
+  integrity sha512-QRfD6+1lO+jPsErm20M8VHJLC1+82FBxo6D/iFcQdqrONr2A/KIf4KhCYzAG2OOUxknqzG90Sj+6B52FjMivkQ==
+  dependencies:
+    "@datadog/browser-core" "4.13.0"
+    "@datadog/browser-rum-core" "4.13.0"
+
 "@emotion/cache@^10.0.27", "@emotion/cache@^10.0.9":
   version "10.0.29"
   resolved "https://registry.yarnpkg.com/@emotion/cache/-/cache-10.0.29.tgz#87e7e64f412c060102d589fe7c6dc042e6f9d1e0"
