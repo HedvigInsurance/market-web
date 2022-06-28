@@ -7,6 +7,9 @@ import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter } from 'react-router-dom'
 import { LocaleProvider } from 'context/LocaleContext'
 import { HotApp } from '../App'
+import * as Datadog from './utils/datadog'
+
+Datadog.initRum()
 
 hydrate(
   <Provider initialState={{ ...(window as any).__INITIAL_STATE__ }}>

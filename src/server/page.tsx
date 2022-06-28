@@ -103,6 +103,11 @@ const template = ({
       window.APP_ENVIRONMENT = ${JSON.stringify(
         process.env.APP_ENVIRONMENT || 'development',
       )};
+      window.DATADOG_CONFIG = ${JSON.stringify({
+        applicationId: process.env.DATADOG_APPLICATION_ID,
+        clientToken: process.env.DATADOG_CLIENT_TOKEN,
+        version: process.env.HEROKU_SLUG_COMMIT,
+      })};
       </script>
     <script src="${scriptLocation}"></script>
     <div id="modal></div>
