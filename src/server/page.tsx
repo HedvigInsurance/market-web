@@ -21,7 +21,6 @@ import { LocaleData } from 'l10n/locales'
 import { fallbackLocale, getLocaleData } from 'l10n/l10n-utils'
 import { LocaleProvider } from 'context/LocaleContext'
 import { App } from '../App'
-import { sentryConfig } from './config/sentry'
 import { favicons } from './utils/favicons'
 import { allTracking, gtmDevScript, gtmProdScript } from './utils/tracking'
 
@@ -70,10 +69,6 @@ const template = ({
     
     ${allTracking(nonce, process.env.APP_ENVIRONMENT)}
     ${favicons}
-    <script src="https://browser.sentry-cdn.com/4.2.3/bundle.min.js" crossorigin="anonymous"></script>
-    <script nonce="${nonce}">
-      Sentry.init(${JSON.stringify(sentryConfig())})
-    </script>
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i&display=swap" rel="stylesheet">
     <!-- TrustBox script -->
     <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
@@ -103,6 +98,11 @@ const template = ({
       window.APP_ENVIRONMENT = ${JSON.stringify(
         process.env.APP_ENVIRONMENT || 'development',
       )};
+      window.DATADOG_CONFIG = ${JSON.stringify({
+        applicationId: process.env.DATADOG_APPLICATION_ID,
+        clientToken: process.env.DATADOG_CLIENT_TOKEN,
+        version: process.env.HEROKU_SLUG_COMMIT,
+      })};
       </script>
     <script src="${scriptLocation}"></script>
     <div id="modal></div>

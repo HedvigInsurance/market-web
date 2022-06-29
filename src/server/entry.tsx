@@ -1,6 +1,5 @@
 import 'source-map-support/register'
 
-import * as Sentry from '@sentry/node'
 import Koa, { Middleware } from 'koa'
 import auth from 'koa-basic-auth'
 import bodyParser from 'koa-bodyparser'
@@ -13,7 +12,6 @@ import koaHelmet from 'koa-helmet'
 import { configureAssets } from 'server/middlewares/assets'
 import { routes } from '../routes'
 import { config } from './config'
-import { sentryConfig } from './config/sentry'
 import { appLogger } from './logging'
 import {
   inCaseOfEmergency,
@@ -32,20 +30,9 @@ import { getPageMiddleware } from './page'
 import { sitemapXml } from './sitemap'
 import { nukeCache } from './utils/storyblok'
 
-Sentry.init({
-  ...sentryConfig(),
-  serverName: process.env.HEROKU_DYNO_ID,
-  attachStacktrace: true,
-})
-
 const getPort = () => (process.env.PORT ? Number(process.env.PORT) : 8030)
 
 appLogger.info(`Booting server on ${getPort()} 👢`)
-appLogger.info(
-  `Sentry is ${
-    sentryConfig().enabled ? 'enabled' : 'disabled'
-  }, with environment "${sentryConfig().environment}"`,
-)
 
 if (!config.storyblokApiToken) {
   appLogger.fatal('No api token for storyblok provided!')
