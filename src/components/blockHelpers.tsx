@@ -3,7 +3,6 @@ import { colorsV3, fonts } from '@hedviginsurance/brand'
 import { match } from 'matchly'
 import React from 'react'
 import { RouteComponentProps, withRouter } from 'react-router-dom'
-import ReactVisibilitySensor from 'react-visibility-sensor'
 import { SectionSize } from 'src/utils/SectionSize'
 import {
   MinimalColorComponent,
@@ -253,10 +252,9 @@ const getContentMaxWidth = (brandPivot: boolean, fullWidth: boolean) => {
 }
 
 export const ContentWrapperStyled = styled('div')<{
-  visible: boolean
   brandPivot: boolean
   fullWidth: boolean
-}>(({ visible, brandPivot, fullWidth }) => ({
+}>(({ brandPivot, fullWidth }) => ({
   width: '100%',
   padding: '0 ' + CONTENT_GUTTER,
   margin: '0 auto',
@@ -266,10 +264,6 @@ export const ContentWrapperStyled = styled('div')<{
   },
 
   ...getContentMaxWidth(brandPivot, fullWidth),
-
-  opacity: visible ? 1 : 0,
-  transform: visible ? 'translateY(0)' : 'translateY(5%)',
-  transition: 'opacity 800ms, transform 500ms',
 }))
 
 export interface ContentWrapperProps {
@@ -285,24 +279,13 @@ export const ContentWrapper: React.FC<ContentWrapperProps> = ({
   fullWidth = false,
   ...props
 }) => (
-  <ReactVisibilitySensor
-    partialVisibility
-    offset={{
-      top: -500,
-      bottom: typeof window !== 'undefined' ? window.innerHeight / 6 : 0,
-    }}
+  <ContentWrapperStyled
+    brandPivot={brandPivot}
+    fullWidth={fullWidth}
+    {...props}
   >
-    {({ isVisible }) => (
-      <ContentWrapperStyled
-        visible={index <= 2 || isVisible}
-        brandPivot={brandPivot}
-        fullWidth={fullWidth}
-        {...props}
-      >
-        {children}
-      </ContentWrapperStyled>
-    )}
-  </ReactVisibilitySensor>
+    {children}
+  </ContentWrapperStyled>
 )
 
 const ErrorBlockWrapper = styled(SectionWrapper)({
