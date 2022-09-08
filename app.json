@@ -1,5 +1,6 @@
 {
   "scripts": {},
+  "stack": "heroku-22",
   "env": {
     "USE_AUTH": "true",
     "USE_HELMET": "true",
