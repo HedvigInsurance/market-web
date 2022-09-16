@@ -2359,107 +2359,133 @@
           "options": [
             {
               "value": "SE_HOUSE",
-              "name": "SE_HOUSE"
+              "name": "SE_HOUSE",
+              "_uid": "2149a9dc-6dc1-4d5d-ae32-445d49d0d12e"
             },
             {
               "value": "SE_APARTMENT_BRF",
-              "name": "SE_APARTMENT_BRF"
+              "name": "SE_APARTMENT_BRF",
+              "_uid": "df741d85-99a6-41b6-a232-c4145b84b6c3"
             },
             {
               "value": "SE_APARTMENT_RENT",
-              "name": "SE_APARTMENT_RENT"
+              "name": "SE_APARTMENT_RENT",
+              "_uid": "3b2fcf9b-3897-4ecb-8a0e-c2d84d699b1f"
             },
             {
               "value": "SE_APARTMENT_STUDENT_BRF",
-              "name": "SE_APARTMENT_STUDENT_BRF"
+              "name": "SE_APARTMENT_STUDENT_BRF",
+              "_uid": "ff4c0104-ee24-441a-98ed-7c6d6f2c8796"
             },
             {
               "value": "SE_APARTMENT_STUDENT_RENT",
-              "name": "SE_APARTMENT_STUDENT_RENT"
+              "name": "SE_APARTMENT_STUDENT_RENT",
+              "_uid": "b6853407-7a21-4ba0-b342-63fa573ff5fb"
             },
             {
               "value": "SE_ACCIDENT",
-              "name": "SE_ACCIDENT"
+              "name": "SE_ACCIDENT",
+              "_uid": "12f77abc-9d76-4584-b295-bdeb634f95ac"
             },
             {
               "value": "NO_HOME_CONTENT_OWN",
-              "name": "NO_HOME_CONTENT_OWN"
+              "name": "NO_HOME_CONTENT_OWN",
+              "_uid": "c6d873d4-c39a-4858-b269-99b3148481a4"
             },
             {
               "value": "NO_HOME_CONTENT_RENT",
-              "name": "NO_HOME_CONTENT_RENT"
+              "name": "NO_HOME_CONTENT_RENT",
+              "_uid": "1a2087a8-ff27-4ac5-a2aa-82a5a4efce51"
             },
             {
-              "value": "NO_HOME_CONTENT_YOUTH_OWN",
-              "name": "NO_HOME_CONTENT_YOUTH_OWN"
+              "_uid": "6f648e72-c688-4601-adca-bd43b2207b1f",
+              "value": "NO_HOME_CONTENT_STUDENT_OWN",
+              "name": "NO_HOME_CONTENT_STUDENT_OWN"
             },
             {
-              "value": "NO_HOME_CONTENT_YOUTH_RENT",
-              "name": "NO_HOME_CONTENT_YOUTH_RENT"
+              "_uid": "62d6926f-43c0-4d73-8d2c-77ded23f5012",
+              "value": "NO_HOME_CONTENT_STUDENT_RENT",
+              "name": "NO_HOME_CONTENT_STUDENT_RENT"
             },
             {
               "value": "NO_HOUSE",
-              "name": "NO_HOUSE"
+              "name": "NO_HOUSE",
+              "_uid": "d5a3f09d-5d7d-4e7e-838c-382f354bccea"
             },
             {
               "value": "NO_TRAVEL",
-              "name": "NO_TRAVEL"
+              "name": "NO_TRAVEL",
+              "_uid": "02aa1841-307e-491e-81e4-d083375fb025"
             },
             {
-              "value": "NO_TRAVEL_YOUTH",
-              "name": "NO_TRAVEL_YOUTH"
+              "_uid": "c5857b83-acfd-4343-a9a0-3d2127827d7f",
+              "value": "NO_TRAVEL_STUDENT",
+              "name": "NO_TRAVEL_STUDENT"
             },
             {
               "value": "NO_ACCIDENT",
-              "name": "NO_ACCIDENT"
-            },
-            {
-              "value": "NO_ACCIDENT_YOUTH",
-              "name": "NO_ACCIDENT_YOUTH"
+              "name": "NO_ACCIDENT",
+              "_uid": "e317ef71-717b-4ef5-9cb3-5443f9ee41b6"
             },
             {
               "value": "DK_HOME_CONTENT_OWN",
-              "name": "DK_HOME_CONTENT_OWN"
+              "name": "DK_HOME_CONTENT_OWN",
+              "_uid": "9cf60d93-f857-4940-8d09-8fe5a12f80bc"
             },
             {
               "value": "DK_HOME_CONTENT_RENT",
-              "name": "DK_HOME_CONTENT_RENT"
+              "name": "DK_HOME_CONTENT_RENT",
+              "_uid": "c01469ec-ba85-444b-a89e-41b488f359d8"
             },
             {
               "value": "DK_HOME_CONTENT_STUDENT_OWN",
-              "name": "DK_HOME_CONTENT_STUDENT_OWN"
+              "name": "DK_HOME_CONTENT_STUDENT_OWN",
+              "_uid": "5ab3beef-2cbd-4b4a-86cb-4002d06670d2"
             },
             {
               "value": "DK_HOME_CONTENT_STUDENT_RENT",
-              "name": "DK_HOME_CONTENT_STUDENT_RENT"
+              "name": "DK_HOME_CONTENT_STUDENT_RENT",
+              "_uid": "0dee0d42-733d-4ba9-98f9-62f7a54ca65d"
+            },
+            {
+              "_uid": "f8b03795-4446-45b2-8e98-d30442c9e6be",
+              "value": "DK_HOUSE",
+              "name": "DK_HOUSE"
             },
             {
               "value": "DK_ACCIDENT",
-              "name": "DK_ACCIDENT"
+              "name": "DK_ACCIDENT",
+              "_uid": "700c183e-7c55-451b-ad0f-5420ff99161f"
             },
             {
               "value": "DK_ACCIDENT_STUDENT",
-              "name": "DK_ACCIDENT_STUDENT"
+              "name": "DK_ACCIDENT_STUDENT",
+              "_uid": "f01b7c9a-9cc3-42d2-bda4-74829d1d0e49"
             },
             {
               "value": "DK_TRAVEL",
-              "name": "DK_TRAVEL"
+              "name": "DK_TRAVEL",
+              "_uid": "b38a4937-bb96-4326-81a9-a0e36add00a9"
             },
             {
               "value": "DK_TRAVEL_STUDENT",
-              "name": "DK_TRAVEL_STUDENT"
+              "name": "DK_TRAVEL_STUDENT",
+              "_uid": "18b12c54-9b3b-493c-9c56-54aaca26b9c1"
             },
             {
               "value": "SE_CAR_TRAFFIC",
-              "name": "SE_CAR_TRAFFIC"
+              "name": "SE_CAR_TRAFFIC",
+              "_uid": "01b9af22-e1e6-4bb2-a644-872ea1dad5b5"
             },
             {
               "value": "SE_CAR_HALF",
-              "name": "SE_CAR_HALF"
+              "name": "SE_CAR_HALF",
+              "_uid": "05dfe4ef-bfa6-4be1-9552-5d5643c4e091"
             },
             {
               "value": "SE_CAR_FULL",
-              "name": "SE_CAR_FULL"
+              "name": "SE_CAR_FULL",
+              "_uid": "400ee27d-4c81-4dd4-a456-4e4b615d4be7"
             }
           ],
           "required": true,
