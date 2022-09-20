@@ -21,33 +21,6 @@ export const structuredFAQPage = (
   })),
 })
 
-export const structuredSoftwareApplication = () => [
-  {
-    '@context': 'http://schema.org',
-    '@type': 'SoftwareApplication',
-    name: 'Hedvig',
-    operatingSystem: 'IOS',
-    applicationCategory: 'FinanceApplication',
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.7',
-      ratingCount: '1200',
-    },
-  },
-  {
-    '@context': 'http://schema.org',
-    '@type': 'SoftwareApplication',
-    name: 'Hedvig',
-    operatingSystem: 'ANDROID',
-    applicationCategory: 'FinanceApplication',
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.4',
-      ratingCount: '180',
-    },
-  },
-]
-
 interface StructuredWebSiteParams {
   description?: string
 }
