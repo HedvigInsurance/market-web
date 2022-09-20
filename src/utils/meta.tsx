@@ -11,7 +11,6 @@ import { getPublicHost, getStoryblokImage } from './storyblok'
 import {
   structuredDataReviewSnippet,
   structuredOrganization,
-  structuredSoftwareApplication,
   structuredWebSite,
 } from './structuredData'
 
@@ -60,7 +59,6 @@ export const getMeta = ({
           description:
             globalStory.content.structured_data_organization_description,
         }),
-        ...structuredSoftwareApplication(),
         ...(globalStory.content.structured_data_review_value &&
         globalStory.content.structured_data_review_count
           ? [
