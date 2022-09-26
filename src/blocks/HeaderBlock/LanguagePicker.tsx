@@ -75,6 +75,7 @@ export const LanguagePicker: React.FC<LanguagePickerProps> = ({
           key={label}
           active={label === currentLocale.label}
           href={'/' + label}
+          hrefLang={'/' + label}
         >
           {langLabel}
         </Lang>
