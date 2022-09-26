@@ -70,12 +70,12 @@ export const LanguagePicker: React.FC<LanguagePickerProps> = ({
 
   return (
     <MenuListItem>
-      {associatedLocales.map(({ label, langLabel }) => (
+      {associatedLocales.map(({ label, langLabel, hrefLang }) => (
         <Lang
           key={label}
           active={label === currentLocale.label}
           href={'/' + label}
-          hrefLang={'/' + label}
+          hrefLang={'/' + hrefLang}
         >
           {langLabel}
         </Lang>
