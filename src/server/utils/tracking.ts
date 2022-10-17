@@ -1,21 +1,3 @@
-const snap = `
- (function(win, doc, sdk_url){
-    if(win.snaptr) return;
-    var tr=win.snaptr=function(){
-    tr.handleRequest? tr.handleRequest.apply(tr, arguments):tr.queue.push(arguments);
-  };
-    tr.queue = [];
-    var s='script';
-    var new_script_section=doc.createElement(s);
-    new_script_section.async=!0;
-    new_script_section.src=sdk_url;
-    var insert_pos=doc.getElementsByTagName(s)[0];
-    insert_pos.parentNode.insertBefore(new_script_section, insert_pos);
-  })(window, document, 'https://sc-static.net/scevent.min.js');
-    snaptr('init','2615a7c0-d8e9-4ae6-9914-814a1017010d')
-    snaptr('track','PAGE_VIEW')
-`
-
 export const gtmDevScript = {
   head: `<!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -53,11 +35,6 @@ export const allTracking = (
 </script>
 
 ${appEnvironment === 'production' ? gtmProdScript.head : gtmDevScript.head}
-
-<script nonce="${nonce}">
-${[snap].join(';\n')}
-</script>
-
 
 <script nonce="${nonce}">
   window.intercomSettings = {
