@@ -10,6 +10,7 @@ import Router from 'koa-router'
 import { Logger } from 'typescript-logging'
 import koaHelmet from 'koa-helmet'
 import { configureAssets } from 'server/middlewares/assets'
+import { Features, isFeatureEnabled } from 'server/features'
 import { routes } from '../routes'
 import { config } from './config'
 import { appLogger } from './logging'
@@ -21,6 +22,7 @@ import {
   setRequestUuidMiddleware,
 } from './middlewares/enhancers'
 import {
+  abTestingRedirects,
   forceHost,
   geoRedirect,
   manualRedirects,
@@ -84,6 +86,10 @@ router.get('/:locale(se|se-en|no|no-en)/referrals/:code', async (ctx) => {
   ctx.redirect(`/${ctx.params.locale}/forever/${ctx.params.code}`)
 })
 router.use('/*', manualRedirects)
+if (isFeatureEnabled(Features.AbRedirects)) {
+  appLogger.debug('AB testing redirects enabled')
+  router.use('/*', abTestingRedirects)
+}
 app.use(
   proxy({
     host: 'https://a.storyblok.com',

@@ -1,7 +1,7 @@
+import * as Koa from 'koa'
 import { Middleware } from 'koa'
 import { IMiddleware } from 'koa-router'
 import { Logger } from 'typescript-logging'
-import * as Koa from 'koa'
 import { lookupCountry } from 'server/utils/ip2location'
 import { getDatasourceEntries } from 'server/utils/storyblok'
 import { DatasourceEntry } from 'storyblok/StoryContainer'
@@ -75,5 +75,13 @@ export const manualRedirects: IMiddleware<State, any> = async (ctx, next) => {
     return
   }
 
+  await next()
+}
+
+export const abTestingRedirects: IMiddleware<State, any> = async (
+  _ctx,
+  next,
+) => {
+  // TODO: Implement
   await next()
 }
