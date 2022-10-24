@@ -78,10 +78,63 @@ export const manualRedirects: IMiddleware<State, any> = async (ctx, next) => {
   await next()
 }
 
-export const abTestingRedirects: IMiddleware<State, any> = async (
-  _ctx,
-  next,
-) => {
-  // TODO: Implement
+const AB_COOKIE_MAX_AGE = 7 * 24 * 3600 * 1000
+type AbRedirect = {
+  // Use in env variables
+  id: string
+  // Take this from Google Optimize
+  optimizeExperimentId: string
+  sourcePath: string
+  redirectPath: string
+}
+// Keep short (<15 entries) or refactor to use map lookup
+const AB_REDIRECTS: AbRedirect[] = [
+  {
+    id: 'SE_INDEX',
+    optimizeExperimentId: 'L2us-_SfSueXuS-p8uyV3A',
+    sourcePath: '/se',
+    redirectPath: '/se',
+  },
+]
+export const abTestingRedirects: IMiddleware<State> = async (ctx, next) => {
+  const redirectForPath = AB_REDIRECTS.find((x) => x.sourcePath === ctx.path)
+  if (redirectForPath) {
+    const logger = ctx.state.getLogger('request') as Logger
+    const experimentCookieName = `HEDVIG_EXP_${redirectForPath.optimizeExperimentId}`
+    const cookie = ctx.cookies.get(experimentCookieName)
+    let shouldRedirect
+    if (!cookie) {
+      const newSiteWeight = getNewSiteWeight(redirectForPath.id)
+      const variant = Math.random() * 100 < newSiteWeight ? 1 : 0
+      logger.info(
+        `AB redirect id: ${redirectForPath.id} new site weight: ${newSiteWeight}, selected variant: ${variant}`,
+      )
+      shouldRedirect = variant === 1
+      ctx.cookies.set(experimentCookieName, String(variant), {
+        httpOnly: true,
+        // TODO: Do we need .hedvig.com cookie domain to report experiment impressions or should we do it via URL params?
+        maxAge: AB_COOKIE_MAX_AGE,
+      })
+    } else {
+      const variant = parseInt(cookie, 10)
+      shouldRedirect = variant === 1
+    }
+    if (shouldRedirect) {
+      const targetOrigin = process.env.AB_REDIRECT_ORIGIN
+      if (targetOrigin) {
+        const targetUrl = `${targetOrigin}${redirectForPath.redirectPath}`
+        logger.info(`Performing AB redirect to ${targetUrl}`)
+        ctx.redirect(targetUrl)
+      }
+    }
+  }
   await next()
+}
+
+const getNewSiteWeight = (redirectId: string): number => {
+  const newSiteWeight = parseInt(
+    process.env[`AB_REDIRECT_WEIGHT_${redirectId}`] ?? '0',
+    10,
+  )
+  return isNaN(newSiteWeight) ? 0 : newSiteWeight
 }
