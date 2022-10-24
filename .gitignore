@@ -4,7 +4,7 @@ dump.rdb
 .DS_Store
 /build/*
 /.env
-dump.rdb
 /bin/ip2location/ip2location.bin.zip
 
 .vscode
+.idea
