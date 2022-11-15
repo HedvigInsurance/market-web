@@ -12,7 +12,17 @@ interface State {
 const Img = styled('img')<{ isVisible: boolean }>(({ isVisible }) => ({
   opacity: isVisible ? 1 : 0,
   transition: 'opacity 300ms',
+  maxWidth: '100%',
+  height: 'auto',
 }))
+
+const getSizeFromURL = (url: string) => {
+  const [, rawWidth, rawHeight] = url.match(/\/(\d+)x(\d+)\//) || []
+
+  const width = parseInt(rawWidth, 10) || 0
+  const height = parseInt(rawHeight, 10) || 0
+  return { width, height }
+}
 
 const stateHasRef = (
   state: State,
@@ -34,9 +44,10 @@ export class DeferredImage extends PureComponent<
   }
 
   public render() {
+    const sizeProps = this.props.src ? getSizeFromURL(this.props.src) : ''
     return (
       <VisibilitySensor
-        offset={{ top: -200, bottom: -200 }}
+        offset={{ top: -200, bottom: 1 }}
         partialVisibility
         onChange={(isVisible) => {
           if (isVisible) {
@@ -52,16 +63,11 @@ export class DeferredImage extends PureComponent<
         {({ isVisible }) => (
           <Img
             {...this.props}
-            src={isVisible ? this.props.src : '/assets-next/empty.png'}
+            {...sizeProps}
+            loading="lazy"
+            src={this.props.src}
             ref={this.state.ref}
-            width={isVisible ? undefined : this.state.width}
-            height={isVisible ? undefined : this.state.height}
-            isVisible={(this.state.isLoaded && isVisible) ?? false}
-            onLoad={() => {
-              if (isVisible) {
-                this.setState({ isLoaded: true })
-              }
-            }}
+            isVisible={isVisible ?? false}
           />
         )}
       </VisibilitySensor>
