@@ -34,15 +34,15 @@ test('it stitches together a correct sitemap with cache miss', () => {
   })
   app.use(sitemapXml)
 
-  moxios.stubRequest(/^\/v1\/cdn\/links/, {
+  moxios.stubRequest(/^\/v2\/cdn\/links/, {
     status: 200,
     responseText: linksResponse,
   })
-  moxios.stubRequest(/^\/v1\/cdn\/stories\/se-en\/hello-world-26/, {
+  moxios.stubRequest(/^\/v2\/cdn\/stories\/se-en\/hello-world-26/, {
     status: 200,
     responseText: indexedStoryResponse,
   })
-  moxios.stubRequest(/^\/v1\/cdn\/stories\/se-en\/hello-world-27/, {
+  moxios.stubRequest(/^\/v2\/cdn\/stories\/se-en\/hello-world-27/, {
     status: 200,
     responseText: noindexedStoryResponse,
   })
