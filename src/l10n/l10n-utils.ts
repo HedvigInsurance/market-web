@@ -3,7 +3,7 @@ import { LocaleData, Locales, locales } from './locales'
 export const fallbackLocale = locales.se
 
 export const getLocaleData = (label: LocaleData['label']): LocaleData => {
-  return locales[label] ?? fallbackLocale
+  return locales[label]
 }
 
 export const getAssociatedLocales = (locale: LocaleData): LocaleData[] => {

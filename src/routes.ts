@@ -1,4 +1,5 @@
 import React from 'react'
+import { FlagPage } from './pages/FlagPage'
 import { PageFork } from './pages/PageFork'
 
 export interface Route {
@@ -9,5 +10,6 @@ export interface Route {
 }
 
 export const routes: Route[] = [
+  { path: '/', exact: true, Component: FlagPage, ignoreStoryblokMiss: true },
   { path: '/*', exact: false, Component: PageFork, ignoreStoryblokMiss: true },
 ]

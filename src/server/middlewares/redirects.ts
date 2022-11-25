@@ -6,7 +6,6 @@ import { lookupCountry } from 'server/utils/ip2location'
 import { getDatasourceEntries } from 'server/utils/storyblok'
 import { DatasourceEntry } from 'storyblok/StoryContainer'
 import { locales } from 'l10n/locales'
-import { fallbackLocale } from 'l10n/l10n-utils'
 import { State } from './states'
 
 export const forceHost = ({
@@ -26,20 +25,14 @@ export const forceHost = ({
   await next()
 }
 
-export const geoRedirect = (
-  path: string,
-  fallbackCountryLabel = fallbackLocale.label,
-): IMiddleware<void> => async (ctx) => {
-  const countryLabel =
-    lookupCountry(ctx.ip)?.toLowerCase() || fallbackCountryLabel
+export const geoRedirect = (path: string): IMiddleware<void> => async (ctx) => {
+  const countryLabel = lookupCountry(ctx.ip)?.toLowerCase()
   const queryStringMaybe = ctx.querystring ? '?' + ctx.querystring : ''
 
   ctx.status = 301
 
-  if (Object.keys(locales).includes(countryLabel)) {
+  if (countryLabel && Object.keys(locales).includes(countryLabel)) {
     ctx.redirect(`/${countryLabel}${path}${queryStringMaybe}`)
-  } else {
-    ctx.redirect(`/${fallbackCountryLabel}${path}${queryStringMaybe}`)
   }
 }
 

@@ -18,7 +18,7 @@ import {
   getStoryblokEditorScript,
 } from 'server/utils/storyblok'
 import { LocaleData } from 'l10n/locales'
-import { fallbackLocale, getLocaleData } from 'l10n/l10n-utils'
+import { getLocaleData } from 'l10n/l10n-utils'
 import { LocaleProvider } from 'context/LocaleContext'
 import { App } from '../App'
 import { favicons } from './utils/favicons'
@@ -154,7 +154,7 @@ export const getPageMiddleware = (
   const helmetContext = {}
 
   const localeFromPath = getLocaleFromPath(ctx.path)
-  const locale = localeFromPath || fallbackLocale.label
+  const locale = localeFromPath
 
   const [story, globalStory] = await Promise.all([
     getStoryblokResponseFromContext(ctx),
