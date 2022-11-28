@@ -1,84 +1,25 @@
 import styled from '@emotion/styled'
-import React, { createRef, MutableRefObject, PureComponent } from 'react'
-import VisibilitySensor from 'react-visibility-sensor'
+import React from 'react'
 
-interface State {
-  width?: number
-  height?: number
-  ref: React.Ref<HTMLImageElement>
-  isLoaded?: boolean
+const getSizeFromURL = (url: string) => {
+  const [, rawWidth, rawHeight] = url.match(/\/(\d+)x(\d+)\//) || []
+
+  const width = parseInt(rawWidth, 10) || 0
+  const height = parseInt(rawHeight, 10) || 0
+  return { width, height }
 }
 
-const Img = styled('img')<{ isVisible: boolean }>(({ isVisible }) => ({
-  opacity: isVisible ? 1 : 0,
-  transition: 'opacity 300ms',
-}))
+const Img = styled.img({
+  maxWidth: '100%',
+  height: 'auto',
+})
 
-const stateHasRef = (
-  state: State,
-): state is { ref: React.RefObject<HTMLImageElement> } =>
-  Boolean(typeof state.ref === 'object' && state.ref && state.ref.current)
-
-export class DeferredImage extends PureComponent<
-  React.DetailedHTMLProps<
-    React.ImgHTMLAttributes<HTMLImageElement>,
-    HTMLImageElement
-  > & { imageRef?: MutableRefObject<HTMLImageElement | null> | null },
-  State
-> {
-  public state: State = {
-    width: undefined,
-    height: undefined,
-    ref: this.props.imageRef || createRef<HTMLImageElement>(),
-    isLoaded: false,
-  }
-
-  public render() {
-    return (
-      <VisibilitySensor
-        offset={{ top: -200, bottom: -200 }}
-        partialVisibility
-        onChange={(isVisible) => {
-          if (isVisible) {
-            const refObject = stateHasRef(this.state)
-              ? this.state.ref.current
-              : null
-            if (refObject) {
-              refObject.addEventListener('load', this.handleSizeChange)
-            }
-          }
-        }}
-      >
-        {({ isVisible }) => (
-          <Img
-            {...this.props}
-            src={isVisible ? this.props.src : '/assets-next/empty.png'}
-            ref={this.state.ref}
-            width={isVisible ? undefined : this.state.width}
-            height={isVisible ? undefined : this.state.height}
-            isVisible={(this.state.isLoaded && isVisible) ?? false}
-            onLoad={() => {
-              if (isVisible) {
-                this.setState({ isLoaded: true })
-              }
-            }}
-          />
-        )}
-      </VisibilitySensor>
-    )
-  }
-
-  private handleSizeChange = () => {
-    this.setState((state) => {
-      const refObject = stateHasRef(state) ? state.ref.current : null
-      if (refObject) {
-        return {
-          height: refObject.scrollHeight,
-          width: refObject.scrollWidth,
-        }
-      }
-
-      return {}
-    })
-  }
+export const DeferredImage = ({
+  src,
+}: React.DetailedHTMLProps<
+  React.ImgHTMLAttributes<HTMLImageElement>,
+  HTMLImageElement
+>) => {
+  const sizeProps = src ? getSizeFromURL(src) : ''
+  return <Img {...sizeProps} loading="lazy" src={src} />
 }
