@@ -9,7 +9,7 @@ type MarketName =
   | 'Danmark'
   | 'Denmark'
 type LanguageLabel = 'Sv' | 'En' | 'No' | 'Da'
-type HtmlLang = 'sv' | 'en' | 'no' | 'da'
+type HtmlLang = 'sv-SE' | 'en-SE' | 'no-NO' | 'en-NO' | 'da-DK' | 'en-DK'
 type HrefLang = 'sv-se' | 'en-se' | 'no-no' | 'en-no' | 'da-dk' | 'en-dk'
 
 export type LocaleData = {
@@ -33,7 +33,7 @@ export const locales: Locales = {
     marketLabel: 'se',
     marketName: 'Sverige',
     langLabel: 'Sv',
-    htmlLang: 'sv',
+    htmlLang: 'sv-SE',
     hrefLang: 'sv-se',
     adtractionSrc: 'https://cdn.adt387.com/jsTag?ap=1412531808',
     trustpilotLocale: 'sv-SE',
@@ -44,7 +44,7 @@ export const locales: Locales = {
     marketLabel: 'se',
     marketName: 'Sweden',
     langLabel: 'En',
-    htmlLang: 'en',
+    htmlLang: 'en-SE',
     hrefLang: 'en-se',
     adtractionSrc: 'https://cdn.adt387.com/jsTag?ap=1412531808',
     trustpilotLocale: 'en-US',
@@ -55,7 +55,7 @@ export const locales: Locales = {
     marketLabel: 'no',
     marketName: 'Norge',
     langLabel: 'No',
-    htmlLang: 'no',
+    htmlLang: 'no-NO',
     hrefLang: 'no-no',
     adtractionSrc: 'https://cdn.adt387.com/jsTag?ap=1492109567',
     trustpilotLocale: 'nb-NO',
@@ -66,7 +66,7 @@ export const locales: Locales = {
     marketLabel: 'no',
     marketName: 'Norway',
     langLabel: 'En',
-    htmlLang: 'en',
+    htmlLang: 'en-NO',
     hrefLang: 'en-no',
     adtractionSrc: 'https://cdn.adt387.com/jsTag?ap=1492109567',
     trustpilotLocale: 'en-US',
@@ -77,7 +77,7 @@ export const locales: Locales = {
     marketLabel: 'dk',
     marketName: 'Danmark',
     langLabel: 'Da',
-    htmlLang: 'da',
+    htmlLang: 'da-DK',
     hrefLang: 'da-dk',
     adtractionSrc: 'https://cdn.adt387.com/jsTag?ap=1589794294',
     trustpilotLocale: 'da-DK',
@@ -88,7 +88,7 @@ export const locales: Locales = {
     marketLabel: 'dk',
     marketName: 'Denmark',
     langLabel: 'En',
-    htmlLang: 'en',
+    htmlLang: 'en-DK',
     hrefLang: 'en-dk',
     adtractionSrc: 'https://cdn.adt387.com/jsTag?ap=1589794294',
     trustpilotLocale: 'en-US',
