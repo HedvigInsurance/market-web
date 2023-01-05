@@ -24,11 +24,13 @@ import { SingleQuoteBlock } from './SingleQuoteBlock'
 import { SpacerBlock } from './SpacerBlock'
 import { TrustpilotBlock } from './TrustpilotBlock/TrustpilotBlock'
 import { TableBlock } from './TableBlock/TableBlock'
+import { ArticleBlock } from './ArticleBlock/ArticleBlock'
 
 const blockComponents = {
   accordion_block_brand_pivot: AccordionBlock,
   accordion_block: AccordionBlock,
   app_buttons_block: AppButtonsBlock,
+  article: ArticleBlock,
   background_video_block: BackgroundVideoBlock,
   banner_block: BannerBlock,
   bullet_point_block: BulletPointBlock,

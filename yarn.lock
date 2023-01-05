@@ -12802,6 +12802,11 @@ storyblok-js-client@^4.1.5:
   dependencies:
     qs "^6.9.4"
 
+storyblok-rich-text-react-renderer@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/storyblok-rich-text-react-renderer/-/storyblok-rich-text-react-renderer-2.6.1.tgz#e19f319062d870eb4780deaaa2506659703046d1"
+  integrity sha512-8TJGoy7o9viysyylyxi7+ADYKslMHQXlqQYlect3g8gyGeNto9K2ILIyYL1szHP4Ljn0/Kp1EB6NMmHiTlE5xg==
+
 storybook-addon-paddings@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/storybook-addon-paddings/-/storybook-addon-paddings-2.0.2.tgz#4b104889a58cbe653ab612c7b577cf92f623b5ea"
