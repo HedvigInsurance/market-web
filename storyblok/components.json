@@ -185,6 +185,31 @@
               "_uid": "2afff6b0-dd83-40fa-8fb1-74f3c194e4ed"
             }
           ]
+        },
+        "seo": {
+          "type": "section",
+          "keys": [
+            "seo_meta_title",
+            "seo_meta_description",
+            "seo_meta_og_title",
+            "seo_meta_og_description",
+            "seo_meta_og_image"
+          ]
+        },
+        "seo_meta_title": {
+          "type": "text"
+        },
+        "seo_meta_description": {
+          "type": "text"
+        },
+        "seo_meta_og_title": {
+          "type": "text"
+        },
+        "seo_meta_og_description": {
+          "type": "text"
+        },
+        "seo_meta_og_image": {
+          "type": "image"
         }
       },
       "image": null,
