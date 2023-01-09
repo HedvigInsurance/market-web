@@ -148,23 +148,43 @@
       "name": "article",
       "display_name": null,
       "schema": {
+        "seo_meta_title": {
+          "type": "text",
+          "pos": 0
+        },
+        "seo_meta_description": {
+          "type": "text",
+          "pos": 1
+        },
+        "seo_meta_og_title": {
+          "type": "text",
+          "pos": 2
+        },
+        "seo_meta_og_description": {
+          "type": "text",
+          "pos": 3
+        },
+        "seo_meta_og_image": {
+          "type": "image",
+          "pos": 4
+        },
         "page_title": {
           "type": "text",
-          "pos": 0,
+          "pos": 5,
           "key": "title"
         },
         "teaser_image": {
           "type": "asset",
-          "pos": 1,
+          "pos": 6,
           "key": "image"
         },
         "intro": {
           "type": "textarea",
-          "pos": 2
+          "pos": 7
         },
         "content": {
           "type": "richtext",
-          "pos": 3,
+          "pos": 8,
           "key": "content",
           "customize_toolbar": true,
           "toolbar": [
@@ -186,30 +206,17 @@
             }
           ]
         },
-        "seo": {
-          "type": "section",
+        "tab-6b31c9ef-009a-4459-ae18-3cd353ad007c": {
+          "display_name": "SEO",
           "keys": [
             "seo_meta_title",
             "seo_meta_description",
             "seo_meta_og_title",
             "seo_meta_og_description",
             "seo_meta_og_image"
-          ]
-        },
-        "seo_meta_title": {
-          "type": "text"
-        },
-        "seo_meta_description": {
-          "type": "text"
-        },
-        "seo_meta_og_title": {
-          "type": "text"
-        },
-        "seo_meta_og_description": {
-          "type": "text"
-        },
-        "seo_meta_og_image": {
-          "type": "image"
+          ],
+          "pos": 9,
+          "type": "tab"
         }
       },
       "image": null,
@@ -2743,36 +2750,12 @@
       "name": "page",
       "display_name": "",
       "schema": {
-        "page_title": {
-          "type": "text",
-          "translatable": true,
-          "pos": 0,
-          "regex": "",
-          "description": "",
-          "display_name": ""
-        },
-        "body": {
-          "type": "bloks",
-          "pos": 2
-        },
-        "seo": {
-          "type": "section",
-          "keys": [
-            "seo_meta_og_description",
-            "seo_meta_og_title",
-            "seo_meta_og_image",
-            "seo_meta_description",
-            "seo_meta_title",
-            "robots"
-          ],
-          "pos": 3
-        },
         "robots": {
           "type": "option",
           "required": true,
           "display_name": "",
           "default_value": "index",
-          "pos": 4,
+          "pos": 0,
           "options": [
             {
               "value": "index",
@@ -2784,6 +2767,24 @@
             }
           ],
           "translatable": true
+        },
+        "page_title": {
+          "type": "text",
+          "translatable": true,
+          "pos": 1,
+          "regex": "",
+          "description": "",
+          "display_name": ""
+        },
+        "body": {
+          "type": "bloks",
+          "pos": 2
+        },
+        "hide_footer": {
+          "type": "boolean",
+          "max_length": "",
+          "display_name": "",
+          "pos": 4
         },
         "seo_meta_title": {
           "type": "text",
@@ -2812,10 +2813,18 @@
           "pos": 9,
           "display_name": "SEO Meta og:image"
         },
-        "hide_footer": {
-          "type": "boolean",
-          "max_length": "",
-          "display_name": ""
+        "tab-9feb85c4-82e7-4873-9836-3ee122d52928": {
+          "display_name": "SEO",
+          "keys": [
+            "seo_meta_og_image",
+            "seo_meta_og_description",
+            "seo_meta_og_title",
+            "seo_meta_description",
+            "seo_meta_title",
+            "robots"
+          ],
+          "pos": 10,
+          "type": "tab"
         }
       },
       "image": null,
