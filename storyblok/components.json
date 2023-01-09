@@ -145,6 +145,81 @@
       "icon": null
     },
     {
+      "name": "article",
+      "display_name": null,
+      "schema": {
+        "page_title": {
+          "type": "text",
+          "pos": 0,
+          "key": "title"
+        },
+        "teaser_image": {
+          "type": "asset",
+          "pos": 1,
+          "key": "image"
+        },
+        "intro": {
+          "type": "textarea",
+          "pos": 2
+        },
+        "content": {
+          "type": "richtext",
+          "pos": 3,
+          "key": "content",
+          "customize_toolbar": true,
+          "toolbar": [
+            "paragraph",
+            "h2",
+            "h3",
+            "h4",
+            "list",
+            "quote",
+            "link",
+            "image",
+            "italic"
+          ],
+          "style_options": [
+            {
+              "value": "preamble",
+              "name": "Preamble",
+              "_uid": "2afff6b0-dd83-40fa-8fb1-74f3c194e4ed"
+            }
+          ]
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "article",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "article_list_block",
+      "display_name": null,
+      "schema": {
+        "title": {
+          "type": "text"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "article_list_block",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
       "name": "background_video_block",
       "display_name": "",
       "schema": {

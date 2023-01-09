@@ -50,7 +50,7 @@ export interface Story {
   content: {
     _uid: string
     page_title: string
-    component: 'page' | 'global'
+    component: 'article' | 'page' | 'global'
   }
 }
 
@@ -62,6 +62,18 @@ export interface BodyStory extends Story {
       component: 'page'
       body: ReadonlyArray<BaseBlockProps>
       hide_footer?: boolean
+    }
+}
+
+export interface ArticleStory extends Story {
+  content: SeoContent &
+    HrefLang & {
+      _uid: string
+      page_title: string
+      content: Array<Object>
+      teaser: string
+      teaser_image: Image
+      component: 'article'
     }
 }
 
