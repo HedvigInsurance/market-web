@@ -241,7 +241,7 @@ export const MarginSectionWrapper = styled('section')<SectionProps>(
   }),
 )
 
-const getContentMaxWidth = (brandPivot: boolean, fullWidth: boolean) => {
+const getContentMaxWidth = (brandPivot?: boolean, fullWidth?: boolean) => {
   if (fullWidth) {
     return SITE_MAX_WIDTH
   }
@@ -252,8 +252,8 @@ const getContentMaxWidth = (brandPivot: boolean, fullWidth: boolean) => {
 }
 
 export const ContentWrapperStyled = styled('div')<{
-  brandPivot: boolean
-  fullWidth: boolean
+  brandPivot?: boolean
+  fullWidth?: boolean
 }>(({ brandPivot, fullWidth }) => ({
   width: '100%',
   padding: '0 ' + CONTENT_GUTTER,
