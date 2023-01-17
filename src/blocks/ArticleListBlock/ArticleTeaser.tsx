@@ -1,8 +1,9 @@
 import styled from '@emotion/styled'
 import { fonts } from '@hedviginsurance/brand'
 import React from 'react'
-import { ArticleStory } from 'src/storyblok/StoryContainer'
+import { ArticleStory, Story } from 'src/storyblok/StoryContainer'
 import { getStoryblokImage } from '../../utils/storyblok'
+import { ArticleCategory } from '../ArticleBlock/ArticleBlock'
 
 const ImageWrapper = styled.div`
   position: relative;
@@ -39,12 +40,14 @@ const Title = styled.h3`
 
 const Subtitle = styled.p`
   margin-top: 0.75rem;
+  margin-bottom: 1.5rem;
 `
 
 export const ArticleTeaser = ({
   page_title,
   teaser,
   teaser_image,
+  categories,
 }: ArticleStory['content']) => {
   return (
     <>
@@ -59,6 +62,9 @@ export const ArticleTeaser = ({
       <div>
         <Title>{page_title}</Title>
         <Subtitle>{teaser}</Subtitle>
+        {categories.map((category: Story) => (
+          <ArticleCategory key={category.id}>{category.name}</ArticleCategory>
+        ))}
       </div>
     </>
   )

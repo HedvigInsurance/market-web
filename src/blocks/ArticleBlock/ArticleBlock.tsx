@@ -2,11 +2,15 @@ import styled from '@emotion/styled'
 import { colorsV3, fonts } from '@hedviginsurance/brand'
 import React from 'react'
 import { render } from 'storyblok-rich-text-react-renderer'
-import { ArticleStory } from '../../storyblok/StoryContainer'
+import { ArticleStory, Story } from '../../storyblok/StoryContainer'
 import { TABLET_BP_UP } from '../../components/blockHelpers'
 
+const ArticleWrapper = styled.article`
+  margin-top: 2rem;
+`
+
 const ArticleTitle = styled.h1`
-  margin-bottom: 1rem;
+  margin-block: 1rem;
   font-size: 2rem;
   font-family: ${fonts.HEDVIG_LETTERS_BIG}, sans-serif;
   line-height: 1.2;
@@ -44,15 +48,26 @@ const ArticleContent = styled.div`
   }
 `
 
+export const ArticleCategory = styled.span`
+  display: inline-block;
+  padding: 0.375rem 0.5rem;
+  color: ${colorsV3.gray500};
+  border: 1px solid ${colorsV3.gray500};
+  border-radius: 6px;
+`
 export interface ArticleBlockProps {
   story: ArticleStory
 }
 
 export const ArticleBlock = ({ story }: ArticleBlockProps) => {
   return (
-    <>
+    <ArticleWrapper>
+      {story.content.categories.map((category: Story) => (
+        <ArticleCategory key={category.id}>{category.name}</ArticleCategory>
+      ))}
+
       <ArticleTitle>{story.content.page_title}</ArticleTitle>
       <ArticleContent>{render(story.content.content)}</ArticleContent>
-    </>
+    </ArticleWrapper>
   )
 }

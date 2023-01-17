@@ -70,6 +70,7 @@ export interface ArticleStory extends Story {
     HrefLang & {
       _uid: string
       page_title: string
+      categories: Story[]
       content: Array<Object>
       article_footer: ReadonlyArray<BaseBlockProps>
       teaser: string
