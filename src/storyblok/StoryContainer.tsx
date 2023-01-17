@@ -50,7 +50,7 @@ export interface Story {
   content: {
     _uid: string
     page_title: string
-    component: 'article' | 'page' | 'global'
+    component: 'article' | 'page' | 'category' | 'global'
   }
 }
 

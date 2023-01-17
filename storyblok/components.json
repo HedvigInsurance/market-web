@@ -148,43 +148,32 @@
       "name": "article",
       "display_name": null,
       "schema": {
-        "seo_meta_title": {
-          "type": "text",
-          "pos": 0
-        },
-        "seo_meta_description": {
-          "type": "text",
-          "pos": 1
-        },
-        "seo_meta_og_title": {
-          "type": "text",
-          "pos": 2
-        },
-        "seo_meta_og_description": {
-          "type": "text",
-          "pos": 3
-        },
-        "seo_meta_og_image": {
-          "type": "image",
-          "pos": 4
-        },
         "page_title": {
           "type": "text",
-          "pos": 5,
-          "key": "title"
+          "pos": 0,
+          "key": "page_title"
+        },
+        "categories": {
+          "type": "options",
+          "pos": 1,
+          "source": "internal_stories",
+          "filter_content_type": ["category"]
         },
         "teaser_image": {
           "type": "asset",
-          "pos": 6,
-          "key": "image"
+          "pos": 3,
+          "key": "teaser_image",
+          "description": "Smaller image used for listing articles. Max 800px wide to keep file size small",
+          "filetypes": ["images"]
         },
-        "intro": {
+        "teaser": {
           "type": "textarea",
-          "pos": 7
+          "pos": 4,
+          "key": "teaser"
         },
         "content": {
           "type": "richtext",
-          "pos": 8,
+          "pos": 5,
           "key": "content",
           "customize_toolbar": true,
           "toolbar": [
@@ -206,6 +195,36 @@
             }
           ]
         },
+        "article_footer": {
+          "type": "bloks",
+          "pos": 6,
+          "key": "article_footer"
+        },
+        "seo_meta_title": {
+          "type": "text",
+          "pos": 7,
+          "key": "seo_meta_title"
+        },
+        "seo_meta_description": {
+          "type": "text",
+          "pos": 8,
+          "key": "seo_meta_description"
+        },
+        "seo_meta_og_title": {
+          "type": "text",
+          "pos": 9,
+          "key": "seo_meta_og_title"
+        },
+        "seo_meta_og_description": {
+          "type": "text",
+          "pos": 10,
+          "key": "seo_meta_og_description"
+        },
+        "seo_meta_og_image": {
+          "type": "image",
+          "pos": 11,
+          "key": "seo_meta_og_image"
+        },
         "tab-6b31c9ef-009a-4459-ae18-3cd353ad007c": {
           "display_name": "SEO",
           "keys": [
@@ -215,8 +234,9 @@
             "seo_meta_og_description",
             "seo_meta_og_image"
           ],
-          "pos": 9,
-          "type": "tab"
+          "pos": 12,
+          "type": "tab",
+          "key": "tab-6b31c9ef-009a-4459-ae18-3cd353ad007c"
         }
       },
       "image": null,
@@ -235,8 +255,12 @@
       "name": "article_list_block",
       "display_name": null,
       "schema": {
-        "title": {
-          "type": "text"
+        "category": {
+          "type": "option",
+          "use_uuid": true,
+          "source": "internal_stories",
+          "filter_content_type": ["category"],
+          "pos": 0
         }
       },
       "image": null,
@@ -611,6 +635,59 @@
       "all_presets": [],
       "preset_id": null,
       "real_name": "bullet_point_item",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
+      "name": "category",
+      "display_name": null,
+      "schema": {
+        "page_title": {
+          "type": "text",
+          "pos": 0
+        },
+        "tab-1771a4f7-89b0-453c-bcdb-05399f2fa0a5": {
+          "display_name": "SEO",
+          "keys": [
+            "seo_meta_title",
+            "seo_meta_description",
+            "seo_meta_og_title",
+            "seo_meta_og_description",
+            "seo_meta_og_image"
+          ],
+          "pos": 0,
+          "type": "tab"
+        },
+        "body": {
+          "type": "bloks",
+          "key": "body",
+          "pos": 1
+        },
+        "seo_meta_title": {
+          "type": "text"
+        },
+        "seo_meta_description": {
+          "type": "text"
+        },
+        "seo_meta_og_title": {
+          "type": "text"
+        },
+        "seo_meta_og_description": {
+          "type": "text"
+        },
+        "seo_meta_og_image": {
+          "type": "image"
+        }
+      },
+      "image": null,
+      "preview_field": null,
+      "is_root": true,
+      "preview_tmpl": null,
+      "is_nestable": false,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "category",
       "component_group_uuid": null,
       "color": null,
       "icon": null
