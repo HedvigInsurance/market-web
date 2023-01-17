@@ -9,7 +9,7 @@ import {
   TABLET_BP_UP,
 } from 'components/blockHelpers'
 import { DeferredImage } from 'components/DeferredImage'
-import { getStoryblokImage, Image } from 'utils/storyblok'
+import { getStoryblokImage, ImageLegacy } from 'utils/storyblok'
 import {
   BaseBlockProps,
   MarkdownHtmlComponent,
@@ -131,7 +131,7 @@ const BulletPointBody = styled.div<{
 
 export type BulletPointItemProps = ReadonlyArray<
   BaseBlockProps & {
-    image: Image
+    image: ImageLegacy
     title?: string
     title_size: FontSizes
     title_size_mobile?: FontSizes

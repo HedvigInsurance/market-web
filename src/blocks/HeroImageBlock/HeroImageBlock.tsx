@@ -11,7 +11,11 @@ import {
 import { FontSizes, Heading } from 'components/Heading/Heading'
 import { TextPosition } from 'utils/textPosition'
 import { GlobalStory, GlobalStoryContainer } from 'storyblok/StoryContainer'
-import { getStoryblokImage, getStoryblokLinkUrl, Image } from 'utils/storyblok'
+import {
+  getStoryblokImage,
+  getStoryblokLinkUrl,
+  ImageLegacy,
+} from 'utils/storyblok'
 import {
   ContentWrapper,
   getMinimalColorStyles,
@@ -31,8 +35,8 @@ type TextProps = {
 
 interface WrapperProps {
   colorComponent?: MinimalColorComponent
-  backgroundImageMobile?: Image
-  backgroundImage?: Image
+  backgroundImageMobile?: ImageLegacy
+  backgroundImage?: ImageLegacy
   dynamicHeight: boolean
 }
 
@@ -130,8 +134,8 @@ export interface HeroImageBlockProps extends BaseBlockProps {
   text?: MarkdownHtmlComponent
   text_color?: MinimalColorComponent
   text_position?: TextPosition
-  image: Image
-  image_mobile: Image
+  image: ImageLegacy
+  image_mobile: ImageLegacy
   animate?: boolean
   show_hedvig_wordmark?: boolean
   use_display_font?: boolean

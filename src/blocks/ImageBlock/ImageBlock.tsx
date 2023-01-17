@@ -3,7 +3,10 @@ import React from 'react'
 import { Caption } from 'components/Caption'
 import { ContentWrapper } from '../../components/blockHelpers'
 import { DeferredImage } from '../../components/DeferredImage'
-import { getStoryblokImage, Image as ImageType } from '../../utils/storyblok'
+import {
+  getStoryblokImage,
+  ImageLegacy as ImageType,
+} from '../../utils/storyblok'
 import { BaseBlockProps, MarkdownHtmlComponent } from '../BaseBlockProps'
 
 interface ImageBlockProps extends BaseBlockProps {

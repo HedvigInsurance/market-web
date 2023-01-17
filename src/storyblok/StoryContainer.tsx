@@ -6,7 +6,7 @@ import {
   MarkdownHtmlComponent,
 } from '../blocks/BaseBlockProps'
 import { ErrorBlock } from '../components/blockHelpers'
-import { Image } from '../utils/storyblok'
+import { Image, ImageLegacy } from '../utils/storyblok'
 
 export interface SeoContent {
   robots: 'index' | 'noindex'
@@ -14,7 +14,7 @@ export interface SeoContent {
   seo_meta_description: string
   seo_meta_og_title: string
   seo_meta_og_description: string
-  seo_meta_og_image: Image
+  seo_meta_og_image: ImageLegacy
 }
 
 export interface HrefLang {
