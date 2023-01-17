@@ -3,10 +3,30 @@ import { colorsV3 } from '@hedviginsurance/brand'
 import React, { useEffect } from 'react'
 import { hot } from 'react-hot-loader'
 import { useLocation, Route, Switch } from 'react-router-dom'
-
+import { storyblokInit, apiPlugin } from '@storyblok/react'
 import { globalStyles } from './components/GlobalStyles'
 import { routes } from './routes'
 import { useGTMTracking } from './utils/tracking/gtm'
+
+const getStoryblokApiToken = (): string => {
+  if (
+    typeof window === 'undefined' &&
+    typeof process !== 'undefined' &&
+    process.env.STORYBLOK_API_TOKEN
+  ) {
+    return process.env.STORYBLOK_API_TOKEN
+  }
+
+  return (window as any).STORYBLOK_API_TOKEN
+}
+
+storyblokInit({
+  accessToken: getStoryblokApiToken(),
+  use: [apiPlugin],
+  apiOptions: {
+    cache: { clear: 'auto', type: 'memory' },
+  },
+})
 
 export const App: React.FunctionComponent<{ nonce?: string }> = ({ nonce }) => {
   const location = useLocation()

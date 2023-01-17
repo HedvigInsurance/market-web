@@ -103,6 +103,9 @@ const template = ({
         clientToken: process.env.DATADOG_CLIENT_TOKEN,
         version: process.env.HEROKU_SLUG_COMMIT,
       })};
+      window.STORYBLOK_API_TOKEN =${JSON.stringify(
+        process.env.STORYBLOK_API_TOKEN || '',
+      )};
       </script>
     <script src="${scriptLocation}"></script>
     <div id="modal></div>
