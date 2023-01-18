@@ -11,6 +11,7 @@ export const PageFork: React.FunctionComponent<{ nonce?: string }> = (
     {({ story }) => {
       switch (story && story.content.component) {
         case 'page':
+        case 'category':
           return <StoryPage {...props} />
         case 'article':
           return <ArticlePage {...props} />

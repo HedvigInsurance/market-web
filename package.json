@@ -7,7 +7,7 @@
   "author": "Johan Palmfjord <johan.palmfjord@hedvig.com>",
   "types": "./types.d.ts",
   "engines": {
-    "node": "14.17.6",
+    "node": "16.18.1",
     "yarn": "^1.22.0"
   },
   "dependencies": {
@@ -17,6 +17,7 @@
     "@emotion/styled": "^10.0.23",
     "@hedviginsurance/brand": "^5.0.3",
     "@segment/utm-params": "^2.0.0",
+    "@storyblok/react": "^1.3.3",
     "@types/koa-basic-auth": "^2.0.3",
     "@types/koa-compress": "^4.0.0",
     "@types/koa-mount": "^4.0.0",

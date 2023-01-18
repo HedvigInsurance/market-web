@@ -9,7 +9,7 @@ import {
   TABLET_BP_UP,
 } from 'components/blockHelpers'
 import { Caption } from 'components/Caption'
-import { Image } from 'utils/storyblok'
+import { ImageLegacy } from 'utils/storyblok'
 
 const CONTENT_MAX_WIDTH = '828px'
 const PLAYER_WIDTH = '100%'
@@ -107,7 +107,7 @@ const VideoFrame = styled.iframe`
 `
 
 interface YoutubeVideoBlockProps extends BaseBlockProps {
-  overlay_image: Image
+  overlay_image: ImageLegacy
   video_id: string
   caption?: MarkdownHtmlComponent
 }

@@ -26,7 +26,7 @@ export const getPublicHost = (): string | undefined => {
 
   return ''
 }
-export const getStoryblokImage = (url?: Image) =>
+export const getStoryblokImage = (url?: string) =>
   getPublicHost()
     ? (url || '').replace(
         /^(https?:)?\/\/a\.storyblok\.com\//,
@@ -34,7 +34,20 @@ export const getStoryblokImage = (url?: Image) =>
       )
     : url
 
-export type Image = string
+export type ImageLegacy = string
+
+export type Image = {
+  id: string
+  alt: string
+  name: string
+  focus: string
+  title: string
+  filename: string
+  copyright: string
+  fieldtype: 'asset'
+  is_external_url: boolean
+}
+
 export interface NativeColor {
   uuid: string
   color: string

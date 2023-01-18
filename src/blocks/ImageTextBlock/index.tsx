@@ -24,7 +24,7 @@ import { DeferredImage } from '../../components/DeferredImage'
 import { DeferredVideo } from '../../components/DeferredVideo'
 import {
   getStoryblokImage,
-  Image as StoryblokImage,
+  ImageLegacy as StoryblokImage,
 } from '../../utils/storyblok'
 import {
   BaseBlockProps,

@@ -25,12 +25,14 @@ import { SpacerBlock } from './SpacerBlock'
 import { TrustpilotBlock } from './TrustpilotBlock/TrustpilotBlock'
 import { TableBlock } from './TableBlock/TableBlock'
 import { ArticleBlock } from './ArticleBlock/ArticleBlock'
+import { ArticleListBlock } from './ArticleListBlock/ArticleListBlock'
 
-const blockComponents = {
+export const blockComponents = {
   accordion_block_brand_pivot: AccordionBlock,
   accordion_block: AccordionBlock,
   app_buttons_block: AppButtonsBlock,
   article: ArticleBlock,
+  article_list_block: ArticleListBlock,
   background_video_block: BackgroundVideoBlock,
   banner_block: BannerBlock,
   bullet_point_block: BulletPointBlock,

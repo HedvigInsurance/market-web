@@ -11,7 +11,11 @@ import { ButtonLink, ButtonStyleType } from 'components/Button/Button'
 import { FontSizes, Heading } from 'components/Heading/Heading'
 import { TextPosition } from 'src/utils/textPosition'
 import { LinkComponent } from 'storyblok/StoryContainer'
-import { getStoryblokImage, getStoryblokLinkUrl, Image } from 'utils/storyblok'
+import {
+  getStoryblokImage,
+  getStoryblokLinkUrl,
+  ImageLegacy,
+} from 'utils/storyblok'
 import {
   ContentWrapper,
   getMinimalColorStyles,
@@ -165,8 +169,8 @@ export interface HeroBlockProps extends BaseBlockProps {
   text?: MarkdownHtmlComponent
   text_color?: MinimalColorComponent
   text_position?: TextPosition
-  image: Image
-  image_mobile: Image
+  image: ImageLegacy
+  image_mobile: ImageLegacy
   hide_bg_tint: boolean
   animate?: boolean
   show_hedvig_wordmark?: boolean

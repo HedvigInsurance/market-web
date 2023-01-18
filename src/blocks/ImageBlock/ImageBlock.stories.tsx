@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image as ImageType } from '../../utils/storyblok'
+import { ImageLegacy as ImageType } from '../../utils/storyblok'
 import { MarkdownHtmlComponent } from '../BaseBlockProps'
 import { ImageBlock } from './ImageBlock'
 

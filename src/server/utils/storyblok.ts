@@ -101,6 +101,7 @@ export const getPublishedStoryFromSlug = async (
           token: config.storyblokApiToken,
           find_by: 'slug',
           cv: calculateCacheVersionTimestamp(new Date()),
+          resolve_relations: 'article.categories',
         },
       },
     ],
@@ -118,6 +119,7 @@ export const getDraftedStoryById = (id: string, cacheVersion: string) =>
         find_by: 'slug',
         version: 'draft',
         cv: cacheVersion || calculateCacheVersionTimestamp(new Date()),
+        resolve_relations: 'article.categories',
       },
       headers: {
         'cache-control': 'no-cache',
