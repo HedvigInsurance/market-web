@@ -23,7 +23,7 @@ interface Meta {
   globalStory: GlobalStory
 }
 
-const removeTrailingSlash = (text: string) => text.replace(/\/+$/, '')
+export const removeTrailingSlash = (text: string) => text.replace(/\/+$/, '')
 
 const getFullSlugFromStory = (story?: Story) =>
   story && removeTrailingSlash(story.full_slug)

@@ -26,6 +26,7 @@ import { TrustpilotBlock } from './TrustpilotBlock/TrustpilotBlock'
 import { TableBlock } from './TableBlock/TableBlock'
 import { ArticleBlock } from './ArticleBlock/ArticleBlock'
 import { ArticleListBlock } from './ArticleListBlock/ArticleListBlock'
+import { ArticleMenuBlock } from './ArticleMenuBlock/ArticleMenuBlock'
 
 export const blockComponents = {
   accordion_block_brand_pivot: AccordionBlock,
@@ -33,6 +34,7 @@ export const blockComponents = {
   app_buttons_block: AppButtonsBlock,
   article: ArticleBlock,
   article_list_block: ArticleListBlock,
+  article_menu_block: ArticleMenuBlock,
   background_video_block: BackgroundVideoBlock,
   banner_block: BannerBlock,
   bullet_point_block: BulletPointBlock,
