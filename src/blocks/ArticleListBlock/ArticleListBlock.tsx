@@ -57,7 +57,7 @@ export const ArticleListBlock = ({ category }: ArticleListBlockProps) => {
   }
 
   return (
-    <SectionWrapper brandPivot>
+    <SectionWrapper size="md" brandPivot>
       <Wrapper brandPivot>
         <Grid>
           {articles.map((article: ArticleStory) => (
@@ -89,6 +89,7 @@ const Grid = styled.div`
   display: grid;
   grid-gap: 1.5rem;
   grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr));
+  width: 100%;
 `
 const Link = styled.a`
   text-decoration: none;

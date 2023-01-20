@@ -276,6 +276,22 @@
       "icon": null
     },
     {
+      "name": "article_menu_block",
+      "display_name": null,
+      "schema": {},
+      "image": null,
+      "preview_field": null,
+      "is_root": false,
+      "preview_tmpl": null,
+      "is_nestable": true,
+      "all_presets": [],
+      "preset_id": null,
+      "real_name": "article_menu_block",
+      "component_group_uuid": null,
+      "color": null,
+      "icon": null
+    },
+    {
       "name": "background_video_block",
       "display_name": "",
       "schema": {
@@ -846,12 +862,14 @@
           "type": "section",
           "pos": 0,
           "display_name": "Top Banner",
-          "keys": ["show_banner", "banner_text", "banner_color"]
+          "keys": ["show_banner", "banner_text", "banner_color"],
+          "key": "banner"
         },
         "show_banner": {
           "type": "boolean",
           "pos": 1,
-          "display_name": "Enable"
+          "display_name": "Enable",
+          "key": "show_banner"
         },
         "banner_text": {
           "type": "custom",
@@ -859,13 +877,15 @@
           "options": [],
           "pos": 2,
           "display_name": "Text",
-          "description": ""
+          "description": "",
+          "key": "banner_text"
         },
         "banner_color": {
           "type": "custom",
           "pos": 3,
           "field_type": "hedvig-minimal-color-picker",
-          "options": []
+          "options": [],
+          "key": "banner_color"
         },
         "header_menu_items": {
           "type": "bloks",
@@ -874,34 +894,40 @@
           "restrict_components": true,
           "component_whitelist": ["menu_item"],
           "translatable": true,
-          "required": false
+          "required": false,
+          "key": "header_menu_items"
         },
         "header_menu_business": {
           "type": "bloks",
           "pos": 5,
           "maximum": "",
           "restrict_components": true,
-          "component_whitelist": ["menu_item"]
+          "component_whitelist": ["menu_item"],
+          "key": "header_menu_business"
         },
         "cta": {
           "type": "section",
           "keys": ["show_cta", "cta_branch_link", "cta_label", "cta_link"],
-          "pos": 7
+          "pos": 6,
+          "key": "cta"
         },
         "show_cta": {
           "type": "boolean",
-          "pos": 8,
-          "translatable": true
+          "pos": 7,
+          "translatable": true,
+          "key": "show_cta"
         },
         "cta_label": {
           "type": "text",
-          "pos": 9,
-          "translatable": true
+          "pos": 8,
+          "translatable": true,
+          "key": "cta_label"
         },
         "cta_link": {
           "type": "multilink",
           "translatable": true,
-          "pos": 10
+          "pos": 9,
+          "key": "cta_link"
         },
         "footer": {
           "type": "section",
@@ -915,49 +941,58 @@
             "footer_market_title",
             "footer_paragraph"
           ],
-          "pos": 11
+          "pos": 10,
+          "key": "footer"
         },
         "footer_menu_items": {
           "type": "bloks",
-          "pos": 12,
+          "pos": 11,
           "maximum": "4",
           "restrict_components": true,
-          "component_whitelist": ["menu_item"]
+          "component_whitelist": ["menu_item"],
+          "key": "footer_menu_items"
         },
         "footer_download_title": {
           "type": "text",
-          "pos": 13
+          "pos": 12,
+          "key": "footer_download_title"
         },
         "footer_safety_title": {
           "type": "text",
-          "pos": 14
+          "pos": 13,
+          "key": "footer_safety_title"
         },
         "footer_safety_body": {
           "type": "custom",
-          "pos": 15,
+          "pos": 14,
           "field_type": "markdown-html",
-          "options": []
+          "options": [],
+          "key": "footer_safety_body"
         },
         "footer_rating_title": {
           "type": "text",
-          "pos": 16
+          "pos": 15,
+          "key": "footer_rating_title"
         },
         "footer_rating_paragraph": {
           "type": "custom",
-          "pos": 17,
+          "pos": 16,
           "field_type": "markdown-html",
-          "options": []
+          "options": [],
+          "key": "footer_rating_paragraph"
         },
         "footer_market_title": {
           "type": "text",
-          "pos": 18
+          "pos": 17,
+          "key": "footer_market_title"
         },
         "footer_paragraph": {
           "type": "custom",
           "field_type": "markdown-html",
           "options": [],
-          "pos": 19,
-          "translatable": true
+          "pos": 18,
+          "translatable": true,
+          "key": "footer_paragraph"
         },
         "perils": {
           "type": "section",
@@ -968,28 +1003,34 @@
           ],
           "restrict_components": true,
           "component_whitelist": ["peril_labels"],
-          "pos": 20
+          "pos": 19,
+          "key": "perils"
         },
         "peril_modal_info_title": {
           "type": "text",
-          "pos": 21
+          "pos": 20,
+          "key": "peril_modal_info_title"
         },
         "peril_modal_coverage_title": {
           "type": "text",
-          "pos": 22
+          "pos": 21,
+          "key": "peril_modal_coverage_title"
         },
         "peril_modal_exceptions_title": {
           "type": "text",
-          "pos": 23
+          "pos": 22,
+          "key": "peril_modal_exceptions_title"
         },
         "locale": {
           "type": "section",
           "keys": ["four_oh_four_title", "cookie_consent_message"],
-          "pos": 24
+          "pos": 23,
+          "key": "locale"
         },
         "four_oh_four_title": {
           "type": "text",
-          "pos": 25
+          "pos": 24,
+          "key": "four_oh_four_title"
         },
         "cookie_consent_message": {
           "type": "custom",
@@ -997,47 +1038,59 @@
           "translatable": true,
           "field_type": "markdown-html",
           "options": [],
-          "pos": 26
+          "pos": 25,
+          "key": "cookie_consent_message"
         },
         "structured_data": {
           "type": "section",
-          "pos": 27,
+          "pos": 26,
           "keys": [
             "structured_data_website_description",
             "structured_data_organization_description"
-          ]
+          ],
+          "key": "structured_data"
         },
         "structured_data_website_description": {
           "type": "text",
-          "pos": 28,
+          "pos": 27,
           "max_length": "",
           "description": "Description used in structured data \"WebSite\" type for rich search results.",
           "display_name": "WebSite Description",
-          "default_value": ""
+          "default_value": "",
+          "key": "structured_data_website_description"
         },
         "structured_data_organization_description": {
           "type": "text",
-          "pos": 29,
+          "pos": 28,
           "display_name": "Organization Description",
-          "description": "Description used in structured data \"Organization\" type for rich search results."
+          "description": "Description used in structured data \"Organization\" type for rich search results.",
+          "key": "structured_data_organization_description"
         },
         "trustpilot": {
           "type": "section",
-          "pos": 30,
+          "pos": 29,
           "keys": [
             "structured_data_review_value",
             "structured_data_review_count"
-          ]
+          ],
+          "key": "trustpilot"
         },
         "structured_data_review_value": {
           "type": "text",
-          "pos": 31,
-          "description": "READ ONLY. This field is filled in automatically. Review score used in structured data \"AggregateRating\" type for rich search results."
+          "pos": 30,
+          "description": "READ ONLY. This field is filled in automatically. Review score used in structured data \"AggregateRating\" type for rich search results.",
+          "key": "structured_data_review_value"
         },
         "structured_data_review_count": {
           "type": "text",
-          "pos": 32,
-          "description": "READ ONLY. This field is filled in automatically. Total number of reviews used in structured data \"AggregateRating\" type for rich search results."
+          "pos": 31,
+          "description": "READ ONLY. This field is filled in automatically. Total number of reviews used in structured data \"AggregateRating\" type for rich search results.",
+          "key": "structured_data_review_count"
+        },
+        "blog_menu": {
+          "type": "bloks",
+          "key": "blog_menu",
+          "pos": 32
         }
       },
       "image": null,
@@ -2706,7 +2759,7 @@
         "link": {
           "type": "multilink",
           "restrict_content_types": true,
-          "component_whitelist": ["page"],
+          "component_whitelist": ["page", "category"],
           "required": false,
           "pos": 1,
           "translatable": false
