@@ -87,7 +87,7 @@ const Wrapper = styled(ContentWrapper)`
 
 const Grid = styled.div`
   display: grid;
-  grid-gap: 1.5rem;
+  grid-gap: 4rem 1.5rem;
   grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr));
   width: 100%;
 `
