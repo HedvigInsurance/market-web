@@ -71,6 +71,7 @@ export interface ArticleStory extends Story {
       _uid: string
       page_title: string
       categories: Story[]
+      date?: string
       content: Array<Object>
       article_footer: ReadonlyArray<BaseBlockProps>
       teaser: string
