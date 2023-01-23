@@ -63,7 +63,9 @@ export const ArticleTeaser = ({
         <Title>{page_title}</Title>
         <Subtitle>{teaser}</Subtitle>
         {categories.map((category: Story) => (
-          <ArticleCategory key={category.id}>{category.name}</ArticleCategory>
+          <ArticleCategory key={category.id} as="span">
+            {category.name}
+          </ArticleCategory>
         ))}
       </div>
     </>
