@@ -48,12 +48,14 @@ const ArticleContent = styled.div`
   }
 `
 
-export const ArticleCategory = styled.span`
+export const ArticleCategory = styled.a<{ as?: 'span' | 'a' }>`
   display: inline-block;
-  padding: 0.375rem 0.5rem;
-  color: ${colorsV3.gray500};
-  border: 1px solid ${colorsV3.gray500};
+  margin-right: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid ${colorsV3.gray700};
   border-radius: 6px;
+  color: ${colorsV3.gray700};
+  text-decoration: none;
 `
 export interface ArticleBlockProps {
   story: ArticleStory
@@ -63,7 +65,9 @@ export const ArticleBlock = ({ story }: ArticleBlockProps) => {
   return (
     <ArticleWrapper>
       {story.content.categories.map((category: Story) => (
-        <ArticleCategory key={category.id}>{category.name}</ArticleCategory>
+        <ArticleCategory key={category.id} href={`/${category.full_slug}`}>
+          {category.name}
+        </ArticleCategory>
       ))}
 
       <ArticleTitle>{story.content.page_title}</ArticleTitle>
