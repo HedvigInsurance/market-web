@@ -6,7 +6,7 @@ import { ArticleStory, Story } from '../../storyblok/StoryContainer'
 import { TABLET_BP_UP } from '../../components/blockHelpers'
 
 const ArticleWrapper = styled.article`
-  margin-top: 2rem;
+  margin-top: 4rem;
 `
 
 const ArticleTitle = styled.h1`
@@ -57,6 +57,15 @@ export const ArticleCategory = styled.a<{ as?: 'span' | 'a' }>`
   color: ${colorsV3.gray700};
   text-decoration: none;
 `
+
+export const ArticleDate = styled.div`
+  margin-bottom: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.2;
+  color: ${colorsV3.gray600};
+  text-transform: uppercase;
+`
+
 export interface ArticleBlockProps {
   story: ArticleStory
 }
@@ -71,6 +80,7 @@ export const ArticleBlock = ({ story }: ArticleBlockProps) => {
       ))}
 
       <ArticleTitle>{story.content.page_title}</ArticleTitle>
+      {story.content.date && <ArticleDate>{story.content.date}</ArticleDate>}
       <ArticleContent>{render(story.content.content)}</ArticleContent>
     </ArticleWrapper>
   )

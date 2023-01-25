@@ -159,6 +159,11 @@
           "source": "internal_stories",
           "filter_content_type": ["category"]
         },
+        "date": {
+          "type": "text",
+          "pos": 2,
+          "description": "Format: 29 september 2021"
+        },
         "teaser_image": {
           "type": "asset",
           "pos": 3,

@@ -3,7 +3,7 @@ import { fonts } from '@hedviginsurance/brand'
 import React from 'react'
 import { ArticleStory, Story } from 'src/storyblok/StoryContainer'
 import { getStoryblokImage } from '../../utils/storyblok'
-import { ArticleCategory } from '../ArticleBlock/ArticleBlock'
+import { ArticleCategory, ArticleDate } from '../ArticleBlock/ArticleBlock'
 
 const ImageWrapper = styled.div`
   position: relative;
@@ -20,6 +20,7 @@ const Image = styled.img`
   display: block;
   width: 100%;
   height: 100%;
+  margin-bottom: 0.5rem;
   object-fit: cover;
 
   @supports not (aspect-ratio: auto) {
@@ -30,6 +31,7 @@ const Image = styled.img`
 `
 
 const Title = styled.h3`
+  margin-top: 1rem;
   font-size: 1.5rem;
   line-height: 1.2;
 
@@ -45,6 +47,7 @@ const Subtitle = styled.p`
 
 export const ArticleTeaser = ({
   page_title,
+  date,
   teaser,
   teaser_image,
   categories,
@@ -60,6 +63,7 @@ export const ArticleTeaser = ({
         )}
       </ImageWrapper>
       <div>
+        {date && <ArticleDate>{date}</ArticleDate>}
         <Title>{page_title}</Title>
         <Subtitle>{teaser}</Subtitle>
         {categories.map((category: Story) => (
