@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom'
 import { getStoryblokLinkUrl } from 'utils/storyblok'
 import { GlobalStoryContainer } from 'storyblok/StoryContainer'
 import { removeTrailingSlash } from 'utils/meta'
+import { LAPTOP_BP_UP } from '../../components/blockHelpers'
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,16 +14,25 @@ const Wrapper = styled.div`
 
 const CategoriesList = styled.nav`
   display: inline-flex;
-  gap: 2rem;
-  border-bottom: 2px solid ${colorsV3.gray300};
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-inline: 1rem;
+
+  ${LAPTOP_BP_UP} {
+    gap: 2rem;
+  }
 `
 
 const CategoriesItem = styled.a<{ active: boolean }>`
   position: relative;
   padding: 0.25rem 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1rem;
   color: ${colorsV3.gray500};
   text-decoration: none;
+
+  ${LAPTOP_BP_UP} {
+    font-size: 1.5rem;
+  }
 
   ${({ active }) =>
     active &&
