@@ -41,6 +41,10 @@ const Title = styled.h3`
 `
 
 const Subtitle = styled.p`
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
   margin-top: 0.75rem;
   margin-bottom: 1.5rem;
 `
