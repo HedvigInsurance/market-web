@@ -52,9 +52,9 @@ export const ArticleCategory = styled.a<{ as?: 'span' | 'a' }>`
   display: inline-block;
   margin-right: 0.5rem;
   padding: 0.25rem 0.5rem;
-  border: 1px solid ${colorsV3.gray700};
+  border: 1px solid ${colorsV3.gray600};
   border-radius: 6px;
-  color: ${colorsV3.gray700};
+  color: ${colorsV3.gray600};
   text-decoration: none;
 `
 
