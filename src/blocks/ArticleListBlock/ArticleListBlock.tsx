@@ -95,6 +95,7 @@ const Grid = styled.div`
 `
 const Link = styled.a`
   display: grid;
+  grid-template-rows: max-content 1fr;
   gap: 0.5rem;
   text-decoration: none;
 `
