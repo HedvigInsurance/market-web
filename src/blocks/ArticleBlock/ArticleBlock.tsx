@@ -24,6 +24,14 @@ const ArticleContent = styled.div`
     display: block;
   }
 
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
   ${TABLET_BP_UP} {
     p {
       margin-block: 1.5rem;
@@ -52,7 +60,7 @@ export const ArticleCategory = styled.a<{ as?: 'span' | 'a' }>`
   display: inline-block;
   margin-right: 0.5rem;
   padding: 0.25rem 0.5rem;
-  border: 1px solid ${colorsV3.gray600};
+  border: 1px solid ${colorsV3.gray500};
   border-radius: 6px;
   color: ${colorsV3.gray600};
   text-decoration: none;
