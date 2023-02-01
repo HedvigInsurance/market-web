@@ -89,8 +89,12 @@ const Grid = styled.div`
   display: grid;
   grid-gap: 4rem 1.5rem;
   grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr));
+  /* Zooming in Safari caused rows to be larger than the content */
+  grid-template-rows: max-content;
   width: 100%;
 `
 const Link = styled.a`
+  display: grid;
+  gap: 0.5rem;
   text-decoration: none;
 `
