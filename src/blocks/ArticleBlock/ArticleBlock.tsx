@@ -64,6 +64,8 @@ export const ArticleCategory = styled.a<{ as?: 'span' | 'a' }>`
   border-radius: 6px;
   color: ${colorsV3.gray600};
   text-decoration: none;
+  /* Be explicit that the category isn't a link in ArticleTeaser */
+  cursor: ${({ as }) => (as === 'a' ? 'pointer' : 'default')};
 `
 
 export const ArticleDate = styled.div`
