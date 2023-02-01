@@ -70,7 +70,7 @@ export const getGlobalStory = async (
   locale: string,
   bypassCache?: boolean,
 ): Promise<{ story: GlobalStory } | undefined> => {
-  const uri = encodeURI(`/v2/cdn/stories/${locale}/global`)
+  const uri = encodeURI(`/v1/cdn/stories/${locale}/global`)
   const axiosParams = {
     params: {
       token: config.storyblokApiToken,
@@ -91,7 +91,7 @@ export const getPublishedStoryFromSlug = async (
   path: string,
   bypassCache?: boolean,
 ): Promise<{ story: BodyStory }> => {
-  const uri = encodeURI(`/v2/cdn/stories${path}`)
+  const uri = encodeURI(`/v1/cdn/stories${path}`)
   const result = await cachedGet<{ story: BodyStory }>(
     uri,
     [
@@ -113,7 +113,7 @@ export const getPublishedStoryFromSlug = async (
 
 export const getDraftedStoryById = (id: string, cacheVersion: string) =>
   apiClient
-    .get<{ story: BodyStory }>(encodeURI(`/v2/cdn/stories/${id}`), {
+    .get<{ story: BodyStory }>(encodeURI(`/v1/cdn/stories/${id}`), {
       params: {
         token: config.storyblokApiToken,
         find_by: 'slug',
@@ -131,7 +131,7 @@ export const getDatasourceEntries = async (
   datasource: string,
   bypassCache?: boolean,
 ) => {
-  const uri = encodeURI(`/v2/cdn/datasource_entries?datasource=${datasource}`)
+  const uri = encodeURI(`/v1/cdn/datasource_entries?datasource=${datasource}`)
   const result = await cachedGet<{
     datasource_entries: DatasourceEntry[]
   }>(
@@ -166,7 +166,7 @@ export interface LinkResult {
   links: { [uuid: string]: Link }
 }
 export const getAllStoryblokLinks = () =>
-  apiClient.get<LinkResult>('/v2/cdn/links', {
+  apiClient.get<LinkResult>('/v1/cdn/links', {
     params: {
       token: config.storyblokApiToken,
       cv: calculateCacheVersionTimestamp(new Date()),
