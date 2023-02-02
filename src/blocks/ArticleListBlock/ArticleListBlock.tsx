@@ -26,7 +26,7 @@ export const ArticleListBlock = ({ category }: ArticleListBlockProps) => {
       try {
         const storyblokApi = getStoryblokApi()
         const { data, total } = await storyblokApi.get(`cdn/stories/`, {
-          starts_with: `${label}`,
+          starts_with: `${label}/`,
           content_type: 'article',
           resolve_relations: 'article.categories',
           per_page: pageSize,
