@@ -10,9 +10,13 @@ import { ArticleTeaser } from './ArticleTeaser'
 
 type ArticleListBlockProps = BaseBlockProps & {
   category?: string
+  button_label: string
 }
 
-export const ArticleListBlock = ({ category }: ArticleListBlockProps) => {
+export const ArticleListBlock = ({
+  category,
+  button_label,
+}: ArticleListBlockProps) => {
   const {
     currentLocale: { label },
   } = useLocale()
@@ -66,9 +70,8 @@ export const ArticleListBlock = ({ category }: ArticleListBlockProps) => {
             </Link>
           ))}
         </Grid>
-        {page < totalPages && (
-          // TODO: Translate button label
-          <Button onClick={handleClick}>Fler nyheter</Button>
+        {page < totalPages && button_label && (
+          <Button onClick={handleClick}>{button_label}</Button>
         )}
       </Wrapper>
     </SectionWrapper>
