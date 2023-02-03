@@ -10,9 +10,13 @@ import { ArticleTeaser } from './ArticleTeaser'
 
 type ArticleListBlockProps = BaseBlockProps & {
   category?: string
+  button_label: string
 }
 
-export const ArticleListBlock = ({ category }: ArticleListBlockProps) => {
+export const ArticleListBlock = ({
+  category,
+  button_label,
+}: ArticleListBlockProps) => {
   const {
     currentLocale: { label },
   } = useLocale()
@@ -26,7 +30,7 @@ export const ArticleListBlock = ({ category }: ArticleListBlockProps) => {
       try {
         const storyblokApi = getStoryblokApi()
         const { data, total } = await storyblokApi.get(`cdn/stories/`, {
-          starts_with: `${label}`,
+          starts_with: `${label}/`,
           content_type: 'article',
           resolve_relations: 'article.categories',
           per_page: pageSize,
@@ -66,9 +70,8 @@ export const ArticleListBlock = ({ category }: ArticleListBlockProps) => {
             </Link>
           ))}
         </Grid>
-        {page < totalPages && (
-          // TODO: Translate button label
-          <Button onClick={handleClick}>Fler nyheter</Button>
+        {page < totalPages && button_label && (
+          <Button onClick={handleClick}>{button_label}</Button>
         )}
       </Wrapper>
     </SectionWrapper>

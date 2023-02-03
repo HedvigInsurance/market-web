@@ -266,6 +266,10 @@
           "source": "internal_stories",
           "filter_content_type": ["category"],
           "pos": 0
+        },
+        "button_label": {
+          "type": "text",
+          "required": true
         }
       },
       "image": null,
