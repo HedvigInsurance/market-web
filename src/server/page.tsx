@@ -67,7 +67,11 @@ const template = ({
     ${helmet.style}
     ${helmet.script}
     
-    ${allTracking(nonce, process.env.APP_ENVIRONMENT)}
+    ${allTracking(
+      nonce,
+      process.env.APP_ENVIRONMENT,
+      process.env.INTERCOM_APP_ID,
+    )}
     ${favicons}
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i&display=swap" rel="stylesheet">
     <!-- TrustBox script -->
