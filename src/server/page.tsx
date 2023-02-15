@@ -70,7 +70,9 @@ const template = ({
     ${allTracking(
       nonce,
       process.env.APP_ENVIRONMENT,
-      process.env.INTERCOM_APP_ID,
+      checkFeature(currentLocale, process.env.FEATURE_INTERCOM)
+        ? process.env.INTERCOM_APP_ID
+        : undefined,
     )}
     ${favicons}
     <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,400i&display=swap" rel="stylesheet">
@@ -116,6 +118,11 @@ const template = ({
   </body>
   </html>
 `
+
+const checkFeature = (locale: LocaleData, feature?: string) => {
+  const markets = feature?.split(',') ?? []
+  return markets.includes(locale.marketLabel)
+}
 
 const getStoryblokResponseFromContext = async (ctx: RouterContext<State>) => {
   try {
