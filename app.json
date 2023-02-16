@@ -18,7 +18,6 @@
     "GIRAFFE_ENDPOINT": {
       "required": true
     },
-    "APP_ENVIRONMENT": "development",
     "STORYBLOK_API_TOKEN": {
       "required": true
     },
@@ -28,7 +27,7 @@
   },
   "addons": [
     {
-      "plan": "heroku-redis:hobby-dev",
+      "plan": "heroku-redis:mini",
       "as": "REDIS"
     }
   ],
