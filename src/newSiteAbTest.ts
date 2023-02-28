@@ -27,10 +27,19 @@ export const newSiteAbTest: AbTestConfig = {
     },
   },
   redirects: {
-    '/se-en': '/en-se',
-    '/se-en/insurances/home-insurance/rental': '/en-se/products/home',
-    '/se-en/insurances/car-insurance': '/en-se/products/car',
-    // TODO: Add remaining product pages
-    // TODO: Add Swedish pages
+    '/se': '/se',
+    '/se/forsakringar': '/se/forsakringar',
+    '/se/forsakringar/hemforsakring': '/se/forsakringar/hemforsakring',
+    '/se/forsakringar/hemforsakring/villaforsakring':
+      '/se/forsakringar/hemforsakring/villaforsakring',
+    '/se/forsakringar/hemforsakring/bostadsratt':
+      '/se/forsakringar/hemforsakring/bostadsratt',
+    '/se/forsakringar/hemforsakring/hyresratt':
+      '/se/forsakringar/hemforsakring/hyresratt',
+    '/se/forsakringar/hemforsakring/student':
+      '/se/forsakringar/hemforsakring/student',
+    '/se/forsakringar/olycksfallsforsakring':
+      '/se/forsakringar/olycksfallsforsakring',
+    '/se/forsakringar/bilforsakring': '/se/forsakringar/bilforsakring',
   },
 }
