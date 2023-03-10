@@ -7,6 +7,7 @@ export type AppEnvironment = 'development' | 'staging' | 'production'
 type GTMUserProperties = {
   market: string
   environment?: AppEnvironment
+  siteVersion: string
 }
 
 type DataLayerObject = {
@@ -39,6 +40,7 @@ export const useGTMTracking = () => {
       userProperties: {
         environment,
         market,
+        siteVersion: 'old',
       },
     })
   }, [environment, market])
