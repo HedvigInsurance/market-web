@@ -10,7 +10,7 @@ export type AbTestConfig = {
     variant: CookieConfig
     eligible: CookieConfig
   }
-  redirects: Record<string, string>
+  redirects: Array<{ source: RegExp; destination?: string }>
 }
 
 export const newSiteAbTest: AbTestConfig = {
@@ -26,20 +26,36 @@ export const newSiteAbTest: AbTestConfig = {
       maxAge: 0,
     },
   },
-  redirects: {
-    '/se': '/se',
-    '/se/forsakringar': '/se/forsakringar',
-    '/se/forsakringar/hemforsakring': '/se/forsakringar/hemforsakring',
-    '/se/forsakringar/hemforsakring/villaforsakring':
-      '/se/forsakringar/hemforsakring/villaforsakring',
-    '/se/forsakringar/hemforsakring/bostadsratt':
-      '/se/forsakringar/hemforsakring/bostadsratt',
-    '/se/forsakringar/hemforsakring/hyresratt':
-      '/se/forsakringar/hemforsakring/hyresratt',
-    '/se/forsakringar/hemforsakring/student':
-      '/se/forsakringar/hemforsakring/student',
-    '/se/forsakringar/olycksfallsforsakring':
-      '/se/forsakringar/olycksfallsforsakring',
-    '/se/forsakringar/bilforsakring': '/se/forsakringar/bilforsakring',
-  },
+  redirects: [
+    {
+      source: /^\/se/,
+    },
+    {
+      source: /^\/se\/forsakringar/,
+    },
+    {
+      source: /^\/se\/forsakringar\/hemforsakring/,
+    },
+    {
+      source: /^\/se\/forsakringar\/hemforsakring\/villaforsakring/,
+    },
+    {
+      source: /^\/se\/forsakringar\/hemforsakring\/bostadsratt/,
+    },
+    {
+      source: /^\/se\/forsakringar\/hemforsakring\/hyresratt/,
+    },
+    {
+      source: /^\/se\/forsakringar\/hemforsakring\/student/,
+    },
+    {
+      source: /^\/se\/forsakringar\/olycksfallsforsakring/,
+    },
+    {
+      source: /^\/se\/forsakringar\/bilforsakring/,
+    },
+    {
+      source: /^\/se\/forever\/(\w+)/,
+    },
+  ],
 }

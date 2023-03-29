@@ -82,7 +82,11 @@ export const manualRedirects: IMiddleware<State, any> = async (ctx, next) => {
 export const abTestingRedirects: IMiddleware<State> = async (ctx, next) => {
   const logger = ctx.state.getLogger('request') as Logger
 
-  const isEligiblePage = typeof newSiteAbTest.redirects[ctx.path] === 'string'
+  const redirect = newSiteAbTest.redirects.find((item) =>
+    item.source.test(ctx.path),
+  )
+  const isEligiblePage = redirect !== undefined
+
   let userEligibleCookie = ctx.cookies.get(newSiteAbTest.cookies.eligible.name)
   if (typeof userEligibleCookie === 'undefined') {
     userEligibleCookie = JSON.stringify(isEligiblePage)
@@ -119,8 +123,8 @@ export const abTestingRedirects: IMiddleware<State> = async (ctx, next) => {
 
   const targetOrigin = process.env.AB_REDIRECT_ORIGIN
   const shouldRedirect = targetOrigin && variant === 1
-  if (shouldRedirect) {
-    const targetPath = newSiteAbTest.redirects[ctx.path]
+  if (redirect && shouldRedirect) {
+    const targetPath = redirect.destination ?? ctx.path
     const targetUrl = new URL(`${targetOrigin}${targetPath}`)
     targetUrl.searchParams.set(
       newSiteAbTest.experimentQueryParam,
