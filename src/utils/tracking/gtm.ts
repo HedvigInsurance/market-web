@@ -16,34 +16,21 @@ type DataLayerObject = {
   eventData?: Record<string, string>
 }
 
-const getAppEnvironment = () => {
-  if (
-    typeof window === 'undefined' &&
-    typeof process !== 'undefined' &&
-    process.env.APP_ENVIRONMENT
-  ) {
-    return process.env.APP_ENVIRONMENT
-  }
-
-  return (window as any).APP_ENVIRONMENT
-}
-
 /**
  * Track user properties
  */
 export const useGTMTracking = () => {
-  const environment = getAppEnvironment()
   const market = useLocale().currentLocale.marketLabel
 
   useEffect(() => {
     pushToGTMDataLayer({
       userProperties: {
-        environment,
+        environment: (window as any).APP_ENVIRONMENT,
         market,
         siteVersion: 'old',
       },
     })
-  }, [environment, market])
+  }, [market])
 
   useEffect(() => trackNewSiteAbTest(), [])
 }
