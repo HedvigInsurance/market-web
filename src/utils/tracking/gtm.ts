@@ -45,6 +45,7 @@ export const trackNewSiteAbTest = () => {
       eventData: {
         experiment_id: newSiteAbTest.optimizeExperimentId,
         variant_id: variantId,
+        environment: (window as any).APP_ENVIRONMENT,
       },
     })
   }
