@@ -4,5 +4,7 @@ import { config } from '../config'
 export let redisClient: Redis.Redis
 
 if (process.env.NODE_ENV !== 'test') {
-  redisClient = new Redis(config.redisUrl)
+  redisClient = new Redis(config.redisUrl, {
+    tls: { rejectUnauthorized: false },
+  })
 }
