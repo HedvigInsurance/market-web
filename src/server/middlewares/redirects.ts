@@ -122,10 +122,20 @@ export const abTestingRedirects: IMiddleware<State> = async (ctx, next) => {
   if (shouldRedirect) {
     const targetPath = newSiteAbTest.redirects[ctx.path]
     const targetUrl = new URL(`${targetOrigin}${targetPath}`)
+    const currentSearchParams = ctx.request.query
+
     targetUrl.searchParams.set(
       newSiteAbTest.experimentQueryParam,
       `${newSiteAbTest.optimizeExperimentId}.${variant}`,
     )
+
+    // Append current query params to redirect
+    for (const [key, value] of Object.entries(currentSearchParams)) {
+      if (typeof value === 'string') {
+        targetUrl.searchParams.set(key, value)
+      }
+    }
+
     logger.info(`Performing AB redirect to ${targetUrl.toString()}`)
     ctx.redirect(targetUrl.toString())
   }
