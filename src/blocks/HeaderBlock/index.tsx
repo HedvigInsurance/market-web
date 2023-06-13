@@ -368,20 +368,24 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                               )
                             }
 
-                            return (
-                              <ButtonWrapper>
-                                <ButtonLink
-                                  styleType={props.mobile_header_cta_style}
-                                  fullWidth={true}
-                                  href={getStoryblokLinkUrl(
-                                    props.story.content.cta_link,
-                                  )}
-                                  color={mobileCtaColor}
-                                >
-                                  {mobileCtaLabel}
-                                </ButtonLink>
-                              </ButtonWrapper>
-                            )
+                            if (props.story.content.show_cta) {
+                              return (
+                                <ButtonWrapper>
+                                  <ButtonLink
+                                    styleType={props.mobile_header_cta_style}
+                                    fullWidth={true}
+                                    href={getStoryblokLinkUrl(
+                                      props.story.content.cta_link,
+                                    )}
+                                    color={mobileCtaColor}
+                                  >
+                                    {mobileCtaLabel}
+                                  </ButtonLink>
+                                </ButtonWrapper>
+                              )
+                            }
+
+                            return null
                           })()}
                         </>
                       </MobileButtonWrapper>
@@ -409,19 +413,23 @@ export const Header: React.FC<{ story: GlobalStory } & HeaderBlockProps> = (
                             )
                           }
 
-                          return (
-                            <ButtonWrapper>
-                              <ButtonLink
-                                styleType={props.cta_style}
-                                color={buttonColor}
-                                href={getStoryblokLinkUrl(
-                                  props.story.content.cta_link,
-                                )}
-                              >
-                                {ctaLabel}
-                              </ButtonLink>
-                            </ButtonWrapper>
-                          )
+                          if (props.story.content.show_cta) {
+                            return (
+                              <ButtonWrapper>
+                                <ButtonLink
+                                  styleType={props.cta_style}
+                                  color={buttonColor}
+                                  href={getStoryblokLinkUrl(
+                                    props.story.content.cta_link,
+                                  )}
+                                >
+                                  {ctaLabel}
+                                </ButtonLink>
+                              </ButtonWrapper>
+                            )
+                          }
+
+                          return null
                         })()}
                       </DesktopButtonWrapper>
                     </Menu>
