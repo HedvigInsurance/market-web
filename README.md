@@ -1,6 +1,7 @@
-# Hedvig Web
 ## Archived 2023-10-30
 This repo was archieved when fully migrated to the new web project [racoon](https://github.com/HedvigInsurance/racoon)
+
+# Hedvig Web
 
 Hedvig's storyblok-based website [https://www.hedvig.com](https://www.hedvig.com)
 
